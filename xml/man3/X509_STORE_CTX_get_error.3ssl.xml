@@ -552,9 +552,14 @@ X509 *X509_STORE_CTX_get0_cert(X509_STORE_CTX *ctx);</synopsis>
       </citerefentry>.
     </para>
   </refsection>
-  <refsection xml:id="ID-4a1c8f4bc113dd9942292ea8a19f73d4"><title>HISTORY</title>
+  <refsection xml:id="ID-1f9f3516e1294035b740a4b47894fe32"><title>COPYRIGHT</title>
     <para>
-      TBA
+      Copyright 2009-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

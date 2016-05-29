@@ -39,9 +39,14 @@
       BIO_s_null() returns the null sink BIO method.
     </para>
   </refsection>
-  <refsection xml:id="ID-013f3192cf26cb7c9f77a18b2f4b912c"><title>SEE ALSO</title>
+  <refsection xml:id="ID-a415e42dd3cd4d38cb27e1c41fa2dd4f"><title>COPYRIGHT</title>
     <para>
-      TBA
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

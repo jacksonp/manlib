@@ -179,33 +179,35 @@ long BIO_get_bind_mode(BIO *b);</synopsis>
     </para>
     <screen>BIO *abio, *cbio, *cbio2;
 
-abio = BIO_new_accept("4444");
-
 /* First call to BIO_accept() sets up accept BIO */
-if(BIO_do_accept(abio) &lt;= 0) {
-       fprintf(stderr, "Error setting up accept\n");
-       ERR_print_errors_fp(stderr);
-       exit(0);                
+abio = BIO_new_accept("4444");
+if (BIO_do_accept(abio) &lt;= 0) {
+    fprintf(stderr, "Error setting up accept\n");
+    ERR_print_errors_fp(stderr);
+    exit(1);
 }
 
 /* Wait for incoming connection */
-if(BIO_do_accept(abio) &lt;= 0) {
-       fprintf(stderr, "Error accepting connection\n");
-       ERR_print_errors_fp(stderr);
-       exit(0);                
+if (BIO_do_accept(abio) &lt;= 0) {
+    fprintf(stderr, "Error accepting connection\n");
+    ERR_print_errors_fp(stderr);
+    exit(1);
 }
 fprintf(stderr, "Connection 1 established\n");
+
 /* Retrieve BIO for connection */
 cbio = BIO_pop(abio);
 BIO_puts(cbio, "Connection 1: Sending out Data on initial connection\n");
 fprintf(stderr, "Sent out data on connection 1\n");
+
 /* Wait for another connection */
-if(BIO_do_accept(abio) &lt;= 0) {
-       fprintf(stderr, "Error accepting connection\n");
-       ERR_print_errors_fp(stderr);
-       exit(0);                
+if (BIO_do_accept(abio) &lt;= 0) {
+    fprintf(stderr, "Error accepting connection\n");
+    ERR_print_errors_fp(stderr);
+    exit(1);
 }
 fprintf(stderr, "Connection 2 established\n");
+
 /* Close accept BIO to refuse further connections */
 cbio2 = BIO_pop(abio);
 BIO_free(abio);
@@ -213,13 +215,19 @@ BIO_puts(cbio2, "Connection 2: Sending out Data on second\n");
 fprintf(stderr, "Sent out data on connection 2\n");
 
 BIO_puts(cbio, "Connection 1: Second connection established\n");
+
 /* Close the two established connections */
 BIO_free(cbio);
 BIO_free(cbio2);</screen>
   </refsection>
-  <refsection xml:id="ID-8fea5339a7a21a7a580e74c5e5d2205c"><title>SEE ALSO</title>
+  <refsection xml:id="ID-d424bdd4f69268d5a564cdbec85e9b33"><title>COPYRIGHT</title>
     <para>
-      TBA
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

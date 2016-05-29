@@ -3,10 +3,10 @@
   <refmeta>
     <refentrytitle>OCSP_request_add1_nonce.pod</refentrytitle>
   </refmeta>
-  <para>
-    OCSP_request_add1_nonce, OCSP_basic_add1_nonce, OCSP_check_nonce,
-    OCSP_copy_nonce - OCSP nonce functions.
-  </para>
+  <refnamediv>
+    <refname>OCSP_request_add1_nonce, OCSP_basic_add1_nonce, OCSP_check_nonce, OCSP_copy_nonce</refname>
+<refpurpose>OCSP nonce functions.</refpurpose>
+  </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ocsp.h&gt;</synopsis>
 <synopsis>int OCSP_request_add1_nonce(OCSP_REQUEST *req, unsigned char *val, int len);
@@ -94,6 +94,16 @@ int OCSP_check_nonce(OCSP_REQUEST *req, OCSP_BASICRESP *resp);</synopsis>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_sendreq_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-329c0625c6e2507c00282db9375ff71d"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

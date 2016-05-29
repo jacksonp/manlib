@@ -259,4 +259,14 @@ STACK_OF(X509) *sk_X509_deep_copy(STACK_OF(X509) *sk,
       macros.
     </para>
   </refsection>
+  <refsection xml:id="ID-eaf0291e9f1401238dc9711797699a51"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
 </refentry>

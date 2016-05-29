@@ -199,16 +199,17 @@ char tmpbuf[1024];
 
 cbio = BIO_new_connect("localhost:http");
 out = BIO_new_fp(stdout, BIO_NOCLOSE);
-if(BIO_do_connect(cbio) &lt;= 0) {
-       fprintf(stderr, "Error connecting to server\n");
-       ERR_print_errors_fp(stderr);
-       /* whatever ... */
-       }
+if (BIO_do_connect(cbio) &lt;= 0) {
+    fprintf(stderr, "Error connecting to server\n");
+    ERR_print_errors_fp(stderr);
+    exit(1);
+}
 BIO_puts(cbio, "GET / HTTP/1.0\n\n");
-for(;;) {      
-       len = BIO_read(cbio, tmpbuf, 1024);
-       if(len &lt;= 0) break;
-       BIO_write(out, tmpbuf, len);
+for ( ; ; ) {
+    len = BIO_read(cbio, tmpbuf, 1024);
+    if(len &lt;= 0)
+        break;
+    BIO_write(out, tmpbuf, len);
 }
 BIO_free(cbio);
 BIO_free(out);
@@ -219,6 +220,16 @@ BIO_free(out);
     <para>
       <citerefentry> <refentrytitle>BIO_ADDR</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-9bb98f4e4b31e006d243b2c543c075ef"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

@@ -679,7 +679,7 @@
       authentication used, e.g. DES-CBC3-SHA. In these cases, RSA
       authentication is used.
     </para>
-    <refsection xml:id="ID-d0cb37512ad5649ff4b07b59be77ce70"><title>SSL v3.0 cipher suites.</title>
+    <refsection xml:id="ID-6b2cd8f0ba09aad527486c27b1ffaf48"><title>SSL v3.0 cipher suites</title>
       <screen>SSL_RSA_WITH_NULL_MD5                   NULL-MD5
 SSL_RSA_WITH_NULL_SHA                   NULL-SHA
 SSL_RSA_WITH_RC4_128_MD5                RC4-MD5
@@ -699,7 +699,7 @@ SSL_FORTEZZA_KEA_WITH_NULL_SHA          Not implemented.
 SSL_FORTEZZA_KEA_WITH_FORTEZZA_CBC_SHA  Not implemented.
 SSL_FORTEZZA_KEA_WITH_RC4_128_SHA       Not implemented.</screen>
     </refsection>
-    <refsection xml:id="ID-ac0a00439718c7f2fd7a8e25a710453c"><title>TLS v1.0 cipher suites.</title>
+    <refsection xml:id="ID-bf66c493d454e6a3948d74ab8c3e8b0d"><title>TLS v1.0 cipher suites</title>
       <screen>TLS_RSA_WITH_NULL_MD5                   NULL-MD5
 TLS_RSA_WITH_NULL_SHA                   NULL-SHA
 TLS_RSA_WITH_RC4_128_MD5                RC4-MD5
@@ -858,7 +858,7 @@ TLS_ECDHE_ECDSA_WITH_CAMELLIA_256_CBC_SHA384 ECDHE-ECDSA-CAMELLIA256-SHA384
 TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256   ECDHE-RSA-CAMELLIA128-SHA256
 TLS_ECDHE_RSA_WITH_CAMELLIA_256_CBC_SHA384   ECDHE-RSA-CAMELLIA256-SHA384</screen>
     </refsection>
-    <refsection xml:id="ID-1622d4e037b8a776451dfa8fe2f5c67a"><title>Pre shared keying (PSK) ciphersuites</title>
+    <refsection xml:id="ID-926b8178ecee4d5f1326c8cc399e1b16"><title>Pre-shared keying (PSK) ciphersuites</title>
       <screen>PSK_WITH_NULL_SHA                         PSK-NULL-SHA
 DHE_PSK_WITH_NULL_SHA                     DHE-PSK-NULL-SHA
 RSA_PSK_WITH_NULL_SHA                     RSA-PSK-NULL-SHA
@@ -931,7 +931,7 @@ PSK_WITH_AES_256_CCM_8                    PSK-AES256-CCM8
 DHE_PSK_WITH_AES_128_CCM_8                DHE-PSK-AES128-CCM8
 DHE_PSK_WITH_AES_256_CCM_8                DHE-PSK-AES256-CCM8</screen>
     </refsection>
-    <refsection xml:id="ID-385b8acde96fb3adca0aa112988648a4"><title>ChaCha20-Poly1305 cipher suites from draft-ietf-tls-chacha20-poly1305-04, extending TLS v1.2</title>
+    <refsection xml:id="ID-0a825df7a4f84c567526d2590152c6b8"><title>ChaCha20-Poly1305 cipher suites, extending TLS v1.2</title>
       <screen>TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256      ECDHE-RSA-CHACHA20-POLY1305
 TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256    ECDHE-ECDSA-CHACHA20-POLY1305
 TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256        DHE-RSA-CHACHA20-POLY1305
@@ -993,6 +993,16 @@ TLS_RSA_PSK_WITH_CHACHA20_POLY1305_SHA256        RSA-PSK-CHACHA20-POLY1305</scre
   <refsection xml:id="ID-7f8be33aaf6bf9000feb7eb8dfd2ed64"><title>HISTORY</title>
     <para>
       The <emphasis role="bold">-V</emphasis> option for the <emphasis role="bold">ciphers</emphasis> command was added in OpenSSL 1.0.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-eb6fb315c5c8a75a1f55134cd3acd512"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

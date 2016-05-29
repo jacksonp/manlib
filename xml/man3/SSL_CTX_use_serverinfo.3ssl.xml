@@ -44,19 +44,20 @@
       certificate is loaded.
     </para>
   </refsection>
-  <refsection xml:id="ID-d6a8ed6ff030a25e66c764ac679780da"><title>NOTES</title>
-    <para/>
-  </refsection>
   <refsection xml:id="ID-a4191f895fe56a0dd9bb867db0a0bace"><title>RETURN VALUES</title>
     <para>
       On success, the functions return 1. On failure, the functions return
       0.  Check out the error stack to find out the reason.
     </para>
   </refsection>
-  <refsection xml:id="ID-910d89c2587e321e2535ffbc913f3b63"><title>SEE ALSO</title>
-    <para/>
-  </refsection>
-  <refsection xml:id="ID-a32f1b235becb22072c236b03d5fc09b"><title>HISTORY</title>
-    <screen></screen>
+  <refsection xml:id="ID-09f99582d074c19494946fbe67a984aa"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2013-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
   </refsection>
 </refentry>

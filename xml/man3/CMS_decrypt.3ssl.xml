@@ -1,0 +1,103 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CMS_decrypt.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CMS_decrypt</refname>
+<refpurpose>decrypt content from a CMS envelopedData structure</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>int CMS_decrypt(CMS_ContentInfo *cms, EVP_PKEY *pkey, X509 *cert, BIO *dcont, BIO *out, unsigned int flags);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-6b7794f92ab32ef5e98e76ec78bd58bc"><title>DESCRIPTION</title>
+    <para>
+      CMS_decrypt() extracts and decrypts the content from a CMS
+      EnvelopedData structure. <emphasis role="bold">pkey</emphasis> is the
+      private key of the recipient, <emphasis role="bold">cert</emphasis>
+      is the recipient's certificate, <emphasis role="bold">out</emphasis>
+      is a BIO to write the content to and <emphasis role="bold">flags</emphasis> is an optional set of flags.
+    </para>
+    <para>
+      The <emphasis role="bold">dcont</emphasis> parameter is used in the
+      rare case where the encrypted content is detached. It will normally
+      be set to NULL.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-caf2eeba7c714e39b39ad2e2fc6657d3"><title>NOTES</title>
+    <para>
+      Although the recipients certificate is not needed to decrypt the data
+      it is needed to locate the appropriate (of possible several)
+      recipients in the CMS structure.
+    </para>
+    <para>
+      If <emphasis role="bold">cert</emphasis> is set to NULL all possible
+      recipients are tried. This case however is problematic. To thwart the
+      MMA attack (Bleichenbacher's attack on PKCS #1 v1.5 RSA padding) all
+      recipients are tried whether they succeed or not. If no recipient
+      succeeds then a random symmetric key is used to decrypt the content:
+      this will typically output garbage and may (but is not guaranteed to)
+      ultimately return a padding error only. If CMS_decrypt() just
+      returned an error when all recipient encrypted keys failed to decrypt
+      an attacker could use this in a timing attack. If the special flag
+      <emphasis role="bold">CMS_DEBUG_DECRYPT</emphasis> is set then the
+      above behaviour is modified and an error <emphasis role="bold">is</emphasis> returned if no recipient encrypted key can
+      be decrypted <emphasis role="bold">without</emphasis> generating a
+      random content encryption key. Applications should use this flag with
+      <emphasis role="bold">extreme caution</emphasis> especially in
+      automated gateways as it can leave them open to attack.
+    </para>
+    <para>
+      It is possible to determine the correct recipient key by other means
+      (for example looking them up in a database) and setting them in the
+      CMS structure in advance using the CMS utility functions such as
+      CMS_set1_pkey(). In this case both <emphasis role="bold">cert</emphasis> and <emphasis role="bold">pkey</emphasis>
+      should be set to NULL.
+    </para>
+    <para>
+      To process KEKRecipientInfo types CMS_set1_key() or
+      CMS_RecipientInfo_set0_key() and CMS_ReceipientInfo_decrypt() should
+      be called before CMS_decrypt() and <emphasis role="bold">cert</emphasis> and <emphasis role="bold">pkey</emphasis>
+      set to NULL.
+    </para>
+    <para>
+      The following flags can be passed in the <emphasis role="bold">flags</emphasis> parameter.
+    </para>
+    <para>
+      If the <emphasis role="bold">CMS_TEXT</emphasis> flag is set MIME
+      headers for type <emphasis role="bold">text/plain</emphasis> are
+      deleted from the content. If the content is not of type <emphasis role="bold">text/plain</emphasis> then an error is returned.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-a8f2f438b67608921c40bda2d01e094e"><title>RETURN VALUES</title>
+    <para>
+      CMS_decrypt() returns either 1 for success or 0 for failure. The
+      error can be obtained from ERR_get_error(3)
+    </para>
+  </refsection>
+  <refsection xml:id="ID-bcd31953881561733f0ed3ccd88d46d1"><title>BUGS</title>
+    <para>
+      The lack of single pass processing and the need to hold all data in
+      memory as mentioned in CMS_verify() also applies to CMS_decrypt().
+    </para>
+  </refsection>
+  <refsection xml:id="ID-30d87d9057736c11a8b60e3d305c2916"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_encrypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-2869e6c8d5207296270d94cb6f7c4a8b"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

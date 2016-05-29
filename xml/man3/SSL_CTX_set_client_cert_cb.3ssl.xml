@@ -119,4 +119,14 @@ int (*client_cert_cb)(SSL *ssl, X509 **x509, EVP_PKEY **pkey);</synopsis>
       </citerefentry>
     </para>
   </refsection>
+  <refsection xml:id="ID-b65ce79e493d64bcd3c98b1a408424e9"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2002-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
 </refentry>

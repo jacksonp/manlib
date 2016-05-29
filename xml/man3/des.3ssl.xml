@@ -26,15 +26,15 @@ void DES_set_key_unchecked(const_DES_cblock *key,
        DES_key_schedule *schedule);</synopsis>
 <synopsis>void DES_set_odd_parity(DES_cblock *key);
 int DES_is_weak_key(const_DES_cblock *key);</synopsis>
-<synopsis>void DES_ecb_encrypt(const_DES_cblock *input, DES_cblock *output, 
+<synopsis>void DES_ecb_encrypt(const_DES_cblock *input, DES_cblock *output,
        DES_key_schedule *ks, int enc);
-void DES_ecb2_encrypt(const_DES_cblock *input, DES_cblock *output, 
+void DES_ecb2_encrypt(const_DES_cblock *input, DES_cblock *output,
        DES_key_schedule *ks1, DES_key_schedule *ks2, int enc);
-void DES_ecb3_encrypt(const_DES_cblock *input, DES_cblock *output, 
-       DES_key_schedule *ks1, DES_key_schedule *ks2, 
+void DES_ecb3_encrypt(const_DES_cblock *input, DES_cblock *output,
+       DES_key_schedule *ks1, DES_key_schedule *ks2,
        DES_key_schedule *ks3, int enc);</synopsis>
-<synopsis>void DES_ncbc_encrypt(const unsigned char *input, unsigned char *output, 
-       long length, DES_key_schedule *schedule, DES_cblock *ivec, 
+<synopsis>void DES_ncbc_encrypt(const unsigned char *input, unsigned char *output,
+       long length, DES_key_schedule *schedule, DES_cblock *ivec,
        int enc);
 void DES_cfb_encrypt(const unsigned char *in, unsigned char *out,
        int numbits, long length, DES_key_schedule *schedule,
@@ -42,8 +42,8 @@ void DES_cfb_encrypt(const unsigned char *in, unsigned char *out,
 void DES_ofb_encrypt(const unsigned char *in, unsigned char *out,
        int numbits, long length, DES_key_schedule *schedule,
        DES_cblock *ivec);
-void DES_pcbc_encrypt(const unsigned char *input, unsigned char *output, 
-       long length, DES_key_schedule *schedule, DES_cblock *ivec, 
+void DES_pcbc_encrypt(const unsigned char *input, unsigned char *output,
+       long length, DES_key_schedule *schedule, DES_cblock *ivec,
        int enc);
 void DES_cfb64_encrypt(const unsigned char *in, unsigned char *out,
        long length, DES_key_schedule *schedule, DES_cblock *ivec,
@@ -51,8 +51,8 @@ void DES_cfb64_encrypt(const unsigned char *in, unsigned char *out,
 void DES_ofb64_encrypt(const unsigned char *in, unsigned char *out,
        long length, DES_key_schedule *schedule, DES_cblock *ivec,
        int *num);</synopsis>
-<synopsis>void DES_xcbc_encrypt(const unsigned char *input, unsigned char *output, 
-       long length, DES_key_schedule *schedule, DES_cblock *ivec, 
+<synopsis>void DES_xcbc_encrypt(const unsigned char *input, unsigned char *output,
+       long length, DES_key_schedule *schedule, DES_cblock *ivec,
        const_DES_cblock *inw, const_DES_cblock *outw, int enc);</synopsis>
 <synopsis>void DES_ede2_cbc_encrypt(const unsigned char *input,
        unsigned char *output, long length, DES_key_schedule *ks1,
@@ -67,17 +67,17 @@ void DES_ede2_ofb64_encrypt(const unsigned char *in,
        unsigned char *output, long length, DES_key_schedule *ks1,
        DES_key_schedule *ks2, DES_key_schedule *ks3, DES_cblock *ivec,
        int enc);
-void DES_ede3_cfb64_encrypt(const unsigned char *in, unsigned char *out, 
+void DES_ede3_cfb64_encrypt(const unsigned char *in, unsigned char *out,
        long length, DES_key_schedule *ks1, DES_key_schedule *ks2,
        DES_key_schedule *ks3, DES_cblock *ivec, int *num, int enc);
-void DES_ede3_ofb64_encrypt(const unsigned char *in, unsigned char *out, 
-       long length, DES_key_schedule *ks1, 
-       DES_key_schedule *ks2, DES_key_schedule *ks3, 
+void DES_ede3_ofb64_encrypt(const unsigned char *in, unsigned char *out,
+       long length, DES_key_schedule *ks1,
+       DES_key_schedule *ks2, DES_key_schedule *ks3,
        DES_cblock *ivec, int *num);</synopsis>
-<synopsis>DES_LONG DES_cbc_cksum(const unsigned char *input, DES_cblock *output, 
-       long length, DES_key_schedule *schedule, 
+<synopsis>DES_LONG DES_cbc_cksum(const unsigned char *input, DES_cblock *output,
+       long length, DES_key_schedule *schedule,
        const_DES_cblock *ivec);
-DES_LONG DES_quad_cksum(const unsigned char *input, DES_cblock output[], 
+DES_LONG DES_quad_cksum(const unsigned char *input, DES_cblock output[],
        long length, int out_count, DES_cblock *seed);
 void DES_string_to_key(const char *str, DES_cblock *key);
 void DES_string_to_2keys(const char *str, DES_cblock *key1,
@@ -338,6 +338,16 @@ char *DES_crypt(const char *buf, const char *salt);</synopsis>
       <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>EVP_EncryptInit</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-ed4a5800d0e46b7b64da28f72cca5a96"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

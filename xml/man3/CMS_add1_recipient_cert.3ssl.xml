@@ -1,0 +1,81 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CMS_add1_recipient_cert.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CMS_add1_recipient_cert, CMS_add0_recipient_key</refname>
+<refpurpose>add recipients to a CMS enveloped data structure</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>CMS_RecipientInfo *CMS_add1_recipient_cert(CMS_ContentInfo *cms, X509 *recip, unsigned int flags);</synopsis>
+<synopsis>CMS_RecipientInfo *CMS_add0_recipient_key(CMS_ContentInfo *cms, int nid, unsigned char *key, size_t keylen, unsigned char *id, size_t idlen, ASN1_GENERALIZEDTIME *date, ASN1_OBJECT *otherTypeId, ASN1_TYPE *otherType);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-777a7a39ef77ca950caaa4175289a5a2"><title>DESCRIPTION</title>
+    <para>
+      CMS_add1_recipient_cert() adds recipient <emphasis role="bold">recip</emphasis> to CMS_ContentInfo enveloped data
+      structure <emphasis role="bold">cms</emphasis> as a
+      KeyTransRecipientInfo structure.
+    </para>
+    <para>
+      CMS_add0_recipient_key() adds symmetric key <emphasis role="bold">key</emphasis> of length <emphasis role="bold">keylen</emphasis> using wrapping algorithm <emphasis role="bold">nid</emphasis>, identifier <emphasis role="bold">id</emphasis> of length <emphasis role="bold">idlen</emphasis> and optional values <emphasis role="bold">date</emphasis>, <emphasis role="bold">otherTypeId</emphasis> and <emphasis role="bold">otherType</emphasis> to CMS_ContentInfo enveloped data
+      structure <emphasis role="bold">cms</emphasis> as a KEKRecipientInfo
+      structure.
+    </para>
+    <para>
+      The CMS_ContentInfo structure should be obtained from an initial call
+      to CMS_encrypt() with the flag <emphasis role="bold">CMS_PARTIAL</emphasis> set.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-ccc553386508ca2eaec03c0f7190e096"><title>NOTES</title>
+    <para>
+      The main purpose of this function is to provide finer control over a
+      CMS enveloped data structure where the simpler CMS_encrypt() function
+      defaults are not appropriate. For example if one or more
+      KEKRecipientInfo structures need to be added. New attributes can also
+      be added using the returned CMS_RecipientInfo structure and the CMS
+      attribute utility functions.
+    </para>
+    <para>
+      OpenSSL will by default identify recipient certificates using issuer
+      name and serial number. If <emphasis role="bold">CMS_USE_KEYID</emphasis> is set it will use the subject
+      key identifier value instead. An error occurs if all recipient
+      certificates do not have a subject key identifier extension.
+    </para>
+    <para>
+      Currently only AES based key wrapping algorithms are supported for
+      <emphasis role="bold">nid</emphasis>, specifically:
+      NID_id_aes128_wrap, NID_id_aes192_wrap and NID_id_aes256_wrap. If
+      <emphasis role="bold">nid</emphasis> is set to <emphasis role="bold">NID_undef</emphasis> then an AES wrap algorithm will be
+      used consistent with <emphasis role="bold">keylen</emphasis>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-b827bbcc24bbce3a77e694bf67257eeb"><title>RETURN VALUES</title>
+    <para>
+      CMS_add1_recipient_cert() and CMS_add0_recipient_key() return an
+      internal pointer to the CMS_RecipientInfo structure just added or
+      NULL if an error occurs.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-24fccdbca55fdf710cde33e6e41d5c9f"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_decrypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_final</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>,
+    </para>
+  </refsection>
+  <refsection xml:id="ID-74120bd613b43615439c2652a8e89fda"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

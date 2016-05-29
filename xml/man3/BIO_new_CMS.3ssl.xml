@@ -1,0 +1,95 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>BIO_new_CMS.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>BIO_new_CMS</refname>
+<refpurpose>CMS streaming filter BIO</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>BIO *BIO_new_CMS(BIO *out, CMS_ContentInfo *cms);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-d6da2e2a08633ece6e0eb0278cc3a071"><title>DESCRIPTION</title>
+    <para>
+      BIO_new_CMS() returns a streaming filter BIO chain based on <emphasis role="bold">cms</emphasis>. The output of the filter is written to
+      <emphasis role="bold">out</emphasis>. Any data written to the chain
+      is automatically translated to a BER format CMS structure of the
+      appropriate type.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-c7c9d4d8603663f29c0d4b925152e233"><title>NOTES</title>
+    <para>
+      The chain returned by this function behaves like a standard filter
+      BIO. It supports non blocking I/O. Content is processed and streamed
+      on the fly and not all held in memory at once: so it is possible to
+      encode very large structures. After all content has been written
+      through the chain BIO_flush() must be called to finalise the
+      structure.
+    </para>
+    <para>
+      The <emphasis role="bold">CMS_STREAM</emphasis> flag must be included
+      in the corresponding <emphasis role="bold">flags</emphasis> parameter
+      of the <emphasis role="bold">cms</emphasis> creation function.
+    </para>
+    <para>
+      If an application wishes to write additional data to <emphasis role="bold">out</emphasis> BIOs should be removed from the chain
+      using BIO_pop() and freed with BIO_free() until <emphasis role="bold">out</emphasis> is reached. If no additional data needs to
+      be written BIO_free_all() can be called to free up the whole chain.
+    </para>
+    <para>
+      Any content written through the filter is used verbatim: no canonical
+      translation is performed.
+    </para>
+    <para>
+      It is possible to chain multiple BIOs to, for example, create a
+      triple wrapped signed, enveloped, signed structure. In this case it
+      is the applications responsibility to set the inner content type of
+      any outer CMS_ContentInfo structures.
+    </para>
+    <para>
+      Large numbers of small writes through the chain should be avoided as
+      this will produce an output consisting of lots of OCTET STRING
+      structures. Prepending a BIO_f_buffer() buffering BIO will prevent
+      this.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-93b80f4fd3154e0925910b65deb35451"><title>BUGS</title>
+    <para>
+      There is currently no corresponding inverse BIO: i.e. one which can
+      decode a CMS structure on the fly.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-5819357b1e431d958ed626ffb2a722fa"><title>RETURN VALUES</title>
+    <para>
+      BIO_new_CMS() returns a BIO chain when successful or NULL if an error
+      occurred. The error can be obtained from ERR_get_error(3).
+    </para>
+  </refsection>
+  <refsection xml:id="ID-903303b437b29bb31e4373bef9d7fa93"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_sign</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_encrypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-6b397e9544cd4807ab991490564e7181"><title>HISTORY</title>
+    <para>
+      BIO_new_CMS() was added to OpenSSL 1.0.0
+    </para>
+  </refsection>
+  <refsection xml:id="ID-66a385c313c9e2816ab47a1110c230a5"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

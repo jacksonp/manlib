@@ -1,0 +1,93 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CMS_get1_ReceiptRequest.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CMS_ReceiptRequest_create0, CMS_add1_ReceiptRequest, CMS_get1_ReceiptRequest, CMS_ReceiptRequest_get0_values</refname>
+<refpurpose>CMS signed receipt request functions.</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>CMS_ReceiptRequest *CMS_ReceiptRequest_create0(unsigned char *id, int idlen, int allorfirst, STACK_OF(GENERAL_NAMES) *receiptList, STACK_OF(GENERAL_NAMES) *receiptsTo);
+int CMS_add1_ReceiptRequest(CMS_SignerInfo *si, CMS_ReceiptRequest *rr);
+int CMS_get1_ReceiptRequest(CMS_SignerInfo *si, CMS_ReceiptRequest **prr);
+void CMS_ReceiptRequest_get0_values(CMS_ReceiptRequest *rr, ASN1_STRING **pcid, int *pallorfirst, STACK_OF(GENERAL_NAMES) **plist, STACK_OF(GENERAL_NAMES) **prto);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-e2e4358544001714d51c827b5e4b50fc"><title>DESCRIPTION</title>
+    <para>
+      CMS_ReceiptRequest_create0() creates a signed receipt request
+      structure. The <emphasis role="bold">signedContentIdentifier</emphasis> field is set using
+      <emphasis role="bold">id</emphasis> and <emphasis role="bold">idlen</emphasis>, or it is set to 32 bytes of pseudo
+      random data if <emphasis role="bold">id</emphasis> is NULL. If
+      <emphasis role="bold">receiptList</emphasis> is NULL the
+      allOrFirstTier option in <emphasis role="bold">receiptsFrom</emphasis> is used and set to the value of
+      the <emphasis role="bold">allorfirst</emphasis> parameter. If
+      <emphasis role="bold">receiptList</emphasis> is not NULL the
+      <emphasis role="bold">receiptList</emphasis> option in <emphasis role="bold">receiptsFrom</emphasis> is used. The <emphasis role="bold">receiptsTo</emphasis> parameter specifies the <emphasis role="bold">receiptsTo</emphasis> field value.
+    </para>
+    <para>
+      The CMS_add1_ReceiptRequest() function adds a signed receipt request
+      <emphasis role="bold">rr</emphasis> to SignerInfo structure <emphasis role="bold">si</emphasis>.
+    </para>
+    <para>
+      int CMS_get1_ReceiptRequest() looks for a signed receipt request in
+      <emphasis role="bold">si</emphasis>, if any is found it is decoded
+      and written to <emphasis role="bold">prr</emphasis>.
+    </para>
+    <para>
+      CMS_ReceiptRequest_get0_values() retrieves the values of a receipt
+      request. The signedContentIdentifier is copied to <emphasis role="bold">pcid</emphasis>. If the <emphasis role="bold">allOrFirstTier</emphasis> option of <emphasis role="bold">receiptsFrom</emphasis> is used its value is copied to
+      <emphasis role="bold">pallorfirst</emphasis> otherwise the <emphasis role="bold">receiptList</emphasis> field is copied to <emphasis role="bold">plist</emphasis>. The <emphasis role="bold">receiptsTo</emphasis> parameter is copied to <emphasis role="bold">prto</emphasis>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-b21517d2d80163be1ffffc3c9faab575"><title>NOTES</title>
+    <para>
+      For more details of the meaning of the fields see RFC2634.
+    </para>
+    <para>
+      The contents of a signed receipt should only be considered meaningful
+      if the corresponding CMS_ContentInfo structure can be successfully
+      verified using CMS_verify().
+    </para>
+  </refsection>
+  <refsection xml:id="ID-f30e2c62648860b60677cebc85982ed3"><title>RETURN VALUES</title>
+    <para>
+      CMS_ReceiptRequest_create0() returns a signed receipt request
+      structure or NULL if an error occurred.
+    </para>
+    <para>
+      CMS_add1_ReceiptRequest() returns 1 for success or 0 is an error
+      occurred.
+    </para>
+    <para>
+      CMS_get1_ReceiptRequest() returns 1 is a signed receipt request is
+      found and decoded. It returns 0 if a signed receipt request is not
+      present and -1 if it is present but malformed.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-0d8386e6f6ac8fa48bc2894807bf7be3"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_sign</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_sign_receipt</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_verify</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> <citerefentry>
+      <refentrytitle>CMS_verify_receipt</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-74e787463bdd330d733481e922c17d32"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

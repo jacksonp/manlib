@@ -3,11 +3,10 @@
   <refmeta>
     <refentrytitle>OCSP_response_find_status.pod</refentrytitle>
   </refmeta>
-  <para>
-    OCSP_resp_find_status, OCSP_resp_count, OCSP_resp_get0, OCSP_resp_find,
-    OCSP_single_get0_status, OCSP_check_validity - OCSP response utility
-    functions.
-  </para>
+  <refnamediv>
+    <refname>OCSP_resp_find_status, OCSP_resp_count, OCSP_resp_get0, OCSP_resp_find, OCSP_single_get0_status, OCSP_check_validity</refname>
+<refpurpose>OCSP response utility functions.</refpurpose>
+  </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ocsp.h&gt;</synopsis>
 <synopsis>int OCSP_resp_find_status(OCSP_BASICRESP *bs, OCSP_CERTID *id, int *status,
@@ -125,6 +124,16 @@ int OCSP_single_get0_status(OCSP_SINGLERESP *single, int *reason,
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_sendreq_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-a233c4e04648ce25c7bc05c13fe8eb36"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

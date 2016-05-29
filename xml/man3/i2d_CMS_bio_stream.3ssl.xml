@@ -1,0 +1,73 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>i2d_CMS_bio_stream.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>i2d_CMS_bio_stream</refname>
+<refpurpose>output CMS_ContentInfo structure in BER format.</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>int i2d_CMS_bio_stream(BIO *out, CMS_ContentInfo *cms, BIO *data, int flags);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-d281a54b0130824de90e0b248efcd61c"><title>DESCRIPTION</title>
+    <para>
+      i2d_CMS_bio_stream() outputs a CMS_ContentInfo structure in BER
+      format.
+    </para>
+    <para>
+      It is otherwise identical to the function SMIME_write_CMS().
+    </para>
+  </refsection>
+  <refsection xml:id="ID-4f917dfd5c75250f3000f56a85acfa3a"><title>NOTES</title>
+    <para>
+      This function is effectively a version of the i2d_CMS_bio()
+      supporting streaming.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-4ec357be6173eae52b0b0a698bcd15b0"><title>BUGS</title>
+    <para>
+      The prefix "i2d" is arguably wrong because the function outputs BER
+      format.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-d30c9141c9b3adac02ad4ae4992ee8b7"><title>RETURN VALUES</title>
+    <para>
+      i2d_CMS_bio_stream() returns 1 for success or 0 for failure.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-f3adc0d2d1bc08d983b67493702cf921"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_sign</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_verify</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_encrypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> <citerefentry>
+      <refentrytitle>CMS_decrypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>SMIME_write_CMS</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>PEM_write_bio_CMS_stream</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-c846dff6eaeaa6aa87ade47094942a96"><title>HISTORY</title>
+    <para>
+      i2d_CMS_bio_stream() was added to OpenSSL 1.0.0
+    </para>
+  </refsection>
+  <refsection xml:id="ID-edc07164a439c617bb7665bd9edd2120"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

@@ -5,9 +5,9 @@
   </refmeta>
   <refnamediv>
     <refname>X509_get_pubkey, X509_get0_pubkey, X509_set_pubkey, X509_get_X509_PUBKEY,
-X509_REQ_get_pubkey, X509_REQ_get0_pubkey, X509_REQ_set_pubkey, 
+X509_REQ_get_pubkey, X509_REQ_get0_pubkey, X509_REQ_set_pubkey,
 X509_REQ_get_X509_PUBKEY</refname>
-<refpurpose>get or set certificate or certificate request 
+<refpurpose>get or set certificate or certificate request
 public key.</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
@@ -102,7 +102,14 @@ X509_PUBKEY *X509_REQ_get_X509_PUBKEY(X509_REQ *x);</synopsis>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>
   </refsection>
-  <refsection xml:id="ID-0743e7b6e8f177b8853082e602d7fd9c"><title>HISTORY</title>
-    <para/>
+  <refsection xml:id="ID-aaefc5c88af083734130e9397e044278"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
   </refsection>
 </refentry>

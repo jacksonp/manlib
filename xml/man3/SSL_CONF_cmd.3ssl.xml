@@ -822,4 +822,14 @@ SSL_CONF_cmd(ctx, "MaxProtocol", "TLSv1.2");</screen>
       <emphasis role="bold">MinProtocol</emphasis> and <emphasis role="bold">MaxProtocol</emphasis> where added in OpenSSL 1.1.0.
     </para>
   </refsection>
+  <refsection xml:id="ID-ce64b02dd00d063106a90f49002e69d7"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2012-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
 </refentry>

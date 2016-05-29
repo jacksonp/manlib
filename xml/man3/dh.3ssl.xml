@@ -85,4 +85,14 @@ int    DHparams_print(BIO *bp, const DH *x);</synopsis>
       </citerefentry>
     </para>
   </refsection>
+  <refsection xml:id="ID-aeb61d3e8ae3cb6749c837b2a8668a90"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
 </refentry>

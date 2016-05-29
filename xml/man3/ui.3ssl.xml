@@ -206,4 +206,14 @@ const UI_METHOD *UI_set_method(UI *ui, const UI_METHOD *meth);</synopsis>
       </citerefentry>
     </para>
   </refsection>
+  <refsection xml:id="ID-e1d22844d126c5a7df5309915e4724bd"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2001-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
 </refentry>

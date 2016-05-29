@@ -20,6 +20,7 @@
 [<emphasis role="bold">-iter count</emphasis>]
 [<emphasis role="bold">-noiter</emphasis>]
 [<emphasis role="bold">-nocrypt</emphasis>]
+[<emphasis role="bold">-traditional</emphasis>]
 [<emphasis role="bold">-v2 alg</emphasis>]
 [<emphasis role="bold">-v2prf alg</emphasis>]
 [<emphasis role="bold">-v1 alg</emphasis>]
@@ -53,10 +54,10 @@
           <listitem>
             <para>
 	      Normally a PKCS#8 private key is expected on input and a
-	      traditional format private key will be written. With the
+	      private key will be written to the output file. With the
 	      <emphasis role="bold">-topk8</emphasis> option the situation
-	      is reversed: it reads a traditional format private key and
-	      writes a PKCS#8 format key.
+	      is reversed: it reads a private key and writes a PKCS#8
+	      format key.
             </para>
           </listitem>
         </varlistentry>
@@ -64,10 +65,8 @@
           <term><emphasis role="bold">-inform DER|PEM</emphasis></term>
           <listitem>
             <para>
-	      This specifies the input format. If a PKCS#8 format key is
-	      expected on input then either a <emphasis role="bold">DER</emphasis> or <emphasis role="bold">PEM</emphasis> encoded version of a PKCS#8 key
-	      will be expected. Otherwise the <emphasis role="bold">DER</emphasis> or <emphasis role="bold">PEM</emphasis> format of the traditional format
-	      private key is used.
+	      This specifies the input format: see <link linkend="ID-2322c61227993954102d0a3dd596faaf"><quote>KEY
+	      FORMATS</quote></link> for more details.
             </para>
           </listitem>
         </varlistentry>
@@ -75,9 +74,17 @@
           <term><emphasis role="bold">-outform DER|PEM</emphasis></term>
           <listitem>
             <para>
-	      This specifies the output format, the options have the same
-	      meaning as the <emphasis role="bold">-inform</emphasis>
-	      option.
+	      This specifies the output format: see <link linkend="ID-2322c61227993954102d0a3dd596faaf"><quote>KEY
+	      FORMATS</quote></link> for more details.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-traditional</emphasis></term>
+          <listitem>
+            <para>
+	      When this option is present and <emphasis role="bold">-topk8</emphasis> is not a traditional format
+	      private key is written.
             </para>
           </listitem>
         </varlistentry>
@@ -189,7 +196,7 @@
 	      This option indicates a PKCS#5 v1.5 or PKCS#12 algorithm
 	      should be used.  Some older implementations may not support
 	      PKCS#5 v2.0 and may require this option. If not specified
-	      PKCS#5 v2.0 for is used.
+	      PKCS#5 v2.0 form is used.
             </para>
           </listitem>
         </varlistentry>
@@ -222,6 +229,33 @@
           </listitem>
         </varlistentry>
       </variablelist>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-2322c61227993954102d0a3dd596faaf"><title>KEY FORMATS</title>
+    <para>
+      Various different formats are used by the pkcs8 utility. These are
+      detailed below.
+    </para>
+    <para>
+      If a key is being converted from PKCS#8 form (i.e. the <emphasis role="bold">-topk8</emphasis> option is not used) then the input file
+      must be in PKCS#8 format. An encrypted key is expected unless
+      <emphasis role="bold">-nocrypt</emphasis> is included.
+    </para>
+    <para>
+      If <emphasis role="bold">-topk8</emphasis> is not used and <emphasis role="bold">PEM</emphasis> mode is set the output file will be an
+      unencrypted private key in PKCS#8 format. If the <emphasis role="bold">-traditional</emphasis> option is used then a traditional
+      format private key is written instead.
+    </para>
+    <para>
+      If <emphasis role="bold">-topk8</emphasis> is not used and <emphasis role="bold">DER</emphasis> mode is set the output file will be an
+      unencrypted private key in traditional DER format.
+    </para>
+    <para>
+      If <emphasis role="bold">-topk8</emphasis> is used then any supported
+      private key can be used for the input file in a format specified by
+      <emphasis role="bold">-inform</emphasis>. The output file will be
+      encrypted PKCS#8 format using the specified encryption parameters
+      unless <emphasis role="bold">-nocrypt</emphasis> is included.
     </para>
   </refsection>
   <refsection xml:id="ID-d0840d24cc9282a9c3af272574b3f9b5"><title>NOTES</title>
@@ -301,20 +335,28 @@
   </refsection>
   <refsection xml:id="ID-309aaa7012b93abd421a0b504dbde0f3"><title>EXAMPLES</title>
     <para>
-      Convert a private from traditional to PKCS#5 v2.0 format using triple
-      DES:
+      Convert a private key to PKCS#8 format using default parameters (AES
+      with 256 bit key and <emphasis role="bold">hmacWithSHA256</emphasis>):
+    </para>
+    <screen>openssl pkcs8 -in key.pem -topk8 -out enckey.pem</screen>
+    <para>
+      Convert a private key to PKCS#8 unencrypted format:
+    </para>
+    <screen>openssl pkcs8 -in key.pem -topk8 -nocrypt -out enckey.pem</screen>
+    <para>
+      Convert a private key to PKCS#5 v2.0 format using triple DES:
     </para>
     <screen>openssl pkcs8 -in key.pem -topk8 -v2 des3 -out enckey.pem</screen>
     <para>
-      Convert a private from traditional to PKCS#5 v2.0 format using AES
-      with 256 bits in CBC mode and <emphasis role="bold">hmacWithSHA256</emphasis> PRF:
+      Convert a private key to PKCS#5 v2.0 format using AES with 256 bits
+      in CBC mode and <emphasis role="bold">hmacWithSHA512</emphasis> PRF:
     </para>
-    <screen>openssl pkcs8 -in key.pem -topk8 -v2 aes-256-cbc -v2prf hmacWithSHA256 -out enckey.pem</screen>
+    <screen>openssl pkcs8 -in key.pem -topk8 -v2 aes-256-cbc -v2prf hmacWithSHA512 -out enckey.pem</screen>
     <para>
       Convert a private key to PKCS#8 using a PKCS#5 1.5 compatible
       algorithm (DES):
     </para>
-    <screen>openssl pkcs8 -in key.pem -topk8 -out enckey.pem</screen>
+    <screen>openssl pkcs8 -in key.pem -topk8 -v1 PBE-MD5-DES -out enckey.pem</screen>
     <para>
       Convert a private key to PKCS#8 using a PKCS#12 compatible algorithm
       (3DES):
@@ -325,14 +367,15 @@
     </para>
     <screen>openssl pkcs8 -inform DER -nocrypt -in key.der -out key.pem</screen>
     <para>
-      Convert a private key from any PKCS#8 format to traditional format:
+      Convert a private key from any PKCS#8 encrypted format to traditional
+      format:
     </para>
-    <screen>openssl pkcs8 -in pk8.pem -out key.pem</screen>
+    <screen>openssl pkcs8 -in pk8.pem -traditional -out key.pem</screen>
     <para>
       Convert a private key to PKCS#8 format, encrypting with AES-256 and
       with one million iterations of the password:
     </para>
-    <screen>openssl pkcs8 -in raw.pem -topk8 -v2 aes-256-cbc -iter 1000000 -out pk8.pem</screen>
+    <screen>openssl pkcs8 -in key.pem -topk8 -v2 aes-256-cbc -iter 1000000 -out pk8.pem</screen>
   </refsection>
   <refsection xml:id="ID-28d5a49c2c172a83b34c861ee928fab4"><title>STANDARDS</title>
     <para>
@@ -355,11 +398,6 @@
       There should be an option that prints out the encryption algorithm in
       use and other details such as the iteration count.
     </para>
-    <para>
-      PKCS#8 using triple DES and PKCS#5 v2.0 should be the default private
-      key format for OpenSSL: for compatibility several of the utilities
-      use the old format at present.
-    </para>
   </refsection>
   <refsection xml:id="ID-cbcfa5fb32aec560be431e5ff85ad726"><title>SEE ALSO</title>
     <para>
@@ -376,6 +414,16 @@
     <para>
       The <emphasis role="bold">-iter</emphasis> option was added to
       OpenSSL 1.1.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-62141b8baeea423c90101e424e3048b3"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

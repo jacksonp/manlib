@@ -7,7 +7,6 @@
     <refname>SSL_get_psk_identity, SSL_get_psk_identity_hint</refname>
 <refpurpose>get PSK client identity and hint</refpurpose>
   </refnamediv>
-  <screen></screen>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
 <synopsis>const char *SSL_get_psk_identity_hint(const SSL *ssl);
@@ -33,6 +32,19 @@ const char *SSL_get_psk_identity(const SSL *ssl);</synopsis>
     <para>
       Note that the return value is valid only during the lifetime of the
       SSL object <emphasis role="bold">ssl</emphasis>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-1cc9a106834735f46bc7f6a8b10e976f"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2006-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+    <para>
+      Copyright 2005 Nokia.
     </para>
   </refsection>
 </refentry>

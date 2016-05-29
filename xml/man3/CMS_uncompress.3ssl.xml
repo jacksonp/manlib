@@ -1,0 +1,77 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CMS_uncompress.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CMS_uncompress</refname>
+<refpurpose>uncompress a CMS CompressedData structure</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>int CMS_uncompress(CMS_ContentInfo *cms, BIO *dcont, BIO *out, unsigned int flags);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-aa2ab5413b899620de68ec50ba27d1d5"><title>DESCRIPTION</title>
+    <para>
+      CMS_uncompress() extracts and uncompresses the content from a CMS
+      CompressedData structure <emphasis role="bold">cms</emphasis>.
+      <emphasis role="bold">data</emphasis> is a BIO to write the content
+      to and <emphasis role="bold">flags</emphasis> is an optional set of
+      flags.
+    </para>
+    <para>
+      The <emphasis role="bold">dcont</emphasis> parameter is used in the
+      rare case where the compressed content is detached. It will normally
+      be set to NULL.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-e21f2325d6e49a8fae0be824d39e3471"><title>NOTES</title>
+    <para>
+      The only currently supported compression algorithm is zlib: if the
+      structure indicates the use of any other algorithm an error is
+      returned.
+    </para>
+    <para>
+      If zlib support is not compiled into OpenSSL then CMS_uncompress()
+      will always return an error.
+    </para>
+    <para>
+      The following flags can be passed in the <emphasis role="bold">flags</emphasis> parameter.
+    </para>
+    <para>
+      If the <emphasis role="bold">CMS_TEXT</emphasis> flag is set MIME
+      headers for type <emphasis role="bold">text/plain</emphasis> are
+      deleted from the content. If the content is not of type <emphasis role="bold">text/plain</emphasis> then an error is returned.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-29f17be77a54c8cff18d7944ecba1b6a"><title>RETURN VALUES</title>
+    <para>
+      CMS_uncompress() returns either 1 for success or 0 for failure. The
+      error can be obtained from ERR_get_error(3)
+    </para>
+  </refsection>
+  <refsection xml:id="ID-1d1524171e1cbe9b424c156f44086f73"><title>BUGS</title>
+    <para>
+      The lack of single pass processing and the need to hold all data in
+      memory as mentioned in CMS_verify() also applies to CMS_decompress().
+    </para>
+  </refsection>
+  <refsection xml:id="ID-b085b93f9912166025e163c852f875cc"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_compress</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-9ea38ee7063aba1513be861be4eae74a"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

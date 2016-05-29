@@ -1217,9 +1217,9 @@ core.eol
 <listitem>
 <simpara>
         Sets the line ending type to use in the working directory for
-        files that have the <literal>text</literal> property set.  Alternatives are
-        <emphasis>lf</emphasis>, <emphasis>crlf</emphasis> and <emphasis>native</emphasis>, which uses the platform&#8217;s native
-        line ending.  The default value is <literal>native</literal>.  See
+        files that have the <literal>text</literal> property set when core.autocrlf is false.
+        Alternatives are <emphasis>lf</emphasis>, <emphasis>crlf</emphasis> and <emphasis>native</emphasis>, which uses the platform&#8217;s
+        native line ending.  The default value is <literal>native</literal>.  See
         <citerefentry>
 <refentrytitle>gitattributes</refentrytitle><manvolnum>5</manvolnum>
 </citerefentry> for more information on end-of-line
@@ -2731,6 +2731,19 @@ commit.template
 </varlistentry>
 <varlistentry>
 <term>
+commit.verbose
+</term>
+<listitem>
+<simpara>
+        A boolean or int to specify the level of verbose with <literal>git commit</literal>.
+        See <citerefentry>
+<refentrytitle>git-commit</refentrytitle><manvolnum>1</manvolnum>
+</citerefentry>.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 credential.helper
 </term>
 <listitem>
@@ -3553,6 +3566,17 @@ format.outputDirectory
 <simpara>
         Set a custom directory to store the resulting files instead of the
         current working directory.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+format.useAutoBase
+</term>
+<listitem>
+<simpara>
+        A boolean value which lets you enable the <literal>--base=auto</literal> option of
+        format-patch by default.
 </simpara>
 </listitem>
 </varlistentry>

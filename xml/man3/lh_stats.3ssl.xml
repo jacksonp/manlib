@@ -4,18 +4,19 @@
     <refentrytitle>lh_stats.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>lh_stats, lh_node_stats, lh_node_usage_stats, lh_stats_bio,
-lh_node_stats_bio, lh_node_usage_stats_bio</refname>
+    <refname>OPENSSL_LH_stats, OPENSSL_LH_node_stats, OPENSSL_LH_node_usage_stats,
+OPENSSL_LH_stats_bio,
+OPENSSL_LH_node_stats_bio, OPENSSL_LH_node_usage_stats_bio</refname>
 <refpurpose>LHASH statistics</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/lhash.h&gt;</synopsis>
-<synopsis>void lh_stats(LHASH *table, FILE *out);
-void lh_node_stats(LHASH *table, FILE *out);
-void lh_node_usage_stats(LHASH *table, FILE *out);</synopsis>
-<synopsis>void lh_stats_bio(LHASH *table, BIO *out);
-void lh_node_stats_bio(LHASH *table, BIO *out);
-void lh_node_usage_stats_bio(LHASH *table, BIO *out);</synopsis>
+<synopsis>void OPENSSL_LH_stats(LHASH *table, FILE *out);
+void OPENSSL_LH_node_stats(LHASH *table, FILE *out);
+void OPENSSL_LH_node_usage_stats(LHASH *table, FILE *out);</synopsis>
+<synopsis>void OPENSSL_LH_stats_bio(LHASH *table, BIO *out);
+void OPENSSL_LH_node_stats_bio(LHASH *table, BIO *out);
+void OPENSSL_LH_node_usage_stats_bio(LHASH *table, BIO *out);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-7282033a2239af540b6c2ae91db8b45a"><title>DESCRIPTION</title>
     <para>
@@ -26,27 +27,28 @@ void lh_node_usage_stats_bio(LHASH *table, BIO *out);</synopsis>
       particular software product.
     </para>
     <para>
-      lh_stats() prints out statistics on the size of the hash table, how
-      many entries are in it, and the number and result of calls to the
-      routines in this library.
+      OPENSSL_LH_stats() prints out statistics on the size of the hash
+      table, how many entries are in it, and the number and result of calls
+      to the routines in this library.
     </para>
     <para>
-      lh_node_stats() prints the number of entries for each 'bucket' in the
-      hash table.
+      OPENSSL_LH_node_stats() prints the number of entries for each
+      'bucket' in the hash table.
     </para>
     <para>
-      lh_node_usage_stats() prints out a short summary of the state of the
-      hash table.  It prints the 'load' and the 'actual load'.	The load is
-      the average number of data items per 'bucket' in the hash table.	The
-      'actual load' is the average number of items per 'bucket', but only
-      for buckets which contain entries.  So the 'actual load' is the
-      average number of searches that will need to find an item in the hash
-      table, while the 'load' is the average number that will be done to
-      record a miss.
+      OPENSSL_LH_node_usage_stats() prints out a short summary of the state
+      of the hash table.  It prints the 'load' and the 'actual load'.  The
+      load is the average number of data items per 'bucket' in the hash
+      table.  The 'actual load' is the average number of items per
+      'bucket', but only for buckets which contain entries.  So the 'actual
+      load' is the average number of searches that will need to find an
+      item in the hash table, while the 'load' is the average number that
+      will be done to record a miss.
     </para>
     <para>
-      lh_stats_bio(), lh_node_stats_bio() and lh_node_usage_stats_bio() are
-      the same as the above, except that the output goes to a <emphasis role="bold">BIO</emphasis>.
+      OPENSSL_LH_stats_bio(), OPENSSL_LH_node_stats_bio() and
+      OPENSSL_LH_node_usage_stats_bio() are the same as the above, except
+      that the output goes to a <emphasis role="bold">BIO</emphasis>.
     </para>
   </refsection>
   <refsection xml:id="ID-51dcd09167447b51c037912616d966da"><title>RETURN VALUES</title>
@@ -60,6 +62,16 @@ void lh_node_usage_stats_bio(LHASH *table, BIO *out);</synopsis>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>lhash</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-4dc839e4ebb736d97d1d59b81ceb0951"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

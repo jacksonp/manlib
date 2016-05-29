@@ -5,7 +5,8 @@
   </refmeta>
   <refnamediv>
     <refname>PEM, PEM_read_bio_PrivateKey, PEM_read_PrivateKey, PEM_write_bio_PrivateKey,
-PEM_write_PrivateKey, PEM_write_bio_PKCS8PrivateKey, PEM_write_PKCS8PrivateKey,
+PEM_write_bio_PrivateKey_traditional, PEM_write_PrivateKey,
+PEM_write_bio_PKCS8PrivateKey, PEM_write_PKCS8PrivateKey,
 PEM_write_bio_PKCS8PrivateKey_nid, PEM_write_PKCS8PrivateKey_nid,
 PEM_read_bio_PUBKEY, PEM_read_PUBKEY, PEM_write_bio_PUBKEY, PEM_write_PUBKEY,
 PEM_read_bio_RSAPrivateKey, PEM_read_RSAPrivateKey,
@@ -36,6 +37,10 @@ EVP_PKEY *PEM_read_PrivateKey(FILE *fp, EVP_PKEY **x,
 int PEM_write_bio_PrivateKey(BIO *bp, EVP_PKEY *x, const EVP_CIPHER *enc,
                              unsigned char *kstr, int klen,
                              pem_password_cb *cb, void *u);
+int PEM_write_bio_PrivateKey_traditional(BIO *bp, EVP_PKEY *x,
+                                         const EVP_CIPHER *enc,
+                                         unsigned char *kstr, int klen,
+                                         pem_password_cb *cb, void *u);
 int PEM_write_PrivateKey(FILE *fp, EVP_PKEY *x, const EVP_CIPHER *enc,
                          unsigned char *kstr, int klen,
                          pem_password_cb *cb, void *u);</synopsis>
@@ -149,17 +154,20 @@ int PEM_write_PKCS7(FILE *fp, PKCS7 *x);</synopsis>
     <para>
       The <emphasis role="bold">PrivateKey</emphasis> functions read or
       write a private key in PEM format using an EVP_PKEY structure. The
-      write routines use "traditional" private key format and can handle
-      both RSA and DSA private keys. The read functions can additionally
-      transparently handle PKCS#8 format encrypted and unencrypted keys
-      too.
+      write routines use PKCS#8 private key format and are equivalent to
+      PEM_write_bio_PKCS8PrivateKey().The read functions transparently
+      handle traditional and PKCS#8 format encrypted and unencrypted keys.
+    </para>
+    <para>
+      PEM_write_bio_PrivateKey_traditional() writes out a private key in
+      legacy "traditional" format.
     </para>
     <para>
       PEM_write_bio_PKCS8PrivateKey() and PEM_write_PKCS8PrivateKey() write
       a private key in an EVP_PKEY structure in PKCS#8
       EncryptedPrivateKeyInfo format using PKCS#5 v2.0 password based
       encryption algorithms. The <emphasis role="bold">cipher</emphasis>
-      argument specifies the encryption algorithm to use: unlike all other
+      argument specifies the encryption algorithm to use: unlike some other
       PEM routines the encryption is applied at the PKCS#8 level and not in
       the PEM headers. If <emphasis role="bold">cipher</emphasis> is NULL
       then no encryption is used and a PKCS#8 PrivateKeyInfo structure is
@@ -180,9 +188,10 @@ int PEM_write_PKCS7(FILE *fp, PKCS7 *x);</synopsis>
     </para>
     <para>
       The <emphasis role="bold">RSAPrivateKey</emphasis> functions process
-      an RSA private key using an RSA structure. It handles the same
-      formats as the <emphasis role="bold">PrivateKey</emphasis> functions
-      but an error occurs if the private key is not RSA.
+      an RSA private key using an RSA structure. The write routines uses
+      traditional format. The read routines handles the same formats as the
+      <emphasis role="bold">PrivateKey</emphasis> functions but an error
+      occurs if the private key is not RSA.
     </para>
     <para>
       The <emphasis role="bold">RSAPublicKey</emphasis> functions process
@@ -197,9 +206,10 @@ int PEM_write_PKCS7(FILE *fp, PKCS7 *x);</synopsis>
     </para>
     <para>
       The <emphasis role="bold">DSAPrivateKey</emphasis> functions process
-      a DSA private key using a DSA structure. It handles the same formats
-      as the <emphasis role="bold">PrivateKey</emphasis> functions but an
-      error occurs if the private key is not DSA.
+      a DSA private key using a DSA structure. The write routines uses
+      traditional format. The read routines handles the same formats as the
+      <emphasis role="bold">PrivateKey</emphasis> functions but an error
+      occurs if the private key is not DSA.
     </para>
     <para>
       The <emphasis role="bold">DSA_PUBKEY</emphasis> functions process a
@@ -435,7 +445,7 @@ DEK-Info: DES-EDE3-CBC,3F17F5316E2BAC89
       iteration count of 1 for EVP_BytesToKey().
     </para>
     <para>
-      he <emphasis role="bold">key</emphasis> derived by EVP_BytesToKey()
+      The <emphasis role="bold">key</emphasis> derived by EVP_BytesToKey()
       along with the original initialization vector is then used to decrypt
       the encrypted data. The <emphasis role="bold">iv</emphasis> produced
       by EVP_BytesToKey() is not utilized or needed, and NULL should be
@@ -498,6 +508,16 @@ x = PEM_read_bio_X509(bp, NULL, 0, NULL);</screen>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>EVP_BytesToKey</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-95b7755653ff9ebc66acd08709c78460"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2001-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

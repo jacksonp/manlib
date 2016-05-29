@@ -1,0 +1,92 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>SMIME_write_CMS.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>SMIME_write_CMS</refname>
+<refpurpose>convert CMS structure to S/MIME format.</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>int SMIME_write_CMS(BIO *out, CMS_ContentInfo *cms, BIO *data, int flags);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-f81bfe2faa5e0634684bc3a0c6edf82a"><title>DESCRIPTION</title>
+    <para>
+      SMIME_write_CMS() adds the appropriate MIME headers to a CMS
+      structure to produce an S/MIME message.
+    </para>
+    <para>
+      <emphasis role="bold">out</emphasis> is the BIO to write the data to.
+      <emphasis role="bold">cms</emphasis> is the appropriate <emphasis role="bold">CMS_ContentInfo</emphasis> structure. If streaming is
+      enabled then the content must be supplied in the <emphasis role="bold">data</emphasis> argument. <emphasis role="bold">flags</emphasis> is an optional set of flags.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-e270b9170eb8c49ad802d0a7dfd21da8"><title>NOTES</title>
+    <para>
+      The following flags can be passed in the <emphasis role="bold">flags</emphasis> parameter.
+    </para>
+    <para>
+      If <emphasis role="bold">CMS_DETACHED</emphasis> is set then
+      cleartext signing will be used, this option only makes sense for
+      SignedData where <emphasis role="bold">CMS_DETACHED</emphasis> is
+      also set when CMS_sign() is called.
+    </para>
+    <para>
+      If the <emphasis role="bold">CMS_TEXT</emphasis> flag is set MIME
+      headers for type <emphasis role="bold">text/plain</emphasis> are
+      added to the content, this only makes sense if <emphasis role="bold">CMS_DETACHED</emphasis> is also set.
+    </para>
+    <para>
+      If the <emphasis role="bold">CMS_STREAM</emphasis> flag is set
+      streaming is performed. This flag should only be set if <emphasis role="bold">CMS_STREAM</emphasis> was also set in the previous call
+      to a CMS_ContentInfo creation function.
+    </para>
+    <para>
+      If cleartext signing is being used and <emphasis role="bold">CMS_STREAM</emphasis> not set then the data must be read
+      twice: once to compute the signature in CMS_sign() and once to output
+      the S/MIME message.
+    </para>
+    <para>
+      If streaming is performed the content is output in BER format using
+      indefinite length constructed encoding except in the case of signed
+      data with detached content where the content is absent and DER format
+      is used.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-cf27397e2612e59372933c8636e85513"><title>BUGS</title>
+    <para>
+      SMIME_write_CMS() always base64 encodes CMS structures, there should
+      be an option to disable this.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-77b125918c9b43a71741c946582e5cf6"><title>RETURN VALUES</title>
+    <para>
+      SMIME_write_CMS() returns 1 for success or 0 for failure.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-96ce5db142df1c6bdc908cb89b88b8f2"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_sign</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_verify</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_encrypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> <citerefentry>
+      <refentrytitle>CMS_decrypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-2a500b1b509a626e6ac1e1570d3b45be"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

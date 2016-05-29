@@ -52,8 +52,10 @@ mount \- mount filesystem
 .BR mount ()
 attaches the filesystem specified by
 .I source
-(which is often a device name, but can also be a directory name
-or a dummy) to the directory specified by
+(which is often a pathname referring to a device,
+but can also be the pathname of a directory or file,
+or a dummy string) to the location (a directory or file)
+specified by the pathname in
 .IR target .
 
 Appropriate privilege (Linux: the
@@ -136,10 +138,10 @@ The
 and
 .IR data
 arguments are ignored.
-Up until Linux 2.6.26,
+The remaining bits in the
 .I mountflags
-was also ignored
-.\" with the exception of the "hidden" MS_REC mountflags bit
+argument are also ignored, with the exception of
+.B MS_REC
 (the bind mount has the same mount options as
 the underlying mount point).
 .TP
@@ -209,9 +211,13 @@ specifies an existing mount point and
 .I target
 specifies the new location.
 The move is atomic: at no point is the subtree unmounted.
-The
-.IR filesystemtype ", " mountflags ", and " data
-arguments are ignored.
+The remaining bits in the
+.IR mountflags
+argument are ignored, as are the
+.IR filesystemtype
+and
+.IR data
+arguments.
 .TP
 .B MS_NOATIME
 Do not update access times for (all types of) files on this filesystem.
@@ -235,8 +241,8 @@ Do not allow programs to be executed from this filesystem.
 .\" users cannot execute files uploaded using ftp or so.)
 .TP
 .B MS_NOSUID
-Do not honor set-user-ID and set-group-ID bits when executing
-programs from this filesystem.
+Do not honor set-user-ID and set-group-ID bits or file capabilities
+when executing programs from this filesystem.
 .\" (This is a security feature to prevent users executing set-user-ID and
 .\" set-group-ID programs from removable disk devices.)
 .TP

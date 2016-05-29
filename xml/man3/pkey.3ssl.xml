@@ -16,6 +16,7 @@
 [<emphasis role="bold">-passin arg</emphasis>]
 [<emphasis role="bold">-out filename</emphasis>]
 [<emphasis role="bold">-passout arg</emphasis>]
+[<emphasis role="bold">-traditional</emphasis>]
 [<emphasis role="bold">-cipher</emphasis>]
 [<emphasis role="bold">-text</emphasis>]
 [<emphasis role="bold">-text_pub</emphasis>]
@@ -104,6 +105,18 @@
 	      section in <citerefentry>
 	      <refentrytitle>openssl</refentrytitle>
 	      <manvolnum>1</manvolnum> </citerefentry>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-traditional</emphasis></term>
+          <listitem>
+            <para>
+	      normally a private key is written using standard format: this
+	      is PKCS#8 form with the appropriate encryption algorithm (if
+	      any). If the <emphasis role="bold">-traditional</emphasis>
+	      option is specified then the older "traditional" format is
+	      used instead.
             </para>
           </listitem>
         </varlistentry>
@@ -215,6 +228,16 @@
       <manvolnum>1</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>gendsa</refentrytitle> <manvolnum>1</manvolnum>
       </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-7667ca07c207447c7edb00869dbb76e2"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2006-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

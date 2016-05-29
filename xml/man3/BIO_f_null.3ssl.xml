@@ -32,9 +32,14 @@
       BIO_f_null() returns the null filter BIO method.
     </para>
   </refsection>
-  <refsection xml:id="ID-f42e28d1d4d2c1d2ae11314edac40472"><title>SEE ALSO</title>
+  <refsection xml:id="ID-8b5a71ebc731b05a0cc546167ce36e6d"><title>COPYRIGHT</title>
     <para>
-      TBA
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

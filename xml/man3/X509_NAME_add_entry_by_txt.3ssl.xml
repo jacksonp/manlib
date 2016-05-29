@@ -91,7 +91,7 @@ X509_NAME_add_entry, X509_NAME_delete_entry</refname>
 nm = X509_NAME_new();
 if (nm == NULL)
        /* Some error */
-if (!X509_NAME_add_entry_by_txt(nm, "C", MBSTRING_ASC, 
+if (!X509_NAME_add_entry_by_txt(nm, "C", MBSTRING_ASC,
                        "UK", -1, -1, 0))
        /* Error */
 if (!X509_NAME_add_entry_by_txt(nm, "O", MBSTRING_ASC,
@@ -127,7 +127,14 @@ if (!X509_NAME_add_entry_by_txt(nm, "CN", MBSTRING_ASC,
       </citerefentry>
     </para>
   </refsection>
-  <refsection xml:id="ID-0d059084ca232a4356aebec4afe74286"><title>HISTORY</title>
-    <para/>
+  <refsection xml:id="ID-be92e1df488de558628a0dc62df5aeb6"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2002-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
   </refsection>
 </refentry>

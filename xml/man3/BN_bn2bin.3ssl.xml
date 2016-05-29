@@ -54,13 +54,14 @@ BIGNUM *BN_mpi2bn(unsigned char *s, int len, BIGNUM *ret);</synopsis>
       using OPENSSL_free().
     </para>
     <para>
-      BN_hex2bn() converts the string <emphasis role="bold">str</emphasis>
-      containing a hexadecimal number to a <emphasis role="bold">BIGNUM</emphasis> and stores it in **<emphasis role="bold">bn</emphasis>. If *<emphasis role="bold">bn</emphasis> is
+      BN_hex2bn()takes as many characters as possible from the string
+      <emphasis role="bold">str</emphasis>, including the leading character
+      '-' which means negative, to form a valid hexadecimal number
+      representation and converts them to a <emphasis role="bold">BIGNUM</emphasis> and stores it in **<emphasis role="bold">bn</emphasis>. If *<emphasis role="bold">bn</emphasis> is
       NULL, a new <emphasis role="bold">BIGNUM</emphasis> is created. If
       <emphasis role="bold">bn</emphasis> is NULL, it only computes the
-      number's length in hexadecimal digits. If the string starts with '-',
-      the number is negative. BN_dec2bn() is the same using the decimal
-      system.
+      length of valid representation. BN_dec2bn() is the same using the
+      decimal system.
     </para>
     <para>
       BN_print() and BN_print_fp() write the hexadecimal encoding of
@@ -99,8 +100,10 @@ BIGNUM *BN_mpi2bn(unsigned char *s, int len, BIGNUM *ret);</synopsis>
     </para>
     <para>
       BN_bn2hex() and BN_bn2dec() return a null-terminated string, or NULL
-      on error. BN_hex2bn() and BN_dec2bn() return the number's length in
-      hexadecimal or decimal digits, and 0 on error.
+      on error. BN_hex2bn() and BN_dec2bn() return the the length of valid
+      representation in hexadecimal or decimal digits, and 0 on error, in
+      which case no new <emphasis role="bold">BIGNUM</emphasis> will be
+      created.
     </para>
     <para>
       BN_print_fp() and BN_print() return 1 on success, 0 on write errors.
@@ -128,6 +131,16 @@ BIGNUM *BN_mpi2bn(unsigned char *s, int len, BIGNUM *ret);</synopsis>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>BN_num_bytes</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-019257d8661e4df5368c7151ff362688"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

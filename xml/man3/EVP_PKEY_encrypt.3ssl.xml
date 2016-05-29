@@ -69,7 +69,7 @@ int EVP_PKEY_encrypt(EVP_PKEY_CTX *ctx,
 EVP_PKEY_CTX *ctx;
 ENGINE *eng;
 unsigned char *out, *in;
-size_t outlen, inlen; 
+size_t outlen, inlen;
 EVP_PKEY *key;
 /* NB: assumes eng, key, in, inlen are already set up,
  * and that key is an RSA public key
@@ -119,6 +119,16 @@ if (EVP_PKEY_encrypt(ctx, out, &amp;outlen, in, inlen) &lt;= 0)
   <refsection xml:id="ID-4563fba2edeb6d69640a319024878b09"><title>HISTORY</title>
     <para>
       These functions were first added to OpenSSL 1.0.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-67e9fc76e79dda6dedd7b99c5c9dc405"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2006-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

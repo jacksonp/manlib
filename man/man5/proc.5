@@ -1118,7 +1118,7 @@ root: the pathname of the directory in the filesystem
 which forms the root of this mount.
 .TP
 (5)
-mount point: ithe pathname of the mount point relative
+mount point: the pathname of the mount point relative
 to the process's root directory.
 .TP
 (6)
@@ -1169,22 +1169,29 @@ For more information on mount propagation see:
 in the Linux kernel source tree.
 .TP
 .IR /proc/[pid]/mounts " (since Linux 2.4.19)"
-This is a list of all the filesystems currently mounted in the
+This file lists all the filesystems currently mounted in the
 process's mount namespace.
 The format of this file is documented in
 .BR fstab (5).
+
 Since kernel version 2.6.15, this file is pollable:
 after opening the file for reading, a change in this file
 (i.e., a filesystem mount or unmount) causes
 .BR select (2)
-to mark the file descriptor as readable, and
+to mark the file descriptor as having an exceptional condition, and
 .BR poll (2)
 and
 .BR epoll_wait (2)
-mark the file as having an error condition.
-See
-.BR namespaces (7)
-for more information.
+mark the file as having a priority event
+.RB ( POLLPRI ).
+(Before Linux 2.6.30,
+a change in this file was indicated by the file descriptor
+being marked as readable for
+.BR select (2),
+and being marked as having an error condition for
+.BR poll (2)
+and
+.BR epoll_wait (2).)
 .TP
 .IR /proc/[pid]/mountstats " (since Linux 2.6.17)"
 This file exports information (statistics, configuration information)
@@ -1951,14 +1958,19 @@ Here's an example:
 .RB "$" " cat /proc/$$/status"
 Name:   bash
 State:  S (sleeping)
-Tgid:   3515
-Pid:    3515
-PPid:   3452
+Tgid:   17248
+Ngid:   0
+Pid:    17248
+PPid:   17200
 TracerPid:      0
 Uid:    1000    1000    1000    1000
 Gid:    100     100     100     100
 FDSize: 256
 Groups: 16 33 100
+NStgid: 17248
+NSpid:  17248
+NSpgid: 17248
+NSsid:  17200
 VmPeak:     9136 kB
 VmSize:     7896 kB
 VmLck:         0 kB
@@ -2015,6 +2027,9 @@ or
 .IR Tgid :
 Thread group ID (i.e., Process ID).
 .IP *
+.IR Ngid :
+NUMA group ID (0 if none; since Linux 3.13).
+.IP *
 .IR Pid :
 Thread ID (see
 .BR gettid (2)).
@@ -2033,6 +2048,41 @@ Number of file descriptor slots currently allocated.
 .IP *
 .IR Groups :
 Supplementary group list.
+.IP *
+.I NStgid
+Thread group ID (i.e., PID) in each of the PID namespaces of which
+.I [pid]
+is a member.
+The leftmost entry shows the value with respect to the PID namespace
+of the reading process,
+followed by the value in successively nested inner namespaces.
+.\" commit e4bc33245124db69b74a6d853ac76c2976f472d5
+(Since Linux 4.1.)
+.IP *
+.I NSpid
+Thread ID in each of the PID namespaces of which
+.I [pid]
+is a member.
+The fields are ordered as for
+.IR NStgid .
+(Since Linux 4.1.)
+.IP *
+.I NSpgid
+Process group ID in each of the PID namespaces of which
+.I [pid]
+is a member.
+The fields are ordered as for
+.IR NStgid .
+(Since Linux 4.1.)
+.IP *
+.I NSsid
+descendant namespace session ID hierarchy
+Session ID in each of the PID namespaces of which
+.I [pid]
+is a member.
+The fields are ordered as for
+.IR NStgid .
+(Since Linux 4.1.)
 .IP *
 .IR VmPeak :
 Peak virtual memory size.
@@ -2825,7 +2875,7 @@ allocated for the entire 1GB.
 This 1GB is memory which has been "committed" to by the VM
 and can be used at any time by the allocating application.
 With strict overcommit enabled on the system (mode 2 in
-IR /proc/sys/vm/overcommit_memory ),
+.IR /proc/sys/vm/overcommit_memory ),
 allocations which would exceed the
 .I CommitLimit
 will not be permitted.

@@ -7,9 +7,6 @@
     <refname>SSL</refname>
 <refpurpose>OpenSSL SSL/TLS library</refpurpose>
   </refnamediv>
-  <refsynopsisdiv>
-    <synopsis/>
-  </refsynopsisdiv>
   <refsection xml:id="ID-1e1e5438af893b1a5fe317bcffd31962"><title>DESCRIPTION</title>
     <para>
       The OpenSSL <emphasis role="bold">ssl</emphasis> library implements
@@ -173,7 +170,7 @@
       Currently the OpenSSL <emphasis role="bold">ssl</emphasis> library
       exports 214 API functions. They are documented in the following:
     </para>
-    <refsection xml:id="ID-bb9058a7a893b7333ae0fcd595fac76a"><title>DEALING WITH PROTOCOL METHODS</title>
+    <refsection xml:id="ID-9d7d16743764e218221b73ccf248c499"><title>Dealing with Protocol Methods</title>
       <para>
 	Here we document the various API functions which deal with the
 	SSL/TLS protocol methods defined in <emphasis role="bold">SSL_METHOD</emphasis> structures.
@@ -316,7 +313,7 @@
         </variablelist>
       </para>
     </refsection>
-    <refsection xml:id="ID-ae73a63baf0bde0c4687f80f718c4313"><title>DEALING WITH CIPHERS</title>
+    <refsection xml:id="ID-300ec0648f6bd97c50d2c9882eb496ae"><title>Dealing with Ciphers</title>
       <para>
 	Here we document the various API functions which deal with the
 	SSL/TLS ciphers defined in <emphasis role="bold">SSL_CIPHER</emphasis> structures.
@@ -368,7 +365,7 @@
         </variablelist>
       </para>
     </refsection>
-    <refsection xml:id="ID-c61502b6124f0b77d2b2d8846b24f502"><title>DEALING WITH PROTOCOL CONTEXTS</title>
+    <refsection xml:id="ID-1b0ade0e42337c8e04f470713cc9e9cd"><title>Dealing with Protocol Contexts</title>
       <para>
 	Here we document the various API functions which deal with the
 	SSL/TLS protocol context defined in the <emphasis role="bold">SSL_CTX</emphasis> structure.
@@ -909,17 +906,13 @@
           <varlistentry>
             <term>void <emphasis role="bold">SSL_CTX_set_psk_server_callback</emphasis>(SSL_CTX *ctx, unsigned int (*callback)(SSL *ssl, const char *identity, unsigned char *psk, int max_psk_len));</term>
             <listitem>
-              <screen>
-
-
-
-</screen>
+              <screen></screen>
             </listitem>
           </varlistentry>
         </variablelist>
       </para>
     </refsection>
-    <refsection xml:id="ID-ce20c39088ff75ed145930f34112b932"><title>DEALING WITH SESSIONS</title>
+    <refsection xml:id="ID-5ca12617e3aa0cb4c2b6e6c30b2cf827"><title>Dealing with Sessions</title>
       <para>
 	Here we document the various API functions which deal with the
 	SSL/TLS sessions defined in the <emphasis role="bold">SSL_SESSION</emphasis> structures.
@@ -1019,7 +1012,7 @@
         </variablelist>
       </para>
     </refsection>
-    <refsection xml:id="ID-9626d5773d644219266c825909995c62"><title>DEALING WITH CONNECTIONS</title>
+    <refsection xml:id="ID-1090237bda7fae2947dc4446ade5942b"><title>Dealing with Connections</title>
       <para>
 	Here we document the various API functions which deal with the
 	SSL/TLS connection defined in the <emphasis role="bold">SSL</emphasis> structure.
@@ -1949,6 +1942,16 @@
     <para>
       The return type of <emphasis role="bold">SSL_copy_session_id</emphasis> was changed from void to
       int in OpenSSL 1.1.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-805e57e53e5bc20ba29a0d40292e43a1"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

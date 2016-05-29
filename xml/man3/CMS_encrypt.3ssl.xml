@@ -1,0 +1,139 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CMS_encrypt.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CMS_encrypt</refname>
+<refpurpose>create a CMS envelopedData structure</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>CMS_ContentInfo *CMS_encrypt(STACK_OF(X509) *certs, BIO *in, const EVP_CIPHER *cipher, unsigned int flags);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-d9a3b2ea583577f835245b0e5e3e1bc4"><title>DESCRIPTION</title>
+    <para>
+      CMS_encrypt() creates and returns a CMS EnvelopedData structure.
+      <emphasis role="bold">certs</emphasis> is a list of recipient
+      certificates. <emphasis role="bold">in</emphasis> is the content to
+      be encrypted. <emphasis role="bold">cipher</emphasis> is the
+      symmetric cipher to use. <emphasis role="bold">flags</emphasis> is an
+      optional set of flags.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-24220ea3abee88681f1a5034bd668f0e"><title>NOTES</title>
+    <para>
+      Only certificates carrying RSA keys are supported so the recipient
+      certificates supplied to this function must all contain RSA public
+      keys, though they do not have to be signed using the RSA algorithm.
+    </para>
+    <para>
+      EVP_des_ede3_cbc() (triple DES) is the algorithm of choice for S/MIME
+      use because most clients will support it.
+    </para>
+    <para>
+      The algorithm passed in the <emphasis role="bold">cipher</emphasis>
+      parameter must support ASN1 encoding of its parameters.
+    </para>
+    <para>
+      Many browsers implement a "sign and encrypt" option which is simply
+      an S/MIME envelopedData containing an S/MIME signed message. This can
+      be readily produced by storing the S/MIME signed message in a memory
+      BIO and passing it to CMS_encrypt().
+    </para>
+    <para>
+      The following flags can be passed in the <emphasis role="bold">flags</emphasis> parameter.
+    </para>
+    <para>
+      If the <emphasis role="bold">CMS_TEXT</emphasis> flag is set MIME
+      headers for type <emphasis role="bold">text/plain</emphasis> are
+      prepended to the data.
+    </para>
+    <para>
+      Normally the supplied content is translated into MIME canonical
+      format (as required by the S/MIME specifications) if <emphasis role="bold">CMS_BINARY</emphasis> is set no translation occurs. This
+      option should be used if the supplied data is in binary format
+      otherwise the translation will corrupt it. If <emphasis role="bold">CMS_BINARY</emphasis> is set then <emphasis role="bold">CMS_TEXT</emphasis> is ignored.
+    </para>
+    <para>
+      OpenSSL will by default identify recipient certificates using issuer
+      name and serial number. If <emphasis role="bold">CMS_USE_KEYID</emphasis> is set it will use the subject
+      key identifier value instead. An error occurs if all recipient
+      certificates do not have a subject key identifier extension.
+    </para>
+    <para>
+      If the <emphasis role="bold">CMS_STREAM</emphasis> flag is set a
+      partial <emphasis role="bold">CMS_ContentInfo</emphasis> structure is
+      returned suitable for streaming I/O: no data is read from the BIO
+      <emphasis role="bold">in</emphasis>.
+    </para>
+    <para>
+      If the <emphasis role="bold">CMS_PARTIAL</emphasis> flag is set a
+      partial <emphasis role="bold">CMS_ContentInfo</emphasis> structure is
+      returned to which additional recipients and attributes can be added
+      before finalization.
+    </para>
+    <para>
+      The data being encrypted is included in the CMS_ContentInfo
+      structure, unless <emphasis role="bold">CMS_DETACHED</emphasis> is
+      set in which case it is omitted. This is rarely used in practice and
+      is not supported by SMIME_write_CMS().
+    </para>
+  </refsection>
+  <refsection xml:id="ID-24220ea3abee88681f1a5034bd668f0e"><title>NOTES</title>
+    <para>
+      If the flag <emphasis role="bold">CMS_STREAM</emphasis> is set the
+      returned <emphasis role="bold">CMS_ContentInfo</emphasis> structure
+      is <emphasis role="bold">not</emphasis> complete and outputting its
+      contents via a function that does not properly finalize the <emphasis role="bold">CMS_ContentInfo</emphasis> structure will give
+      unpredictable results.
+    </para>
+    <para>
+      Several functions including SMIME_write_CMS(), i2d_CMS_bio_stream(),
+      PEM_write_bio_CMS_stream() finalize the structure. Alternatively
+      finalization can be performed by obtaining the streaming ASN1
+      <emphasis role="bold">BIO</emphasis> directly using BIO_new_CMS().
+    </para>
+    <para>
+      The recipients specified in <emphasis role="bold">certs</emphasis>
+      use a CMS KeyTransRecipientInfo info structure. KEKRecipientInfo is
+      also supported using the flag <emphasis role="bold">CMS_PARTIAL</emphasis> and CMS_add0_recipient_key().
+    </para>
+    <para>
+      The parameter <emphasis role="bold">certs</emphasis> may be NULL if
+      <emphasis role="bold">CMS_PARTIAL</emphasis> is set and recipients
+      added later using CMS_add1_recipient_cert() or
+      CMS_add0_recipient_key().
+    </para>
+  </refsection>
+  <refsection xml:id="ID-f71d4da66f86907b67bbea48aa083ea7"><title>RETURN VALUES</title>
+    <para>
+      CMS_encrypt() returns either a CMS_ContentInfo structure or NULL if
+      an error occurred. The error can be obtained from ERR_get_error(3).
+    </para>
+  </refsection>
+  <refsection xml:id="ID-60cecfa0b3edac0fdade11e97fa6370a"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_decrypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-003d544c488cd012a8418fd3a4db1ff5"><title>HISTORY</title>
+    <para>
+      The <emphasis role="bold">CMS_STREAM</emphasis> flag was first
+      supported in OpenSSL 1.0.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-3f7e02a6aed5081ec5bb291dddac3098"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

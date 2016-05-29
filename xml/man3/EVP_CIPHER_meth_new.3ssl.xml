@@ -88,79 +88,14 @@ int (*EVP_CIPHER_meth_get_ctrl(const EVP_CIPHER *cipher))(EVP_CIPHER_CTX *,
     <para>
       <variablelist>
         <varlistentry>
-          <term>The cipher modes:</term>
+          <term>EVP_CIPH_STREAM_CIPHER, EVP_CIPH_ECB_MODE EVP_CIPH_CBC_MODE,
+EVP_CIPH_CFB_MODE, EVP_CIPH_OFB_MODE, EVP_CIPH_CTR_MODE, EVP_CIPH_GCM_MODE,
+EVP_CIPH_CCM_MODE, EVP_CIPH_XTS_MODE, EVP_CIPH_WRAP_MODE,
+EVP_CIPH_OCB_MODE</term>
           <listitem>
             <para>
-              <variablelist>
-                <varlistentry>
-                  <term>EVP_CIPH_STREAM_CIPHER</term>
-                  <listitem>
-                    <para/>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>EVP_CIPH_ECB_MODE</term>
-                  <listitem>
-                    <para/>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>EVP_CIPH_CBC_MODE</term>
-                  <listitem>
-                    <para/>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>EVP_CIPH_CFB_MODE</term>
-                  <listitem>
-                    <para/>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>EVP_CIPH_OFB_MODE</term>
-                  <listitem>
-                    <para/>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>EVP_CIPH_CTR_MODE</term>
-                  <listitem>
-                    <para/>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>EVP_CIPH_GCM_MODE</term>
-                  <listitem>
-                    <para/>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>EVP_CIPH_CCM_MODE</term>
-                  <listitem>
-                    <para/>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>EVP_CIPH_XTS_MODE</term>
-                  <listitem>
-                    <para/>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>EVP_CIPH_WRAP_MODE</term>
-                  <listitem>
-                    <para/>
-                  </listitem>
-                </varlistentry>
-                <varlistentry>
-                  <term>EVP_CIPH_OCB_MODE</term>
-                  <listitem>
-                    <para/>
-                  </listitem>
-                </varlistentry>
-              </variablelist>
+	      The cipher mode.
             </para>
-            <para/>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -277,6 +212,10 @@ int (*EVP_CIPHER_meth_get_ctrl(const EVP_CIPHER *cipher))(EVP_CIPHER_CTX *,
       This indicates that this is an AEAD cipher implementation.
     </para>
     <para>
+      Allow interleaving of crypto blocks, a particular optimization only
+      applicable to certain TLS ciphers.
+    </para>
+    <para>
       EVP_CIPHER_meth_set_impl_ctx_size() sets the size of the EVP_CIPHER's
       implementation context so that it can be automatically allocated.
     </para>
@@ -304,7 +243,8 @@ int (*EVP_CIPHER_meth_get_ctrl(const EVP_CIPHER *cipher))(EVP_CIPHER_CTX *,
     <para>
       EVP_CIPHER_meth_set_ctrl() sets the control function for <emphasis role="bold">cipher</emphasis>.
     </para>
-    <screen></screen>
+  </refsection>
+  <refsection xml:id="ID-994224732d63033d345e25c6915a5781"><title>RETURN VALUES</title>
     <para>
       EVP_CIPHER_meth_get_input_blocksize(),
       EVP_CIPHER_meth_get_result_size(),
@@ -327,6 +267,16 @@ int (*EVP_CIPHER_meth_get_ctrl(const EVP_CIPHER *cipher))(EVP_CIPHER_CTX *,
       The <emphasis role="bold">EVP_CIPHER</emphasis> structure was openly
       available in OpenSSL before version 1.1. The functions described here
       were added in OpenSSL version 1.1.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-87c774d6c84de4df2ef7bf11dd357549"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

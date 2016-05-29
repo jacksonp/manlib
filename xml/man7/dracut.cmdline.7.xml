@@ -42,7 +42,7 @@ line is the value, which is honored.</simpara>
 </term>
 <listitem>
 <simpara>
-    specify the path to the init programm to be started after the initramfs has
+    specify the path to the init program to be started after the initramfs has
     finished
 </simpara>
 </listitem>

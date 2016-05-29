@@ -113,7 +113,7 @@ engines = engine_section
     <para>
       The features of each configuration module are described below.
     </para>
-    <refsection xml:id="ID-b533ebf9d7463d4ab04a206b6cc092ac"><title>ASN1 OBJECT CONFIGURATION MODULE</title>
+    <refsection xml:id="ID-fcc7c09944a814085b6a7e2f073b0b8d"><title>ASN1 Object Configuration Module</title>
       <para>
 	This module has the name <emphasis role="bold">oid_section</emphasis>. The value of this variable
 	points to a section containing name value pairs of OIDs: the name
@@ -133,7 +133,7 @@ some_other_oid = 1.2.3.5</screen>
       </para>
       <screen>shortName = some object long name, 1.2.3.4</screen>
     </refsection>
-    <refsection xml:id="ID-d1c01fa692c1f2c3d2fcbeb26ba830bc"><title>ENGINE CONFIGURATION MODULE</title>
+    <refsection xml:id="ID-c1cbccedac5d00ccc62db5a8a3daedf7"><title>Engine Configuration Module</title>
       <para>
 	This ENGINE configuration module has the name <emphasis role="bold">engines</emphasis>. The value of this variable points
 	to a section containing further ENGINE configuration information.
@@ -226,7 +226,7 @@ other_ctrl = EMPTY
 # Supply all default algorithms
 default_algorithms = ALL</screen>
     </refsection>
-    <refsection xml:id="ID-bf22a0432040c11fc41b56754ad081fa"><title>EVP CONFIGURATION MODULE</title>
+    <refsection xml:id="ID-f6ad12f185a5fe78e02b9c1eab37eacb"><title>EVP Configuration Module</title>
       <para>
 	This modules has the name <emphasis role="bold">alg_section</emphasis> which points to a section
 	containing algorithm commands.
@@ -245,7 +245,7 @@ default_algorithms = ALL</screen>
 
 fips_mode = on</screen>
     </refsection>
-    <refsection xml:id="ID-47c5c1141f37cd121842b609c6a4902a"><title>SSL CONFIGURATION MODULE</title>
+    <refsection xml:id="ID-ca12896867861adfc156c28377cc4dcd"><title>SSL Configuration Module</title>
       <para>
 	This module has the name <emphasis role="bold">ssl_conf</emphasis>
 	which points to a section containing SSL configurations.
@@ -433,6 +433,16 @@ newoid2 = New OID 2 long name, 1.2.3.4.2</screen>
       <refentrytitle>req</refentrytitle> <manvolnum>1</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>ca</refentrytitle>
       <manvolnum>1</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-0118d7686069d724022cec58ff980632"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

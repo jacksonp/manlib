@@ -48,7 +48,7 @@ ASN1_TYPE *ASN1_generate_v3(char *str, X509V3_CTX *cnf);</synopsis>
       followed by an optional colon and a value. The formats of <emphasis role="bold">type</emphasis>, <emphasis role="bold">value</emphasis>
       and <emphasis role="bold">modifier</emphasis> are explained below.
     </para>
-    <refsection xml:id="ID-172ebc8a84167e7bcdf43eb6300056e4"><title>SUPPORTED TYPES</title>
+    <refsection xml:id="ID-d923d146b5ffdbfbc68fc8f1d07f9578"><title>Supported Types</title>
       <para>
 	The supported types are listed below. Unless otherwise specified
 	only the <emphasis role="bold">ASCII</emphasis> format is
@@ -182,7 +182,7 @@ ASN1_TYPE *ASN1_generate_v3(char *str, X509V3_CTX *cnf);</synopsis>
         </variablelist>
       </para>
     </refsection>
-    <refsection xml:id="ID-8c136d0ae3ff8d3f6af8521b111e6429"><title>MODIFIERS</title>
+    <refsection xml:id="ID-90a1e70345ad4868c04d6972d5b08418"><title>Modifiers</title>
       <para>
 	Modifiers affect the following structure, they can be used to add
 	EXPLICIT or IMPLICIT tagging, add wrappers or to change the string
@@ -346,6 +346,16 @@ e=INTEGER:0x010001</screen>
     <para>
       <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-411c0299e30f2a4bd850e62c466ecf88"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2002-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

@@ -134,7 +134,7 @@ STACK_OF(X509_EXTENSION) *X509_REVOKED_get0_extensions(X509_REVOKED *r);</synops
       The following sections contain a list of all supported extensions
       including their name and NID.
     </para>
-    <refsection xml:id="ID-0a5622d5d61b091450c9f2624804337f"><title>PKIX CERTIFICATE EXTENSIONS</title>
+    <refsection xml:id="ID-8f8ec75c1f764e36dd8acd3182826792"><title>PKIX Certificate Extensions</title>
       <para>
 	The following certificate extensions are defined in PKIX standards
 	such as RFC5280.
@@ -163,7 +163,7 @@ Inhibit Any Policy                 NID_inhibit_any_policy
 
 TLS Feature                        NID_tlsfeature</screen>
     </refsection>
-    <refsection xml:id="ID-c37409e3aba2d73d4e91487d5663ffbb"><title>NETSCAPE CERTIFICATE EXTENSIONS</title>
+    <refsection xml:id="ID-705a22d62225006179008d2ded30b799"><title>Netscape Certificate Extensions</title>
       <para>
 	The following are (largely obsolete) Netscape certificate
 	extensions.
@@ -177,11 +177,11 @@ Netscape CA Policy Url             NID_netscape_ca_policy_url
 Netscape SSL Server Name           NID_netscape_ssl_server_name
 Netscape Comment                   NID_netscape_comment</screen>
     </refsection>
-    <refsection xml:id="ID-3b720a232a7e40582478813ae44252db"><title>MISCELLANEOUS CERTIFICATE EXTENSIONS</title>
+    <refsection xml:id="ID-8a5a1083cd1fe9f142670aec6300fb8c"><title>Miscellaneous Certificate Extensions</title>
       <screen>Strong Extranet ID                 NID_sxnet
 Proxy Certificate Information      NID_proxyCertInfo</screen>
     </refsection>
-    <refsection xml:id="ID-f1aa66fd81ec4b79149a97db50c27e65"><title>PKIX CRL EXTENSIONS</title>
+    <refsection xml:id="ID-4fef023e9ac6bfee9910174f7b7df3a9"><title>PKIX CRL Extensions</title>
       <para>
 	The following are CRL extensions from PKIX standards such as
 	RFC5280.
@@ -199,7 +199,7 @@ Issuing Distribution Point         NID_issuing_distribution_point</screen>
       <screen>CRL Reason Code                    NID_crl_reason
 Certificate Issuer                 NID_certificate_issuer</screen>
     </refsection>
-    <refsection xml:id="ID-451871ff60a5718f5c5d1bea822d5971"><title>OCSP EXTENSIONS</title>
+    <refsection xml:id="ID-1ef98115963390aa9cec794706089f55"><title>OCSP Extensions</title>
       <screen>OCSP Nonce                         NID_id_pkix_OCSP_Nonce
 OCSP CRL ID                        NID_id_pkix_OCSP_CrlID
 Acceptable OCSP Responses          NID_id_pkix_OCSP_acceptableResponses
@@ -208,7 +208,7 @@ OCSP Archive Cutoff                NID_id_pkix_OCSP_archiveCutoff
 OCSP Service Locator               NID_id_pkix_OCSP_serviceLocator
 Hold Instruction Code              NID_hold_instruction_code</screen>
     </refsection>
-    <refsection xml:id="ID-780a2eed141d066eff9a96600f322fb4"><title>CERTIFICATE TRANSPARENCY EXTENSIONS</title>
+    <refsection xml:id="ID-9c9fcd1f6a373645988ac3ad577fc2e2"><title>Certificate Transparency Extensions</title>
       <para>
 	The following extensions are used by certificate transparency,
 	RFC6962
@@ -272,6 +272,16 @@ CT Certificate SCTs                NID_ct_cert_scts</screen>
       </citerefentry>, <citerefentry>
       <refentrytitle>X509_verify_cert</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-1c8c25fee54bf1b61621b960125ef0f1"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

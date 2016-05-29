@@ -139,11 +139,6 @@ void BIO_ssl_shutdown(BIO *bio);</synopsis>
       do so to separate the handshake process from other I/O processing.
     </para>
   </refsection>
-  <refsection xml:id="ID-80a1c45bfb4ee507c5f2ebfe59bb6fc9"><title>RETURN VALUES</title>
-    <para>
-      TBA
-    </para>
-  </refsection>
   <refsection xml:id="ID-b9c41e6f4a19cef26a242b8550e20a8e"><title>EXAMPLE</title>
     <para>
       This SSL/TLS client example, attempts to retrieve a page from an
@@ -158,54 +153,48 @@ char tmpbuf[1024];
 SSL_CTX *ctx;
 SSL *ssl;
 
-/* We would seed the PRNG here if the platform didn't
- * do it automatically
- */
+/* XXX Seed the PRNG if needed. */
 
 ctx = SSL_CTX_new(TLS_client_method());
 
-/* We'd normally set some stuff like the verify paths and
- * mode here because as things stand this will connect to
- * any server whose certificate is signed by any CA.
- */
+/* XXX Set verify paths and mode here. */
 
 sbio = BIO_new_ssl_connect(ctx);
-
 BIO_get_ssl(sbio, &amp;ssl);
-
-if(!ssl) {
-  fprintf(stderr, "Can't locate SSL pointer\n");
-  /* whatever ... */
+if (ssl == NULL) {
+    fprintf(stderr, "Can't locate SSL pointer\n");
+    ERR_print_errors_fp(stderr);
+    exit(1);
 }
 
 /* Don't want any retries */
 SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
 
-/* We might want to do other things with ssl here */
+/* XXX We might want to do other things with ssl here */
 
 /* An empty host part means the loopback address */
 BIO_set_conn_hostname(sbio, ":https");
 
 out = BIO_new_fp(stdout, BIO_NOCLOSE);
-if(BIO_do_connect(sbio) &lt;= 0) {
-       fprintf(stderr, "Error connecting to server\n");
-       ERR_print_errors_fp(stderr);
-       /* whatever ... */
+if (BIO_do_connect(sbio) &lt;= 0) {
+    fprintf(stderr, "Error connecting to server\n");
+    ERR_print_errors_fp(stderr);
+    exit(1);
 }
-
-if(BIO_do_handshake(sbio) &lt;= 0) {
+if (BIO_do_handshake(sbio) &lt;= 0) {
        fprintf(stderr, "Error establishing SSL connection\n");
        ERR_print_errors_fp(stderr);
-       /* whatever ... */
+       exit(1);
 }
 
-/* Could examine ssl here to get connection info */
+/* XXX Could examine ssl here to get connection info */
 
 BIO_puts(sbio, "GET / HTTP/1.0\n\n");
-for(;;) {      
-       len = BIO_read(sbio, tmpbuf, 1024);
-       if(len &lt;= 0) break;
-       BIO_write(out, tmpbuf, len);
+for ( ; ; ) {
+    len = BIO_read(sbio, tmpbuf, 1024);
+    if(len &lt;= 0)
+        break;
+    BIO_write(out, tmpbuf, len);
 }
 BIO_free_all(sbio);
 BIO_free(out);</screen>
@@ -221,102 +210,83 @@ char tmpbuf[1024];
 SSL_CTX *ctx;
 SSL *ssl;
 
-/* Might seed PRNG here */
+/* XXX Seed the PRNG if needed. */
 
 ctx = SSL_CTX_new(TLS_server_method());
-
-if (!SSL_CTX_use_certificate_file(ctx,"server.pem",SSL_FILETYPE_PEM)
-       || !SSL_CTX_use_PrivateKey_file(ctx,"server.pem",SSL_FILETYPE_PEM)
-       || !SSL_CTX_check_private_key(ctx)) {
-
-       fprintf(stderr, "Error setting up SSL_CTX\n");
-       ERR_print_errors_fp(stderr);
-       return 0;
+if (!SSL_CTX_use_certificate_file(ctx, "server.pem", SSL_FILETYPE_PEM)
+        || !SSL_CTX_use_PrivateKey_file(ctx, "server.pem", SSL_FILETYPE_PEM)
+        || !SSL_CTX_check_private_key(ctx)) {
+    fprintf(stderr, "Error setting up SSL_CTX\n");
+    ERR_print_errors_fp(stderr);
+    exit(1);
 }
 
-/* Might do other things here like setting verify locations and
- * DH and/or RSA temporary key callbacks
- */
+/* XXX Other things like set verify locations, EDH temp callbacks. */
 
 /* New SSL BIO setup as server */
-sbio=BIO_new_ssl(ctx,0);
-
+sbio = BIO_new_ssl(ctx,0);
 BIO_get_ssl(sbio, &amp;ssl);
-
-if(!ssl) {
-  fprintf(stderr, "Can't locate SSL pointer\n");
-  /* whatever ... */
+if (ssl == NULL) {
+    fprintf(stderr, "Can't locate SSL pointer\n");
+    ERR_print_errors_fp(stderr);
+    exit(1);
 }
 
-/* Don't want any retries */
 SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
-
-/* Create the buffering BIO */
-
 bbio = BIO_new(BIO_f_buffer());
-
-/* Add to chain */
 sbio = BIO_push(bbio, sbio);
+acpt = BIO_new_accept("4433");
 
-acpt=BIO_new_accept("4433");
-
-/* By doing this when a new connection is established
+/*
+ * By doing this when a new connection is established
  * we automatically have sbio inserted into it. The
  * BIO chain is now 'swallowed' by the accept BIO and
- * will be freed when the accept BIO is freed. 
+ * will be freed when the accept BIO is freed.
  */
-
-BIO_set_accept_bios(acpt,sbio);
-
+BIO_set_accept_bios(acpt, sbio);
 out = BIO_new_fp(stdout, BIO_NOCLOSE);
 
 /* Setup accept BIO */
-if(BIO_do_accept(acpt) &lt;= 0) {
-       fprintf(stderr, "Error setting up accept BIO\n");
-       ERR_print_errors_fp(stderr);
-       return 0;
+if (BIO_do_accept(acpt) &lt;= 0) {
+    fprintf(stderr, "Error setting up accept BIO\n");
+    ERR_print_errors_fp(stderr);
+    exit(1);
 }
 
-/* Now wait for incoming connection */
-if(BIO_do_accept(acpt) &lt;= 0) {
-       fprintf(stderr, "Error in connection\n");
-       ERR_print_errors_fp(stderr);
-       return 0;
+if (BIO_do_accept(acpt) &lt;= 0) {
+    fprintf(stderr, "Error in connection\n");
+    ERR_print_errors_fp(stderr);
+    exit(1);
 }
 
-/* We only want one connection so remove and free
- * accept BIO
- */
-
+/* We only want one connection so remove and free accept BIO */
 sbio = BIO_pop(acpt);
-
 BIO_free_all(acpt);
 
-if(BIO_do_handshake(sbio) &lt;= 0) {
-       fprintf(stderr, "Error in SSL handshake\n");
-       ERR_print_errors_fp(stderr);
-       return 0;
+if (BIO_do_handshake(sbio) &lt;= 0) {
+    fprintf(stderr, "Error in SSL handshake\n");
+    ERR_print_errors_fp(stderr);
+    exit(1);
 }
 
 BIO_puts(sbio, "HTTP/1.0 200 OK\r\nContent-type: text/plain\r\n\r\n");
 BIO_puts(sbio, "\r\nConnection Established\r\nRequest headers:\r\n");
 BIO_puts(sbio, "--------------------------------------------------\r\n");
 
-for(;;) {
-       len = BIO_gets(sbio, tmpbuf, 1024);
-       if(len &lt;= 0) break;
-       BIO_write(sbio, tmpbuf, len);
-       BIO_write(out, tmpbuf, len);
-       /* Look for blank line signifying end of headers*/
-       if((tmpbuf[0] == '\r') || (tmpbuf[0] == '\n')) break;
+for ( ; ; ) {
+    len = BIO_gets(sbio, tmpbuf, 1024);
+    if (len &lt;= 0)
+        break;
+    BIO_write(sbio, tmpbuf, len);
+    BIO_write(out, tmpbuf, len);
+    /* Look for blank line signifying end of headers*/
+    if (tmpbuf[0] == '\r' || tmpbuf[0] == '\n')
+        break;
 }
 
 BIO_puts(sbio, "--------------------------------------------------\r\n");
 BIO_puts(sbio, "\r\n");
-
-/* Since there is a buffering BIO present we had better flush it */
 BIO_flush(sbio);
-
 BIO_free_all(sbio);</screen>
   </refsection>
   <refsection xml:id="ID-c425dcf171be7b90f8622a8c4dc9db7a"><title>BUGS</title>
@@ -330,9 +300,14 @@ BIO_free_all(sbio);</screen>
       they may free up an already freed BIO.
     </para>
   </refsection>
-  <refsection xml:id="ID-e59d071479627aa2dcc37c87cfa23dfd"><title>SEE ALSO</title>
+  <refsection xml:id="ID-2ececc53f09efc1e042cef1d58261548"><title>COPYRIGHT</title>
     <para>
-      TBA
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

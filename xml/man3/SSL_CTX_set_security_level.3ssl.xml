@@ -134,7 +134,7 @@ void *SSL_get0_security_ex_data(const SSL *s);</synopsis>
   </refsection>
   <refsection xml:id="ID-9c3f22aed3a0e678a27499fc176cef96"><title>APPLICATION DEFINED SECURITY CALLBACKS</title>
     <para>
-      TBA
+      <emphasis role="italic">Documentation to be provided.</emphasis>
     </para>
   </refsection>
   <refsection xml:id="ID-2d5a16b68bf9f03fff268b8f78dc9d6f"><title>NOTES</title>
@@ -198,14 +198,19 @@ void *SSL_get0_security_ex_data(const SSL *s);</synopsis>
       it had been rejected.
     </para>
   </refsection>
-  <refsection xml:id="ID-a3f278d910ee133790c6fe270b0b4fca"><title>SEE ALSO</title>
-    <para>
-      TBA
-    </para>
-  </refsection>
   <refsection xml:id="ID-0d6712e0ebd74a4cc3ca4c817889a5ea"><title>HISTORY</title>
     <para>
       These functions were first added to OpenSSL 1.1.0
+    </para>
+  </refsection>
+  <refsection xml:id="ID-06b1e7b8bfe1fff64ec6adfb37cc45ae"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2014-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

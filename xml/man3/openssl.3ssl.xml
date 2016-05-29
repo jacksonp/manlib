@@ -73,7 +73,7 @@ o  Time Stamp requests, generation and verification</screen>
       not able to detect pseudo-commands such as <emphasis role="bold">quit</emphasis>, <emphasis role="bold">list</emphasis>,
       or <emphasis role="bold">no-</emphasis><emphasis role="italic">XXX</emphasis> itself.)
     </para>
-    <refsection xml:id="ID-a5c2bf3221281ee8aea0a8323a6a2e26"><title>STANDARD COMMANDS</title>
+    <refsection xml:id="ID-45ffc50ba43499f7a3a32b8b4f723601"><title>Standard Commands</title>
       <para>
         <variablelist>
           <varlistentry>
@@ -443,7 +443,7 @@ o  Time Stamp requests, generation and verification</screen>
         </variablelist>
       </para>
     </refsection>
-    <refsection xml:id="ID-91aa8ae8772fdf5b47b0040bd8f11aa0"><title>MESSAGE DIGEST COMMANDS</title>
+    <refsection xml:id="ID-77be1f23695c73ce7c7dd7d3749d1737"><title>Message Digest Commands</title>
       <para>
         <variablelist>
           <varlistentry>
@@ -529,7 +529,7 @@ o  Time Stamp requests, generation and verification</screen>
         </variablelist>
       </para>
     </refsection>
-    <refsection xml:id="ID-d8c2b8820becca0287b44c50ec20b5b6"><title>ENCODING AND CIPHER COMMANDS</title>
+    <refsection xml:id="ID-3be83097ee27229956a3ebb566d430ee"><title>Encoding and Cipher Commands</title>
       <para>
         <variablelist>
           <varlistentry>
@@ -746,6 +746,16 @@ o  Time Stamp requests, generation and verification</screen>
       The <emphasis role="bold">list-</emphasis><emphasis role="italic">XXX</emphasis><emphasis role="bold">-algorithms</emphasis> pseudo-commands were added in
       OpenSSL 1.0.0; For notes on the availability of other commands, see
       their individual manual pages.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-ebeb82bec57b75d09c74891e79a19b01"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

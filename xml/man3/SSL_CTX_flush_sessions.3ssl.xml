@@ -48,9 +48,6 @@ void SSL_flush_sessions(SSL_CTX *ctx, long tm);</synopsis>
       <manvolnum>3</manvolnum> </citerefentry>).
     </para>
   </refsection>
-  <refsection xml:id="ID-5eb60639a9abdb6066a1b6b041ffd0c2"><title>RETURN VALUES</title>
-    <para/>
-  </refsection>
   <refsection xml:id="ID-226b51ab4280ce543941fe5a3d000f71"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
@@ -61,6 +58,16 @@ void SSL_flush_sessions(SSL_CTX *ctx, long tm);</synopsis>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_sess_set_get_cb</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-8be4f886b948ba73138e1d406dcceaed"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2001-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

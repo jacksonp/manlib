@@ -70,9 +70,6 @@
     </para>
   </refsection>
   <refsection xml:id="ID-37e05195a174f7bbd6214f98f38e368f"><title>BUGS</title>
-    <para/>
-  </refsection>
-  <refsection xml:id="ID-09cbc8a25bffed071dad6e08435af0ab"><title>RETURN VALUES</title>
     <para>
       SSL_CTX_set_cert_verify_callback() does not provide diagnostic
       information.
@@ -88,6 +85,16 @@
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_load_verify_locations</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-be5898a36d9d031257204512604a3749"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2001-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

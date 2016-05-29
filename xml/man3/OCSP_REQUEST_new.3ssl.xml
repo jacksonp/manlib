@@ -3,11 +3,12 @@
   <refmeta>
     <refentrytitle>OCSP_REQUEST_new.pod</refentrytitle>
   </refmeta>
-  <para>
-    OCSP_REQUEST_new, OCSP_REQUEST_free, OCSP_request_add0_id,
-    OCSP_request_sign, OCSP_request_add1_cert, OCSP_request_onereq_count,
-    OCSP_request_onereq_get0 - OCSP request functions.
-  </para>
+  <refnamediv>
+    <refname>OCSP_REQUEST_new, OCSP_REQUEST_free, OCSP_request_add0_id, OCSP_request_sign,
+OCSP_request_add1_cert, OCSP_request_onereq_count,
+OCSP_request_onereq_get0</refname>
+<refpurpose>OCSP request functions.</refpurpose>
+  </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ocsp.h&gt;</synopsis>
 <synopsis>OCSP_REQUEST *OCSP_REQUEST_new(void);
@@ -116,6 +117,16 @@ OCSP_REQUEST_free(req);</screen>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_sendreq_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-d4d85c7a18767bdf2d808c0fea2eea4b"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

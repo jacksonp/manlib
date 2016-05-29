@@ -4,7 +4,7 @@
     <refentrytitle>BIO_s_bio.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BIO_s_bio, BIO_make_bio_pair, BIO_destroy_bio_pair, BIO_shutdown_wr, 
+    <refname>BIO_s_bio, BIO_make_bio_pair, BIO_destroy_bio_pair, BIO_shutdown_wr,
 BIO_set_write_buf_size, BIO_get_write_buf_size, BIO_new_bio_pair,
 BIO_get_write_guarantee, BIO_ctrl_get_write_guarantee, BIO_get_read_request,
 BIO_ctrl_get_read_request, BIO_ctrl_reset_read_request</refname>
@@ -226,6 +226,16 @@ BIO_free(network_bio);
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>BIO_read</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-d59b72e554ea0bc75ab2bcc1c5ff6ee4"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

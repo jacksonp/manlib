@@ -68,4 +68,14 @@ int BIO_get_shutdown(BIO *a);</synopsis>
       The functions described here were added in OpenSSL version 1.1.0.
     </para>
   </refsection>
+  <refsection xml:id="ID-ee1b74cb7134f15efb77bb370c8daf5e"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
 </refentry>

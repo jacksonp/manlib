@@ -1,0 +1,102 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>SMIME_read_CMS.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>SMIME_read_CMS</refname>
+<refpurpose>parse S/MIME message.</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>CMS_ContentInfo *SMIME_read_CMS(BIO *in, BIO **bcont);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-ca201c824274419e46bbc8f15f79189e"><title>DESCRIPTION</title>
+    <para>
+      SMIME_read_CMS() parses a message in S/MIME format.
+    </para>
+    <para>
+      <emphasis role="bold">in</emphasis> is a BIO to read the message
+      from.
+    </para>
+    <para>
+      If cleartext signing is used then the content is saved in a memory
+      bio which is written to <emphasis role="bold">*bcont</emphasis>,
+      otherwise <emphasis role="bold">*bcont</emphasis> is set to NULL.
+    </para>
+    <para>
+      The parsed CMS_ContentInfo structure is returned or NULL if an error
+      occurred.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-3db772c78d3dab9ae37a01aa66b0513a"><title>NOTES</title>
+    <para>
+      If <emphasis role="bold">*bcont</emphasis> is not NULL then the
+      message is clear text signed. <emphasis role="bold">*bcont</emphasis>
+      can then be passed to CMS_verify() with the <emphasis role="bold">CMS_DETACHED</emphasis> flag set.
+    </para>
+    <para>
+      Otherwise the type of the returned structure can be determined using
+      CMS_get0_type().
+    </para>
+    <para>
+      To support future functionality if <emphasis role="bold">bcont</emphasis> is not NULL <emphasis role="bold">*bcont</emphasis> should be initialized to NULL. For
+      example:
+    </para>
+    <screen>BIO *cont = NULL;
+CMS_ContentInfo *cms;
+
+cms = SMIME_read_CMS(in, &amp;cont);</screen>
+  </refsection>
+  <refsection xml:id="ID-3029e3549fbe7173a6bfd48aeee2253f"><title>BUGS</title>
+    <para>
+      The MIME parser used by SMIME_read_CMS() is somewhat primitive. 
+      While it will handle most S/MIME messages more complex compound
+      formats may not work.
+    </para>
+    <para>
+      The parser assumes that the CMS_ContentInfo structure is always
+      base64 encoded and will not handle the case where it is in binary
+      format or uses quoted printable format.
+    </para>
+    <para>
+      The use of a memory BIO to hold the signed content limits the size of
+      message which can be processed due to memory restraints: a streaming
+      single pass option should be available.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-7f89f94da3fa8f999a7d33cbabfed070"><title>RETURN VALUES</title>
+    <para>
+      SMIME_read_CMS() returns a valid <emphasis role="bold">CMS_ContentInfo</emphasis> structure or <emphasis role="bold">NULL</emphasis> if an error occurred. The error can be
+      obtained from ERR_get_error(3).
+    </para>
+  </refsection>
+  <refsection xml:id="ID-a7913414109379825f187c4b30d6f5b1"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_type</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> <citerefentry>
+      <refentrytitle>SMIME_read_CMS</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_sign</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_verify</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_encrypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> <citerefentry>
+      <refentrytitle>CMS_decrypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-848ba8099fd412a2db4b447a4084ace7"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

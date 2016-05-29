@@ -16,6 +16,8 @@
 [<emphasis role="bold">-resign</emphasis>]
 [<emphasis role="bold">-verify</emphasis>]
 [<emphasis role="bold">-pk7out</emphasis>]
+[<emphasis role="bold">-binary</emphasis>]
+[<emphasis role="bold">-crlfeol</emphasis>]
 [<emphasis role="bold">-[cipher]</emphasis>]
 [<emphasis role="bold">-in file</emphasis>]
 [<emphasis role="bold">-CAfile file</emphasis>]
@@ -383,6 +385,16 @@
           </listitem>
         </varlistentry>
         <varlistentry>
+          <term><emphasis role="bold">-crlfeol</emphasis></term>
+          <listitem>
+            <para>
+	      normally the output file uses a single <emphasis role="bold">LF</emphasis> as end of line. When this option is
+	      present <emphasis role="bold">CRLF</emphasis> is used
+	      instead.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
           <term><emphasis role="bold">-nodetach</emphasis></term>
           <listitem>
             <para>
@@ -728,6 +740,16 @@
     </para>
     <para>
       The -no_alt_chains options was first added to OpenSSL 1.1.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-47b2eda9036ba3ef91f6d7cfaff64187"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

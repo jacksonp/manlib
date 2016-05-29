@@ -612,7 +612,10 @@ configuration variable documented in <citerefentry>
         what changes the commit has.
         Note that this diff output doesn&#8217;t have its
         lines prefixed with <emphasis>#</emphasis>. This diff will not be a part
-        of the commit message.
+        of the commit message. See the <literal>commit.verbose</literal> configuration
+        variable in <citerefentry>
+<refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
+</citerefentry>.
 </simpara>
 <simpara>If specified twice, show in addition the unified diff between
 what would be committed and the worktree files, i.e. the unstaged

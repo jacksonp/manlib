@@ -169,7 +169,7 @@
         </varlistentry>
       </variablelist>
     </para>
-    <refsection xml:id="ID-4fdbc44f9217d5e56c9f5c05a1972d3c"><title>OUTPUT</title>
+    <refsection xml:id="ID-4c6e5d9695f1057bf5180b697ddd25cd"><title>Output</title>
       <para>
 	The output will typically contain lines like this:
       </para>
@@ -178,14 +178,14 @@
 	.....
       </para>
       <screen>229:d=3  hl=3 l= 141 prim: BIT STRING
-373:d=2  hl=3 l= 162 cons: cont [ 3 ]        
-376:d=3  hl=3 l= 159 cons: SEQUENCE          
-379:d=4  hl=2 l=  29 cons: SEQUENCE          
+373:d=2  hl=3 l= 162 cons: cont [ 3 ]
+376:d=3  hl=3 l= 159 cons: SEQUENCE
+379:d=4  hl=2 l=  29 cons: SEQUENCE
 381:d=5  hl=2 l=   3 prim: OBJECT            :X509v3 Subject Key Identifier
-386:d=5  hl=2 l=  22 prim: OCTET STRING      
-410:d=4  hl=2 l= 112 cons: SEQUENCE          
+386:d=5  hl=2 l=  22 prim: OCTET STRING
+410:d=4  hl=2 l= 112 cons: SEQUENCE
 412:d=5  hl=2 l=   3 prim: OBJECT            :X509v3 Authority Key Identifier
-417:d=5  hl=2 l= 105 prim: OCTET STRING      
+417:d=5  hl=2 l= 105 prim: OCTET STRING
 524:d=4  hl=2 l=  12 cons: SEQUENCE</screen>
       <para>
 	.....
@@ -211,7 +211,7 @@
 	public key. The contents octets of this will contain the public key
 	information. This can be examined using the option <emphasis role="bold">-strparse 229</emphasis> to yield:
       </para>
-      <screen>  0:d=0  hl=3 l= 137 cons: SEQUENCE          
+      <screen>  0:d=0  hl=3 l= 137 cons: SEQUENCE
   3:d=1  hl=3 l= 129 prim: INTEGER           :E5D21E1F5C8D208EA7A2166C7FAF9F6BDF2059669C60876DDB70840F1A5AAFA59699FE471F379F1DD6A487E7D5409AB6A88D4A9746E24B91D8CF55DB3521015460C8EDE44EE8A4189F7A7BE77D6CD3A9AF2696F486855CF58BF0EDF2B4068058C7A947F52548DDF7E15E96B385F86422BEA9064A3EE9E1158A56E4A6F47E5897
 135:d=1  hl=2 l=   3 prim: INTEGER           :010001</screen>
     </refsection>
@@ -229,7 +229,7 @@
       displays the long name. Example:
     </para>
     <para>
-      <literal role="code">1.2.3.4   shortName       A long
+      <literal role="code">1.2.3.4	  shortName	  A long
       name</literal>
     </para>
   </refsection>
@@ -276,6 +276,16 @@ field2=EXP:0, UTF8:some random string
     <para>
       <citerefentry> <refentrytitle>ASN1_generate_nconf</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-7c6e6e59af3b2c189e9a9b926328564c"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

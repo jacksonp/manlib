@@ -65,4 +65,14 @@ void SSL_set_read_ahead(SSL *s, int yes);</synopsis>
       </citerefentry>
     </para>
   </refsection>
+  <refsection xml:id="ID-7d4e425ac7ebd6acfb421e99ac90f01a"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
 </refentry>

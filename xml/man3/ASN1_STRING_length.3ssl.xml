@@ -85,16 +85,20 @@ unsigned char * ASN1_STRING_data(ASN1_STRING *x);</synopsis>
       format when calling ASN1_STRING_set().
     </para>
   </refsection>
-  <refsection xml:id="ID-4b6ca870438cb2805526c0517118cb76"><title>RETURN VALUES</title>
-    <para/>
-  </refsection>
   <refsection xml:id="ID-8052639892ebdee5a65e3a3ad57fd0a4"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>
   </refsection>
-  <refsection xml:id="ID-a0f92db0e5147356e1492bc4e4f1ab86"><title>HISTORY</title>
-    <para/>
+  <refsection xml:id="ID-d8370e271bc3b130fc2f2189790bfaf5"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2002-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
   </refsection>
 </refentry>

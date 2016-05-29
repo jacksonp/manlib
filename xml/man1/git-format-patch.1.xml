@@ -1146,6 +1146,18 @@ you can use <literal>--suffix=-patch</literal> to get <literal>0001-description-
 </varlistentry>
 <varlistentry>
 <term>
+--base=&lt;commit&gt;
+</term>
+<listitem>
+<simpara>
+        Record the base tree information to identify the state the
+        patch series applies to.  See the BASE TREE INFORMATION section
+        below for details.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 --root
 </term>
 <listitem>
@@ -1457,6 +1469,46 @@ Back in the compose window: add whatever other text you wish to the
 </listitem>
 </orderedlist>
 </refsect2>
+</refsect1>
+<refsect1 id="_base_tree_information">
+<title>BASE TREE INFORMATION</title>
+<simpara>The base tree information block is used for maintainers or third party
+testers to know the exact state the patch series applies to. It consists
+of the <emphasis>base commit</emphasis>, which is a well-known commit that is part of the
+stable part of the project history everybody else works off of, and zero
+or more <emphasis>prerequisite patches</emphasis>, which are well-known patches in flight
+that is not yet part of the <emphasis>base commit</emphasis> that need to be applied on top
+of <emphasis>base commit</emphasis> in topological order before the patches can be applied.</simpara>
+<simpara>The <emphasis>base commit</emphasis> is shown as "base-commit: " followed by the 40-hex of
+the commit object name.  A <emphasis>prerequisite patch</emphasis> is shown as
+"prerequisite-patch-id: " followed by the 40-hex <emphasis>patch id</emphasis>, which can
+be obtained by passing the patch through the <literal>git patch-id --stable</literal>
+command.</simpara>
+<simpara>Imagine that on top of the public commit P, you applied well-known
+patches X, Y and Z from somebody else, and then built your three-patch
+series A, B, C, the history would be like:</simpara>
+<literallayout class="monospaced">---P---X---Y---Z---A---B---C</literallayout>
+<simpara>With <literal>git format-patch --base=P -3 C</literal> (or variants thereof, e.g. with
+<literal>--cover-letter</literal> of using <literal>Z..C</literal> instead of <literal>-3 C</literal> to specify the
+range), the base tree information block is shown at the end of the
+first message the command outputs (either the first patch, or the
+cover letter), like this:</simpara>
+<literallayout class="monospaced">base-commit: P
+prerequisite-patch-id: X
+prerequisite-patch-id: Y
+prerequisite-patch-id: Z</literallayout><simpara></simpara>
+<simpara>For non-linear topology, such as</simpara>
+<literallayout class="monospaced">---P---X---A---M---C
+    \         /
+     Y---Z---B</literallayout>
+<simpara>You can also use <literal>git format-patch --base=P -3 C</literal> to generate patches
+for A, B and C, and the identifiers for P, X, Y, Z are appended at the
+end of the first message.</simpara>
+<simpara>If set <literal>--base=auto</literal> in cmdline, it will track base commit automatically,
+the base commit will be the merge base of tip commit of the remote-tracking
+branch and revision-range specified in cmdline.
+For a local branch, you need to track a remote branch by <literal>git branch
+--set-upstream-to</literal> before using this option.</simpara>
 </refsect1>
 <refsect1 id="_examples">
 <title>EXAMPLES</title>

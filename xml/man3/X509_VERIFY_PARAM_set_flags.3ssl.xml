@@ -19,7 +19,7 @@ int X509_VERIFY_PARAM_set_trust(X509_VERIFY_PARAM *param, int trust);</synopsis>
 <synopsis>void X509_VERIFY_PARAM_set_time(X509_VERIFY_PARAM *param, time_t t);</synopsis>
 <synopsis>int X509_VERIFY_PARAM_add0_policy(X509_VERIFY_PARAM *param,
                                        ASN1_OBJECT *policy);
-int X509_VERIFY_PARAM_set1_policies(X509_VERIFY_PARAM *param, 
+int X509_VERIFY_PARAM_set1_policies(X509_VERIFY_PARAM *param,
                                        STACK_OF(ASN1_OBJECT) *policies);</synopsis>
 <synopsis>void X509_VERIFY_PARAM_set_depth(X509_VERIFY_PARAM *param, int depth);
 int X509_VERIFY_PARAM_get_depth(const X509_VERIFY_PARAM *param);</synopsis>
@@ -348,6 +348,16 @@ X509_VERIFY_PARAM_free(param);</screen>
       The <emphasis role="bold">X509_V_FLAG_NO_ALT_CHAINS</emphasis> flag
       was added in OpenSSL 1.1.0 The legacy <emphasis role="bold">X509_V_FLAG_CB_ISSUER_CHECK</emphasis> flag is deprecated
       as of OpenSSL 1.1.0, and has no effect.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-c461975f8c05d22abd11f12bc5cc81f4"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2009-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

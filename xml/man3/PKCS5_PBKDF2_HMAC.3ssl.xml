@@ -14,8 +14,8 @@
                       const EVP_MD *digest,
                       int keylen, unsigned char *out);</synopsis>
 <synopsis>int PKCS5_PBKDF2_HMAC_SHA1(const char *pass, int passlen,
-			   const unsigned char *salt, int saltlen, int iter,
-			   int keylen, unsigned char *out);</synopsis>
+                           const unsigned char *salt, int saltlen, int iter,
+                           int keylen, unsigned char *out);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-c3b8c1510dc2539f4e21ff6b8b51ab2c"><title>DESCRIPTION</title>
     <para>
@@ -79,7 +79,14 @@
       <manvolnum>3</manvolnum> </citerefentry>
     </para>
   </refsection>
-  <refsection xml:id="ID-ef79297460c0ed998f10539c4246fa20"><title>HISTORY</title>
-    <para/>
+  <refsection xml:id="ID-7256c0257fbb103de26506099be8f244"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2014-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
   </refsection>
 </refentry>

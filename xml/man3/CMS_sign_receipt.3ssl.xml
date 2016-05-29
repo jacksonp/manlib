@@ -1,0 +1,62 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CMS_sign_receipt.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CMS_sign_receipt</refname>
+<refpurpose>create a CMS signed receipt</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>CMS_ContentInfo *CMS_sign_receipt(CMS_SignerInfo *si, X509 *signcert, EVP_PKEY *pkey, STACK_OF(X509) *certs, unsigned int flags);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-c3bedda67922dee7bcbf3e689076e6ac"><title>DESCRIPTION</title>
+    <para>
+      CMS_sign_receipt() creates and returns a CMS signed receipt
+      structure. <emphasis role="bold">si</emphasis> is the <emphasis role="bold">CMS_SignerInfo</emphasis> structure containing the signed
+      receipt request. <emphasis role="bold">signcert</emphasis> is the
+      certificate to sign with, <emphasis role="bold">pkey</emphasis> is
+      the corresponding private key.  <emphasis role="bold">certs</emphasis> is an optional additional set of
+      certificates to include in the CMS structure (for example any
+      intermediate CAs in the chain).
+    </para>
+    <para>
+      <emphasis role="bold">flags</emphasis> is an optional set of flags.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-16502b8468974b5983ff3b1dc9482f67"><title>NOTES</title>
+    <para>
+      This functions behaves in a similar way to CMS_sign() except the flag
+      values <emphasis role="bold">CMS_DETACHED</emphasis>, <emphasis role="bold">CMS_BINARY</emphasis>, <emphasis role="bold">CMS_NOATTR</emphasis>, <emphasis role="bold">CMS_TEXT</emphasis> and <emphasis role="bold">CMS_STREAM</emphasis> are not supported since they do not
+      make sense in the context of signed receipts.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-4265584b6fc5de0d394dc379a44575d9"><title>RETURN VALUES</title>
+    <para>
+      CMS_sign_receipt() returns either a valid CMS_ContentInfo structure
+      or NULL if an error occurred.  The error can be obtained from
+      ERR_get_error(3).
+    </para>
+  </refsection>
+  <refsection xml:id="ID-edd5bc679fdb846be25fa78b6374f718"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_verify_receipt</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_sign</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-36a4cd7eac3bf74bde47257032ebd043"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

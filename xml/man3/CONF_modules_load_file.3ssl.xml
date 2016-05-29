@@ -1,0 +1,163 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CONF_modules_load_file.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CONF_modules_load_file, CONF_modules_load</refname>
+<refpurpose>OpenSSL configuration functions</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/conf.h&gt;</synopsis>
+<synopsis>int CONF_modules_load_file(const char *filename, const char *appname,
+                                       unsigned long flags);
+int CONF_modules_load(const CONF *cnf, const char *appname,
+                              unsigned long flags);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-89fc24404c5906ae4f968fea9f0f43ec"><title>DESCRIPTION</title>
+    <para>
+      The function CONF_modules_load_file() configures OpenSSL using file
+      <emphasis role="bold">filename</emphasis> and application name
+      <emphasis role="bold">appname</emphasis>. If <emphasis role="bold">filename</emphasis> is NULL the standard OpenSSL
+      configuration file is used. If <emphasis role="bold">appname</emphasis> is NULL the standard OpenSSL
+      application name <emphasis role="bold">openssl_conf</emphasis> is
+      used. The behaviour can be customized using <emphasis role="bold">flags</emphasis>.
+    </para>
+    <para>
+      CONF_modules_load() is identical to CONF_modules_load_file() except
+      it reads configuration information from <emphasis role="bold">cnf</emphasis>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-37cc5f57949a17d37c2ab02e64a018dd"><title>NOTES</title>
+    <para>
+      The following <emphasis role="bold">flags</emphasis> are currently
+      recognized:
+    </para>
+    <para>
+      <emphasis role="bold">CONF_MFLAGS_IGNORE_ERRORS</emphasis> if set
+      errors returned by individual configuration modules are ignored. If
+      not set the first module error is considered fatal and no further
+      modules are loaded.
+    </para>
+    <para>
+      Normally any modules errors will add error information to the error
+      queue. If <emphasis role="bold">CONF_MFLAGS_SILENT</emphasis> is set
+      no error information is added.
+    </para>
+    <para>
+      If <emphasis role="bold">CONF_MFLAGS_NO_DSO</emphasis> is set
+      configuration module loading from DSOs is disabled.
+    </para>
+    <para>
+      <emphasis role="bold">CONF_MFLAGS_IGNORE_MISSING_FILE</emphasis> if
+      set will make CONF_load_modules_file() ignore missing configuration
+      files. Normally a missing configuration file return an error.
+    </para>
+    <para>
+      <emphasis role="bold">CONF_MFLAGS_DEFAULT_SECTION</emphasis> if set
+      and <emphasis role="bold">appname</emphasis> is not NULL will use the
+      default section pointed to by <emphasis role="bold">openssl_conf</emphasis> if <emphasis role="bold">appname</emphasis> does not exist.
+    </para>
+    <para>
+      By using CONF_modules_load_file() with appropriate flags an
+      application can customise application configuration to best suit its
+      needs. In some cases the use of a configuration file is optional and
+      its absence is not an error: in this case <emphasis role="bold">CONF_MFLAGS_IGNORE_MISSING_FILE</emphasis> would be set.
+    </para>
+    <para>
+      Errors during configuration may also be handled differently by
+      different applications. For example in some cases an error may simply
+      print out a warning message and the application continue. In other
+      cases an application might consider a configuration file error as
+      fatal and exit immediately.
+    </para>
+    <para>
+      Applications can use the CONF_modules_load() function if they wish to
+      load a configuration file themselves and have finer control over how
+      errors are treated.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-5f0cdd7c168d803cec3b1adb7f552bc7"><title>EXAMPLES</title>
+    <para>
+      Load a configuration file and print out any errors and exit (missing
+      file considered fatal):
+    </para>
+    <screen>if (CONF_modules_load_file(NULL, NULL, 0) &lt;= 0) {
+   fprintf(stderr, "FATAL: error loading configuration file\n");
+   ERR_print_errors_fp(stderr);
+   exit(1);
+}</screen>
+    <para>
+      Load default configuration file using the section indicated by
+      "myapp", tolerate missing files, but exit on other errors:
+    </para>
+    <screen>if (CONF_modules_load_file(NULL, "myapp",
+                           CONF_MFLAGS_IGNORE_MISSING_FILE) &lt;= 0) {
+   fprintf(stderr, "FATAL: error loading configuration file\n");
+   ERR_print_errors_fp(stderr);
+   exit(1);
+}</screen>
+    <para>
+      Load custom configuration file and section, only print warnings on
+      error, missing configuration file ignored:
+    </para>
+    <screen>if (CONF_modules_load_file("/something/app.cnf", "myapp",
+                           CONF_MFLAGS_IGNORE_MISSING_FILE) &lt;= 0) {
+   fprintf(stderr, "WARNING: error loading configuration file\n");
+   ERR_print_errors_fp(stderr);
+}</screen>
+    <para>
+      Load and parse configuration file manually, custom error handling:
+    </para>
+    <screen>FILE *fp;
+CONF *cnf = NULL;
+long eline;
+fp = fopen("/somepath/app.cnf", "r");
+if (fp == NULL) {
+   fprintf(stderr, "Error opening configuration file\n");
+   /* Other missing configuration file behaviour */
+} else {
+   cnf = NCONF_new(NULL);
+   if (NCONF_load_fp(cnf, fp, &amp;eline) == 0) {
+       fprintf(stderr, "Error on line %ld of configuration file\n", eline);
+       ERR_print_errors_fp(stderr);
+       /* Other malformed configuration file behaviour */
+   } else if (CONF_modules_load(cnf, "appname", 0) &lt;= 0) {
+     fprintf(stderr, "Error configuring application\n");
+     ERR_print_errors_fp(stderr);
+     /* Other configuration error behaviour */
+   }
+   fclose(fp);
+   NCONF_free(cnf);
+ }</screen>
+  </refsection>
+  <refsection xml:id="ID-66ba3fe0b97cba0d53d00df3dd6cfcc0"><title>RETURN VALUES</title>
+    <para>
+      These functions return 1 for success and a zero or negative value for
+      failure. If module errors are not ignored the return code will
+      reflect the return value of the failing module (this will always be
+      zero or negative).
+    </para>
+  </refsection>
+  <refsection xml:id="ID-32072666111d9a085c2e0e9a20c78d8a"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>conf</refentrytitle>
+      <manvolnum>5</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>OPENSSL_config</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CONF_free</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry> <refentrytitle>err</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-f33d322a0ce408096106b7ea3e9fe432"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2004-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

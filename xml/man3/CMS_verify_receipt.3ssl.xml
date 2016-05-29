@@ -1,0 +1,65 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CMS_verify_receipt.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CMS_verify_receipt</refname>
+<refpurpose>verify a CMS signed receipt</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>int CMS_verify_receipt(CMS_ContentInfo *rcms, CMS_ContentInfo *ocms, STACK_OF(X509) *certs, X509_STORE *store, unsigned int flags);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-b5eaaa94c6b358cc9929bab2851a81cb"><title>DESCRIPTION</title>
+    <para>
+      CMS_verify_receipt() verifies a CMS signed receipt. <emphasis role="bold">rcms</emphasis> is the signed receipt to verify.
+      <emphasis role="bold">ocms</emphasis> is the original SignedData
+      structure containing the receipt request. <emphasis role="bold">certs</emphasis> is a set of certificates in which to
+      search for the signing certificate. <emphasis role="bold">store</emphasis> is a trusted certificate store (used for
+      chain verification).
+    </para>
+    <para>
+      <emphasis role="bold">flags</emphasis> is an optional set of flags,
+      which can be used to modify the verify operation.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-e4b4a711a2c00eeaa21ab5b125e4c1a5"><title>NOTES</title>
+    <para>
+      This functions behaves in a similar way to CMS_verify() except the
+      flag values <emphasis role="bold">CMS_DETACHED</emphasis>, <emphasis role="bold">CMS_BINARY</emphasis>, <emphasis role="bold">CMS_TEXT</emphasis> and <emphasis role="bold">CMS_STREAM</emphasis> are not supported since they do not
+      make sense in the context of signed receipts.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-527e1155cbd27f160150dfd4d8e386ee"><title>RETURN VALUES</title>
+    <para>
+      CMS_verify_receipt() returns 1 for a successful verification and zero
+      if an error occurred.
+    </para>
+    <para>
+      The error can be obtained from <citerefentry>
+      <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-6b16793db20eb1b2c8a89f37f94c9829"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_sign_receipt</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_verify</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>,
+    </para>
+  </refsection>
+  <refsection xml:id="ID-383ad7f5e78465fcc01a6e5431898367"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

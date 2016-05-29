@@ -69,7 +69,7 @@ int X509_load_cert_crl_file(X509_LOOKUP *ctx, const char *file, int type);</syno
       This page documents certificate store formats used by these methods
       and caching policy.
     </para>
-    <refsection xml:id="ID-d82437cedbcdc2e783c48a6b783641fb"><title>FILE METHOD</title>
+    <refsection xml:id="ID-ae756b0b7c3d9192644af0052e48acd5"><title>File Method</title>
       <para>
 	The <emphasis role="bold">X509_LOOKUP_file</emphasis> method loads
 	all the certificates or CRLs present in a file into memory at the
@@ -84,7 +84,7 @@ int X509_load_cert_crl_file(X509_LOOKUP *ctx, const char *file, int type);</syno
 	set of CAs.
       </para>
     </refsection>
-    <refsection xml:id="ID-6353468d341322a7b4e95cd200afcc83"><title>HASHED DIR METHOD</title>
+    <refsection xml:id="ID-89f451bf6b823b68dcd70f4a9c7b6a31"><title>Hashed Directory Method</title>
       <para>
 	<emphasis role="bold">X509_LOOKUP_hash_dir</emphasis> is a more
 	advanced method, which loads certificates and CRLs on demand, and
@@ -151,6 +151,16 @@ int X509_load_cert_crl_file(X509_LOOKUP *ctx, const char *file, int type);</syno
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_load_verify_locations</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>,
+    </para>
+  </refsection>
+  <refsection xml:id="ID-4ad15b3dc4a099d191efa6a51a60eb10"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

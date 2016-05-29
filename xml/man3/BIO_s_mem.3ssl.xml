@@ -130,13 +130,16 @@ mem = BIO_new_mem_buf(data, -1);</screen>
     <screen>BUF_MEM *bptr;
 BIO_get_mem_ptr(mem, &amp;bptr);
 BIO_set_close(mem, BIO_NOCLOSE); /* So BIO_free() leaves BUF_MEM alone */
-BIO_free(mem);
-
-</screen>
+BIO_free(mem);</screen>
   </refsection>
-  <refsection xml:id="ID-09f8121bde2cfbd2b1f88639df3ffe4a"><title>SEE ALSO</title>
+  <refsection xml:id="ID-f6f21d2caf1c19ad8733cc2532f78aa1"><title>COPYRIGHT</title>
     <para>
-      TBA
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

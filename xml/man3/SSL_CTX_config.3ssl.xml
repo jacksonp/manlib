@@ -94,4 +94,14 @@ if (SSL_CTX_config(ctx, "server") == 0) {
       SSL_CTX_config() and SSL_config() were first added to OpenSSL 1.1.0
     </para>
   </refsection>
+  <refsection xml:id="ID-d0cd0cffb3fbf2c4a6fc40b711cdf54e"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
 </refentry>

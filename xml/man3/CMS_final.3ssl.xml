@@ -1,0 +1,56 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CMS_final.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CMS_final</refname>
+<refpurpose>finalise a CMS_ContentInfo structure</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
+<synopsis>int CMS_final(CMS_ContentInfo *cms, BIO *data, BIO *dcont, unsigned int flags);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-32b74ec0f8452eeb92257dd9376627d6"><title>DESCRIPTION</title>
+    <para>
+      CMS_final() finalises the structure <emphasis role="bold">cms</emphasis>. It's purpose is to perform any operations
+      necessary on <emphasis role="bold">cms</emphasis> (digest computation
+      for example) and set the appropriate fields. The parameter <emphasis role="bold">data</emphasis> contains the content to be processed. The
+      <emphasis role="bold">dcont</emphasis> parameter contains a BIO to
+      write content to after processing: this is only used with detached
+      data and will usually be set to NULL.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-70682c8170ba1c92c8cab2175649e0d2"><title>NOTES</title>
+    <para>
+      This function will normally be called when the <emphasis role="bold">CMS_PARTIAL</emphasis> flag is used. It should only be
+      used when streaming is not performed because the streaming I/O
+      functions perform finalisation operations internally.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-fbcebf9e8c55be0a315afc2acb25b08f"><title>RETURN VALUES</title>
+    <para>
+      CMS_final() returns 1 for success or 0 for failure.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-e39d52192b3706a56e994e46b7d5ea89"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_sign</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CMS_encrypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-7a0f66014de2bb19452e16ebffef6208"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2008-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

@@ -37,9 +37,6 @@ int i2d_X509_NAME(X509_NAME *a, unsigned char **pp);</synopsis>
     </para>
   </refsection>
   <refsection xml:id="ID-4b6da3fcc3be33d05cba5d93d849ead6"><title>RETURN VALUES</title>
-    <para/>
-  </refsection>
-  <refsection xml:id="ID-99cc9a05323059001b672c79db5160eb"><title>SEE ALSO</title>
     <para>
       The meanings of the return values of d2i_X509_NAME() and
       i2d_X509_NAME() are similar to those for d2i_X509() and i2d_X509().
@@ -48,9 +45,21 @@ int i2d_X509_NAME(X509_NAME *a, unsigned char **pp);</synopsis>
       The function X509_NAME_get0_der() returns 1 for success and 0 if an
       error occurred.
     </para>
+  </refsection>
+  <refsection xml:id="ID-99cc9a05323059001b672c79db5160eb"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>d2i_X509</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-49ef03e72267dca277563ecb5bc497cc"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2002-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

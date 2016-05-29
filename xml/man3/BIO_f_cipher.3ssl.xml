@@ -10,7 +10,7 @@
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bio.h&gt;
 #include &lt;openssl/evp.h&gt;</synopsis>
-<synopsis>const BIO_METHOD *     BIO_f_cipher(void);
+<synopsis>const BIO_METHOD *BIO_f_cipher(void);
 void BIO_set_cipher(BIO *b,const EVP_CIPHER *cipher,
                unsigned char *key, unsigned char *iv, int enc);
 int BIO_get_cipher_status(BIO *b)
@@ -83,14 +83,14 @@ int BIO_get_cipher_ctx(BIO *b, EVP_CIPHER_CTX **pctx)</synopsis>
       BIO_get_cipher_ctx() currently always returns 1.
     </para>
   </refsection>
-  <refsection xml:id="ID-2aea854db22f10acba22ac6c83e2b393"><title>EXAMPLES</title>
+  <refsection xml:id="ID-e558f06fe0b56965ac283f0c1f655b7e"><title>COPYRIGHT</title>
     <para>
-      TBA
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
     </para>
-  </refsection>
-  <refsection xml:id="ID-cf43e1e82d6b3678eef17969ecea2d0e"><title>SEE ALSO</title>
     <para>
-      TBA
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

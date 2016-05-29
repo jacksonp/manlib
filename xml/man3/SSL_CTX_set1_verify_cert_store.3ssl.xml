@@ -119,4 +119,14 @@ int SSL_set1_chain_cert_store(SSL *ctx, X509_STORE *st);</synopsis>
       These functions were first added to OpenSSL 1.0.2.
     </para>
   </refsection>
+  <refsection xml:id="ID-e4136559c5f18152fcb484c8648cb7b7"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2013-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
 </refentry>

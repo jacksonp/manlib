@@ -269,7 +269,7 @@ authorityInfoAccess = caIssuers;URI:http://my.ca/ca.html
 
 </screen>
     </refsection>
-    <refsection xml:id="ID-fb8e20d1372f3ead22e57f1326627a27"><title>CRL distribution points.</title>
+    <refsection xml:id="ID-8f27c0d7ad3dedea55a4ebd34ff26df7"><title>CRL distribution points</title>
       <para>
 	This is a multi-valued extension whose options can be either in
 	name:value pair using the same form as subject alternative name or
@@ -632,6 +632,15 @@ email.2=steve@there</screen>
       <refentrytitle>ASN1_generate_nconf</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>
-    <screen></screen>
+  </refsection>
+  <refsection xml:id="ID-15ad44ba15a5bc3c164c41498c324af4"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2004-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
   </refsection>
 </refentry>

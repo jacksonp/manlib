@@ -3,11 +3,11 @@
   <refmeta>
     <refentrytitle>OCSP_cert_to_id.pod</refentrytitle>
   </refmeta>
-  <para>
-    OCSP_cert_to_id, OCSP_cert_id_new, OCSP_CERTID_free,
-    OCSP_id_issuer_cmp, OCSP_id_cmp, OCSP_id_get0_info - OCSP certificate
-    ID utility functions.
-  </para>
+  <refnamediv>
+    <refname>OCSP_cert_to_id, OCSP_cert_id_new, OCSP_CERTID_free, OCSP_id_issuer_cmp,
+OCSP_id_cmp, OCSP_id_get0_info</refname>
+<refpurpose>OCSP certificate ID utility functions.</refpurpose>
+  </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ocsp.h&gt;</synopsis>
 <synopsis>OCSP_CERTID *OCSP_cert_to_id(const EVP_MD *dgst,
@@ -93,6 +93,16 @@ int OCSP_id_cmp(OCSP_CERTID *a, OCSP_CERTID *b);</synopsis>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_sendreq_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-ae11ddc3b7d5f8268ce00afb4ac1419d"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>

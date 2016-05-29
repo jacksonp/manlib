@@ -3,10 +3,11 @@
   <refmeta>
     <refentrytitle>OCSP_response_status.pod</refentrytitle>
   </refmeta>
-  <para>
-    OCSP_response_status, OCSP_response_get1_basic, OCSP_response_create,
-    OCSP_RESPONSE_free - OCSP response functions.
-  </para>
+  <refnamediv>
+    <refname>OCSP_response_status, OCSP_response_get1_basic, OCSP_response_create,
+OCSP_RESPONSE_free</refname>
+<refpurpose>OCSP response functions.</refpurpose>
+  </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ocsp.h&gt;</synopsis>
 <synopsis>int OCSP_response_status(OCSP_RESPONSE *resp);
@@ -68,6 +69,16 @@ void OCSP_RESPONSE_free(OCSP_RESPONSE *resp);</synopsis>
       <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
       <refentrytitle>OCSP_sendreq_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-17f4ad535d3acad3198e99959eca2ad2"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
     </para>
   </refsection>
 </refentry>
