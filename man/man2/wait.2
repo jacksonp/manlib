@@ -496,7 +496,9 @@ The following Linux-specific
 .I options
 are for use with children created using
 .BR clone (2);
-they cannot be used with
+they can also, since Linux 4.7,
+.\" commit 91c4e8ea8f05916df0c8a6f383508ac7c9e10dba
+be used with
 .BR waitid ():
 .TP
 .B __WCLONE
@@ -520,6 +522,14 @@ type ("clone" or "non-clone").
 Do not wait for children of other threads in
 the same thread group.
 This was the default before Linux 2.4.
+.PP
+Since Linux 4.7,
+.\" commit bf959931ddb88c4e4366e96dd22e68fa0db9527c
+.\" prevents cases where an unreapable zombie is created if
+.\" /sbin/init doesn't use __WALL.
+the
+.B __WALL
+flag is automatically implied if the child is being ptraced.
 .SS C library/kernel differences
 .BR wait ()
 is actually a library function that (in glibc) is implemented as a call to

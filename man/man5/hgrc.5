@@ -1258,6 +1258,8 @@ If a Python hook returns a "true" value or raises an exception, this
 is treated as a failure.
 .SS \fBhostfingerprints\fP
 .sp
+(Deprecated. Use \fB[hostsecurity]\fP\(aqs \fBfingerprints\fP options instead.)
+.sp
 Fingerprints of the certificates of known HTTPS servers.
 .sp
 A HTTPS connection to a server with a fingerprint configured here will
@@ -1278,6 +1280,44 @@ For example:
 [hostfingerprints]
 hg.intevation.de = fc:e2:8d:d9:51:cd:cb:c1:4d:18:6b:b7:44:8d:49:72:57:e6:cd:33
 hg.intevation.org = fc:e2:8d:d9:51:cd:cb:c1:4d:18:6b:b7:44:8d:49:72:57:e6:cd:33
+.ft P
+.fi
+.SS \fBhostsecurity\fP
+.sp
+Used to specify per\-host security settings.
+.sp
+Options in this section have the form \fBhostname\fP:\fBsetting\fP. This allows
+multiple settings to be defined on a per\-host basis.
+.sp
+The following per\-host settings can be defined.
+.INDENT 0.0
+.TP
+.B \fBfingerprints\fP
+.sp
+A list of hashes of the DER encoded peer/remote certificate. Values have
+the form \fBalgorithm\fP:\fBfingerprint\fP. e.g.
+\fBsha256:c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2\fP.
+.sp
+The following algorithms/prefixes are supported: \fBsha1\fP, \fBsha256\fP,
+\fBsha512\fP.
+.sp
+Use of \fBsha256\fP or \fBsha512\fP is preferred.
+.sp
+If a fingerprint is specified, the CA chain is not validated for this
+host and Mercurial will require the remote certificate to match one
+of the fingerprints specified. This means if the server updates its
+certificate, Mercurial will abort until a new fingerprint is defined.
+This can provide stronger security than traditional CA\-based validation
+at the expense of convenience.
+.UNINDENT
+.sp
+For example:
+.sp
+.nf
+.ft C
+[hostsecurity]
+hg.example.com:fingerprints = sha256:c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2
+hg2.example.com:fingerprints = sha1:914f1aff87249c09b6859b88b1906d30756491ca, sha1:fc:e2:8d:d9:51:cd:cb:c1:4d:18:6b:b7:44:8d:49:72:57:e6:cd:33
 .ft P
 .fi
 .SS \fBhttp_proxy\fP

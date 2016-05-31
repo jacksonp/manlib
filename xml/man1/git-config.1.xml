@@ -5090,7 +5090,10 @@ log.decorate
         command. If <emphasis>short</emphasis> is specified, the ref name prefixes <emphasis>refs/heads/</emphasis>,
         <emphasis>refs/tags/</emphasis> and <emphasis>refs/remotes/</emphasis> will not be printed. If <emphasis>full</emphasis> is
         specified, the full ref name (including prefix) will be printed.
-        This is the same as the log commands <emphasis>--decorate</emphasis> option.
+        If <emphasis>auto</emphasis> is specified, then if the output is going to a terminal,
+        the ref names are shown as if <emphasis>short</emphasis> were given, otherwise no ref
+        names are shown. This is the same as the <emphasis>--decorate</emphasis> option
+        of the <literal>git log</literal>.
 </simpara>
 </listitem>
 </varlistentry>

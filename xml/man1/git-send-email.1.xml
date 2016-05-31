@@ -842,6 +842,16 @@ edit ~/.gitconfig to specify your account settings:</simpara>
         smtpServer = smtp.gmail.com
         smtpUser = yourname@gmail.com
         smtpServerPort = 587</literallayout>
+<simpara>If you have multifactor authentication setup on your gmail acocunt, you will
+need to generate an app-specific password for use with <emphasis>git send-email</emphasis>. Visit
+<ulink url="https://security.google.com/settings/security/apppasswords">https://security.google.com/settings/security/apppasswords</ulink> to setup an
+app-specific password.  Once setup, you can store it with the credentials
+helper:</simpara>
+<literallayout class="monospaced">$ git credential fill
+protocol=smtp
+host=smtp.gmail.com
+username=youname@gmail.com
+password=app-password</literallayout>
 <simpara>Once your commits are ready to be sent to the mailing list, run the
 following commands:</simpara>
 <literallayout class="monospaced">$ git format-patch --cover-letter -M origin/master -o outgoing/

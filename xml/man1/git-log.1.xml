@@ -44,15 +44,17 @@ each commit introduces are shown.</simpara>
 --no-decorate
 </term>
 <term>
---decorate[=short|full|no]
+--decorate[=short|full|auto|no]
 </term>
 <listitem>
 <simpara>
         Print out the ref names of any commits that are shown. If <emphasis>short</emphasis> is
         specified, the ref name prefixes <emphasis>refs/heads/</emphasis>, <emphasis>refs/tags/</emphasis> and
         <emphasis>refs/remotes/</emphasis> will not be printed. If <emphasis>full</emphasis> is specified, the
-        full ref name (including prefix) will be printed. The default option
-        is <emphasis>short</emphasis>.
+        full ref name (including prefix) will be printed. If <emphasis>auto</emphasis> is
+        specified, then if the output is going to a terminal, the ref names
+        are shown as if <emphasis>short</emphasis> were given, otherwise no ref names are
+        shown. The default option is <emphasis>short</emphasis>.
 </simpara>
 </listitem>
 </varlistentry>
