@@ -7,6 +7,9 @@
     <refname>SSL</refname>
 <refpurpose>OpenSSL SSL/TLS library</refpurpose>
   </refnamediv>
+  <refsynopsisdiv>
+<synopsis>See the individual manual pages for details.</synopsis>
+  </refsynopsisdiv>
   <refsection xml:id="ID-1e1e5438af893b1a5fe317bcffd31962"><title>DESCRIPTION</title>
     <para>
       The OpenSSL <emphasis role="bold">ssl</emphasis> library implements
@@ -1778,6 +1781,11 @@
         </variablelist>
       </para>
     </refsection>
+  </refsection>
+  <refsection xml:id="ID-8ed588294f7fa003cfee0e45efbcb5d2"><title>RETURN VALUES</title>
+    <para>
+      See the individual manual pages for details.
+    </para>
   </refsection>
   <refsection xml:id="ID-ab8802a077896c0244262ea672e57d01"><title>SEE ALSO</title>
     <para>

@@ -616,70 +616,92 @@ o  Time Stamp requests, generation and verification</screen>
       </para>
     </refsection>
   </refsection>
-  <refsection xml:id="ID-4e3279a14fe31c0708854ca5d8665a9c"><title>PASS PHRASE ARGUMENTS</title>
+  <refsection xml:id="ID-f2ccca47a7390facf64983b967b04e0f"><title>COMMAND OPTIONS</title>
     <para>
-      Several commands accept password arguments, typically using <emphasis role="bold">-passin</emphasis> and <emphasis role="bold">-passout</emphasis> for input and output passwords
-      respectively. These allow the password to be obtained from a variety
-      of sources. Both of these options take a single argument whose format
-      is described below. If no password argument is given and a password
-      is required then the user is prompted to enter one: this will
-      typically be read from the current terminal with echoing turned off.
+      Details of which options are available depend on the specific
+      command. This section desribes some common options with common
+      behavior.
     </para>
-    <para>
-      <variablelist>
-        <varlistentry>
-          <term><emphasis role="bold">pass:password</emphasis></term>
-          <listitem>
-            <para>
-	      the actual password is <emphasis role="bold">password</emphasis>. Since the password is
-	      visible to utilities (like 'ps' under Unix) this form should
-	      only be used where security is not important.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">env:var</emphasis></term>
-          <listitem>
-            <para>
-	      obtain the password from the environment variable <emphasis role="bold">var</emphasis>. Since the environment of other
-	      processes is visible on certain platforms (e.g. ps under
-	      certain Unix OSes) this option should be used with caution.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">file:pathname</emphasis></term>
-          <listitem>
-            <para>
-	      the first line of <emphasis role="bold">pathname</emphasis>
-	      is the password. If the same <emphasis role="bold">pathname</emphasis> argument is supplied to
-	      <emphasis role="bold">-passin</emphasis> and <emphasis role="bold">-passout</emphasis> arguments then the first line
-	      will be used for the input password and the next line for the
-	      output password. <emphasis role="bold">pathname</emphasis>
-	      need not refer to a regular file: it could for example refer
-	      to a device or named pipe.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">fd:number</emphasis></term>
-          <listitem>
-            <para>
-	      read the password from the file descriptor <emphasis role="bold">number</emphasis>. This can be used to send the
-	      data via a pipe for example.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">stdin</emphasis></term>
-          <listitem>
-            <para>
-	      read the password from standard input.
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </para>
+    <refsection xml:id="ID-5b30247604cd973ea892cfdfe32d8b81"><title>Common Options</title>
+      <para>
+        <variablelist>
+          <varlistentry>
+            <term><emphasis role="bold">-help</emphasis></term>
+            <listitem>
+              <para>
+		Provides a terse summary of all options.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </para>
+    </refsection>
+    <refsection xml:id="ID-6b3ac0221b20af4aef91da8cd1e2f81d"><title>Pass Phrase Options</title>
+      <para>
+	Several commands accept password arguments, typically using
+	<emphasis role="bold">-passin</emphasis> and <emphasis role="bold">-passout</emphasis> for input and output passwords
+	respectively. These allow the password to be obtained from a
+	variety of sources. Both of these options take a single argument
+	whose format is described below. If no password argument is given
+	and a password is required then the user is prompted to enter one:
+	this will typically be read from the current terminal with echoing
+	turned off.
+      </para>
+      <para>
+        <variablelist>
+          <varlistentry>
+            <term><emphasis role="bold">pass:password</emphasis></term>
+            <listitem>
+              <para>
+		the actual password is <emphasis role="bold">password</emphasis>. Since the password is
+		visible to utilities (like 'ps' under Unix) this form
+		should only be used where security is not important.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">env:var</emphasis></term>
+            <listitem>
+              <para>
+		obtain the password from the environment variable <emphasis role="bold">var</emphasis>. Since the environment of other
+		processes is visible on certain platforms (e.g. ps under
+		certain Unix OSes) this option should be used with caution.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">file:pathname</emphasis></term>
+            <listitem>
+              <para>
+		the first line of <emphasis role="bold">pathname</emphasis>
+		is the password. If the same <emphasis role="bold">pathname</emphasis> argument is supplied to
+		<emphasis role="bold">-passin</emphasis> and <emphasis role="bold">-passout</emphasis> arguments then the first
+		line will be used for the input password and the next line
+		for the output password. <emphasis role="bold">pathname</emphasis> need not refer to a regular
+		file: it could for example refer to a device or named pipe.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">fd:number</emphasis></term>
+            <listitem>
+              <para>
+		read the password from the file descriptor <emphasis role="bold">number</emphasis>. This can be used to send the
+		data via a pipe for example.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">stdin</emphasis></term>
+            <listitem>
+              <para>
+		read the password from standard input.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </para>
+    </refsection>
   </refsection>
   <refsection xml:id="ID-2079f37286c9b652f131a19c135a5a58"><title>SEE ALSO</title>
     <para>

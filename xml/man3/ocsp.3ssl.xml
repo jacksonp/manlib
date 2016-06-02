@@ -101,469 +101,472 @@
       behave like a mini OCSP server itself.
     </para>
   </refsection>
-  <refsection xml:id="ID-715d0ed2a4bf9c082074af8e45a2b7f2"><title>OCSP CLIENT OPTIONS</title>
+  <refsection xml:id="ID-95a1f99f6b6880d42c5bf7a787b502ae"><title>COMMAND OPTIONS</title>
     <para>
-      <variablelist>
-        <varlistentry>
-          <term><emphasis role="bold">-help</emphasis></term>
-          <listitem>
-            <para>
-	      Print out a usage message.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-out filename</emphasis></term>
-          <listitem>
-            <para>
-	      specify output filename, default is standard output.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-issuer filename</emphasis></term>
-          <listitem>
-            <para>
-	      This specifies the current issuer certificate. This option
-	      can be used multiple times. The certificate specified in
-	      <emphasis role="bold">filename</emphasis> must be in PEM
-	      format. This option <emphasis role="bold">MUST</emphasis>
-	      come before any <emphasis role="bold">-cert</emphasis>
-	      options.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-cert filename</emphasis></term>
-          <listitem>
-            <para>
-	      Add the certificate <emphasis role="bold">filename</emphasis>
-	      to the request. The issuer certificate is taken from the
-	      previous <emphasis role="bold">issuer</emphasis> option, or
-	      an error occurs if no issuer certificate is specified.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-serial num</emphasis></term>
-          <listitem>
-            <para>
-	      Same as the <emphasis role="bold">cert</emphasis> option
-	      except the certificate with serial number <emphasis role="bold">num</emphasis> is added to the request. The
-	      serial number is interpreted as a decimal integer unless
-	      preceded by <emphasis role="bold">0x</emphasis>. Negative
-	      integers can also be specified by preceding the value by a
-	      <emphasis role="bold">-</emphasis> sign.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-signer filename</emphasis>, <emphasis role="bold">-signkey filename</emphasis></term>
-          <listitem>
-            <para>
-	      Sign the OCSP request using the certificate specified in the
-	      <emphasis role="bold">signer</emphasis> option and the
-	      private key specified by the <emphasis role="bold">signkey</emphasis> option. If the <emphasis role="bold">signkey</emphasis> option is not present then the
-	      private key is read from the same file as the certificate. If
-	      neither option is specified then the OCSP request is not
-	      signed.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-sign_other filename</emphasis></term>
-          <listitem>
-            <para>
-	      Additional certificates to include in the signed request.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-nonce</emphasis>, <emphasis role="bold">-no_nonce</emphasis></term>
-          <listitem>
-            <para>
-	      Add an OCSP nonce extension to a request or disable OCSP
-	      nonce addition. Normally if an OCSP request is input using
-	      the <emphasis role="bold">reqin</emphasis> option no nonce is
-	      added: using the <emphasis role="bold">nonce</emphasis>
-	      option will force addition of a nonce. If an OCSP request is
-	      being created (using <emphasis role="bold">cert</emphasis>
-	      and <emphasis role="bold">serial</emphasis> options) a nonce
-	      is automatically added specifying <emphasis role="bold">no_nonce</emphasis> overrides this.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-req_text</emphasis>, <emphasis role="bold">-resp_text</emphasis>, <emphasis role="bold">-text</emphasis></term>
-          <listitem>
-            <para>
-	      print out the text form of the OCSP request, response or both
-	      respectively.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-reqout file</emphasis>, <emphasis role="bold">-respout file</emphasis></term>
-          <listitem>
-            <para>
-	      write out the DER encoded certificate request or response to
-	      <emphasis role="bold">file</emphasis>.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-reqin file</emphasis>, <emphasis role="bold">-respin file</emphasis></term>
-          <listitem>
-            <para>
-	      read OCSP request or response file from <emphasis role="bold">file</emphasis>. These option are ignored if OCSP
-	      request or response creation is implied by other options (for
-	      example with <emphasis role="bold">serial</emphasis>,
-	      <emphasis role="bold">cert</emphasis> and <emphasis role="bold">host</emphasis> options).
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-url responder_url</emphasis></term>
-          <listitem>
-            <para>
-	      specify the responder URL. Both HTTP and HTTPS (SSL/TLS) URLs
-	      can be specified.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-host hostname:port</emphasis>, <emphasis role="bold">-path pathname</emphasis></term>
-          <listitem>
-            <para>
-	      if the <emphasis role="bold">host</emphasis> option is
-	      present then the OCSP request is sent to the host <emphasis role="bold">hostname</emphasis> on port <emphasis role="bold">port</emphasis>. <emphasis role="bold">path</emphasis> specifies the HTTP path name to
-	      use or "/" by default.  This is equivalent to specifying
-	      <emphasis role="bold">-url</emphasis> with scheme http:// and
-	      the given hostname, port, and pathname.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-header name=value</emphasis></term>
-          <listitem>
-            <para>
-	      Adds the header <emphasis role="bold">name</emphasis> with
-	      the specified <emphasis role="bold">value</emphasis> to the
-	      OCSP request that is sent to the responder. This may be
-	      repeated.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-timeout seconds</emphasis></term>
-          <listitem>
-            <para>
-	      connection timeout to the OCSP responder in seconds
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-CAfile file</emphasis>, <emphasis role="bold">-CApath pathname</emphasis></term>
-          <listitem>
-            <para>
-	      file or pathname containing trusted CA certificates. These
-	      are used to verify the signature on the OCSP response.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-no-CAfile</emphasis></term>
-          <listitem>
-            <para>
-	      Do not load the trusted CA certificates from the default file
-	      location
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-no-CApath</emphasis></term>
-          <listitem>
-            <para>
-	      Do not load the trusted CA certificates from the default
-	      directory location
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-attime</emphasis>, <emphasis role="bold">-check_ss_sig</emphasis>, <emphasis role="bold">-crl_check</emphasis>, <emphasis role="bold">-crl_check_all</emphasis>,
+      This command operates as either a client or a server. The options are
+      described below, divided into those two modes.
+    </para>
+    <refsection xml:id="ID-fa4219a520714433feb817e487ae3df2"><title>OCSP Client Options</title>
+      <para>
+        <variablelist>
+          <varlistentry>
+            <term><emphasis role="bold">-help</emphasis></term>
+            <listitem>
+              <para>
+		Print out a usage message.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-out filename</emphasis></term>
+            <listitem>
+              <para>
+		specify output filename, default is standard output.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-issuer filename</emphasis></term>
+            <listitem>
+              <para>
+		This specifies the current issuer certificate. This option
+		can be used multiple times. The certificate specified in
+		<emphasis role="bold">filename</emphasis> must be in PEM
+		format. This option <emphasis role="bold">MUST</emphasis>
+		come before any <emphasis role="bold">-cert</emphasis>
+		options.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-cert filename</emphasis></term>
+            <listitem>
+              <para>
+		Add the certificate <emphasis role="bold">filename</emphasis> to the request. The issuer
+		certificate is taken from the previous <emphasis role="bold">issuer</emphasis> option, or an error occurs if
+		no issuer certificate is specified.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-serial num</emphasis></term>
+            <listitem>
+              <para>
+		Same as the <emphasis role="bold">cert</emphasis> option
+		except the certificate with serial number <emphasis role="bold">num</emphasis> is added to the request. The
+		serial number is interpreted as a decimal integer unless
+		preceded by <emphasis role="bold">0x</emphasis>. Negative
+		integers can also be specified by preceding the value by a
+		<emphasis role="bold">-</emphasis> sign.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-signer filename</emphasis>, <emphasis role="bold">-signkey filename</emphasis></term>
+            <listitem>
+              <para>
+		Sign the OCSP request using the certificate specified in
+		the <emphasis role="bold">signer</emphasis> option and the
+		private key specified by the <emphasis role="bold">signkey</emphasis> option. If the <emphasis role="bold">signkey</emphasis> option is not present then
+		the private key is read from the same file as the
+		certificate. If neither option is specified then the OCSP
+		request is not signed.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-sign_other filename</emphasis></term>
+            <listitem>
+              <para>
+		Additional certificates to include in the signed request.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-nonce</emphasis>, <emphasis role="bold">-no_nonce</emphasis></term>
+            <listitem>
+              <para>
+		Add an OCSP nonce extension to a request or disable OCSP
+		nonce addition. Normally if an OCSP request is input using
+		the <emphasis role="bold">reqin</emphasis> option no nonce
+		is added: using the <emphasis role="bold">nonce</emphasis>
+		option will force addition of a nonce. If an OCSP request
+		is being created (using <emphasis role="bold">cert</emphasis> and <emphasis role="bold">serial</emphasis> options) a nonce is
+		automatically added specifying <emphasis role="bold">no_nonce</emphasis> overrides this.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-req_text</emphasis>, <emphasis role="bold">-resp_text</emphasis>, <emphasis role="bold">-text</emphasis></term>
+            <listitem>
+              <para>
+		print out the text form of the OCSP request, response or
+		both respectively.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-reqout file</emphasis>, <emphasis role="bold">-respout file</emphasis></term>
+            <listitem>
+              <para>
+		write out the DER encoded certificate request or response
+		to <emphasis role="bold">file</emphasis>.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-reqin file</emphasis>, <emphasis role="bold">-respin file</emphasis></term>
+            <listitem>
+              <para>
+		read OCSP request or response file from <emphasis role="bold">file</emphasis>. These option are ignored if
+		OCSP request or response creation is implied by other
+		options (for example with <emphasis role="bold">serial</emphasis>, <emphasis role="bold">cert</emphasis> and <emphasis role="bold">host</emphasis> options).
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-url responder_url</emphasis></term>
+            <listitem>
+              <para>
+		specify the responder URL. Both HTTP and HTTPS (SSL/TLS)
+		URLs can be specified.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-host hostname:port</emphasis>, <emphasis role="bold">-path pathname</emphasis></term>
+            <listitem>
+              <para>
+		if the <emphasis role="bold">host</emphasis> option is
+		present then the OCSP request is sent to the host <emphasis role="bold">hostname</emphasis> on port <emphasis role="bold">port</emphasis>. <emphasis role="bold">path</emphasis> specifies the HTTP path name to
+		use or "/" by default.	This is equivalent to specifying
+		<emphasis role="bold">-url</emphasis> with scheme http://
+		and the given hostname, port, and pathname.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-header name=value</emphasis></term>
+            <listitem>
+              <para>
+		Adds the header <emphasis role="bold">name</emphasis> with
+		the specified <emphasis role="bold">value</emphasis> to the
+		OCSP request that is sent to the responder. This may be
+		repeated.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-timeout seconds</emphasis></term>
+            <listitem>
+              <para>
+		connection timeout to the OCSP responder in seconds
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-CAfile file</emphasis>, <emphasis role="bold">-CApath pathname</emphasis></term>
+            <listitem>
+              <para>
+		file or pathname containing trusted CA certificates. These
+		are used to verify the signature on the OCSP response.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-no-CAfile</emphasis></term>
+            <listitem>
+              <para>
+		Do not load the trusted CA certificates from the default
+		file location
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-no-CApath</emphasis></term>
+            <listitem>
+              <para>
+		Do not load the trusted CA certificates from the default
+		directory location
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-attime</emphasis>, <emphasis role="bold">-check_ss_sig</emphasis>, <emphasis role="bold">-crl_check</emphasis>, <emphasis role="bold">-crl_check_all</emphasis>,
 <emphasis role="bold">-explicit_policy</emphasis>, <emphasis role="bold">-extended_crl</emphasis>, <emphasis role="bold">-ignore_critical</emphasis>, <emphasis role="bold">-inhibit_any</emphasis>,
 <emphasis role="bold">-inhibit_map</emphasis>, <emphasis role="bold">-no_alt_chains</emphasis>, <emphasis role="bold">-no_check_time</emphasis>, <emphasis role="bold">-partial_chain</emphasis>, <emphasis role="bold">-policy</emphasis>,
 <emphasis role="bold">-policy_check</emphasis>, <emphasis role="bold">-policy_print</emphasis>, <emphasis role="bold">-purpose</emphasis>, <emphasis role="bold">-suiteB_128</emphasis>,
 <emphasis role="bold">-suiteB_128_only</emphasis>, <emphasis role="bold">-suiteB_192</emphasis>, <emphasis role="bold">-trusted_first</emphasis>, <emphasis role="bold">-use_deltas</emphasis>,
 <emphasis role="bold">-auth_level</emphasis>, <emphasis role="bold">-verify_depth</emphasis>, <emphasis role="bold">-verify_email</emphasis>, <emphasis role="bold">-verify_hostname</emphasis>,
 <emphasis role="bold">-verify_ip</emphasis>, <emphasis role="bold">-verify_name</emphasis>, <emphasis role="bold">-x509_strict</emphasis></term>
-          <listitem>
-            <para>
-	      Set different certificate verification options. See
-	      <citerefentry> <refentrytitle>verify</refentrytitle>
-	      <manvolnum>1</manvolnum> </citerefentry> manual page for
-	      details.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-verify_other file</emphasis></term>
-          <listitem>
-            <para>
-	      file containing additional certificates to search when
-	      attempting to locate the OCSP response signing certificate.
-	      Some responders omit the actual signer's certificate from the
-	      response: this option can be used to supply the necessary
-	      certificate in such cases.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-trust_other</emphasis></term>
-          <listitem>
-            <para>
-	      the certificates specified by the <emphasis role="bold">-verify_other</emphasis> option should be
-	      explicitly trusted and no additional checks will be performed
-	      on them. This is useful when the complete responder
-	      certificate chain is not available or trusting a root CA is
-	      not appropriate.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-VAfile file</emphasis></term>
-          <listitem>
-            <para>
-	      file containing explicitly trusted responder certificates.
-	      Equivalent to the <emphasis role="bold">-verify_other</emphasis> and <emphasis role="bold">-trust_other</emphasis> options.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-noverify</emphasis></term>
-          <listitem>
-            <para>
-	      don't attempt to verify the OCSP response signature or the
-	      nonce values. This option will normally only be used for
-	      debugging since it disables all verification of the
-	      responders certificate.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-no_intern</emphasis></term>
-          <listitem>
-            <para>
-	      ignore certificates contained in the OCSP response when
-	      searching for the signers certificate. With this option the
-	      signers certificate must be specified with either the
-	      <emphasis role="bold">-verify_other</emphasis> or <emphasis role="bold">-VAfile</emphasis> options.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-no_signature_verify</emphasis></term>
-          <listitem>
-            <para>
-	      don't check the signature on the OCSP response. Since this
-	      option tolerates invalid signatures on OCSP responses it will
-	      normally only be used for testing purposes.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-no_cert_verify</emphasis></term>
-          <listitem>
-            <para>
-	      don't verify the OCSP response signers certificate at all.
-	      Since this option allows the OCSP response to be signed by
-	      any certificate it should only be used for testing purposes.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-no_chain</emphasis></term>
-          <listitem>
-            <para>
-	      do not use certificates in the response as additional
-	      untrusted CA certificates.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-no_explicit</emphasis></term>
-          <listitem>
-            <para>
-	      do not explicitly trust the root CA if it is set to be
-	      trusted for OCSP signing.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-no_cert_checks</emphasis></term>
-          <listitem>
-            <para>
-	      don't perform any additional checks on the OCSP response
-	      signers certificate. That is do not make any checks to see if
-	      the signers certificate is authorised to provide the
-	      necessary status information: as a result this option should
-	      only be used for testing purposes.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-validity_period nsec</emphasis>, <emphasis role="bold">-status_age age</emphasis></term>
-          <listitem>
-            <para>
-	      these options specify the range of times, in seconds, which
-	      will be tolerated in an OCSP response. Each certificate
-	      status response includes a <emphasis role="bold">notBefore</emphasis> time and an optional
-	      <emphasis role="bold">notAfter</emphasis> time. The current
-	      time should fall between these two values, but the interval
-	      between the two times may be only a few seconds. In practice
-	      the OCSP responder and clients clocks may not be precisely
-	      synchronised and so such a check may fail. To avoid this the
-	      <emphasis role="bold">-validity_period</emphasis> option can
-	      be used to specify an acceptable error range in seconds, the
-	      default value is 5 minutes.
-            </para>
-            <para>
-	      If the <emphasis role="bold">notAfter</emphasis> time is
-	      omitted from a response then this means that new status
-	      information is immediately available. In this case the age of
-	      the <emphasis role="bold">notBefore</emphasis> field is
-	      checked to see it is not older than <emphasis role="bold">age</emphasis> seconds old. By default this
-	      additional check is not performed.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-[digest]</emphasis></term>
-          <listitem>
-            <para>
-	      this option sets digest algorithm to use for certificate
-	      identification in the OCSP request. Any digest supported by
-	      the OpenSSL <emphasis role="bold">dgst</emphasis> command can
-	      be used. The default is SHA-1. This option may be used
-	      multiple times to specify the digest used by subsequent
-	      certificate identifiers.
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </para>
-  </refsection>
-  <refsection xml:id="ID-633019bd1b75bd3896854cbbd46a2603"><title>OCSP SERVER OPTIONS</title>
-    <para>
-      <variablelist>
-        <varlistentry>
-          <term><emphasis role="bold">-index indexfile</emphasis></term>
-          <listitem>
-            <para>
-	      <emphasis role="bold">indexfile</emphasis> is a text index
-	      file in <emphasis role="bold">ca</emphasis> format containing
-	      certificate revocation information.
-            </para>
-            <para>
-	      If the <emphasis role="bold">index</emphasis> option is
-	      specified the <emphasis role="bold">ocsp</emphasis> utility
-	      is in responder mode, otherwise it is in client mode. The
-	      request(s) the responder processes can be either specified on
-	      the command line (using <emphasis role="bold">issuer</emphasis> and <emphasis role="bold">serial</emphasis> options), supplied in a file
-	      (using the <emphasis role="bold">reqin</emphasis> option) or
-	      via external OCSP clients (if <emphasis role="bold">port</emphasis> or <emphasis role="bold">url</emphasis> is specified).
-            </para>
-            <para>
-	      If the <emphasis role="bold">index</emphasis> option is
-	      present then the <emphasis role="bold">CA</emphasis> and
-	      <emphasis role="bold">rsigner</emphasis> options must also be
-	      present.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-CA file</emphasis></term>
-          <listitem>
-            <para>
-	      CA certificate corresponding to the revocation information in
-	      <emphasis role="bold">indexfile</emphasis>.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-rsigner file</emphasis></term>
-          <listitem>
-            <para>
-	      The certificate to sign OCSP responses with.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-rother file</emphasis></term>
-          <listitem>
-            <para>
-	      Additional certificates to include in the OCSP response.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-resp_no_certs</emphasis></term>
-          <listitem>
-            <para>
-	      Don't include any certificates in the OCSP response.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-resp_key_id</emphasis></term>
-          <listitem>
-            <para>
-	      Identify the signer certificate using the key ID, default is
-	      to use the subject name.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-rkey file</emphasis></term>
-          <listitem>
-            <para>
-	      The private key to sign OCSP responses with: if not present
-	      the file specified in the <emphasis role="bold">rsigner</emphasis> option is used.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-port portnum</emphasis></term>
-          <listitem>
-            <para>
-	      Port to listen for OCSP requests on. The port may also be
-	      specified using the <emphasis role="bold">url</emphasis>
-	      option.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-nrequest number</emphasis></term>
-          <listitem>
-            <para>
-	      The OCSP server will exit after receiving <emphasis role="bold">number</emphasis> requests, default unlimited.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">-nmin minutes</emphasis>, <emphasis role="bold">-ndays days</emphasis></term>
-          <listitem>
-            <para>
-	      Number of minutes or days when fresh revocation information
-	      is available: used in the <emphasis role="bold">nextUpdate</emphasis> field. If neither option is
-	      present then the <emphasis role="bold">nextUpdate</emphasis>
-	      field is omitted meaning fresh revocation information is
-	      immediately available.
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </para>
+            <listitem>
+              <para>
+		Set different certificate verification options. See
+		<citerefentry> <refentrytitle>verify</refentrytitle>
+		<manvolnum>1</manvolnum> </citerefentry> manual page for
+		details.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-verify_other file</emphasis></term>
+            <listitem>
+              <para>
+		file containing additional certificates to search when
+		attempting to locate the OCSP response signing certificate.
+		Some responders omit the actual signer's certificate from
+		the response: this option can be used to supply the
+		necessary certificate in such cases.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-trust_other</emphasis></term>
+            <listitem>
+              <para>
+		the certificates specified by the <emphasis role="bold">-verify_other</emphasis> option should be
+		explicitly trusted and no additional checks will be
+		performed on them. This is useful when the complete
+		responder certificate chain is not available or trusting a
+		root CA is not appropriate.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-VAfile file</emphasis></term>
+            <listitem>
+              <para>
+		file containing explicitly trusted responder certificates.
+		Equivalent to the <emphasis role="bold">-verify_other</emphasis> and <emphasis role="bold">-trust_other</emphasis> options.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-noverify</emphasis></term>
+            <listitem>
+              <para>
+		don't attempt to verify the OCSP response signature or the
+		nonce values. This option will normally only be used for
+		debugging since it disables all verification of the
+		responders certificate.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-no_intern</emphasis></term>
+            <listitem>
+              <para>
+		ignore certificates contained in the OCSP response when
+		searching for the signers certificate. With this option the
+		signers certificate must be specified with either the
+		<emphasis role="bold">-verify_other</emphasis> or <emphasis role="bold">-VAfile</emphasis> options.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-no_signature_verify</emphasis></term>
+            <listitem>
+              <para>
+		don't check the signature on the OCSP response. Since this
+		option tolerates invalid signatures on OCSP responses it
+		will normally only be used for testing purposes.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-no_cert_verify</emphasis></term>
+            <listitem>
+              <para>
+		don't verify the OCSP response signers certificate at all.
+		Since this option allows the OCSP response to be signed by
+		any certificate it should only be used for testing
+		purposes.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-no_chain</emphasis></term>
+            <listitem>
+              <para>
+		do not use certificates in the response as additional
+		untrusted CA certificates.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-no_explicit</emphasis></term>
+            <listitem>
+              <para>
+		do not explicitly trust the root CA if it is set to be
+		trusted for OCSP signing.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-no_cert_checks</emphasis></term>
+            <listitem>
+              <para>
+		don't perform any additional checks on the OCSP response
+		signers certificate. That is do not make any checks to see
+		if the signers certificate is authorised to provide the
+		necessary status information: as a result this option
+		should only be used for testing purposes.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-validity_period nsec</emphasis>, <emphasis role="bold">-status_age age</emphasis></term>
+            <listitem>
+              <para>
+		these options specify the range of times, in seconds, which
+		will be tolerated in an OCSP response. Each certificate
+		status response includes a <emphasis role="bold">notBefore</emphasis> time and an optional
+		<emphasis role="bold">notAfter</emphasis> time. The current
+		time should fall between these two values, but the interval
+		between the two times may be only a few seconds. In
+		practice the OCSP responder and clients clocks may not be
+		precisely synchronised and so such a check may fail. To
+		avoid this the <emphasis role="bold">-validity_period</emphasis> option can be used
+		to specify an acceptable error range in seconds, the
+		default value is 5 minutes.
+              </para>
+              <para>
+		If the <emphasis role="bold">notAfter</emphasis> time is
+		omitted from a response then this means that new status
+		information is immediately available. In this case the age
+		of the <emphasis role="bold">notBefore</emphasis> field is
+		checked to see it is not older than <emphasis role="bold">age</emphasis> seconds old. By default this
+		additional check is not performed.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-[digest]</emphasis></term>
+            <listitem>
+              <para>
+		this option sets digest algorithm to use for certificate
+		identification in the OCSP request. Any digest supported by
+		the OpenSSL <emphasis role="bold">dgst</emphasis> command
+		can be used. The default is SHA-1. This option may be used
+		multiple times to specify the digest used by subsequent
+		certificate identifiers.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </para>
+    </refsection>
+    <refsection xml:id="ID-3433bcc00c1b8d96ca35cc9fe6a347ce"><title>OCSP Server Options</title>
+      <para>
+        <variablelist>
+          <varlistentry>
+            <term><emphasis role="bold">-index indexfile</emphasis></term>
+            <listitem>
+              <para>
+		<emphasis role="bold">indexfile</emphasis> is a text index
+		file in <emphasis role="bold">ca</emphasis> format
+		containing certificate revocation information.
+              </para>
+              <para>
+		If the <emphasis role="bold">index</emphasis> option is
+		specified the <emphasis role="bold">ocsp</emphasis> utility
+		is in responder mode, otherwise it is in client mode. The
+		request(s) the responder processes can be either specified
+		on the command line (using <emphasis role="bold">issuer</emphasis> and <emphasis role="bold">serial</emphasis> options), supplied in a file
+		(using the <emphasis role="bold">reqin</emphasis> option)
+		or via external OCSP clients (if <emphasis role="bold">port</emphasis> or <emphasis role="bold">url</emphasis> is specified).
+              </para>
+              <para>
+		If the <emphasis role="bold">index</emphasis> option is
+		present then the <emphasis role="bold">CA</emphasis> and
+		<emphasis role="bold">rsigner</emphasis> options must also
+		be present.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-CA file</emphasis></term>
+            <listitem>
+              <para>
+		CA certificate corresponding to the revocation information
+		in <emphasis role="bold">indexfile</emphasis>.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-rsigner file</emphasis></term>
+            <listitem>
+              <para>
+		The certificate to sign OCSP responses with.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-rother file</emphasis></term>
+            <listitem>
+              <para>
+		Additional certificates to include in the OCSP response.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-resp_no_certs</emphasis></term>
+            <listitem>
+              <para>
+		Don't include any certificates in the OCSP response.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-resp_key_id</emphasis></term>
+            <listitem>
+              <para>
+		Identify the signer certificate using the key ID, default
+		is to use the subject name.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-rkey file</emphasis></term>
+            <listitem>
+              <para>
+		The private key to sign OCSP responses with: if not present
+		the file specified in the <emphasis role="bold">rsigner</emphasis> option is used.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-port portnum</emphasis></term>
+            <listitem>
+              <para>
+		Port to listen for OCSP requests on. The port may also be
+		specified using the <emphasis role="bold">url</emphasis>
+		option.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-nrequest number</emphasis></term>
+            <listitem>
+              <para>
+		The OCSP server will exit after receiving <emphasis role="bold">number</emphasis> requests, default unlimited.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term><emphasis role="bold">-nmin minutes</emphasis>, <emphasis role="bold">-ndays days</emphasis></term>
+            <listitem>
+              <para>
+		Number of minutes or days when fresh revocation information
+		is available: used in the <emphasis role="bold">nextUpdate</emphasis> field. If neither option
+		is present then the <emphasis role="bold">nextUpdate</emphasis> field is omitted meaning
+		fresh revocation information is immediately available.
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </para>
+    </refsection>
   </refsection>
   <refsection xml:id="ID-1d43fde95dcb8d7ed214a71f02127340"><title>OCSP Response verification.</title>
     <para>

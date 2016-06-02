@@ -7,6 +7,9 @@
     <refname>crypto</refname>
 <refpurpose>OpenSSL cryptographic library</refpurpose>
   </refnamediv>
+  <refsynopsisdiv>
+<synopsis>See the individual manual pages for details.</synopsis>
+  </refsynopsisdiv>
   <refsection xml:id="ID-25c58bb7dd7ff192f27ceccbfdbe2d49"><title>DESCRIPTION</title>
     <para>
       The OpenSSL <emphasis role="bold">crypto</emphasis> library
@@ -16,8 +19,6 @@
       also been used to implement SSH, OpenPGP, and other cryptographic
       standards.
     </para>
-  </refsection>
-  <refsection xml:id="ID-731012800aeb32ba5233983f22f0c076"><title>OVERVIEW</title>
     <para>
       <emphasis role="bold">libcrypto</emphasis> consists of a number of
       sub-libraries that implement the individual algorithms.
@@ -27,9 +28,6 @@
       cryptography and key agreement, certificate handling, cryptographic
       hash functions, cryptographic pseudo-random number generator, and
       various utilities.
-    </para>
-    <para>
-      See the individual manual pages for details.
     </para>
   </refsection>
   <refsection xml:id="ID-39b7f8beb117678a10ee65852d4b9ed5"><title>NOTES</title>
@@ -49,6 +47,11 @@ int X509_add1_trust_object(X509 *x, ASN1_OBJECT *obj);</screen>
       supplied structure pointer (or in some cases increases its link
       count) in the parent and so both (<emphasis role="bold">x</emphasis>
       and <emphasis role="bold">obj</emphasis> above) should be freed up.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-ccc489bd6055eb7eb2bbec195715df33"><title>RETURN VALUES</title>
+    <para>
+      See the individual manual pages for details.
     </para>
   </refsection>
   <refsection xml:id="ID-529f439fc4821bdc86343c4c4cfd769e"><title>SEE ALSO</title>

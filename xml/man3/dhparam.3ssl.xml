@@ -105,7 +105,8 @@
           <term><emphasis role="bold">-check</emphasis></term>
           <listitem>
             <para>
-	      check if the parameters are valid primes and generator.
+	      Performs numerous checks to see if the supplied parameters
+	      are valid and displays a warning if not.
             </para>
           </listitem>
         </varlistentry>

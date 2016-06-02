@@ -143,6 +143,7 @@ is large), or <replaceable>dont</replaceable> (do not set DF flag).
  <varlistentry>  <term><option>-N <replaceable>nodeinfo_option</replaceable></option></term>
   <listitem><para><command>ping6</command> only.
 Send ICMPv6 Node Information Queries (RFC4620), instead of Echo Request.
+<constant>CAP_NET_RAW</constant> capability is required.
    <variablelist>    <varlistentry>     <term><option>help</option></term>
      <listitem><para>Show help for NI support.</para></listitem>
     </varlistentry>
@@ -469,7 +470,11 @@ broadcast address should only be done under very controlled conditions.
 
 <refsect1><title>SECURITY</title>
 <para><command>ping</command> requires <constant>CAP_NET_RAW</constant> capability
-to be executed. It may be used as set-uid root.</para></refsect1>
+to be executed 1) if the program is used for non-echo queries
+(See <option>-N</option> option), or 2) if kernel does not
+support non-raw ICMP sockets, or 3) if the user is not allowed
+to create an ICMP echo socket.  The program may be used as
+set-uid root.</para></refsect1>
 
 <refsect1><title>AVAILABILITY</title>
 <para><command>ping</command> is part of <filename>iputils</filename> package

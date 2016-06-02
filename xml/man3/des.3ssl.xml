@@ -270,8 +270,9 @@ char *DES_crypt(const char *buf, const char *salt);</synopsis>
     <para>
       DES_crypt() is a faster replacement for the normal system crypt().
       This function calls DES_fcrypt() with a static array passed as the
-      third parameter.	This emulates the normal non-thread safe semantics
-      of crypt(3).
+      third parameter.	This mostly emulates the normal non-thread-safe
+      semantics of crypt(3). The <emphasis role="bold">salt</emphasis> must
+      be two ASCII characters.
     </para>
     <para>
       DES_enc_write() writes <emphasis role="italic">len</emphasis> bytes
@@ -309,16 +310,11 @@ char *DES_crypt(const char *buf, const char *salt);</synopsis>
       function. The same applies for DES_string_to_2key().
     </para>
   </refsection>
-  <refsection xml:id="ID-f812910377d0f59cb508383d220459fa"><title>CONFORMING TO</title>
-    <para>
-      ANSI X3.106
-    </para>
+  <refsection xml:id="ID-6fce7ee84a06d0e2339437b1be74c10b"><title>NOTES</title>
     <para>
       The <emphasis role="bold">des</emphasis> library was written to be
       source code compatible with the MIT Kerberos library.
     </para>
-  </refsection>
-  <refsection xml:id="ID-6fce7ee84a06d0e2339437b1be74c10b"><title>NOTES</title>
     <para>
       Applications should use the higher level functions <citerefentry>
       <refentrytitle>EVP_EncryptInit</refentrytitle>
@@ -330,6 +326,16 @@ char *DES_crypt(const char *buf, const char *salt);</synopsis>
       not suitable for most applications; see <citerefentry>
       <refentrytitle>des_modes</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-8d9dbcc4de4383dd8020116b24d4225c"><title>HISTORY</title>
+    <para>
+      The requirement that the <emphasis role="bold">salt</emphasis>
+      parameter to DES_crypt() and DES_fcrypt() be two ASCII characters was
+      first enforced in OpenSSL 1.1.0.	Previous versions tried to use the
+      letter uppercase <emphasis role="bold">A</emphasis> if both character
+      were not present, and could crash when given non-ASCII on some
+      platforms.
     </para>
   </refsection>
   <refsection xml:id="ID-5f7ea4ec7fa756a6e799cbae85189b18"><title>SEE ALSO</title>

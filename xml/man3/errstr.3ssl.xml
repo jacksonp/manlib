@@ -18,6 +18,11 @@
       second colon.
     </para>
   </refsection>
+  <refsection xml:id="ID-d2aed5c514a71edbeae44e8de22d2067"><title>COMMAND OPTIONS</title>
+    <para>
+      None.
+    </para>
+  </refsection>
   <refsection xml:id="ID-c6763eaa173cf86afd67412f0b363714"><title>EXAMPLE</title>
     <para>
       The error code:

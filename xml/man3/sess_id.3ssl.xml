@@ -27,6 +27,8 @@
       knowledge of the SSL protocol to use properly, most users will not
       need to use it.
     </para>
+  </refsection>
+  <refsection xml:id="ID-07a5b2bd40906e17453e461782b23bcd"><title>COMMAND OPTIONS</title>
     <para>
       <variablelist>
         <varlistentry>
