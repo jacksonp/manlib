@@ -22,7 +22,11 @@ int EVP_PKEY_cmp(const EVP_PKEY *a, const EVP_PKEY *b);</synopsis>
     </para>
     <para>
       The function EVP_PKEY_copy_parameters() copies the parameters from
-      key <emphasis role="bold">from</emphasis> to key <emphasis role="bold">to</emphasis>.
+      key <emphasis role="bold">from</emphasis> to key <emphasis role="bold">to</emphasis>. An error is returned if the parameters are
+      missing in <emphasis role="bold">from</emphasis> or present in both
+      <emphasis role="bold">from</emphasis> and <emphasis role="bold">to</emphasis> and mismatch. If the parameters in
+      <emphasis role="bold">from</emphasis> and <emphasis role="bold">to</emphasis> are both present and match this function
+      has no effect.
     </para>
     <para>
       The function EVP_PKEY_cmp_parameters() compares the parameters of

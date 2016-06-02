@@ -1,0 +1,53 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>SSL_SESSION_get_protocol_version.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>SSL_SESSION_get_protocol_version</refname>
+<refpurpose>retrieve session protocol version</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
+<synopsis>int SSL_SESSION_get_protocol_version(const SSL_SESSION *s);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-52d8d63a60c1f9183c54afa97b431aca"><title>DESCRIPTION</title>
+    <para>
+      SSL_SESSION_get_protocol_version() returns the protocol version
+      number used by session <emphasis role="bold">s</emphasis>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-35d9d8c748c9e3f56484005a742a5149"><title>RETURN VALUES</title>
+    <para>
+      SSL_SESSION_get_protocol_version() returns a number indicating the
+      protocol version used for the session; this number matches the
+      constants <emphasis role="italic">e.g.</emphasis> <emphasis role="bold">TLS1_VERSION</emphasis> or <emphasis role="bold">TLS1_2_VERSION</emphasis>.
+    </para>
+    <para>
+      Note that the SSL_SESSION_get_protocol_version() function does
+      <emphasis role="bold">not</emphasis> perform a null check on the
+      provided session <emphasis role="bold">s</emphasis> pointer.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-4410b7076d4a4bbd85ce35c8938c163a"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ssl</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-7e0c98f17571225cbf71289da8932de4"><title>HISTORY</title>
+    <para>
+      SSL_SESSION_get_protocol_version() was first added to OpenSSL 1.1.0
+    </para>
+  </refsection>
+  <refsection xml:id="ID-72a1b3da8e77785e4c36df97ad98db38"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2001-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

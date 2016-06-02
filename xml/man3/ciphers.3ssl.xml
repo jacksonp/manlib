@@ -940,6 +940,13 @@ TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256      ECDHE-PSK-CHACHA20-POLY1305
 TLS_DHE_PSK_WITH_CHACHA20_POLY1305_SHA256        DHE-PSK-CHACHA20-POLY1305
 TLS_RSA_PSK_WITH_CHACHA20_POLY1305_SHA256        RSA-PSK-CHACHA20-POLY1305</screen>
     </refsection>
+    <refsection xml:id="ID-72df079281dc0087775c8315a577545b"><title>Older names used by OpenSSL</title>
+      <para>
+	The following names are accepted by older releases:
+      </para>
+      <screen>SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA    EDH-RSA-DES-CBC3-SHA (DHE-RSA-DES-CBC3-SHA)
+SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA    EDH-DSS-DES-CBC3-SHA (DHE-DSS-DES-CBC3-SHA)</screen>
+    </refsection>
   </refsection>
   <refsection xml:id="ID-404ed8c02b9d8d9ffe39ed38e6b979cb"><title>NOTES</title>
     <para>
