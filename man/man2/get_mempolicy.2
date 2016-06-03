@@ -32,7 +32,7 @@ get_mempolicy \- retrieve NUMA memory policy for a thread
 .nf
 .sp
 .BI "int get_mempolicy(int *" mode ", unsigned long *" nodemask ,
-.BI "                  unsigned long " maxnode ", unsigned long " addr ,
+.BI "                  unsigned long " maxnode ", void *" addr ,
 .BI "                  unsigned long " flags );
 .sp
 Link with \fI\-lnuma\fP.
@@ -120,7 +120,7 @@ is, the maximum node ID plus one.
 The value specified by
 .I maxnode
 is always rounded to a multiple of
-.IR "sizeof(unsigned long)" .
+.IR "sizeof(unsigned\ long)*8" .
 
 If
 .I flags
