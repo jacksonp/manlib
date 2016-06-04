@@ -842,7 +842,7 @@ edit ~/.gitconfig to specify your account settings:</simpara>
         smtpServer = smtp.gmail.com
         smtpUser = yourname@gmail.com
         smtpServerPort = 587</literallayout>
-<simpara>If you have multifactor authentication setup on your gmail acocunt, you will
+<simpara>If you have multifactor authentication setup on your gmail account, you will
 need to generate an app-specific password for use with <emphasis>git send-email</emphasis>. Visit
 <ulink url="https://security.google.com/settings/security/apppasswords">https://security.google.com/settings/security/apppasswords</ulink> to setup an
 app-specific password.  Once setup, you can store it with the credentials
