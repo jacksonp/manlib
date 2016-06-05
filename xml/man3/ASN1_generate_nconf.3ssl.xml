@@ -9,8 +9,8 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/asn1.h&gt;</synopsis>
-<synopsis>ASN1_TYPE *ASN1_generate_nconf(char *str, CONF *nconf);
-ASN1_TYPE *ASN1_generate_v3(char *str, X509V3_CTX *cnf);</synopsis>
+<synopsis>ASN1_TYPE *ASN1_generate_nconf(const char *str, CONF *nconf);
+ASN1_TYPE *ASN1_generate_v3(const char *str, X509V3_CTX *cnf);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-10be80873723fd0eb0ac1ae20200021e"><title>DESCRIPTION</title>
     <para>
