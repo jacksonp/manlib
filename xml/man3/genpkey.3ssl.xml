@@ -116,7 +116,7 @@
           <listitem>
             <para>
 	      generate a set of parameters instead of a private key. If
-	      used this option must precede and <emphasis role="bold">-algorithm</emphasis>, <emphasis role="bold">-paramfile</emphasis> or <emphasis role="bold">-pkeyopt</emphasis> options.
+	      used this option must precede any <emphasis role="bold">-algorithm</emphasis>, <emphasis role="bold">-paramfile</emphasis> or <emphasis role="bold">-pkeyopt</emphasis> options.
             </para>
           </listitem>
         </varlistentry>
@@ -128,7 +128,7 @@
 	      set of parameters. They can be supplied using this option. If
 	      this option is used the public key algorithm used is
 	      determined by the parameters. If used this option must
-	      precede and <emphasis role="bold">-pkeyopt</emphasis>
+	      precede any <emphasis role="bold">-pkeyopt</emphasis>
 	      options. The options <emphasis role="bold">-paramfile</emphasis> and <emphasis role="bold">-algorithm</emphasis> are mutually exclusive.
             </para>
           </listitem>

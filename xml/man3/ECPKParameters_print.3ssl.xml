@@ -1,0 +1,61 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>ECPKParameters_print.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>ECPKParameters_print, ECPKParameters_print_fp</refname>
+<refpurpose>Functions for decoding and encoding ASN1 representations of elliptic curve entities</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ec.h&gt;</synopsis>
+<synopsis>int ECPKParameters_print(BIO *bp, const EC_GROUP *x, int off);
+int ECPKParameters_print_fp(FILE *fp, const EC_GROUP *x, int off);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-45b2da5ae37762d8545f2c7beefabd6d"><title>DESCRIPTION</title>
+    <para>
+      The ECPKParameters represent the public parameters for an <emphasis role="bold">EC_GROUP</emphasis> structure, which represents a curve.
+    </para>
+    <para>
+      The ECPKParameters_print() and ECPKParameters_print_fp() functions
+      print a human-readable output of the public parameters of the
+      EC_GROUP to <emphasis role="bold">bp</emphasis> or <emphasis role="bold">fp</emphasis>. The output lines are indented by <emphasis role="bold">off</emphasis> spaces.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-1acc4898443a6bcc0368172b22ee0718"><title>RETURN VALUES</title>
+    <para>
+      ECPKParameters_print() and ECPKParameters_print_fp() return 1 for
+      success and 0 if an error occurs.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-a6e04c7c6543551b228ba9aaefb0690f"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>crypto</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>ec</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>EC_GROUP_new</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>EC_GROUP_copy</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>EC_POINT_new</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>EC_POINT_add</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>EC_KEY_new</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>EC_GFp_simple_method</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>,
+    </para>
+  </refsection>
+  <refsection xml:id="ID-c9f450808a04420a72aaaa00f32bb352"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2013-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

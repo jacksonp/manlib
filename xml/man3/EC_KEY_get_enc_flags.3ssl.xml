@@ -1,0 +1,81 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>EC_KEY_get_enc_flags.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>EC_KEY_get_enc_flags, EC_KEY_set_enc_flags</refname>
+<refpurpose>Get and set flags for encoding EC_KEY structures</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ec.h&gt;</synopsis>
+<synopsis>unsigned int EC_KEY_get_enc_flags(const EC_KEY *key);
+void EC_KEY_set_enc_flags(EC_KEY *eckey, unsigned int flags);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-e3dddf3dd15b6a05a776aa6a52544de3"><title>DESCRIPTION</title>
+    <para>
+      The format of the external representation of the public key written
+      by i2d_ECPrivateKey() (such as whether it is stored in a compressed
+      form or not) is described by the point_conversion_form. See
+      <citerefentry> <refentrytitle>EC_GROUP_copy</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> for a description of
+      point_conversion_form.
+    </para>
+    <para>
+      When reading a private key encoded without an associated public key
+      (e.g. if EC_PKEY_NO_PUBKEY has been used - see below), then
+      d2i_ECPrivateKey() generates the missing public key automatically.
+      Private keys encoded without parameters (e.g. if
+      EC_PKEY_NO_PARAMETERS has been used - see below) cannot be loaded
+      using d2i_ECPrivateKey().
+    </para>
+    <para>
+      The functions EC_KEY_get_enc_flags() and EC_KEY_set_enc_flags() get
+      and set the value of the encoding flags for the <emphasis role="bold">key</emphasis>. There are two encoding flags currently
+      defined - EC_PKEY_NO_PARAMETERS and EC_PKEY_NO_PUBKEY.  These flags
+      define the behaviour of how the  <emphasis role="bold">key</emphasis>
+      is converted into ASN1 in a call to i2d_ECPrivateKey(). If
+      EC_PKEY_NO_PARAMETERS is set then the public parameters for the curve
+      are not encoded along with the private key. If EC_PKEY_NO_PUBKEY is
+      set then the public key is not encoded along with the private key.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-cc366da8a855f9021baa511623c8f1d8"><title>RETURN VALUES</title>
+    <para>
+      EC_KEY_get_enc_flags() returns the value of the current encoding
+      flags for the EC_KEY.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-faaeb31d0aaea9ba5aae12adc4680aac"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>crypto</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>ec</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>EC_GROUP_new</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>EC_GROUP_copy</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>EC_POINT_new</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>EC_POINT_add</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>EC_GFp_simple_method</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>d2i_ECPKParameters</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>d2i_ECPrivateKey</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-36825f1e63ace46589440a1fc11b6e6a"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

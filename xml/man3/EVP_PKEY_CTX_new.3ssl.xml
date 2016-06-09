@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>EVP_PKEY_CTX_new, EVP_PKEY_CTX_new_id, EVP_PKEY_CTX_dup, EVP_PKEY_CTX_free</refname>
-<refpurpose>public key algorithm context functions.</refpurpose>
+<refpurpose>public key algorithm context functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/evp.h&gt;</synopsis>

@@ -1,0 +1,38 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>X509_SIG_get0.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>X509_SIG_get0</refname>
+<refpurpose>Get DigestInfo functions</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
+<synopsis>void X509_SIG_get0(X509_ALGOR **palg, ASN1_OCTET_STRING **pdigest,
+                   X509_SIG *sig);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-7a40b46d43cf08e52b9595048c8fe404"><title>DESCRIPTION</title>
+    <para>
+      X509_SIG_get0() returns pointers to the algorithm identifier and
+      digest value in <emphasis role="bold">sig</emphasis>. These values
+      can then be examined or initialised.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-e9205e2e2a72c92fdbcd6a2a3e3cb103"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>d2i_X509</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-681830680098376e01fc482912dacf93"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2002-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

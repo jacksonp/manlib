@@ -14,33 +14,9 @@ int i2d_SSL_SESSION(SSL_SESSION *in, unsigned char **pp);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-9867e58d082db95db7ba9b6eaee6c128"><title>DESCRIPTION</title>
     <para>
-      d2i_SSL_SESSION() transforms the external ASN1 representation of an
-      SSL/TLS session, stored as binary data at location <emphasis role="bold">pp</emphasis> with length <emphasis role="bold">length</emphasis>, into an SSL_SESSION object.
-    </para>
-    <para>
-      i2d_SSL_SESSION() transforms the SSL_SESSION object <emphasis role="bold">in</emphasis> into the ASN1 representation and stores it
-      into the memory location pointed to by <emphasis role="bold">pp</emphasis>. The length of the resulting ASN1
-      representation is returned. If <emphasis role="bold">pp</emphasis> is
-      the NULL pointer, only the length is calculated and returned.
-    </para>
-  </refsection>
-  <refsection xml:id="ID-0c172c74dce5617e85ec3fda030f19e5"><title>NOTES</title>
-    <para>
-      The SSL_SESSION object is built from several malloc()ed parts, it can
-      therefore not be moved, copied or stored directly. In order to store
-      session data on disk or into a database, it must be transformed into
-      a binary ASN1 representation.
-    </para>
-    <para>
-      When using d2i_SSL_SESSION(), the SSL_SESSION object is automatically
-      allocated. The reference count is 1, so that the session must be
-      explicitly removed using <citerefentry>
-      <refentrytitle>SSL_SESSION_free</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, unless the SSL_SESSION
-      object is completely taken over, when being called inside the
-      get_session_cb() (see <citerefentry>
-      <refentrytitle>SSL_CTX_sess_set_get_cb</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>).
+      These functions decode and encode an SSL_SESSION object. For encoding
+      details see <citerefentry> <refentrytitle>d2i_X509</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>.
     </para>
     <para>
       SSL_SESSION objects keep internal link information about the session
@@ -48,20 +24,6 @@ int i2d_SSL_SESSION(SSL_SESSION *in, unsigned char **pp);</synopsis>
       cache. One SSL_SESSION object, regardless of its reference count,
       must therefore only be used with one SSL_CTX object (and the SSL
       objects created from this SSL_CTX object).
-    </para>
-    <para>
-      When using i2d_SSL_SESSION(), the memory location pointed to by
-      <emphasis role="bold">pp</emphasis> must be large enough to hold the
-      binary representation of the session. There is no known limit on the
-      size of the created ASN1 representation, so the necessary amount of
-      space should be obtained by first calling i2d_SSL_SESSION() with
-      <emphasis role="bold">pp=NULL</emphasis>, and obtain the size needed,
-      then allocate the memory and call i2d_SSL_SESSION() again. Note that
-      this will advance the value contained in <emphasis role="bold">*pp</emphasis> so it is necessary to save a copy of the
-      original allocation. For example: int i,j; char *p, *temp; i =
-      i2d_SSL_SESSION(sess, NULL); p = temp = malloc(i); j =
-      i2d_SSL_SESSION(sess, &amp;temp); assert(i == j); assert(p+i ==
-      temp);
     </para>
   </refsection>
   <refsection xml:id="ID-120c9e5775bd5c0cd5df9a7beaa77bd9"><title>RETURN VALUES</title>
@@ -82,7 +44,9 @@ int i2d_SSL_SESSION(SSL_SESSION *in, unsigned char **pp);</synopsis>
       <refentrytitle>SSL_SESSION_free</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_sess_set_get_cb</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>d2i_X509</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-4bcd9587ed5ff92fa7fbf02eec3cfff8"><title>COPYRIGHT</title>

@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>CMS_add1_signer, CMS_SignerInfo_sign</refname>
-<refpurpose>add a signer to a CMS_ContentInfo signed data structure.</refpurpose>
+<refpurpose>add a signer to a CMS_ContentInfo signed data structure</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/cms.h&gt;</synopsis>

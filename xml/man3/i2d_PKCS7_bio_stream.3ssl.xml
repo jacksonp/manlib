@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>i2d_PKCS7_bio_stream</refname>
-<refpurpose>output PKCS7 structure in BER format.</refpurpose>
+<refpurpose>output PKCS7 structure in BER format</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/pkcs7.h&gt;</synopsis>

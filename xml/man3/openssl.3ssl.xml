@@ -619,7 +619,7 @@ o  Time Stamp requests, generation and verification</screen>
   <refsection xml:id="ID-f2ccca47a7390facf64983b967b04e0f"><title>COMMAND OPTIONS</title>
     <para>
       Details of which options are available depend on the specific
-      command. This section desribes some common options with common
+      command. This section describes some common options with common
       behavior.
     </para>
     <refsection xml:id="ID-5b30247604cd973ea892cfdfe32d8b81"><title>Common Options</title>

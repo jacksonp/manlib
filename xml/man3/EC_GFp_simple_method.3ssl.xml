@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>EC_GFp_simple_method, EC_GFp_mont_method, EC_GFp_nist_method, EC_GFp_nistp224_method, EC_GFp_nistp256_method, EC_GFp_nistp521_method, EC_GF2m_simple_method, EC_METHOD_get_field_type</refname>
-<refpurpose>Functions for obtaining <emphasis role="bold">EC_METHOD</emphasis> objects.</refpurpose>
+<refpurpose>Functions for obtaining EC_METHOD objects</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ec.h&gt;</synopsis>

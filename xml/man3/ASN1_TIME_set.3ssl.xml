@@ -6,7 +6,7 @@
   <refnamediv>
     <refname>ASN1_TIME_set, ASN1_TIME_adj, ASN1_TIME_check, ASN1_TIME_set_string,
 ASN1_TIME_print, ASN1_TIME_diff</refname>
-<refpurpose>ASN.1 Time functions.</refpurpose>
+<refpurpose>ASN.1 Time functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>ASN1_TIME *ASN1_TIME_set(ASN1_TIME *s, time_t t);

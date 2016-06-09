@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>SMIME_read_PKCS7</refname>
-<refpurpose>parse S/MIME message.</refpurpose>
+<refpurpose>parse S/MIME message</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/pkcs7.h&gt;</synopsis>

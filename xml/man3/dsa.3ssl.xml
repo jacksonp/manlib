@@ -8,8 +8,7 @@
 <refpurpose>Digital Signature Algorithm</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/dsa.h&gt;
-#include &lt;openssl/engine.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/dsa.h&gt;</synopsis>
 <synopsis>DSA *  DSA_new(void);
 void   DSA_free(DSA *dsa);</synopsis>
 <synopsis>int    DSA_size(const DSA *dsa);</synopsis>

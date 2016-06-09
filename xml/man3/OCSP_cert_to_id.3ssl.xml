@@ -6,7 +6,7 @@
   <refnamediv>
     <refname>OCSP_cert_to_id, OCSP_cert_id_new, OCSP_CERTID_free, OCSP_id_issuer_cmp,
 OCSP_id_cmp, OCSP_id_get0_info</refname>
-<refpurpose>OCSP certificate ID utility functions.</refpurpose>
+<refpurpose>OCSP certificate ID utility functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ocsp.h&gt;</synopsis>

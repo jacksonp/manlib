@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>req</refname>
-<refpurpose>PKCS#10 certificate request and certificate generating utility.</refpurpose>
+<refpurpose>PKCS#10 certificate request and certificate generating utility</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis><emphasis role="bold">openssl</emphasis> <emphasis role="bold">req</emphasis>

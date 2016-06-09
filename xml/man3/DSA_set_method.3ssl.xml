@@ -9,8 +9,7 @@ DSA_set_method, DSA_new_method, DSA_OpenSSL</refname>
 <refpurpose>select DSA method</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/dsa.h&gt;
-#include &lt;openssl/engine.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/dsa.h&gt;</synopsis>
 <synopsis>void DSA_set_default_method(const DSA_METHOD *meth);</synopsis>
 <synopsis>const DSA_METHOD *DSA_get_default_method(void);</synopsis>
 <synopsis>int DSA_set_method(DSA *dsa, const DSA_METHOD *meth);</synopsis>

@@ -8,8 +8,7 @@
 <refpurpose>RSA public key cryptosystem</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/rsa.h&gt;
-#include &lt;openssl/engine.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/rsa.h&gt;</synopsis>
 <synopsis>RSA * RSA_new(void);
 void RSA_free(RSA *rsa);</synopsis>
 <synopsis>int RSA_public_encrypt(int flen, unsigned char *from,

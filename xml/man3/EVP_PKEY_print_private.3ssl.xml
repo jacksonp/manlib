@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>EVP_PKEY_print_public, EVP_PKEY_print_private, EVP_PKEY_print_params</refname>
-<refpurpose>public key algorithm printing routines.</refpurpose>
+<refpurpose>public key algorithm printing routines</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/evp.h&gt;</synopsis>

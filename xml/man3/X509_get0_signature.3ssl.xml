@@ -7,7 +7,7 @@
     <refname>X509_get0_signature, X509_get_signature_nid, X509_get0_tbs_sigalg,
 X509_REQ_get0_signature, X509_REQ_get_signature_nid, X509_CRL_get0_signature,
 X509_CRL_get_signature_nid</refname>
-<refpurpose>signature information.</refpurpose>
+<refpurpose>signature information</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>

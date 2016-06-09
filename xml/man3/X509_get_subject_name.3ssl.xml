@@ -8,7 +8,7 @@
 X509_set_issuer_name, X509_REQ_get_subject_name, X509_REQ_set_subject_name,
 X509_CRL_get_issuer, X509_CRL_set_issuer_name</refname>
 <refpurpose>get and set issuer or
-subject names.</refpurpose>
+subject names</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>

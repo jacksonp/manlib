@@ -4,20 +4,27 @@
     <refentrytitle>X509_get_extension_flags.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>X509_get_extension_flags, X509_get_key_usage, X509_get_extended_key_usage</refname>
-<refpurpose>retrieve certificate extension flags.</refpurpose>
+    <refname>X509_get_pathlen,
+X509_get_extension_flags, X509_get_key_usage, X509_get_extended_key_usage</refname>
+<refpurpose>retrieve certificate extension data</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509v3.h&gt;</synopsis>
-<synopsis>uint32_t X509_get_extension_flags(X509 *x);
+<synopsis>long X509_get_pathlen(X509 *x);
+uint32_t X509_get_extension_flags(X509 *x);
 uint32_t X509_get_key_usage(X509 *x);
 uint32_t X509_get_extended_key_usage(X509 *x);
 const ASN1_OCTET_STRING *X509_get0_subject_key_id(X509 *x);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-f0159d8fb27554ecaed5be0f48779d66"><title>DESCRIPTION</title>
     <para>
-      These functions retrieve flags related to commonly used certificate
-      extensions.
+      These functions retrieve information related to commonly used
+      certificate extensions.
+    </para>
+    <para>
+      X509_get_pathlen() retrieves the path length extension from a
+      certificate. This extension is used to limit the length of a cert
+      chain that may be issued from that CA.
     </para>
     <para>
       X509_get_extension_flags() retrieves general information about a
@@ -167,6 +174,10 @@ const ASN1_OCTET_STRING *X509_get0_subject_key_id(X509 *x);</synopsis>
   </refsection>
   <refsection xml:id="ID-5f40954d32c61db66d5d88ff6644c4f3"><title>RETURN VALUE</title>
     <para>
+      X509_get_pathlen() returns the path length value, or -1 if the
+      extension is not present.
+    </para>
+    <para>
       X509_get_extension_flags(), X509_get_key_usage() and
       X509_get_extended_key_usage() return sets of flags corresponding to
       the certificate extension values.
@@ -182,6 +193,11 @@ const ASN1_OCTET_STRING *X509_get0_subject_key_id(X509 *x);</synopsis>
     <para>
       <citerefentry> <refentrytitle>X509_check_purpose</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-112301aa5b38900c62ab1262e07ee776"><title>HISTORY</title>
+    <para>
+      X509_get_pathlen() was added in OpenSSL 1.1.0.
     </para>
   </refsection>
   <refsection xml:id="ID-b09517ebf2df4075bc728225959fe5b7"><title>COPYRIGHT</title>

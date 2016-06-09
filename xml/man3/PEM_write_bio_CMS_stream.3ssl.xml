@@ -5,11 +5,10 @@
   </refmeta>
   <refnamediv>
     <refname>PEM_write_bio_CMS_stream</refname>
-<refpurpose>output CMS_ContentInfo structure in PEM format.</refpurpose>
+<refpurpose>output CMS_ContentInfo structure in PEM format</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/cms.h&gt;
-#include &lt;openssl/pem.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/cms.h&gt;</synopsis>
 <synopsis>int PEM_write_bio_CMS_stream(BIO *out, CMS_ContentInfo *cms, BIO *data, int flags);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-3e8089a7e3cb3011589f394d09069f6a"><title>DESCRIPTION</title>

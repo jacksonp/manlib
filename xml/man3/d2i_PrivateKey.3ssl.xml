@@ -4,9 +4,9 @@
     <refentrytitle>d2i_PrivateKey.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>d2i_Private_key, d2i_AutoPrivateKey, i2d_PrivateKey</refname>
-<refpurpose>decode and encode
-functions for reading and saving EVP_PKEY structures.</refpurpose>
+    <refname>d2i_Private_key, d2i_AutoPrivateKey, i2d_PrivateKey,
+d2i_PrivateKey_bio, d2i_PrivateKey_fp</refname>
+<refpurpose>decode and encode functions for reading and saving EVP_PKEY structures</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/evp.h&gt;</synopsis>
@@ -15,6 +15,8 @@ functions for reading and saving EVP_PKEY structures.</refpurpose>
 EVP_PKEY *d2i_AutoPrivateKey(EVP_PKEY **a, const unsigned char **pp,
                              long length);
 int i2d_PrivateKey(EVP_PKEY *a, unsigned char **pp);</synopsis>
+<synopsis>EVP_PKEY *d2i_PrivateKey_bio(BIO *bp, EVP_PKEY **a);
+EVP_PKEY *d2i_PrivateKey_fp(FILE *fp, EVP_PKEY **a)</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-0a0491c3ba43e11c5dcbeb9acfc2d3f7"><title>DESCRIPTION</title>
     <para>
@@ -33,10 +35,9 @@ int i2d_PrivateKey(EVP_PKEY *a, unsigned char **pp);</synopsis>
       PKCS#8 unencrypted PrivateKeyInfo format.
     </para>
     <para>
-      These functions are similar to the d2i_X509() functions, and you
-      should refer to that page for a detailed description (see
+      These functions are similar to the d2i_X509() functions; see
       <citerefentry> <refentrytitle>d2i_X509</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>).
+      <manvolnum>3</manvolnum> </citerefentry>.
     </para>
   </refsection>
   <refsection xml:id="ID-3d56e46a159b5df48f35c698fe52eab2"><title>NOTES</title>

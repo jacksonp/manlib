@@ -4,19 +4,25 @@
     <refentrytitle>SSL_CTX_set_tlsext_status_cb.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_CTX_set_tlsext_status_cb, SSL_CTX_set_tlsext_status_arg,
-SSL_CTX_set_tlsext_status_type, SSL_set_tlsext_status_type,
-SSL_get_tlsext_status_ocsp_resp, SSL_set_tlsext_status_ocsp_resp</refname>
-<refpurpose>OCSP
-Certificate Status Request functions</refpurpose>
+    <refname>SSL_CTX_set_tlsext_status_cb,
+SSL_CTX_set_tlsext_status_arg,
+SSL_CTX_set_tlsext_status_type,
+SSL_CTX_get_tlsext_status_type,
+SSL_set_tlsext_status_type,
+SSL_get_tlsext_status_type,
+SSL_get_tlsext_status_ocsp_resp,
+SSL_set_tlsext_status_ocsp_resp</refname>
+<refpurpose>OCSP Certificate Status Request functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/tls1.h&gt;</synopsis>
 <synopsis>long SSL_CTX_set_tlsext_status_cb(SSL_CTX *ctx,
                                   int (*callback)(SSL *, void *));
 long SSL_CTX_set_tlsext_status_arg(SSL_CTX *ctx, void *arg);</synopsis>
-<synopsis>long SSL_CTX_set_tlsext_status_type(SSL_CTX *ctx, int type);</synopsis>
-<synopsis>long SSL_set_tlsext_status_type(SSL *s, int type);</synopsis>
+<synopsis>long SSL_CTX_set_tlsext_status_type(SSL_CTX *ctx, int type);
+long SSL_CTX_get_tlsext_status_type(SSL_CTX *ctx);</synopsis>
+<synopsis>long SSL_set_tlsext_status_type(SSL *s, int type);
+long SSL_get_tlsext_status_type(SSL *s);</synopsis>
 <synopsis>long SSL_get_tlsext_status_ocsp_resp(ssl, unsigned char **resp);
 long SSL_set_tlsext_status_ocsp_resp(ssl, unsigned char *resp, int len);</synopsis>
   </refsynopsisdiv>
@@ -29,7 +35,9 @@ long SSL_set_tlsext_status_ocsp_resp(ssl, unsigned char *resp, int len);</synops
       call the SSL_set_tlsext_status_type() function on an individual SSL
       object prior to the start of the handshake. Currently the only
       supported type is <emphasis role="bold">TLSEXT_STATUSTYPE_ocsp</emphasis>. This value should be
-      passed in the <emphasis role="bold">type</emphasis> argument.
+      passed in the <emphasis role="bold">type</emphasis> argument. Calling
+      SSL_CTX_get_tlsext_status_type() will return the type <emphasis role="bold">TLSEXT_STATUSTYPE_ocsp</emphasis> previously set via
+      SSL_CTX_set_tlsext_status_type() or -1 if not set.
     </para>
     <para>
       The client should additionally provide a callback function to decide
@@ -41,6 +49,14 @@ long SSL_set_tlsext_status_ocsp_resp(ssl, unsigned char *resp, int len);</synops
       will not be called in the event of a handshake where session
       resumption occurs (because there are no Certificates exchanged in
       such a handshake).
+    </para>
+    <para>
+      On the client side SSL_get_tlsext_status_type() can be used to
+      determine whether the client has previously called
+      SSL_set_tlsext_status_type(). It will return <emphasis role="bold">TLSEXT_STATUSTYPE_ocsp</emphasis> if it has been called
+      or -1 otherwise. On the server side SSL_get_tlsext_status_type() can
+      be used to determine whether the client requested OCSP stapling. If
+      the client requested it then this function will return <emphasis role="bold">TLSEXT_STATUSTYPE_ocsp</emphasis>, or -1 otherwise.
     </para>
     <para>
       The response returned by the server can be obtained via a call to
@@ -82,13 +98,23 @@ long SSL_set_tlsext_status_ocsp_resp(ssl, unsigned char *resp, int len);</synops
       SSL_set_tlsext_status_ocsp_resp() return 0 on error or 1 on success.
     </para>
     <para>
+      SSL_CTX_get_tlsext_status_type() returns the value previously set by
+      SSL_CTX_set_tlsext_status_type(), or -1 if not set.
+    </para>
+    <para>
       SSL_get_tlsext_status_ocsp_resp() returns the length of the OCSP
       response data or -1 if there is no OCSP response data.
+    </para>
+    <para>
+      SSL_get_tlsext_status_type() returns <emphasis role="bold">TLSEXT_STATUSTYPE_ocsp</emphasis> on the client side if
+      SSL_set_tlsext_status_type() was previously called, or on the server
+      side if the client requested OCSP stapling. Otherwise -1 is returned.
     </para>
   </refsection>
   <refsection xml:id="ID-562a005c167801f16c515ac89c0a2a83"><title>HISTORY</title>
     <para>
-      SSL_CTX_set_tlsext_status_type() was added in OpenSSL 1.1.0.
+      SSL_get_tlsext_status_type(), SSL_CTX_get_tlsext_status_type() and
+      SSL_CTX_set_tlsext_status_type() were added in OpenSSL 1.1.0.
     </para>
   </refsection>
   <refsection xml:id="ID-2aad9276ea90cda8a721d9e3deb976df"><title>COPYRIGHT</title>

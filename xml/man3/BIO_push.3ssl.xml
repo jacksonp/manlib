@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>BIO_push, BIO_pop, BIO_set_next</refname>
-<refpurpose>add and remove BIOs from a chain.</refpurpose>
+<refpurpose>add and remove BIOs from a chain</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bio.h&gt;</synopsis>

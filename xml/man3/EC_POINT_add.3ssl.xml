@@ -5,11 +5,10 @@
   </refmeta>
   <refnamediv>
     <refname>EC_POINT_add, EC_POINT_dbl, EC_POINT_invert, EC_POINT_is_at_infinity, EC_POINT_is_on_curve, EC_POINT_cmp, EC_POINT_make_affine, EC_POINTs_make_affine, EC_POINTs_mul, EC_POINT_mul, EC_GROUP_precompute_mult, EC_GROUP_have_precompute_mult</refname>
-<refpurpose>Functions for performing mathematical operations and tests on <emphasis role="bold">EC_POINT</emphasis> objects.</refpurpose>
+<refpurpose>Functions for performing mathematical operations and tests on EC_POINT objects</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/ec.h&gt;
-#include &lt;openssl/bn.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/ec.h&gt;</synopsis>
 <synopsis>int EC_POINT_add(const EC_GROUP *group, EC_POINT *r, const EC_POINT *a, const EC_POINT *b, BN_CTX *ctx);
 int EC_POINT_dbl(const EC_GROUP *group, EC_POINT *r, const EC_POINT *a, BN_CTX *ctx);
 int EC_POINT_invert(const EC_GROUP *group, EC_POINT *a, BN_CTX *ctx);

@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>ciphers</refname>
-<refpurpose>SSL cipher display and cipher list tool.</refpurpose>
+<refpurpose>SSL cipher display and cipher list tool</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis><emphasis role="bold">openssl</emphasis> <emphasis role="bold">ciphers</emphasis>
@@ -412,7 +412,7 @@
           <term><emphasis role="bold">AECDH</emphasis></term>
           <listitem>
             <para>
-	      Anonymous Elliptic Curve Diffie Hellman cipher suites.
+	      Anonymous Elliptic Curve Diffie-Hellman cipher suites.
             </para>
           </listitem>
         </varlistentry>

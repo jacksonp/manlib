@@ -7,7 +7,7 @@
     <refname>d2i_X509_REQ, i2d_X509_REQ, d2i_X509_REQ_bio, d2i_X509_REQ_fp,
 i2d_X509_REQ_bio, i2d_X509_REQ_fp, i2d_re_X509_REQ_tbs</refname>
 <refpurpose>PKCS#10 certificate
-request functions.</refpurpose>
+request functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>

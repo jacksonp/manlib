@@ -9,8 +9,7 @@ DH_set_method, DH_new_method, DH_OpenSSL</refname>
 <refpurpose>select DH method</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/dh.h&gt;
-#include &lt;openssl/engine.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/dh.h&gt;</synopsis>
 <synopsis>void DH_set_default_method(const DH_METHOD *meth);</synopsis>
 <synopsis>const DH_METHOD *DH_get_default_method(void);</synopsis>
 <synopsis>int DH_set_method(DH *dh, const DH_METHOD *meth);</synopsis>

@@ -13,11 +13,10 @@ EC_POINT_get_affine_coordinates_GF2m, EC_POINT_set_compressed_coordinates_GF2m,
 EC_POINT_point2oct, EC_POINT_oct2point, EC_POINT_point2bn, EC_POINT_bn2point,
 EC_POINT_point2hex, EC_POINT_hex2point</refname>
 <refpurpose>Functions for creating, destroying and
-manipulating <emphasis role="bold">EC_POINT</emphasis> objects.</refpurpose>
+manipulating EC_POINT objects</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/ec.h&gt;
-#include &lt;openssl/bn.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/ec.h&gt;</synopsis>
 <synopsis>EC_POINT *EC_POINT_new(const EC_GROUP *group);
 void EC_POINT_free(EC_POINT *point);
 void EC_POINT_clear_free(EC_POINT *point);

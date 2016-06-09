@@ -6,7 +6,7 @@
   <refnamediv>
     <refname>X509_get_serialNumber, X509_set_serialNumber</refname>
 <refpurpose>get or set certificate serial
-number.</refpurpose>
+number</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>

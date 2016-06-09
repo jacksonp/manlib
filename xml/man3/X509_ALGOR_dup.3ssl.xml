@@ -1,0 +1,55 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>X509_ALGOR_dup.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>X509_ALGOR_dup, X509_ALGOR_set0, X509_ALGOR_get0, X509_ALGOR_set_md, X509_ALGOR_cmp</refname>
+<refpurpose>AlgorithmIdentifier functions</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
+<synopsis>X509_ALGOR *X509_ALGOR_dup(X509_ALGOR *alg);
+int X509_ALGOR_set0(X509_ALGOR *alg, ASN1_OBJECT *aobj, int ptype, void *pval);
+void X509_ALGOR_get0(ASN1_OBJECT **paobj, int *pptype, void **ppval,
+                     X509_ALGOR *alg);
+void X509_ALGOR_set_md(X509_ALGOR *alg, const EVP_MD *md);
+int X509_ALGOR_cmp(const X509_ALGOR *a, const X509_ALGOR *b);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-511eaa9e488048d492c46f4cde6c77b7"><title>DESCRIPTION</title>
+    <para>
+      X509_ALGOR_dup() returns a copy of <emphasis role="bold">alg</emphasis>.
+    </para>
+    <para>
+      X509_ALGOR_set0() sets the algorithm OID of <emphasis role="bold">alg</emphasis> to <emphasis role="bold">aobj</emphasis>
+      and the associated parameter type to <emphasis role="bold">ptype</emphasis> with value <emphasis role="bold">pval</emphasis>. If <emphasis role="bold">ptype</emphasis> is <emphasis role="bold">V_ASN1_UNDEF</emphasis> the parameter is omitted,
+      otherwise <emphasis role="bold">ptype</emphasis> and <emphasis role="bold">pval</emphasis> have the same meaning as the <emphasis role="bold">type</emphasis> and <emphasis role="bold">value</emphasis> parameters to ASN1_TYPE_set(). All the
+      supplied parameters are used internally so must <emphasis role="bold">NOT</emphasis> be freed after this call.
+    </para>
+    <para>
+      X509_ALGOR_get0() is the inverse of X509_ALGOR_set0(): it returns the
+      algorithm OID in <emphasis role="bold">*paobj</emphasis> and the
+      associated parameter in <emphasis role="bold">*pptype</emphasis> and
+      <emphasis role="bold">*ppval</emphasis> from the <emphasis role="bold">AlgorithmIdentifier</emphasis> <emphasis role="bold">alg</emphasis>.
+    </para>
+    <para>
+      X509_ALGOR_set_md() sets the <emphasis role="bold">AlgorithmIdentifier</emphasis> <emphasis role="bold">alg</emphasis> to appropriate values for the message
+      digest <emphasis role="bold">md</emphasis>.
+    </para>
+    <para>
+      X509_ALGOR_cmp() compares <emphasis role="bold">a</emphasis> and
+      <emphasis role="bold">b</emphasis> and returns 0 if they have
+      identical encodings and non-zero otherwise.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-86fb6540f3c7d5238a3d55872c93d8d4"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2002-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

@@ -8,7 +8,7 @@
 X509_REQ_get_pubkey, X509_REQ_get0_pubkey, X509_REQ_set_pubkey,
 X509_REQ_get_X509_PUBKEY</refname>
 <refpurpose>get or set certificate or certificate request
-public key.</refpurpose>
+public key</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>

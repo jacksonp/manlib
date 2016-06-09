@@ -7,11 +7,10 @@
     <refname>d2i_DSAPublicKey, i2d_DSAPublicKey, d2i_DSAPrivateKey, i2d_DSAPrivateKey,
 d2i_DSA_PUBKEY, i2d_DSA_PUBKEY, d2i_DSAparams, i2d_DSAparams,
 d2i_DSA_SIG, i2d_DSA_SIG</refname>
-<refpurpose>DSA key encoding and parsing functions.</refpurpose>
+<refpurpose>DSA key encoding and parsing functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/dsa.h&gt;
-#include &lt;openssl/x509.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/dsa.h&gt;</synopsis>
 <synopsis>DSA * d2i_DSAPublicKey(DSA **a, const unsigned char **pp, long length);</synopsis>
 <synopsis>int i2d_DSAPublicKey(const DSA *a, unsigned char **pp);</synopsis>
 <synopsis>DSA * d2i_DSA_PUBKEY(DSA **a, const unsigned char **pp, long length);</synopsis>

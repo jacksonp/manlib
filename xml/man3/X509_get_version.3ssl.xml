@@ -7,7 +7,7 @@
     <refname>X509_get_version, X509_set_version, X509_REQ_get_version, X509_REQ_set_version,
 X509_CRL_get_version, X509_CRL_set_version</refname>
 <refpurpose>get or set certificate,
-certificate request or CRL version.</refpurpose>
+certificate request or CRL version</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>

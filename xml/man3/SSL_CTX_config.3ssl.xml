@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>SSL_CTX_config, SSL_config</refname>
-<refpurpose>configure SSL_CTX or SSL structure.</refpurpose>
+<refpurpose>configure SSL_CTX or SSL structure</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>

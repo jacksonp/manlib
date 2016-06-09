@@ -13,8 +13,7 @@ X509_verify_cert_error_string</refname>
 information</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/x509.h&gt;
-#include &lt;openssl/x509_vfy.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
 <synopsis>int   X509_STORE_CTX_get_error(X509_STORE_CTX *ctx);
 void  X509_STORE_CTX_set_error(X509_STORE_CTX *ctx, int s);
 int   X509_STORE_CTX_get_error_depth(X509_STORE_CTX *ctx);

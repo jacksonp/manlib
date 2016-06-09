@@ -10,12 +10,11 @@ EC_GROUP_free, EC_GROUP_clear_free, EC_GROUP_new_curve_GFp,
 EC_GROUP_new_curve_GF2m, EC_GROUP_new_by_curve_name, EC_GROUP_set_curve_GFp,
 EC_GROUP_get_curve_GFp, EC_GROUP_set_curve_GF2m, EC_GROUP_get_curve_GF2m,
 EC_get_builtin_curves</refname>
-<refpurpose>Functions for creating and destroying <emphasis role="bold">EC_GROUP</emphasis>
-objects.</refpurpose>
+<refpurpose>Functions for creating and destroying EC_GROUP
+objects</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/ec.h&gt;
-#include &lt;openssl/bn.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/ec.h&gt;</synopsis>
 <synopsis>EC_GROUP *EC_GROUP_new(const EC_METHOD *meth);
 EC_GROUP *EC_GROUP_new_from_ecparameters(const ECPARAMETERS *params)
 EC_GROUP *EC_GROUP_new_from_ecpkparameters(const ECPKPARAMETERS *params)

@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>crl2pkcs7</refname>
-<refpurpose>Create a PKCS#7 structure from a CRL and certificates.</refpurpose>
+<refpurpose>Create a PKCS#7 structure from a CRL and certificates</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis><emphasis role="bold">openssl</emphasis> <emphasis role="bold">crl2pkcs7</emphasis>

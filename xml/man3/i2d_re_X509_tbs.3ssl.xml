@@ -1,0 +1,111 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>i2d_re_X509_tbs.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>d2i_X509_AUX, i2d_X509_AUX,
+i2d_re_X509_tbs, i2d_re_X509_CRL_tbs, i2d_re_X509_REQ_tbs</refname>
+<refpurpose>X509 encode and decode functions</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
+<synopsis>X509 *d2i_X509_AUX(X509 **px, const unsigned char **in, long len);
+int i2d_X509_AUX(X509 *x, unsigned char **out);
+int i2d_re_X509_tbs(X509 *x, unsigned char **out);
+int i2d_re_X509_CRL_tbs(X509_CRL *crl, unsigned char **pp);
+int i2d_re_X509_REQ_tbs(X509_REQ *req, unsigned char **pp);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-b806401374305dd2c4df3ee252f19b6c"><title>DESCRIPTION</title>
+    <para>
+      The X509 encode and decode routines encode and parse an <emphasis role="bold">X509</emphasis> structure, which represents an X509
+      certificate.
+    </para>
+    <para>
+      d2i_X509_AUX() is similar to <citerefentry>
+      <refentrytitle>d2i_X509</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> but the input is expected to consist of an X509
+      certificate followed by auxiliary trust information. This is used by
+      the PEM routines to read "TRUSTED CERTIFICATE" objects. This function
+      should not be called on untrusted input.
+    </para>
+    <para>
+      i2d_X509_AUX() is similar to <citerefentry>
+      <refentrytitle>i2d_X509</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, but the encoded output contains both the certificate
+      and any auxiliary trust information. This is used by the PEM routines
+      to write "TRUSTED CERTIFICATE" objects. Note that this is a
+      non-standard OpenSSL-specific data format.
+    </para>
+    <para>
+      i2d_re_X509_tbs() is similar to <citerefentry>
+      <refentrytitle>i2d_X509</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> except it encodes only the TBSCertificate portion of
+      the certificate.	i2d_re_X509_CRL_tbs() and i2d_re_X509_REQ_tbs() are
+      analogous for CRL and certificate request, respectively.	The "re" in
+      <emphasis role="bold">i2d_re_X509_tbs</emphasis> stands for
+      "re-encode", and ensures that a fresh encoding is generated in case
+      the object has been modified after creation (see the BUGS section).
+    </para>
+    <para>
+      The encoding of the TBSCertificate portion of a certificate is cached
+      in the <emphasis role="bold">X509</emphasis> structure internally to
+      improve encoding performance and to ensure certificate signatures are
+      verified correctly in some certificates with broken (non-DER)
+      encodings.
+    </para>
+    <para>
+      If, after modification, the <emphasis role="bold">X509</emphasis>
+      object is re-signed with X509_sign(), the encoding is automatically
+      renewed. Otherwise, the encoding of the TBSCertificate portion of the
+      <emphasis role="bold">X509</emphasis> can be manually renewed by
+      calling i2d_re_X509_tbs().
+    </para>
+  </refsection>
+  <refsection xml:id="ID-a7417407e28f54581e5e0c7c0d8870bc"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
+      <refentrytitle>X509_CRL_get0_by_serial</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get0_signature</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get_ext_d2i</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get_extension_flags</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get_pubkey</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get_subject_name</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get_version</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_NAME_add_entry_by_txt</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_NAME_ENTRY_get_object</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_NAME_get_index_by_NID</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_NAME_print_ex</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_new</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>X509_sign</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>X509V3_get_d2i</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_verify_cert</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-94cf43306707d6b26ab0d0f73be08442"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2002-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

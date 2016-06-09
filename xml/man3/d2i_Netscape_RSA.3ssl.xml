@@ -1,0 +1,43 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>d2i_Netscape_RSA.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>i2d_Netscape_RSA,
+d2i_Netscape_RSA</refname>
+<refpurpose>insecure RSA public and private key encoding functions</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/rsa.h&gt;</synopsis>
+<synopsis>int i2d_Netscape_RSA(RSA *a, unsigned char **pp, int (*cb)());
+RSA * d2i_Netscape_RSA(RSA **a, const unsigned char **pp, long length, int (*cb)());</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-95c87286d3a712c2c07edd5395f27db6"><title>DESCRIPTION</title>
+    <para>
+      These functions decode and encode an RSA private key in NET format. 
+      These functions are present to provide compatibility with very old
+      software. This format has some severe security weaknesses and should
+      be avoided if possible.
+    </para>
+    <para>
+      These functions are similar to the <emphasis role="bold">d2i_RSAPrivateKey</emphasis> functions.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-8fe4823f98fc0a538a4bc8dcfd71dbf6"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>d2i_RSAPrivateKey</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-185c8f61d79a2e6db6c5abc0a625f258"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

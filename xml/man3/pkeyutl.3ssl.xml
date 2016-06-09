@@ -208,7 +208,7 @@
 	      Use key derivation function <emphasis role="bold">algorithm</emphasis>.  The supported algorithms
 	      are at present <emphasis role="bold">TLS1-PRF</emphasis> and
 	      <emphasis role="bold">HKDF</emphasis>. Note: additional
-	      paramers and the KDF output length will normally have to be
+	      parameters and the KDF output length will normally have to be
 	      set for this to work.  See <citerefentry>
 	      <refentrytitle>EVP_PKEY_HKDF</refentrytitle>
 	      <manvolnum>3</manvolnum> </citerefentry> and <citerefentry>

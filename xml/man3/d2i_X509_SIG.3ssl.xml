@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>d2i_X509_SIG, i2d_X509_SIG</refname>
-<refpurpose>DigestInfo functions.</refpurpose>
+<refpurpose>DigestInfo functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>

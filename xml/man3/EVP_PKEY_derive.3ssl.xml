@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>EVP_PKEY_derive_init, EVP_PKEY_derive_set_peer, EVP_PKEY_derive</refname>
-<refpurpose>derive public key algorithm shared secret.</refpurpose>
+<refpurpose>derive public key algorithm shared secret</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/evp.h&gt;</synopsis>

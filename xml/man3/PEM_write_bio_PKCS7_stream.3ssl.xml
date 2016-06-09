@@ -5,11 +5,10 @@
   </refmeta>
   <refnamediv>
     <refname>PEM_write_bio_PKCS7_stream</refname>
-<refpurpose>output PKCS7 structure in PEM format.</refpurpose>
+<refpurpose>output PKCS7 structure in PEM format</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/pkcs7.h&gt;
-#include &lt;openssl/pem.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/pkcs7.h&gt;</synopsis>
 <synopsis>int PEM_write_bio_PKCS7_stream(BIO *out, PKCS7 *p7, BIO *data, int flags);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-767dbd1dda8a76b13e8e5f6f74ff07e4"><title>DESCRIPTION</title>

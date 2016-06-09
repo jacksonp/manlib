@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>OCSP_request_add1_nonce, OCSP_basic_add1_nonce, OCSP_check_nonce, OCSP_copy_nonce</refname>
-<refpurpose>OCSP nonce functions.</refpurpose>
+<refpurpose>OCSP nonce functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ocsp.h&gt;</synopsis>

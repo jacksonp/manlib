@@ -4,22 +4,27 @@
     <refentrytitle>SSL_get_version.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_get_version</refname>
-<refpurpose>get the protocol version of a connection.</refpurpose>
+    <refname>SSL_get_version, SSL_is_dtls</refname>
+<refpurpose>get the protocol information of a connection</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
 <synopsis>const char *SSL_get_version(const SSL *ssl);</synopsis>
+<synopsis>int SSL_is_dtls(const SSL *ssl);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-312636454f961d7643c0d3aab23b8775"><title>DESCRIPTION</title>
     <para>
       SSL_get_version() returns the name of the protocol used for the
       connection <emphasis role="bold">ssl</emphasis>.
     </para>
+    <para>
+      SSL_is_dtls() returns one if the connection is using DTLS, zero if
+      not.
+    </para>
   </refsection>
   <refsection xml:id="ID-cf74d62ce6448cfe2a257a8201d5393f"><title>RETURN VALUES</title>
     <para>
-      The following strings can be returned:
+      SSL_get_verison() returns one of the following strings:
     </para>
     <para>
       <variablelist>
@@ -71,6 +76,11 @@
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-daa5334e7da63228cef730f6de00434e"><title>HISTORY</title>
+    <para>
+      SSL_is_dtls() was added in OpenSSL 1.1.0.
     </para>
   </refsection>
   <refsection xml:id="ID-6227f41ea8921911e75d22199c73bd49"><title>COPYRIGHT</title>

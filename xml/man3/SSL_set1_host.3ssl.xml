@@ -8,8 +8,7 @@
 <refpurpose>SSL server verification parameters</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/ssl.h&gt;
-#include &lt;openssl/x509_vfy.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
 <synopsis>int SSL_set1_host(SSL *s, const char *hostname);
 int SSL_add1_host(SSL *s, const char *hostname);
 void SSL_set_hostflags(SSL *s, unsigned int flags);

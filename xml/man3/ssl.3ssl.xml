@@ -1183,6 +1183,12 @@
             </listitem>
           </varlistentry>
           <varlistentry>
+            <term>int <emphasis role="bold">SSL_is_dtls</emphasis>(const SSL *ssl);</term>
+            <listitem>
+              <para/>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
             <term>int <emphasis role="bold">SSL_get_cipher_bits</emphasis>(const SSL *ssl, int *alg_bits);</term>
             <listitem>
               <para/>

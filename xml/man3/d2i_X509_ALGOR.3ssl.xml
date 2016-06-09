@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>d2i_X509_ALGOR, i2d_X509_ALGOR, X509_ALGOR_dup, X509_ALGOR_set0, X509_ALGOR_get0, X509_ALGOR_set_md, X509_ALGOR_cmp</refname>
-<refpurpose>AlgorithmIdentifier functions.</refpurpose>
+<refpurpose>AlgorithmIdentifier functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>

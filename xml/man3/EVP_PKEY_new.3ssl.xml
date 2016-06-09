@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>EVP_PKEY_new, EVP_PKEY_up_ref, EVP_PKEY_free</refname>
-<refpurpose>private key allocation functions.</refpurpose>
+<refpurpose>private key allocation functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/evp.h&gt;</synopsis>

@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>i2d_CMS_bio_stream</refname>
-<refpurpose>output CMS_ContentInfo structure in BER format.</refpurpose>
+<refpurpose>output CMS_ContentInfo structure in BER format</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/cms.h&gt;</synopsis>

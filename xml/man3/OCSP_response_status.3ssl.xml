@@ -6,7 +6,7 @@
   <refnamediv>
     <refname>OCSP_response_status, OCSP_response_get1_basic, OCSP_response_create,
 OCSP_RESPONSE_free</refname>
-<refpurpose>OCSP response functions.</refpurpose>
+<refpurpose>OCSP response functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ocsp.h&gt;</synopsis>

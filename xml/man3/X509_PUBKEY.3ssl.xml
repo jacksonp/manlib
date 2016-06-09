@@ -8,7 +8,7 @@
 X509_PUBKEY_get, d2i_PUBKEY, i2d_PUBKEY, d2i_PUBKEY_bio, d2i_PUBKEY_fp,
 i2d_PUBKEY_fp, i2d_PUBKEY_bio, X509_PUBKEY_set0_param,
 X509_PUBKEY_get0_param</refname>
-<refpurpose>SubjectPublicKeyInfo public key functions.</refpurpose>
+<refpurpose>SubjectPublicKeyInfo public key functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>

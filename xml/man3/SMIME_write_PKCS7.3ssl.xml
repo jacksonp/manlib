@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>SMIME_write_PKCS7</refname>
-<refpurpose>convert PKCS#7 structure to S/MIME format.</refpurpose>
+<refpurpose>convert PKCS#7 structure to S/MIME format</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/pkcs7.h&gt;</synopsis>

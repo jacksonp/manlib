@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>DTLSv1_listen</refname>
-<refpurpose>listen for incoming DTLS connections.</refpurpose>
+<refpurpose>listen for incoming DTLS connections</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>

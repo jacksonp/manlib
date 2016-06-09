@@ -470,7 +470,7 @@
             <para>
 	      These options make <emphasis role="bold">s_server</emphasis>
 	      use DTLS protocols instead of TLS. With <emphasis role="bold">-dtls</emphasis>, <emphasis role="bold">s_server</emphasis> will negotiate any supported
-	      DTLS protcol version, whilst <emphasis role="bold">-dtls1</emphasis> and <emphasis role="bold">-dtls1_2</emphasis> will only support DTLSv1.0
+	      DTLS protocol version, whilst <emphasis role="bold">-dtls1</emphasis> and <emphasis role="bold">-dtls1_2</emphasis> will only support DTLSv1.0
 	      and DTLSv1.2 respectively.
             </para>
           </listitem>
@@ -525,7 +525,7 @@
 	      The maximum number of encrypt/decrypt pipelines to be used.
 	      This will only have an effect if an engine has been loaded
 	      that supports pipelining (e.g. the dasync engine) and a
-	      suiteable ciphersuite has been negotiated. The default value
+	      suitable ciphersuite has been negotiated. The default value
 	      is 1. See <citerefentry>
 	      <refentrytitle>SSL_CTX_set_max_pipelines</refentrytitle>
 	      <manvolnum>3</manvolnum> </citerefentry> for further

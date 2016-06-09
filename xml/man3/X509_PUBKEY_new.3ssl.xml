@@ -1,0 +1,142 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>X509_PUBKEY_new.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>X509_PUBKEY_new, X509_PUBKEY_free, X509_PUBKEY_set, X509_PUBKEY_get0,
+X509_PUBKEY_get, d2i_PUBKEY, i2d_PUBKEY, d2i_PUBKEY_bio, d2i_PUBKEY_fp,
+i2d_PUBKEY_fp, i2d_PUBKEY_bio, X509_PUBKEY_set0_param,
+X509_PUBKEY_get0_param</refname>
+<refpurpose>SubjectPublicKeyInfo public key functions</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
+<synopsis>X509_PUBKEY *X509_PUBKEY_new(void);
+void X509_PUBKEY_free(X509_PUBKEY *a);</synopsis>
+<synopsis>int X509_PUBKEY_set(X509_PUBKEY **x, EVP_PKEY *pkey);
+EVP_PKEY *X509_PUBKEY_get0(X509_PUBKEY *key);
+EVP_PKEY *X509_PUBKEY_get(X509_PUBKEY *key);</synopsis>
+<synopsis>EVP_PKEY *d2i_PUBKEY(EVP_PKEY **a, const unsigned char **pp, long length);
+int i2d_PUBKEY(EVP_PKEY *a, unsigned char **pp);</synopsis>
+<synopsis>EVP_PKEY *d2i_PUBKEY_bio(BIO *bp, EVP_PKEY **a);
+EVP_PKEY *d2i_PUBKEY_fp(FILE *fp, EVP_PKEY **a);</synopsis>
+<synopsis>int i2d_PUBKEY_fp(FILE *fp, EVP_PKEY *pkey);
+int i2d_PUBKEY_bio(BIO *bp, EVP_PKEY *pkey);</synopsis>
+<synopsis>int X509_PUBKEY_set0_param(X509_PUBKEY *pub, ASN1_OBJECT *aobj,
+                           int ptype, void *pval,
+                           unsigned char *penc, int penclen);
+int X509_PUBKEY_get0_param(ASN1_OBJECT **ppkalg,
+                           const unsigned char **pk, int *ppklen,
+                           X509_ALGOR **pa, X509_PUBKEY *pub);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-f7e926007b8194ecf0670d84e17484f9"><title>DESCRIPTION</title>
+    <para>
+      The <emphasis role="bold">X509_PUBKEY</emphasis> structure represents
+      the ASN.1 <emphasis role="bold">SubjectPublicKeyInfo</emphasis>
+      structure defined in RFC5280 and used in certificates and certificate
+      requests.
+    </para>
+    <para>
+      X509_PUBKEY_new() allocates and initializes an <emphasis role="bold">X509_PUBKEY</emphasis> structure.
+    </para>
+    <para>
+      X509_PUBKEY_free() frees up <emphasis role="bold">X509_PUBKEY</emphasis> structure <emphasis role="bold">a</emphasis>. If <emphasis role="bold">a</emphasis> is
+      NULL nothing is done.
+    </para>
+    <para>
+      X509_PUBKEY_set() sets the public key in <emphasis role="bold">*x</emphasis> to the public key contained in the
+      <emphasis role="bold">EVP_PKEY</emphasis> structure <emphasis role="bold">pkey</emphasis>. If <emphasis role="bold">*x</emphasis>
+      is not NULL any existing public key structure will be freed.
+    </para>
+    <para>
+      X509_PUBKEY_get0() returns the public key contained in <emphasis role="bold">key</emphasis>. The returned value is an internal pointer
+      which <emphasis role="bold">MUST NOT</emphasis> be freed after use.
+    </para>
+    <para>
+      X509_PUBKEY_get() is similar to X509_PUBKEY_get0() except the
+      reference count on the returned key is incremented so it <emphasis role="bold">MUST</emphasis> be freed using EVP_PKEY_free() after use.
+    </para>
+    <para>
+      d2i_PUBKEY() and i2d_PUBKEY() decode and encode an <emphasis role="bold">EVP_PKEY</emphasis> structure using <emphasis role="bold">SubjectPublicKeyInfo</emphasis> format. They otherise
+      follow the conventions of other ASN.1 functions such as d2i_X509().
+    </para>
+    <para>
+      d2i_PUBKEY_bio(), d2i_PUBKEY_fp(), i2d_PUBKEY_bio() and
+      i2d_PUBKEY_fp() are similar to d2i_PUBKEY() and i2d_PUBKEY() except
+      they decode or encode using a <emphasis role="bold">BIO</emphasis> or
+      <emphasis role="bold">FILE</emphasis> pointer.
+    </para>
+    <para>
+      X509_PUBKEY_set0_param() sets the public key parameters of <emphasis role="bold">pub</emphasis>. The OID associated with the algorithm is
+      set to <emphasis role="bold">aobj</emphasis>. The type of the
+      algorithm parameters is set to <emphasis role="bold">type</emphasis>
+      using the structure <emphasis role="bold">pval</emphasis>. The
+      encoding of the public key itself is set to the <emphasis role="bold">penclen</emphasis> bytes contained in buffer <emphasis role="bold">penc</emphasis>. On success ownership of all the supplied
+      parameters is passed to <emphasis role="bold">pub</emphasis> so they
+      must not be freed after the call.
+    </para>
+    <para>
+      X509_PUBKEY_get0_param() retrieves the public key parameters from
+      <emphasis role="bold">pub</emphasis>, <emphasis role="bold">*ppkalg</emphasis> is set to the associated OID and the
+      encoding consists of <emphasis role="bold">*ppklen</emphasis> bytes
+      at <emphasis role="bold">*pk</emphasis>, <emphasis role="bold">*pa</emphasis> is set to the associated
+      AlgorithmIdentifier for the public key. If the value of any of these
+      parameters is not required it can be set to <emphasis role="bold">NULL</emphasis>. All of the retrieved pointers are
+      internal and must not be freed after the call.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-3e989dd8b3bf8ea172c55e8ac90f0fbf"><title>NOTES</title>
+    <para>
+      The <emphasis role="bold">X509_PUBKEY</emphasis> functions can be
+      used to encode and decode public keys in a standard format.
+    </para>
+    <para>
+      In many cases applications will not call the <emphasis role="bold">X509_PUBKEY</emphasis> functions directly: they will
+      instead call wrapper functions such as X509_get0_pubkey().
+    </para>
+  </refsection>
+  <refsection xml:id="ID-b8c9ae54882ac6b3254cb3def8523297"><title>RETURN VALUES</title>
+    <para>
+      If the allocation fails, X509_PUBKEY_new() returns <emphasis role="bold">NULL</emphasis> and sets an error code that can be
+      obtained by <citerefentry>
+      <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>.
+    </para>
+    <para>
+      Otherwise it returns a pointer to the newly allocated structure.
+    </para>
+    <para>
+      X509_PUBKEY_free() does not return a value.
+    </para>
+    <para>
+      X509_PUBKEY_get0() and X509_PUBKEY_get() return a pointer to an
+      <emphasis role="bold">EVP_PKEY</emphasis> structure or <emphasis role="bold">NULL</emphasis> if an error occurs.
+    </para>
+    <para>
+      X509_PUBKEY_set(), X509_PUBKEY_set0_param() and
+      X509_PUBKEY_get0_param() return 1 for success and 0 if an error
+      occurred.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-3eab71b83b9028b2471848389402b469"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>d2i_X509</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get_pubkey</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>,
+    </para>
+  </refsection>
+  <refsection xml:id="ID-eedb815d479e6f29d419818873cf06fd"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>PKCS7_sign_add_signer</refname>
-<refpurpose>add a signer PKCS7 signed data structure.</refpurpose>
+<refpurpose>add a signer PKCS7 signed data structure</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/pkcs7.h&gt;</synopsis>

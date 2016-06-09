@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>CMS_ReceiptRequest_create0, CMS_add1_ReceiptRequest, CMS_get1_ReceiptRequest, CMS_ReceiptRequest_get0_values</refname>
-<refpurpose>CMS signed receipt request functions.</refpurpose>
+<refpurpose>CMS signed receipt request functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/cms.h&gt;</synopsis>

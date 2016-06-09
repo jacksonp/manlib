@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>nseq</refname>
-<refpurpose>create or examine a netscape certificate sequence</refpurpose>
+<refpurpose>create or examine a Netscape certificate sequence</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis><emphasis role="bold">openssl</emphasis> <emphasis role="bold">nseq</emphasis>

@@ -10,7 +10,7 @@
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bio.h&gt;
 #include &lt;openssl/evp.h&gt;</synopsis>
-<synopsis>const BIO_METHOD *     BIO_f_base64(void);</synopsis>
+<synopsis>const BIO_METHOD *BIO_f_base64(void);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-b321ee955b4a0ce81ec077ad0b3440f5"><title>DESCRIPTION</title>
     <para>

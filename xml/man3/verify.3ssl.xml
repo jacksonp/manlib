@@ -5,7 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>verify</refname>
-<refpurpose>Utility to verify certificates.</refpurpose>
+<refpurpose>Utility to verify certificates</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis><emphasis role="bold">openssl</emphasis> <emphasis role="bold">verify</emphasis>
@@ -338,7 +338,7 @@
 	      a trust-anchor. The <emphasis role="bold">file</emphasis>
 	      should contain one or more certificates in PEM format. This
 	      option can be specified more than once to include untrusted
-	      certiificates from multiple <emphasis role="bold">files</emphasis>.
+	      certificates from multiple <emphasis role="bold">files</emphasis>.
             </para>
           </listitem>
         </varlistentry>
@@ -348,10 +348,10 @@
             <para>
 	      A <emphasis role="bold">file</emphasis> of trusted
 	      certificates, which must be self-signed, unless the <emphasis role="bold">-partial_chain</emphasis> option is specified.
-	      The <emphasis role="bold">file</emphasis> contain one or more
-	      certificates in PEM format. With this option, no additional
-	      (e.g., default) certificate lists are consulted. That is, the
-	      only trust-anchors are those listed in <emphasis role="bold">file</emphasis>. This option can be specified
+	      The <emphasis role="bold">file</emphasis> contains one or
+	      more certificates in PEM format. With this option, no
+	      additional (e.g., default) certificate lists are consulted.
+	      That is, the only trust-anchors are those listed in <emphasis role="bold">file</emphasis>. This option can be specified
 	      more than once to include trusted certificates from multiple
 	      <emphasis role="bold">files</emphasis>. This option implies
 	      the <emphasis role="bold">-no-CAfile</emphasis> and <emphasis role="bold">-no-CApath</emphasis> options. This option cannot
@@ -530,13 +530,13 @@
     </para>
     <para>
       The process of 'looking up the issuers certificate' itself involves a
-      number of steps. Ater all certificates whose subject name matches the
-      issuer name of the current certificate are subject to further tests.
-      The relevant authority key identifier components of the current
-      certificate (if present) must match the subject key identifier (if
-      present) and issuer and serial number of the candidate issuer, in
-      addition the keyUsage extension of the candidate issuer (if present)
-      must permit certificate signing.
+      number of steps. After all certificates whose subject name matches
+      the issuer name of the current certificate are subject to further
+      tests. The relevant authority key identifier components of the
+      current certificate (if present) must match the subject key
+      identifier (if present) and issuer and serial number of the candidate
+      issuer, in addition the keyUsage extension of the candidate issuer
+      (if present) must permit certificate signing.
     </para>
     <para>
       The lookup first looks in the list of untrusted certificates and if
@@ -590,7 +590,7 @@ error 24 at 1 depth lookup:invalid CA certificate</screen>
       number is presented.
     </para>
     <para>
-      An partial list of the error codes and messages is shown below, this
+      A partial list of the error codes and messages is shown below, this
       also includes the name of the error code as defined in the header
       file x509_vfy.h Some of the error codes are defined but never
       returned: these are described as "unused".
@@ -756,7 +756,7 @@ error 24 at 1 depth lookup:invalid CA certificate</screen>
           <term><emphasis role="bold">X509_V_ERR_DEPTH_ZERO_SELF_SIGNED_CERT</emphasis></term>
           <listitem>
             <para>
-	      The passed certificate is self signed and the same
+	      The passed certificate is self-signed and the same
 	      certificate cannot be found in the list of trusted
 	      certificates.
             </para>

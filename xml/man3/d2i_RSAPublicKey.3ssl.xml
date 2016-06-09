@@ -8,11 +8,10 @@
 d2i_RSA_PUBKEY, i2d_RSA_PUBKEY, d2i_RSA_PUBKEY_bio, d2i_RSA_PUBKEY_fp,
 i2d_RSA_PUBKEY_bio, i2d_RSA_PUBKEY_fp, i2d_Netscape_RSA,
 d2i_Netscape_RSA</refname>
-<refpurpose>RSA public and private key encoding functions.</refpurpose>
+<refpurpose>RSA public and private key encoding functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/rsa.h&gt;
-#include &lt;openssl/x509.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/rsa.h&gt;</synopsis>
 <synopsis>RSA * d2i_RSAPublicKey(RSA **a, const unsigned char **pp, long length);</synopsis>
 <synopsis>int i2d_RSAPublicKey(RSA *a, unsigned char **pp);</synopsis>
 <synopsis>RSA * d2i_RSA_PUBKEY(RSA **a, const unsigned char **pp, long length);</synopsis>
