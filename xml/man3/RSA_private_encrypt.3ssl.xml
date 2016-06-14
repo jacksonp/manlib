@@ -82,8 +82,6 @@
     <para>
       <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>rsa</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry>
       <refentrytitle>RSA_sign</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>RSA_verify</refentrytitle> <manvolnum>3</manvolnum>

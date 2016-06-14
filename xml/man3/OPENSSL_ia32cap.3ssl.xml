@@ -98,7 +98,20 @@ cores with shared cache;</term>
           </listitem>
         </varlistentry>
         <varlistentry>
+          <term>bit #54 denoting availability of MOVBE instruction;</term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
           <term>bit #57 denoting AES-NI instruction set extension;</term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>bit #58, XSAVE bit, lack of which in combination with MOVBE is used
+to identify Atom Silvermont core;</term>
           <listitem>
             <para/>
           </listitem>
@@ -124,15 +137,15 @@ cores with shared cache;</term>
       </variablelist>
     </para>
     <para>
-      For example, clearing bit #26 at run-time disables high-performance
-      SSE2 code present in the crypto library, while clearing bit #24
-      disables SSE2 code operating on 128-bit XMM register bank. You might
-      have to do the latter if target OpenSSL application is executed on
-      SSE2 capable CPU, but under control of OS that does not enable XMM
-      registers. Even though you can manipulate the value programmatically,
-      you most likely will find it more appropriate to set up an
-      environment variable with the same name prior starting target
-      application, e.g. on Intel P4 processor 'env
+      For example, in 32-bit application context clearing bit #26 at
+      run-time disables high-performance SSE2 code present in the crypto
+      library, while clearing bit #24 disables SSE2 code operating on
+      128-bit XMM register bank. You might have to do the latter if target
+      OpenSSL application is executed on SSE2 capable CPU, but under
+      control of OS that does not enable XMM registers. Even though you can
+      manipulate the value programmatically, you most likely will find it
+      more appropriate to set up an environment variable with the same name
+      prior starting target application, e.g. on Intel P4 processor 'env
       OPENSSL_ia32cap=0x16980010 apps/openssl', or better yet 'env
       OPENSSL_ia32cap=~0x1000000 apps/openssl' to achieve same effect
       without modifying the application source code. Alternatively you can
@@ -147,8 +160,8 @@ cores with shared cache;</term>
       assembler module.
     </para>
     <para>
-      The vector is further extended with EBX value returned by CPUID with
-      EAX=7 and ECX=0 as input. Following bits are significant:
+      The capability vector is further extended with EBX value returned by
+      CPUID with EAX=7 and ECX=0 as input. Following bits are significant:
     </para>
     <para>
       <variablelist>
@@ -165,8 +178,14 @@ cores with shared cache;</term>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term>bit #64+8 denoting availability of BMI2 instructions, e.g. MUXL
+          <term>bit #64+8 denoting availability of BMI2 instructions, e.g. MULX
 and RORX;</term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>bit #64+16 denoting availability of AVX512F extension;</term>
           <listitem>
             <para/>
           </listitem>
@@ -183,8 +202,44 @@ and RORX;</term>
             <para/>
           </listitem>
         </varlistentry>
+        <varlistentry>
+          <term>bit #64+29 denoting availability of SHA extension;</term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>bit #64+30 denoting availability of AVX512BW extension;</term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>bit #64+31 denoting availability of AVX512VL extension;</term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
       </variablelist>
     </para>
+    <para>
+      To control this extended capability word use ':' as delimiter when
+      setting up OPENSSL_ia32cap environment variable. For example
+      assigning ':~0x20' would disable AVX2 code paths, and ':0' - all
+      post-AVX extensions.
+    </para>
+    <para>
+      It should be noted that whether or not some of the most "fancy"
+      extension code paths are actually assembled depends on current
+      assembler version. Base minimum of AES-NI/PCLMULQDQ, SSSE3 and SHA
+      extension code paths are always assembled. Besides that, minimum
+      assembler version requirements are summarized in below table:
+    </para>
+    <screen>Extension   | GNU as | nasm   | llvm
+------------+--------+--------+--------
+AVX         | 2.19   | 2.09   | 3.0
+AVX2        | 2.22   | 2.10   | 3.1
+AVX512      | 2.25   | 2.11.8 | 3.6</screen>
   </refsection>
   <refsection xml:id="ID-9110d76e200aef8928012928ceeddaf1"><title>COPYRIGHT</title>
     <para>

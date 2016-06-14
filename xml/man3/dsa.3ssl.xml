@@ -5,122 +5,247 @@
   </refmeta>
   <refnamediv>
     <refname>dsa</refname>
-<refpurpose>Digital Signature Algorithm</refpurpose>
+<refpurpose>DSA key processing</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/dsa.h&gt;</synopsis>
-<synopsis>DSA *  DSA_new(void);
-void   DSA_free(DSA *dsa);</synopsis>
-<synopsis>int    DSA_size(const DSA *dsa);</synopsis>
-<synopsis>DSA *  DSA_generate_parameters(int bits, unsigned char *seed,
-               int seed_len, int *counter_ret, unsigned long *h_ret,
-               void (*callback)(int, int, void *), void *cb_arg);</synopsis>
-<synopsis>DH *   DSA_dup_DH(const DSA *r);</synopsis>
-<synopsis>int    DSA_generate_key(DSA *dsa);</synopsis>
-<synopsis>int    DSA_sign(int dummy, const unsigned char *dgst, int len,
-               unsigned char *sigret, unsigned int *siglen, DSA *dsa);
-int    DSA_sign_setup(DSA *dsa, BN_CTX *ctx, BIGNUM **kinvp,
-               BIGNUM **rp);
-int    DSA_verify(int dummy, const unsigned char *dgst, int len,
-               const unsigned char *sigbuf, int siglen, DSA *dsa);</synopsis>
-<synopsis>void DSA_set_default_method(const DSA_METHOD *meth);
-const DSA_METHOD *DSA_get_default_method(void);
-int DSA_set_method(DSA *dsa, const DSA_METHOD *meth);
-DSA *DSA_new_method(ENGINE *engine);
-const DSA_METHOD *DSA_OpenSSL(void);</synopsis>
-<synopsis>DSA_SIG *DSA_SIG_new(void);
-void   DSA_SIG_free(DSA_SIG *a);
-int    i2d_DSA_SIG(const DSA_SIG *a, unsigned char **pp);
-DSA_SIG *d2i_DSA_SIG(DSA_SIG **v, unsigned char **pp, long length);</synopsis>
-<synopsis>DSA_SIG *DSA_do_sign(const unsigned char *dgst, int dlen, DSA *dsa);
-int    DSA_do_verify(const unsigned char *dgst, int dgst_len,
-            DSA_SIG *sig, DSA *dsa);</synopsis>
-<synopsis>DSA *  d2i_DSAPublicKey(DSA **a, unsigned char **pp, long length);
-DSA *  d2i_DSAPrivateKey(DSA **a, unsigned char **pp, long length);
-DSA *  d2i_DSAparams(DSA **a, unsigned char **pp, long length);
-int    i2d_DSAPublicKey(const DSA *a, unsigned char **pp);
-int    i2d_DSAPrivateKey(const DSA *a, unsigned char **pp);
-int    i2d_DSAparams(const DSA *a,unsigned char **pp);</synopsis>
-<synopsis>int    DSAparams_print(BIO *bp, const DSA *x);
-int    DSAparams_print_fp(FILE *fp, const DSA *x);
-int    DSA_print(BIO *bp, const DSA *x, int off);
-int    DSA_print_fp(FILE *bp, const DSA *x, int off);</synopsis>
+<synopsis><emphasis role="bold">openssl</emphasis> <emphasis role="bold">dsa</emphasis>
+[<emphasis role="bold">-help</emphasis>]
+[<emphasis role="bold">-inform PEM|DER</emphasis>]
+[<emphasis role="bold">-outform PEM|DER</emphasis>]
+[<emphasis role="bold">-in filename</emphasis>]
+[<emphasis role="bold">-passin arg</emphasis>]
+[<emphasis role="bold">-out filename</emphasis>]
+[<emphasis role="bold">-passout arg</emphasis>]
+[<emphasis role="bold">-aes128</emphasis>]
+[<emphasis role="bold">-aes192</emphasis>]
+[<emphasis role="bold">-aes256</emphasis>]
+[<emphasis role="bold">-camellia128</emphasis>]
+[<emphasis role="bold">-camellia192</emphasis>]
+[<emphasis role="bold">-camellia256</emphasis>]
+[<emphasis role="bold">-des</emphasis>]
+[<emphasis role="bold">-des3</emphasis>]
+[<emphasis role="bold">-idea</emphasis>]
+[<emphasis role="bold">-text</emphasis>]
+[<emphasis role="bold">-noout</emphasis>]
+[<emphasis role="bold">-modulus</emphasis>]
+[<emphasis role="bold">-pubin</emphasis>]
+[<emphasis role="bold">-pubout</emphasis>]
+[<emphasis role="bold">-engine id</emphasis>]</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-787618258528602b086fd1a764c54cc9"><title>DESCRIPTION</title>
     <para>
-      These functions implement the Digital Signature Algorithm (DSA).	The
-      generation of shared DSA parameters is described in <citerefentry>
-      <refentrytitle>DSA_generate_parameters</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>; <citerefentry>
-      <refentrytitle>DSA_generate_key</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry> describes how to generate a
-      signature key. Signature generation and verification are described in
-      <citerefentry> <refentrytitle>DSA_sign</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>.
-    </para>
-    <para>
-      The <emphasis role="bold">DSA</emphasis> structure consists of
-      several BIGNUM components.
-    </para>
-    <screen>struct
-       {
-       BIGNUM *p;              // prime number (public)
-       BIGNUM *q;              // 160-bit subprime, q | p-1 (public)
-       BIGNUM *g;              // generator of subgroup (public)
-       BIGNUM *priv_key;       // private key x
-       BIGNUM *pub_key;        // public key y = g^x
-       // ...
-       }
-DSA;</screen>
-    <para>
-      In public keys, <emphasis role="bold">priv_key</emphasis> is NULL.
-    </para>
-    <para>
-      Note that DSA keys may use non-standard <emphasis role="bold">DSA_METHOD</emphasis> implementations, either directly or
-      by the use of <emphasis role="bold">ENGINE</emphasis> modules. In
-      some cases (eg. an ENGINE providing support for hardware-embedded
-      keys), these BIGNUM values will not be used by the implementation or
-      may be used for alternative data storage. For this reason,
-      applications should generally avoid using DSA structure elements
-      directly and instead use API functions to query or modify keys.
+      The <emphasis role="bold">dsa</emphasis> command processes DSA keys.
+      They can be converted between various forms and their components
+      printed out. <emphasis role="bold">Note</emphasis> This command uses
+      the traditional SSLeay compatible format for private key encryption:
+      newer applications should use the more secure PKCS#8 format using the
+      <emphasis role="bold">pkcs8</emphasis>
     </para>
   </refsection>
-  <refsection xml:id="ID-1e506153f04eaa36c4dfd00bdf04fb3f"><title>CONFORMING TO</title>
+  <refsection xml:id="ID-17737c334c6935331f607b4bba5dbaa7"><title>COMMAND OPTIONS</title>
     <para>
-      US Federal Information Processing Standard FIPS 186 (Digital
-      Signature Standard, DSS), ANSI X9.30
+      <variablelist>
+        <varlistentry>
+          <term><emphasis role="bold">-help</emphasis></term>
+          <listitem>
+            <para>
+	      Print out a usage message.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-inform DER|PEM</emphasis></term>
+          <listitem>
+            <para>
+	      This specifies the input format. The <emphasis role="bold">DER</emphasis> option with a private key uses an
+	      ASN1 DER encoded form of an ASN.1 SEQUENCE consisting of the
+	      values of version (currently zero), p, q, g, the public and
+	      private key components respectively as ASN.1 INTEGERs. When
+	      used with a public key it uses a SubjectPublicKeyInfo
+	      structure: it is an error if the key is not DSA.
+            </para>
+            <para>
+	      The <emphasis role="bold">PEM</emphasis> form is the default
+	      format: it consists of the <emphasis role="bold">DER</emphasis> format base64 encoded with
+	      additional header and footer lines. In the case of a private
+	      key PKCS#8 format is also accepted.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-outform DER|PEM</emphasis></term>
+          <listitem>
+            <para>
+	      This specifies the output format, the options have the same
+	      meaning as the <emphasis role="bold">-inform</emphasis>
+	      option.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-in filename</emphasis></term>
+          <listitem>
+            <para>
+	      This specifies the input filename to read a key from or
+	      standard input if this option is not specified. If the key is
+	      encrypted a pass phrase will be prompted for.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-passin arg</emphasis></term>
+          <listitem>
+            <para>
+	      the input file password source. For more information about
+	      the format of <emphasis role="bold">arg</emphasis> see the
+	      <emphasis role="bold">PASS PHRASE ARGUMENTS</emphasis>
+	      section in <citerefentry>
+	      <refentrytitle>openssl</refentrytitle>
+	      <manvolnum>1</manvolnum> </citerefentry>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-out filename</emphasis></term>
+          <listitem>
+            <para>
+	      This specifies the output filename to write a key to or
+	      standard output by is not specified. If any encryption
+	      options are set then a pass phrase will be prompted for. The
+	      output filename should <emphasis role="bold">not</emphasis>
+	      be the same as the input filename.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-passout arg</emphasis></term>
+          <listitem>
+            <para>
+	      the output file password source. For more information about
+	      the format of <emphasis role="bold">arg</emphasis> see the
+	      <emphasis role="bold">PASS PHRASE ARGUMENTS</emphasis>
+	      section in <citerefentry>
+	      <refentrytitle>openssl</refentrytitle>
+	      <manvolnum>1</manvolnum> </citerefentry>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-aes128|-aes192|-aes256|-camellia128|-camellia192|-camellia256|-des|-des3|-idea</emphasis></term>
+          <listitem>
+            <para>
+	      These options encrypt the private key with the specified
+	      cipher before outputting it. A pass phrase is prompted for.
+	      If none of these options is specified the key is written in
+	      plain text. This means that using the <emphasis role="bold">dsa</emphasis> utility to read in an encrypted
+	      key with no encryption option can be used to remove the pass
+	      phrase from a key, or by setting the encryption options it
+	      can be use to add or change the pass phrase. These options
+	      can only be used with PEM format output files.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-text</emphasis></term>
+          <listitem>
+            <para>
+	      prints out the public, private key components and parameters.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-noout</emphasis></term>
+          <listitem>
+            <para>
+	      this option prevents output of the encoded version of the
+	      key.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-modulus</emphasis></term>
+          <listitem>
+            <para>
+	      this option prints out the value of the public key component
+	      of the key.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-pubin</emphasis></term>
+          <listitem>
+            <para>
+	      by default a private key is read from the input file: with
+	      this option a public key is read instead.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-pubout</emphasis></term>
+          <listitem>
+            <para>
+	      by default a private key is output. With this option a public
+	      key will be output instead. This option is automatically set
+	      if the input is a public key.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-engine id</emphasis></term>
+          <listitem>
+            <para>
+	      specifying an engine (by its unique <emphasis role="bold">id</emphasis> string) will cause <emphasis role="bold">dsa</emphasis> to attempt to obtain a functional
+	      reference to the specified engine, thus initialising it if
+	      needed. The engine will then be set as the default for all
+	      available algorithms.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </para>
+  </refsection>
+  <refsection xml:id="ID-12c7a2d197531c7d229fd59c4af6db28"><title>NOTES</title>
+    <para>
+      The PEM private key format uses the header and footer lines:
+    </para>
+    <screen>-----BEGIN DSA PRIVATE KEY-----
+-----END DSA PRIVATE KEY-----</screen>
+    <para>
+      The PEM public key format uses the header and footer lines:
+    </para>
+    <screen>-----BEGIN PUBLIC KEY-----
+-----END PUBLIC KEY-----</screen>
+  </refsection>
+  <refsection xml:id="ID-3b01059c3585916fafc705293181b0d3"><title>EXAMPLES</title>
+    <para>
+      To remove the pass phrase on a DSA private key:
+    </para>
+    <screen>openssl dsa -in key.pem -out keyout.pem</screen>
+    <para>
+      To encrypt a private key using triple DES:
+    </para>
+    <screen>openssl dsa -in key.pem -des3 -out keyout.pem</screen>
+    <para>
+      To convert a private key from PEM to DER format:
+    </para>
+    <screen>openssl dsa -in key.pem -outform DER -out keyout.der</screen>
+    <para>
+      To print out the components of a private key to standard output:
+    </para>
+    <screen>openssl dsa -in key.pem -text -noout</screen>
+    <para>
+      To just output the public part of a private key:
+    </para>
+    <screen>openssl dsa -in key.pem -pubout -out pubkey.pem</screen>
   </refsection>
   <refsection xml:id="ID-e562a58016f87bbcb9e4709dce9709bc"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>bn</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>dh</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry> <refentrytitle>err</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>rand</refentrytitle> <manvolnum>3</manvolnum>
+      <citerefentry> <refentrytitle>dsaparam</refentrytitle>
+      <manvolnum>1</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>gendsa</refentrytitle> <manvolnum>1</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>rsa</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>sha</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry> <refentrytitle>engine</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>DSA_new</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry>
-      <refentrytitle>DSA_size</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry>
-      <refentrytitle>DSA_generate_parameters</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>DSA_dup_DH</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry>
-      <refentrytitle>DSA_generate_key</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>DSA_sign</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry>
-      <refentrytitle>DSA_set_method</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>DSA_get_ex_new_index</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>RSA_print</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>1</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>genrsa</refentrytitle> <manvolnum>1</manvolnum>
       </citerefentry>
     </para>
   </refsection>

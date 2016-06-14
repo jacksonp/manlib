@@ -29,6 +29,40 @@
       error strings so that the application can a generate human-readable
       error messages for the error code.
     </para>
+    <refsection xml:id="ID-4bccc3b108947dcb9a181d49dd275295"><title>Reporting errors</title>
+      <para>
+	Each sub-library has a specific macro XXXerr() that is used to
+	report errors. Its first argument is a function code <emphasis role="bold">XXX_F_...</emphasis>, the second argument is a reason
+	code <emphasis role="bold">XXX_R_...</emphasis>. Function codes are
+	derived from the function names; reason codes consist of textual
+	error descriptions. For example, the function ssl3_read_bytes()
+	reports a "handshake failure" as follows:
+      </para>
+      <screen>SSLerr(SSL_F_SSL3_READ_BYTES, SSL_R_SSL_HANDSHAKE_FAILURE);</screen>
+      <para>
+	Function and reason codes should consist of upper case characters,
+	numbers and underscores only. The error file generation script
+	translates function codes into function names by looking in the
+	header files for an appropriate function name, if none is found it
+	just uses the capitalized form such as "SSL3_READ_BYTES" in the
+	above example.
+      </para>
+      <para>
+	The trailing section of a reason code (after the "_R_") is
+	translated into lower case and underscores changed to spaces.
+      </para>
+      <para>
+	When you are using new function or reason codes, run <emphasis role="bold">make errors</emphasis>. The necessary <emphasis role="bold">#define</emphasis>s will then automatically be added to
+	the sub-library's header file.
+      </para>
+      <para>
+	Although a library will normally report errors using its own
+	specific XXXerr macro, another library's macro can be used. This is
+	normally only done when a library wants to include ASN1 code which
+	must use the ASN1err() macro.
+      </para>
+      <screen></screen>
+    </refsection>
   </refsection>
   <refsection xml:id="ID-44a2aa2a90a30f21771db492f5a79825"><title>RETURN VALUES</title>
     <para>

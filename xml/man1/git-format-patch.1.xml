@@ -118,6 +118,22 @@ reference.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
+--compaction-heuristic
+</term>
+<term>
+--no-compaction-heuristic
+</term>
+<listitem>
+<simpara>
+        These are to help debugging and tuning an experimental
+        heuristic (which is off by default) that shifts the hunk
+        boundary in an attempt to make the resulting patch easier
+        to read.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 --minimal
 </term>
 <listitem>

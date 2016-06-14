@@ -1,0 +1,84 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>MDC2_Init.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>MDC2, MDC2_Init, MDC2_Update, MDC2_Final</refname>
+<refpurpose>MDC2 hash function</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/mdc2.h&gt;</synopsis>
+<synopsis>unsigned char *MDC2(const unsigned char *d, unsigned long n,
+                 unsigned char *md);</synopsis>
+<synopsis>int MDC2_Init(MDC2_CTX *c);
+int MDC2_Update(MDC2_CTX *c, const unsigned char *data,
+                 unsigned long len);
+int MDC2_Final(unsigned char *md, MDC2_CTX *c);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-0302b86730477325c53afb341d04e699"><title>DESCRIPTION</title>
+    <para>
+      MDC2 is a method to construct hash functions with 128 bit output from
+      block ciphers.  These functions are an implementation of MDC2 with
+      DES.
+    </para>
+    <para>
+      MDC2() computes the MDC2 message digest of the <emphasis role="bold">n</emphasis> bytes at <emphasis role="bold">d</emphasis>
+      and places it in <emphasis role="bold">md</emphasis> (which must have
+      space for MDC2_DIGEST_LENGTH == 16 bytes of output). If <emphasis role="bold">md</emphasis> is NULL, the digest is placed in a static
+      array.
+    </para>
+    <para>
+      The following functions may be used if the message is not completely
+      stored in memory:
+    </para>
+    <para>
+      MDC2_Init() initializes a <emphasis role="bold">MDC2_CTX</emphasis>
+      structure.
+    </para>
+    <para>
+      MDC2_Update() can be called repeatedly with chunks of the message to
+      be hashed (<emphasis role="bold">len</emphasis> bytes at <emphasis role="bold">data</emphasis>).
+    </para>
+    <para>
+      MDC2_Final() places the message digest in <emphasis role="bold">md</emphasis>, which must have space for
+      MDC2_DIGEST_LENGTH == 16 bytes of output, and erases the <emphasis role="bold">MDC2_CTX</emphasis>.
+    </para>
+    <para>
+      Applications should use the higher level functions <citerefentry>
+      <refentrytitle>EVP_DigestInit</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> etc. instead of calling the
+      hash functions directly.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-4549875e454fa60523e8a87854783f20"><title>RETURN VALUES</title>
+    <para>
+      MDC2() returns a pointer to the hash value.
+    </para>
+    <para>
+      MDC2_Init(), MDC2_Update() and MDC2_Final() return 1 for success, 0
+      otherwise.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-c7320aac00f7a54b785d6fcb3b2726fe"><title>CONFORMING TO</title>
+    <para>
+      ISO/IEC 10118-2, with DES
+    </para>
+  </refsection>
+  <refsection xml:id="ID-73d74a351bffcaaca5a04694858bfbc0"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>EVP_DigestInit</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-8c6bb990bc4da3caf2bfa57fc0e51841"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

@@ -1,0 +1,97 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>rand.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>rand</refname>
+<refpurpose>generate pseudo-random bytes</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis><emphasis role="bold">openssl rand</emphasis>
+[<emphasis role="bold">-help</emphasis>]
+[<emphasis role="bold">-out</emphasis> <emphasis role="italic">file</emphasis>]
+[<emphasis role="bold">-rand</emphasis> <emphasis role="italic">file(s)</emphasis>]
+[<emphasis role="bold">-base64</emphasis>]
+[<emphasis role="bold">-hex</emphasis>]
+<emphasis role="italic">num</emphasis></synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-b881dfda9d3447f881317f09e1a106cc"><title>DESCRIPTION</title>
+    <para>
+      The <emphasis role="bold">rand</emphasis> command outputs <emphasis role="italic">num</emphasis> pseudo-random bytes after seeding the
+      random number generator once.  As in other <emphasis role="bold">openssl</emphasis> command line tools, PRNG seeding uses
+      the file <emphasis role="italic">$HOME/</emphasis><emphasis role="bold">.rnd</emphasis> or <emphasis role="bold">.rnd</emphasis>
+      in addition to the files given in the <emphasis role="bold">-rand</emphasis> option.  A new <emphasis role="italic">$HOME</emphasis>/<emphasis role="bold">.rnd</emphasis>
+      or <emphasis role="bold">.rnd</emphasis> file will be written back if
+      enough seeding was obtained from these sources.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-5d380450c6637a2b362f7f5ddcf4524e"><title>OPTIONS</title>
+    <para>
+      <variablelist>
+        <varlistentry>
+          <term><emphasis role="bold">-help</emphasis></term>
+          <listitem>
+            <para>
+	      Print out a usage message.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-out</emphasis> <emphasis role="italic">file</emphasis></term>
+          <listitem>
+            <para>
+	      Write to <emphasis role="italic">file</emphasis> instead of
+	      standard output.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-rand</emphasis> <emphasis role="italic">file(s)</emphasis></term>
+          <listitem>
+            <para>
+	      Use specified file or files or EGD socket (see <citerefentry>
+	      <refentrytitle>RAND_egd</refentrytitle>
+	      <manvolnum>3</manvolnum> </citerefentry>) for seeding the
+	      random number generator. Multiple files can be specified
+	      separated by an OS-dependent character. The separator is
+	      <emphasis role="bold">;</emphasis> for MS-Windows, <emphasis role="bold">,</emphasis> for OpenVMS, and <emphasis role="bold">:</emphasis> for all others.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-base64</emphasis></term>
+          <listitem>
+            <para>
+	      Perform base64 encoding on the output.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-hex</emphasis></term>
+          <listitem>
+            <para>
+	      Show the output as a hex string.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-7b48f0b97e9c07f9cdcc32c175760a88"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>RAND_bytes</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-9e47674650808cf21a56f438cc22ce04"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

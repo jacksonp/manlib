@@ -1,0 +1,126 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>SHA256_Init.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>SHA1, SHA1_Init, SHA1_Update, SHA1_Final, SHA224, SHA224_Init, SHA224_Update,
+SHA224_Final, SHA256, SHA256_Init, SHA256_Update, SHA256_Final, SHA384,
+SHA384_Init, SHA384_Update, SHA384_Final, SHA512, SHA512_Init, SHA512_Update,
+SHA512_Final</refname>
+<refpurpose>Secure Hash Algorithm</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/sha.h&gt;</synopsis>
+<synopsis>int SHA1_Init(SHA_CTX *c);
+int SHA1_Update(SHA_CTX *c, const void *data, size_t len);
+int SHA1_Final(unsigned char *md, SHA_CTX *c);
+unsigned char *SHA1(const unsigned char *d, size_t n,
+     unsigned char *md);</synopsis>
+<synopsis>int SHA224_Init(SHA256_CTX *c);
+int SHA224_Update(SHA256_CTX *c, const void *data, size_t len);
+int SHA224_Final(unsigned char *md, SHA256_CTX *c);
+unsigned char *SHA224(const unsigned char *d, size_t n,
+     unsigned char *md);</synopsis>
+<synopsis>int SHA256_Init(SHA256_CTX *c);
+int SHA256_Update(SHA256_CTX *c, const void *data, size_t len);
+int SHA256_Final(unsigned char *md, SHA256_CTX *c);
+unsigned char *SHA256(const unsigned char *d, size_t n,
+     unsigned char *md);</synopsis>
+<synopsis>int SHA384_Init(SHA512_CTX *c);
+int SHA384_Update(SHA512_CTX *c, const void *data, size_t len);
+int SHA384_Final(unsigned char *md, SHA512_CTX *c);
+unsigned char *SHA384(const unsigned char *d, size_t n,
+     unsigned char *md);</synopsis>
+<synopsis>int SHA512_Init(SHA512_CTX *c);
+int SHA512_Update(SHA512_CTX *c, const void *data, size_t len);
+int SHA512_Final(unsigned char *md, SHA512_CTX *c);
+unsigned char *SHA512(const unsigned char *d, size_t n,
+     unsigned char *md);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-0f771bb1c64772d6e789fd22a066118a"><title>DESCRIPTION</title>
+    <para>
+      Applications should use the higher level functions <citerefentry>
+      <refentrytitle>EVP_DigestInit</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> etc. instead of calling the
+      hash functions directly.
+    </para>
+    <para>
+      SHA-1 (Secure Hash Algorithm) is a cryptographic hash function with a
+      160 bit output.
+    </para>
+    <para>
+      SHA1() computes the SHA-1 message digest of the <emphasis role="bold">n</emphasis> bytes at <emphasis role="bold">d</emphasis>
+      and places it in <emphasis role="bold">md</emphasis> (which must have
+      space for SHA_DIGEST_LENGTH == 20 bytes of output). If <emphasis role="bold">md</emphasis> is NULL, the digest is placed in a static
+      array. Note: setting <emphasis role="bold">md</emphasis> to NULL is
+      <emphasis role="bold">not thread safe</emphasis>.
+    </para>
+    <para>
+      The following functions may be used if the message is not completely
+      stored in memory:
+    </para>
+    <para>
+      SHA1_Init() initializes a <emphasis role="bold">SHA_CTX</emphasis>
+      structure.
+    </para>
+    <para>
+      SHA1_Update() can be called repeatedly with chunks of the message to
+      be hashed (<emphasis role="bold">len</emphasis> bytes at <emphasis role="bold">data</emphasis>).
+    </para>
+    <para>
+      SHA1_Final() places the message digest in <emphasis role="bold">md</emphasis>, which must have space for
+      SHA_DIGEST_LENGTH == 20 bytes of output, and erases the <emphasis role="bold">SHA_CTX</emphasis>.
+    </para>
+    <para>
+      The SHA224, SHA256, SHA384 and SHA512 families of functions operate
+      in the same way as for the SHA1 functions. Note that SHA224 and
+      SHA256 use a <emphasis role="bold">SHA256_CTX</emphasis> object
+      instead of <emphasis role="bold">SHA_CTX</emphasis>. SHA384 and
+      SHA512 use <emphasis role="bold">SHA512_CTX</emphasis>. The buffer
+      <emphasis role="bold">md</emphasis> must have space for the output
+      from the SHA variant being used (defined by SHA224_DIGEST_LENGTH,
+      SHA256_DIGEST_LENGTH, SHA384_DIGEST_LENGTH and SHA512_DIGEST_LENGTH).
+      Also note that, as for the SHA1() function above, the SHA224(),
+      SHA256(), SHA384() and SHA512() functions are not thread safe if
+      <emphasis role="bold">md</emphasis> is NULL.
+    </para>
+    <para>
+      The predecessor of SHA-1, SHA, is also implemented, but it should be
+      used only when backward compatibility is required.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-e9a2b45cad240bd96fadd1c2700971f1"><title>RETURN VALUES</title>
+    <para>
+      SHA1(), SHA224(), SHA256(), SHA384() and SHA512() return a pointer to
+      the hash value.
+    </para>
+    <para>
+      SHA1_Init(), SHA1_Update() and SHA1_Final() and equivalent SHA224,
+      SHA256, SHA384 and SHA512 functions return 1 for success, 0
+      otherwise.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-69af2f3700788289bb1d5bee1af25184"><title>CONFORMING TO</title>
+    <para>
+      US Federal Information Processing Standard FIPS PUB 180-4 (Secure
+      Hash Standard), ANSI X9.30
+    </para>
+  </refsection>
+  <refsection xml:id="ID-86a984b78e0ee7c22febe3c4621fcaf7"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>EVP_DigestInit</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-41b7c1e02f161a2836fc4d720118442d"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

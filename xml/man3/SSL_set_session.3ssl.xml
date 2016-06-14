@@ -26,7 +26,14 @@
       If there is already a session set inside <emphasis role="bold">ssl</emphasis> (because it was set with SSL_set_session()
       before or because the same <emphasis role="bold">ssl</emphasis> was
       already used for a connection), SSL_SESSION_free() will be called for
-      that session.
+      that session. If that old session is still <emphasis role="bold">open</emphasis>, it is considered bad and will be removed
+      from the session cache (if used). A session is considered open, if
+      <citerefentry> <refentrytitle>SSL_shutdown</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> was not called for the
+      connection (or at least <citerefentry>
+      <refentrytitle>SSL_set_shutdown</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> was used to set the
+      SSL_SENT_SHUTDOWN state).
     </para>
   </refsection>
   <refsection xml:id="ID-06817f82c5edcea73bb105e2d85ce803"><title>NOTES</title>

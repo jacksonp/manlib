@@ -35,9 +35,9 @@ EVP_PKEY *d2i_PKCS8PrivateKey_fp(FILE *fp, EVP_PKEY **x, pem_password_cb *cb, vo
     <para>
       Other than the use of DER as opposed to PEM these functions are
       identical to the corresponding <emphasis role="bold">PEM</emphasis>
-      function as described in the <citerefentry>
-      <refentrytitle>pem</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry> manual page.
+      function as described in <citerefentry>
+      <refentrytitle>PEM_read_PrivateKey</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>.
     </para>
   </refsection>
   <refsection xml:id="ID-3de57a01192b4e63b03ef58ccf8e1e7c"><title>NOTES</title>
@@ -55,7 +55,7 @@ EVP_PKEY *d2i_PKCS8PrivateKey_fp(FILE *fp, EVP_PKEY **x, pem_password_cb *cb, vo
   </refsection>
   <refsection xml:id="ID-28e818faf71a8574440d1bc60ed40af9"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>pem</refentrytitle>
+      <citerefentry> <refentrytitle>PEM_read_PrivateKey</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>
   </refsection>

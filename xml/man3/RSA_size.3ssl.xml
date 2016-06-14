@@ -32,10 +32,8 @@
   </refsection>
   <refsection xml:id="ID-19aad74929142cb53ac3edc7f4aa4804"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>rsa</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>BN_num_bits</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>
+      <citerefentry> <refentrytitle>BN_num_bits</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-979c898ca366e109f0ea965eb7860420"><title>HISTORY</title>

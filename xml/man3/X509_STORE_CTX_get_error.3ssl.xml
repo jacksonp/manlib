@@ -70,8 +70,8 @@ X509 *X509_STORE_CTX_get0_cert(X509_STORE_CTX *ctx);</synopsis>
       <manvolnum>3</manvolnum> </citerefentry>.
     </para>
     <para>
-      X509_STORE_CTX_get0_cert() returns the leaf certificate being
-      verified.
+      X509_STORE_CTX_get0_cert() retrieves an internal pointer to the
+      certificate being verified by the <emphasis role="bold">ctx</emphasis>.
     </para>
     <para>
       X509_STORE_CTX_get1_chain() returns a complete validate chain if a

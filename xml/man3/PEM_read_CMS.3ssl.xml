@@ -1,0 +1,109 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>PEM_read_CMS.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>PEM_read_CMS,
+PEM_read_bio_CMS,
+PEM_write_CMS,
+PEM_write_bio_CMS,
+PEM_write_DHxparams,
+PEM_write_bio_DHxparams,
+PEM_read_ECPKParameters,
+PEM_read_bio_ECPKParameters,
+PEM_write_ECPKParameters,
+PEM_write_bio_ECPKParameters,
+PEM_read_ECPrivateKey,
+PEM_write_ECPrivateKey,
+PEM_write_bio_ECPrivateKey,
+PEM_read_EC_PUBKEY,
+PEM_read_bio_EC_PUBKEY,
+PEM_write_EC_PUBKEY,
+PEM_write_bio_EC_PUBKEY,
+PEM_read_NETSCAPE_CERT_SEQUENCE,
+PEM_read_bio_NETSCAPE_CERT_SEQUENCE,
+PEM_write_NETSCAPE_CERT_SEQUENCE,
+PEM_write_bio_NETSCAPE_CERT_SEQUENCE,
+PEM_read_PKCS8,
+PEM_read_bio_PKCS8,
+PEM_write_PKCS8,
+PEM_write_bio_PKCS8,
+PEM_write_PKCS8_PRIV_KEY_INFO,
+PEM_read_bio_PKCS8_PRIV_KEY_INFO,
+PEM_read_PKCS8_PRIV_KEY_INFO,
+PEM_write_bio_PKCS8_PRIV_KEY_INFO,
+PEM_read_SSL_SESSION,
+PEM_read_bio_SSL_SESSION,
+PEM_write_SSL_SESSION,
+PEM_write_bio_SSL_SESSION</refname>
+<refpurpose>PEM object encoding routines</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/pem.h&gt;</synopsis>
+<synopsis>#define DECLARE_PEM_rw(name, TYPE) ...</synopsis>
+<synopsis>TYPE *PEM_read_TYPE(FILE *fp, TYPE **a, pem_password_cb *cb, void *u);
+TYPE *PEM_read_bio_TYPE(BIO *bp, TYPE **a, pem_password_cb *cb, void *u);
+int PEM_write_TYPE(FILE *fp, const TYPE *a);
+int PEM_write_bio_TYPE(BIO *bp, const TYPE *a);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-c86445335b4045fd92b2182db701d1b9"><title>DESCRIPTION</title>
+    <para>
+      In the description below, <emphasis role="italic">TYPE</emphasis> is
+      used as a placeholder for any of the OpenSSL datatypes, such as
+      <emphasis role="italic">X509</emphasis>.
+    </para>
+    <para>
+      These routines convert between local instances of ASN1 datatypes and
+      the PEM encoding.  For more information on the templates, see
+      <citerefentry> <refentrytitle>ASN1_ITEM</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>.  For more information on
+      the lower-level routines used by the functions here, see
+      <citerefentry> <refentrytitle>PEM_read</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>.
+    </para>
+    <para>
+      PEM_read_TYPE() reads a PEM-encoded object of <emphasis role="italic">TYPE</emphasis> from the file <emphasis role="bold">fp</emphasis> and returns it.  The <emphasis role="bold">cb</emphasis> and <emphasis role="bold">u</emphasis>
+      parameters are as described in <citerefentry>
+      <refentrytitle>pem_password_cb</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>.
+    </para>
+    <para>
+      PEM_read_bio_TYPE() is similar to PEM_read_TYPE() but reads from the
+      BIO <emphasis role="bold">bp</emphasis>.
+    </para>
+    <para>
+      PEM_write_TYPE() writes the PEM encoding of the object <emphasis role="bold">a</emphasis> to the file <emphasis role="bold">fp</emphasis>.
+    </para>
+    <para>
+      PEM_write_bio_TYPE() similarly writes to the BIO <emphasis role="bold">bp</emphasis>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-23c8c6fe2b922841822b06e2439036ef"><title>RETURN VALUES</title>
+    <para>
+      PEM_read_TYPE() and PEM_read_bio_TYPE() return a pointer to an
+      allocated object, which should be released by calling TYPE_free(), or
+      NULL on error.
+    </para>
+    <para>
+      PEM_write_TYPE() and PEM_write_bio_TYPE() return the number of bytes
+      written or zero on error.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-787efd8880ebb34cd36fdd9b5bf02944"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>PEM_read</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-11862c5466c1be06cd1adfcf68fd3cf3"><title>COPYRIGHT</title>
+    <para>
+      Copyright 1998-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

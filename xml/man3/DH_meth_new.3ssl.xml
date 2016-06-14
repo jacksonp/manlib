@@ -51,9 +51,7 @@ int DH_meth_set_generate_params(DH_METHOD *dhm,
       The <emphasis role="bold">DH_METHOD</emphasis> type is a structure
       used for the provision of custom DH implementations. It provides a
       set of of functions used by OpenSSL for the implementation of the
-      various DH capabilities. See the <citerefentry>
-      <refentrytitle>dh</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry> page for more information.
+      various DH capabilities.
     </para>
     <para>
       DH_meth_new() creates a new <emphasis role="bold">DH_METHOD</emphasis> structure. It should be given a

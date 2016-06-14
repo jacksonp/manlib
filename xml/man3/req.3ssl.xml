@@ -830,7 +830,7 @@ challengePassword_max          = 20
 
 subjectKeyIdentifier=hash
 authorityKeyIdentifier=keyid:always,issuer:always
-basicConstraints = CA:true</screen>
+basicConstraints = critical, CA:true</screen>
     <para>
       Sample configuration containing all field values:
     </para>

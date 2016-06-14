@@ -38,13 +38,8 @@ int DHparams_print_fp(FILE *fp, DH *x);</synopsis>
   </refsection>
   <refsection xml:id="ID-97f867380751b68fa4eaa9510cac3ac3"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dh</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>dsa</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry> <refentrytitle>rsa</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>BN_bn2bin</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>
+      <citerefentry> <refentrytitle>BN_bn2bin</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-e565e6768d48f75f8e4421f344b5aa28"><title>COPYRIGHT</title>

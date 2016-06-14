@@ -1,0 +1,105 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>RSA_private_decrypt.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>RSA_private_decrypt,
+RSA_private_encrypt,
+RSA_public_decrypt,
+RSA_sign,
+RSA_verify,
+RSA_sign_ASN1_OCTET_STRING,
+RSA_verify_ASN1_OCTET_STRING</refname>
+<refpurpose>RSA public key cryptosystem</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/rsa.h&gt;</synopsis>
+<synopsis>int RSA_private_decrypt(int flen, unsigned char *from,
+   unsigned char *to, RSA *rsa, int padding);
+int RSA_private_encrypt(int flen, unsigned char *from,
+   unsigned char *to, RSA *rsa,int padding);
+int RSA_public_decrypt(int flen, unsigned char *from,
+   unsigned char *to, RSA *rsa,int padding);</synopsis>
+<synopsis>int RSA_sign(int type, unsigned char *m, unsigned int m_len,
+   unsigned char *sigret, unsigned int *siglen, RSA *rsa);
+int RSA_verify(int type, unsigned char *m, unsigned int m_len,
+   unsigned char *sigbuf, unsigned int siglen, RSA *rsa);</synopsis>
+<synopsis>int RSA_sign_ASN1_OCTET_STRING(int dummy, unsigned char *m,
+   unsigned int m_len, unsigned char *sigret, unsigned int *siglen,
+   RSA *rsa);
+int RSA_verify_ASN1_OCTET_STRING(int dummy, unsigned char *m,
+   unsigned int m_len, unsigned char *sigbuf, unsigned int siglen,
+   RSA *rsa);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-e25dc91ba1696100b9b815fa987aa1dd"><title>DESCRIPTION</title>
+    <para>
+      These functions implement RSA public key encryption and signatures as
+      defined in PKCS #1 v2.0 [RFC 2437].
+    </para>
+    <para>
+      The <emphasis role="bold">RSA</emphasis> structure represents public
+      and private RSA keys.
+    </para>
+    <para>
+      Note that RSA keys may use non-standard <emphasis role="bold">RSA_METHOD</emphasis> implementations, either directly or
+      by the use of <emphasis role="bold">ENGINE</emphasis> modules. In
+      some cases (eg. an ENGINE providing support for hardware-embedded
+      keys), these BIGNUM values will not be used by the implementation or
+      may be used for alternative data storage. For this reason,
+      applications should generally avoid using RSA structure elements
+      directly and instead use API functions to query or modify keys.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-4f803deca1ae5f775de3593d6ef0b642"><title>CONFORMING TO</title>
+    <para>
+      SSL, PKCS #1 v2.0
+    </para>
+  </refsection>
+  <refsection xml:id="ID-653e51fd98ff0ceecde25162a0ba34de"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>bn</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>dsa</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry> <refentrytitle>dh</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>rand</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry> <refentrytitle>engine</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>RSA_new</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>RSA_set0_key</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> <citerefentry>
+      <refentrytitle>RSA_public_encrypt</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>RSA_size</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>RSA_generate_key</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>RSA_check_key</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>RSA_blinding_on</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>RSA_set_method</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>RSA_print</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>RSA_get_ex_new_index</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>RSA_sign_ASN1_OCTET_STRING</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>RSA_padding_add_PKCS1_type_1</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-20f6c39d9bfb50bb5adbf51ddc7878af"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

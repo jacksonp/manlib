@@ -1,0 +1,266 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>DEFINE_STACK_OF.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>DEFINE_STACK_OF, DEFINE_STACK_OF_CONST, DEFINE_SPECIAL_STACK_OF,
+sk_TYPE_num, sk_TYPE_value, sk_TYPE_new, sk_TYPE_new_null, sk_TYPE_free,
+sk_TYPE_zero, sk_TYPE_delete, sk_TYPE_delete_ptr, sk_TYPE_push,
+sk_TYPE_unshift, sk_TYPE_pop, sk_TYPE_shift, sk_TYPE_pop_free,
+sk_TYPE_insert, sk_TYPE_set, sk_TYPE_find, sk_TYPE_find_ex, sk_TYPE_sort,
+sk_TYPE_is_sorted, sk_TYPE_dup, sk_TYPE_deep_copy, sk_TYPE_set_cmp_func</refname>
+<refpurpose>stack container</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/safestack.h&gt;</synopsis>
+<synopsis>#define STACK_OF(TYPE)
+#define DEFINE_STACK_OF
+#define DEFINE_STACK_OF_CONST
+#define DEFINE_SPECIAL_STACK_OF</synopsis>
+<synopsis>typedef int (*sk_TYPE_compfunc)(const TYPE *const *a, const TYPE *const *b);
+typedef TYPE * (*sk_TYPE_copyfunc)(const TYPE *a);
+typedef void (*sk_TYPE_freefunc)(TYPE *a);</synopsis>
+<synopsis>int sk_TYPE_num(const STACK_OF(TYPE) *sk);
+TYPE *sk_TYPE_value(const STACK_OF(TYPE) *sk, int idx);
+STACK_OF(TYPE) *sk_TYPE_new(sk_TYPE_compfunc compare);
+STACK_OF(TYPE) *sk_TYPE_new_null(void);
+void sk_TYPE_free(const STACK_OF(TYPE) *sk);
+void sk_TYPE_zero(const STACK_OF(TYPE) *sk);
+TYPE *sk_TYPE_delete(STACK_OF(TYPE) *sk, int i);
+TYPE *sk_TYPE_delete_ptr(STACK_OF(TYPE) *sk, TYPE *ptr);
+int sk_TYPE_push(STACK_OF(TYPE) *sk, TYPE *ptr);
+int sk_TYPE_unshift(STACK_OF(TYPE) *sk, TYPE *ptr);
+TYPE *sk_TYPE_pop(STACK_OF(TYPE) *sk);
+TYPE *sk_TYPE_shift(STACK_OF(TYPE) *sk);
+void sk_TYPE_pop_free(STACK_OF(TYPE) *sk, sk_TYPE_freefunc freefunc);
+int sk_TYPE_insert(STACK_OF(TYPE) *sk, TYPE *ptr, int idx);
+TYPE *sk_TYPE_set(STACK_OF(TYPE) *sk, int idx, TYPE *ptr);
+int sk_TYPE_find(STACK_OF(TYPE) *sk, TYPE *ptr);
+int sk_TYPE_find_ex(STACK_OF(TYPE) *sk, TYPE *ptr);
+void sk_TYPE_sort(const STACK_OF(TYPE) *sk);
+int sk_TYPE_is_sorted(const STACK_OF(TYPE) *sk);
+STACK_OF(TYPE) *sk_TYPE_dup(STACK_OF(TYPE) *sk);
+STACK_OF(TYPE) *sk_TYPE_deep_copy(STACK_OF(TYPE) *sk,
+                                  sk_TYPE_copyfunc copyfunc,
+                                  sk_TYPE_freefunc freefunc);
+sk_TYPE_compfunc (*sk_TYPE_set_cmp_func(STACK_OF(TYPE) *sk, sk_TYPE_compfunc compare);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-f9aeb07713fbcca56aa9d25194d4f688"><title>DESCRIPTION</title>
+    <para>
+      Applications can create and use their own stacks by placing any of
+      the macros described below in a header file.  In the description
+      below, <emphasis role="italic">TYPE</emphasis> is used as a
+      placeholder for any of the OpenSSL datatypes, such as <emphasis role="italic">X509</emphasis>.
+    </para>
+    <para>
+      DEFINE_STACK_OF(TYPE) creates set of functions for a stack of
+      <emphasis role="bold">TYPE</emphasis>. This will mean that type
+      <emphasis role="bold">TYPE</emphasis> is stored in each stack, the
+      type is referenced by STACK_OF(TYPE) and each function name begins
+      with <emphasis role="italic">sk_TYPE_</emphasis>. For example:
+    </para>
+    <screen>TYPE *sk_TYPE_value(STACK_OF(TYPE) *sk, int idx);</screen>
+    <para>
+      DEFINE_STACK_OF_CONST(TYPE) is identical to DEFINE_STACK_OF(TYPE)
+      except each element is constant. For example:
+    </para>
+    <screen>const TYPE *sk_TYPE_value(STACK_OF(TYPE) *sk, int idx);</screen>
+    <para>
+      DEFINE_SPECIAL_STACK_OF(FUNCNAME, TYPE) defines a stack of <emphasis role="bold">TYPE</emphasis> but each function uses <emphasis role="bold">FUNCNAME</emphasis> in the function name. For example:
+    </para>
+    <screen>TYPE *sk_FUNCNAME_value(STACK_OF(TYPE) *sk, int idx);</screen>
+    <para>
+      sk_TYPE_num() returns the number of elements in <emphasis role="bold">sk</emphasis> or -1 if <emphasis role="bold">sk</emphasis> is <emphasis role="bold">NULL</emphasis>.
+    </para>
+    <para>
+      sk_TYPE_value() returns element <emphasis role="bold">idx</emphasis>
+      in <emphasis role="bold">sk</emphasis>, where <emphasis role="bold">idx</emphasis> starts at zero. If <emphasis role="bold">idx</emphasis> is out of range then <emphasis role="bold">NULL</emphasis> is returned.
+    </para>
+    <para>
+      sk_TYPE_new() allocates a new empty stack using comparison function
+      <emphasis role="bold">compar</emphasis>. If <emphasis role="bold">compar</emphasis> is <emphasis role="bold">NULL</emphasis> then no comparison function is used.
+    </para>
+    <para>
+      sk_TYPE_new_null() allocates a new empty stack with no comparison
+      function.
+    </para>
+    <para>
+      sk_TYPE_set_cmp_func() sets the comparison function of <emphasis role="bold">sk</emphasis> to <emphasis role="bold">compar</emphasis>.
+      The previous comparison function is returned or <emphasis role="bold">NULL</emphasis> if there was no previous comparison
+      function.
+    </para>
+    <para>
+      sk_TYPE_free() frees up the <emphasis role="bold">sk</emphasis>
+      structure. It does <emphasis role="bold">not</emphasis> free up any
+      elements of <emphasis role="bold">sk</emphasis>. After this call
+      <emphasis role="bold">sk</emphasis> is no longer valid.
+    </para>
+    <para>
+      sk_TYPE_zero() sets the number of elements in <emphasis role="bold">sk</emphasis> to zero. It does not free <emphasis role="bold">sk</emphasis> so after this call <emphasis role="bold">sk</emphasis> is still valid.
+    </para>
+    <para>
+      sk_TYPE_pop_free() frees up all elements of <emphasis role="bold">sk</emphasis> and <emphasis role="bold">sk</emphasis>
+      itself. The free function freefunc() is called on each element to
+      free it.
+    </para>
+    <para>
+      sk_TYPE_delete() deletes element <emphasis role="bold">i</emphasis>
+      from <emphasis role="bold">sk</emphasis>. It returns the deleted
+      element or <emphasis role="bold">NULL</emphasis> if <emphasis role="bold">i</emphasis> is out of range.
+    </para>
+    <para>
+      sk_TYPE_delete_ptr() deletes element matching <emphasis role="bold">ptr</emphasis> from <emphasis role="bold">sk</emphasis>.
+      It returns the deleted element or <emphasis role="bold">NULL</emphasis> if no element matching <emphasis role="bold">ptr</emphasis> was found.
+    </para>
+    <para>
+      sk_TYPE_insert() inserts <emphasis role="bold">ptr</emphasis> into
+      <emphasis role="bold">sk</emphasis> at position <emphasis role="bold">idx</emphasis>. Any existing elements at or after
+      <emphasis role="bold">idx</emphasis> are moved downwards. If
+      <emphasis role="bold">idx</emphasis> is out of range the new element
+      is appended to <emphasis role="bold">sk</emphasis>. sk_TYPE_insert()
+      either returns the number of elements in <emphasis role="bold">sk</emphasis> after the new element is inserted or zero
+      if an error (such as memory allocation failure) occurred.
+    </para>
+    <para>
+      sk_TYPE_push() appends <emphasis role="bold">ptr</emphasis> to
+      <emphasis role="bold">sk</emphasis> it is equivalent to:
+    </para>
+    <screen>sk_TYPE_insert(sk, ptr, -1);</screen>
+    <para>
+      sk_TYPE_unshift() inserts <emphasis role="bold">ptr</emphasis> at the
+      start of <emphasis role="bold">sk</emphasis> it is equivalent to:
+    </para>
+    <screen>sk_TYPE_insert(sk, ptr, 0);</screen>
+    <para>
+      sk_TYPE_pop() returns and removes the last element from <emphasis role="bold">sk</emphasis>.
+    </para>
+    <para>
+      sk_TYPE_shift() returns and removes the first element from <emphasis role="bold">sk</emphasis>.
+    </para>
+    <para>
+      sk_TYPE_set() sets element <emphasis role="bold">idx</emphasis> of
+      <emphasis role="bold">sk</emphasis> to <emphasis role="bold">ptr</emphasis> replacing the current element. The new
+      element value is returned or <emphasis role="bold">NULL</emphasis> if
+      an error occurred: this will only happen if <emphasis role="bold">sk</emphasis> is <emphasis role="bold">NULL</emphasis> or
+      <emphasis role="bold">idx</emphasis> is out of range.
+    </para>
+    <para>
+      sk_TYPE_find() and sk_TYPE_find_ex() search <emphasis role="bold">sk</emphasis> using the supplied comparison function for
+      an element matching <emphasis role="bold">ptr</emphasis>.
+      sk_TYPE_find() returns the index of the first matching element or
+      <emphasis role="bold">-1</emphasis> if there is no match.
+      sk_TYPE_find_ex() returns a matching element or the nearest element
+      that does not match <emphasis role="bold">ptr</emphasis>. Note: if a
+      comparison function is set then  <emphasis role="bold">sk</emphasis>
+      is sorted before the search which may change its order. If no
+      comparison function is set then a linear search is made for a pointer
+      matching <emphasis role="bold">ptr</emphasis> and the stack is not
+      reordered.
+    </para>
+    <para>
+      sk_TYPE_sort() sorts <emphasis role="bold">sk</emphasis> using the
+      supplied comparison function.
+    </para>
+    <para>
+      sk_TYPE_is_sorted() returns <emphasis role="bold">1</emphasis> if
+      <emphasis role="bold">sk</emphasis> is sorted and <emphasis role="bold">0</emphasis> otherwise.
+    </para>
+    <para>
+      sk_TYPE_dup() returns a copy of <emphasis role="bold">sk</emphasis>.
+      Note the pointers in the copy are identical to the original.
+    </para>
+    <para>
+      sk_TYPE_deep_copy() returns a new stack where each element has been
+      copied. Copying is performed by the supplied copyfunc() and freeing
+      by freefunc(). The function freefunc() is only called if an error
+      occurs.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-3d1c5dd5f8cbb50bc2d8ffdc6b20260b"><title>NOTES</title>
+    <para>
+      Care should be taken when accessing stacks in multi-threaded
+      environments. Any operation which increases the size of a stack such
+      as sk_TYPE_insert() or sk_push() can "grow" the size of an internal
+      array and cause race conditions if the same stack is accessed in a
+      different thread. Operations such as sk_find() and sk_sort() can also
+      reorder the stack.
+    </para>
+    <para>
+      Any comparison function supplied should use a metric suitable for use
+      in a binary search operation. That is it should return zero, a
+      positive or negative value if <emphasis role="bold">a</emphasis> is
+      equal to, greater than or less than <emphasis role="bold">b</emphasis> respectively.
+    </para>
+    <para>
+      Care should be taken when checking the return values of the functions
+      sk_TYPE_find() and sk_TYPE_find_ex(). They return an index to the
+      matching element. In particular <emphasis role="bold">0</emphasis>
+      indicates a matching first element. A failed search is indicated by a
+      <emphasis role="bold">-1</emphasis> return value.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-3934f3571cc907c83b0d2b4f04e7e547"><title>RETURN VALUES</title>
+    <para>
+      sk_TYPE_num() returns the number of elements in the stack or
+      <emphasis role="bold">-1</emphasis> if the passed stack is <emphasis role="bold">NULL</emphasis>.
+    </para>
+    <para>
+      sk_TYPE_value() returns a pointer to a stack element or <emphasis role="bold">NULL</emphasis> if the index is out of range.
+    </para>
+    <para>
+      sk_TYPE_new() and sk_TYPE_new_null() return an empty stack or
+      <emphasis role="bold">NULL</emphasis> if an error occurs.
+    </para>
+    <para>
+      sk_TYPE_set_cmp_func() returns the old comparison function or
+      <emphasis role="bold">NULL</emphasis> if there was no old comparison
+      function.
+    </para>
+    <para>
+      sk_TYPE_free(), sk_TYPE_zero(), sk_TYPE_pop_free() and sk_TYPE_sort()
+      do not return values.
+    </para>
+    <para>
+      sk_TYPE_pop(), sk_TYPE_shift(), sk_TYPE_delete() and
+      sk_TYPE_delete_ptr() return a pointer to the deleted element or
+      <emphasis role="bold">NULL</emphasis> on error.
+    </para>
+    <para>
+      sk_TYPE_insert(), sk_TYPE_push() and sk_TYPE_unshift() return the
+      total number of elements in the stack and 0 if an error occurred.
+    </para>
+    <para>
+      sk_TYPE_set() returns a pointer to the replacement element or
+      <emphasis role="bold">NULL</emphasis> on error.
+    </para>
+    <para>
+      sk_TYPE_find() and sk_TYPE_find_ex() return an index to the found
+      element or <emphasis role="bold">-1</emphasis> on error.
+    </para>
+    <para>
+      sk_TYPE_is_sorted() returns <emphasis role="bold">1</emphasis> if the
+      stack is sorted and <emphasis role="bold">0</emphasis> if it is not.
+    </para>
+    <para>
+      sk_TYPE_dup() and sk_TYPE_deep_copy() return a pointer to the copy of
+      the stack.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-32eead6f1824a74394c8ae31197b09e9"><title>HISTORY</title>
+    <para>
+      Before OpenSSL 1.1.0, this was implemented via macros and not inline
+      functions and was not a public API.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-86180a93d6a67c4eed04515d5e097526"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

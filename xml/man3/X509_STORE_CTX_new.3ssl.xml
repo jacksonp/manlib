@@ -9,11 +9,9 @@ X509_STORE_CTX_init, X509_STORE_CTX_set0_trusted_stack, X509_STORE_CTX_set_cert,
 X509_STORE_CTX_set0_crls,
 X509_STORE_CTX_get0_chain, X509_STORE_CTX_set0_verified_chain,
 X509_STORE_CTX_get0_param, X509_STORE_CTX_set0_param,
-X509_STORE_CTX_get0_cert,
 X509_STORE_CTX_get0_untrusted, X509_STORE_CTX_set0_untrusted,
 X509_STORE_CTX_get_num_untrusted,
 X509_STORE_CTX_set_default,
-X509_STORE_CTX_get_verify_cb,
 X509_STORE_CTX_set_verify,
 X509_STORE_CTX_get_verify</refname>
 <refpurpose>X509_STORE_CTX initialisation</refpurpose>
@@ -33,8 +31,7 @@ void X509_STORE_CTX_set0_crls(X509_STORE_CTX *ctx, STACK_OF(X509_CRL) *sk);</syn
 <synopsis>X509_VERIFY_PARAM *X509_STORE_CTX_get0_param(X509_STORE_CTX *ctx);
 void X509_STORE_CTX_set0_param(X509_STORE_CTX *ctx, X509_VERIFY_PARAM *param);
 int X509_STORE_CTX_set_default(X509_STORE_CTX *ctx, const char *name);</synopsis>
-<synopsis>X509 *X509_STORE_CTX_get0_cert(X509_STORE_CTX *ctx);
-STACK_OF(X509)* X509_STORE_CTX_get0_untrusted(X509_STORE_CTX *ctx);
+<synopsis>STACK_OF(X509)* X509_STORE_CTX_get0_untrusted(X509_STORE_CTX *ctx);
 void X509_STORE_CTX_set0_untrusted(X509_STORE_CTX *ctx, STACK_OF(X509) *sk);</synopsis>
 <synopsis>int X509_STORE_CTX_get_num_untrusted(X509_STORE_CTX *ctx);</synopsis>
 <synopsis>typedef int (*X509_STORE_CTX_verify)(X509_STORE_CTX *);
@@ -100,10 +97,6 @@ void X509_STORE_CTX_set_verify(X509_STORE_CTX *ctx, X509_STORE_CTX_verify verify
     <para>
       X509_STORE_CTX_get0_param() retrieves an internal pointer to the
       verification parameters associated with <emphasis role="bold">ctx</emphasis>.
-    </para>
-    <para>
-      X509_STORE_CTX_get0_cert() retrieves an internal pointer to the
-      certificate being verified by the <emphasis role="bold">ctx</emphasis>.
     </para>
     <para>
       X509_STORE_CTX_get0_untrusted() retrieves an internal pointer to the

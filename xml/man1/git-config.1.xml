@@ -3241,6 +3241,18 @@ diff.tool
 </varlistentry>
 <varlistentry>
 <term>
+diff.compactionHeuristic
+</term>
+<listitem>
+<simpara>
+        Set this option to <literal>true</literal> to enable an experimental heuristic that
+        shifts the hunk boundary in an attempt to make the resulting
+        patch easier to read.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 diff.algorithm
 </term>
 <listitem>

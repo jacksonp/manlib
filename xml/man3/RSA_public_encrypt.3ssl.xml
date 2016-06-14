@@ -103,8 +103,7 @@
       <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>rand</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry> <refentrytitle>rsa</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      </citerefentry>, <citerefentry>
       <refentrytitle>RSA_size</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>

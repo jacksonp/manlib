@@ -1,0 +1,150 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>PEM_read.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>PEM_write, PEM_write_bio,
+PEM_read, PEM_read_bio, PEM_do_header, PEM_get_EVP_CIPHER_INFO,
+pem_password_cb</refname>
+<refpurpose>PEM encoding routines</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/pem.h&gt;</synopsis>
+<synopsis>int PEM_write(FILE *fp, const char *name, const char *header,
+              const unsigned char *data, long len)
+int PEM_write_bio(BIO *bp, const char *name, const char *header,
+                  const unsigned char *data, long len)</synopsis>
+<synopsis>int PEM_read(FILE *fp, char **name, char **header,
+             unsigned char **data, long *len);
+int PEM_read_bio(BIO *bp, char **name, char **header,
+                 unsigned char **data, long *len);</synopsis>
+<synopsis>int PEM_get_EVP_CIPHER_INFO(char *header, EVP_CIPHER_INFO *cinfo);
+int PEM_do_header(EVP_CIPHER_INFO *cinfo, unsigned char *data, long *len,
+                  pem_password_cb *cb, void *u);</synopsis>
+<synopsis>typedef int pem_password_cb (char *buf, int size, int rwflag, void *u);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-0529a1ce3da35537f414443436269c35"><title>DESCRIPTION</title>
+    <para>
+      These functions read and write PEM-encoded objects, using the PEM
+      type <emphasis role="bold">name</emphasis>, any additional <emphasis role="bold">header</emphasis> information, and the raw <emphasis role="bold">data</emphasis> of length <emphasis role="bold">len</emphasis>.
+    </para>
+    <para>
+      PEM is the term used for binary content encoding first defined in
+      IETF RFC 1421.  The content is a series of base64-encoded lines,
+      surrounded by begin/end markers each on their own line.  For example:
+    </para>
+    <screen>-----BEGIN PRIVATE KEY-----
+MIICdg....
+... bhTQ==
+-----END PRIVATE KEY-----</screen>
+    <para>
+      Optional header line(s) may appear after the begin line, and their
+      existence depends on the type of object being written or read.
+    </para>
+    <para>
+      PEM_write() writes to the file <emphasis role="bold">fp</emphasis>,
+      while PEM_write_bio() writes to the BIO <emphasis role="bold">bp</emphasis>.  The <emphasis role="bold">name</emphasis>
+      is the name to use in the marker, the <emphasis role="bold">header</emphasis> is the header value or NULL, and
+      <emphasis role="bold">data</emphasis> and <emphasis role="bold">len</emphasis> specify the data and its length.
+    </para>
+    <para>
+      The final <emphasis role="bold">data</emphasis> buffer is typically
+      an ASN.1 object which can be decoded with the <emphasis role="bold">d2i</emphasis> function appropriate to the type <emphasis role="bold">name</emphasis>; see <citerefentry>
+      <refentrytitle>d2i_X509</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> for examples.
+    </para>
+    <para>
+      PEM_read() reads from the file <emphasis role="bold">fp</emphasis>,
+      while PEM_read_bio() reads from the BIO <emphasis role="bold">bp</emphasis>. Both skip any non-PEM data that precedes
+      the start of the next PEM object. When an object is successfuly
+      retrieved, the type name from the "----BEGIN &lt;type&gt;-----" is
+      returned via the <emphasis role="bold">name</emphasis> argument, any
+      encapsulation headers are returned in <emphasis role="bold">header</emphasis> and the base64-decoded content and its
+      length are returned via <emphasis role="bold">data</emphasis> and
+      <emphasis role="bold">len</emphasis> respectively. The <emphasis role="bold">name</emphasis>, <emphasis role="bold">header</emphasis>
+      and <emphasis role="bold">data</emphasis> pointers are allocated via
+      OPENSSL_malloc() and should be freed by the caller via OPENSSL_free()
+      when no longer needed.
+    </para>
+    <para>
+      PEM_get_EVP_CIPHER_INFO() can be used to determine the <emphasis role="bold">data</emphasis> returned by PEM_read() or PEM_read_bio()
+      is encrypted and to retrieve the associated cipher and IV. The caller
+      passes a pointer to structure of type <emphasis role="bold">EVP_CIPHER_INFO</emphasis> via the <emphasis role="bold">cinfo</emphasis> argument and the <emphasis role="bold">header</emphasis> returned via PEM_read() or
+      PEM_read_bio(). If the call is succesful 1 is retured and the cipher
+      and IV are stored at the address pointed to by <emphasis role="bold">cinfo</emphasis>. When the header is malformed, or not
+      supported or when the cipher is unknown or some internal error
+      happens 0 is returned. This function is deprecated, see <emphasis role="bold">NOTES</emphasis> below.
+    </para>
+    <para>
+      PEM_do_header() can then be used to decrypt the data if the header
+      indicates encryption. The <emphasis role="bold">cinfo</emphasis>
+      argument is a pointer to the structure initialized by the previous
+      call to PEM_get_EVP_CIPHER_INFO(). The <emphasis role="bold">data</emphasis> and <emphasis role="bold">len</emphasis>
+      arguments are those returned by the previous call to PEM_read() or
+      PEM_read_bio(). The <emphasis role="bold">cb</emphasis> and <emphasis role="bold">u</emphasis> arguments make it possible to override the
+      default password prompt function as described in <citerefentry>
+      <refentrytitle>PEM_read_PrivateKey</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>. On successful completion
+      the <emphasis role="bold">data</emphasis> is decrypted in place, and
+      <emphasis role="bold">len</emphasis> is updated to indicate the
+      plaintext length. This function is deprecated, see <emphasis role="bold">NOTES</emphasis> below.
+    </para>
+    <para>
+      If the data is a priori known to not be encrypted, then neither
+      PEM_do_header() nor PEM_get_EVP_CIPHER_INFO() need be called.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-333b70e71c71cb0408d16df4c9ca17dd"><title>RETURN VALUES</title>
+    <para>
+      PEM_read() and PEM_read_bio() return 1 on success and 0 on failure,
+      the latter includes the case when no more PEM objects remain in the
+      input file. To distinguish end of file from more serious errors the
+      caller must peek at the error stack and check for <emphasis role="bold">PEM_R_NO_START_LINE</emphasis>, which indicates that no
+      more PEM objects were found.  See <citerefentry>
+      <refentrytitle>ERR_peek_last_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>ERR_GET_REASON</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>.
+    </para>
+    <para>
+      PEM_get_EVP_CIPHER_INFO() and PEM_do_header() return 1 on success,
+      and 0 on failure. The <emphasis role="bold">data</emphasis> is likely
+      meaningless if these functions fail.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-a821298704873057f728acc3ea0c38fb"><title>NOTES</title>
+    <para>
+      The PEM_get_EVP_CIPHER_INFO() and PEM_do_header() functions are
+      deprecated. This is because the underlying PEM encryption format is
+      obsolete, and should be avoided. It uses an encryption format with an
+      OpenSSL-specific key-derivation function, which employs MD5 with an
+      iteration count of 1! Instead, private keys should be stored in
+      PKCS#8 form, with a strong PKCS#5 v2.0 PBE. See <citerefentry>
+      <refentrytitle>PEM_write_PrivateKey</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> and <citerefentry>
+      <refentrytitle>d2i_PKCS8PrivateKey_bio</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-24def7056bf421f73c0c8dd1faa55fdd"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_peek_last_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>ERR_GET_LIB</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>d2i_PKCS8PrivateKey_bio</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-94dab1f682666695fb3fcdd64c5f41a1"><title>COPYRIGHT</title>
+    <para>
+      Copyright 1998-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

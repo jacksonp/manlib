@@ -183,10 +183,8 @@ char *app_data; /* ?? */
   </refsection>
   <refsection xml:id="ID-f72dd5d93ce6ff223ce40723e617a8ce"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>rsa</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>RSA_new</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>
+      <citerefentry> <refentrytitle>RSA_new</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-0191e6104f368552724974eb39450e3d"><title>COPYRIGHT</title>

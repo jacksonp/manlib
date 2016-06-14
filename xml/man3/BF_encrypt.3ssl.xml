@@ -1,0 +1,142 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>BF_encrypt.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>BF_set_key, BF_encrypt, BF_decrypt, BF_ecb_encrypt, BF_cbc_encrypt,
+BF_cfb64_encrypt, BF_ofb64_encrypt, BF_options</refname>
+<refpurpose>Blowfish encryption</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/blowfish.h&gt;</synopsis>
+<synopsis>void BF_set_key(BF_KEY *key, int len, const unsigned char *data);</synopsis>
+<synopsis>void BF_ecb_encrypt(const unsigned char *in, unsigned char *out,
+        BF_KEY *key, int enc);
+void BF_cbc_encrypt(const unsigned char *in, unsigned char *out,
+        long length, BF_KEY *schedule, unsigned char *ivec, int enc);
+void BF_cfb64_encrypt(const unsigned char *in, unsigned char *out,
+        long length, BF_KEY *schedule, unsigned char *ivec, int *num,
+        int enc);
+void BF_ofb64_encrypt(const unsigned char *in, unsigned char *out,
+        long length, BF_KEY *schedule, unsigned char *ivec, int *num);
+const char *BF_options(void);</synopsis>
+<synopsis>void BF_encrypt(BF_LONG *data,const BF_KEY *key);
+void BF_decrypt(BF_LONG *data,const BF_KEY *key);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-a2451f2879c3ebe59e7389d305711d01"><title>DESCRIPTION</title>
+    <para>
+      This library implements the Blowfish cipher, which was invented and
+      described by Counterpane (see
+      http://www.counterpane.com/blowfish.html ).
+    </para>
+    <para>
+      Blowfish is a block cipher that operates on 64 bit (8 byte) blocks of
+      data. It uses a variable size key, but typically, 128 bit (16 byte)
+      keys are considered good for strong encryption.  Blowfish can be used
+      in the same modes as DES (see <citerefentry>
+      <refentrytitle>des_modes</refentrytitle> <manvolnum>7</manvolnum>
+      </citerefentry>).  Blowfish is currently one of the faster block
+      ciphers.	It is quite a bit faster than DES, and much faster than
+      IDEA or RC2.
+    </para>
+    <para>
+      Blowfish consists of a key setup phase and the actual encryption or
+      decryption phase.
+    </para>
+    <para>
+      BF_set_key() sets up the <emphasis role="bold">BF_KEY</emphasis>
+      <emphasis role="bold">key</emphasis> using the <emphasis role="bold">len</emphasis> bytes long key at <emphasis role="bold">data</emphasis>.
+    </para>
+    <para>
+      BF_ecb_encrypt() is the basic Blowfish encryption and decryption
+      function. It encrypts or decrypts the first 64 bits of <emphasis role="bold">in</emphasis> using the key <emphasis role="bold">key</emphasis>, putting the result in <emphasis role="bold">out</emphasis>.  <emphasis role="bold">enc</emphasis>
+      decides if encryption (<emphasis role="bold">BF_ENCRYPT</emphasis>)
+      or decryption (<emphasis role="bold">BF_DECRYPT</emphasis>) shall be
+      performed.  The vector pointed at by <emphasis role="bold">in</emphasis> and <emphasis role="bold">out</emphasis>
+      must be 64 bits in length, no less.  If they are larger, everything
+      after the first 64 bits is ignored.
+    </para>
+    <para>
+      The mode functions BF_cbc_encrypt(), BF_cfb64_encrypt() and
+      BF_ofb64_encrypt() all operate on variable length data.  They all
+      take an initialization vector <emphasis role="bold">ivec</emphasis>
+      which needs to be passed along into the next call of the same
+      function for the same message.  <emphasis role="bold">ivec</emphasis>
+      may be initialized with anything, but the recipient needs to know
+      what it was initialized with, or it won't be able to decrypt.  Some
+      programs and protocols simplify this, like SSH, where <emphasis role="bold">ivec</emphasis> is simply initialized to zero.
+      BF_cbc_encrypt() operates on data that is a multiple of 8 bytes long,
+      while BF_cfb64_encrypt() and BF_ofb64_encrypt() are used to encrypt
+      an variable number of bytes (the amount does not have to be an exact
+      multiple of 8).  The purpose of the latter two is to simulate stream
+      ciphers, and therefore, they need the parameter <emphasis role="bold">num</emphasis>, which is a pointer to an integer where
+      the current offset in <emphasis role="bold">ivec</emphasis> is stored
+      between calls.  This integer must be initialized to zero when
+      <emphasis role="bold">ivec</emphasis> is initialized.
+    </para>
+    <para>
+      BF_cbc_encrypt() is the Cipher Block Chaining function for Blowfish. 
+      It encrypts or decrypts the 64 bits chunks of <emphasis role="bold">in</emphasis> using the key <emphasis role="bold">schedule</emphasis>, putting the result in <emphasis role="bold">out</emphasis>.  <emphasis role="bold">enc</emphasis>
+      decides if encryption (BF_ENCRYPT) or decryption (BF_DECRYPT) shall
+      be performed.  <emphasis role="bold">ivec</emphasis> must point at an
+      8 byte long initialization vector.
+    </para>
+    <para>
+      BF_cfb64_encrypt() is the CFB mode for Blowfish with 64 bit feedback.
+      It encrypts or decrypts the bytes in <emphasis role="bold">in</emphasis> using the key <emphasis role="bold">schedule</emphasis>, putting the result in <emphasis role="bold">out</emphasis>.  <emphasis role="bold">enc</emphasis>
+      decides if encryption (<emphasis role="bold">BF_ENCRYPT</emphasis>)
+      or decryption (<emphasis role="bold">BF_DECRYPT</emphasis>) shall be
+      performed.  <emphasis role="bold">ivec</emphasis> must point at an 8
+      byte long initialization vector. <emphasis role="bold">num</emphasis>
+      must point at an integer which must be initially zero.
+    </para>
+    <para>
+      BF_ofb64_encrypt() is the OFB mode for Blowfish with 64 bit feedback.
+      It uses the same parameters as BF_cfb64_encrypt(), which must be
+      initialized the same way.
+    </para>
+    <para>
+      BF_encrypt() and BF_decrypt() are the lowest level functions for
+      Blowfish encryption.  They encrypt/decrypt the first 64 bits of the
+      vector pointed by <emphasis role="bold">data</emphasis>, using the
+      key <emphasis role="bold">key</emphasis>.  These functions should not
+      be used unless you implement 'modes' of Blowfish.  The alternative is
+      to use BF_ecb_encrypt(). If you still want to use these functions,
+      you should be aware that they take each 32-bit chunk in host-byte
+      order, which is little-endian on little-endian platforms and
+      big-endian on big-endian ones.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-8831a500739e16b97d5eb98b7042065a"><title>RETURN VALUES</title>
+    <para>
+      None of the functions presented here return any value.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-7ea6935977049502a91aa08b52dc9b35"><title>NOTE</title>
+    <para>
+      Applications should use the higher level functions <citerefentry>
+      <refentrytitle>EVP_EncryptInit</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> etc. instead of calling
+      these functions directly.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-ff422d96b863866b2c2dd6c9f8c4818e"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>EVP_EncryptInit</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>des_modes</refentrytitle> <manvolnum>7</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-da678e01819207ca0c5f0e05c58bee4a"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

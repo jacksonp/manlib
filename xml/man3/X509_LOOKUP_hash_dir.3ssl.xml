@@ -141,7 +141,7 @@ int X509_load_cert_crl_file(X509_LOOKUP *ctx, const char *file, int type);</syno
   </refsection>
   <refsection xml:id="ID-b0910dc2c45d7faaa8d3861280bebbaa"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>pem</refentrytitle>
+      <citerefentry> <refentrytitle>PEM_read_PrivateKey</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>d2i_X509_bio</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

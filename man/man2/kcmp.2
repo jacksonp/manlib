@@ -117,9 +117,9 @@ are ignored.
 .PP
 Note the
 .BR kcmp ()
-is not protected against false positives which may occur if tasks are
-running.
-One should stop tasks by sending
+is not protected against false positives which may occur if
+the processes are currently running.
+One should stop the processes by sending
 .BR SIGSTOP
 (see
 .BR signal (7))
@@ -188,6 +188,15 @@ Insufficient permission to inspect process resources.
 The
 .B CAP_SYS_PTRACE
 capability is required to inspect processes that you do not own.
+Other ptrace limitations imay also apply, such as
+.BR CONFIG_SECURITY_YAMA ,
+which, when
+.I /proc/sys/kernel/yama/ptrace_scope
+is 2, limits
+.BR kcmp ()
+to child processes;
+see
+.BR ptrace (2).
 .TP
 .B ESRCH
 Process

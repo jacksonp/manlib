@@ -37,14 +37,6 @@
       RSA_blinding_off() returns no value.
     </para>
   </refsection>
-  <refsection xml:id="ID-3075934c50c96317cd1f20e05dca0358"><title>SEE ALSO</title>
-    <para>
-      <citerefentry> <refentrytitle>rsa</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>rand</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>
-    </para>
-  </refsection>
   <refsection xml:id="ID-cd2055f166b5d6707d762ee32e0be95c"><title>COPYRIGHT</title>
     <para>
       Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.

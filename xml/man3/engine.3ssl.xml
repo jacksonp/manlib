@@ -1,0 +1,131 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>engine.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>engine</refname>
+<refpurpose>load and query engines</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis><emphasis role="bold">openssl engine</emphasis>
+[ <emphasis role="italic">engine...</emphasis> ]
+[<emphasis role="bold">-v</emphasis>]
+[<emphasis role="bold">-vv</emphasis>]
+[<emphasis role="bold">-vvv</emphasis>]
+[<emphasis role="bold">-vvv</emphasis>]
+[<emphasis role="bold">-vvv</emphasis>]
+[<emphasis role="bold">-c</emphasis>]
+[<emphasis role="bold">-t</emphasis>]
+[<emphasis role="bold">-tt</emphasis>]
+[<emphasis role="bold">-pre</emphasis> <emphasis role="italic">command</emphasis>]
+[<emphasis role="bold">-post</emphasis> <emphasis role="italic">command</emphasis>]
+[ <emphasis role="italic">engine...</emphasis> ]</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-30e92ed78f7a4a1c537296c6bf099e47"><title>DESCRIPTION</title>
+    <para>
+      The <emphasis role="bold">engine</emphasis> command is used to query
+      the status and capabilities of the specified <emphasis role="bold">engine</emphasis>'s. Engines may be specified before and
+      after all other command-line flags. Only those specified are queried.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-1a2edaf04acf6c7ccd706e7452fa5f47"><title>OPTIONS</title>
+    <para>
+      <variablelist>
+        <varlistentry>
+          <term><emphasis role="bold">-v</emphasis> <emphasis role="bold">-vv</emphasis> <emphasis role="bold">-vvv</emphasis> <emphasis role="bold">-vvvv</emphasis></term>
+          <listitem>
+            <para>
+	      Provides information about each specified engine. The first
+	      flag lists all the possible run-time control commands; the
+	      second adds a description of each command; the third adds the
+	      input flags, and the final option adds the internal input
+	      flags.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-c</emphasis></term>
+          <listitem>
+            <para>
+	      Lists the capabilities of each engine.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-t</emphasis></term>
+          <listitem>
+            <para>
+	      Tests if each specified engine is available, and displays the
+	      answer.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-tt</emphasis></term>
+          <listitem>
+            <para>
+	      Displays an error trace for any unavailable engine.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-pre</emphasis> <emphasis role="italic">command</emphasis></term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-post</emphasis> <emphasis role="italic">command</emphasis></term>
+          <listitem>
+            <para>
+	      Command-line configuration of engines. The <emphasis role="bold">-pre</emphasis> command is given to the engine
+	      before it is loaded and the <emphasis role="bold">-post</emphasis> command is given after the
+	      engine is loaded. The <emphasis role="italic">command</emphasis> is of the form <emphasis role="italic">cmd:val</emphasis> where <emphasis role="italic">cmd</emphasis> is the command, and <emphasis role="italic">val</emphasis> is the value for the command.
+	      See the example below.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-faf838274f8ebc14de91578f8919d1d1"><title>EXAMPLE</title>
+    <para>
+      To list all the commands available to a dynamic engine:
+    </para>
+    <screen>% openssl engine -t -tt -vvvv dynamic
+(dynamic) Dynamic engine loading support
+     [ unavailable ]
+     SO_PATH: Specifies the path to the new ENGINE shared library
+          (input flags): STRING
+     NO_VCHECK: Specifies to continue even if version checking fails (boolean)
+          (input flags): NUMERIC
+     ID: Specifies an ENGINE id name for loading
+          (input flags): STRING
+     LIST_ADD: Whether to add a loaded ENGINE to the internal list (0=no,1=yes,2=mandatory)
+          (input flags): NUMERIC
+     DIR_LOAD: Specifies whether to load from 'DIR_ADD' directories (0=no,1=yes,2=mandatory)
+          (input flags): NUMERIC
+     DIR_ADD: Adds a directory from which ENGINEs can be loaded
+          (input flags): STRING
+     LOAD: Load up the ENGINE specified by other settings
+          (input flags): NO_INPUT</screen>
+    <para>
+      To list the capabilities of the <emphasis role="italic">rsax</emphasis> engine:
+    </para>
+    <screen>% openssl engine -c
+(rsax) RSAX engine support
+ [RSA]
+(dynamic) Dynamic engine loading support</screen>
+  </refsection>
+  <refsection xml:id="ID-3f8f4d04837674fb5e6127f919f0b0d3"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

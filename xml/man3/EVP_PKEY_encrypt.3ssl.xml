@@ -55,8 +55,8 @@ int EVP_PKEY_encrypt(EVP_PKEY_CTX *ctx,
   <refsection xml:id="ID-4054dee115e87317c52b5264df8d986c"><title>EXAMPLE</title>
     <para>
       Encrypt data using OAEP (for RSA keys). See also <citerefentry>
-      <refentrytitle>pem</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry> or <citerefentry>
+      <refentrytitle>PEM_read_PUBKEY</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> or <citerefentry>
       <refentrytitle>d2i_X509</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry> for means to load a public key. You may also simply
       set 'eng = NULL;' to start with the default OpenSSL RSA

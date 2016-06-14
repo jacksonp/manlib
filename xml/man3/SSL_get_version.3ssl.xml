@@ -24,7 +24,7 @@
   </refsection>
   <refsection xml:id="ID-cf74d62ce6448cfe2a257a8201d5393f"><title>RETURN VALUES</title>
     <para>
-      SSL_get_verison() returns one of the following strings:
+      SSL_get_version() returns one of the following strings:
     </para>
     <para>
       <variablelist>

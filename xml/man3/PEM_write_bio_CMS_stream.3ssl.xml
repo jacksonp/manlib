@@ -43,6 +43,8 @@
       </citerefentry> <citerefentry>
       <refentrytitle>CMS_decrypt</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
+      <refentrytitle>PEM_write</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>SMIME_write_CMS</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>i2d_CMS_bio_stream</refentrytitle>

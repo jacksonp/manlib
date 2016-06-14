@@ -1,0 +1,83 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>RC4_set_key.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>RC4_set_key, RC4</refname>
+<refpurpose>RC4 encryption</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/rc4.h&gt;</synopsis>
+<synopsis>void RC4_set_key(RC4_KEY *key, int len, const unsigned char *data);</synopsis>
+<synopsis>void RC4(RC4_KEY *key, unsigned long len, const unsigned char *indata,
+         unsigned char *outdata);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-99c174a2226d9b55dfdef1006ff22b70"><title>DESCRIPTION</title>
+    <para>
+      This library implements the Alleged RC4 cipher, which is described
+      for example in <emphasis role="italic">Applied
+      Cryptography</emphasis>.	It is believed to be compatible with
+      RC4[TM], a proprietary cipher of RSA Security Inc.
+    </para>
+    <para>
+      RC4 is a stream cipher with variable key length.	Typically, 128 bit
+      (16 byte) keys are used for strong encryption, but shorter insecure
+      key sizes have been widely used due to export restrictions.
+    </para>
+    <para>
+      RC4 consists of a key setup phase and the actual encryption or
+      decryption phase.
+    </para>
+    <para>
+      RC4_set_key() sets up the <emphasis role="bold">RC4_KEY</emphasis>
+      <emphasis role="bold">key</emphasis> using the <emphasis role="bold">len</emphasis> bytes long key at <emphasis role="bold">data</emphasis>.
+    </para>
+    <para>
+      RC4() encrypts or decrypts the <emphasis role="bold">len</emphasis>
+      bytes of data at <emphasis role="bold">indata</emphasis> using
+      <emphasis role="bold">key</emphasis> and places the result at
+      <emphasis role="bold">outdata</emphasis>.  Repeated RC4() calls with
+      the same <emphasis role="bold">key</emphasis> yield a continuous key
+      stream.
+    </para>
+    <para>
+      Since RC4 is a stream cipher (the input is XORed with a pseudo-random
+      key stream to produce the output), decryption uses the same function
+      calls as encryption.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-8a6448eafad11017871aee2295cbcd78"><title>RETURN VALUES</title>
+    <para>
+      RC4_set_key() and RC4() do not return values.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-796cc44227ae89b2d3af3473aa1c69bc"><title>NOTE</title>
+    <para>
+      Applications should use the higher level functions <citerefentry>
+      <refentrytitle>EVP_EncryptInit</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> etc. instead of calling
+      these functions directly.
+    </para>
+    <para>
+      It is difficult to securely use stream ciphers. For example, do not
+      perform multiple encryptions using the same key stream.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-6723cab0bec173d8b085e5e61de1896c"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>EVP_EncryptInit</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-a66ee8408e6669b46de21634c79f84fb"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2000-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

@@ -11,7 +11,8 @@
 <synopsis>#include &lt;openssl/dsa.h&gt;</synopsis>
 <synopsis>DSA_SIG *DSA_SIG_new(void);
 void DSA_SIG_free(DSA_SIG *a);
-void DSA_SIG_get0(BIGNUM **pr, BIGNUM **ps, const DSA_SIG *sig);</synopsis>
+void DSA_SIG_get0(BIGNUM **pr, BIGNUM **ps, const DSA_SIG *sig);
+int DSA_SIG_set0(DSA_SIG *sig, BIGNUM *r, BIGNUM *s);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-3debf3663f99c67af064ff3b794a4fae"><title>DESCRIPTION</title>
     <para>
@@ -27,6 +28,14 @@ void DSA_SIG_get0(BIGNUM **pr, BIGNUM **ps, const DSA_SIG *sig);</synopsis>
       values contained in <emphasis role="bold">sig</emphasis>. The values
       can then be examined or initialised.
     </para>
+    <para>
+      The <emphasis role="bold">r</emphasis> and <emphasis role="bold">s</emphasis> values can be set by calling DSA_SIG_set0()
+      and passing the new values for <emphasis role="bold">r</emphasis> and
+      <emphasis role="bold">s</emphasis> as parameters to the function.
+      Calling this function transfers the memory management of the values
+      to the DSA_SIG object, and therefore the values that have been passed
+      in should not be freed directly after this function has been called.
+    </para>
   </refsection>
   <refsection xml:id="ID-09bd3b5c210beb136e6baaf4aeb725b5"><title>RETURN VALUES</title>
     <para>
@@ -38,6 +47,9 @@ void DSA_SIG_get0(BIGNUM **pr, BIGNUM **ps, const DSA_SIG *sig);</synopsis>
     </para>
     <para>
       DSA_SIG_free() returns no value.
+    </para>
+    <para>
+      DSA_SIG_set0() returns 1 on success or 0 on failure.
     </para>
   </refsection>
   <refsection xml:id="ID-7edbffecbf648c73d80af9cf2fd6f245"><title>SEE ALSO</title>
