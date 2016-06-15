@@ -1309,6 +1309,38 @@ of the fingerprints specified. This means if the server updates its
 certificate, Mercurial will abort until a new fingerprint is defined.
 This can provide stronger security than traditional CA\-based validation
 at the expense of convenience.
+.sp
+This option takes precedence over \fBverifycertsfile\fP.
+.TP
+.B \fBverifycertsfile\fP
+.sp
+Path to file a containing a list of PEM encoded certificates used to
+verify the server certificate. Environment variables and \fB~user\fP
+constructs are expanded in the filename.
+.sp
+The server certificate or the certificate\(aqs certificate authority (CA)
+must match a certificate from this file or certificate verification
+will fail and connections to the server will be refused.
+.sp
+If defined, only certificates provided by this file will be used:
+\fBweb.cacerts\fP and any system/default certificates will not be
+used.
+.sp
+This option has no effect if the per\-host \fBfingerprints\fP option
+is set.
+.sp
+The format of the file is as follows:
+.INDENT 7.0
+.INDENT 3.5
+.sp
+\-\-\-\-\-BEGIN CERTIFICATE\-\-\-\-\-
+... (certificate in base64 PEM encoding) ...
+\-\-\-\-\-END CERTIFICATE\-\-\-\-\-
+\-\-\-\-\-BEGIN CERTIFICATE\-\-\-\-\-
+... (certificate in base64 PEM encoding) ...
+\-\-\-\-\-END CERTIFICATE\-\-\-\-\-
+.UNINDENT
+.UNINDENT
 .UNINDENT
 .sp
 For example:
@@ -1318,6 +1350,7 @@ For example:
 [hostsecurity]
 hg.example.com:fingerprints = sha256:c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2
 hg2.example.com:fingerprints = sha1:914f1aff87249c09b6859b88b1906d30756491ca, sha1:fc:e2:8d:d9:51:cd:cb:c1:4d:18:6b:b7:44:8d:49:72:57:e6:cd:33
+foo.example.com:verifycertsfile = /etc/ssl/trusted\-ca\-certs.pem
 .ft P
 .fi
 .SS \fBhttp_proxy\fP

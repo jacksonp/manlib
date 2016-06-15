@@ -16,8 +16,8 @@ int OPENSSL_init_crypto(uint64_t opts, const OPENSSL_INIT_SETTINGS *settings);
 int OPENSSL_atexit(void (*handler)(void));
 void OPENSSL_thread_stop(void);</synopsis>
 <synopsis>OPENSSL_INIT_SETTINGS *OPENSSL_init_new(void);
-int OPENSSL_INIT_set_config_filename(OPENSSL_INIT_SETTINGS *init,
-                                     const char* name);
+int OPENSSL_INIT_set_config_appname(OPENSSL_INIT_SETTINGS *init,
+                                    const char* name);
 void OPENSSL_INIT_free(OPENSSL_INIT_SETTINGS *init);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-5688fcb724694fe0cf9b0bf3f83b7d01"><title>DESCRIPTION</title>
@@ -291,9 +291,9 @@ void OPENSSL_INIT_free(OPENSSL_INIT_SETTINGS *init);</synopsis>
       will load a default configuration file.  To specify a different file,
       an <emphasis role="bold">OPENSSL_INIT_SETTINGS</emphasis> must be
       created and used. The routines OPENSSL_init_new() and
-      OPENSSL_INIT_set_config_filename() can be used to allocate the object
-      and set the configuration filename, and then the object can be
-      released with OPENSSL_INIT_free() when done.
+      OPENSSL_INIT_set_config_appname() can be used to allocate the object
+      and set the application name, and then the object can be released
+      with OPENSSL_INIT_free() when done.
     </para>
   </refsection>
   <refsection xml:id="ID-93b44e9cabfb7ff0d4029b38137c43a6"><title>NOTES</title>
@@ -327,7 +327,7 @@ void OPENSSL_INIT_free(OPENSSL_INIT_SETTINGS *init);</synopsis>
   <refsection xml:id="ID-ef9637ad9b4f7804a557bf45430c5cb9"><title>RETURN VALUES</title>
     <para>
       The functions OPENSSL_init_crypto, OPENSSL_atexit() and
-      OPENSSL_INIT_set_config_filename() return 1 on success or 0 on error.
+      OPENSSL_INIT_set_config_appname() return 1 on success or 0 on error.
     </para>
   </refsection>
   <refsection xml:id="ID-24fc011cf9242ac478c3b4f26b951e7a"><title>SEE ALSO</title>
@@ -340,7 +340,7 @@ void OPENSSL_INIT_free(OPENSSL_INIT_SETTINGS *init);</synopsis>
     <para>
       The OPENSSL_init_crypto(), OPENSSL_cleanup(), OPENSSL_atexit(),
       OPENSSL_thread_stop(), OPENSSL_init_new(),
-      OPENSSL_INIT_set_config_filename() and OPENSSL_INIT_free() functions
+      OPENSSL_INIT_set_config_appname() and OPENSSL_INIT_free() functions
       were added in OpenSSL 1.1.0.
     </para>
   </refsection>

@@ -7260,7 +7260,7 @@ Changesets in set with no parent changeset in set.
 .sp
 Changeset in secret phase.
 .TP
-.B \fBsort(set[, [\-]key...])\fP
+.B \fBsort(set[, [\-]key... [, ...]])\fP
 .sp
 Sort set by keys. The default sort order is ascending, specify a key
 as \fB\-key\fP to sort in descending order.
@@ -7282,7 +7282,14 @@ The keys can be:
 .IP \(bu 2
 .
 \fBdate\fP for the commit date
+.IP \(bu 2
+.
+\fBtopo\fP for a reverse topographical sort
 .UNINDENT
+.sp
+The \fBtopo\fP sort order cannot be combined with other sort keys. This sort
+takes one optional argument, \fBtopo.firstbranch\fP, which takes a revset that
+specifies what topographical branches to prioritize in the sort.
 .TP
 .B \fBsubrepo([pattern])\fP
 .sp
