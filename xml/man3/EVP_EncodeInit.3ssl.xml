@@ -16,8 +16,8 @@ routines</refpurpose>
 void EVP_ENCODE_CTX_free(EVP_ENCODE_CTX *ctx);
 int EVP_ENCODE_CTX_num(EVP_ENCODE_CTX *ctx);
 void EVP_EncodeInit(EVP_ENCODE_CTX *ctx);
-void EVP_EncodeUpdate(EVP_ENCODE_CTX *ctx, unsigned char *out, int *outl,
-                      const unsigned char *in, int inl);
+int EVP_EncodeUpdate(EVP_ENCODE_CTX *ctx, unsigned char *out, int *outl,
+                     const unsigned char *in, int inl);
 void EVP_EncodeFinal(EVP_ENCODE_CTX *ctx, unsigned char *out, int *outl);
 int EVP_EncodeBlock(unsigned char *t, const unsigned char *f, int n);</synopsis>
 <synopsis>void EVP_DecodeInit(EVP_ENCODE_CTX *ctx);
@@ -78,7 +78,7 @@ int EVP_DecodeBlock(unsigned char *t, const unsigned char *f, int n);</synopsis>
       for a NUL terminator. EVP_EncodeUpdate() may be called repeatedly to
       process large amounts of input data. In the event of an error
       EVP_EncodeUpdate() will set <emphasis role="bold">*outl</emphasis> to
-      0.
+      0 and return 0. On success 1 wil be returned.
     </para>
     <para>
       EVP_EncodeFinal() must be called at the end of an encoding operation.
@@ -155,6 +155,9 @@ int EVP_DecodeBlock(unsigned char *t, const unsigned char *f, int n);</synopsis>
     <para>
       EVP_ENCODE_CTX_num() returns the number of bytes pending encoding or
       decoding in <emphasis role="bold">ctx</emphasis>.
+    </para>
+    <para>
+      EVP_EncodeUpdate() returns 0 on error or 1 on success.
     </para>
     <para>
       EVP_EncodeBlock() returns the number of bytes encoded excluding the

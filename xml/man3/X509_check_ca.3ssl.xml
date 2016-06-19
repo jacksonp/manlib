@@ -21,7 +21,7 @@
     <para>
       Function return 0, if it is not CA certificate, 1 if it is proper
       X509v3 CA certificate with <emphasis role="bold">basicConstraints</emphasis> extension CA:TRUE, 3, if it
-      is selfsigned X509 v1 certificate, 4, if it is certificate with
+      is self-signed X509 v1 certificate, 4, if it is certificate with
       <emphasis role="bold">keyUsage</emphasis> extension with bit
       <emphasis role="bold">keyCertSign</emphasis> set, but without
       <emphasis role="bold">basicConstraints</emphasis>, and 5 if it has

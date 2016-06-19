@@ -58,7 +58,7 @@ int X509_PUBKEY_get0_param(ASN1_OBJECT **ppkalg,
       reference count on the returned key is incremented so it <emphasis role="bold">MUST</emphasis> be freed using EVP_PKEY_free() after use.
     </para>
     <para>
-      d2i_PUBKEY() and i2d_PUBKEY() decode and encode an <emphasis role="bold">EVP_PKEY</emphasis> structure using <emphasis role="bold">SubjectPublicKeyInfo</emphasis> format. They otherise
+      d2i_PUBKEY() and i2d_PUBKEY() decode and encode an <emphasis role="bold">EVP_PKEY</emphasis> structure using <emphasis role="bold">SubjectPublicKeyInfo</emphasis> format. They otherwise
       follow the conventions of other ASN.1 functions such as d2i_X509().
     </para>
     <para>

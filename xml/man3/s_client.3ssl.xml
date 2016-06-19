@@ -547,7 +547,7 @@ DANE TLSA 2 1 1 ...ee12d2cc90180517616e8a18 matched TA certificate at depth 1
 	      The maximum number of encrypt/decrypt pipelines to be used.
 	      This will only have an effect if an engine has been loaded
 	      that supports pipelining (e.g. the dasync engine) and a
-	      suiteable ciphersuite has been negotiated. The default value
+	      suitable ciphersuite has been negotiated. The default value
 	      is 1. See <citerefentry>
 	      <refentrytitle>SSL_CTX_set_max_pipelines</refentrytitle>
 	      <manvolnum>3</manvolnum> </citerefentry> for further

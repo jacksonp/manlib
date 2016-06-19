@@ -59,7 +59,7 @@ unsigned char * ASN1_STRING_data(ASN1_STRING *x);</synopsis>
     <para>
       Almost all ASN1 types in OpenSSL are represented as an <emphasis role="bold">ASN1_STRING</emphasis> structure. Other types such as
       <emphasis role="bold">ASN1_OCTET_STRING</emphasis> are simply
-      typedefed to <emphasis role="bold">ASN1_STRING</emphasis> and the
+      typedef'ed to <emphasis role="bold">ASN1_STRING</emphasis> and the
       functions call the <emphasis role="bold">ASN1_STRING</emphasis>
       equivalents. <emphasis role="bold">ASN1_STRING</emphasis> is also
       used for some <emphasis role="bold">CHOICE</emphasis> types which

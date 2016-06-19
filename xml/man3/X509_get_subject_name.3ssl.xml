@@ -35,12 +35,12 @@ int X509_CRL_set_issuer_name(X509_CRL *x, X509_NAME *name);</synopsis>
     <para>
       X509_get_issuer_name() and X509_set_issuer_name() are identical to
       X509_get_subject_name() and X509_set_subject_name() except the get
-      and set the isssuer name of <emphasis role="bold">x</emphasis>.
+      and set the issuer name of <emphasis role="bold">x</emphasis>.
     </para>
     <para>
       Similarly X509_REQ_get_subject_name(), X509_REQ_set_subject_name(),
       X509_CRL_get_issuer() and X509_CRL_set_issuer_name() get or set the
-      subject or issuer names of certifcate requests of CRLs respectively.
+      subject or issuer names of certificate requests of CRLs respectively.
     </para>
   </refsection>
   <refsection xml:id="ID-858850ef4775b92ccd5b41098aead054"><title>RETURN VALUES</title>

@@ -327,7 +327,7 @@ X509 *X509_STORE_CTX_get0_cert(X509_STORE_CTX *ctx);</synopsis>
           <term><emphasis role="bold">X509_V_ERR_PATH_LENGTH_EXCEEDED: path length constraint exceeded</emphasis></term>
           <listitem>
             <para>
-	      the basicConstraints pathlength parameter has been exceeded.
+	      the basicConstraints path-length parameter has been exceeded.
             </para>
           </listitem>
         </varlistentry>

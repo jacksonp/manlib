@@ -21,7 +21,8 @@ int EVP_PKEY_set1_EC_KEY(EVP_PKEY *pkey,EC_KEY *key);</synopsis>
 DSA *EVP_PKEY_get1_DSA(EVP_PKEY *pkey);
 DH *EVP_PKEY_get1_DH(EVP_PKEY *pkey);
 EC_KEY *EVP_PKEY_get1_EC_KEY(EVP_PKEY *pkey);</synopsis>
-<synopsis>RSA *EVP_PKEY_get0_RSA(EVP_PKEY *pkey);
+<synopsis>const unsigned char *EVP_PKEY_get0_hmac(const EVP_PKEY *pkey, size_t *len);
+RSA *EVP_PKEY_get0_RSA(EVP_PKEY *pkey);
 DSA *EVP_PKEY_get0_DSA(EVP_PKEY *pkey);
 DH *EVP_PKEY_get0_DH(EVP_PKEY *pkey);
 EC_KEY *EVP_PKEY_get0_EC_KEY(EVP_PKEY *pkey);</synopsis>
@@ -44,11 +45,11 @@ int EVP_PKEY_type(int type);</synopsis>
       if the key is not of the correct type.
     </para>
     <para>
-      EVP_PKEY_get0_RSA(), EVP_PKEY_get0_DSA(), EVP_PKEY_get0_DH() and
-      EVP_PKEY_get0_EC_KEY() also return the referenced key in <emphasis role="bold">pkey</emphasis> or <emphasis role="bold">NULL</emphasis>
-      if the key is not of the correct type but the reference count of the
-      returned key is <emphasis role="bold">not</emphasis> incremented and
-      so must not be freed up after use.
+      EVP_PKEY_get0_hmac(), EVP_PKEY_get0_RSA(), EVP_PKEY_get0_DSA(),
+      EVP_PKEY_get0_DH() and EVP_PKEY_get0_EC_KEY() also return the
+      referenced key in <emphasis role="bold">pkey</emphasis> or <emphasis role="bold">NULL</emphasis> if the key is not of the correct type but
+      the reference count of the returned key is <emphasis role="bold">not</emphasis> incremented and so must not be freed up
+      after use.
     </para>
     <para>
       EVP_PKEY_assign_RSA(), EVP_PKEY_assign_DSA(), EVP_PKEY_assign_DH()

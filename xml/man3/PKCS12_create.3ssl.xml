@@ -9,8 +9,9 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/pkcs12.h&gt;</synopsis>
-<synopsis>PKCS12 *PKCS12_create(char *pass, char *name, EVP_PKEY *pkey, X509 *cert, STACK_OF(X509) *ca,
-                               int nid_key, int nid_cert, int iter, int mac_iter, int keytype);</synopsis>
+<synopsis>PKCS12 *PKCS12_create(const char *pass, const char *name, EVP_PKEY *pkey,
+                      X509 *cert, STACK_OF(X509) *ca,
+                      int nid_key, int nid_cert, int iter, int mac_iter, int keytype);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-d52d464d40be83dedc6f8e3c3140fe6c"><title>DESCRIPTION</title>
     <para>
