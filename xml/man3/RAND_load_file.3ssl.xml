@@ -20,17 +20,44 @@
       <emphasis role="bold">num</emphasis> in which to store the filename.
     </para>
     <para>
-      On Windows the seed file is %RANDFILE% if that environment variable
-      is set. Otherwise the file is called ".rnd" in one of the following
-      locations (in order of preference): %TMP%, %TEMP%, %USERPROFILE%,
-      %SYSTEMROOT%, %HOME%, "C:".
+      On all systems, if the environment variable <emphasis role="bold">RANDFILE</emphasis> is set, its value will be used as the
+      seed file name.
     </para>
     <para>
-      On all other systems the seed file is $RANDFILE if that environment
-      variable is set, $HOME/.rnd otherwise.
+      Otherwise, the file is called ".rnd", found in platform dependent
+      locations:
     </para>
     <para>
-      If $HOME (on non Windows systems) is not set either, or <emphasis role="bold">num</emphasis> is too small for the path name, an error
+      <variablelist>
+        <varlistentry>
+          <term>On Windows (in order of preference)</term>
+          <listitem>
+            <para>
+	      %HOME%, %USERPROFILE%, %SYSTEMROOT%, C:\
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>On VMS</term>
+          <listitem>
+            <para>
+	      SYS$LOGIN:
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>On all other systems</term>
+          <listitem>
+            <para>
+	      $HOME
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </para>
+    <para>
+      If <literal role="code">$HOME</literal> (on non-Windows
+      and non-VMS system) is not set either, or <emphasis role="bold">num</emphasis> is too small for the path name, an error
       occurs.
     </para>
     <para>

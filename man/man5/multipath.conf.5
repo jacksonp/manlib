@@ -214,7 +214,7 @@ Generate the path priority for Hitachi HDS Modular storage arrays.
 Generate a random priority between 1 and 10.
 .TP 12
 .B weightedpath
-Generate the path priority based on the regular expression and the 
+Generate the path priority based on the regular expression and the
 priority provided as argument. requires prio_args keyword.
 .TP
 Default value is \fBnone\fR.
@@ -345,12 +345,12 @@ for never stop queueing. If unset no queueing is attempted.
 Default is unset.
 .TP
 .B user_friendly_names
-If set to 
+If set to
 .I yes
 , using the bindings file
 .I /etc/multipath/bindings
 to assign a persistent and unique alias to the multipath, in the form of mpath<n>.
-If set to 
+If set to
 .I no
 use the WWID as the alias. In either case this be will
 be overridden by any specific aliases in the \fImultipaths\fR section.
@@ -516,7 +516,7 @@ Default is
 CLI receive timeout in milliseconds. For larger systems CLI commands
 might timeout before the multipathd lock is released and the CLI command
 can be processed. This will result in errors like
-'timeout receiving packet' to be returned from CLI commands.
+"timeout receiving packet" to be returned from CLI commands.
 In these cases it is recommended to increase the CLI timeout to avoid
 those issues. The default is
 .I 1000
