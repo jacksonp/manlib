@@ -4,7 +4,8 @@
     <refentrytitle>BN_bn2bin.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BN_bn2bin, BN_bin2bn, BN_bn2lebinpad, BN_lebin2bn, BN_bn2hex, BN_bn2dec,
+    <refname>BN_bn2binpad,
+BN_bn2bin, BN_bin2bn, BN_bn2lebinpad, BN_lebin2bn, BN_bn2hex, BN_bn2dec,
 BN_hex2bn, BN_dec2bn, BN_print, BN_print_fp, BN_bn2mpi,
 BN_mpi2bn</refname>
 <refpurpose>format conversions</refpurpose>
@@ -54,7 +55,7 @@ BIGNUM *BN_mpi2bn(unsigned char *s, int len, BIGNUM *ret);</synopsis>
       using OPENSSL_free().
     </para>
     <para>
-      BN_hex2bn()takes as many characters as possible from the string
+      BN_hex2bn() takes as many characters as possible from the string
       <emphasis role="bold">str</emphasis>, including the leading character
       '-' which means negative, to form a valid hexadecimal number
       representation and converts them to a <emphasis role="bold">BIGNUM</emphasis> and stores it in **<emphasis role="bold">bn</emphasis>. If *<emphasis role="bold">bn</emphasis> is

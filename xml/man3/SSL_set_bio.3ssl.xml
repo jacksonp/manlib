@@ -9,7 +9,9 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
-<synopsis>void SSL_set_bio(SSL *ssl, BIO *rbio, BIO *wbio);</synopsis>
+<synopsis>void SSL_set_bio(SSL *ssl, BIO *rbio, BIO *wbio);
+void SSL_set_rbio(SSL *s, BIO *rbio);
+void SSL_set_wbio(SSL *s, BIO *wbio);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-c4682e10eb606f68e1a89dccaa2e47db"><title>DESCRIPTION</title>
     <para>

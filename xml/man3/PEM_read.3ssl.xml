@@ -22,7 +22,7 @@ int PEM_read_bio(BIO *bp, char **name, char **header,
 <synopsis>int PEM_get_EVP_CIPHER_INFO(char *header, EVP_CIPHER_INFO *cinfo);
 int PEM_do_header(EVP_CIPHER_INFO *cinfo, unsigned char *data, long *len,
                   pem_password_cb *cb, void *u);</synopsis>
-<synopsis>typedef int pem_password_cb (char *buf, int size, int rwflag, void *u);</synopsis>
+<synopsis>typedef int (*pem_password_cb)(char *buf, int size, int rwflag, void *u);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-0529a1ce3da35537f414443436269c35"><title>DESCRIPTION</title>
     <para>

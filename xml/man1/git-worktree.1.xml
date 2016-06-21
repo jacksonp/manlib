@@ -56,7 +56,8 @@ add &lt;path&gt; [&lt;branch&gt;]
 <simpara>
 Create <literal>&lt;path&gt;</literal> and checkout <literal>&lt;branch&gt;</literal> into it. The new working directory
 is linked to the current repository, sharing everything except working
-directory specific files such as HEAD, index, etc.
+directory specific files such as HEAD, index, etc. <literal>-</literal> may also be
+specified as <literal>&lt;branch&gt;</literal>; it is synonymous with <literal>@{-1}</literal>.
 </simpara>
 <simpara>If <literal>&lt;branch&gt;</literal> is omitted and neither <literal>-b</literal> nor <literal>-B</literal> nor <literal>--detached</literal> used,
 then, as a convenience, a new branch based at HEAD is created automatically,

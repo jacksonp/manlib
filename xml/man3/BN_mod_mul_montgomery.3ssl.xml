@@ -4,7 +4,7 @@
     <refentrytitle>BN_mod_mul_montgomery.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BN_mod_mul_montgomery, BN_MONT_CTX_new, BN_MONT_CTX_init,
+    <refname>BN_mod_mul_montgomery, BN_MONT_CTX_new,
 BN_MONT_CTX_free, BN_MONT_CTX_set, BN_MONT_CTX_copy,
 BN_from_montgomery, BN_to_montgomery</refname>
 <refpurpose>Montgomery multiplication</refpurpose>
@@ -81,25 +81,6 @@ BN_MONT_CTX *BN_MONT_CTX_copy(BN_MONT_CTX *to, BN_MONT_CTX *from);</synopsis>
       The inputs must be reduced modulo <emphasis role="bold">m</emphasis>,
       otherwise the result will be outside the expected range.
     </para>
-  </refsection>
-  <refsection xml:id="ID-05124dda24f9ecb926b9a9c8e0ba37b9"><title>REMOVED FUNCTIONALITY</title>
-    <screen>void BN_MONT_CTX_init(BN_MONT_CTX *c);</screen>
-    <para>
-      BN_MONT_CTX_init() is no longer available as of OpenSSL 1.1.0. It was
-      used to initialize an existing uninitialized <emphasis role="bold">BN_MONT_CTX</emphasis>. Typically this would be done as
-      follows:
-    </para>
-    <screen>BN_MONT_CTX ctx;
-BN_MONT_CTX_init(&amp;ctx);</screen>
-    <para>
-      Instead applications should create a BN_MONT_CTX structure using
-      BN_MONT_CTX_new:
-    </para>
-    <screen>BN_MONT_CTX *ctx;
-ctx = BN_MONT_CTX_new();
-if(!ctx) /* handle error */
-...
-BN_MONT_CTX_free(ctx);</screen>
   </refsection>
   <refsection xml:id="ID-f9b834162fc048e07c853084d0fa96c5"><title>SEE ALSO</title>
     <para>

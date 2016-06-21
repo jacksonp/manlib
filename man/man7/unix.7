@@ -159,7 +159,6 @@ the first
 .IR "(addrlen \- sizeof(sa_family_t))"
 bytes of
 .IR sun_path .
-The abstract socket namespace is a nonportable Linux extension.
 .SS Pathname sockets
 When binding a socket to a pathname, a few rules should be observed
 for maximum portability and ease of coding:
@@ -221,6 +220,51 @@ if the output value exceeds the input value,
 then there is no guarantee that a null terminator is present in
 .IR sun_path .
 (See BUGS.)
+.\"
+.SS Pathname socket ownership and permissions
+In the Linux implementation,
+pathname sockets honor the permissions of the directory they are in.
+Creation of a new socket will fail if the process does not have write and
+search (execute) permission on the directory in which the socket is created.
+
+On Linux,
+connecting to a stream socket object requires write permission on that socket;
+sending a datagram to a datagram socket likewise
+requires write permission on that socket.
+POSIX does not make any statement about the effect of the permissions
+on a socket file, and on some systems (e.g., older BSDs),
+the socket permissions are ignored.
+Portable programs should not rely on
+this feature for security.
+
+When creating a new socket, the owner and group of the socket file
+are set according to the usual rules.
+The socket file has all permissions enabled,
+other than those that are turned off by the process
+.BR umask (2).
+
+The owner, group, and permissions of a pathname socket can be changed (using
+.BR chown (2)
+and
+.BR chmod (2)).
+.\" However, fchown() and fchmod() do not seem to have an effect
+.\"
+.SS Abstract sockets
+Socket permissions have no meaning for abstract sockets:
+the process
+.BR umask (2)
+has no effect when binding an abstract socket,
+and changing the ownership and permissions of the object (via
+.BR fchown (2)
+and
+.BR fchmod (2))
+has no effect on the accessibility of the socket.
+
+Abstract sockets automatically disappear when all open references
+to the socket are closed.
+
+The abstract socket namespace is a nonportable Linux extension.
+.\"
 .SS Socket options
 For historical reasons, these socket options are specified with a
 .B SOL_SOCKET
@@ -501,17 +545,6 @@ be used in portable programs.
 (Some BSD-derived systems also support credential passing,
 but the implementation details differ.)
 .SH NOTES
-In the Linux implementation, sockets which are visible in the
-filesystem honor the permissions of the directory they are in.
-Their owner, group, and permissions can be changed.
-Creation of a new socket will fail if the process does not have write and
-search (execute) permission on the directory the socket is created in.
-Connecting to the socket object requires read/write permission.
-This behavior differs from many BSD-derived systems which
-ignore permissions for UNIX domain sockets.
-Portable programs should not rely on
-this feature for security.
-
 Binding to a socket with a filename creates a socket
 in the filesystem that must be deleted by the caller when it is no
 longer needed (using

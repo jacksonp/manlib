@@ -4,13 +4,16 @@
     <refentrytitle>ERR_print_errors.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>ERR_print_errors, ERR_print_errors_fp</refname>
+    <refname>ERR_print_errors, ERR_print_errors_fp, ERR_print_errors_cb</refname>
 <refpurpose>print error messages</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/err.h&gt;</synopsis>
 <synopsis>void ERR_print_errors(BIO *bp);
-void ERR_print_errors_fp(FILE *fp);</synopsis>
+void ERR_print_errors_fp(FILE *fp);
+void ERR_print_errors_cb(int (*cb)(const char *str, size_t len, void *u),
+                         void *u)</synopsis>
+<synopsis/>
   </refsynopsisdiv>
   <refsection xml:id="ID-b0dac0f8725247f96372af5457b3731f"><title>DESCRIPTION</title>
     <para>
@@ -21,7 +24,11 @@ void ERR_print_errors_fp(FILE *fp);</synopsis>
       ERR_print_errors_fp() is the same, except that the output goes to a
       <emphasis role="bold">FILE</emphasis>.
     </para>
-    <screen></screen>
+    <para>
+      ERR_print_errors_cb() is the same, except that the callback function,
+      <emphasis role="bold">cb</emphasis>, is called for each error line
+      with the string, length, and userdata <emphasis role="bold">u</emphasis> as the callback parameters.
+    </para>
     <para>
       The error strings will have the following format:
     </para>

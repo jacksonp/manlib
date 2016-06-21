@@ -4,9 +4,10 @@
     <refentrytitle>BUF_MEM_new.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BUF_MEM_new, BUF_MEM_new_ex, BUF_MEM_free, BUF_MEM_grow</refname>
-<refpurpose>simple
-character array structure</refpurpose>
+    <refname>BUF_MEM_FLAG_SECURE,
+BUF_MEM_new, BUF_MEM_new_ex, BUF_MEM_free, BUF_MEM_grow
+BUF_MEM_grow_clean, BUF_reverse</refname>
+<refpurpose>simple character array structure</refpurpose>
   </refnamediv>
   <para>
     standard C library equivalents
@@ -16,8 +17,10 @@ character array structure</refpurpose>
 <synopsis>BUF_MEM *BUF_MEM_new(void);</synopsis>
 <synopsis>#define BUF_MEM_FLAG_SECURE</synopsis>
 <synopsis>BUF_MEM *BUF_MEM_new_ex(unsigned long flags);</synopsis>
-<synopsis>void   BUF_MEM_free(BUF_MEM *a);</synopsis>
-<synopsis>int    BUF_MEM_grow(BUF_MEM *str, int len);</synopsis>
+<synopsis>void BUF_MEM_free(BUF_MEM *a);</synopsis>
+<synopsis>int BUF_MEM_grow(BUF_MEM *str, int len);
+size_t BUF_MEM_grow_clean(BUF_MEM *str, size_t len);</synopsis>
+<synopsis>void BUF_reverse(unsigned char *out, const unsigned char *in, size_t size);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-10cea8e90dfe6226f8b31a46d7068f99"><title>DESCRIPTION</title>
     <para>
@@ -44,6 +47,15 @@ character array structure</refpurpose>
       <emphasis role="bold">len</emphasis>. Any data already in the buffer
       is preserved if it increases in size.
     </para>
+    <para>
+      BUF_MEM_grow_clean() is similar to BUF_MEM_grow() but it sets any
+      free'd or additionally-allocated memory to zero.
+    </para>
+    <para>
+      BUF_reverse() reverses <emphasis role="bold">size</emphasis> bytes at
+      <emphasis role="bold">in</emphasis> into <emphasis role="bold">out</emphasis>.  If <emphasis role="bold">out</emphasis>
+      is NULL, the array is reversed in-place.
+    </para>
   </refsection>
   <refsection xml:id="ID-5589676f923ecbfe6eed92e8dde02665"><title>RETURN VALUES</title>
     <para>
@@ -53,7 +65,8 @@ character array structure</refpurpose>
       BUF_MEM_free() has no return value.
     </para>
     <para>
-      BUF_MEM_grow() returns zero on error or the new size (i.e. <emphasis role="bold">len</emphasis>).
+      BUF_MEM_grow() and BUF_MEM_grow_clean() return zero on error or the
+      new size (i.e., <emphasis role="bold">len</emphasis>).
     </para>
   </refsection>
   <refsection xml:id="ID-26bb11afb5971749bcbf41137ad014b6"><title>SEE ALSO</title>

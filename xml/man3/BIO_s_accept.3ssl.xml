@@ -4,7 +4,8 @@
     <refentrytitle>BIO_s_accept.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BIO_s_accept, BIO_set_accept_port, BIO_get_accept_port, BIO_new_accept,
+    <refname>BIO_BIND_NORMAL, BIO_BIND_REUSEADDR_IF_UNUSED, BIO_BIND_REUSEADDR,
+BIO_s_accept, BIO_set_accept_port, BIO_get_accept_port, BIO_new_accept,
 BIO_set_nbio_accept, BIO_set_accept_bios, BIO_set_bind_mode,
 BIO_get_bind_mode, BIO_do_accept</refname>
 <refpurpose>accept BIO</refpurpose>

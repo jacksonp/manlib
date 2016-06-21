@@ -4,7 +4,7 @@
     <refentrytitle>PEM_read_bio_PrivateKey.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>PEM, PEM_read_bio_PrivateKey, PEM_read_PrivateKey, PEM_write_bio_PrivateKey,
+    <refname>PEM_read_bio_PrivateKey, PEM_read_PrivateKey, PEM_write_bio_PrivateKey,
 PEM_write_bio_PrivateKey_traditional, PEM_write_PrivateKey,
 PEM_write_bio_PKCS8PrivateKey, PEM_write_PKCS8PrivateKey,
 PEM_write_bio_PKCS8PrivateKey_nid, PEM_write_PKCS8PrivateKey_nid,

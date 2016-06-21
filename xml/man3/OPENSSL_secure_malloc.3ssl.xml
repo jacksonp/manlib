@@ -8,7 +8,7 @@
 CRYPTO_secure_malloc_done, OPENSSL_secure_malloc, CRYPTO_secure_malloc,
 OPENSSL_secure_zalloc, CRYPTO_secure_zalloc, OPENSSL_secure_free,
 CRYPTO_secure_free, OPENSSL_secure_actual_size, OPENSSL_secure_allocated,
-CYRPTO_secure_malloc_used</refname>
+CYRPTO_secure_used</refname>
 <refpurpose>secure heap storage</refpurpose>
   </refnamediv>
   <refsynopsisdiv>

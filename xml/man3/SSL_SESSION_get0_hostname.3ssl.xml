@@ -1,0 +1,46 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>SSL_SESSION_get0_hostname.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>SSL_SESSION_get0_hostname</refname>
+<refpurpose>retrieve the SNI hostname associated with a session</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
+<synopsis>const char *SSL_SESSION_get0_hostname(const SSL_SESSSION *s);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-b627c69abf17c952afc8e91ab6ed93fb"><title>DESCRIPTION</title>
+    <para>
+      SSL_SESSION_get0_hostname() retrieves the SNI value that was sent by
+      the client when the session was created, or NULL if no value was
+      sent.
+    </para>
+    <para>
+      The value returned is a pointer to memory maintained within <emphasis role="bold">s</emphasis> and should not be free'd.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-bd080a0fe333b146f52856bd0e6165bf"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ssl</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>d2i_SSL_SESSION</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_SESSION_get_time</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_SESSION_free</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-7543fcf6a5d63a1e2c5fab55eff991dd"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

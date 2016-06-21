@@ -546,6 +546,11 @@ patterns are available:</simpara>
 </listitem>
 <listitem>
 <simpara>
+<literal>css</literal> suitable for cascading style sheets.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
 <literal>fortran</literal> suitable for source code in the Fortran language.
 </simpara>
 </listitem>

@@ -4,7 +4,8 @@
     <refentrytitle>X509_new.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>X509_new, X509_free, X509_up_ref</refname>
+    <refname>X509_chain_up_ref,
+X509_new, X509_free, X509_up_ref</refname>
 <refpurpose>X509 certificate ASN1 allocation functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>

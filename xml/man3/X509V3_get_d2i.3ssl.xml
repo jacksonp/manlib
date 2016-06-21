@@ -4,7 +4,8 @@
     <refentrytitle>X509V3_get_d2i.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>X509V3_get_d2i, X509V3_add1_i2d, X509V3_EXT_d2i, X509V3_EXT_i2d,
+    <refname>X509_get0_extensions, X509_CRL_get0_extensions, X509_REVOKED_get0_extensions,
+X509V3_get_d2i, X509V3_add1_i2d, X509V3_EXT_d2i, X509V3_EXT_i2d,
 X509_get_ext_d2i, X509_add1_ext_i2d, X509_CRL_get_ext_d2i,
 X509_CRL_add1_ext_i2d, X509_REVOKED_get_ext_d2i,
 X509_REVOKED_add1_ext_i2d</refname>
@@ -234,7 +235,7 @@ CT Certificate SCTs                NID_ct_cert_scts</screen>
     </para>
     <para>
       X509_get0_extensions(), X509_CRL_get0_extensions() and
-      X509_REVOKED_get0_extensions() return a stack of extensions. They can
+      X509_REVOKED_get0_extensions() return a stack of extensions. They
       return NULL if no extensions are present.
     </para>
   </refsection>

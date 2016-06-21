@@ -4,7 +4,12 @@
     <refentrytitle>BIO_f_buffer.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BIO_f_buffer</refname>
+    <refname>BIO_get_buffer_num_lines,
+BIO_set_read_buffer_size,
+BIO_set_write_buffer_size,
+BIO_set_buffer_size,
+BIO_set_buffer_read_data,
+BIO_f_buffer</refname>
 <refpurpose>buffering BIO</refpurpose>
   </refnamediv>
   <refsynopsisdiv>

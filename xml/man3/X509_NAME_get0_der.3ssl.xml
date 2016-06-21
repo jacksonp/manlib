@@ -4,46 +4,43 @@
     <refentrytitle>X509_NAME_get0_der.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname/>
-      <refpurpose/>
-    </refnamediv>
-    <refsynopsisdiv>
+    <refname>X509_NAME_get0_der</refname>
+<refpurpose>get X509_NAME DER encoding</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
 <synopsis>int X509_NAME_get0_der(const unsigned char **pder, size_t *pderlen,
                        X509_NAME *nm)</synopsis>
 <synopsis/>
-    </refsynopsisdiv>
-    <refsection xml:id="ID-41ab436c86e60a749452f525e270d27a"><title>DESCRIPTION</title>
-      <para>
-	The function X509_NAME_get0_der() returns an internal pointer to
-	the encoding of an <emphasis role="bold">X509_NAME</emphasis>
-	structure in <emphasis role="bold">*pder</emphasis> and consisting
-	of <emphasis role="bold">*pderlen</emphasis> bytes. It is useful
-	for applications that wish to examine the encoding of an <emphasis role="bold">X509_NAME</emphasis> structure without copying it.
-      </para>
-    </refsection>
-    <refsection xml:id="ID-70fb47197160eabe8d25cfa17397d77c"><title>RETURN VALUES</title>
-      <para>
-	The function X509_NAME_get0_der() returns 1 for success and 0 if an
-	error occurred.
-      </para>
-    </refsection>
-    <refsection xml:id="ID-10bf3d9df1786755222280159ee48c76"><title>SEE ALSO</title>
-      <para>
-	<citerefentry> <refentrytitle>d2i_X509</refentrytitle>
-	<manvolnum>3</manvolnum> </citerefentry>
-      </para>
-    </refsection>
-    <refsection xml:id="ID-3f83f25d98b76f92ac2bf907a5cf7f82"><title>COPYRIGHT</title>
-      <para>
-	Copyright 2002-2016 The OpenSSL Project Authors. All Rights
-	Reserved.
-      </para>
-      <para>
-	Licensed under the OpenSSL license (the "License").  You may not
-	use this file except in compliance with the License.  You can
-	obtain a copy in the file LICENSE in the source distribution or at
-	<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
-      </para>
-    </refsection>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-41ab436c86e60a749452f525e270d27a"><title>DESCRIPTION</title>
+    <para>
+      The function X509_NAME_get0_der() returns an internal pointer to the
+      encoding of an <emphasis role="bold">X509_NAME</emphasis> structure
+      in <emphasis role="bold">*pder</emphasis> and consisting of <emphasis role="bold">*pderlen</emphasis> bytes. It is useful for applications
+      that wish to examine the encoding of an <emphasis role="bold">X509_NAME</emphasis> structure without copying it.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-70fb47197160eabe8d25cfa17397d77c"><title>RETURN VALUES</title>
+    <para>
+      The function X509_NAME_get0_der() returns 1 for success and 0 if an
+      error occurred.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-10bf3d9df1786755222280159ee48c76"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>d2i_X509</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-3f83f25d98b76f92ac2bf907a5cf7f82"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2002-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
 </refentry>

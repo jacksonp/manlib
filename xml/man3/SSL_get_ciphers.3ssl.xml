@@ -4,7 +4,8 @@
     <refentrytitle>SSL_get_ciphers.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_get_ciphers, SSL_CTX_get_ciphers, SSL_get_cipher_list</refname>
+    <refname>SSL_get1_supported_ciphers, SSL_get_client_ciphers,
+SSL_get_ciphers, SSL_CTX_get_ciphers, SSL_get_cipher_list</refname>
 <refpurpose>get list of available SSL_CIPHERs</refpurpose>
   </refnamediv>
   <refsynopsisdiv>

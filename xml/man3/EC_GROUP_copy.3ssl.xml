@@ -4,7 +4,16 @@
     <refentrytitle>EC_GROUP_copy.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>EC_GROUP_copy, EC_GROUP_dup, EC_GROUP_method_of, EC_GROUP_set_generator, EC_GROUP_get0_generator, EC_GROUP_get_order, EC_GROUP_get_cofactor, EC_GROUP_set_curve_name, EC_GROUP_get_curve_name, EC_GROUP_set_asn1_flag, EC_GROUP_get_asn1_flag, EC_GROUP_set_point_conversion_form, EC_GROUP_get_point_conversion_form, EC_GROUP_get0_seed, EC_GROUP_get_seed_len, EC_GROUP_set_seed, EC_GROUP_get_degree, EC_GROUP_check, EC_GROUP_check_discriminant, EC_GROUP_cmp, EC_GROUP_get_basis_type, EC_GROUP_get_trinomial_basis, EC_GROUP_get_pentanomial_basis</refname>
+    <refname>EC_GROUP_get0_order, EC_GROUP_order_bits, EC_GROUP_get0_cofactor,
+EC_GROUP_copy, EC_GROUP_dup, EC_GROUP_method_of, EC_GROUP_set_generator,
+EC_GROUP_get0_generator, EC_GROUP_get_order, EC_GROUP_get_cofactor,
+EC_GROUP_set_curve_name, EC_GROUP_get_curve_name, EC_GROUP_set_asn1_flag,
+EC_GROUP_get_asn1_flag, EC_GROUP_set_point_conversion_form,
+EC_GROUP_get_point_conversion_form, EC_GROUP_get0_seed,
+EC_GROUP_get_seed_len, EC_GROUP_set_seed, EC_GROUP_get_degree,
+EC_GROUP_check, EC_GROUP_check_discriminant, EC_GROUP_cmp,
+EC_GROUP_get_basis_type, EC_GROUP_get_trinomial_basis,
+EC_GROUP_get_pentanomial_basis</refname>
 <refpurpose>Functions for manipulating EC_GROUP objects</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
@@ -16,7 +25,7 @@ EC_GROUP *EC_GROUP_dup(const EC_GROUP *src);</synopsis>
 const EC_POINT *EC_GROUP_get0_generator(const EC_GROUP *group);</synopsis>
 <synopsis>int EC_GROUP_get_order(const EC_GROUP *group, BIGNUM *order, BN_CTX *ctx);
 const BIGNUM *EC_GROUP_get0_order(const EC_GROUP *group);
-const BIGNUM *EC_GROUP_order_bits(const EC_GROUP *group);
+int EC_GROUP_order_bits(const EC_GROUP *group);
 int EC_GROUP_get_cofactor(const EC_GROUP *group, BIGNUM *cofactor, BN_CTX *ctx);
 const BIGNUM *EC_GROUP_get0_cofactor(const EC_GROUP *group);</synopsis>
 <synopsis>void EC_GROUP_set_curve_name(EC_GROUP *group, int nid);
@@ -99,7 +108,7 @@ int EC_GROUP_get_pentanomial_basis(const EC_GROUP *, unsigned int *k1,
        /** the point is encoded as z||x, where the octet z specifies
         *   which solution of the quadratic equation y is  */
        POINT_CONVERSION_COMPRESSED = 2,
-       /** the point is encoded as z||x||y, where z is the octet 0x02  */
+       /** the point is encoded as z||x||y, where z is the octet 0x04  */
        POINT_CONVERSION_UNCOMPRESSED = 4,
        /** the point is encoded as z||x||y, where the octet z specifies
         *  which solution of the quadratic equation y is  */

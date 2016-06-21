@@ -4,7 +4,7 @@
     <refentrytitle>RSA_check_key.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>RSA_check_key</refname>
+    <refname>RSA_check_key_ex, RSA_check_key</refname>
 <refpurpose>validate private RSA keys</refpurpose>
   </refnamediv>
   <refsynopsisdiv>

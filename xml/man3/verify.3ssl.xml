@@ -14,6 +14,7 @@
 [<emphasis role="bold">-CApath directory</emphasis>]
 [<emphasis role="bold">-no-CAfile</emphasis>]
 [<emphasis role="bold">-no-CApath</emphasis>]
+[<emphasis role="bold">-allow_proxy_certs</emphasis>]
 [<emphasis role="bold">-attime timestamp</emphasis>]
 [<emphasis role="bold">-check_ss_sig</emphasis>]
 [<emphasis role="bold">-CRLfile file</emphasis>]
@@ -109,6 +110,14 @@
             <para>
 	      Do not load the trusted CA certificates from the default
 	      directory location
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-allow_proxy_certs</emphasis></term>
+          <listitem>
+            <para>
+	      Allow the verification of proxy certificates
             </para>
           </listitem>
         </varlistentry>
@@ -939,6 +948,15 @@ error 24 at 1 depth lookup:invalid CA certificate</screen>
           </listitem>
         </varlistentry>
         <varlistentry>
+          <term><emphasis role="bold">X509_V_ERR_PROXY_SUBJECT_INVALID</emphasis></term>
+          <listitem>
+            <para>
+	      Proxy certificate subject is invalid.  It MUST be the same as
+	      the issuer with a single CN component added.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
           <term><emphasis role="bold">X509_V_ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE</emphasis></term>
           <listitem>
             <para>
@@ -950,8 +968,7 @@ error 24 at 1 depth lookup:invalid CA certificate</screen>
           <term><emphasis role="bold">X509_V_ERR_PROXY_CERTIFICATES_NOT_ALLOWED</emphasis></term>
           <listitem>
             <para>
-	      Proxy certificates not allowed, please set the appropriate
-	      flag.
+	      Proxy certificates not allowed, please use <emphasis role="bold">-allow_proxy_certs</emphasis>.
             </para>
           </listitem>
         </varlistentry>

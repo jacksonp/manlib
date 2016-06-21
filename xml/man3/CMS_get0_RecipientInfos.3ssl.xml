@@ -4,7 +4,11 @@
     <refentrytitle>CMS_get0_RecipientInfos.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>CMS_get0_RecipientInfos, CMS_RecipientInfo_type, CMS_RecipientInfo_ktri_get0_signer_id,CMS_RecipientInfo_ktri_cert_cmp, CMS_RecipientInfo_set0_pkey, CMS_RecipientInfo_kekri_get0_id, CMS_RecipientInfo_kekri_id_cmp, CMS_RecipientInfo_set0_key, CMS_RecipientInfo_decrypt, CMS_RecipientInfo_encrypt</refname>
+    <refname>CMS_get0_RecipientInfos, CMS_RecipientInfo_type,
+CMS_RecipientInfo_ktri_get0_signer_id, CMS_RecipientInfo_ktri_cert_cmp,
+CMS_RecipientInfo_set0_pkey, CMS_RecipientInfo_kekri_get0_id,
+CMS_RecipientInfo_kekri_id_cmp, CMS_RecipientInfo_set0_key,
+CMS_RecipientInfo_decrypt, CMS_RecipientInfo_encrypt</refname>
 <refpurpose>CMS envelopedData RecipientInfo routines</refpurpose>
   </refnamediv>
   <refsynopsisdiv>

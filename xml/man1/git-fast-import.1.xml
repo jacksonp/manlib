@@ -248,6 +248,18 @@ the frontend program in use.</simpara>
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+fastimport.unpackLimit
+</term>
+<listitem>
+<simpara>
+        See <citerefentry>
+<refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
+</citerefentry>
+</simpara>
+</listitem>
+</varlistentry>
 </variablelist>
 </refsect2>
 </refsect1>

@@ -4,7 +4,8 @@
     <refentrytitle>SSL_CONF_cmd.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_CONF_cmd</refname>
+    <refname>SSL_CONF_cmd_value_type, SSL_CONF_finish,
+SSL_CONF_cmd</refname>
 <refpurpose>send configuration command</refpurpose>
   </refnamediv>
   <refsynopsisdiv>

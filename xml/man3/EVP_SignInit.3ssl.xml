@@ -4,7 +4,8 @@
     <refentrytitle>EVP_SignInit.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>EVP_SignInit, EVP_SignInit_ex, EVP_SignUpdate, EVP_SignFinal</refname>
+    <refname>EVP_PKEY_size,
+EVP_SignInit, EVP_SignInit_ex, EVP_SignUpdate, EVP_SignFinal</refname>
 <refpurpose>EVP signing
 functions</refpurpose>
   </refnamediv>

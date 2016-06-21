@@ -20,8 +20,9 @@
 <emphasis>git submodule</emphasis> [--quiet] init [--] [&lt;path&gt;&#8230;]
 <emphasis>git submodule</emphasis> [--quiet] deinit [-f|--force] (--all|[--] &lt;path&gt;&#8230;)
 <emphasis>git submodule</emphasis> [--quiet] update [--init] [--remote] [-N|--no-fetch]
-              [-f|--force] [--rebase|--merge] [--reference &lt;repository&gt;]
-              [--depth &lt;depth&gt;] [--recursive] [--jobs &lt;n&gt;] [--] [&lt;path&gt;&#8230;]
+              [--[no-]recommend-shallow] [-f|--force] [--rebase|--merge]
+              [--reference &lt;repository&gt;] [--depth &lt;depth&gt;] [--recursive]
+              [--jobs &lt;n&gt;] [--] [&lt;path&gt;&#8230;]
 <emphasis>git submodule</emphasis> [--quiet] summary [--cached|--files] [(-n|--summary-limit) &lt;n&gt;]
               [commit] [--] [&lt;path&gt;&#8230;]
 <emphasis>git submodule</emphasis> [--quiet] foreach [--recursive] &lt;command&gt;
@@ -599,6 +600,19 @@ for <citerefentry>
         See <citerefentry>
 <refentrytitle>git-clone</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--[no-]recommend-shallow
+</term>
+<listitem>
+<simpara>
+        This option is only valid for the update command.
+        The initial clone of a submodule will use the recommended
+        <literal>submodule.&lt;name&gt;.shallow</literal> as provided by the .gitmodules file
+        by default. To ignore the suggestions use <literal>--no-recommend-shallow</literal>.
 </simpara>
 </listitem>
 </varlistentry>

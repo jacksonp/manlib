@@ -6,8 +6,7 @@
   <refnamediv>
     <refname>X509v3_get_ext_count, X509v3_get_ext, X509v3_get_ext_by_NID,
 X509v3_get_ext_by_OBJ, X509v3_get_ext_by_critical, X509v3_delete_ext,
-X509v3_add_ext, X509_get0_extensions, X509_CRL_get0_extensions,
-X509_REVOKED_get0_extensions, X509_get_ext_count, X509_get_ext,
+X509v3_add_ext, X509_get_ext_count, X509_get_ext,
 X509_get_ext_by_NID, X509_get_ext_by_OBJ, X509_get_ext_by_critical,
 X509_delete_ext, X509_add_ext, X509_CRL_get_ext_count, X509_CRL_get_ext,
 X509_CRL_get_ext_by_NID, X509_CRL_get_ext_by_OBJ, X509_CRL_get_ext_by_critical,
@@ -30,9 +29,6 @@ int X509v3_get_ext_by_critical(const STACK_OF(X509_EXTENSION) *x,
 X509_EXTENSION *X509v3_delete_ext(STACK_OF(X509_EXTENSION) *x, int loc);
 STACK_OF(X509_EXTENSION) *X509v3_add_ext(STACK_OF(X509_EXTENSION) **x,
                                          X509_EXTENSION *ex, int loc);</synopsis>
-<synopsis>STACK_OF(X509_EXTENSION) *X509_get0_extensions(const X509 *x);
-STACK_OF(X509_EXTENSION) *X509_CRL_get0_extensions(X509_CRL *crl);
-STACK_OF(X509_EXTENSION) *X509_REVOKED_get0_extensions(X509_REVOKED *r);</synopsis>
 <synopsis>int X509_get_ext_count(X509 *x);
 X509_EXTENSION *X509_get_ext(X509 *x, int loc);
 int X509_get_ext_by_NID(X509 *x, int nid, int lastpos);
@@ -94,11 +90,6 @@ int X509_REVOKED_add_ext(X509_REVOKED *x, X509_EXTENSION *ex, int loc);</synopsi
       internally so it must be freed after use.
     </para>
     <para>
-      X509_get0_extensions(), X509_CRL_get0_extensions() and
-      X509_REVOKED_get0_extensions() retrieve the extensions from a
-      certificate a CRL or a CRL entry respectively.
-    </para>
-    <para>
       X509_get_ext_count(), X509_get_ext(), X509_get_ext_by_NID(),
       X509_get_ext_by_OBJ(), X509_get_ext_by_critical(), X509_delete_ext()
       and X509_add_ext() operate on the extensions of certificate <emphasis role="bold">x</emphasis> they are otherwise identical to the X509v3
@@ -150,11 +141,6 @@ int X509_REVOKED_add_ext(X509_REVOKED *x, X509_EXTENSION *ex, int loc);</synopsi
     </para>
     <para>
       X509v3_add_ext() returns a stack of extensions or <emphasis role="bold">NULL</emphasis> on error.
-    </para>
-    <para>
-      X509_get0_extensions(), X509_CRL_get0_extensions() and
-      X509_REVOKED_get0_extensions() return a stack of extensions. If the
-      extensions field is absent it will return <emphasis role="bold">NULL</emphasis>: this is <emphasis role="bold">not</emphasis> an error condition.
     </para>
   </refsection>
   <refsection xml:id="ID-53e2c5d8c771837a50eef216509655f9"><title>SEE ALSO</title>

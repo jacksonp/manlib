@@ -18,25 +18,36 @@ RSA_get_ex_new_index, RSA_set_ex_data, RSA_get_ex_data</refname>
 <refpurpose>application-specific data</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>The synopsis below is for the X509 structure, but is the same for all
-crypto structures:</synopsis>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
-<synopsis>int X509_get_ex_new_index(long argl, void *argp,
+<synopsis>int TYPE_get_ex_new_index(long argl, void *argp,
                CRYPTO_EX_new *new_func,
                CRYPTO_EX_dup *dup_func,
                CRYPTO_EX_free *free_func);</synopsis>
-<synopsis>int X509_set_ex_data(X509 *d, int idx, void *arg);</synopsis>
-<synopsis>void *X509_get_ex_data(X509 *d, int idx);</synopsis>
+<synopsis>int TYPE_set_ex_data(TYPE *d, int idx, void *arg);</synopsis>
+<synopsis>void *TYPE_get_ex_data(TYPE *d, int idx);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-38c578bc46ea569327c2080934f9ed0f"><title>DESCRIPTION</title>
     <para>
-      These functions handle application-specific data for OpenSSL crypto
+      In the description here, <emphasis role="italic">TYPE</emphasis> is
+      used a placeholder for any of the OpenSSL datatypes listed in
+      <citerefentry> <refentrytitle>CRYPTO_get_ex_new_index</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>.
+    </para>
+    <para>
+      These functions handle application-specific data for OpenSSL data
       structures.
     </para>
     <para>
-      For details, see <citerefentry>
-      <refentrytitle>CRYPTO_get_ex_new_index</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>.
+      TYPE_get_new_ex_index() is a macro that calls
+      CRYPTO_get_ex_new_index() with the correct <emphasis role="bold">index</emphasis> value.
+    </para>
+    <para>
+      TYPE_set_ex_data() is a function that calls CRYPTO_set_ex_data() with
+      an offset into the opaque exdata part of the TYPE object.
+    </para>
+    <para>
+      TYPE_get_ex_data() is a function that calls CRYPTO_get_ex_data() with
+      an an offset into the opaque exdata part of the TYPE object.
     </para>
   </refsection>
   <refsection xml:id="ID-ccf6e1a846b9a3696b14db9fd6d69718"><title>SEE ALSO</title>

@@ -4,7 +4,9 @@
     <refentrytitle>BIO_f_ssl.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BIO_f_ssl, BIO_set_ssl, BIO_get_ssl, BIO_set_ssl_mode, BIO_set_ssl_renegotiate_bytes,
+    <refname>BIO_do_handshake,
+BIO_f_ssl, BIO_set_ssl, BIO_get_ssl, BIO_set_ssl_mode,
+BIO_set_ssl_renegotiate_bytes,
 BIO_get_num_renegotiates, BIO_set_ssl_renegotiate_timeout, BIO_new_ssl,
 BIO_new_ssl_connect, BIO_new_buffer_ssl_connect, BIO_ssl_copy_session_id,
 BIO_ssl_shutdown</refname>

@@ -4,7 +4,9 @@
     <refentrytitle>SSL_SESSION_get_time.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_SESSION_get_time, SSL_SESSION_set_time, SSL_SESSION_get_timeout, SSL_SESSION_set_timeout</refname>
+    <refname>SSL_SESSION_get_time, SSL_SESSION_set_time, SSL_SESSION_get_timeout,
+SSL_SESSION_set_timeout
+SSL_get_time, SSL_set_time, SSL_get_timeout, SSL_set_timeout,</refname>
 <refpurpose>retrieve and manipulate session time and timeout settings</refpurpose>
   </refnamediv>
   <refsynopsisdiv>

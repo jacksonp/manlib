@@ -133,11 +133,11 @@ even if the new namespace is created or joined by the root user
 Note that a call to
 .BR execve (2)
 will cause a process's capabilities to be recalculated in the usual way (see
-.BR capabilities (7)),
-so that usually,
-unless it has a user ID of 0 within the namespace or the executable file
-has a nonempty inheritable capabilities mask,
-it will lose all capabilities.
+.BR capabilities (7)).
+Consequently,
+unless the process has a user ID of 0 within the namespace,
+or the executable file has a nonempty inheritable capabilities mask,
+the process will lose all capabilities.
 See the discussion of user and group ID mappings, below.
 
 A call to
@@ -165,9 +165,6 @@ retaining its user namespace membership by using a pair of
 calls to move to another user namespace and then return to
 its original user namespace.
 
-Having a capability inside a user namespace
-permits a process to perform operations (that require privilege)
-only on resources governed by that namespace.
 The rules for determining whether or not a process has a capability
 in a particular user namespace are as follows:
 .IP 1. 3
@@ -208,12 +205,30 @@ has all capabilities in the namespace.
 By virtue of the previous rule,
 this means that the process has all capabilities in all
 further removed descendant user namespaces as well.
+.PP
+Having a capability inside a user namespace
+permits a process to perform operations (that require privilege)
+only on resources governed by that namespace.
+In other words, having a capability in a user namespace permits a process
+to perform privileged operations on resources that are governed by (nonuser)
+namespaces associated with the user namespace (see the next subsection).
+On the other hand, there are many privileged operations that affect
+resources that are not associated with any namespace type,
+for example, changing the system time (governed by
+.BR CAP_SYS_TIME ),
+loading a kernel module (governed by
+.BR CAP_SYS_MODULE ),
+and creating a device (governed by
+.BR CAP_MKNOD ).
+Only a process with privileges in the
+.I initial
+user namespace can perform such operations.
 .\"
 .\" ============================================================
 .\"
 .SS Interaction of user namespaces and other types of namespaces
 Starting in Linux 3.8, unprivileged processes can create user namespaces,
-and mount, PID, IPC, network, and UTS namespaces can be created with just the
+and other the other types of namespaces can be created with just the
 .B CAP_SYS_ADMIN
 capability in the caller's user namespace.
 
@@ -240,7 +255,7 @@ privileges over the remaining namespaces created by the call.
 Thus, it is possible for an unprivileged caller to specify this combination
 of flags.
 
-When a new IPC, mount, network, PID, or UTS namespace is created via
+When a new namespace (other than a user namespace) is created via
 .BR clone (2)
 or
 .BR unshare (2),
@@ -252,6 +267,15 @@ privileged operations that operate on global
 resources isolated by the namespace,
 the permission checks are performed according to the process's capabilities
 in the user namespace that the kernel associated with the new namespace.
+For example, suppose that a process attempts to change the hostname
+.RB ( sethostname (2)),
+a resource governed by the UTS namespace.
+In this case,
+the kernel will determine which user namespace is associated with
+the process's UTS namespace, and check whether the process has the
+required capability
+.RB ( CAP_SYS_ADMIN )
+in that user namespace.
 .\"
 .\" ============================================================
 .\"
@@ -1280,6 +1304,7 @@ main(int argc, char *argv[])
 .BR credentials (7),
 .BR capabilities (7),
 .BR namespaces (7),
+.BR cgroup_namespaces (7)
 .BR pid_namespaces (7)
 .sp
 The kernel source file

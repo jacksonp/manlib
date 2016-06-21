@@ -3343,6 +3343,24 @@ difftool.prompt
 </varlistentry>
 <varlistentry>
 <term>
+fastimport.unpackLimit
+</term>
+<listitem>
+<simpara>
+        If the number of objects imported by <citerefentry>
+<refentrytitle>git-fast-import</refentrytitle><manvolnum>1</manvolnum>
+</citerefentry>
+        is below this limit, then the objects will be unpacked into
+        loose object files.  However if the number of imported objects
+        equals or exceeds this limit then the pack will be stored as a
+        pack.  Storing the pack from a fast-import can make the import
+        operation complete faster, especially on slow filesystems.  If
+        not set, the value of <literal>transfer.unpackLimit</literal> is used instead.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 fetch.recurseSubmodules
 </term>
 <listitem>

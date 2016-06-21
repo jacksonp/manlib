@@ -4,8 +4,9 @@
     <refentrytitle>CRYPTO_get_ex_new_index.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>CRYPTO_free_ex_index, CRYPTO_get_ex_new_index, CRYPTO_set_ex_data,
-CRYPTO_get_ex_data, CRYPTO_free_ex_data</refname>
+    <refname>CRYPTO_EX_new, CRYPTO_EX_free, CRYPTO_EX_dup,
+CRYPTO_free_ex_index, CRYPTO_get_ex_new_index, CRYPTO_set_ex_data,
+CRYPTO_get_ex_data, CRYPTO_free_ex_data, CRYPTO_new_ex_data</refname>
 <refpurpose>functions supporting application-specific data</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
@@ -21,6 +22,7 @@ typedef void CRYPTO_EX_free(void *parent, void *ptr, CRYPTO_EX_DATA *ad,
                             int idx, long argl, void *argp);
 typedef int CRYPTO_EX_dup(CRYPTO_EX_DATA *to, CRYPTO_EX_DATA *from,
                           void *from_d, int idx, long argl, void *argp);</synopsis>
+<synopsis>int CRYPTO_new_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *ad)</synopsis>
 <synopsis>int CRYPTO_set_ex_data(CRYPTO_EX_DATA *r, int idx, void *arg);</synopsis>
 <synopsis>void *CRYPTO_get_ex_data(CRYPTO_EX_DATA *r, int idx);</synopsis>
 <synopsis>void CRYPTO_free_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *r);</synopsis>
@@ -53,6 +55,11 @@ BIO</screen>
       specific structures.  Since the application data can be anything at
       all it is passed and retrieved as a <emphasis role="bold">void
       *</emphasis> type.
+    </para>
+    <para>
+      The <emphasis role="bold">CRYPTO_EX_DATA</emphasis> type is opaque. 
+      To initialize the exdata part of a structure, call
+      CRYPTO_new_ex_data(). This is only necessary for <emphasis role="bold">CRYPTO_EX_INDEX_APP</emphasis> objects.
     </para>
     <para>
       Exdata types are identified by an <emphasis role="bold">index</emphasis>, an integer guaranteed to be unique

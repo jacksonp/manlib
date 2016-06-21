@@ -4,18 +4,21 @@
     <refentrytitle>OPENSSL_malloc.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>OPENSSL_malloc_init,
+    <refname>CRYPTO_MEM_CHECK_OFF, CRYPTO_MEM_CHECK_ON,
+CRYPTO_MEM_CHECK_DISABLE, CRYPTO_MEM_CHECK_ENABLE,
+OPENSSL_malloc_init,
 OPENSSL_malloc, OPENSSL_zalloc, OPENSSL_realloc, OPENSSL_free,
 OPENSSL_clear_realloc, OPENSSL_clear_free, OPENSSL_cleanse,
 CRYPTO_malloc, CRYPTO_zalloc, CRYPTO_realloc, CRYPTO_free,
 OPENSSL_strdup, OPENSSL_strndup,
 OPENSSL_memdup, OPENSSL_strlcpy, OPENSSL_strlcat,
 OPENSSL_hexstr2buf, OPENSSL_buf2hexstr, OPENSSL_hexchar2int,
+CRYPTO_strdup, CRYPTO_strndup,
+OPENSSL_mem_debug_push, OPENSSL_mem_debug_pop,
+CRYPTO_mem_debug_push, CRYPTO_mem_debug_pop,
 CRYPTO_clear_realloc, CRYPTO_clear_free,
 CRYPTO_get_mem_functions, CRYPTO_set_mem_functions,
 CRYPTO_set_mem_debug, CRYPTO_mem_ctrl,
-OPENSSL_mem_debug_push, OPENSSL_mem_debug_pop,
-CRYPTO_mem_debug_push, CRYPTO_mem_debug_pop,
 CRYPTO_mem_leaks, CRYPTO_mem_leaks_fp</refname>
 <refpurpose>Memory allocation functions</refpurpose>
   </refnamediv>
@@ -28,6 +31,9 @@ void *OPENSSL_realloc(void *addr, size_t num)
 void OPENSSL_free(void *addr)
 char *OPENSSL_strdup(const char *str)
 char *OPENSSL_strndup(const char *str, size_t s)
+size_t OPENSSL_strlcat(char *dst, const char *src, size_t size);
+size_t OPENSSL_strlcpy(char *dst, const char *src, size_t size);
+void *OPENSSL_memdup(void *data, size_t s)
 void *OPENSSL_clear_realloc(void *p, size_t old_len, size_t num)
 void OPENSSL_clear_free(void *str, size_t num)
 void OPENSSL_cleanse(void *ptr, size_t len);</synopsis>
@@ -57,10 +63,11 @@ int CRYPTO_set_mem_functions(
 #define CRYPTO_MEM_CHECK_ENABLE</synopsis>
 <synopsis>int CRYPTO_mem_ctrl(int mode);</synopsis>
 <synopsis>int OPENSSL_mem_debug_push(const char *info)
-int OPENSLS_mem_debug_pop)(void)</synopsis>
-<synopsis>int CRYPTO_mem_debug_push(const char *info, const char *file, int line);</synopsis>
+int OPENSSL_mem_debug_pop(void);</synopsis>
+<synopsis>int CRYPTO_mem_debug_push(const char *info, const char *file, int line);
+int CRYPTO_mem_debug_pop(void);</synopsis>
 <synopsis>void CRYPTO_mem_leaks(BIO *b);
-void CRYPTO_mem_leaks(FILE *fp);</synopsis>
+void CRYPTO_mem_leaks_fp(FILE *fp);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-fce6d5e0df5cf0b0c1546db1d5599b30"><title>DESCRIPTION</title>
     <para>

@@ -4,7 +4,7 @@
     <refentrytitle>BN_mod_mul_reciprocal.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BN_mod_mul_reciprocal,  BN_div_recp, BN_RECP_CTX_new, BN_RECP_CTX_init,
+    <refname>BN_mod_mul_reciprocal,  BN_div_recp, BN_RECP_CTX_new,
 BN_RECP_CTX_free, BN_RECP_CTX_set</refname>
 <refpurpose>modular multiplication using
 reciprocal</refpurpose>
@@ -29,8 +29,7 @@ void BN_RECP_CTX_free(BN_RECP_CTX *recp);</synopsis>
       <emphasis role="bold">recp</emphasis>=1/<emphasis role="bold">m</emphasis>, which is set as described below.  <emphasis role="bold">ctx</emphasis> is a previously allocated <emphasis role="bold">BN_CTX</emphasis> used for temporary variables.
     </para>
     <para>
-      BN_RECP_CTX_new() allocates and initializes a <emphasis role="bold">BN_RECP</emphasis> structure. BN_RECP_CTX_init()
-      initializes an existing uninitialized <emphasis role="bold">BN_RECP</emphasis>.
+      BN_RECP_CTX_new() allocates and initializes a <emphasis role="bold">BN_RECP</emphasis> structure.
     </para>
     <para>
       BN_RECP_CTX_free() frees the components of the <emphasis role="bold">BN_RECP</emphasis>, and, if it was created by
@@ -59,7 +58,7 @@ void BN_RECP_CTX_free(BN_RECP_CTX *recp);</synopsis>
       BN_RECP_CTX_new() returns the newly allocated <emphasis role="bold">BN_RECP_CTX</emphasis>, and NULL on error.
     </para>
     <para>
-      BN_RECP_CTX_init() and BN_RECP_CTX_free() have no return values.
+      BN_RECP_CTX_free() has no return value.
     </para>
     <para>
       For the other functions, 1 is returned for success, 0 on error. The
@@ -67,25 +66,6 @@ void BN_RECP_CTX_free(BN_RECP_CTX *recp);</synopsis>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>.
     </para>
-  </refsection>
-  <refsection xml:id="ID-e0dc243d4f089ebc246d6e0b7de0b863"><title>REMOVED FUNCTIONALITY</title>
-    <screen>void BN_RECP_CTX_init(BN_RECP_CTX *recp);</screen>
-    <para>
-      BN_RECP_CTX_init() is no longer available as of OpenSSL 1.1.0. It was
-      used to initialize an existing uninitialized <emphasis role="bold">BN_RECP_CTX</emphasis>. Typically this would be done as
-      follows:
-    </para>
-    <screen>BN_RECP_CTX ctx;
-BN_RECP_CTX_init(&amp;ctx);</screen>
-    <para>
-      Applications should replace use of BN_RECP_CTX_init with
-      BN_RECP_CTX_new instead:
-    </para>
-    <screen>BN_RECP_CTX *ctx;
-ctx = BN_RECP_CTX_new();
-if(!ctx) /* Handle error */
-...
-BN_RECP_CTX_free(ctx);</screen>
   </refsection>
   <refsection xml:id="ID-fc69f4c2f4297c7ac1129d906bcd6706"><title>SEE ALSO</title>
     <para>
@@ -100,7 +80,7 @@ BN_RECP_CTX_free(ctx);</screen>
   </refsection>
   <refsection xml:id="ID-cd232925d41e42bad5642a51b8e9f83b"><title>HISTORY</title>
     <para>
-      BN_RECP_CTX_init was removed in OpenSSL 1.1.0
+      BN_RECP_CTX_init() was removed in OpenSSL 1.1.0
     </para>
   </refsection>
   <refsection xml:id="ID-6546f0bc3b15a31d92863de5bb3bee81"><title>COPYRIGHT</title>

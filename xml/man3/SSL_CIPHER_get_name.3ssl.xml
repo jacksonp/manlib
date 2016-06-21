@@ -4,7 +4,10 @@
     <refentrytitle>SSL_CIPHER_get_name.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_CIPHER_get_name, SSL_CIPHER_get_bits, SSL_CIPHER_get_version, SSL_CIPHER_description</refname>
+    <refname>SSL_CIPHER_get_cipher_nid, SSL_CIPHER_get_digest_nid, SSL_CIPHER_get_kx_nid,
+SSL_CIPHER_get_auth_nid, SSL_CIPHER_is_aead,
+SSL_CIPHER_get_name, SSL_CIPHER_get_bits,
+SSL_CIPHER_get_version, SSL_CIPHER_description</refname>
 <refpurpose>get SSL_CIPHER properties</refpurpose>
   </refnamediv>
   <refsynopsisdiv>

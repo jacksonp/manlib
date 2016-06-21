@@ -4,7 +4,8 @@
     <refentrytitle>SSL_SESSION_has_ticket.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_SESSION_has_ticket, SSL_SESSION_get_ticket_lifetime_hint, SSL_SESSION_get_ticket</refname>
+    <refname>SSL_SESSION_get0_ticket,
+SSL_SESSION_has_ticket, SSL_SESSION_get_ticket_lifetime_hint,</refname>
 <refpurpose>get details about the ticket associated with a session</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
@@ -12,7 +13,7 @@
 <synopsis>int SSL_SESSION_has_ticket(const SSL_SESSION *s);
 unsigned long SSL_SESSION_get_ticket_lifetime_hint(const SSL_SESSION *s);
 void SSL_SESSION_get0_ticket(const SSL_SESSION *s, unsigned char **tick,
-                           size_t *len);</synopsis>
+                             size_t *len);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-5171f419bc96dc5ce78c62e2b577ae8a"><title>DESCRIPTION</title>
     <para>

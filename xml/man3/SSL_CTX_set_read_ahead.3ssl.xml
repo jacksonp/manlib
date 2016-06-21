@@ -53,7 +53,7 @@ void SSL_set_read_ahead(SSL *s, int yes);</synopsis>
   </refsection>
   <refsection xml:id="ID-036f6a72846cd5a462411269cbfbe142"><title>RETURN VALUES</title>
     <para>
-      SSL_get_read_ahead and SSL_CTX_get_read_ahead return 0 if reading
+      SSL_get_read_ahead() and SSL_CTX_get_read_ahead() return 0 if reading
       ahead is off, and non zero otherwise.
     </para>
   </refsection>

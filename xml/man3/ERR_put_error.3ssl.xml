@@ -11,7 +11,8 @@
 <synopsis>#include &lt;openssl/err.h&gt;</synopsis>
 <synopsis>void ERR_put_error(int lib, int func, int reason, const char *file,
         int line);</synopsis>
-<synopsis>void ERR_add_error_data(int num, ...);</synopsis>
+<synopsis>void ERR_add_error_data(int num, ...);
+void ERR_add_error_data(int num, va_list arg);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-28f663a3783ec5db838bb1f2ac82c156"><title>DESCRIPTION</title>
     <para>
@@ -21,7 +22,8 @@
     </para>
     <para>
       ERR_add_error_data() associates the concatenation of its <emphasis role="bold">num</emphasis> string arguments with the error code added
-      last.
+      last. ERR_add_error_vdata() is similar except the argument is a
+      <emphasis role="bold">va_list</emphasis>.
     </para>
     <para>
       <citerefentry> <refentrytitle>ERR_load_strings</refentrytitle>

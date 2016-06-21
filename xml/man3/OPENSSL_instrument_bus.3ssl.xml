@@ -9,8 +9,8 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#ifdef OPENSSL_CPUID_OBJ
-size_t OPENSSL_instrument_bus (int *vector,size_t num);
-size_t OPENSSL_instrument_bus2(int *vector,size_t num,size_t max);
+size_t OPENSSL_instrument_bus(int *vector, size_t num);
+size_t OPENSSL_instrument_bus2(int *vector, size_t num, size_t max);
 #endif</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-bfa15e906b197929e318d19051b3fecf"><title>DESCRIPTION</title>
@@ -27,11 +27,11 @@ size_t OPENSSL_instrument_bus2(int *vector,size_t num,size_t max);
       invocation (if you want to retrieve actual probe values).
     </para>
     <para>
-      OPENSSL_instrument_bus performs <emphasis role="bold">num</emphasis>
-      probes and records the number of oscillator cycles every probe took.
+      OPENSSL_instrument_bus() performs <emphasis role="bold">num</emphasis> probes and records the number of
+      oscillator cycles every probe took.
     </para>
     <para>
-      OPENSSL_instrument_bus2 on the other hand <emphasis role="bold">accumulates</emphasis> consecutive probes with the same
+      OPENSSL_instrument_bus2() on the other hand <emphasis role="bold">accumulates</emphasis> consecutive probes with the same
       value, i.e. in a way it records duration of periods when probe values
       appeared deterministic. The subroutine performs at most <emphasis role="bold">max</emphasis> probes in attempt to fill the <emphasis role="bold">vector[num]</emphasis>, with <emphasis role="bold">max</emphasis> value of 0 meaning "as many as it takes."
     </para>

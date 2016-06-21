@@ -10,8 +10,6 @@
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bio.h&gt;</synopsis>
 <synopsis>const BIO_METHOD *BIO_s_socket(void);</synopsis>
-<synopsis>long BIO_set_fd(BIO *b, int fd, long close_flag);
-long BIO_get_fd(BIO *b, int *c);</synopsis>
 <synopsis>BIO *BIO_new_socket(int sock, int close_flag);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-0e1cd92561bfcd05bea049cd187800fc"><title>DESCRIPTION</title>
@@ -28,14 +26,6 @@ long BIO_get_fd(BIO *b, int *c);</synopsis>
       the BIO is freed.
     </para>
     <para>
-      BIO_set_fd() sets the socket of BIO <emphasis role="bold">b</emphasis> to <emphasis role="bold">fd</emphasis> and
-      the close flag to <emphasis role="bold">close_flag</emphasis>.
-    </para>
-    <para>
-      BIO_get_fd() places the socket in <emphasis role="bold">c</emphasis>
-      if it is not NULL, it also returns the socket. If <emphasis role="bold">c</emphasis> is not NULL it should be of type (int *).
-    </para>
-    <para>
       BIO_new_socket() returns a socket BIO using <emphasis role="bold">sock</emphasis> and <emphasis role="bold">close_flag</emphasis>.
     </para>
   </refsection>
@@ -50,20 +40,10 @@ long BIO_get_fd(BIO *b, int *c);</synopsis>
       distinct I/O routines, Windows is one such platform. Any code mixing
       the two will not work on all platforms.
     </para>
-    <para>
-      BIO_set_fd() and BIO_get_fd() are macros.
-    </para>
   </refsection>
   <refsection xml:id="ID-d07616d9b5478444bea5f6e6a92cae08"><title>RETURN VALUES</title>
     <para>
       BIO_s_socket() returns the socket BIO method.
-    </para>
-    <para>
-      BIO_set_fd() always returns 1.
-    </para>
-    <para>
-      BIO_get_fd() returns the socket or -1 if the BIO has not been
-      initialized.
     </para>
     <para>
       BIO_new_socket() returns the newly allocated BIO or NULL is an error

@@ -4,7 +4,8 @@
     <refentrytitle>EVP_VerifyInit.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>EVP_VerifyInit, EVP_VerifyUpdate, EVP_VerifyFinal</refname>
+    <refname>EVP_VerifyInit_ex,
+EVP_VerifyInit, EVP_VerifyUpdate, EVP_VerifyFinal</refname>
 <refpurpose>EVP signature verification functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
