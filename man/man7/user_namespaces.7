@@ -205,13 +205,17 @@ has all capabilities in the namespace.
 By virtue of the previous rule,
 this means that the process has all capabilities in all
 further removed descendant user namespaces as well.
-.PP
+.\"
+.\" ============================================================
+.\"
+.SS Effect of capabilities within a user namespace
 Having a capability inside a user namespace
 permits a process to perform operations (that require privilege)
 only on resources governed by that namespace.
 In other words, having a capability in a user namespace permits a process
 to perform privileged operations on resources that are governed by (nonuser)
 namespaces associated with the user namespace (see the next subsection).
+
 On the other hand, there are many privileged operations that affect
 resources that are not associated with any namespace type,
 for example, changing the system time (governed by
@@ -223,6 +227,44 @@ and creating a device (governed by
 Only a process with privileges in the
 .I initial
 user namespace can perform such operations.
+
+Holding
+.B CAP_SYS_ADMIN
+within a (noninitial) user namespace allows the creation of bind mounts,
+and mounting of the following types of filesystems:
+.\" fs_flags = FS_USERNS_MOUNT in kernel sources
+
+.RS 4
+.PD 0
+.IP * 2
+.IR /proc
+(since Linux 3.8)
+.IP *
+.IR /sys
+(since Linux 3.8)
+.IP *
+.IR devpts
+(since Linux 3.9)
+.IP *
+.IR tmpfs
+(since Linux 3.9)
+.IP *
+.IR ramfs
+(since Linux 3.9)
+.IP *
+.IR mqueue
+(since Linux 3.9)
+.IP *
+.IR bpf
+.\" commit b2197755b2633e164a439682fb05a9b5ea48f706
+(since Linux 4.4)
+.PD
+.RE
+.PP
+Note however, that mounting block-based filesystems can be done
+only by a process that holds
+.BR CAP_SYS_ADMIN
+in the initial user namespace.
 .\"
 .\" ============================================================
 .\"

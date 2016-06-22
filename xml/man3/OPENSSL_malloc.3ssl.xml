@@ -125,7 +125,7 @@ void CRYPTO_mem_leaks_fp(FILE *fp);</synopsis>
     </para>
     <para>
       OPENSSL_buf2hexstr() takes the specified buffer and length, and
-      returns a hex string for value, or NULL on error. <emphasis role="bold">Buffer</emphasis> cannot be NULL; if <emphasis role="bold">len</emphasis> is NULL an empty string is returned.
+      returns a hex string for value, or NULL on error. <emphasis role="bold">Buffer</emphasis> cannot be NULL; if <emphasis role="bold">len</emphasis> is 0 an empty string is returned.
     </para>
     <para>
       OPENSSL_hexchar2int() converts a character to the hexadecimal
