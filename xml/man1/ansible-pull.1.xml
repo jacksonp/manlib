@@ -331,6 +331,26 @@ Vault password file.
 </varlistentry>
 <varlistentry>
 <term>
+<emphasis role="strong">--clean</emphasis>
+</term>
+<listitem>
+<simpara>
+Modified files in the working repository will be discarded.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">--track-subs</emphasis>
+</term>
+<listitem>
+<simpara>
+Submodules will track the latest changes.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 <emphasis role="strong">-v</emphasis>, <emphasis role="strong">--verbose</emphasis>
 </term>
 <listitem>

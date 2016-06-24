@@ -246,7 +246,7 @@ o  Time Stamp requests, generation and verification</screen>
             <term><emphasis role="bold">nseq</emphasis></term>
             <listitem>
               <para>
-		Create or examine a netscape certificate sequence
+		Create or examine a Netscape certificate sequence
               </para>
             </listitem>
           </varlistentry>
