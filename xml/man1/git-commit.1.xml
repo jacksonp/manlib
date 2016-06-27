@@ -449,7 +449,7 @@ default
 </listitem>
 </varlistentry>
 </variablelist>
-<simpara>The default can be changed by the <emphasis>commit.cleanup</emphasis> configuration
+<simpara>The default can be changed by the <literal>commit.cleanup</literal> configuration
 variable (see <citerefentry>
 <refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>).</simpara>
@@ -730,7 +730,7 @@ changes to tracked files.</simpara>
 </refsect1>
 <refsect1 id="_date_formats">
 <title>DATE FORMATS</title>
-<simpara>The GIT_AUTHOR_DATE, GIT_COMMITTER_DATE environment variables
+<simpara>The <literal>GIT_AUTHOR_DATE</literal>, <literal>GIT_COMMITTER_DATE</literal> environment variables
 and the <literal>--date</literal> option
 support the following date formats:</simpara>
 <variablelist>
@@ -941,8 +941,8 @@ reversible operation.</simpara>
 <refsect1 id="_environment_and_configuration_variables">
 <title>ENVIRONMENT AND CONFIGURATION VARIABLES</title>
 <simpara>The editor used to edit the commit log message will be chosen from the
-GIT_EDITOR environment variable, the core.editor configuration variable, the
-VISUAL environment variable, or the EDITOR environment variable (in that
+<literal>GIT_EDITOR</literal> environment variable, the core.editor configuration variable, the
+<literal>VISUAL</literal> environment variable, or the <literal>EDITOR</literal> environment variable (in that
 order).  See <citerefentry>
 <refentrytitle>git-var</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry> for details.</simpara>

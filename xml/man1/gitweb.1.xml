@@ -263,8 +263,8 @@ authorized to read the files:</simpara>
 <refsect2 id="_per_repository_gitweb_configuration">
 <title>Per-repository gitweb configuration</title>
 <simpara>You can configure individual repositories shown in gitweb by creating file
-in the <emphasis>GIT_DIR</emphasis> of Git repository, or by setting some repo configuration
-variable (in <emphasis>GIT_DIR/config</emphasis>, see <citerefentry>
+in the <literal>GIT_DIR</literal> of Git repository, or by setting some repo configuration
+variable (in <literal>GIT_DIR/config</literal>, see <citerefentry>
 <refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>).</simpara>
 <simpara>You can use the following files in repository:</simpara>

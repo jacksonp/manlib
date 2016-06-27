@@ -515,7 +515,7 @@ configuration file. Note that this also affects options like <emphasis>--replace
 and <emphasis>--unset</emphasis>. <emphasis role="strong"><emphasis>git config</emphasis> will only ever change one file at a time</emphasis>.</simpara>
 <simpara>You can override these rules either by command-line options or by environment
 variables. The <emphasis>--global</emphasis> and the <emphasis>--system</emphasis> options will limit the file used
-to the global or system-wide file respectively. The GIT_CONFIG environment
+to the global or system-wide file respectively. The <literal>GIT_CONFIG</literal> environment
 variable has a similar effect, but you can specify any filename you want.</simpara>
 </refsect1>
 <refsect1 id="_environment">
@@ -1331,7 +1331,7 @@ core.gitProxy
         may be set multiple times and is matched in the given order;
         the first match wins.
 </simpara>
-<simpara>Can be overridden by the <emphasis>GIT_PROXY_COMMAND</emphasis> environment variable
+<simpara>Can be overridden by the <literal>GIT_PROXY_COMMAND</literal> environment variable
 (which always applies universally, without the special "for"
 handling).</simpara>
 <simpara>The special string <literal>none</literal> can be used as the proxy command to
@@ -1407,9 +1407,9 @@ core.worktree
 <listitem>
 <simpara>
         Set the path to the root of the working tree.
-        If GIT_COMMON_DIR environment variable is set, core.worktree
+        If <literal>GIT_COMMON_DIR</literal> environment variable is set, core.worktree
         is ignored and not used for determining the root of working tree.
-        This can be overridden by the GIT_WORK_TREE environment
+        This can be overridden by the <literal>GIT_WORK_TREE</literal> environment
         variable and the <emphasis>--work-tree</emphasis> command-line option.
         The value can be an absolute path or relative to the path to
         the .git directory, which is either specified by --git-dir
@@ -1508,7 +1508,7 @@ core.compression
         -1 is the zlib default. 0 means no compression,
         and 1..9 are various speed/size tradeoffs, 9 being slowest.
         If set, this provides a default to other compression variables,
-        such as <emphasis>core.looseCompression</emphasis> and <emphasis>pack.compression</emphasis>.
+        such as <literal>core.looseCompression</literal> and <literal>pack.compression</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -1625,9 +1625,9 @@ core.askPass
 <simpara>
         Some commands (e.g. svn and http interfaces) that interactively
         ask for a password can be told to use an external program given
-        via the value of this variable. Can be overridden by the <emphasis>GIT_ASKPASS</emphasis>
+        via the value of this variable. Can be overridden by the <literal>GIT_ASKPASS</literal>
         environment variable. If not set, fall back to the value of the
-        <emphasis>SSH_ASKPASS</emphasis> environment variable or, failing that, a simple password
+        <literal>SSH_ASKPASS</literal> environment variable or, failing that, a simple password
         prompt. The external program shall be given a suitable prompt as
         command-line argument and write the password on its STDOUT.
 </simpara>
@@ -1885,7 +1885,7 @@ core.notesRef
         notes should be printed.
 </simpara>
 <simpara>This setting defaults to "refs/notes/commits", and it can be overridden by
-the <emphasis>GIT_NOTES_REF</emphasis> environment variable.  See <citerefentry>
+the <literal>GIT_NOTES_REF</literal> environment variable.  See <citerefentry>
 <refentrytitle>git-notes</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.</simpara>
 </listitem>
@@ -1958,7 +1958,7 @@ it will be treated as a shell command.  For example, defining
 "gitk --all --not ORIG_HEAD".  Note that shell commands will be
 executed from the top-level directory of a repository, which may
 not necessarily be the current directory.
-<emphasis>GIT_PREFIX</emphasis> is set as returned by running <emphasis>git rev-parse --show-prefix</emphasis>
+<literal>GIT_PREFIX</literal> is set as returned by running <emphasis>git rev-parse --show-prefix</emphasis>
 from the original current directory. See <citerefentry>
 <refentrytitle>git-rev-parse</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.</simpara>
@@ -2973,7 +2973,7 @@ diff.ignoreSubmodules
         commands such as <emphasis>git diff-files</emphasis>. <emphasis>git checkout</emphasis> also honors
         this setting when reporting uncommitted changes. Setting it to
         <emphasis>all</emphasis> disables the submodule summary normally shown by <emphasis>git commit</emphasis>
-        and <emphasis>git status</emphasis> when <emphasis>status.submoduleSummary</emphasis> is set unless it is
+        and <emphasis>git status</emphasis> when <literal>status.submoduleSummary</literal> is set unless it is
         overridden by using the --ignore-submodules command-line option.
         The <emphasis>git submodule</emphasis> commands are not affected by this setting.
 </simpara>
@@ -3890,7 +3890,7 @@ gitcvs.usecrlfattr
         treat it as text. If they suppress text conversion, the file
         will be set with <emphasis>-kb</emphasis> mode, which suppresses any newline munging
         the client might otherwise do. If the attributes do not allow
-        the file type to be determined, then <emphasis>gitcvs.allBinary</emphasis> is
+        the file type to be determined, then <literal>gitcvs.allBinary</literal> is
         used. See <citerefentry>
 <refentrytitle>gitattributes</refentrytitle><manvolnum>5</manvolnum>
 </citerefentry>.
@@ -3903,14 +3903,14 @@ gitcvs.allBinary
 </term>
 <listitem>
 <simpara>
-        This is used if <emphasis>gitcvs.usecrlfattr</emphasis> does not resolve
+        This is used if <literal>gitcvs.usecrlfattr</literal> does not resolve
         the correct <emphasis>-kb</emphasis> mode to use. If true, all
         unresolved files are sent to the client in
         mode <emphasis>-kb</emphasis>. This causes the client to treat them
         as binary files, which suppresses any newline munging it
         otherwise might do. Alternatively, if it is set to "guess",
         then the contents of the file are examined to decide if
-        it is binary, similar to <emphasis>core.autocrlf</emphasis>.
+        it is binary, similar to <literal>core.autocrlf</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -3954,7 +3954,7 @@ gitcvs.dbUser, gitcvs.dbPass
 </term>
 <listitem>
 <simpara>
-        Database user and password. Only useful if setting <emphasis>gitcvs.dbDriver</emphasis>,
+        Database user and password. Only useful if setting <literal>gitcvs.dbDriver</literal>,
         since SQLite has no concept of database users and/or passwords.
         <emphasis>gitcvs.dbUser</emphasis> supports variable substitution (see
         <citerefentry>
@@ -3980,8 +3980,8 @@ gitcvs.dbTableNamePrefix
 </listitem>
 </varlistentry>
 </variablelist>
-<simpara>All gitcvs variables except for <emphasis>gitcvs.usecrlfattr</emphasis> and
-<emphasis>gitcvs.allBinary</emphasis> can also be specified as
+<simpara>All gitcvs variables except for <literal>gitcvs.usecrlfattr</literal> and
+<literal>gitcvs.allBinary</literal> can also be specified as
 <emphasis>gitcvs.&lt;access_method&gt;.&lt;varname&gt;</emphasis> (where <emphasis>access_method</emphasis>
 is one of "ext" and "pserver") to make them apply only for the given
 access method.</simpara>
@@ -4073,7 +4073,7 @@ grep.extendedRegexp
 <listitem>
 <simpara>
         If set to true, enable <emphasis>--extended-regexp</emphasis> option by default. This
-        option is ignored when the <emphasis>grep.patternType</emphasis> option is set to a value
+        option is ignored when the <literal>grep.patternType</literal> option is set to a value
         other than <emphasis>default</emphasis>.
 </simpara>
 </listitem>
@@ -4300,7 +4300,7 @@ guitool.&lt;name&gt;.cmd
 </citerefentry> <literal>Tools</literal> menu is invoked. This option is
         mandatory for every tool. The command is executed from the root of
         the working directory, and in the environment it receives the name of
-        the tool as <emphasis>GIT_GUITOOL</emphasis>, the name of the currently selected file as
+        the tool as <literal>GIT_GUITOOL</literal>, the name of the currently selected file as
         <emphasis>FILENAME</emphasis>, and the name of the current branch as <emphasis>CUR_BRANCH</emphasis> (if
         the head is detached, <emphasis>CUR_BRANCH</emphasis> is empty).
 </simpara>
@@ -4356,7 +4356,7 @@ guitool.&lt;name&gt;.argPrompt
 <listitem>
 <simpara>
         Request a string argument from the user, and pass it to the tool
-        through the <emphasis>ARGS</emphasis> environment variable. Since requesting an
+        through the <literal>ARGS</literal> environment variable. Since requesting an
         argument implies confirmation, the <emphasis>confirm</emphasis> option has no effect
         if this is enabled. If the option is set to <emphasis>true</emphasis>, <emphasis>yes</emphasis>, or <emphasis>1</emphasis>,
         the dialog uses a built-in generic prompt; otherwise the exact
@@ -4371,7 +4371,7 @@ guitool.&lt;name&gt;.revPrompt
 <listitem>
 <simpara>
         Request a single valid revision from the user, and set the
-        <emphasis>REVISION</emphasis> environment variable. In other aspects this option
+        <literal>REVISION</literal> environment variable. In other aspects this option
         is similar to <emphasis>argPrompt</emphasis>, and can be used together with it.
 </simpara>
 </listitem>
@@ -4496,7 +4496,7 @@ http.proxyAuthMethod
         only takes effect if the configured proxy string contains a user name part
         (i.e. is of the form <emphasis>user@host</emphasis> or <emphasis>user@host:port</emphasis>). This can be
         overridden on a per-remote basis; see <literal>remote.&lt;name&gt;.proxyAuthMethod</literal>.
-        Both can be overridden by the <emphasis>GIT_HTTP_PROXY_AUTHMETHOD</emphasis> environment
+        Both can be overridden by the <literal>GIT_HTTP_PROXY_AUTHMETHOD</literal> environment
         variable.  Possible values are:
 </simpara>
 <itemizedlist>
@@ -4633,9 +4633,9 @@ tlsv1.2
 </simpara>
 </listitem>
 </itemizedlist>
-<simpara>Can be overridden by the <emphasis>GIT_SSL_VERSION</emphasis> environment variable.
+<simpara>Can be overridden by the <literal>GIT_SSL_VERSION</literal> environment variable.
 To force git to use libcurl&#8217;s default ssl version and ignore any
-explicit http.sslversion option, set <emphasis>GIT_SSL_VERSION</emphasis> to the
+explicit http.sslversion option, set <literal>GIT_SSL_VERSION</literal> to the
 empty string.</simpara>
 </listitem>
 </varlistentry>
@@ -4652,9 +4652,9 @@ http.sslCipherList
   option; see the libcurl documentation for more details on the format
   of this list.
 </simpara>
-<simpara>Can be overridden by the <emphasis>GIT_SSL_CIPHER_LIST</emphasis> environment variable.
+<simpara>Can be overridden by the <literal>GIT_SSL_CIPHER_LIST</literal> environment variable.
 To force git to use libcurl&#8217;s default cipher list and ignore any
-explicit http.sslCipherList option, set <emphasis>GIT_SSL_CIPHER_LIST</emphasis> to the
+explicit http.sslCipherList option, set <literal>GIT_SSL_CIPHER_LIST</literal> to the
 empty string.</simpara>
 </listitem>
 </varlistentry>
@@ -4665,7 +4665,7 @@ http.sslVerify
 <listitem>
 <simpara>
         Whether to verify the SSL certificate when fetching or pushing
-        over HTTPS. Can be overridden by the <emphasis>GIT_SSL_NO_VERIFY</emphasis> environment
+        over HTTPS. Can be overridden by the <literal>GIT_SSL_NO_VERIFY</literal> environment
         variable.
 </simpara>
 </listitem>
@@ -4677,7 +4677,7 @@ http.sslCert
 <listitem>
 <simpara>
         File containing the SSL certificate when fetching or pushing
-        over HTTPS. Can be overridden by the <emphasis>GIT_SSL_CERT</emphasis> environment
+        over HTTPS. Can be overridden by the <literal>GIT_SSL_CERT</literal> environment
         variable.
 </simpara>
 </listitem>
@@ -4689,7 +4689,7 @@ http.sslKey
 <listitem>
 <simpara>
         File containing the SSL private key when fetching or pushing
-        over HTTPS. Can be overridden by the <emphasis>GIT_SSL_KEY</emphasis> environment
+        over HTTPS. Can be overridden by the <literal>GIT_SSL_KEY</literal> environment
         variable.
 </simpara>
 </listitem>
@@ -4703,7 +4703,7 @@ http.sslCertPasswordProtected
         Enable Git&#8217;s password prompt for the SSL certificate.  Otherwise
         OpenSSL will prompt the user, possibly many times, if the
         certificate or private key is encrypted.  Can be overridden by the
-        <emphasis>GIT_SSL_CERT_PASSWORD_PROTECTED</emphasis> environment variable.
+        <literal>GIT_SSL_CERT_PASSWORD_PROTECTED</literal> environment variable.
 </simpara>
 </listitem>
 </varlistentry>
@@ -4715,7 +4715,7 @@ http.sslCAInfo
 <simpara>
         File containing the certificates to verify the peer with when
         fetching or pushing over HTTPS. Can be overridden by the
-        <emphasis>GIT_SSL_CAINFO</emphasis> environment variable.
+        <literal>GIT_SSL_CAINFO</literal> environment variable.
 </simpara>
 </listitem>
 </varlistentry>
@@ -4727,7 +4727,7 @@ http.sslCAPath
 <simpara>
         Path containing files with the CA certificates to verify the peer
         with when fetching or pushing over HTTPS. Can be overridden
-        by the <emphasis>GIT_SSL_CAPATH</emphasis> environment variable.
+        by the <literal>GIT_SSL_CAPATH</literal> environment variable.
 </simpara>
 </listitem>
 </varlistentry>
@@ -4768,7 +4768,7 @@ http.maxRequests
 <listitem>
 <simpara>
         How many HTTP requests to launch in parallel. Can be overridden
-        by the <emphasis>GIT_HTTP_MAX_REQUESTS</emphasis> environment variable. Default is 5.
+        by the <literal>GIT_HTTP_MAX_REQUESTS</literal> environment variable. Default is 5.
 </simpara>
 </listitem>
 </varlistentry>
@@ -4808,8 +4808,8 @@ http.lowSpeedLimit, http.lowSpeedTime
 <simpara>
         If the HTTP transfer speed is less than <emphasis>http.lowSpeedLimit</emphasis>
         for longer than <emphasis>http.lowSpeedTime</emphasis> seconds, the transfer is aborted.
-        Can be overridden by the <emphasis>GIT_HTTP_LOW_SPEED_LIMIT</emphasis> and
-        <emphasis>GIT_HTTP_LOW_SPEED_TIME</emphasis> environment variables.
+        Can be overridden by the <literal>GIT_HTTP_LOW_SPEED_LIMIT</literal> and
+        <literal>GIT_HTTP_LOW_SPEED_TIME</literal> environment variables.
 </simpara>
 </listitem>
 </varlistentry>
@@ -4821,7 +4821,7 @@ http.noEPSV
 <simpara>
         A boolean which disables using of EPSV ftp command by curl.
         This can helpful with some "poor" ftp servers which don&#8217;t
-        support EPSV mode. Can be overridden by the <emphasis>GIT_CURL_FTP_NO_EPSV</emphasis>
+        support EPSV mode. Can be overridden by the <literal>GIT_CURL_FTP_NO_EPSV</literal>
         environment variable. Default is false (curl will use EPSV).
 </simpara>
 </listitem>
@@ -4838,7 +4838,7 @@ http.userAgent
         such as Mozilla/4.0.  This may be necessary, for instance, if
         connecting through a firewall that restricts HTTP connections to a set
         of common USER_AGENT strings (but not including those like git/1.7.1).
-        Can be overridden by the <emphasis>GIT_HTTP_USER_AGENT</emphasis> environment variable.
+        Can be overridden by the <literal>GIT_HTTP_USER_AGENT</literal> environment variable.
 </simpara>
 </listitem>
 </varlistentry>
@@ -5408,7 +5408,7 @@ merge.verbosity
         message if conflicts were detected. Level 1 outputs only
         conflicts, 2 outputs conflicts and file changes.  Level 5 and
         above outputs debugging information.  The default is level 2.
-        Can be overridden by the <emphasis>GIT_MERGE_VERBOSITY</emphasis> environment variable.
+        Can be overridden by the <literal>GIT_MERGE_VERBOSITY</literal> environment variable.
 </simpara>
 </listitem>
 </varlistentry>
@@ -6671,7 +6671,7 @@ sendemail.identity
         A configuration identity. When given, causes values in the
         <emphasis>sendemail.&lt;identity&gt;</emphasis> subsection to take precedence over
         values in the <emphasis>sendemail</emphasis> section. The default identity is
-        the value of <emphasis>sendemail.identity</emphasis>.
+        the value of <literal>sendemail.identity</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -6718,7 +6718,7 @@ sendemail.&lt;identity&gt;.*
         Identity-specific versions of the <emphasis>sendemail.*</emphasis> parameters
         found below, taking precedence over those when the this
         identity is selected, through command-line or
-        <emphasis>sendemail.identity</emphasis>.
+        <literal>sendemail.identity</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -6812,7 +6812,7 @@ sendemail.signedoffcc (deprecated)
 </term>
 <listitem>
 <simpara>
-        Deprecated alias for <emphasis>sendemail.signedoffbycc</emphasis>.
+        Deprecated alias for <literal>sendemail.signedoffbycc</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -7305,8 +7305,8 @@ user.email
 <listitem>
 <simpara>
         Your email address to be recorded in any newly created commits.
-        Can be overridden by the <emphasis>GIT_AUTHOR_EMAIL</emphasis>, <emphasis>GIT_COMMITTER_EMAIL</emphasis>, and
-        <emphasis>EMAIL</emphasis> environment variables.  See <citerefentry>
+        Can be overridden by the <literal>GIT_AUTHOR_EMAIL</literal>, <literal>GIT_COMMITTER_EMAIL</literal>, and
+        <literal>EMAIL</literal> environment variables.  See <citerefentry>
 <refentrytitle>git-commit-tree</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.
 </simpara>
@@ -7319,7 +7319,7 @@ user.name
 <listitem>
 <simpara>
         Your full name to be recorded in any newly created commits.
-        Can be overridden by the <emphasis>GIT_AUTHOR_NAME</emphasis> and <emphasis>GIT_COMMITTER_NAME</emphasis>
+        Can be overridden by the <literal>GIT_AUTHOR_NAME</literal> and <literal>GIT_COMMITTER_NAME</literal>
         environment variables.  See <citerefentry>
 <refentrytitle>git-commit-tree</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.
@@ -7332,8 +7332,8 @@ user.useConfigOnly
 </term>
 <listitem>
 <simpara>
-        Instruct Git to avoid trying to guess defaults for <emphasis>user.email</emphasis>
-        and <emphasis>user.name</emphasis>, and instead retrieve the values only from the
+        Instruct Git to avoid trying to guess defaults for <literal>user.email</literal>
+        and <literal>user.name</literal>, and instead retrieve the values only from the
         configuration. For example, if you have multiple email addresses
         and would like to use a different one for each repository, then
         with this configuration option set to <literal>true</literal> in the global config

@@ -156,7 +156,7 @@ for one to be entered and terminated with ^D.</simpara>
 </refsect1>
 <refsect1 id="_date_formats">
 <title>DATE FORMATS</title>
-<simpara>The GIT_AUTHOR_DATE, GIT_COMMITTER_DATE environment variables
+<simpara>The <literal>GIT_AUTHOR_DATE</literal>, <literal>GIT_COMMITTER_DATE</literal> environment variables
 support the following date formats:</simpara>
 <variablelist>
 <varlistentry>

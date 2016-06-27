@@ -163,13 +163,13 @@ xdg-open
 <refsect2 id="_conf_var_from_c_option_and_web_browser">
 <title>CONF.VAR (from -c option) and web.browser</title>
 <simpara>The web browser can be specified using a configuration variable passed
-with the -c (or --config) command-line option, or the <emphasis>web.browser</emphasis>
+with the -c (or --config) command-line option, or the <literal>web.browser</literal>
 configuration variable if the former is not used.</simpara>
 </refsect2>
 <refsect2 id="_browser_lt_tool_gt_path">
 <title>browser.&lt;tool&gt;.path</title>
 <simpara>You can explicitly provide a full path to your preferred browser by
-setting the configuration variable <emphasis>browser.&lt;tool&gt;.path</emphasis>. For example,
+setting the configuration variable <literal>browser.&lt;tool&gt;.path</literal>. For example,
 you can configure the absolute path to firefox by setting
 <emphasis>browser.firefox.path</emphasis>. Otherwise, <emphasis>git web&#45;&#45;browse</emphasis> assumes the tool
 is available in PATH.</simpara>
@@ -178,7 +178,7 @@ is available in PATH.</simpara>
 <title>browser.&lt;tool&gt;.cmd</title>
 <simpara>When the browser, specified by options or configuration variables, is
 not among the supported ones, then the corresponding
-<emphasis>browser.&lt;tool&gt;.cmd</emphasis> configuration variable will be looked up. If this
+<literal>browser.&lt;tool&gt;.cmd</literal> configuration variable will be looked up. If this
 variable exists then <emphasis>git web&#45;&#45;browse</emphasis> will treat the specified tool
 as a custom command and will use a shell eval to run the command with
 the URLs passed as arguments.</simpara>

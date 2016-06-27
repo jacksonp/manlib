@@ -1617,6 +1617,19 @@ The following sub\-options can be defined:
 .sp
 The URL to use for push operations. If not defined, the location
 defined by the path\(aqs main entry is used.
+.TP
+.B \fBpushrev\fP
+.sp
+A revset defining which revisions to push by default.
+.sp
+When \%\fBhg push\fP\: is executed without a \fB\-r\fP argument, the revset
+defined by this sub\-option is evaluated to determine what to push.
+.sp
+For example, a value of \fB.\fP will push the working directory\(aqs
+revision by default.
+.sp
+Revsets specifying bookmarks will not result in the bookmark being
+pushed.
 .UNINDENT
 .sp
 The following special named paths exist:

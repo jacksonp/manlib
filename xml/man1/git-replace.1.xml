@@ -42,7 +42,7 @@ command using the <literal>--no-replace-objects</literal> option just after <emp
 <simpara>shows information about commit <emphasis>foo</emphasis>, while:</simpara>
 <literallayout class="monospaced">$ git cat-file commit foo</literallayout><simpara></simpara>
 <simpara>shows information about commit <emphasis>bar</emphasis>.</simpara>
-<simpara>The <emphasis>GIT_NO_REPLACE_OBJECTS</emphasis> environment variable can be set to
+<simpara>The <literal>GIT_NO_REPLACE_OBJECTS</literal> environment variable can be set to
 achieve the same effect as the <literal>--no-replace-objects</literal> option.</simpara>
 </refsect1>
 <refsect1 id="_options">

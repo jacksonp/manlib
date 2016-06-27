@@ -128,7 +128,7 @@ lightweight tags by default.</simpara>
 </term>
 <listitem>
 <simpara>
-        Verify the gpg signature of the given tag names.
+        Verify the GPG signature of the given tag names.
 </simpara>
 </listitem>
 </varlistentry>
@@ -177,7 +177,7 @@ lightweight tags by default.</simpara>
         order can also be affected by the
         "versionsort.prereleaseSuffix" configuration variable.
         The keys supported are the same as those in <literal>git for-each-ref</literal>.
-        Sort order defaults to the value configured for the <emphasis>tag.sort</emphasis>
+        Sort order defaults to the value configured for the <literal>tag.sort</literal>
         variable if it exists, or lexicographic order otherwise. See
         <citerefentry>
 <refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
@@ -474,7 +474,7 @@ values; the most common form is "YYYY-MM-DD HH:MM").</simpara>
 </refsect1>
 <refsect1 id="_date_formats">
 <title>DATE FORMATS</title>
-<simpara>The GIT_AUTHOR_DATE, GIT_COMMITTER_DATE environment variables
+<simpara>The <literal>GIT_AUTHOR_DATE</literal>, <literal>GIT_COMMITTER_DATE</literal> environment variables
 support the following date formats:</simpara>
 <variablelist>
 <varlistentry>

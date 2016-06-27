@@ -58,7 +58,7 @@ Only print error and warning messages; all other output will be suppressed.
 </term>
 <listitem>
 <simpara>
-Create a bare repository. If GIT_DIR environment is not set, it is set to the
+Create a bare repository. If <literal>GIT_DIR</literal> environment is not set, it is set to the
 current working directory.
 </simpara>
 </listitem>

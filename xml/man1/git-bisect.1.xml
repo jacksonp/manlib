@@ -137,7 +137,7 @@ of <literal>git bisect good</literal> and <literal>git bisect bad</literal> to m
 command during the bisection process:</simpara>
 <literallayout class="monospaced">$ git bisect visualize</literallayout><simpara></simpara>
 <simpara><literal>view</literal> may also be used as a synonym for <literal>visualize</literal>.</simpara>
-<simpara>If the <emphasis>DISPLAY</emphasis> environment variable is not set, <emphasis>git log</emphasis> is used
+<simpara>If the <literal>DISPLAY</literal> environment variable is not set, <emphasis>git log</emphasis> is used
 instead.  You can also give command-line options such as <literal>-p</literal> and
 <literal>--stat</literal>.</simpara>
 <literallayout class="monospaced">$ git bisect view --stat</literallayout><simpara></simpara>

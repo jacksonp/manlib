@@ -19,7 +19,7 @@
 </refsynopsisdiv>
 <refsect1 id="_description">
 <title>DESCRIPTION</title>
-<simpara>Validates the gpg signature created by <emphasis>git commit -S</emphasis>.</simpara>
+<simpara>Validates the GPG signature created by <emphasis>git commit -S</emphasis>.</simpara>
 </refsect1>
 <refsect1 id="_options">
 <title>OPTIONS</title>

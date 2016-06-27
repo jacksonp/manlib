@@ -894,6 +894,22 @@ environment). This command has the same behaviour.</simpara></note>
 </varlistentry>
 <varlistentry>
 <term>
+<emphasis>propset</emphasis>
+</term>
+<listitem>
+<simpara>
+        Sets the Subversion property given as the first argument, to the
+        value given as the second argument for the file given as the
+        third argument.
+</simpara>
+<simpara>Example:</simpara>
+<literallayout class="monospaced">git svn propset svn:keywords "FreeBSD=%H" devel/py-tipper/Makefile</literallayout><simpara></simpara>
+<simpara>This will set the property <emphasis>svn:keywords</emphasis> to <emphasis>FreeBSD=%H</emphasis> for the file
+<emphasis>devel/py-tipper/Makefile</emphasis>.</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 <emphasis>show-externals</emphasis>
 </term>
 <listitem>
@@ -1391,7 +1407,7 @@ svn-remote.&lt;name&gt;.pushurl
 </term>
 <listitem>
 <simpara>
-        Similar to Git&#8217;s <emphasis>remote.&lt;name&gt;.pushurl</emphasis>, this key is designed
+        Similar to Git&#8217;s <literal>remote.&lt;name&gt;.pushurl</literal>, this key is designed
         to be used in cases where <emphasis>url</emphasis> points to an SVN repository
         via a read-only transport, to provide an alternate read/write
         transport. It is assumed that both keys point to the same

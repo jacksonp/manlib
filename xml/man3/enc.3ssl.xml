@@ -10,6 +10,7 @@
   <refsynopsisdiv>
 <synopsis><emphasis role="bold">openssl enc -ciphername</emphasis>
 [<emphasis role="bold">-help</emphasis>]
+[<emphasis role="bold">-ciphers</emphasis>]
 [<emphasis role="bold">-in filename</emphasis>]
 [<emphasis role="bold">-out filename</emphasis>]
 [<emphasis role="bold">-pass arg</emphasis>]
@@ -51,6 +52,14 @@
           <listitem>
             <para>
 	      Print out a usage message.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-ciphers</emphasis></term>
+          <listitem>
+            <para>
+	      List all supported ciphers.
             </para>
           </listitem>
         </varlistentry>

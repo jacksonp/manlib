@@ -46,7 +46,7 @@ arguments. The first argument specifies a remote repository as in Git;
 it is either the name of a configured remote or a URL. The second
 argument specifies a URL; it is usually of the form
 <emphasis>&lt;transport&gt;://&lt;address&gt;</emphasis>, but any arbitrary string is possible.
-The <emphasis>GIT_DIR</emphasis> environment variable is set up for the remote helper
+The <literal>GIT_DIR</literal> environment variable is set up for the remote helper
 and can be used to determine where to store additional data or from
 which directory to invoke auxiliary Git commands.</simpara>
 <simpara>When Git encounters a URL of the form <emphasis>&lt;transport&gt;://&lt;address&gt;</emphasis>, where
@@ -61,10 +61,10 @@ invoke <emphasis>git remote-&lt;transport&gt;</emphasis> with <emphasis>&lt;addr
 argument. If such a URL is encountered directly on the command line,
 the first argument is <emphasis>&lt;address&gt;</emphasis>, and if it is encountered in a
 configured remote, the first argument is the name of that remote.</simpara>
-<simpara>Additionally, when a configured remote has <emphasis>remote.&lt;name&gt;.vcs</emphasis> set to
+<simpara>Additionally, when a configured remote has <literal>remote.&lt;name&gt;.vcs</literal> set to
 <emphasis>&lt;transport&gt;</emphasis>, Git explicitly invokes <emphasis>git remote-&lt;transport&gt;</emphasis> with
 <emphasis>&lt;name&gt;</emphasis> as the first argument. If set, the second argument is
-<emphasis>remote.&lt;name&gt;.url</emphasis>; otherwise, the second argument is omitted.</simpara>
+<literal>remote.&lt;name&gt;.url</literal>; otherwise, the second argument is omitted.</simpara>
 </refsect1>
 <refsect1 id="_input_format">
 <title>INPUT FORMAT</title>

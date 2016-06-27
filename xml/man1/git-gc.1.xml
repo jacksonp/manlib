@@ -124,12 +124,12 @@ automatic consolidation of packs.</simpara>
 </refsect1>
 <refsect1 id="_configuration">
 <title>Configuration</title>
-<simpara>The optional configuration variable <emphasis>gc.reflogExpire</emphasis> can be
+<simpara>The optional configuration variable <literal>gc.reflogExpire</literal> can be
 set to indicate how long historical entries within each branch&#8217;s
 reflog should remain available in this repository.  The setting is
 expressed as a length of time, for example <emphasis>90 days</emphasis> or <emphasis>3 months</emphasis>.
 It defaults to <emphasis>90 days</emphasis>.</simpara>
-<simpara>The optional configuration variable <emphasis>gc.reflogExpireUnreachable</emphasis>
+<simpara>The optional configuration variable <literal>gc.reflogExpireUnreachable</literal>
 can be set to indicate how long historical reflog entries which
 are not part of the current branch should remain available in
 this repository.  These types of entries are generally created as
@@ -143,29 +143,29 @@ branches:</simpara>
 <literallayout class="monospaced">[gc "refs/remotes/*"]
         reflogExpire = never
         reflogExpireUnreachable = 3 days</literallayout><simpara></simpara>
-<simpara>The optional configuration variable <emphasis>gc.rerereResolved</emphasis> indicates
+<simpara>The optional configuration variable <literal>gc.rerereResolved</literal> indicates
 how long records of conflicted merge you resolved earlier are
 kept.  This defaults to 60 days.</simpara>
-<simpara>The optional configuration variable <emphasis>gc.rerereUnresolved</emphasis> indicates
+<simpara>The optional configuration variable <literal>gc.rerereUnresolved</literal> indicates
 how long records of conflicted merge you have not resolved are
 kept.  This defaults to 15 days.</simpara>
-<simpara>The optional configuration variable <emphasis>gc.packRefs</emphasis> determines if
+<simpara>The optional configuration variable <literal>gc.packRefs</literal> determines if
 <emphasis>git gc</emphasis> runs <emphasis>git pack-refs</emphasis>. This can be set to "notbare" to enable
 it within all non-bare repos or it can be set to a boolean value.
 This defaults to true.</simpara>
-<simpara>The optional configuration variable <emphasis>gc.aggressiveWindow</emphasis> controls how
+<simpara>The optional configuration variable &#8216;gc.aggressiveWindow` controls how
 much time is spent optimizing the delta compression of the objects in
 the repository when the --aggressive option is specified.  The larger
 the value, the more time is spent optimizing the delta compression.  See
-the documentation for the --window' option in <citerefentry>
+the documentation for the --window&#8217; option in <citerefentry>
 <refentrytitle>git-repack</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry> for
 more details.  This defaults to 250.</simpara>
-<simpara>Similarly, the optional configuration variable <emphasis>gc.aggressiveDepth</emphasis>
+<simpara>Similarly, the optional configuration variable <literal>gc.aggressiveDepth</literal>
 controls --depth option in <citerefentry>
 <refentrytitle>git-repack</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>. This defaults to 250.</simpara>
-<simpara>The optional configuration variable <emphasis>gc.pruneExpire</emphasis> controls how old
+<simpara>The optional configuration variable <literal>gc.pruneExpire</literal> controls how old
 the unreferenced loose objects have to be before they are pruned.  The
 default is "2 weeks ago".</simpara>
 </refsect1>

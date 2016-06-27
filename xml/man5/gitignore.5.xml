@@ -54,7 +54,7 @@ Patterns read from <literal>$GIT_DIR/info/exclude</literal>.
 <listitem>
 <simpara>
 Patterns read from the file specified by the configuration
-   variable <emphasis>core.excludesFile</emphasis>.
+   variable <literal>core.excludesFile</literal>.
 </simpara>
 </listitem>
 </itemizedlist>

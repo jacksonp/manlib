@@ -75,7 +75,7 @@ grep.extendedRegexp
 <listitem>
 <simpara>
         If set to true, enable <emphasis>--extended-regexp</emphasis> option by default. This
-        option is ignored when the <emphasis>grep.patternType</emphasis> option is set to a value
+        option is ignored when the <literal>grep.patternType</literal> option is set to a value
         other than <emphasis>default</emphasis>.
 </simpara>
 </listitem>

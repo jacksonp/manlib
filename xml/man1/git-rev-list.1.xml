@@ -1314,7 +1314,7 @@ people using 80-column terminals.</simpara>
 <simpara>
         Show the full 40-byte hexadecimal commit object name. This negates
         <literal>--abbrev-commit</literal> and those options which imply it such as
-        "--oneline". It also overrides the <emphasis>log.abbrevCommit</emphasis> variable.
+        "--oneline". It also overrides the <literal>log.abbrevCommit</literal> variable.
 </simpara>
 </listitem>
 </varlistentry>

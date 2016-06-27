@@ -95,7 +95,7 @@ people using 80-column terminals.</simpara>
 <simpara>
         Show the full 40-byte hexadecimal commit object name. This negates
         <literal>--abbrev-commit</literal> and those options which imply it such as
-        "--oneline". It also overrides the <emphasis>log.abbrevCommit</emphasis> variable.
+        "--oneline". It also overrides the <literal>log.abbrevCommit</literal> variable.
 </simpara>
 </listitem>
 </varlistentry>
@@ -166,7 +166,7 @@ and <emphasis>fuller</emphasis>).</simpara>
         on the command line.
 </simpara>
 <simpara>By default, the notes shown are from the notes refs listed in the
-<emphasis>core.notesRef</emphasis> and <emphasis>notes.displayRef</emphasis> variables (or corresponding
+<literal>core.notesRef</literal> and <literal>notes.displayRef</literal> variables (or corresponding
 environment overrides). See <citerefentry>
 <refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry> for more details.</simpara>
@@ -1779,7 +1779,7 @@ with a <emphasis>-p</emphasis> option, "git diff" without the <emphasis>--raw</e
 "git log" with the "-p" option, they
 do not produce the output described above; instead they produce a
 patch file.  You can customize the creation of such patches via the
-GIT_EXTERNAL_DIFF and the GIT_DIFF_OPTS environment variables.</simpara>
+<literal>GIT_EXTERNAL_DIFF</literal> and the <literal>GIT_DIFF_OPTS</literal> environment variables.</simpara>
 <simpara>What the -p option produces is slightly different from the traditional
 diff format:</simpara>
 <orderedlist numeration="arabic">

@@ -190,7 +190,7 @@ foo.bar= ...</literal>) sets <literal>foo.bar</literal> to the empty string.</si
 <listitem>
 <simpara>
         Set the path to the repository. This can also be controlled by
-        setting the GIT_DIR environment variable. It can be an absolute
+        setting the <literal>GIT_DIR</literal> environment variable. It can be an absolute
         path or relative path to current working directory.
 </simpara>
 </listitem>
@@ -554,7 +554,7 @@ Git so take care if using a foreign front-end.</simpara>
 <variablelist>
 <varlistentry>
 <term>
-<emphasis>GIT_INDEX_FILE</emphasis>
+<literal>GIT_INDEX_FILE</literal>
 </term>
 <listitem>
 <simpara>
@@ -566,7 +566,7 @@ Git so take care if using a foreign front-end.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_INDEX_VERSION</emphasis>
+<literal>GIT_INDEX_VERSION</literal>
 </term>
 <listitem>
 <simpara>
@@ -581,7 +581,7 @@ Git so take care if using a foreign front-end.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_OBJECT_DIRECTORY</emphasis>
+<literal>GIT_OBJECT_DIRECTORY</literal>
 </term>
 <listitem>
 <simpara>
@@ -594,7 +594,7 @@ Git so take care if using a foreign front-end.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_ALTERNATE_OBJECT_DIRECTORIES</emphasis>
+<literal>GIT_ALTERNATE_OBJECT_DIRECTORIES</literal>
 </term>
 <listitem>
 <simpara>
@@ -608,11 +608,11 @@ Git so take care if using a foreign front-end.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_DIR</emphasis>
+<literal>GIT_DIR</literal>
 </term>
 <listitem>
 <simpara>
-        If the <emphasis>GIT_DIR</emphasis> environment variable is set then it
+        If the <literal>GIT_DIR</literal> environment variable is set then it
         specifies a path to use instead of the default <literal>.git</literal>
         for the base of the repository.
         The <emphasis>--git-dir</emphasis> command-line option also sets this value.
@@ -621,7 +621,7 @@ Git so take care if using a foreign front-end.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_WORK_TREE</emphasis>
+<literal>GIT_WORK_TREE</literal>
 </term>
 <listitem>
 <simpara>
@@ -633,7 +633,7 @@ Git so take care if using a foreign front-end.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_NAMESPACE</emphasis>
+<literal>GIT_NAMESPACE</literal>
 </term>
 <listitem>
 <simpara>
@@ -646,7 +646,7 @@ Git so take care if using a foreign front-end.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_CEILING_DIRECTORIES</emphasis>
+<literal>GIT_CEILING_DIRECTORIES</literal>
 </term>
 <listitem>
 <simpara>
@@ -662,13 +662,13 @@ Git so take care if using a foreign front-end.</simpara>
         can add an empty entry to the list to tell Git that the
         subsequent entries are not symlinks and needn&#8217;t be resolved;
         e.g.,
-        <emphasis>GIT_CEILING_DIRECTORIES=/maybe/symlink::/very/slow/non/symlink</emphasis>.
+        <literal>GIT_CEILING_DIRECTORIES=/maybe/symlink::/very/slow/non/symlink</literal>.
 </simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_DISCOVERY_ACROSS_FILESYSTEM</emphasis>
+<literal>GIT_DISCOVERY_ACROSS_FILESYSTEM</literal>
 </term>
 <listitem>
 <simpara>
@@ -677,15 +677,15 @@ Git so take care if using a foreign front-end.</simpara>
         directories to find the top of the working tree, but by default it
         does not cross filesystem boundaries.  This environment variable
         can be set to true to tell Git not to stop at filesystem
-        boundaries.  Like <emphasis>GIT_CEILING_DIRECTORIES</emphasis>, this will not affect
-        an explicit repository directory set via <emphasis>GIT_DIR</emphasis> or on the
+        boundaries.  Like <literal>GIT_CEILING_DIRECTORIES</literal>, this will not affect
+        an explicit repository directory set via <literal>GIT_DIR</literal> or on the
         command line.
 </simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_COMMON_DIR</emphasis>
+<literal>GIT_COMMON_DIR</literal>
 </term>
 <listitem>
 <simpara>
@@ -710,22 +710,22 @@ Git so take care if using a foreign front-end.</simpara>
 <variablelist>
 <varlistentry>
 <term>
-<emphasis>GIT_AUTHOR_NAME</emphasis>
+<literal>GIT_AUTHOR_NAME</literal>
 </term>
 <term>
-<emphasis>GIT_AUTHOR_EMAIL</emphasis>
+<literal>GIT_AUTHOR_EMAIL</literal>
 </term>
 <term>
-<emphasis>GIT_AUTHOR_DATE</emphasis>
+<literal>GIT_AUTHOR_DATE</literal>
 </term>
 <term>
-<emphasis>GIT_COMMITTER_NAME</emphasis>
+<literal>GIT_COMMITTER_NAME</literal>
 </term>
 <term>
-<emphasis>GIT_COMMITTER_EMAIL</emphasis>
+<literal>GIT_COMMITTER_EMAIL</literal>
 </term>
 <term>
-<emphasis>GIT_COMMITTER_DATE</emphasis>
+<literal>GIT_COMMITTER_DATE</literal>
 </term>
 <term>
 <emphasis>EMAIL</emphasis>
@@ -745,7 +745,7 @@ Git so take care if using a foreign front-end.</simpara>
 <variablelist>
 <varlistentry>
 <term>
-<emphasis>GIT_DIFF_OPTS</emphasis>
+<literal>GIT_DIFF_OPTS</literal>
 </term>
 <listitem>
 <simpara>
@@ -758,14 +758,14 @@ Git so take care if using a foreign front-end.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_EXTERNAL_DIFF</emphasis>
+<literal>GIT_EXTERNAL_DIFF</literal>
 </term>
 <listitem>
 <simpara>
-        When the environment variable <emphasis>GIT_EXTERNAL_DIFF</emphasis> is set, the
+        When the environment variable <literal>GIT_EXTERNAL_DIFF</literal> is set, the
         program named by it is called, instead of the diff invocation
         described above.  For a path that is added, removed, or modified,
-        <emphasis>GIT_EXTERNAL_DIFF</emphasis> is called with 7 parameters:
+        <literal>GIT_EXTERNAL_DIFF</literal> is called with 7 parameters:
 </simpara>
 <literallayout class="monospaced">path old-file old-hex old-mode new-file new-hex new-mode</literallayout>
 <simpara>where:</simpara>
@@ -803,17 +803,17 @@ are the octal representation of the file modes.
 <simpara>The file parameters can point at the user&#8217;s working file
 (e.g. <literal>new-file</literal> in "git-diff-files"), <literal>/dev/null</literal> (e.g. <literal>old-file</literal>
 when a new file is added), or a temporary file (e.g. <literal>old-file</literal> in the
-index).  <emphasis>GIT_EXTERNAL_DIFF</emphasis> should not worry about unlinking the
-temporary file --- it is removed when <emphasis>GIT_EXTERNAL_DIFF</emphasis> exits.</simpara>
-<simpara>For a path that is unmerged, <emphasis>GIT_EXTERNAL_DIFF</emphasis> is called with 1
+index).  <literal>GIT_EXTERNAL_DIFF</literal> should not worry about unlinking the
+temporary file --- it is removed when <literal>GIT_EXTERNAL_DIFF</literal> exits.</simpara>
+<simpara>For a path that is unmerged, <literal>GIT_EXTERNAL_DIFF</literal> is called with 1
 parameter, &lt;path&gt;.</simpara>
-<simpara>For each path <emphasis>GIT_EXTERNAL_DIFF</emphasis> is called, two environment variables,
-<emphasis>GIT_DIFF_PATH_COUNTER</emphasis> and <emphasis>GIT_DIFF_PATH_TOTAL</emphasis> are set.</simpara>
+<simpara>For each path <literal>GIT_EXTERNAL_DIFF</literal> is called, two environment variables,
+<literal>GIT_DIFF_PATH_COUNTER</literal> and <literal>GIT_DIFF_PATH_TOTAL</literal> are set.</simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_DIFF_PATH_COUNTER</emphasis>
+<literal>GIT_DIFF_PATH_COUNTER</literal>
 </term>
 <listitem>
 <simpara>
@@ -823,7 +823,7 @@ parameter, &lt;path&gt;.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_DIFF_PATH_TOTAL</emphasis>
+<literal>GIT_DIFF_PATH_TOTAL</literal>
 </term>
 <listitem>
 <simpara>
@@ -838,7 +838,7 @@ parameter, &lt;path&gt;.</simpara>
 <variablelist>
 <varlistentry>
 <term>
-<emphasis>GIT_MERGE_VERBOSITY</emphasis>
+<literal>GIT_MERGE_VERBOSITY</literal>
 </term>
 <listitem>
 <simpara>
@@ -852,7 +852,7 @@ parameter, &lt;path&gt;.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_PAGER</emphasis>
+<literal>GIT_PAGER</literal>
 </term>
 <listitem>
 <simpara>
@@ -867,7 +867,7 @@ parameter, &lt;path&gt;.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_EDITOR</emphasis>
+<literal>GIT_EDITOR</literal>
 </term>
 <listitem>
 <simpara>
@@ -884,10 +884,10 @@ parameter, &lt;path&gt;.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_SSH</emphasis>
+<literal>GIT_SSH</literal>
 </term>
 <term>
-<emphasis>GIT_SSH_COMMAND</emphasis>
+<literal>GIT_SSH_COMMAND</literal>
 </term>
 <listitem>
 <simpara>
@@ -912,14 +912,14 @@ for further details.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_ASKPASS</emphasis>
+<literal>GIT_ASKPASS</literal>
 </term>
 <listitem>
 <simpara>
         If this environment variable is set, then Git commands which need to
         acquire passwords or passphrases (e.g. for HTTP or IMAP authentication)
         will call this program with a suitable prompt as command-line argument
-        and read the password from its STDOUT. See also the <emphasis>core.askPass</emphasis>
+        and read the password from its STDOUT. See also the <literal>core.askPass</literal>
         option in <citerefentry>
 <refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.
@@ -928,7 +928,7 @@ for further details.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_TERMINAL_PROMPT</emphasis>
+<literal>GIT_TERMINAL_PROMPT</literal>
 </term>
 <listitem>
 <simpara>
@@ -939,7 +939,7 @@ for further details.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_CONFIG_NOSYSTEM</emphasis>
+<literal>GIT_CONFIG_NOSYSTEM</literal>
 </term>
 <listitem>
 <simpara>
@@ -954,7 +954,7 @@ for further details.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_FLUSH</emphasis>
+<literal>GIT_FLUSH</literal>
 </term>
 <listitem>
 <simpara>
@@ -972,7 +972,7 @@ for further details.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_TRACE</emphasis>
+<literal>GIT_TRACE</literal>
 </term>
 <listitem>
 <simpara>
@@ -996,7 +996,7 @@ into it.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_TRACE_PACK_ACCESS</emphasis>
+<literal>GIT_TRACE_PACK_ACCESS</literal>
 </term>
 <listitem>
 <simpara>
@@ -1004,27 +1004,27 @@ into it.</simpara>
         access, the pack file name and an offset in the pack is
         recorded. This may be helpful for troubleshooting some
         pack-related performance problems.
-        See <emphasis>GIT_TRACE</emphasis> for available trace output options.
+        See <literal>GIT_TRACE</literal> for available trace output options.
 </simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_TRACE_PACKET</emphasis>
+<literal>GIT_TRACE_PACKET</literal>
 </term>
 <listitem>
 <simpara>
         Enables trace messages for all packets coming in or out of a
         given program. This can help with debugging object negotiation
         or other protocol issues. Tracing is turned off at a packet
-        starting with "PACK" (but see <emphasis>GIT_TRACE_PACKFILE</emphasis> below).
-        See <emphasis>GIT_TRACE</emphasis> for available trace output options.
+        starting with "PACK" (but see <literal>GIT_TRACE_PACKFILE</literal> below).
+        See <literal>GIT_TRACE</literal> for available trace output options.
 </simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_TRACE_PACKFILE</emphasis>
+<literal>GIT_TRACE_PACKFILE</literal>
 </term>
 <listitem>
 <simpara>
@@ -1041,43 +1041,43 @@ of clones and fetches.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_TRACE_PERFORMANCE</emphasis>
+<literal>GIT_TRACE_PERFORMANCE</literal>
 </term>
 <listitem>
 <simpara>
         Enables performance related trace messages, e.g. total execution
         time of each Git command.
-        See <emphasis>GIT_TRACE</emphasis> for available trace output options.
+        See <literal>GIT_TRACE</literal> for available trace output options.
 </simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_TRACE_SETUP</emphasis>
+<literal>GIT_TRACE_SETUP</literal>
 </term>
 <listitem>
 <simpara>
         Enables trace messages printing the .git, working tree and current
         working directory after Git has completed its setup phase.
-        See <emphasis>GIT_TRACE</emphasis> for available trace output options.
+        See <literal>GIT_TRACE</literal> for available trace output options.
 </simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_TRACE_SHALLOW</emphasis>
+<literal>GIT_TRACE_SHALLOW</literal>
 </term>
 <listitem>
 <simpara>
         Enables trace messages that can help debugging fetching /
         cloning of shallow repositories.
-        See <emphasis>GIT_TRACE</emphasis> for available trace output options.
+        See <literal>GIT_TRACE</literal> for available trace output options.
 </simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_LITERAL_PATHSPECS</emphasis>
+<literal>GIT_LITERAL_PATHSPECS</literal>
 </term>
 <listitem>
 <simpara>
@@ -1093,7 +1093,7 @@ of clones and fetches.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_GLOB_PATHSPECS</emphasis>
+<literal>GIT_GLOB_PATHSPECS</literal>
 </term>
 <listitem>
 <simpara>
@@ -1104,7 +1104,7 @@ of clones and fetches.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_NOGLOB_PATHSPECS</emphasis>
+<literal>GIT_NOGLOB_PATHSPECS</literal>
 </term>
 <listitem>
 <simpara>
@@ -1115,7 +1115,7 @@ of clones and fetches.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_ICASE_PATHSPECS</emphasis>
+<literal>GIT_ICASE_PATHSPECS</literal>
 </term>
 <listitem>
 <simpara>
@@ -1126,7 +1126,7 @@ of clones and fetches.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_REFLOG_ACTION</emphasis>
+<literal>GIT_REFLOG_ACTION</literal>
 </term>
 <listitem>
 <simpara>
@@ -1143,7 +1143,7 @@ of clones and fetches.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_REF_PARANOIA</emphasis>
+<literal>GIT_REF_PARANOIA</literal>
 </term>
 <listitem>
 <simpara>
@@ -1163,7 +1163,7 @@ of clones and fetches.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_ALLOW_PROTOCOL</emphasis>
+<literal>GIT_ALLOW_PROTOCOL</literal>
 </term>
 <listitem>
 <simpara>

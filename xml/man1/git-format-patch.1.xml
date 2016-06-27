@@ -69,7 +69,7 @@ The names of the output files are printed to standard
 output, unless the <literal>--stdout</literal> option is specified.</simpara>
 <simpara>If <literal>-o</literal> is specified, output files are created in &lt;dir&gt;.  Otherwise
 they are created in the current working directory. The default path
-can be set with the <emphasis>format.outputDirectory</emphasis> configuration option.
+can be set with the <literal>format.outputDirectory</literal> configuration option.
 The <literal>-o</literal> option takes precedence over <literal>format.outputDirectory</literal>.
 To store patches in the current working directory even when
 <literal>format.outputDirectory</literal> points elsewhere, use <literal>-o .</literal>.</simpara>
@@ -922,9 +922,9 @@ of a delete/create pair.</simpara>
 series, where the head is chosen from the cover letter, the
 <literal>--in-reply-to</literal>, and the first patch mail, in this order.  <emphasis>deep</emphasis>
 threading makes every mail a reply to the previous one.</simpara>
-<simpara>The default is <literal>--no-thread</literal>, unless the <emphasis>format.thread</emphasis> configuration
+<simpara>The default is <literal>--no-thread</literal>, unless the <literal>format.thread</literal> configuration
 is set.  If <literal>--thread</literal> is specified without a style, it defaults to the
-style specified by <emphasis>format.thread</emphasis> if any, or else <literal>shallow</literal>.</simpara>
+style specified by <literal>format.thread</literal> if any, or else <literal>shallow</literal>.</simpara>
 <simpara>Beware that the default for <emphasis>git send-email</emphasis> is to thread emails
 itself.  If you want <literal>git format-patch</literal> to take care of threading, you
 will want to ensure that threading is disabled for <literal>git send-email</literal>.</simpara>

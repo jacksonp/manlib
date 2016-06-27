@@ -208,8 +208,8 @@ already exists on the remote side.</simpara>
         and also push annotated tags in <literal>refs/tags</literal> that are missing
         from the remote but are pointing at commit-ish that are
         reachable from the refs being pushed.  This can also be specified
-        with configuration variable <emphasis>push.followTags</emphasis>.  For more
-        information, see <emphasis>push.followTags</emphasis> in <citerefentry>
+        with configuration variable <literal>push.followTags</literal>.  For more
+        information, see <literal>push.followTags</literal> in <citerefentry>
 <refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.
 </simpara>
@@ -368,7 +368,7 @@ origin +master</literal> to force a push to the <literal>master</literal> branch
         <citerefentry>
 <refentrytitle>git-pull</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry> and other commands. For more information,
-        see <emphasis>branch.&lt;name&gt;.merge</emphasis> in <citerefentry>
+        see <literal>branch.&lt;name&gt;.merge</literal> in <citerefentry>
 <refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.
 </simpara>

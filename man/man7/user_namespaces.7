@@ -230,8 +230,9 @@ user namespace can perform such operations.
 
 Holding
 .B CAP_SYS_ADMIN
-within a (noninitial) user namespace allows the creation of bind mounts,
-and mounting of the following types of filesystems:
+within the user namespace associated with a process's mount namespace
+allows that process to create bind mounts
+and mount the following types of filesystems:
 .\" fs_flags = FS_USERNS_MOUNT in kernel sources
 
 .RS 4
@@ -261,6 +262,20 @@ and mounting of the following types of filesystems:
 .PD
 .RE
 .PP
+Holding
+.B CAP_SYS_ADMIN
+within the PID namespace associated with a process's cgroup namespace
+allows (since Linux 4.6)
+that process to mount cgroup filesystems.
+
+Holding
+.B CAP_SYS_ADMIN
+within the user namespace associated with a process's PID namespace
+allows (since Linux 3.8)
+that process to mount
+.I /proc
+filesystems.
+
 Note however, that mounting block-based filesystems can be done
 only by a process that holds
 .BR CAP_SYS_ADMIN

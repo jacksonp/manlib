@@ -287,7 +287,7 @@ get-ref
 <listitem>
 <simpara>
         Manipulate the notes tree in &lt;ref&gt;.  This overrides
-        <emphasis>GIT_NOTES_REF</emphasis> and the "core.notesRef" configuration.  The ref
+        <literal>GIT_NOTES_REF</literal> and the "core.notesRef" configuration.  The ref
         specifies the full refname when it begins with <literal>refs/notes/</literal>; when it
         begins with <literal>notes/</literal>, <literal>refs/</literal> and otherwise <literal>refs/notes/</literal> is prefixed
         to form a full name of the ref.
@@ -532,10 +532,10 @@ notes.displayRef
 <simpara>
         Which ref (or refs, if a glob or specified more than once), in
         addition to the default set by <literal>core.notesRef</literal> or
-        <emphasis>GIT_NOTES_REF</emphasis>, to read notes from when showing commit
+        <literal>GIT_NOTES_REF</literal>, to read notes from when showing commit
         messages with the <emphasis>git log</emphasis> family of commands.
         This setting can be overridden on the command line or by the
-        <emphasis>GIT_NOTES_DISPLAY_REF</emphasis> environment variable.
+        <literal>GIT_NOTES_DISPLAY_REF</literal> environment variable.
         See <citerefentry>
 <refentrytitle>git-log</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.
@@ -553,7 +553,7 @@ notes.rewrite.&lt;command&gt;
         notes from the original to the rewritten commit.  Defaults to
         <literal>true</literal>.  See also "<literal>notes.rewriteRef</literal>" below.
 </simpara>
-<simpara>This setting can be overridden by the <emphasis>GIT_NOTES_REWRITE_REF</emphasis>
+<simpara>This setting can be overridden by the <literal>GIT_NOTES_REWRITE_REF</literal>
 environment variable.</simpara>
 </listitem>
 </varlistentry>
@@ -585,7 +585,7 @@ notes.rewriteRef
 </simpara>
 <simpara>Does not have a default value; you must configure this variable to
 enable note rewriting.</simpara>
-<simpara>Can be overridden with the <emphasis>GIT_NOTES_REWRITE_REF</emphasis> environment variable.</simpara>
+<simpara>Can be overridden with the <literal>GIT_NOTES_REWRITE_REF</literal> environment variable.</simpara>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -595,7 +595,7 @@ enable note rewriting.</simpara>
 <variablelist>
 <varlistentry>
 <term>
-<emphasis>GIT_NOTES_REF</emphasis>
+<literal>GIT_NOTES_REF</literal>
 </term>
 <listitem>
 <simpara>
@@ -606,13 +606,13 @@ enable note rewriting.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_NOTES_DISPLAY_REF</emphasis>
+<literal>GIT_NOTES_DISPLAY_REF</literal>
 </term>
 <listitem>
 <simpara>
         Colon-delimited list of refs or globs indicating which refs,
         in addition to the default from <literal>core.notesRef</literal> or
-        <emphasis>GIT_NOTES_REF</emphasis>, to read notes from when showing commit
+        <literal>GIT_NOTES_REF</literal>, to read notes from when showing commit
         messages.
         This overrides the <literal>notes.displayRef</literal> setting.
 </simpara>
@@ -622,7 +622,7 @@ does not match any refs is silently ignored.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_NOTES_REWRITE_MODE</emphasis>
+<literal>GIT_NOTES_REWRITE_MODE</literal>
 </term>
 <listitem>
 <simpara>
@@ -635,7 +635,7 @@ does not match any refs is silently ignored.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis>GIT_NOTES_REWRITE_REF</emphasis>
+<literal>GIT_NOTES_REWRITE_REF</literal>
 </term>
 <listitem>
 <simpara>

@@ -63,8 +63,8 @@ and the "Subject:" of the message as the second line.</simpara>
 <listitem>
 <simpara>
         Review and edit each patch you&#8217;re about to send. Default is the value
-        of <emphasis>sendemail.annotate</emphasis>. See the CONFIGURATION section for
-        <emphasis>sendemail.multiEdit</emphasis>.
+        of <literal>sendemail.annotate</literal>. See the CONFIGURATION section for
+        <literal>sendemail.multiEdit</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -75,7 +75,7 @@ and the "Subject:" of the message as the second line.</simpara>
 <listitem>
 <simpara>
         Specify a "Bcc:" value for each email. Default is the value of
-        <emphasis>sendemail.bcc</emphasis>.
+        <literal>sendemail.bcc</literal>.
 </simpara>
 <simpara>This option may be specified multiple times.</simpara>
 </listitem>
@@ -87,7 +87,7 @@ and the "Subject:" of the message as the second line.</simpara>
 <listitem>
 <simpara>
         Specify a starting "Cc:" value for each email.
-        Default is the value of <emphasis>sendemail.cc</emphasis>.
+        Default is the value of <literal>sendemail.cc</literal>.
 </simpara>
 <simpara>This option may be specified multiple times.</simpara>
 </listitem>
@@ -109,7 +109,7 @@ In-Reply-To headers specified in the message. If the body of the message
 (or Git: prefixed) lines, the summary won&#8217;t be sent, but From, Subject,
 and In-Reply-To headers will be used unless they are removed.</simpara>
 <simpara>Missing From or In-Reply-To headers will be prompted for.</simpara>
-<simpara>See the CONFIGURATION section for <emphasis>sendemail.multiEdit</emphasis>.</simpara>
+<simpara>See the CONFIGURATION section for <literal>sendemail.multiEdit</literal>.</simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -119,8 +119,8 @@ and In-Reply-To headers will be used unless they are removed.</simpara>
 <listitem>
 <simpara>
         Specify the sender of the emails.  If not specified on the command line,
-        the value of the <emphasis>sendemail.from</emphasis> configuration option is used.  If
-        neither the command-line option nor <emphasis>sendemail.from</emphasis> are set, then the
+        the value of the <literal>sendemail.from</literal> configuration option is used.  If
+        neither the command-line option nor <literal>sendemail.from</literal> are set, then the
         user will be prompted for the value.  The default for the prompt will be
         the value of GIT_AUTHOR_IDENT, or GIT_COMMITTER_IDENT if that is not
         set, as returned by "git var -l".
@@ -173,7 +173,7 @@ is not set, this will be prompted for.</simpara>
 <simpara>
         Specify the primary recipient of the emails generated. Generally, this
         will be the upstream maintainer of the project involved. Default is the
-        value of the <emphasis>sendemail.to</emphasis> configuration value; if that is unspecified,
+        value of the <literal>sendemail.to</literal> configuration value; if that is unspecified,
         and --to-cmd is not specified, this will be prompted for.
 </simpara>
 <simpara>This option may be specified multiple times.</simpara>
@@ -216,7 +216,7 @@ is not set, this will be prompted for.</simpara>
         can be useful when the repository contains files that contain carriage
         returns, but makes the raw patch email file (as saved from a MUA) much
         harder to inspect manually.  base64 is even more fool proof, but also
-        even more opaque.  Default is the value of the <emphasis>sendemail.transferEncoding</emphasis>
+        even more opaque.  Default is the value of the <literal>sendemail.transferEncoding</literal>
         configuration value; if that is unspecified, git will use 8bit and not
         add a Content-Transfer-Encoding header.
 </simpara>
@@ -253,7 +253,7 @@ is not set, this will be prompted for.</simpara>
         subscribed to a list. In order to use the <emphasis>From</emphasis> address, set the
         value to "auto". If you use the sendmail binary, you must have
         suitable privileges for the -f parameter.  Default is the value of the
-        <emphasis>sendemail.envelopeSender</emphasis> configuration variable; if that is
+        <literal>sendemail.envelopeSender</literal> configuration variable; if that is
         unspecified, choosing the envelope sender is left to your MTA.
 </simpara>
 </listitem>
@@ -266,7 +266,7 @@ is not set, this will be prompted for.</simpara>
 <simpara>
         Specify the encryption to use, either <emphasis>ssl</emphasis> or <emphasis>tls</emphasis>.  Any other
         value reverts to plain SMTP.  Default is the value of
-        <emphasis>sendemail.smtpEncryption</emphasis>.
+        <literal>sendemail.smtpEncryption</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -280,7 +280,7 @@ is not set, this will be prompted for.</simpara>
         HELO/EHLO command to the SMTP server.  Some servers require the
         FQDN to match your IP address.  If not set, git send-email attempts
         to determine your FQDN automatically.  Default is the value of
-        <emphasis>sendemail.smtpDomain</emphasis>.
+        <literal>sendemail.smtpDomain</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -308,13 +308,13 @@ is specified, all mechanisms supported by the SASL library can be used.</simpara
 <simpara>
         Password for SMTP-AUTH. The argument is optional: If no
         argument is specified, then the empty string is used as
-        the password. Default is the value of <emphasis>sendemail.smtpPass</emphasis>,
+        the password. Default is the value of <literal>sendemail.smtpPass</literal>,
         however <emphasis>--smtp-pass</emphasis> always overrides this value.
 </simpara>
 <simpara>Furthermore, passwords need not be specified in configuration files
 or on the command line. If a username has been specified (with
-<emphasis>--smtp-user</emphasis> or a <emphasis>sendemail.smtpUser</emphasis>), but no password has been
-specified (with <emphasis>--smtp-pass</emphasis> or <emphasis>sendemail.smtpPass</emphasis>), then
+<emphasis>--smtp-user</emphasis> or a <literal>sendemail.smtpUser</literal>), but no password has been
+specified (with <emphasis>--smtp-pass</emphasis> or <literal>sendemail.smtpPass</literal>), then
 a password is obtained using <emphasis>git-credential</emphasis>.</simpara>
 </listitem>
 </varlistentry>
@@ -328,7 +328,7 @@ a password is obtained using <emphasis>git-credential</emphasis>.</simpara>
         <literal>smtp.example.com</literal> or a raw IP address).  Alternatively it can
         specify a full pathname of a sendmail-like program instead;
         the program must support the <literal>-i</literal> option.  Default value can
-        be specified by the <emphasis>sendemail.smtpServer</emphasis> configuration
+        be specified by the <literal>sendemail.smtpServer</literal> configuration
         option; the built-in default is <literal>/usr/sbin/sendmail</literal> or
         <literal>/usr/lib/sendmail</literal> if such program is available, or
         <literal>localhost</literal> otherwise.
@@ -346,7 +346,7 @@ a password is obtained using <emphasis>git-credential</emphasis>.</simpara>
         submission port 587, or the common SSL smtp port 465);
         symbolic port names (e.g. "submission" instead of 587)
         are also accepted. The port can also be set with the
-        <emphasis>sendemail.smtpServerPort</emphasis> configuration variable.
+        <literal>sendemail.smtpServerPort</literal> configuration variable.
 </simpara>
 </listitem>
 </varlistentry>
@@ -357,7 +357,7 @@ a password is obtained using <emphasis>git-credential</emphasis>.</simpara>
 <listitem>
 <simpara>
         If set, specifies the outgoing SMTP server option to use.
-        Default value can be specified by the <emphasis>sendemail.smtpServerOption</emphasis>
+        Default value can be specified by the <literal>sendemail.smtpServerOption</literal>
         configuration option.
 </simpara>
 <simpara>The --smtp-server-option option must be repeated for each option you want
@@ -387,7 +387,7 @@ must be used for each option.</simpara>
         certificates concatenated together: see verify(1) -CAfile and
         -CApath for more information on these). Set it to an empty string
         to disable certificate verification. Defaults to the value of the
-        <emphasis>sendemail.smtpsslcertpath</emphasis> configuration variable, if set, or the
+        <literal>sendemail.smtpsslcertpath</literal> configuration variable, if set, or the
         backing SSL library&#8217;s compiled-in default otherwise (which should
         be the best choice on most platforms).
 </simpara>
@@ -399,8 +399,8 @@ must be used for each option.</simpara>
 </term>
 <listitem>
 <simpara>
-        Username for SMTP-AUTH. Default is the value of <emphasis>sendemail.smtpUser</emphasis>;
-        if a username is not specified (with <emphasis>--smtp-user</emphasis> or <emphasis>sendemail.smtpUser</emphasis>),
+        Username for SMTP-AUTH. Default is the value of <literal>sendemail.smtpUser</literal>;
+        if a username is not specified (with <emphasis>--smtp-user</emphasis> or <literal>sendemail.smtpUser</literal>),
         then authentication is not attempted.
 </simpara>
 </listitem>
@@ -444,7 +444,7 @@ must be used for each option.</simpara>
         Specify a command to execute once per patch file which
         should generate patch file specific "Cc:" entries.
         Output of this command must be single email address per line.
-        Default is the value of <emphasis>sendemail.ccCmd</emphasis> configuration value.
+        Default is the value of <literal>sendemail.ccCmd</literal> configuration value.
 </simpara>
 </listitem>
 </varlistentry>
@@ -458,7 +458,7 @@ must be used for each option.</simpara>
         email sent.  If disabled with "--no-chain-reply-to", all emails after
         the first will be sent as replies to the first email sent.  When using
         this, it is recommended that the first file given be an overview of the
-        entire patch series. Disabled by default, but the <emphasis>sendemail.chainReplyTo</emphasis>
+        entire patch series. Disabled by default, but the <literal>sendemail.chainReplyTo</literal>
         configuration variable can be used to enable it.
 </simpara>
 </listitem>
@@ -472,7 +472,7 @@ must be used for each option.</simpara>
         A configuration identity. When given, causes values in the
         <emphasis>sendemail.&lt;identity&gt;</emphasis> subsection to take precedence over
         values in the <emphasis>sendemail</emphasis> section. The default identity is
-        the value of <emphasis>sendemail.identity</emphasis>.
+        the value of <literal>sendemail.identity</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -483,7 +483,7 @@ must be used for each option.</simpara>
 <listitem>
 <simpara>
         If this is set, add emails found in Signed-off-by: or Cc: lines to the
-        cc list. Default is the value of <emphasis>sendemail.signedoffbycc</emphasis> configuration
+        cc list. Default is the value of <literal>sendemail.signedoffbycc</literal> configuration
         value; if that is unspecified, default to --signed-off-by-cc.
 </simpara>
 </listitem>
@@ -568,7 +568,7 @@ must be used for each option.</simpara>
 </simpara>
 </listitem>
 </itemizedlist>
-<simpara>Default is the value of <emphasis>sendemail.suppresscc</emphasis> configuration value; if
+<simpara>Default is the value of <literal>sendemail.suppresscc</literal> configuration value; if
 that is unspecified, default to <emphasis>self</emphasis> if --suppress-from is
 specified, as well as <emphasis>body</emphasis> if --no-signed-off-cc is specified.</simpara>
 </listitem>
@@ -580,7 +580,7 @@ specified, as well as <emphasis>body</emphasis> if --no-signed-off-cc is specifi
 <listitem>
 <simpara>
         If this is set, do not add the From: address to the cc: list.
-        Default is the value of <emphasis>sendemail.suppressFrom</emphasis> configuration
+        Default is the value of <literal>sendemail.suppressFrom</literal> configuration
         value; if that is unspecified, default to --no-suppress-from.
 </simpara>
 </listitem>
@@ -599,7 +599,7 @@ specified, as well as <emphasis>body</emphasis> if --no-signed-off-cc is specifi
 </simpara>
 <simpara>If disabled with "--no-thread", those headers will not be added
 (unless specified with --in-reply-to).  Default is the value of the
-<emphasis>sendemail.thread</emphasis> configuration value; if that is unspecified,
+<literal>sendemail.thread</literal> configuration value; if that is unspecified,
 default to --thread.</simpara>
 <simpara>It is up to the user to ensure that no In-Reply-To header already
 exists when <emphasis>git send-email</emphasis> is asked to add it (especially note that
@@ -649,7 +649,7 @@ recipient&#8217;s MUA.</simpara>
 </simpara>
 </listitem>
 </itemizedlist>
-<simpara>Default is the value of <emphasis>sendemail.confirm</emphasis> configuration value; if that
+<simpara>Default is the value of <literal>sendemail.confirm</literal> configuration value; if that
 is unspecified, default to <emphasis>auto</emphasis> unless any of the suppress options
 have been specified, in which case default to <emphasis>compose</emphasis>.</simpara>
 </listitem>
@@ -705,7 +705,7 @@ Warn of patches that contain lines longer than 998 characters; this
 </simpara>
 </listitem>
 </itemizedlist>
-<simpara>Default is the value of <emphasis>sendemail.validate</emphasis>; if this is not set,
+<simpara>Default is the value of <literal>sendemail.validate</literal>; if this is not set,
 default to <emphasis>--validate</emphasis>.</simpara>
 </listitem>
 </varlistentry>
@@ -750,7 +750,7 @@ sendemail.aliasesFile
 <listitem>
 <simpara>
         To avoid typing long email addresses, point this to one or more
-        email aliases files.  You must also supply <emphasis>sendemail.aliasFileType</emphasis>.
+        email aliases files.  You must also supply <literal>sendemail.aliasFileType</literal>.
 </simpara>
 </listitem>
 </varlistentry>
