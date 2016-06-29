@@ -284,6 +284,11 @@ plus one \fIunsigned long\fP value for each entry.
 The last entry contains two zeros.
 See also
 .BR getauxval (3).
+
+Permission to access this file is governed by a ptrace access mode
+.B PTRACE_MODE_READ_FSCREDS
+check; see
+.BR ptrace (2).
 .TP
 .IR /proc/[pid]/cgroup " (since Linux 2.6.24)"
 See
@@ -434,6 +439,13 @@ In a multithreaded process, the contents of this symbolic link
 are not available if the main thread has already terminated
 (typically by calling
 .BR pthread_exit (3)).
+
+Permission to dereference or read
+.RB ( readlink (2))
+this symbolic link is governed by a ptrace access mode
+.B PTRACE_MODE_READ_FSCREDS
+check; see
+.BR ptrace (2).
 .TP
 .I /proc/[pid]/environ
 This file contains the environment for the process.
@@ -443,11 +455,14 @@ Thus, to print out the environment of process 1, you would do:
 .in +4n
 .nf
 
-.ft CW
 .RB "$" " strings /proc/1/environ"
 .fi
-.ft P
 .in
+
+Permission to access this file is governed by a ptrace access mode
+.B PTRACE_MODE_READ_FSCREDS
+check; see
+.BR ptrace (2).
 .TP
 .I /proc/[pid]/exe
 Under Linux 2.2 and later, this file is a symbolic link
@@ -465,6 +480,13 @@ In a multithreaded process, the contents of this symbolic link
 are not available if the main thread has already terminated
 (typically by calling
 .BR pthread_exit (3)).
+
+Permission to dereference or read
+.RB ( readlink (2))
+this symbolic link is governed by a ptrace access mode
+.B PTRACE_MODE_READ_FSCREDS
+check; see
+.BR ptrace (2).
 
 Under Linux 2.0 and earlier,
 .I /proc/[pid]/exe
@@ -586,6 +608,13 @@ Thus the example command above could be written as:
 .RB "$" " foobar \-i /dev/stdin \-o /dev/stdout ..."
 .fi
 .in
+.IP
+Permission to dereference or read
+.RB ( readlink (2))
+the symbolic links in this directory is governed by a ptrace access mode
+.B PTRACE_MODE_READ_FSCREDS
+check; see
+.BR ptrace (2).
 .\" FIXME Describe /proc/[pid]/loginuid
 .\"       Added in 2.6.11; updating requires CAP_AUDIT_CONTROL
 .\"       CONFIG_AUDITSYSCALL
@@ -893,6 +922,11 @@ if process A reads process B's
 .I /proc/[pid]/io
 while process B is updating one of these 64-bit counters,
 process A could see an intermediate result.
+
+Permission to access this file is governed by a ptrace access mode
+.B PTRACE_MODE_READ_FSCREDS
+check; see
+.BR ptrace (2).
 .TP
 .IR /proc/[pid]/gid_map " (since Linux 3.5)"
 See
@@ -963,6 +997,11 @@ permissions.
 See
 .BR mmap (2)
 for some further information about memory mappings.
+
+Permission to access this file is governed by a ptrace access mode
+.B PTRACE_MODE_READ_FSCREDS
+check; see
+.BR ptrace (2).
 
 The format of the file is:
 
@@ -1074,6 +1113,11 @@ This file can be used to access the pages of a process's memory through
 .BR read (2),
 and
 .BR lseek (2).
+
+Permission to access this file is governed by a ptrace access mode
+.B PTRACE_MODE_ATTACH_FSCREDS
+check; see
+.BR ptrace (2).
 .TP
 .IR /proc/[pid]/mountinfo " (since Linux 2.6.26)"
 .\" This info adapted from Documentation/filesystems/proc.txt
@@ -1419,12 +1463,22 @@ The
 file is present only if the
 .B CONFIG_PROC_PAGE_MONITOR
 kernel configuration option is enabled.
+
+Permission to access this file is governed by a ptrace access mode
+.B PTRACE_MODE_READ_FSCREDS
+check; see
+.BR ptrace (2).
 .TP
 .IR /proc/[pid]/personality " (since Linux 2.6.28)"
 .\" commit 478307230810d7e2a753ed220db9066dfdf88718
 This read-only file exposes the process's execution domain, as set by
 .BR personality (2).
 The value is displayed in hexadecimal notation.
+
+Permission to access this file is governed by a ptrace access mode
+.B PTRACE_MODE_ATTACH_FSCREDS
+check; see
+.BR ptrace (2).
 .TP
 .I /proc/[pid]/root
 UNIX and Linux support the idea of a per-process root of the
@@ -1442,6 +1496,13 @@ In a multithreaded process, the contents of this symbolic link
 are not available if the main thread has already terminated
 (typically by calling
 .BR pthread_exit (3)).
+
+Permission to dereference or read
+.RB ( readlink (2))
+this symbolic link is governed by a ptrace access mode
+.B PTRACE_MODE_READ_FSCREDS
+check; see
+.BR ptrace (2).
 .\" FIXME Describe /proc/[pid]/projid_map
 .\"       Added in 3.7, commit f76d207a66c3a53defea67e7d36c3eb1b7d6d61d
 .\" FIXME Describe /proc/[pid]/seccomp
@@ -1586,6 +1647,11 @@ process's kernel stack.
 This file is provided only if the kernel was built with the
 .B CONFIG_STACKTRACE
 configuration option.
+
+Permission to access this file is governed by a ptrace access mode
+.B PTRACE_MODE_ATTACH_FSCREDS
+check; see
+.BR ptrace (2).
 .TP
 .I /proc/[pid]/stat
 Status information about the process.
@@ -1596,7 +1662,15 @@ It is defined in the kernel source file
 
 The fields, in order, with their proper
 .BR scanf (3)
-format specifiers, are:
+format specifiers, are listed below.
+Whether or not certain of these fields display valid information is governed by
+a ptrace access mode
+.BR PTRACE_MODE_READ_FSCREDS "\ |\ " PTRACE_MODE_NOAUDIT
+check (refer to
+.BR ptrace (2)).
+If the check denies access, then the field value is displayed as 0.
+The affected fields are indicated with the marking [PT].
+
 .RS
 .TP 10
 (1) \fIpid\fP \ %d
@@ -1798,20 +1872,20 @@ see the description of
 in
 .BR getrlimit (2).
 .TP
-(26) \fIstartcode\fP \ %lu
+(26) \fIstartcode\fP \ %lu \ [PT]
 The address above which program text can run.
 .TP
-(27) \fIendcode\fP \ %lu
+(27) \fIendcode\fP \ %lu \ [PT]
 The address below which program text can run.
 .TP
-(28) \fIstartstack\fP \ %lu
+(28) \fIstartstack\fP \ %lu \ [PT]
 The address of the start (i.e., bottom) of the stack.
 .TP
-(29) \fIkstkesp\fP \ %lu
+(29) \fIkstkesp\fP \ %lu \ [PT]
 The current value of ESP (stack pointer), as found in the
 kernel stack page for the process.
 .TP
-(30) \fIkstkeip\fP \ %lu
+(30) \fIkstkeip\fP \ %lu \ [PT]
 The current EIP (instruction pointer).
 .TP
 (31) \fIsignal\fP \ %lu
@@ -1838,7 +1912,7 @@ Obsolete, because it does not provide information on real-time signals; use
 .I /proc/[pid]/status
 instead.
 .TP
-(35) \fIwchan\fP \ %lu
+(35) \fIwchan\fP \ %lu \ [PT]
 This is the "channel" in which the process is waiting.
 It is the address of a location in the kernel where the process is sleeping.
 The corresponding symbolic name can be found in
@@ -1884,42 +1958,42 @@ for a guest operating system), measured in clock ticks (divide by
 Guest time of the process's children, measured in clock ticks (divide by
 .IR sysconf(_SC_CLK_TCK) ).
 .TP
-(45) \fIstart_data\fP \ %lu \ (since Linux 3.3)
+(45) \fIstart_data\fP \ %lu \ (since Linux 3.3) \ [PT]
 .\" commit b3f7f573a20081910e34e99cbc91831f4f02f1ff
 Address above which program initialized and
 uninitialized (BSS) data are placed.
 .TP
-(46) \fIend_data\fP \ %lu \ (since Linux 3.3)
+(46) \fIend_data\fP \ %lu \ (since Linux 3.3) \ [PT]
 .\" commit b3f7f573a20081910e34e99cbc91831f4f02f1ff
 Address below which program initialized and
 uninitialized (BSS) data are placed.
 .TP
-(47) \fIstart_brk\fP \ %lu \ (since Linux 3.3)
+(47) \fIstart_brk\fP \ %lu \ (since Linux 3.3) \ [PT]
 .\" commit b3f7f573a20081910e34e99cbc91831f4f02f1ff
 Address above which program heap can be expanded with
 .BR brk (2).
 .TP
-(48) \fIarg_start\fP \ %lu \ (since Linux 3.5)
+(48) \fIarg_start\fP \ %lu \ (since Linux 3.5) \ [PT]
 .\" commit 5b172087f99189416d5f47fd7ab5e6fb762a9ba3
 Address above which program command-line arguments
 .RI ( argv )
 are placed.
 .TP
-(49) \fIarg_end\fP \ %lu \ (since Linux 3.5)
+(49) \fIarg_end\fP \ %lu \ (since Linux 3.5) \ [PT]
 .\" commit 5b172087f99189416d5f47fd7ab5e6fb762a9ba3
 Address below program command-line arguments
 .RI ( argv )
 are placed.
 .TP
-(50) \fIenv_start\fP \ %lu \ (since Linux 3.5)
+(50) \fIenv_start\fP \ %lu \ (since Linux 3.5) \ [PT]
 .\" commit 5b172087f99189416d5f47fd7ab5e6fb762a9ba3
 Address above which program environment is placed.
 .TP
-(51) \fIenv_end\fP \ %lu \ (since Linux 3.5)
+(51) \fIenv_end\fP \ %lu \ (since Linux 3.5) \ [PT]
 .\" commit 5b172087f99189416d5f47fd7ab5e6fb762a9ba3
 Address below which program environment is placed.
 .TP
-(52) \fIexit_code\fP \ %d \ (since Linux 3.5)
+(52) \fIexit_code\fP \ %d \ (since Linux 3.5) \ [PT]
 .\" commit 5b172087f99189416d5f47fd7ab5e6fb762a9ba3
 The thread's exit status in the form reported by
 .BR waitpid (2).
@@ -2223,6 +2297,11 @@ If process is not blocked, then the file contains just the string "running".
 
 This file is present only if the kernel was configured with
 .BR CONFIG_HAVE_ARCH_TRACEHOOK .
+
+Permission to access this file is governed by a ptrace access mode
+.B PTRACE_MODE_ATTACH_FSCREDS
+check; see
+.BR ptrace (2).
 .TP
 .IR /proc/[pid]/task " (since Linux 2.6.0-test6)"
 This is a directory that contains one subdirectory
@@ -2345,6 +2424,11 @@ For further details, see the discussion of
 .BR PR_SET_TIMERSLACK
 in
 .BR prctl (2).
+
+Permission to access this file is governed by a ptrace access mode
+.B PTRACE_MODE_ATTACH_FSCREDS
+check; see
+.BR ptrace (2).
 .TP
 .IR /proc/[pid]/uid_map ", " /proc/[pid]/gid_map " (since Linux 3.5)"
 See
@@ -2353,6 +2437,11 @@ See
 .IR /proc/[pid]/wchan " (since Linux 2.6.0)"
 The symbolic name corresponding to the location
 in the kernel where the process is sleeping.
+
+Permission to access this file is governed by a ptrace access mode
+.B PTRACE_MODE_READ_FSCREDS
+check; see
+.BR ptrace (2).
 .TP
 .I /proc/apm
 Advanced power management version and battery information when

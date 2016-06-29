@@ -7,6 +7,7 @@
 .\" Sun Nov  7 03:18:35 CST 1999
 .\"
 .\" and Copyright (c) 2011, Denys Vlasenko <vda.linux@googlemail.com>
+.\" and Copyright (c) 2015, 2016, Michael Kerrisk <mtk.manpages@gmail.com>
 .\"
 .\" %%%LICENSE_START(GPLv2+_DOC_FULL)
 .\" This is free documentation; you can redistribute it and/or
@@ -804,13 +805,11 @@ and
 .I data
 are ignored.)
 
-Processes that are not dumpable (see the description of
-.BR PR_SET_DUMPABLE
-in
-.BR prctl (2))
-can  not  be  attached  via
-.BR ptrace (2)
-.BR PTRACE_ATTACH .
+Permission to perform a
+.BR PTRACE_ATTACH
+is governed by a ptrace access mode
+.B PTRACE_MODE_ATTACH_REALCREDS
+check; see below.
 .TP
 .BR PTRACE_SEIZE " (since Linux 3.4)"
 .\"
@@ -865,6 +864,12 @@ and
 must be zero.
 .I data
 contains a bit mask of ptrace options to activate immediately.
+
+Permission to perform a
+.BR PTRACE_SEIZE
+is governed by a ptrace access mode
+.B PTRACE_MODE_ATTACH_REALCREDS
+check; see below.
 .TP
 .B PTRACE_DETACH
 Restart the stopped tracee as for
@@ -2071,10 +2076,239 @@ In any case, use of
 .BR ptrace ()
 is highly specific to the operating system and architecture.
 .\"
+.\"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+.\"
+.SS Ptrace access mode checking
+Various parts of the kernel-user-space API (not just
+.BR ptrace (2)
+operations), require so-called "ptrace access mode" checks,
+whose outcome determines whether an operation is permitted
+(or, in a few cases, causes a "read" operation to return sanitized data).
+These checks are performed in cases where one process can
+inspect sensitive information about,
+or in some cases modify the state of, another process.
+The checks are based on factors such as the credentials and capabilities
+of the two processes,
+whether or not the "target" process is dumpable,
+and the results of checks performed by any enabled Linux Security Module
+(LSM)\(emfor example, SELinux, Yama, or Smack\(emand by the commoncap LSM
+(which is always invoked).
+
+Prior to Linux 2.6.27, all access checks were of a single type.
+Since Linux 2.6.27,
+.\" commit 006ebb40d3d65338bd74abb03b945f8d60e362bd
+two access mode levels are distinguished:
+.TP
+.BR PTRACE_MODE_READ
+For "read" operations or other operations that are less dangerous,
+such as:
+.BR get_robust_list (2);
+.BR kcmp (2);
+reading
+.IR /proc/[pid]/auxv ,
+.IR /proc/[pid]/environ ,
+or
+.IR /proc/[pid]/stat ;
+or
+.BR readlink (2)
+of a
+.IR /proc/[pid]/ns/*
+file.
+.TP
+.BR PTRACE_MODE_ATTACH
+For "write" operations, or other operations that are more dangerous,
+such as: ptrace attaching
+.RB ( PTRACE_ATTACH )
+to another process
+or calling
+.BR process_vm_writev (2).
+.RB ( PTRACE_MODE_ATTACH
+was effectively the default before Linux 2.6.27.)
+.\"
+.\" Regarding the above description of the distinction between
+.\" PTRACE_MODE_READ and PTRACE_MODE_ATTACH, Stephen Smalley notes:
+.\"
+.\"     That was the intent when the distinction was introduced, but it doesn't
+.\"     appear to have been properly maintained, e.g. there is now a common
+.\"     helper lock_trace() that is used for
+.\"     /proc/pid/{stack,syscall,personality} but checks PTRACE_MODE_ATTACH, and
+.\"     PTRACE_MODE_ATTACH is also used in timerslack_ns_write/show().  Likely
+.\"     should review and make them consistent.  There was also some debate
+.\"     about proper handling of /proc/pid/fd.  Arguably that one might belong
+.\"     back in the _ATTACH camp.
+.\"
+.PP
+Since Linux 4.5,
+.\" commit caaee6234d05a58c5b4d05e7bf766131b810a657
+the above access mode checks are combined (ORed) with
+one of the following modifiers:
+.TP
+.B PTRACE_MODE_FSCREDS
+Use the caller's filesystem UID and GID (see
+.BR credentials (7))
+or effective capabilities for LSM checks.
+.TP
+.B PTRACE_MODE_REALCREDS
+Use the caller's real UID and GID or permitted capabilities for LSM checks.
+This was effectively the default before Linux 4.5.
+.PP
+Because combining one of the credential modifiers with one of
+the aforementioned access modes is typical,
+some macros are defined in the kernel sources for the combinations:
+.TP
+.B PTRACE_MODE_READ_FSCREDS
+Defined as
+.BR "PTRACE_MODE_READ | PTRACE_MODE_FSCREDS" .
+.TP
+.B PTRACE_MODE_READ_REALCREDS
+Defined as
+.BR "PTRACE_MODE_READ | PTRACE_MODE_REALCREDS" .
+.TP
+.B PTRACE_MODE_ATTACH_FSCREDS
+Defined as
+.BR "PTRACE_MODE_ATTACH | PTRACE_MODE_FSCREDS" .
+.TP
+.B PTRACE_MODE_ATTACH_REALCREDS
+Defined as
+.BR "PTRACE_MODE_ATTACH | PTRACE_MODE_REALCREDS" .
+.fi
+.PP
+One further modifier can be ORed with the access mode:
+.TP
+.BR PTRACE_MODE_NOAUDIT " (since Linux 3.3)"
+.\" commit 69f594a38967f4540ce7a29b3fd214e68a8330bd
+.\" Just for /proc/pid/stat
+Don't audit this access mode check.
+This modifier is employed for ptrace access mode checks
+(such as checks when reading
+.IR /proc/[pid]/stat )
+that merely cause the output to be filtered or sanitized,
+rather than causing an error to be returned to the caller.
+In these cases, accessing the file is not a security violation and
+there is no reason to generate a security audit record.
+This modifier suppresses the generation of
+such an audit record for the particular access check.
+.PP
+Note that all of the
+.BR PTRACE_MODE_*
+constants described in this subsection are kernel-internal,
+and not visible to user space.
+The constant names are mentioned here in order to label the various kinds of
+ptrace access mode checks that are performed for various system calls
+and accesses to various pseudofiles (e.g., under
+.IR /proc ).
+These names are used in other manual pages to provide a simple
+shorthand for labeling the different kernel checks.
+
+The algorithm employed for ptrace access mode checking determines whether
+the calling process is allowed to perform the corresponding action
+on the target process.
+(In the case of opening
+.IR /proc/[pid]
+files, the "calling process" is the one opening the file,
+and the process with the corresponding PID is the "target process".)
+The algorithm is as follows:
+.IP 1. 4
+If the calling thread and the target thread are in the same
+thread group, access is always allowed.
+.IP 2.
+If the access mode specifies
+.BR PTRACE_MODE_FSCREDS ,
+then, for the check in the next step,
+employ the caller's filesystem UID and GID.
+(As noted in
+.BR credentials (7),
+the filesystem UID and GID almost always have the same values
+as the corresponding effective IDs.)
+
+Otherwise, the access mode specifies
+.BR PTRACE_MODE_REALCREDS ,
+so use the caller's real UID and GID for the checks in the next step.
+(Most APIs that check the caller's UID and GID use the effective IDs.
+For historical reasons, the
+.BR PTRACE_MODE_REALCREDS
+check uses the real IDs instead.)
+.IP 3.
+Deny access if
+.I neither
+of the following is true:
+.RS
+.IP \(bu 2
+The real, effective, and saved-set user IDs of the target
+match the caller's user ID,
+.IR and
+the real, effective, and saved-set group IDs of the target
+match the caller's group ID.
+.IP \(bu
+The caller has the
+.B CAP_SYS_PTRACE
+capability in the user namespace of the target.
+.RE
+.IP 4.
+Deny access if the target process "dumpable" attribute has a value other than 1
+.RB ( SUID_DUMP_USER ;
+see the discussion of
+.BR PR_SET_DUMPABLE
+in
+.BR prctl (2)),
+and the caller does not have the
+.BR CAP_SYS_PTRACE
+capability in the user namespace of the target process.
+.IP 5.
+The kernel LSM
+.IR security_ptrace_access_check ()
+interface is invoked to see if ptrace access is permitted.
+The results depend on the LSM(s).
+The implementation of this interface in the commoncap LSM performs
+the following steps:
+.\" (in cap_ptrace_access_check()):
+.RS
+.IP a) 3
+If the access mode includes
+.BR PTRACE_MODE_FSCREDS ,
+then use the caller's
+.I effective
+capability set
+in the following check;
+otherwise (the access mode specifies
+.BR PTRACE_MODE_REALCREDS ,
+so) use the caller's
+.I permitted
+capability set.
+.IP b)
+Deny access if
+.I neither
+of the following is true:
+.RS
+.IP \(bu 2
+The caller and the target process are in the same user namespace,
+and the caller's capabilities are a proper superset of the target process's
+.I permitted
+capabilities.
+.IP \(bu
+The caller has the
+.B CAP_SYS_PTRACE
+capability in the target process's user namespace.
+.RE
+.IP
+Note that the commoncap LSM does not distinguish between
+.B PTRACE_MODE_READ
+and
+.BR PTRACE_MODE_ATTACH .
+.RE
+.IP 6.
+If access has not been denied by any of the preceding steps,
+then access is allowed.
+.\"
+.\"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+.\"
 .SS /proc/sys/kernel/yama/ptrace_scope
-On systems with the Yama Linux Security Module installed, the
+On systems with the Yama Linux Security Module (LSM) installed
+(i.e., the kernel was configured with
+.BR CONFIG_SECURITY_YAMA ),
+the
 .I /proc/sys/kernel/yama/ptrace_scope
-(available since Linux 3.4)
+file (available since Linux 3.4)
 .\" commit 2d514487faf188938a4ee4fb3464eeecfbdcf8eb
 can be used to restrict the ability to trace a process with
 .BR ptrace (2)
@@ -2085,43 +2319,57 @@ and
 The goal of such restrictions is to prevent attack escalation whereby
 a compromised process can ptrace-attach to other sensitive processes
 (e.g., a GPG agent or an SSH session) owned by the user in order
-to gain additional credentials and thus expand the scope of the attack.
+to gain additional credentials that may exist in memory
+and thus expand the scope of the attack.
 
-A process with the
+More precisely, the Yama LSM limits two types of operations:
+.IP * 3
+Any operation that performs a ptrace access mode
+.BR PTRACE_MODE_ATTACH
+check\(emfor example,
+.BR ptrace ()
+.BR PTRACE_ATTACH .
+(See the "Ptrace access mode checking" discussion above.)
+
+.IP *
+.BR ptrace ()
+.BR PTRACE_TRACEME .
+.PP
+A process that has the
 .B CAP_SYS_PTRACE
-capability can update this file with one of the following values:
+capability can update the
+.IR /proc/sys/kernel/yama/ptrace_scope
+file with one of the following values:
 .TP
 0 ("classic ptrace permissions")
-A process can
-.B PTRACE_ATTACH
-to any other process running under the same UID,
-as long as the tracee is dumpable (i.e., it did
-not transition UIDs or start privileged, and it has not employed
-the
-.BR prctl (2)
-.B PR_SET_DUMPABLE
-operation to make itself nondumpable).
+No additional restrictions on operations that perform
+.BR PTRACE_MODE_ATTACH
+checks (beyond those imposed by the commoncap and other LSMs).
 
 The use of
 .BR PTRACE_TRACEME
 is unchanged.
 .TP
-1 ("restricted ptrace")
-A process must have a predefined relationship
-with the tracee to which it wants to
-.BR PTRACE_ATTACH .
+1 ("restricted ptrace") [default value]
+When performing an operation that requires a
+.BR PTRACE_MODE_ATTACH
+check, the calling process must either have the
+.B CAP_SYS_PTRACE
+capability in the user namespace of the target process or
+it must have a predefined relationship with the target process.
 By default,
-the predefined relationship is that the tracee is a child of the
-caller and the aforementioned classic criteria are also met.
-To specify a different process that may trace it, a tracee can employ the
+the predefined relationship is that the target process
+must be a descendant of the caller.
+
+A target process can employ the
 .BR prctl (2)
 .B PR_SET_PTRACER
-operation to declare a different PID that is allowed to
-.BR PTRACE_ATTACH
-to the tracee.
-(See the kernel source file
+operation to declare an additional PID that is allowed to perform
+.BR PTRACE_MODE_ATTACH
+operations on the target.
+See the kernel source file
 .IR Documentation/security/Yama.txt
-for further details.)
+for further details.
 
 The use of
 .BR PTRACE_TRACEME
@@ -2130,18 +2378,32 @@ is unchanged.
 2 ("admin-only attach")
 Only processes with the
 .B CAP_SYS_PTRACE
-capability may use
-.BR PTRACE_ATTACH
-or trace children that employ
+capability in the user namespace of the target process may perform
+.BR PTRACE_MODE_ATTACH
+operations or trace children that employ
 .BR PTRACE_TRACEME .
 .TP
 3 ("no attach")
-No process may use
-.BR PTRACE_ATTACH
-or trace children that employ
+No process may perform
+.BR PTRACE_MODE_ATTACH
+operations or trace children that employ
 .BR PTRACE_TRACEME .
 
 Once this value has been written to the file, it cannot be changed.
+.PP
+With respect to values 1 and 2,
+note that creating a new user namespace effectively removes the
+protection offered by Yama.
+This is because a process in the parent user namespace whose effective
+UID matches the UID of the creator of a child namespace
+has all capabilities (including
+.BR CAP_SYS_PTRACE )
+when performing operations within the child user namespace
+(and further-removed descendants of that namespace).
+Consequently, when a process tries to use user namespaces to sandbox itself,
+it inadvertently weakens the protections offered by the Yama LSM.
+.\"
+.\"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 .\"
 .SS C library/kernel differences
 At the system call level, the
