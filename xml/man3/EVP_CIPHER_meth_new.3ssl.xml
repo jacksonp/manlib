@@ -234,7 +234,7 @@ EVP_CIPH_OCB_MODE</term>
     </para>
     <para>
       EVP_CIPHER_meth_set_cleanup() sets the function for <emphasis role="bold">cipher</emphasis> to do extra cleanup before the method's
-      privata data structure is cleaned out and freed. Note that the
+      private data structure is cleaned out and freed. Note that the
       cleanup function is passed a <emphasis role="bold">EVP_CIPHER_CTX
       *</emphasis>, the private data structure is then available with
       EVP_CIPHER_CTX_get_cipher_data(). This cleanup function is called by

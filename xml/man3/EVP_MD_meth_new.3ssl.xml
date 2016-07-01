@@ -161,7 +161,7 @@ int (*EVP_MD_meth_get_ctrl(const EVP_MD *md))(EVP_MD_CTX *ctx, int cmd,
     </para>
     <para>
       EVP_MD_meth_set_cleanup() sets the function for <emphasis role="bold">md</emphasis> to do extra cleanup before the method's
-      privata data structure is cleaned out and freed. Note that the
+      private data structure is cleaned out and freed. Note that the
       cleanup function is passed a <emphasis role="bold">EVP_MD_CTX
       *</emphasis>, the private data structure is then available with
       EVP_MD_CTX_md_data(). This cleanup function is called by

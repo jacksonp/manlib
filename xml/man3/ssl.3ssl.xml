@@ -514,12 +514,6 @@
             </listitem>
           </varlistentry>
           <varlistentry>
-            <term>long <emphasis role="bold">SSL_CTX_need_tmp_RSA</emphasis>(SSL_CTX *ctx);</term>
-            <listitem>
-              <para/>
-            </listitem>
-          </varlistentry>
-          <varlistentry>
             <term>SSL_CTX *<emphasis role="bold">SSL_CTX_new</emphasis>(const SSL_METHOD *meth);</term>
             <listitem>
               <para/>

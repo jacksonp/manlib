@@ -107,7 +107,8 @@ void CRYPTO_mem_leaks_fp(FILE *fp);</synopsis>
     <para>
       OPENSSL_strdup(), OPENSSL_strndup() and OPENSSL_memdup() are like the
       equivalent C functions, except that memory is allocated by calling
-      the OPENSSL_malloc() and should be releaed by calling OPENSSL_free().
+      the OPENSSL_malloc() and should be released by calling
+      OPENSSL_free().
     </para>
     <para>
       OPENSSL_strlcpy(), OPENSSL_strlcat() and OPENSSL_strnlen() are

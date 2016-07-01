@@ -102,7 +102,7 @@ STACK_OF(X509_EXTENSION) *X509_REVOKED_get0_extensions(X509_REVOKED *r);</synops
     </para>
     <para>
       <emphasis role="bold">X509V3_ADD_REPLACE</emphasis> replaces an
-      extension if it exists otherwise apppends a new extension.
+      extension if it exists otherwise appends a new extension.
     </para>
     <para>
       <emphasis role="bold">X509V3_ADD_REPLACE_EXISTING</emphasis> replaces
@@ -116,7 +116,7 @@ STACK_OF(X509_EXTENSION) *X509_REVOKED_get0_extensions(X509_REVOKED *r);</synops
     </para>
     <para>
       <emphasis role="bold">X509V3_ADD_DELETE</emphasis> extension
-      <emphasis role="bold">nid</emphasis> is deleted: no new extenion is
+      <emphasis role="bold">nid</emphasis> is deleted: no new extension is
       added.
     </para>
     <para>

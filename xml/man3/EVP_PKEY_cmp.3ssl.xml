@@ -4,7 +4,8 @@
     <refentrytitle>EVP_PKEY_cmp.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>EVP_PKEY_copy_parameters, EVP_PKEY_missing_parameters, EVP_PKEY_cmp_parameters, EVP_PKEY_cmp</refname>
+    <refname>EVP_PKEY_copy_parameters, EVP_PKEY_missing_parameters, EVP_PKEY_cmp_parameters,
+EVP_PKEY_cmp</refname>
 <refpurpose>public key parameter and comparison functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>

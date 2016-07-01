@@ -5,7 +5,8 @@
   </refmeta>
   <refnamediv>
     <refname>ECPKParameters_print, ECPKParameters_print_fp</refname>
-<refpurpose>Functions for decoding and encoding ASN1 representations of elliptic curve entities</refpurpose>
+<refpurpose>Functions for decoding and
+encoding ASN1 representations of elliptic curve entities</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ec.h&gt;</synopsis>

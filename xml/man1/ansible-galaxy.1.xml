@@ -201,7 +201,7 @@ Don&#8217;t query the galaxy API when creating roles
 </refsect1>
 <refsect1 id="_list">
 <title>LIST</title>
-<simpara>The <emphasis role="strong">list</emphasis> sub-command is used to show what roles are currently instaled.
+<simpara>The <emphasis role="strong">list</emphasis> sub-command is used to show what roles are currently installed.
 You can specify a role name, and if installed only that role will be shown.</simpara>
 <refsect2 id="_usage_4">
 <title>USAGE</title>
@@ -524,7 +524,7 @@ Override the default server <ulink url="https://galaxy.ansible.com">https://gala
 </term>
 <listitem>
 <simpara>
-Show your configured integrations. Provids the ID of each integration
+Show your configured integrations. Provides the ID of each integration
 which can be used with the remove option.
 </simpara>
 </listitem>

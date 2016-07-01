@@ -338,14 +338,13 @@ if (SSL_session_reused(ssl)) {
       parameters.
     </para>
     <para>
-      When a peer has TLSA records, but none are "usable",  an
-      opportunistic application must avoid cleartext, but cannot
-      authenticate the peer, and so should generally proceed with an
-      unauthenticated connection. Opportunistic applications need to note
-      the return value of each call to SSL_dane_tlsa_add(), and if all
-      return 0 (due to invalid or unsupported parameters) disable peer
-      authentication by calling <citerefentry>
-      <refentrytitle>SSL_set_verify</refentrytitle>
+      When a peer has TLSA records, but none are "usable", an opportunistic
+      application must avoid cleartext, but cannot authenticate the peer,
+      and so should generally proceed with an unauthenticated connection.
+      Opportunistic applications need to note the return value of each call
+      to SSL_dane_tlsa_add(), and if all return 0 (due to invalid or
+      unsupported parameters) disable peer authentication by calling
+      <citerefentry> <refentrytitle>SSL_set_verify</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> with <emphasis role="bold">mode</emphasis> equal to <emphasis role="bold">SSL_VERIFY_NONE</emphasis>.
     </para>
   </refsection>

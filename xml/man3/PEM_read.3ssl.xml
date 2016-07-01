@@ -57,7 +57,7 @@ MIICdg....
     <para>
       PEM_read() reads from the file <emphasis role="bold">fp</emphasis>,
       while PEM_read_bio() reads from the BIO <emphasis role="bold">bp</emphasis>. Both skip any non-PEM data that precedes
-      the start of the next PEM object. When an object is successfuly
+      the start of the next PEM object. When an object is successfully
       retrieved, the type name from the "----BEGIN &lt;type&gt;-----" is
       returned via the <emphasis role="bold">name</emphasis> argument, any
       encapsulation headers are returned in <emphasis role="bold">header</emphasis> and the base64-decoded content and its
@@ -71,8 +71,8 @@ MIICdg....
       PEM_get_EVP_CIPHER_INFO() can be used to determine the <emphasis role="bold">data</emphasis> returned by PEM_read() or PEM_read_bio()
       is encrypted and to retrieve the associated cipher and IV. The caller
       passes a pointer to structure of type <emphasis role="bold">EVP_CIPHER_INFO</emphasis> via the <emphasis role="bold">cinfo</emphasis> argument and the <emphasis role="bold">header</emphasis> returned via PEM_read() or
-      PEM_read_bio(). If the call is succesful 1 is retured and the cipher
-      and IV are stored at the address pointed to by <emphasis role="bold">cinfo</emphasis>. When the header is malformed, or not
+      PEM_read_bio(). If the call is successful 1 is returned and the
+      cipher and IV are stored at the address pointed to by <emphasis role="bold">cinfo</emphasis>. When the header is malformed, or not
       supported or when the cipher is unknown or some internal error
       happens 0 is returned. This function is deprecated, see <emphasis role="bold">NOTES</emphasis> below.
     </para>

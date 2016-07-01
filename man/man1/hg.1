@@ -11390,6 +11390,68 @@ first revision to be edited
 .UNINDENT
 .sp
 [+] marked option can be specified multiple times
+.SS journal
+.sp
+Track previous positions of bookmarks (EXPERIMENTAL)
+.sp
+This extension adds a new command: \fIhg journal\fP, which shows you where
+bookmarks were previously located.
+.SS Commands
+.SS journal
+.sp
+show the previous position of bookmarks:
+.sp
+.nf
+.ft C
+hg journal [OPTION]... [BOOKMARKNAME]
+.ft P
+.fi
+.sp
+The journal is used to see the previous commits of bookmarks. By default
+the previous locations for all bookmarks are shown.  Passing a bookmark
+name will show all the previous positions of that bookmark.
+.sp
+By default hg journal only shows the commit hash and the command that was
+running at that time. \-v/\-\-verbose will show the prior hash, the user, and
+the time at which it happened.
+.sp
+Use \-c/\-\-commits to output log information on each commit hash; at this
+point you can use the usual \fI\-\-patch\fP, \fI\-\-git\fP, \fI\-\-stat\fP and \fI\-\-template\fP
+switches to alter the log output for these.
+.sp
+\fIhg journal \-T json\fP can be used to produce machine readable output.
+.sp
+Options:
+.INDENT 0.0
+.TP
+.B \-c,  \-\-commits
+.
+show commit metadata
+.TP
+.B \-p,  \-\-patch
+.
+show patch
+.TP
+.B \-g,  \-\-git
+.
+use git extended diff format
+.TP
+.BI \-l,  \-\-limit \ <NUM>
+.
+limit number of changes displayed
+.TP
+.B \-\-stat
+.
+output diffstat\-style summary of changes
+.TP
+.BI \-\-style \ <STYLE>
+.
+display using template map file (DEPRECATED)
+.TP
+.BI \-T,  \-\-template \ <TEMPLATE>
+.
+display with template
+.UNINDENT
 .SS keyword
 .sp
 expand keywords in tracked files

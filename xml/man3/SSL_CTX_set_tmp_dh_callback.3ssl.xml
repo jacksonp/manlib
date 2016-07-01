@@ -122,7 +122,7 @@ if (paramfile) {
   /* Error. */
 }
 if (dh_2048 == NULL) {
- /* Error. */
+  /* Error. */
 }
 if (SSL_CTX_set_tmp_dh(ctx, dh_2048) != 1) {
   /* Error. */
@@ -145,8 +145,6 @@ if (SSL_CTX_set_tmp_dh(ctx, dh_2048) != 1) {
       <citerefentry> <refentrytitle>ssl</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_cipher_list</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>SSL_CTX_set_tmp_rsa_callback</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_options</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

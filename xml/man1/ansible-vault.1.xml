@@ -71,7 +71,7 @@ Show a help message related to the given sub-command.
 </listitem>
 </varlistentry>
 </variablelist>
-<simpara>If <emphasis>--valut-password-file</emphasis> is not supplied ansib-vault will automatically prompt for passwords as required.</simpara>
+<simpara>If <emphasis>--vault-password-file</emphasis> is not supplied ansible-vault will automatically prompt for passwords as required.</simpara>
 </refsect1>
 <refsect1 id="_create">
 <title>CREATE</title>

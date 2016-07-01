@@ -306,7 +306,7 @@ Run operations with su (deprecated, use become).
 </term>
 <listitem>
 <simpara>
-run operations with su as this user (default=root) (deprecated, use become).
+Run operations with su as this user (default=root) (deprecated, use become).
 </simpara>
 </listitem>
 </varlistentry>
