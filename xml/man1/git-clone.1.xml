@@ -330,9 +330,8 @@ objects from the source repository into a pack in the cloned repository.</simpar
         Create a <emphasis>shallow</emphasis> clone with a history truncated to the
         specified number of commits. Implies <literal>--single-branch</literal> unless
         <literal>--no-single-branch</literal> is given to fetch the histories near the
-        tips of all branches. This implies <literal>--shallow-submodules</literal>. If
-        you want to have a shallow superproject clone, but full submodules,
-        also pass <literal>--no-shallow-submodules</literal>.
+        tips of all branches. If you want to clone submodules shallowly,
+        also pass <literal>--shallow-submodules</literal>.
 </simpara>
 </listitem>
 </varlistentry>

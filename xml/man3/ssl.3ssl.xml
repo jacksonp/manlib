@@ -658,7 +658,7 @@
             </listitem>
           </varlistentry>
           <varlistentry>
-            <term>void <emphasis role="bold">SSL_CTX_set_app_data</emphasis>(SSL_CTX *ctx, void *arg);</term>
+            <term>int <emphasis role="bold">SSL_CTX_set_app_data</emphasis>(SSL_CTX *ctx, void *arg);</term>
             <listitem>
               <para/>
             </listitem>
@@ -983,7 +983,7 @@
             </listitem>
           </varlistentry>
           <varlistentry>
-            <term>void <emphasis role="bold">SSL_SESSION_set_app_data</emphasis>(SSL_SESSION *s, char *a);</term>
+            <term>int <emphasis role="bold">SSL_SESSION_set_app_data</emphasis>(SSL_SESSION *s, char *a);</term>
             <listitem>
               <para/>
             </listitem>

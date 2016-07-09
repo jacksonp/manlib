@@ -4,8 +4,7 @@
     <refentrytitle>BIO_s_accept.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BIO_BIND_NORMAL, BIO_BIND_REUSEADDR_IF_UNUSED, BIO_BIND_REUSEADDR,
-BIO_s_accept, BIO_set_accept_port, BIO_get_accept_port, BIO_new_accept,
+    <refname>BIO_s_accept, BIO_set_accept_port, BIO_get_accept_port, BIO_new_accept,
 BIO_set_nbio_accept, BIO_set_accept_bios, BIO_set_bind_mode,
 BIO_get_bind_mode, BIO_do_accept</refname>
 <refpurpose>accept BIO</refpurpose>
@@ -20,9 +19,6 @@ char *BIO_get_accept_port(BIO *b);</synopsis>
 long BIO_set_accept_bios(BIO *b, char *bio);</synopsis>
 <synopsis>long BIO_set_bind_mode(BIO *b, long mode);
 long BIO_get_bind_mode(BIO *b);</synopsis>
-<synopsis>#define BIO_BIND_NORMAL                0
-#define BIO_BIND_REUSEADDR_IF_UNUSED   1
-#define BIO_BIND_REUSEADDR             2</synopsis>
 <synopsis>int BIO_do_accept(BIO *b);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-cd0457685154bda223e7c4e99098e2b1"><title>DESCRIPTION</title>
@@ -90,12 +86,11 @@ long BIO_get_bind_mode(BIO *b);</synopsis>
     </para>
     <para>
       BIO_set_bind_mode() and BIO_get_bind_mode() set and retrieve the
-      current bind mode. If BIO_BIND_NORMAL (the default) is set then
-      another socket cannot be bound to the same port. If
-      BIO_BIND_REUSEADDR is set then other sockets can bind to the same
-      port. If BIO_BIND_REUSEADDR_IF_UNUSED is set then and attempt is
-      first made to use BIO_BIN_NORMAL, if this fails and the port is not
-      in use then a second attempt is made using BIO_BIND_REUSEADDR.
+      current bind mode. If <emphasis role="bold">BIO_BIND_NORMAL</emphasis> (the default) is set then
+      another socket cannot be bound to the same port. If <emphasis role="bold">BIO_BIND_REUSEADDR</emphasis> is set then other sockets
+      can bind to the same port. If <emphasis role="bold">BIO_BIND_REUSEADDR_IF_UNUSED</emphasis> is set then and
+      attempt is first made to use BIO_BIN_NORMAL, if this fails and the
+      port is not in use then a second attempt is made using <emphasis role="bold">BIO_BIND_REUSEADDR</emphasis>.
     </para>
     <para>
       BIO_do_accept() serves two functions. When it is first called, after

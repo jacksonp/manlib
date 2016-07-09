@@ -1994,7 +1994,7 @@ struct {
                       /* if PERF_SAMPLE_REGS_USER */
     u64   size;       /* if PERF_SAMPLE_STACK_USER */
     char  data[size]; /* if PERF_SAMPLE_STACK_USER */
-    u64   dyn_size;   /* if PERF_SAMPLE_STACK_USER */
+    u64   dyn_size;   /* if PERF_SAMPLE_STACK_USER && size != 0 */
     u64   weight;     /* if PERF_SAMPLE_WEIGHT */
     u64   data_src;   /* if PERF_SAMPLE_DATA_SRC */
     u64   transaction;/* if PERF_SAMPLE_TRANSACTION */
@@ -2185,6 +2185,11 @@ stack pointer at the time of sampling).
 .I dyn_size
 is the amount of data actually dumped (can be less than
 .IR size ).
+Note that
+.I dyn_size
+is omitted if
+.I size
+is 0.
 .TP
 .I weight
 If
@@ -2752,9 +2757,10 @@ The
 file can be set to restrict access to the performance counters.
 .RS
 .IP 2 4
-allow only user-space measurements.
+allow only user-space measurements (default since Linux 4.6).
+.\" default changed in commit 0161028b7c8aebef64194d3d73e43bc3b53b5c66
 .IP 1
-allow both kernel and user measurements (default).
+allow both kernel and user measurements (default before Linux 4.6).
 .IP 0
 allow access to CPU-specific data but not raw tracepoint samples.
 .IP \-1

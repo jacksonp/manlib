@@ -5,6 +5,7 @@
   </refmeta>
   <refnamediv>
     <refname>DEFINE_STACK_OF, DEFINE_STACK_OF_CONST, DEFINE_SPECIAL_STACK_OF,
+DEFINE_SPECIAL_STACK_OF_CONST,
 OPENSSL_sk_deep_copy, OPENSSL_sk_delete, OPENSSL_sk_delete_ptr,
 OPENSSL_sk_dup, OPENSSL_sk_find, OPENSSL_sk_find_ex, OPENSSL_sk_free,
 OPENSSL_sk_insert, OPENSSL_sk_is_sorted, OPENSSL_sk_new, OPENSSL_sk_new_null,
@@ -20,10 +21,11 @@ sk_TYPE_is_sorted, sk_TYPE_dup, sk_TYPE_deep_copy, sk_TYPE_set_cmp_func</refname
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/safestack.h&gt;</synopsis>
-<synopsis>#define STACK_OF(TYPE)
-#define DEFINE_STACK_OF
-#define DEFINE_STACK_OF_CONST
-#define DEFINE_SPECIAL_STACK_OF</synopsis>
+<synopsis>STACK_OF(TYPE)
+DEFINE_STACK_OF(TYPE)
+DEFINE_STACK_OF_CONST(TYPE)
+DEFINE_SPECIAL_STACK_OF(FUNCTYPE, TYPE)
+DEFINE_SPECIAL_STACK_OF_CONST(FUNCTYPE, TYPE)</synopsis>
 <synopsis>typedef int (*sk_TYPE_compfunc)(const TYPE *const *a, const TYPE *const *b);
 typedef TYPE * (*sk_TYPE_copyfunc)(const TYPE *a);
 typedef void (*sk_TYPE_freefunc)(TYPE *a);</synopsis>
@@ -61,22 +63,27 @@ sk_TYPE_compfunc (*sk_TYPE_set_cmp_func(STACK_OF(TYPE) *sk, sk_TYPE_compfunc com
       any of the OpenSSL datatypes, such as <emphasis role="italic">X509</emphasis>.
     </para>
     <para>
-      DEFINE_STACK_OF(TYPE) creates set of functions for a stack of
-      <emphasis role="bold">TYPE</emphasis>. This will mean that type
-      <emphasis role="bold">TYPE</emphasis> is stored in each stack, the
-      type is referenced by STACK_OF(TYPE) and each function name begins
-      with <emphasis role="italic">sk_TYPE_</emphasis>. For example:
+      STACK_OF() returns the name for a stack of the specified <emphasis role="bold">TYPE</emphasis>. DEFINE_STACK_OF() creates set of
+      functions for a stack of <emphasis role="bold">TYPE</emphasis>. This
+      will mean that type <emphasis role="bold">TYPE</emphasis> is stored
+      in each stack, the type is referenced by STACK_OF(TYPE) and each
+      function name begins with <emphasis role="italic">sk_TYPE_</emphasis>. For example:
     </para>
     <screen>TYPE *sk_TYPE_value(STACK_OF(TYPE) *sk, int idx);</screen>
     <para>
-      DEFINE_STACK_OF_CONST(TYPE) is identical to DEFINE_STACK_OF(TYPE)
-      except each element is constant. For example:
+      DEFINE_STACK_OF_CONST() is identical to DEFINE_STACK_OF() except each
+      element is constant. For example:
     </para>
     <screen>const TYPE *sk_TYPE_value(STACK_OF(TYPE) *sk, int idx);</screen>
     <para>
-      DEFINE_SPECIAL_STACK_OF(FUNCNAME, TYPE) defines a stack of <emphasis role="bold">TYPE</emphasis> but each function uses <emphasis role="bold">FUNCNAME</emphasis> in the function name. For example:
+      DEFINE_SPECIAL_STACK_OF() defines a stack of <emphasis role="bold">TYPE</emphasis> but each function uses <emphasis role="bold">FUNCNAME</emphasis> in the function name. For example:
     </para>
     <screen>TYPE *sk_FUNCNAME_value(STACK_OF(TYPE) *sk, int idx);</screen>
+    <para>
+      DEFINE_SPECIAL_STACK_OF_CONST() is similar except that each element
+      is constant:
+    </para>
+    <screen>const TYPE *sk_FUNCNAME_value(STACK_OF(TYPE) *sk, int idx);</screen>
     <para>
       sk_TYPE_num() returns the number of elements in <emphasis role="bold">sk</emphasis> or -1 if <emphasis role="bold">sk</emphasis> is <emphasis role="bold">NULL</emphasis>.
     </para>
@@ -205,6 +212,10 @@ sk_TYPE_compfunc (*sk_TYPE_set_cmp_func(STACK_OF(TYPE) *sk, sk_TYPE_compfunc com
       matching element. In particular <emphasis role="bold">0</emphasis>
       indicates a matching first element. A failed search is indicated by a
       <emphasis role="bold">-1</emphasis> return value.
+    </para>
+    <para>
+      STACK_OF(), DEFINE_STACK_OF(), DEFINE_STACK_OF_CONST(), and
+      DEFINE_SPECIAL_STACK_OF() are implemented as macros.
     </para>
   </refsection>
   <refsection xml:id="ID-3934f3571cc907c83b0d2b4f04e7e547"><title>RETURN VALUES</title>

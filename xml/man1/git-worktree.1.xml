@@ -15,8 +15,8 @@
 </refnamediv>
 <refsynopsisdiv id="_synopsis">
 <literallayout><emphasis>git worktree add</emphasis> [-f] [--detach] [--checkout] [-b &lt;new-branch&gt;] &lt;path&gt; [&lt;branch&gt;]
-<emphasis>git worktree prune</emphasis> [-n] [-v] [--expire &lt;expire&gt;]
-<emphasis>git worktree list</emphasis> [--porcelain]</literallayout>
+<emphasis>git worktree list</emphasis> [--porcelain]
+<emphasis>git worktree prune</emphasis> [-n] [-v] [--expire &lt;expire&gt;]</literallayout>
 <simpara></simpara>
 </refsynopsisdiv>
 <refsect1 id="_description">
@@ -66,16 +66,6 @@ as if <literal>-b $(basename &lt;path&gt;)</literal> was specified.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-prune
-</term>
-<listitem>
-<simpara>
-Prune working tree information in $GIT_DIR/worktrees.
-</simpara>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
 list
 </term>
 <listitem>
@@ -84,6 +74,16 @@ List details of each worktree.  The main worktree is listed first, followed by
 each of the linked worktrees.  The output details include if the worktree is
 bare, the revision currently checked out, and the branch currently checked out
 (or <emphasis>detached HEAD</emphasis> if none).
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+prune
+</term>
+<listitem>
+<simpara>
+Prune working tree information in $GIT_DIR/worktrees.
 </simpara>
 </listitem>
 </varlistentry>

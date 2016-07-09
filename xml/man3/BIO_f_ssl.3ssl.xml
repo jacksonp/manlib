@@ -16,21 +16,18 @@ BIO_ssl_shutdown</refname>
 <synopsis>#include &lt;openssl/bio.h&gt;
 #include &lt;openssl/ssl.h&gt;</synopsis>
 <synopsis>const BIO_METHOD *BIO_f_ssl(void);</synopsis>
-<synopsis>#define BIO_set_ssl(b,ssl,c)   BIO_ctrl(b,BIO_C_SET_SSL,c,(char *)ssl)
-#define BIO_get_ssl(b,sslp)    BIO_ctrl(b,BIO_C_GET_SSL,0,(char *)sslp)
-#define BIO_set_ssl_mode(b,client)     BIO_ctrl(b,BIO_C_SSL_MODE,client,NULL)
-#define BIO_set_ssl_renegotiate_bytes(b,num) \
-       BIO_ctrl(b,BIO_C_SET_SSL_RENEGOTIATE_BYTES,num,NULL);
-#define BIO_set_ssl_renegotiate_timeout(b,seconds) \
-       BIO_ctrl(b,BIO_C_SET_SSL_RENEGOTIATE_TIMEOUT,seconds,NULL);
-#define BIO_get_num_renegotiates(b) \
-       BIO_ctrl(b,BIO_C_SET_SSL_NUM_RENEGOTIATES,0,NULL);</synopsis>
-<synopsis>BIO *BIO_new_ssl(SSL_CTX *ctx,int client);
+<synopsis>long BIO_set_ssl(BIO *b,SSL *ssl, long c);
+long BIO_get_ssl(BIO *b, SSL **sslp);
+long BIO_set_ssl_mode(BIO *b, long client);
+long BIO_set_ssl_renegotiate_bytes(BIO *b, long num);
+long BIO_set_ssl_renegotiate_timeout(BIO *b, long seconds);
+long BIO_get_num_renegotiates(BIO *b);</synopsis>
+<synopsis>BIO *BIO_new_ssl(SSL_CTX *ctx, int client);
 BIO *BIO_new_ssl_connect(SSL_CTX *ctx);
 BIO *BIO_new_buffer_ssl_connect(SSL_CTX *ctx);
-int BIO_ssl_copy_session_id(BIO *to,BIO *from);
+int BIO_ssl_copy_session_id(BIO *to, BIO *from);
 void BIO_ssl_shutdown(BIO *bio);</synopsis>
-<synopsis>#define BIO_do_handshake(b)    BIO_ctrl(b,BIO_C_DO_STATE_MACHINE,0,NULL)</synopsis>
+<synopsis>long BIO_do_handshake(BIO *b);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-1e7284fb80fb261d168e1b072b32a34e"><title>DESCRIPTION</title>
     <para>
@@ -139,6 +136,12 @@ void BIO_ssl_shutdown(BIO *bio);</synopsis>
     <para>
       Applications do not have to call BIO_do_handshake() but may wish to
       do so to separate the handshake process from other I/O processing.
+    </para>
+    <para>
+      BIO_set_ssl(), BIO_get_ssl(), BIO_set_ssl_mode(),
+      BIO_set_ssl_renegotiate_bytes(), BIO_set_ssl_renegotiate_timeout(),
+      BIO_get_num_renegotiates(), and BIO_do_handshake() are implemented as
+      macros.
     </para>
   </refsection>
   <refsection xml:id="ID-b9c41e6f4a19cef26a242b8550e20a8e"><title>EXAMPLE</title>

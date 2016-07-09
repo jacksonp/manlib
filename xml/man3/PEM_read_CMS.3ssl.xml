@@ -4,7 +4,8 @@
     <refentrytitle>PEM_read_CMS.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>PEM_read_CMS,
+    <refname>DECLARE_PEM_rw,
+PEM_read_CMS,
 PEM_read_bio_CMS,
 PEM_write_CMS,
 PEM_write_bio_CMS,
@@ -41,7 +42,7 @@ PEM_write_bio_SSL_SESSION</refname>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/pem.h&gt;</synopsis>
-<synopsis>#define DECLARE_PEM_rw(name, TYPE) ...</synopsis>
+<synopsis>DECLARE_PEM_rw(name, TYPE)</synopsis>
 <synopsis>TYPE *PEM_read_TYPE(FILE *fp, TYPE **a, pem_password_cb *cb, void *u);
 TYPE *PEM_read_bio_TYPE(BIO *bp, TYPE **a, pem_password_cb *cb, void *u);
 int PEM_write_TYPE(FILE *fp, const TYPE *a);
@@ -51,7 +52,8 @@ int PEM_write_bio_TYPE(BIO *bp, const TYPE *a);</synopsis>
     <para>
       In the description below, <emphasis role="italic">TYPE</emphasis> is
       used as a placeholder for any of the OpenSSL datatypes, such as
-      <emphasis role="italic">X509</emphasis>.
+      <emphasis role="italic">X509</emphasis>. The macro <emphasis role="bold">DECLARE_PEM_rw</emphasis> expands to the set of
+      declarations shown in the next four lines of the synopsis.
     </para>
     <para>
       These routines convert between local instances of ASN1 datatypes and

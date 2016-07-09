@@ -4,8 +4,7 @@
     <refentrytitle>BUF_MEM_new.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BUF_MEM_FLAG_SECURE,
-BUF_MEM_new, BUF_MEM_new_ex, BUF_MEM_free, BUF_MEM_grow
+    <refname>BUF_MEM_new, BUF_MEM_new_ex, BUF_MEM_free, BUF_MEM_grow
 BUF_MEM_grow_clean, BUF_reverse</refname>
 <refpurpose>simple character array structure</refpurpose>
   </refnamediv>
@@ -15,7 +14,6 @@ BUF_MEM_grow_clean, BUF_reverse</refname>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/buffer.h&gt;</synopsis>
 <synopsis>BUF_MEM *BUF_MEM_new(void);</synopsis>
-<synopsis>#define BUF_MEM_FLAG_SECURE</synopsis>
 <synopsis>BUF_MEM *BUF_MEM_new_ex(unsigned long flags);</synopsis>
 <synopsis>void BUF_MEM_free(BUF_MEM *a);</synopsis>
 <synopsis>int BUF_MEM_grow(BUF_MEM *str, int len);

@@ -14,12 +14,12 @@ BIO_f_buffer</refname>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bio.h&gt;</synopsis>
-<synopsis>const BIO_METHOD * BIO_f_buffer(void);</synopsis>
-<synopsis>#define BIO_get_buffer_num_lines(b)
-#define BIO_set_read_buffer_size(b,size)
-#define BIO_set_write_buffer_size(b,size)
-#define BIO_set_buffer_size(b,size)
-#define BIO_set_buffer_read_data(b,buf,num)</synopsis>
+<synopsis>const BIO_METHOD *BIO_f_buffer(void);</synopsis>
+<synopsis>long BIO_get_buffer_num_lines(BIO *b);
+long BIO_set_read_buffer_size(BIO *b, long size);
+long BIO_set_write_buffer_size(BIO *b, long size);
+long BIO_set_buffer_size(BIO *b, long size);
+long BIO_set_buffer_read_data(BIO *b, void *buf, long num);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-3d995db05001a38dfb7a1de2816267be"><title>DESCRIPTION</title>
     <para>
@@ -53,6 +53,10 @@ BIO_f_buffer</refname>
     </para>
   </refsection>
   <refsection xml:id="ID-fe1109f1ec8fa1d5169485e5f1cb2137"><title>NOTES</title>
+    <para>
+      These functions, other than BIO_f_buffer(), are implemented as
+      macros.
+    </para>
     <para>
       Buffering BIOs implement BIO_gets() by using BIO_read() operations on
       the next BIO in the chain. By prepending a buffering BIO to a chain

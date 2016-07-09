@@ -113,11 +113,26 @@ be the only way that the variable is modified.</term>
       The other functions return 1 on success or 0 on error.
     </para>
   </refsection>
+  <refsection xml:id="ID-cdd753dd5b27ad8fbe1ebb71c41456b4"><title>NOTES</title>
+    <para>
+      On Windows platforms the CRYPTO_THREAD_* types and functions in the
+      openssl/crypto.h header are dependent on some of the types
+      customarily made available by including windows.h. The application
+      developer is likely to require control over when the latter is
+      included, commonly as one of the first included headers. Therefore it
+      is defined as an application developer's responsibility to include
+      windows.h prior to crypto.h where use of CRYPTO_THREAD_* types and
+      functions is required.
+    </para>
+  </refsection>
   <refsection xml:id="ID-f479ac47260147786b8a58c777d45bfa"><title>EXAMPLE</title>
     <para>
       This example safely initializes and uses a lock.
     </para>
-    <screen>#include &amp;lt;openssl/crypto.h&amp;gt;
+    <screen>#ifdef _WIN32
+# include &lt;windows.h&amp;gt;
+#endif
+#include &amp;lt;openssl/crypto.h&amp;gt;
 
 static CRYPTO_ONCE once = CRYPTO_ONCE_STATIC_INIT;
 static CRYPTO_RWLOCK *lock;

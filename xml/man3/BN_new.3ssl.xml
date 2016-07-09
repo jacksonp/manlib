@@ -4,19 +4,22 @@
     <refentrytitle>BN_new.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BN_new, BN_clear, BN_free, BN_clear_free</refname>
+    <refname>BN_new, BN_secure_new, BN_clear, BN_free, BN_clear_free</refname>
 <refpurpose>allocate and free BIGNUMs</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bn.h&gt;</synopsis>
 <synopsis>BIGNUM *BN_new(void);</synopsis>
+<synopsis>BIGNUM *BN_secure_new(void);</synopsis>
 <synopsis>void BN_clear(BIGNUM *a);</synopsis>
 <synopsis>void BN_free(BIGNUM *a);</synopsis>
 <synopsis>void BN_clear_free(BIGNUM *a);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-e522bc5aac11ffe75217729bb096f128"><title>DESCRIPTION</title>
     <para>
-      BN_new() allocates and initializes a <emphasis role="bold">BIGNUM</emphasis> structure.
+      BN_new() allocates and initializes a <emphasis role="bold">BIGNUM</emphasis> structure. BN_secure_new() does the
+      same except that the secure heap OPENSSL_secure_malloc(3) is used to
+      store the value.
     </para>
     <para>
       BN_clear() is used to destroy sensitive data such as keys when they
@@ -30,8 +33,8 @@
   </refsection>
   <refsection xml:id="ID-bb530e351e8b7ca68ffc3e8aba1c8596"><title>RETURN VALUES</title>
     <para>
-      BN_new() returns a pointer to the <emphasis role="bold">BIGNUM</emphasis>. If the allocation fails, it returns
-      <emphasis role="bold">NULL</emphasis> and sets an error code that can
+      BN_new() and BN_secure_new() return a pointer to the <emphasis role="bold">BIGNUM</emphasis>. If the allocation fails, they return
+      <emphasis role="bold">NULL</emphasis> and set an error code that can
       be obtained by <citerefentry>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>.

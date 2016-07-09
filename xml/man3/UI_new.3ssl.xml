@@ -4,10 +4,7 @@
     <refentrytitle>UI_new.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>UI, UI_METHOD, UI_INPUT_FLAG_ECHO,
-UI_INPUT_FLAG_DEFAULT_PWD,
-UI_CTRL_PRINT_ERRORS,
-UI_CTRL_IS_REDOABLE,
+    <refname>UI, UI_METHOD,
 UI_new, UI_new_method, UI_free, UI_add_input_string, UI_dup_input_string,
 UI_add_verify_string, UI_dup_verify_string, UI_add_input_boolean,
 UI_dup_input_boolean, UI_add_info_string, UI_dup_info_string,
@@ -42,18 +39,13 @@ int UI_add_info_string(UI *ui, const char *text);
 int UI_dup_info_string(UI *ui, const char *text);
 int UI_add_error_string(UI *ui, const char *text);
 int UI_dup_error_string(UI *ui, const char *text);</synopsis>
-<synopsis>/* These are the possible flags.  They can be or'ed together. */
-#define UI_INPUT_FLAG_ECHO             0x01
-#define UI_INPUT_FLAG_DEFAULT_PWD      0x02</synopsis>
 <synopsis>char *UI_construct_prompt(UI *ui_method,
        const char *object_desc, const char *object_name);</synopsis>
 <synopsis>void *UI_add_user_data(UI *ui, void *user_data);
 void *UI_get0_user_data(UI *ui);</synopsis>
 <synopsis>const char *UI_get0_result(UI *ui, int i);</synopsis>
 <synopsis>int UI_process(UI *ui);</synopsis>
-<synopsis>int UI_ctrl(UI *ui, int cmd, long i, void *p, void (*f)());
-#define UI_CTRL_PRINT_ERRORS           1
-#define UI_CTRL_IS_REDOABLE            2</synopsis>
+<synopsis>int UI_ctrl(UI *ui, int cmd, long i, void *p, void (*f)());</synopsis>
 <synopsis>void UI_set_default_method(const UI_METHOD *meth);
 const UI_METHOD *UI_get_default_method(void);
 const UI_METHOD *UI_get_method(UI *ui);
@@ -140,12 +132,12 @@ const UI_METHOD *UI_set_method(UI *ui, const UI_METHOD *meth);</synopsis>
       them.  Other methods may make a difference between them, however.
     </para>
     <para>
-      The flags currently supported are UI_INPUT_FLAG_ECHO, which is
-      relevant for UI_add_input_string() and will have the users response
-      be echoed (when prompting for a password, this flag should obviously
-      not be used, and UI_INPUT_FLAG_DEFAULT_PWD, which means that a
-      default password of some sort will be used (completely depending on
-      the application and the UI method).
+      The flags currently supported are <emphasis role="bold">UI_INPUT_FLAG_ECHO</emphasis>, which is relevant for
+      UI_add_input_string() and will have the users response be echoed
+      (when prompting for a password, this flag should obviously not be
+      used, and <emphasis role="bold">UI_INPUT_FLAG_DEFAULT_PWD</emphasis>,
+      which means that a default password of some sort will be used
+      (completely depending on the application and the UI method).
     </para>
     <para>
       UI_dup_input_string(), UI_dup_verify_string(),
@@ -182,10 +174,10 @@ const UI_METHOD *UI_set_method(UI *ui, const UI_METHOD *meth);</synopsis>
     </para>
     <para>
       UI_ctrl() adds extra control for the application author.	For now, it
-      understands two commands: UI_CTRL_PRINT_ERRORS, which makes
-      UI_process() print the OpenSSL error stack as part of processing the
-      UI, and UI_CTRL_IS_REDOABLE, which returns a flag saying if the used
-      UI can be used again or not.
+      understands two commands: <emphasis role="bold">UI_CTRL_PRINT_ERRORS</emphasis>, which makes UI_process()
+      print the OpenSSL error stack as part of processing the UI, and
+      <emphasis role="bold">UI_CTRL_IS_REDOABLE</emphasis>, which returns a
+      flag saying if the used UI can be used again or not.
     </para>
     <para>
       UI_set_default_method() changes the default UI method to the one

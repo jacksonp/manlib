@@ -7262,6 +7262,27 @@ uploadpack.keepAlive
 </varlistentry>
 <varlistentry>
 <term>
+uploadpack.packObjectsHook
+</term>
+<listitem>
+<simpara>
+        If this option is set, when <literal>upload-pack</literal> would run
+        <literal>git pack-objects</literal> to create a packfile for a client, it will
+        run this shell command instead.  The <literal>pack-objects</literal> command and
+        arguments it <emphasis>would</emphasis> have run (including the <literal>git pack-objects</literal>
+        at the beginning) are appended to the shell command. The stdin
+        and stdout of the hook are treated as if <literal>pack-objects</literal> itself
+        was run. I.e., <literal>upload-pack</literal> will feed input intended for
+        <literal>pack-objects</literal> to the hook, and expects a completed packfile on
+        stdout.
+</simpara>
+<simpara>Note that this configuration variable is ignored if it is seen in the
+repository-level config (this is a safety measure against fetching from
+untrusted repositories).</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 url.&lt;base&gt;.insteadOf
 </term>
 <listitem>

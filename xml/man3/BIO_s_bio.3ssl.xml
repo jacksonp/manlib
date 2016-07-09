@@ -13,17 +13,18 @@ BIO_ctrl_get_read_request, BIO_ctrl_reset_read_request</refname>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bio.h&gt;</synopsis>
 <synopsis>const BIO_METHOD *BIO_s_bio(void);</synopsis>
-<synopsis>#define BIO_make_bio_pair(b1,b2)   (int)BIO_ctrl(b1,BIO_C_MAKE_BIO_PAIR,0,b2)
-#define BIO_destroy_bio_pair(b)    (int)BIO_ctrl(b,BIO_C_DESTROY_BIO_PAIR,0,NULL)</synopsis>
-<synopsis>#define BIO_shutdown_wr(b) (int)BIO_ctrl(b, BIO_C_SHUTDOWN_WR, 0, NULL)</synopsis>
-<synopsis>#define BIO_set_write_buf_size(b,size) (int)BIO_ctrl(b,BIO_C_SET_WRITE_BUF_SIZE,size,NULL)
-#define BIO_get_write_buf_size(b,size) (size_t)BIO_ctrl(b,BIO_C_GET_WRITE_BUF_SIZE,size,NULL)</synopsis>
+<synopsis>int BIO_make_bio_pair(BIO *b1, BIO *b2);
+int BIO_destroy_bio_pair(BIO *b);
+int BIO_shutdown_wr(BIO *b);</synopsis>
+<synopsis/>
+<synopsis>int BIO_set_write_buf_size(BIO *b, long size);
+size_t BIO_get_write_buf_size(BIO *b, long size);</synopsis>
 <synopsis>int BIO_new_bio_pair(BIO **bio1, size_t writebuf1, BIO **bio2, size_t writebuf2);</synopsis>
-<synopsis>#define BIO_get_write_guarantee(b) (int)BIO_ctrl(b,BIO_C_GET_WRITE_GUARANTEE,0,NULL)
-size_t BIO_ctrl_get_write_guarantee(BIO *b);</synopsis>
-<synopsis>#define BIO_get_read_request(b)    (int)BIO_ctrl(b,BIO_C_GET_READ_REQUEST,0,NULL)
-size_t BIO_ctrl_get_read_request(BIO *b);</synopsis>
-<synopsis>int BIO_ctrl_reset_read_request(BIO *b);</synopsis>
+<synopsis>int BIO_get_write_guarantee(BIO *b);
+size_t BIO_ctrl_get_write_guarantee(BIO *b);
+int BIO_get_read_request(BIO *b);
+size_t BIO_ctrl_get_read_request(BIO *b);
+int BIO_ctrl_reset_read_request(BIO *b);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-7db5e8e172679a2e9bdc3ae7be7c96e9"><title>DESCRIPTION</title>
     <para>
@@ -145,6 +146,12 @@ size_t BIO_ctrl_get_read_request(BIO *b);</synopsis>
     <para>
       BIO_eof() is true if no data is in the peer BIO and the peer BIO has
       been shutdown.
+    </para>
+    <para>
+      BIO_make_bio_pair(), BIO_destroy_bio_pair(), BIO_shutdown_wr(),
+      BIO_set_write_buf_size(), BIO_get_write_buf_size(),
+      BIO_get_write_guarantee(), and BIO_get_read_request() are implemented
+      as macros.
     </para>
   </refsection>
   <refsection xml:id="ID-6ff61b2d84ca42f511f1f08c22d4e023"><title>RETURN VALUES</title>

@@ -264,9 +264,13 @@ and mount the following types of filesystems:
 .PP
 Holding
 .B CAP_SYS_ADMIN
-within the PID namespace associated with a process's cgroup namespace
+within the user namespace associated with a process's cgroup namespace
 allows (since Linux 4.6)
-that process to mount cgroup filesystems.
+that process to the mount cgroup version 2 filesystem and
+cgroup version 1 named hierarchies
+(i.e., cgroup filesystems mounted with the
+.BR """none,name="""
+option).
 
 Holding
 .B CAP_SYS_ADMIN
@@ -964,7 +968,7 @@ to map user and group IDs between user namespaces.
 Linux 3.9 added the required infrastructure support for many of
 the remaining unsupported filesystems
 (Plan 9 (9P), Andrew File System (AFS), Ceph, CIFS, CODA, NFS, and OCFS2).
-Linux 3.11 added support the last of the unsupported major filesystems,
+Linux 3.12 added support the last of the unsupported major filesystems,
 .\" commit d6970d4b726cea6d7a9bc4120814f95c09571fc3
 XFS.
 .\"

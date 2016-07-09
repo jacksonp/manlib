@@ -447,6 +447,18 @@ and
 .BR utimes (2)
 on Linux.)
 
+If both
+.I tv_nsec
+fields are specified as
+.BR UTIME_OMIT ,
+then the Linux implementation of
+.BR utimensat ()
+succeeds even if the file referred to by
+.IR dirfd
+and
+.I pathname
+does not exist.
+.SS C library/ kernel ABI differences
 On Linux,
 .BR futimens ()
 is a library function implemented on top of the
@@ -468,17 +480,13 @@ is implemented as:
     utimensat(fd, NULL, times, 0);
 .fi
 
-If both
-.I tv_nsec
-fields are specified as
-.BR UTIME_OMIT ,
-then the Linux implementation of
+Note, however, that the glibc wrapper for
 .BR utimensat ()
-succeeds even if the file referred to by
-.IR dirfd
-and
-.I pathname
-does not exist.
+disallows passing NULL as the value for
+.IR file :
+the wrapper function returns the error
+.IR EINVAL
+in this case.
 .SH BUGS
 Several bugs afflict
 .BR utimensat ()

@@ -1,4 +1,4 @@
-.TH LVCREATE 8 "LVM TOOLS 2.02.159(2)-git (2016-06-25)" "Sistina Software UK" \" -*- nroff -*-
+.TH LVCREATE 8 "LVM TOOLS 2.02.161(2)-git (2016-07-06)" "Sistina Software UK" \" -*- nroff -*-
 .
 .\" Use 1st. parameter with \% to fix 'man2html' rendeing on same line!
 .de SIZE_G
@@ -329,19 +329,20 @@ is specified.
 .IR LogicalExtentsNumber \c
 .RB [ % { VG | PVS | FREE | ORIGIN }]
 .br
-Gives the number of logical extents to allocate for the new
-logical volume.  The total number of physical extents allocated will be
-greater than this, for example, if the volume is mirrored.
-The number can also be expressed as a percentage of the total space
-in the Volume Group with the suffix \fB%VG\fP, as a percentage of the
-remaining free space in the Volume Group with the suffix \fB%FREE\fP, as a
-percentage of the remaining free space for the specified
-PhysicalVolume(s) with the suffix \fB%PVS\fP, or (for a snapshot) as a
-percentage of the total space in the Origin Logical Volume with the
-suffix \fB%ORIGIN\fP (i.e. \fB100%ORIGIN\fP provides space for the whole origin).
-When expressed as a percentage, the number is treated
-as an approximate upper limit for the number of physical extents
-to be allocated (including extents used by any mirrors, for example).
+Specifies the size of the new LV in logical extents.  The number of
+physical extents allocated may be different, and depends on the LV type.
+Certain LV types require more physical extents for data redundancy or
+metadata.  An alternate syntax allows the size to be determined indirectly
+as a percentage of the size of a related VG, LV, or set of PVs.  The
+suffix \fB%VG\fP denotes the total size of the VG, the suffix \fB%FREE\fP
+the remaining free space in the VG, and the suffix \fB%PVS\fP the free
+space in the specified Physical Volumes.  For a snapshot, the size
+can be expressed as a percentage of the total size of the Origin Logical
+Volume with the suffix \fB%ORIGIN\fP (\fB100%ORIGIN\fP provides space for
+the whole origin).
+When expressed as a percentage, the size defines an upper limit for the
+number of logical extents in the new LV. The precise number of logical
+extents in the new LV is not determined until the command has completed.
 .
 .HP
 .BR \-j | \-\-major

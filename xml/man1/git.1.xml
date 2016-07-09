@@ -1077,6 +1077,21 @@ of clones and fetches.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
+<literal>GIT_TRACE_CURL</literal>
+</term>
+<listitem>
+<simpara>
+        Enables a curl full trace dump of all incoming and outgoing data,
+        including descriptive information, of the git transport protocol.
+        This is similar to doing curl <literal>--trace-ascii</literal> on the command line.
+        This option overrides setting the <literal>GIT_CURL_VERBOSE</literal> environment
+        variable.
+        See <literal>GIT_TRACE</literal> for available trace output options.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 <literal>GIT_LITERAL_PATHSPECS</literal>
 </term>
 <listitem>

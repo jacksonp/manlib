@@ -4,8 +4,7 @@
     <refentrytitle>SSL_CTX_set_default_passwd_cb.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_CTX_passwd_cb,
-SSL_CTX_set_default_passwd_cb, SSL_CTX_set_default_passwd_cb_userdata,
+    <refname>SSL_CTX_set_default_passwd_cb, SSL_CTX_set_default_passwd_cb_userdata,
 SSL_CTX_get_default_passwd_cb, SSL_CTX_get_default_passwd_cb_userdata,
 SSL_set_default_passwd_cb, SSL_set_default_passwd_cb_userdata,
 SSL_get_default_passwd_cb, SSL_get_default_passwd_cb_userdata</refname>
@@ -14,15 +13,14 @@ get passwd callback for encrypted PEM file handling</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
-<synopsis>void SSL_CTX_set_default_passwd_cb(SSL_CTX *ctx, SSL_CTX_passwd_cb *cb);
+<synopsis>void SSL_CTX_set_default_passwd_cb(SSL_CTX *ctx, pem_password_cb *cb);
 void SSL_CTX_set_default_passwd_cb_userdata(SSL_CTX *ctx, void *u);
-SSL_CTX_passwd_cb *SSL_CTX_get_default_passwd_cb(SSL_CTX *ctx);
+pem_password_cb *SSL_CTX_get_default_passwd_cb(SSL_CTX *ctx);
 void *SSL_CTX_get_default_passwd_cb_userdata(SSL_CTX *ctx);</synopsis>
-<synopsis>void SSL_set_default_passwd_cb(SSL *s, SSL_CTX_passwd_cb *cb);
+<synopsis>void SSL_set_default_passwd_cb(SSL *s, pem_password_cb *cb);
 void SSL_set_default_passwd_cb_userdata(SSL *s, void *u);
-SSL_CTX_passwd_cb *SSL_get_default_passwd_cb(SSL *s);
+pem_password_cb *SSL_get_default_passwd_cb(SSL *s);
 void *SSL_get_default_passwd_cb_userdata(SSL *s);</synopsis>
-<synopsis>typedef int (*SSL_CTX_passwd_cb)(char *buf, int size, int rwflag, void *u);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-c5e162abc2a314af19662718cb392cfe"><title>DESCRIPTION</title>
     <para>
@@ -58,6 +56,9 @@ void *SSL_get_default_passwd_cb_userdata(SSL *s);</synopsis>
       is of size <emphasis role="bold">size</emphasis>. The actual length
       of the password must be returned to the calling function. <emphasis role="bold">rwflag</emphasis> indicates whether the callback is used
       for reading/decryption (rwflag=0) or writing/encryption (rwflag=1).
+      For more details, see <citerefentry>
+      <refentrytitle>pem_password_cb</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>.
     </para>
   </refsection>
   <refsection xml:id="ID-a92387b6bbdf8ab6621915fe6b1cec65"><title>NOTES</title>

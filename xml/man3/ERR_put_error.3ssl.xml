@@ -54,10 +54,6 @@ void ERR_add_error_data(int num, va_list arg);</synopsis>
 	translated into lower case and underscores changed to spaces.
       </para>
       <para>
-	When you are using new function or reason codes, run <emphasis role="bold">make errors</emphasis>. The necessary <emphasis role="bold">#define</emphasis>s will then automatically be added to
-	the sub-library's header file.
-      </para>
-      <para>
 	Although a library will normally report errors using its own
 	specific XXXerr macro, another library's macro can be used. This is
 	normally only done when a library wants to include ASN1 code which

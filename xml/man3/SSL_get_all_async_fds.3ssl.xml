@@ -9,7 +9,8 @@
 asynchronous operations</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
+<synopsis>#include &lt;openssl/async.h&gt;
+#include &lt;openssl/ssl.h&gt;</synopsis>
 <synopsis>int SSL_waiting_for_async(SSL *s);
 int SSL_get_all_async_fds(SSL *s, OSSL_ASYNC_FD *fd, size_t *numfds);
 int SSL_get_changed_async_fds(SSL *s, OSSL_ASYNC_FD *addfd, size_t *numaddfds,
@@ -64,6 +65,16 @@ int SSL_get_changed_async_fds(SSL *s, OSSL_ASYNC_FD *addfd, size_t *numaddfds,
     <para>
       SSL_get_all_async_fds() and SSL_get_changed_async_fds() return 1 on
       success or 0 on error.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-ce48048b4f021eb7bb557aa7417b6f00"><title>NOTES</title>
+    <para>
+      On Windows platforms the openssl/async.h header is dependent on some
+      of the types customarily made available by including windows.h. The
+      application developer is likely to require control over when the
+      latter is included, commonly as one of the first included headers.
+      Therefore it is defined as an application developer's responsibility
+      to include windows.h prior to async.h.
     </para>
   </refsection>
   <refsection xml:id="ID-ded20f48ef9f09bb6abbfcc944dee383"><title>SEE ALSO</title>

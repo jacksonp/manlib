@@ -279,7 +279,8 @@ default.   You can use <literal>--no-utf8</literal> to override this.</simpara>
         By default the command will try to detect the patch format
         automatically. This option allows the user to bypass the automatic
         detection and specify the patch format that the patch(es) should be
-        interpreted as. Valid formats are mbox, stgit, stgit-series and hg.
+        interpreted as. Valid formats are mbox, mboxrd,
+        stgit, stgit-series and hg.
 </simpara>
 </listitem>
 </varlistentry>

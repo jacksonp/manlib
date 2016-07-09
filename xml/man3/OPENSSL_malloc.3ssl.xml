@@ -4,9 +4,7 @@
     <refentrytitle>OPENSSL_malloc.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>CRYPTO_MEM_CHECK_OFF, CRYPTO_MEM_CHECK_ON,
-CRYPTO_MEM_CHECK_DISABLE, CRYPTO_MEM_CHECK_ENABLE,
-OPENSSL_malloc_init,
+    <refname>OPENSSL_malloc_init,
 OPENSSL_malloc, OPENSSL_zalloc, OPENSSL_realloc, OPENSSL_free,
 OPENSSL_clear_realloc, OPENSSL_clear_free, OPENSSL_cleanse,
 CRYPTO_malloc, CRYPTO_zalloc, CRYPTO_realloc, CRYPTO_free,
@@ -57,10 +55,6 @@ int CRYPTO_set_mem_functions(
         void *(*r)(void *, size_t, const char *, int),
         void (*f)(void *, const char *, int))</synopsis>
 <synopsis>int CRYPTO_set_mem_debug(int onoff)</synopsis>
-<synopsis>#define CRYPTO_MEM_CHECK_OFF
-#define CRYPTO_MEM_CHECK_ON
-#define CRYPTO_MEM_CHECK_DISABLE
-#define CRYPTO_MEM_CHECK_ENABLE</synopsis>
 <synopsis>int CRYPTO_mem_ctrl(int mode);</synopsis>
 <synopsis>int OPENSSL_mem_debug_push(const char *info)
 int OPENSSL_mem_debug_pop(void);</synopsis>
@@ -154,8 +148,7 @@ void CRYPTO_mem_leaks_fp(FILE *fp);</synopsis>
       CRYPTO_mem_ctrl() provides fine-grained control of memory leak
       tracking. To enable tracking call CRYPTO_mem_ctrl() with a <emphasis role="bold">mode</emphasis> argument of the <emphasis role="bold">CRYPTO_MEM_CHECK_ON</emphasis>. To disable tracking call
       CRYPTO_mem_ctrl() with a <emphasis role="bold">mode</emphasis>
-      argument of the <emphasis role="bold">CRYPTO_MEM_CHECK_OFF</emphasis>. The <emphasis role="bold">CRYPTO_MEM_CHECK_DISABLE</emphasis> and <emphasis role="bold">CRYPTO_MEM_CHECK_ENABLE</emphasis> modes are used
-      internally within OpenSSL to temporarily suspend and resume tracking.
+      argument of the <emphasis role="bold">CRYPTO_MEM_CHECK_OFF</emphasis>.
     </para>
     <para>
       While checking memory, it can be useful to store additional context

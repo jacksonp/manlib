@@ -4,18 +4,18 @@
     <refentrytitle>SSL_CTX_set_read_ahead.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_CTX_set_read_ahead, SSL_CTX_set_default_read_ahead, SSL_CTX_get_read_ahead,
-SSL_CTX_get_default_read_ahead, SSL_set_read_ahead, SSL_get_read_ahead</refname>
+    <refname>SSL_CTX_set_read_ahead, SSL_CTX_get_read_ahead,
+SSL_set_read_ahead, SSL_get_read_ahead,
+SSL_CTX_get_default_read_ahead</refname>
 <refpurpose>manage whether to read as many input bytes as possible</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
-<synopsis>int SSL_get_read_ahead(const SSL *s);
-void SSL_set_read_ahead(SSL *s, int yes);</synopsis>
-<synopsis>#define SSL_CTX_get_default_read_ahead(ctx)
-#define SSL_CTX_set_default_read_ahead(ctx,m)
-#define SSL_CTX_get_read_ahead(ctx)
-#define SSL_CTX_set_read_ahead(ctx,m)</synopsis>
+<synopsis>void SSL_set_read_ahead(SSL *s, int yes);
+int SSL_get_read_ahead(const SSL *s);</synopsis>
+<synopsis>SSL_CTX_set_read_ahead(SSL_CTX *ctx, int yes);
+long SSL_CTX_get_read_ahead(SSL_CTX *ctx);
+long SSL_CTX_get_default_read_ahead(SSL_CTX *ctx);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-e6e000d8c1d669fdb66cdc519e23b693"><title>DESCRIPTION</title>
     <para>
@@ -29,12 +29,8 @@ void SSL_set_read_ahead(SSL *s, int yes);</synopsis>
       reading ahead is on, or <emphasis role="bold">x</emphasis> bytes
       otherwise. The parameter <emphasis role="bold">yes</emphasis> or
       <emphasis role="bold">m</emphasis> should be 0 to ensure reading
-      ahead is off, or non zero otherwise.
-    </para>
-    <para>
-      SSL_CTX_set_default_read_ahead is a synonym for
-      SSL_CTX_set_read_ahead, and SSL_CTX_get_default_read_ahead is a
-      synonym for SSL_CTX_get_read_ahead.
+      ahead is off, or non zero otherwise. SSL_CTX_set_default_read_ahead()
+      is identical to SSL_CTX_set_read_ahead().
     </para>
     <para>
       SSL_CTX_get_read_ahead() and SSL_get_read_ahead() indicate whether

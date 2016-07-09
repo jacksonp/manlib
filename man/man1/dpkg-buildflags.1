@@ -362,6 +362,34 @@ locations to bounce off of during a memory corruption attack.
 This is not compatible with \fB\-fPIC\fP so care must be taken when
 building shared objects.
 
+Static libraries can be used by programs or other shared libraries.
+Depending on the flags used to compile all the objects within a static
+library, these libraries will be usable by different sets of objects:
+
+.RS
+.TP
+none
+Cannot be linked into a PIE program, nor a shared library.
+.TP
+.B \-fPIE
+Can be linked into any program, but not a shared library.
+.TP
+.B \-fPIC
+Can be linked into any program and shared library.
+.RE
+
+.IP
+Unconditionally passing \fB\-fPIE\fP, \fB\-fpie\fP or \fB\-pie\fP to a
+build-system using libtool is safe as these flags will get stripped when
+building shared libraries.
+Otherwise on projects that build both programs and shared libraries you
+might need to make sure that when building the shared libraries \fB\-fPIC\fP
+is always passed last (so that it overrides any previous \fB\-PIE\fP) to
+compilation flags such as \fBCFLAGS\fP, and \fB\-shared\fP is passed last
+(so that it overrides any previous \fB\-pie\fP) to linking flags such as
+\fBLDFLAGS\fP.
+
+.IP
 Additionally, since PIE is implemented via a general register, some
 register starved architectures (but not including i386 anymore since
 optimizations implemented in gcc >= 5) can see performance losses of up to
@@ -384,7 +412,7 @@ This will cause warnings when the \fB__TIME__\fP, \fB__DATE__\fP and
 .TP
 .B fixdebugpath
 This setting (disabled by default) adds
-.BI %\-fdebug\-path\-map= BUILDPATH =.
+.BI \%\-fdebug\-path\-map= BUILDPATH =.
 to \fBCFLAGS\fP, \fBCXXFLAGS\fP, \fBOBJCFLAGS\fP, \fBOBJCXXFLAGS\fP,
 \fBGCJFLAGS\fP, \fBFFLAGS\fP and \fBFCFLAGS\fP where \fBBUILDPATH\fP is
 set to the top-level directory of the package being built.
@@ -432,6 +460,16 @@ various area features that affect build flags.
 The \fBDEB_BUILD_MAINT_OPTIONS\fP variable overrides any setting in the
 \fBDEB_BUILD_OPTIONS\fP feature areas.
 See the \fBFEATURE AREAS\fP section for details.
+.TP
+.B DEB_VENDOR
+This setting defines the current vendor.
+If not set, it will discover the current vendor by reading
+\fB\%/etc/dpkg/origins/default\fP.
+.TP
+.B DEB_BUILD_PATH
+This variable sets the build path (since dpkg 1.18.8) to use in features
+such as \fBfixdebugpath\fP so that they can be controlled by the caller.
+This variable is currently Debian and derivatives-specific.
 .
 .SH FILES
 .SS Configuration files
@@ -448,12 +486,6 @@ User configuration file.
 .B /usr/share/dpkg/buildflags.mk
 Makefile snippet that will load (and optionally export) all flags
 supported by \fBdpkg-buildflags\fP into variables (since dpkg 1.16.1).
-.
-.SH ENVIRONMENT
-.TP
-.B DEB_VENDOR
-This setting defines the current vendor. If not set, it will discover the
-current vendor by reading \fB\%/etc/dpkg/origins/default\fP.
 .
 .SH EXAMPLES
 To pass build flags to a build command in a makefile:

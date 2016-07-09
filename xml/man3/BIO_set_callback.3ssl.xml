@@ -10,14 +10,15 @@ BIO_debug_callback</refname>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bio.h&gt;</synopsis>
-<synopsis>#define BIO_set_callback(b,cb)         ((b)-&gt;callback=(cb))
-#define BIO_get_callback(b)            ((b)-&gt;callback)
-#define BIO_set_callback_arg(b,arg)    ((b)-&gt;cb_arg=(char *)(arg))
-#define BIO_get_callback_arg(b)                ((b)-&gt;cb_arg)</synopsis>
-<synopsis>long BIO_debug_callback(BIO *bio,int cmd,const char *argp,int argi,
-       long argl,long ret);</synopsis>
-<synopsis>typedef long (*callback)(BIO *b, int oper, const char *argp,
-                       int argi, long argl, long retvalue);</synopsis>
+<synopsis/>
+<synopsis>typedef long (*BIO_callback_fn)(BIO *b, int oper, const char *argp, int argi,
+                                long argl, long ret);</synopsis>
+<synopsis>void BIO_set_callback(BIO *b, BIO_callack_fn cb);
+BIO_callack_fn BIO_get_callback(BIO *b);
+void BIO_set_callback_arg(BIO *b, char *arg);
+char *BIO_get_callback_arg(const BIO *b);</synopsis>
+<synopsis>long BIO_debug_callback(BIO *bio, int cmd, const char *argp, int argi,
+                        long argl, long ret);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-42b142dcab7a98b5dc5d07ac69970692"><title>DESCRIPTION</title>
     <para>
@@ -33,42 +34,44 @@ BIO_debug_callback</refname>
     <para>
       BIO_debug_callback() is a standard debugging callback which prints
       out information relating to each BIO operation. If the callback
-      argument is set if is interpreted as a BIO to send the information
+      argument is set it is interpreted as a BIO to send the information
       to, otherwise stderr is used.
     </para>
     <para>
-      callback() is the callback function itself. The meaning of each
-      argument is described below.
+      BIO_callback_fn() is the type of the callback function. The meaning
+      of each argument is described below:
     </para>
+    <blockquote>
+      <para>
+	<emphasis role="bold">oper</emphasis> is set to the operation being
+	performed. For some operations the callback is called twice, once
+	before and once after the actual operation, the latter case has
+	<emphasis role="bold">oper</emphasis> or'ed with BIO_CB_RETURN.
+      </para>
+      <para>
+	The meaning of the arguments <emphasis role="bold">argp</emphasis>,
+	<emphasis role="bold">argi</emphasis> and <emphasis role="bold">argl</emphasis> depends on the value of <emphasis role="bold">oper</emphasis>, that is the operation being performed.
+      </para>
+      <para>
+	<emphasis role="bold">ret</emphasis> is the return value that would
+	be returned to the application if no callback were present. The
+	actual value returned is the return value of the callback itself.
+	In the case of callbacks called before the actual BIO operation 1
+	is placed in <emphasis role="bold">ret</emphasis>, if the return
+	value is not positive it will be immediately returned to the
+	application and the BIO operation will not be performed.
+      </para>
+    </blockquote>
     <para>
-      The BIO the callback is attached to is passed in <emphasis role="bold">b</emphasis>.
-    </para>
-    <para>
-      <emphasis role="bold">oper</emphasis> is set to the operation being
-      performed. For some operations the callback is called twice, once
-      before and once after the actual operation, the latter case has
-      <emphasis role="bold">oper</emphasis> or'ed with BIO_CB_RETURN.
-    </para>
-    <para>
-      The meaning of the arguments <emphasis role="bold">argp</emphasis>,
-      <emphasis role="bold">argi</emphasis> and <emphasis role="bold">argl</emphasis> depends on the value of <emphasis role="bold">oper</emphasis>, that is the operation being performed.
-    </para>
-    <para>
-      <emphasis role="bold">retvalue</emphasis> is the return value that
-      would be returned to the application if no callback were present. The
-      actual value returned is the return value of the callback itself. In
-      the case of callbacks called before the actual BIO operation 1 is
-      placed in retvalue, if the return value is not positive it will be
-      immediately returned to the application and the BIO operation will
-      not be performed.
-    </para>
-    <para>
-      The callback should normally simply return <emphasis role="bold">retvalue</emphasis> when it has finished processing,
-      unless if specifically wishes to modify the value returned to the
-      application.
+      The callback should normally simply return <emphasis role="bold">ret</emphasis> when it has finished processing, unless it
+      specifically wishes to modify the value returned to the application.
     </para>
   </refsection>
   <refsection xml:id="ID-f6666cc127b9ef81fd09985d051c8f7b"><title>CALLBACK OPERATIONS</title>
+    <para>
+      In the notes below, <emphasis role="bold">callback</emphasis> defers
+      to the actual callback function that is called.
+    </para>
     <para>
       <variablelist>
         <varlistentry>

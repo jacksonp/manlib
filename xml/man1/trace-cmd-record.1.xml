@@ -464,6 +464,18 @@ was before it was called. This option will leave that file set to zero.</literal
 </varlistentry>
 <varlistentry>
 <term>
+<emphasis role="strong">--max-graph-depth</emphasis> <emphasis>depth</emphasis>
+</term>
+<listitem>
+<simpara>
+    Set the maximum depth the function_graph tracer will trace into a function.
+    A value of one will only show where userspace enters the kernel but not any
+    functions called in the kernel. The default is zero, which means no limit.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 <emphasis role="strong">--profile</emphasis>
 </term>
 <listitem>

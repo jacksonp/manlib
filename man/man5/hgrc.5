@@ -1948,8 +1948,9 @@ http://server/(.*)\-hg/ = http://hg.server/\e1/
 rewrites \fBhttp://server/foo\-hg/\fP into \fBhttp://hg.server/foo/\fP.
 .sp
 Relative subrepository paths are first made absolute, and the
-rewrite rules are then applied on the full (absolute) path. The rules
-are applied in definition order.
+rewrite rules are then applied on the full (absolute) path. If \fBpattern\fP
+doesn\(aqt match the full path, an attempt is made to apply it on the
+relative path alone. The rules are applied in definition order.
 .SS \fBtemplatealias\fP
 .sp
 Alias definitions for templates. See \%\fBhg help templates\fP\: for details.
@@ -2488,6 +2489,15 @@ Whether to hide the repository in the hgwebdir index.
 .B \fBipv6\fP
 .sp
 Whether to use IPv6. (default: False)
+.TP
+.B \fBlabels\fP
+.sp
+List of string \fIlabels\fP associated with the repository.
+.sp
+Labels are exposed as a template keyword and can be used to customize
+output. e.g. the \fBindex\fP template can group or filter repositories
+by labels and the \fBsummary\fP template can display additional content
+if a specific label is present.
 .TP
 .B \fBlogoimg\fP
 .sp

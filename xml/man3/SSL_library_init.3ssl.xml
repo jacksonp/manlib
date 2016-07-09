@@ -9,8 +9,8 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
-<synopsis>int SSL_library_init(void);
-#define OpenSSL_add_ssl_algorithms()    SSL_library_init()</synopsis>
+<synopsis>int SSL_library_init(void);</synopsis>
+<synopsis>int OpenSSL_add_ssl_algorithms(void);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-8fbf408b9d20d0c1afc2aa7c1cce3b87"><title>DESCRIPTION</title>
     <para>
@@ -18,7 +18,8 @@
       digests.
     </para>
     <para>
-      OpenSSL_add_ssl_algorithms() is a synonym for SSL_library_init().
+      OpenSSL_add_ssl_algorithms() is a synonym for SSL_library_init() and
+      is implemented as a macro.
     </para>
   </refsection>
   <refsection xml:id="ID-63f0998ef1a00df33560d2f100c42e59"><title>NOTES</title>

@@ -1188,11 +1188,14 @@ is by executing a program with associated file capabilities:
 .nf
 
 prctl(PR_SET_SECUREBITS,
+	/* SECBIT_KEEP_CAPS off */
         SECBIT_KEEP_CAPS_LOCKED |
         SECBIT_NO_SETUID_FIXUP |
         SECBIT_NO_SETUID_FIXUP_LOCKED |
         SECBIT_NOROOT |
         SECBIT_NOROOT_LOCKED);
+        /* Setting/locking SECURE_NO_CAP_AMBIENT_RAISE
+           is not required */
 .fi
 .in
 .SS Interaction with user namespaces

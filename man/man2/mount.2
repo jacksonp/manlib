@@ -488,6 +488,9 @@ flag is also specified in
 then the propagation type of all mount points under
 .IR target
 is also changed.
+
+For further details regarding mount propagation types, see
+.BR mount_namespaces (7).
 .\"
 .SS Moving a mount
 If
@@ -778,7 +781,7 @@ namespace of the process with the specified ID; see
 for details.
 .SH SEE ALSO
 .BR umount (2),
-.BR namespaces (7),
+.BR mount_namespaces (7),
 .BR path_resolution (7),
 .BR lsblk (8),
 .BR findmnt (8),
