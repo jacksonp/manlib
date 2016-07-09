@@ -450,7 +450,7 @@ rsync --checksum sources/Owl/packages/passwdqc/passwdqc/*.8 man/man8/"
 
   "ostree": {
     "type": "git",
-    "url": "git://git.gnome.org/ostree",
+    "url": "https://github.com/ostreedev/ostree.git",
     "sparse": "man/",
     "cmd": "grep -l manvolnum sources/ostree/man/* | while read -r file ; do manNum=$(xmllint --shell $file  <<< \"cat //refmeta/manvolnum/text()\"  | grep -v \"^/ >\"); [ -z \"$manNum\" ] || xsltproc -o \"xml/man$manNum/$(basename -s .xml $file).$manNum.xml\" --xinclude utils/db4-upgrade.xsl $file; done"
   },
