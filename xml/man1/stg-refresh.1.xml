@@ -172,6 +172,16 @@ additionally get rid of the temp patch.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
+--review
+</term>
+<listitem>
+<simpara>
+        Add a "Reviewed-by:" line to the end of the patch.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 --author "NAME &lt;EMAIL&gt;"
 </term>
 <listitem>

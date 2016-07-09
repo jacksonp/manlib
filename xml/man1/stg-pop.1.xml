@@ -46,6 +46,19 @@ revert the last push operation).</simpara>
 </varlistentry>
 <varlistentry>
 <term>
+-s
+</term>
+<term>
+--spill
+</term>
+<listitem>
+<simpara>
+        Pop a patch, keeping its modifications in the tree.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 -n NUMBER
 </term>
 <term>

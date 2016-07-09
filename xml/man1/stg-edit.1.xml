@@ -95,6 +95,16 @@ flag of stg push.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
+--review
+</term>
+<listitem>
+<simpara>
+        Add a "Reviewed-by:" line to the end of the patch.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 -m MESSAGE
 </term>
 <term>

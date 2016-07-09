@@ -602,7 +602,7 @@ find sources/sox/ -name '*.7' -exec rsync --checksum {} man/man7/ \\;"
     "type": "git",
     "url": "git://repo.or.cz/stgit.git",
     //"sparse": "Documentation/",
-    "cmd": "find sources/stgit/Documentation -name '*.xml' -exec bash -c 'rsync --checksum {} xml/man1/$(basename -s .xml {}).1.xml' \\;"
+    "cmd": "(cd sources/stgit/Documentation; make all); find sources/stgit/Documentation -name '*.xml' -exec bash -c 'rsync --checksum {} xml/man1/$(basename -s .xml {}).1.xml' \\;"
   },
 
   "strace": {

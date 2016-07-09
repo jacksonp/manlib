@@ -180,6 +180,16 @@ variable (defaulting to "&lt;branch&gt;.public").</simpara>
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+--review
+</term>
+<listitem>
+<simpara>
+        Add a "Reviewed-by:" line to the end of the patch.
+</simpara>
+</listitem>
+</varlistentry>
 </variablelist>
 </refsect1>
 <refsect1 id="_stgit">
