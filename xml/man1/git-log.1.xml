@@ -3620,6 +3620,17 @@ log.showRoot
 </varlistentry>
 <varlistentry>
 <term>
+log.showSignature
+</term>
+<listitem>
+<simpara>
+        If <literal>true</literal>, <literal>git log</literal> and related commands will act as if the
+        <literal>--show-signature</literal> option was passed to them.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 mailmap.*
 </term>
 <listitem>

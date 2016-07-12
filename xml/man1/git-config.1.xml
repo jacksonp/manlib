@@ -780,26 +780,31 @@ color
 </term>
 <listitem>
 <simpara>
-       The value for a variables that takes a color is a list of
-       colors (at most two) and attributes (at most one), separated
-       by spaces.  The colors accepted are <literal>normal</literal>, <literal>black</literal>,
-       <literal>red</literal>, <literal>green</literal>, <literal>yellow</literal>, <literal>blue</literal>, <literal>magenta</literal>, <literal>cyan</literal> and
-       <literal>white</literal>; the attributes are <literal>bold</literal>, <literal>dim</literal>, <literal>ul</literal>, <literal>blink</literal> and
-       <literal>reverse</literal>.  The first color given is the foreground; the
-       second is the background.  The position of the attribute, if
-       any, doesn&#8217;t matter. Attributes may be turned off specifically
-       by prefixing them with <literal>no</literal> (e.g., <literal>noreverse</literal>, <literal>noul</literal>, etc).
+       The value for a variable that takes a color is a list of
+       colors (at most two, one for foreground and one for background)
+       and attributes (as many as you want), separated by spaces.
 </simpara>
-<simpara>Colors (foreground and background) may also be given as numbers between
-0 and 255; these use ANSI 256-color mode (but note that not all
-terminals may support this).  If your terminal supports it, you may also
-specify 24-bit RGB values as hex, like <literal>#ff0ab3</literal>.</simpara>
-<simpara>The attributes are meant to be reset at the beginning of each item
-in the colored output, so setting color.decorate.branch to <literal>black</literal>
-will paint that branch name in a plain <literal>black</literal>, even if the previous
-thing on the same output line (e.g. opening parenthesis before the
-list of branch names in <literal>log --decorate</literal> output) is set to be
-painted with <literal>bold</literal> or some other attribute.</simpara>
+<simpara>The basic colors accepted are <literal>normal</literal>, <literal>black</literal>, <literal>red</literal>, <literal>green</literal>, <literal>yellow</literal>,
+<literal>blue</literal>, <literal>magenta</literal>, <literal>cyan</literal> and <literal>white</literal>.  The first color given is the
+foreground; the second is the background.</simpara>
+<simpara>Colors may also be given as numbers between 0 and 255; these use ANSI
+256-color mode (but note that not all terminals may support this).  If
+your terminal supports it, you may also specify 24-bit RGB values as
+hex, like <literal>#ff0ab3</literal>.</simpara>
+<simpara>The accepted attributes are <literal>bold</literal>, <literal>dim</literal>, <literal>ul</literal>, <literal>blink</literal>, <literal>reverse</literal>,
+<literal>italic</literal>, and <literal>strike</literal> (for crossed-out or "strikethrough" letters).
+The position of any attributes with respect to the colors
+(before, after, or in between), doesn&#8217;t matter. Specific attributes may
+be turned off by prefixing them with <literal>no</literal> or <literal>no-</literal> (e.g., <literal>noreverse</literal>,
+<literal>no-ul</literal>, etc).</simpara>
+<simpara>For git&#8217;s pre-defined color slots, the attributes are meant to be reset
+at the beginning of each item in the colored output. So setting
+<literal>color.decorate.branch</literal> to <literal>black</literal> will paint that branch name in a
+plain <literal>black</literal>, even if the previous thing on the same output line (e.g.
+opening parenthesis before the list of branch names in <literal>log --decorate</literal>
+output) is set to be painted with <literal>bold</literal> or some other attribute.
+However, custom log formats may do more complicated and layered
+coloring, and the negated forms may be useful there.</simpara>
 </listitem>
 </varlistentry>
 <varlistentry>

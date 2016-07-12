@@ -40,8 +40,8 @@ individual Git commands with "git help command".  <citerefentry>
 <refentrytitle>gitcli</refentrytitle><manvolnum>7</manvolnum>
 </citerefentry>
 manual page gives you an overview of the command-line command syntax.</simpara>
-<simpara>Formatted and hyperlinked version of the latest Git documentation
-can be viewed at <literal>http://git-htmldocs.googlecode.com/git/git.html</literal>.</simpara>
+<simpara>A formatted and hyperlinked copy of the latest Git documentation
+can be viewed at <literal>https://git.github.io/htmldocs/git.html</literal>.</simpara>
 </refsect1>
 <refsect1 id="_options">
 <title>OPTIONS</title>

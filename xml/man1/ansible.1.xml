@@ -71,7 +71,7 @@ this does not imply prompting for passwords.
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis role="strong">K</emphasis>, <emphasis role="strong">--ask-become-pass</emphasis>
+<emphasis role="strong">-K</emphasis>, <emphasis role="strong">--ask-become-pass</emphasis>
 </term>
 <listitem>
 <simpara>
