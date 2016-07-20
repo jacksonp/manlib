@@ -53,7 +53,7 @@ browser
 <listitem>
 <simpara>
         Start a tree browser showing all files in the specified
-        commit (or <emphasis>HEAD</emphasis> by default).  Files selected through the
+        commit (or <literal>HEAD</literal> by default).  Files selected through the
         browser are opened in the blame viewer.
 </simpara>
 </listitem>

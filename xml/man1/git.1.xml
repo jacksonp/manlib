@@ -63,7 +63,7 @@ can be viewed at <literal>https://git.github.io/htmldocs/git.html</literal>.</si
 <listitem>
 <simpara>
         Prints the synopsis and a list of the most commonly used
-        commands. If the option <emphasis>--all</emphasis> or <emphasis>-a</emphasis> is given then all
+        commands. If the option <literal>--all</literal> or <literal>-a</literal> is given then all
         available commands are printed. If a Git command is named this
         option will bring up the manual page for that command.
 </simpara>
@@ -615,7 +615,7 @@ Git so take care if using a foreign front-end.</simpara>
         If the <literal>GIT_DIR</literal> environment variable is set then it
         specifies a path to use instead of the default <literal>.git</literal>
         for the base of the repository.
-        The <emphasis>--git-dir</emphasis> command-line option also sets this value.
+        The <literal>--git-dir</literal> command-line option also sets this value.
 </simpara>
 </listitem>
 </varlistentry>
@@ -626,7 +626,7 @@ Git so take care if using a foreign front-end.</simpara>
 <listitem>
 <simpara>
         Set the path to the root of the working tree.
-        This can also be controlled by the <emphasis>--work-tree</emphasis> command-line
+        This can also be controlled by the <literal>--work-tree</literal> command-line
         option and the core.worktree configuration variable.
 </simpara>
 </listitem>
@@ -640,7 +640,7 @@ Git so take care if using a foreign front-end.</simpara>
         Set the Git namespace; see <citerefentry>
 <refentrytitle>gitnamespaces</refentrytitle><manvolnum>7</manvolnum>
 </citerefentry> for details.
-        The <emphasis>--namespace</emphasis> command-line option also sets this value.
+        The <literal>--namespace</literal> command-line option also sets this value.
 </simpara>
 </listitem>
 </varlistentry>
@@ -897,7 +897,7 @@ parameter, &lt;path&gt;.</simpara>
         The command will be given exactly two or four arguments: the
         <emphasis>username@host</emphasis> (or just <emphasis>host</emphasis>) from the URL and the shell
         command to execute on that remote system, optionally preceded by
-        <emphasis>-p</emphasis> (literally) and the <emphasis>port</emphasis> from the URL when it specifies
+        <literal>-p</literal> (literally) and the <emphasis>port</emphasis> from the URL when it specifies
         something other than the default SSH port.
 </simpara>
 <simpara><literal>$GIT_SSH_COMMAND</literal> takes precedence over <literal>$GIT_SSH</literal>, and is interpreted

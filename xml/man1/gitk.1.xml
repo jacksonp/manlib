@@ -147,7 +147,7 @@ command-line parser.</simpara>
 </term>
 <listitem>
 <simpara>
-        Additional option to <emphasis>--full-history</emphasis> to remove some needless
+        Additional option to <literal>--full-history</literal> to remove some needless
         merges from the resulting history, as there are no selected
         commits contributing to this merge.  (See "History
         simplification" in <citerefentry>

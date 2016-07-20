@@ -330,7 +330,7 @@ lightweight tags by default.</simpara>
 <listitem>
 <simpara>
         Only list tags whose tips are reachable, or not reachable
-        if <emphasis>--no-merged</emphasis> is used, from the specified commit (<emphasis>HEAD</emphasis>
+        if <literal>--no-merged</literal> is used, from the specified commit (<literal>HEAD</literal>
         if not specified).
 </simpara>
 </listitem>

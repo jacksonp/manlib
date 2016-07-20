@@ -11399,7 +11399,7 @@ bookmarks were previously located.
 .SS Commands
 .SS journal
 .sp
-show the previous position of bookmarks:
+show the previous position of bookmarks and the working copy:
 .sp
 .nf
 .ft C
@@ -11407,9 +11407,16 @@ hg journal [OPTION]... [BOOKMARKNAME]
 .ft P
 .fi
 .sp
-The journal is used to see the previous commits of bookmarks. By default
-the previous locations for all bookmarks are shown.  Passing a bookmark
-name will show all the previous positions of that bookmark.
+The journal is used to see the previous commits that bookmarks and the
+working copy pointed to. By default the previous locations for the working
+copy.  Passing a bookmark name will show all the previous positions of
+that bookmark. Use the \-\-all switch to show previous locations for all
+bookmarks and the working copy; each line will then include the bookmark
+name, or \(aq.\(aq for the working copy, as well.
+.sp
+If \fIname\fP starts with \fIre:\fP, the remainder of the name is treated as
+a regular expression. To match a name that actually starts with \fIre:\fP,
+use the prefix \fIliteral:\fP.
 .sp
 By default hg journal only shows the commit hash and the command that was
 running at that time. \-v/\-\-verbose will show the prior hash, the user, and
@@ -11423,6 +11430,10 @@ switches to alter the log output for these.
 .sp
 Options:
 .INDENT 0.0
+.TP
+.B \-\-all
+.
+show history for all names
 .TP
 .B \-c,  \-\-commits
 .

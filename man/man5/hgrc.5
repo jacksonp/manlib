@@ -1284,13 +1284,54 @@ hg.intevation.org = fc:e2:8d:d9:51:cd:cb:c1:4d:18:6b:b7:44:8d:49:72:57:e6:cd:33
 .fi
 .SS \fBhostsecurity\fP
 .sp
-Used to specify per\-host security settings.
+Used to specify global and per\-host security settings for connecting to
+other machines.
 .sp
-Options in this section have the form \fBhostname\fP:\fBsetting\fP. This allows
-multiple settings to be defined on a per\-host basis.
+The following options control default behavior for all hosts.
+.INDENT 0.0
+.TP
+.B \fBciphers\fP
+.sp
+Defines the cryptographic ciphers to use for connections.
+.sp
+Value must be a valid OpenSSL Cipher List Format as documented at
+\%https://www.openssl.org/docs/manmaster/apps/ciphers.html#CIPHER\-LIST\-FORMAT\:.
+.sp
+This setting is for advanced users only. Setting to incorrect values
+can significantly lower connection security or decrease performance.
+You have been warned.
+.sp
+This option requires Python 2.7.
+.TP
+.B \fBminimumprotocol\fP
+.sp
+Defines the minimum channel encryption protocol to use.
+.sp
+By default, the highest version of TLS supported by both client and server
+is used.
+.sp
+Allowed values are: \fBtls1.0\fP, \fBtls1.1\fP, \fBtls1.2\fP.
+.sp
+When running on an old Python version, only \fBtls1.0\fP is allowed since
+old versions of Python only support up to TLS 1.0.
+.sp
+When running a Python that supports modern TLS versions, the default is
+\fBtls1.1\fP. \fBtls1.0\fP can still be used to allow TLS 1.0. However, this
+weakens security and should only be used as a feature of last resort if
+a server does not support TLS 1.1+.
+.UNINDENT
+.sp
+Options in the \fB[hostsecurity]\fP section can have the form
+\fBhostname\fP:\fBsetting\fP. This allows multiple settings to be defined on a
+per\-host basis.
 .sp
 The following per\-host settings can be defined.
 .INDENT 0.0
+.TP
+.B \fBciphers\fP
+.sp
+This behaves like \fBciphers\fP as described above except it only applies
+to the host on which it is defined.
 .TP
 .B \fBfingerprints\fP
 .sp
@@ -1311,6 +1352,11 @@ This can provide stronger security than traditional CA\-based validation
 at the expense of convenience.
 .sp
 This option takes precedence over \fBverifycertsfile\fP.
+.TP
+.B \fBminimumprotocol\fP
+.sp
+This behaves like \fBminimumprotocol\fP as described above except it
+only applies to the host on which it is defined.
 .TP
 .B \fBverifycertsfile\fP
 .sp
@@ -1351,6 +1397,17 @@ For example:
 hg.example.com:fingerprints = sha256:c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2
 hg2.example.com:fingerprints = sha1:914f1aff87249c09b6859b88b1906d30756491ca, sha1:fc:e2:8d:d9:51:cd:cb:c1:4d:18:6b:b7:44:8d:49:72:57:e6:cd:33
 foo.example.com:verifycertsfile = /etc/ssl/trusted\-ca\-certs.pem
+.ft P
+.fi
+.sp
+To change the default minimum protocol version to TLS 1.2 but to allow TLS 1.1
+when connecting to \fBhg.example.com\fP:
+.sp
+.nf
+.ft C
+[hostsecurity]
+minimumprotocol = tls1.2
+hg.example.com:minimumprotocol = tls1.1
 .ft P
 .fi
 .SS \fBhttp_proxy\fP

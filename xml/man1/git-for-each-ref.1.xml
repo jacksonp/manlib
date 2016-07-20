@@ -279,7 +279,7 @@ align
         &lt;width&gt; and &lt;position&gt; used instead.  For instance,
         <literal>%(align:&lt;width&gt;,&lt;position&gt;)</literal>. If the contents length is more
         than the width then no alignment is performed. If used with
-        <emphasis>--quote</emphasis> everything in between %(align:&#8230;) and %(end) is
+        <literal>--quote</literal> everything in between %(align:&#8230;) and %(end) is
         quoted, but if nested then only the topmost level performs
         quoting.
 </simpara>

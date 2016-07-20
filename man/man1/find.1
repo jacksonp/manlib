@@ -23,7 +23,7 @@ If you are using
 .B find
 in an environment where security is important (for example if you are
 using it to search directories that are writable by other users), you
-should read the "Security Considerations" chapter of the findutils
+should read the `Security Considerations' chapter of the findutils
 documentation, which is called \fBFinding Files\fP and comes with
 findutils.   That document also includes a lot more detail
 and discussion than this manual page, so you may find it a more useful
@@ -785,7 +785,7 @@ File name matches shell pattern \fIpattern\fR.  The metacharacters do
 not treat `/' or `.' specially; so, for example,
 .br
 .in +1i
-find . \-path "./sr*sc"
+find . \-path \(dq./sr*sc\(dq
 .br
 .in -1i
 will print an entry for a directory called `./src/misc' (if one
@@ -1076,8 +1076,12 @@ command will be much less than the number of matched files.  The
 command line is built in much the same way that
 .B xargs
 builds its command lines.  Only one instance of `{}' is allowed within
-the command.  The command is executed in the starting directory.  If
-any invocation returns a non-zero value as exit status, then
+the command, and (when
+.B find
+is being invoked from a shell) it should be quoted (for
+example, \(aq{}\(aq) to protect it from interpretation by shells.  The
+command is executed in the starting directory.  If any invocation
+returns a non-zero value as exit status, then
 .B find
 returns a non-zero exit status.  If
 .B find
@@ -1095,6 +1099,8 @@ but the specified command is run from the subdirectory
 containing the matched file, which is not normally the directory in
 which you started
 .BR find .
+As with \-exec, the {} should be quoted if find is being invoked from
+a shell.
 This a much more secure method for invoking commands, as it avoids
 race conditions during resolution of the paths to the matched files.
 As with the
@@ -1395,7 +1401,7 @@ File's numeric group ID.
 .IP %h
 Leading directories of file's name (all but the last element).
 If the file name contains no slashes (since it is in the current
-directory) the %h specifier expands to ".".
+directory) the %h specifier expands to `.'.
 .IP %H
 Starting-point under which file was found.
 .IP %i
@@ -1534,7 +1540,9 @@ Same as ! \fIexpr\fR, but not POSIX compliant.
 
 .IP "\fIexpr1 expr2\fR"
 Two expressions in a row are taken to be joined with an
-implied "and"; \fIexpr2\fR is not evaluated if \fIexpr1\fR is false.
+implied
+.BR \-a ;
+\fIexpr2\fR is not evaluated if \fIexpr1\fR is false.
 
 .IP "\fIexpr1\fR \-a \fIexpr2\fR"
 Same as \fIexpr1 expr2\fR.
@@ -1591,7 +1599,7 @@ going to a terminal.
 .IP "\-ls, \-fls"
 Unusual characters are always escaped.  White space, backslash, and
 double quote characters are printed using C-style escaping (for
-example `\ef', `\e"').  Other unusual characters are printed using an
+example `\ef', `\e\(dq').  Other unusual characters are printed using an
 octal escape.  Other printable characters (for
 .B \-ls
 and
@@ -1667,7 +1675,7 @@ comma-separated list.
 
 .IP \fB\-ok\fR
 Supported.
-Interpretation of the response is according to the "yes" and "no"
+Interpretation of the response is according to the `yes' and `no'
 patterns selected by setting the `LC_MESSAGES' environment variable.
 When the `POSIXLY_CORRECT' environment variable is set, these patterns
 are taken system's definition of a positive (yes) or negative (no)
@@ -2013,8 +2021,8 @@ writable by both their owner and their group.
 
 .P
 .nf
-.B find . \-perm \-444 \-perm /222 ! \-perm /111
-.B find . \-perm \-a+r \-perm /a+w ! \-perm /a+x
+.B find . \-perm \-444 \-perm /222 \e! \-perm /111
+.B find . \-perm \-a+r \-perm /a+w \e! \-perm /a+x
 
 .fi
 These two commands both search for files that are readable for
@@ -2036,7 +2044,7 @@ respectively).
 .P
 .nf
 .B cd /source-dir
-.B find . \-name .snapshot \-prune \-o \e( \e! \-name "*~" \-print0 \e)|
+.B find . \-name .snapshot \-prune \-o \e( \e! \-name \(aq*~\(aq \-print0 \e)|
 .B cpio \-pmd0   /dest-dir
 
 .fi
@@ -2074,7 +2082,7 @@ what is going on.
 
 .P
 .nf
-.B find repo/ \e( -exec test -d {}/.svn \e; -or \e
+.B find repo/ \e( -exec test -d \(aq{}\(aq/.svn \e; -or \e
 .B -exec test -d {}/.git \e; -or -exec test  -d {}/CVS \e; \e) \e
 .B -print -prune
 .fi

@@ -545,7 +545,7 @@ the current repository has the same history as the source repository.</simpara>
 <listitem>
 <simpara>
         When given, and the repository to fetch from is handled
-        by <emphasis>git fetch-pack</emphasis>, <emphasis>--exec=&lt;upload-pack&gt;</emphasis> is passed to
+        by <emphasis>git fetch-pack</emphasis>, <literal>--exec=&lt;upload-pack&gt;</literal> is passed to
         the command to specify non-default path for the command
         run on the other end.
 </simpara>

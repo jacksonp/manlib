@@ -264,7 +264,7 @@ get-ref
 </term>
 <listitem>
 <simpara>
-        Like <emphasis>-C</emphasis>, but with <emphasis>-c</emphasis> the editor is invoked, so that
+        Like <emphasis>-C</emphasis>, but with <literal>-c</literal> the editor is invoked, so that
         the user can further edit the note message.
 </simpara>
 </listitem>

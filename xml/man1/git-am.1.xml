@@ -439,7 +439,7 @@ aborts in the middle.  You can recover from this in one of two ways:</simpara>
 <orderedlist numeration="arabic">
 <listitem>
 <simpara>
-skip the current patch by re-running the command with the <emphasis>--skip</emphasis>
+skip the current patch by re-running the command with the <literal>--skip</literal>
   option.
 </simpara>
 </listitem>
@@ -447,7 +447,7 @@ skip the current patch by re-running the command with the <emphasis>--skip</emph
 <simpara>
 hand resolve the conflict in the working directory, and update
   the index file to bring it into a state that the patch should
-  have produced.  Then run the command with the <emphasis>--continue</emphasis> option.
+  have produced.  Then run the command with the <literal>--continue</literal> option.
 </simpara>
 </listitem>
 </orderedlist>

@@ -21,7 +21,7 @@
 <title>DESCRIPTION</title>
 <simpara>Cleans the working tree by recursively removing files that are not
 under version control, starting from the current directory.</simpara>
-<simpara>Normally, only files unknown to Git are removed, but if the <emphasis>-x</emphasis>
+<simpara>Normally, only files unknown to Git are removed, but if the <literal>-x</literal>
 option is specified, ignored files are also removed. This can, for
 example, be useful to remove all build products.</simpara>
 <simpara>If any optional <literal>&lt;path&gt;...</literal> arguments are given, only those paths

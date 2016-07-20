@@ -1775,7 +1775,7 @@ information.</simpara>
 <refsect1 id="_generating_patches_with_p">
 <title>Generating patches with -p</title>
 <simpara>When "git-diff-index", "git-diff-tree", or "git-diff-files" are run
-with a <emphasis>-p</emphasis> option, "git diff" without the <emphasis>--raw</emphasis> option, or
+with a <literal>-p</literal> option, "git diff" without the <literal>--raw</literal> option, or
 "git log" with the "-p" option, they
 do not produce the output described above; instead they produce a
 patch file.  You can customize the creation of such patches via the
@@ -1891,10 +1891,10 @@ index fabadb8,cc95eb0..4866510
 <listitem>
 <simpara>
 It is preceded with a "git diff" header, that looks like
-     this (when <emphasis>-c</emphasis> option is used):
+     this (when <literal>-c</literal> option is used):
 </simpara>
 <literallayout class="monospaced">diff --combined file</literallayout>
-<simpara>or like this (when <emphasis>--cc</emphasis> option is used):</simpara>
+<simpara>or like this (when <literal>--cc</literal> option is used):</simpara>
 <literallayout class="monospaced">diff --cc file</literallayout>
 </listitem>
 <listitem>

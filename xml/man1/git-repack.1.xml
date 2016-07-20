@@ -41,7 +41,7 @@ engines, disk storage, etc.</simpara>
         pack everything referenced into a single pack.
         Especially useful when packing a repository that is used
         for private development. Use
-        with <emphasis>-d</emphasis>.  This will clean up the objects that <literal>git prune</literal>
+        with <literal>-d</literal>.  This will clean up the objects that <literal>git prune</literal>
         leaves behind, but <literal>git fsck --full --dangling</literal> shows as
         dangling.
 </simpara>
@@ -56,7 +56,7 @@ other objects in that pack they already have locally.</simpara>
 </term>
 <listitem>
 <simpara>
-        Same as <literal>-a</literal>, unless <emphasis>-d</emphasis> is used.  Then any unreachable
+        Same as <literal>-a</literal>, unless <literal>-d</literal> is used.  Then any unreachable
         objects in a previous pack become loose, unpacked objects,
         instead of being left in the old pack.  Unreachable objects
         are never intentionally added to a pack, even when repacking.

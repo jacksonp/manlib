@@ -36,7 +36,7 @@ aka 9418.  It waits for a connection asking for a service, and will serve
 that service if it is enabled.</simpara>
 <simpara>It verifies that the directory has the magic file "git-daemon-export-ok", and
 it will refuse to export any Git directory that hasn&#8217;t explicitly been marked
-for export this way (unless the <emphasis>--export-all</emphasis> parameter is specified). If you
+for export this way (unless the <literal>--export-all</literal> parameter is specified). If you
 pass some directory paths as <emphasis>git daemon</emphasis> arguments, you can further restrict
 the offers to a whitelist comprising of those.</simpara>
 <simpara>By default, only <literal>upload-pack</literal> service is enabled, which serves
@@ -141,7 +141,7 @@ Git repositories.</simpara>
         is not supported, then --listen=hostname is also not supported and
         --listen must be given an IPv4 address.
         Can be given more than once.
-        Incompatible with <emphasis>--inetd</emphasis> option.
+        Incompatible with <literal>--inetd</literal> option.
 </simpara>
 </listitem>
 </varlistentry>
@@ -151,7 +151,7 @@ Git repositories.</simpara>
 </term>
 <listitem>
 <simpara>
-        Listen on an alternative port.  Incompatible with <emphasis>--inetd</emphasis> option.
+        Listen on an alternative port.  Incompatible with <literal>--inetd</literal> option.
 </simpara>
 </listitem>
 </varlistentry>
@@ -506,7 +506,7 @@ selectively enable/disable services per repository
 <simpara>
         To enable <emphasis>git archive --remote</emphasis> and disable <emphasis>git fetch</emphasis> against
         a repository, have the following in the configuration file in the
-        repository (that is the file <emphasis>config</emphasis> next to <emphasis>HEAD</emphasis>, <emphasis>refs</emphasis> and
+        repository (that is the file <emphasis>config</emphasis> next to <literal>HEAD</literal>, <emphasis>refs</emphasis> and
         <emphasis>objects</emphasis>).
 </simpara>
 <literallayout class="monospaced">        [daemon]

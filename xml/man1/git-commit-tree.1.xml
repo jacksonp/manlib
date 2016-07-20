@@ -60,7 +60,7 @@ state was.</simpara>
 </term>
 <listitem>
 <simpara>
-        Each <emphasis>-p</emphasis> indicates the id of a parent commit object.
+        Each <literal>-p</literal> indicates the id of a parent commit object.
 </simpara>
 </listitem>
 </varlistentry>

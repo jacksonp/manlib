@@ -173,8 +173,8 @@ branches, adds to that list.</simpara>
 Retrieves the URLs for a remote. Configurations for <literal>insteadOf</literal> and
 <literal>pushInsteadOf</literal> are expanded here. By default, only the first URL is listed.
 </simpara>
-<simpara>With <emphasis>--push</emphasis>, push URLs are queried rather than fetch URLs.</simpara>
-<simpara>With <emphasis>--all</emphasis>, all URLs for the remote will be listed.</simpara>
+<simpara>With <literal>--push</literal>, push URLs are queried rather than fetch URLs.</simpara>
+<simpara>With <literal>--all</literal>, all URLs for the remote will be listed.</simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -187,9 +187,9 @@ Changes URLs for the remote. Sets first URL for remote &lt;name&gt; that matches
 regex &lt;oldurl&gt; (first URL if no &lt;oldurl&gt; is given) to &lt;newurl&gt;. If
 &lt;oldurl&gt; doesn&#8217;t match any URL, an error occurs and nothing is changed.
 </simpara>
-<simpara>With <emphasis>--push</emphasis>, push URLs are manipulated instead of fetch URLs.</simpara>
-<simpara>With <emphasis>--add</emphasis>, instead of changing existing URLs, new URL is added.</simpara>
-<simpara>With <emphasis>--delete</emphasis>, instead of changing existing URLs, all URLs matching
+<simpara>With <literal>--push</literal>, push URLs are manipulated instead of fetch URLs.</simpara>
+<simpara>With <literal>--add</literal>, instead of changing existing URLs, new URL is added.</simpara>
+<simpara>With <literal>--delete</literal>, instead of changing existing URLs, all URLs matching
 regex &lt;url&gt; are deleted for remote &lt;name&gt;.  Trying to delete all
 non-push URLs is an error.</simpara>
 <simpara>Note that the push URL and the fetch URL, even though they can

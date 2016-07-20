@@ -282,7 +282,7 @@ the remote repository.</simpara>
 <simpara>
         This modifies the <emphasis>export</emphasis> capability, instructing Git to dump the
         internal marks table to &lt;file&gt; when complete. For details,
-        read up on <emphasis>--export-marks=&lt;file&gt;</emphasis> in <citerefentry>
+        read up on <literal>--export-marks=&lt;file&gt;</literal> in <citerefentry>
 <refentrytitle>git-fast-export</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.
 </simpara>
@@ -296,7 +296,7 @@ the remote repository.</simpara>
 <simpara>
         This modifies the <emphasis>export</emphasis> capability, instructing Git to load the
         marks specified in &lt;file&gt; before processing any input. For details,
-        read up on <emphasis>--import-marks=&lt;file&gt;</emphasis> in <citerefentry>
+        read up on <literal>--import-marks=&lt;file&gt;</literal> in <citerefentry>
 <refentrytitle>git-fast-export</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.
 </simpara>
@@ -309,10 +309,10 @@ the remote repository.</simpara>
 <listitem>
 <simpara>
         This modifies the <emphasis>export</emphasis> capability, instructing Git to pass
-        <emphasis>--signed-tags=verbatim</emphasis> to <citerefentry>
+        <literal>--signed-tags=verbatim</literal> to <citerefentry>
 <refentrytitle>git-fast-export</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.  In the
-        absence of this capability, Git will use <emphasis>--signed-tags=warn-strip</emphasis>.
+        absence of this capability, Git will use <literal>--signed-tags=warn-strip</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -424,7 +424,7 @@ suitably updated.</simpara>
         is followed by a blank line). For example, the following would
         be two batches of <emphasis>push</emphasis>, the first asking the remote-helper
         to push the local ref <emphasis>master</emphasis> to the remote ref <emphasis>master</emphasis> and
-        the local <emphasis>HEAD</emphasis> to the remote <emphasis>branch</emphasis>, and the second
+        the local <literal>HEAD</literal> to the remote <emphasis>branch</emphasis>, and the second
         asking to push ref <emphasis>foo</emphasis> to ref <emphasis>bar</emphasis> (forced update requested
         by the <emphasis>+</emphasis>).
 </simpara>

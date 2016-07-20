@@ -103,7 +103,7 @@ and the "Subject:" of the message as the second line.</simpara>
 </citerefentry>)
         to edit an introductory message for the patch series.
 </simpara>
-<simpara>When <emphasis>--compose</emphasis> is used, git send-email will use the From, Subject, and
+<simpara>When <literal>--compose</literal> is used, git send-email will use the From, Subject, and
 In-Reply-To headers specified in the message. If the body of the message
 (what you type after the headers and a blank line) only contains blank
 (or Git: prefixed) lines, the summary won&#8217;t be sent, but From, Subject,
@@ -296,7 +296,7 @@ is not set, this will be prompted for.</simpara>
 <literallayout class="monospaced">$ git send-email --smtp-auth="PLAIN LOGIN GSSAPI" ...</literallayout><simpara></simpara>
 <simpara>If at least one of the specified mechanisms matches the ones advertised by the
 SMTP server and if it is supported by the utilized SASL library, the mechanism
-is used for authentication. If neither <emphasis>sendemail.smtpAuth</emphasis> nor <emphasis>--smtp-auth</emphasis>
+is used for authentication. If neither <emphasis>sendemail.smtpAuth</emphasis> nor <literal>--smtp-auth</literal>
 is specified, all mechanisms supported by the SASL library can be used.</simpara>
 </listitem>
 </varlistentry>
@@ -309,12 +309,12 @@ is specified, all mechanisms supported by the SASL library can be used.</simpara
         Password for SMTP-AUTH. The argument is optional: If no
         argument is specified, then the empty string is used as
         the password. Default is the value of <literal>sendemail.smtpPass</literal>,
-        however <emphasis>--smtp-pass</emphasis> always overrides this value.
+        however <literal>--smtp-pass</literal> always overrides this value.
 </simpara>
 <simpara>Furthermore, passwords need not be specified in configuration files
 or on the command line. If a username has been specified (with
-<emphasis>--smtp-user</emphasis> or a <literal>sendemail.smtpUser</literal>), but no password has been
-specified (with <emphasis>--smtp-pass</emphasis> or <literal>sendemail.smtpPass</literal>), then
+<literal>--smtp-user</literal> or a <literal>sendemail.smtpUser</literal>), but no password has been
+specified (with <literal>--smtp-pass</literal> or <literal>sendemail.smtpPass</literal>), then
 a password is obtained using <emphasis>git-credential</emphasis>.</simpara>
 </listitem>
 </varlistentry>
@@ -400,7 +400,7 @@ must be used for each option.</simpara>
 <listitem>
 <simpara>
         Username for SMTP-AUTH. Default is the value of <literal>sendemail.smtpUser</literal>;
-        if a username is not specified (with <emphasis>--smtp-user</emphasis> or <literal>sendemail.smtpUser</literal>),
+        if a username is not specified (with <literal>--smtp-user</literal> or <literal>sendemail.smtpUser</literal>),
         then authentication is not attempted.
 </simpara>
 </listitem>
@@ -671,8 +671,8 @@ have been specified, in which case default to <emphasis>compose</emphasis>.</sim
 <listitem>
 <simpara>
         When an argument may be understood either as a reference or as a file name,
-        choose to understand it as a format-patch argument (<emphasis>--format-patch</emphasis>)
-        or as a file name (<emphasis>--no-format-patch</emphasis>). By default, when such a conflict
+        choose to understand it as a format-patch argument (<literal>--format-patch</literal>)
+        or as a file name (<literal>--no-format-patch</literal>). By default, when such a conflict
         occurs, git send-email will fail.
 </simpara>
 </listitem>
@@ -706,7 +706,7 @@ Warn of patches that contain lines longer than 998 characters; this
 </listitem>
 </itemizedlist>
 <simpara>Default is the value of <literal>sendemail.validate</literal>; if this is not set,
-default to <emphasis>--validate</emphasis>.</simpara>
+default to <literal>--validate</literal>.</simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -811,8 +811,8 @@ sendemail.multiEdit
 <listitem>
 <simpara>
         If true (default), a single editor instance will be spawned to edit
-        files you have to edit (patches when <emphasis>--annotate</emphasis> is used, and the
-        summary when <emphasis>--compose</emphasis> is used). If false, files will be edited one
+        files you have to edit (patches when <literal>--annotate</literal> is used, and the
+        summary when <literal>--compose</literal> is used). If false, files will be edited one
         after the other, spawning a new editor each time.
 </simpara>
 </listitem>
@@ -824,7 +824,7 @@ sendemail.confirm
 <listitem>
 <simpara>
         Sets the default for whether to confirm before sending. Must be
-        one of <emphasis>always</emphasis>, <emphasis>never</emphasis>, <emphasis>cc</emphasis>, <emphasis>compose</emphasis>, or <emphasis>auto</emphasis>. See <emphasis>--confirm</emphasis>
+        one of <emphasis>always</emphasis>, <emphasis>never</emphasis>, <emphasis>cc</emphasis>, <emphasis>compose</emphasis>, or <emphasis>auto</emphasis>. See <literal>--confirm</literal>
         in the previous section for the meaning of these values.
 </simpara>
 </listitem>

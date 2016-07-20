@@ -448,7 +448,7 @@ origin +master</literal> to force a push to the <literal>master</literal> branch
         all submodules that changed in the revisions to be pushed will be
         pushed. If on-demand was not able to push all necessary revisions
         it will also be aborted and exit with non-zero status. A value of
-        <emphasis>no</emphasis> or using <emphasis>--no-recurse-submodules</emphasis> can be used to override the
+        <emphasis>no</emphasis> or using <literal>--no-recurse-submodules</literal> can be used to override the
         push.recurseSubmodules configuration variable when no submodule
         recursion is required.
 </simpara>

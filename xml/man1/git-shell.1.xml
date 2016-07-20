@@ -28,7 +28,7 @@ named <literal>git-shell-commands</literal> in the user&#8217;s home directory.<
 </refsect1>
 <refsect1 id="_commands">
 <title>COMMANDS</title>
-<simpara><emphasis>git shell</emphasis> accepts the following commands after the <emphasis>-c</emphasis> option:</simpara>
+<simpara><emphasis>git shell</emphasis> accepts the following commands after the <literal>-c</literal> option:</simpara>
 <variablelist>
 <varlistentry>
 <term>
@@ -68,7 +68,7 @@ directory.</simpara>
 </refsect1>
 <refsect1 id="_interactive_use">
 <title>INTERACTIVE USE</title>
-<simpara>By default, the commands above can be executed only with the <emphasis>-c</emphasis>
+<simpara>By default, the commands above can be executed only with the <literal>-c</literal>
 option; the shell is not interactive.</simpara>
 <simpara>If a <literal>~/git-shell-commands</literal> directory is present, <emphasis>git shell</emphasis>
 can also be run interactively (with no arguments).  If a <literal>help</literal>

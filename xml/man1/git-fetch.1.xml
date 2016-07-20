@@ -237,7 +237,7 @@ the current repository has the same history as the source repository.</simpara>
         to whatever else would otherwise be fetched.  Using this
         option alone does not subject tags to pruning, even if --prune
         is used (though tags may be pruned anyway if they are also the
-        destination of an explicit refspec; see <emphasis>--prune</emphasis>).
+        destination of an explicit refspec; see <literal>--prune</literal>).
 </simpara>
 </listitem>
 </varlistentry>
@@ -282,7 +282,7 @@ the current repository has the same history as the source repository.</simpara>
 <listitem>
 <simpara>
         Disable recursive fetching of submodules (this has the same effect as
-        using the <emphasis>--recurse-submodules=no</emphasis> option).
+        using the <literal>--recurse-submodules=no</literal> option).
 </simpara>
 </listitem>
 </varlistentry>
@@ -342,7 +342,7 @@ the current repository has the same history as the source repository.</simpara>
 <listitem>
 <simpara>
         When given, and the repository to fetch from is handled
-        by <emphasis>git fetch-pack</emphasis>, <emphasis>--exec=&lt;upload-pack&gt;</emphasis> is passed to
+        by <emphasis>git fetch-pack</emphasis>, <literal>--exec=&lt;upload-pack&gt;</literal> is passed to
         the command to specify non-default path for the command
         run on the other end.
 </simpara>
@@ -728,6 +728,153 @@ When <literal>git fetch</literal> is run with explicit branches and/or tags
 <simpara>The latter use of the <literal>remote.&lt;repository&gt;.fetch</literal> values can be
 overridden by giving the <literal>--refmap=&lt;refspec&gt;</literal> parameter(s) on the
 command line.</simpara>
+</refsect1>
+<refsect1 id="_output">
+<title>OUTPUT</title>
+<simpara>The output of "git fetch" depends on the transport method used; this
+section describes the output when fetching over the Git protocol
+(either locally or via ssh) and Smart HTTP protocol.</simpara>
+<simpara>The status of the fetch is output in tabular form, with each line
+representing the status of a single ref. Each line is of the form:</simpara>
+<literallayout class="monospaced"> &lt;flag&gt; &lt;summary&gt; &lt;from&gt; -&gt; &lt;to&gt; [&lt;reason&gt;]</literallayout><simpara></simpara>
+<simpara>The status of up-to-date refs is shown only if the --verbose option is
+used.</simpara>
+<simpara>In compact output mode, specified with configuration variable
+fetch.output, if either entire <literal>&lt;from&gt;</literal> or <literal>&lt;to&gt;</literal> is found in the
+other string, it will be substituted with <literal>*</literal> in the other string. For
+example, <literal>master -&gt; origin/master</literal> becomes <literal>master -&gt; origin/*</literal>.</simpara>
+<variablelist>
+<varlistentry>
+<term>
+flag
+</term>
+<listitem>
+<simpara>
+        A single character indicating the status of the ref:
+</simpara>
+<variablelist>
+<varlistentry>
+<term>
+(space)
+</term>
+<listitem>
+<simpara>
+for a successfully fetched fast-forward;
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>+</literal>
+</term>
+<listitem>
+<simpara>
+for a successful forced update;
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>-</literal>
+</term>
+<listitem>
+<simpara>
+for a successfully pruned ref;
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>t</literal>
+</term>
+<listitem>
+<simpara>
+for a successful tag update;
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>*</literal>
+</term>
+<listitem>
+<simpara>
+for a successfully fetched new ref;
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>!</literal>
+</term>
+<listitem>
+<simpara>
+for a ref that was rejected or failed to update; and
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<literal>=</literal>
+</term>
+<listitem>
+<simpara>
+for a ref that was up to date and did not need fetching.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+summary
+</term>
+<listitem>
+<simpara>
+        For a successfully fetched ref, the summary shows the old and new
+        values of the ref in a form suitable for using as an argument to
+        <literal>git log</literal> (this is <literal>&lt;old&gt;..&lt;new&gt;</literal> in most cases, and
+        <literal>&lt;old&gt;...&lt;new&gt;</literal> for forced non-fast-forward updates).
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+from
+</term>
+<listitem>
+<simpara>
+        The name of the remote ref being fetched from, minus its
+        <literal>refs/&lt;type&gt;/</literal> prefix. In the case of deletion, the name of
+        the remote ref is "(none)".
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+to
+</term>
+<listitem>
+<simpara>
+        The name of the local ref being updated, minus its
+        <literal>refs/&lt;type&gt;/</literal> prefix.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+reason
+</term>
+<listitem>
+<simpara>
+        A human-readable explanation. In the case of successfully fetched
+        refs, no explanation is needed. For a failed ref, the reason for
+        failure is described.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
 </refsect1>
 <refsect1 id="_examples">
 <title>EXAMPLES</title>

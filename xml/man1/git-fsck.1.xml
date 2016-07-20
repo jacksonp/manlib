@@ -193,7 +193,7 @@ index file, all SHA-1 references in <literal>refs</literal> namespace, and all r
 <simpara>git-fsck tests SHA-1 and general object sanity, and it does full tracking
 of the resulting reachability and everything else. It prints out any
 corruption it finds (missing or bad objects), and if you use the
-<emphasis>--unreachable</emphasis> flag it will also print out objects that exist but that
+<literal>--unreachable</literal> flag it will also print out objects that exist but that
 aren&#8217;t reachable from any of the specified head nodes (or the default
 set, as mentioned above).</simpara>
 <simpara>Any corrupt objects you will have to find in backups or other archives

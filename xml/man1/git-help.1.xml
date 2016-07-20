@@ -23,9 +23,9 @@
 <simpara>With no options and no COMMAND or GUIDE given, the synopsis of the <emphasis>git</emphasis>
 command and a list of the most commonly used Git commands are printed
 on the standard output.</simpara>
-<simpara>If the option <emphasis>--all</emphasis> or <emphasis>-a</emphasis> is given, all available commands are
+<simpara>If the option <literal>--all</literal> or <literal>-a</literal> is given, all available commands are
 printed on the standard output.</simpara>
-<simpara>If the option <emphasis>--guide</emphasis> or <emphasis>-g</emphasis> is given, a list of the useful
+<simpara>If the option <literal>--guide</literal> or <literal>-g</literal> is given, a list of the useful
 Git guides is also printed on the standard output.</simpara>
 <simpara>If a command, or a guide, is given, a manual page for that command or
 guide is brought up. The <emphasis>man</emphasis> program is used by default for this
@@ -233,7 +233,7 @@ the following:</simpara>
 <refsect2 id="_note_about_git_config_global">
 <title>Note about git config --global</title>
 <simpara>Note that all these configuration variables should probably be set
-using the <emphasis>--global</emphasis> flag, for example like this:</simpara>
+using the <literal>--global</literal> flag, for example like this:</simpara>
 <literallayout class="monospaced">$ git config --global help.format web
 $ git config --global web.browser firefox</literallayout><simpara></simpara>
 <simpara>as they are probably more user specific than repository specific.

@@ -56,7 +56,7 @@ if different from the rewritten ones, will be stored in the namespace
 <emphasis>refs/original/</emphasis>.</simpara>
 <simpara>Note that since this operation is very I/O expensive, it might
 be a good idea to redirect the temporary directory off-disk with the
-<emphasis>-d</emphasis> option, e.g. on tmpfs.  Reportedly the speedup is very noticeable.</simpara>
+<literal>-d</literal> option, e.g. on tmpfs.  Reportedly the speedup is very noticeable.</simpara>
 <refsect2 id="_filters">
 <title>Filters</title>
 <simpara>The filters are applied in the order as listed below.  The &lt;command&gt;
@@ -234,7 +234,7 @@ to other tags will be rewritten to point to the underlying commit.</simpara>
         untouched.  This switch allow git-filter-branch to ignore such
         commits.  Though, this switch only applies for commits that have one
         and only one parent, it will hence keep merges points. Also, this
-        option is not compatible with the use of <emphasis>--commit-filter</emphasis>. Though you
+        option is not compatible with the use of <literal>--commit-filter</literal>. Though you
         just need to use the function <emphasis>git_commit_non_empty_tree "$@"</emphasis> instead
         of the <literal>git commit-tree "$@"</literal> idiom in your commit filter to make that
         happen.
@@ -290,7 +290,7 @@ to other tags will be rewritten to point to the underlying commit.</simpara>
 <simpara>
         Arguments for <emphasis>git rev-list</emphasis>.  All positive refs included by
         these options are rewritten.  You may also specify options
-        such as <emphasis>--all</emphasis>, but you must use <emphasis>--</emphasis> to separate them from
+        such as <literal>--all</literal>, but you must use <literal>--</literal> to separate them from
         the <emphasis>git filter-branch</emphasis> options. Implies <xref linkend="Remap_to_ancestor"/>.
 </simpara>
 </listitem>

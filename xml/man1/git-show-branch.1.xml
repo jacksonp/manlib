@@ -117,7 +117,7 @@ no &lt;rev&gt; or &lt;glob&gt; is given on the command line.</simpara>
 </term>
 <listitem>
 <simpara>
-        This option is similar to <emphasis>--topo-order</emphasis> in the sense that no
+        This option is similar to <literal>--topo-order</literal> in the sense that no
         parent comes before all of its children, but otherwise commits
         are ordered according to their commit date.
 </simpara>

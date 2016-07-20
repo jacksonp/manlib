@@ -159,7 +159,7 @@ rebase.autoSquash
 </term>
 <listitem>
 <simpara>
-        If set to true enable <emphasis>--autosquash</emphasis> option by default.
+        If set to true enable <literal>--autosquash</literal> option by default.
 </simpara>
 </listitem>
 </varlistentry>
@@ -169,7 +169,7 @@ rebase.autoStash
 </term>
 <listitem>
 <simpara>
-        If set to true enable <emphasis>--autostash</emphasis> option by default.
+        If set to true enable <literal>--autostash</literal> option by default.
 </simpara>
 </listitem>
 </varlistentry>
@@ -192,7 +192,7 @@ rebase.instructionFormat
 </term>
 <listitem>
 <simpara>
-        Custom commit list format to use during an <emphasis>--interactive</emphasis> rebase.
+        Custom commit list format to use during an <literal>--interactive</literal> rebase.
 </simpara>
 </listitem>
 </varlistentry>
@@ -625,8 +625,8 @@ without an explicit <literal>--interactive</literal>.</simpara>
         "fixup! " or "squash! " after the first, in case you referred to an
         earlier fixup/squash with <literal>git commit --fixup/--squash</literal>.
 </simpara>
-<simpara>This option is only valid when the <emphasis>--interactive</emphasis> option is used.</simpara>
-<simpara>If the <emphasis>--autosquash</emphasis> option is enabled by default using the
+<simpara>This option is only valid when the <literal>--interactive</literal> option is used.</simpara>
+<simpara>If the <literal>--autosquash</literal> option is enabled by default using the
 configuration variable <literal>rebase.autoSquash</literal>, this option can be
 used to override and disable this setting.</simpara>
 </listitem>

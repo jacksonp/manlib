@@ -57,7 +57,7 @@ have a common ancestor commit.</simpara>
         option, then the refs from stdin are processed after those
         on the command line.
 </simpara>
-<simpara>If <emphasis>--stateless-rpc</emphasis> is specified together with this option then
+<simpara>If <literal>--stateless-rpc</literal> is specified together with this option then
 the list of refs must be in packet format (pkt-line). Each ref must
 be in a separate packet, and the list must end with a flush packet.</simpara>
 </listitem>
@@ -71,7 +71,7 @@ be in a separate packet, and the list must end with a flush packet.</simpara>
 </term>
 <listitem>
 <simpara>
-        Pass <emphasis>-q</emphasis> flag to <emphasis>git unpack-objects</emphasis>; this makes the
+        Pass <literal>-q</literal> flag to <emphasis>git unpack-objects</emphasis>; this makes the
         cloning process less verbose.
 </simpara>
 </listitem>

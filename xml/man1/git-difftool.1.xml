@@ -174,7 +174,7 @@ instead.  <literal>--no-symlinks</literal> is the default on Windows.</simpara>
         invoked diff tool returns a non-zero exit code.
 </simpara>
 <simpara><emphasis>git-difftool</emphasis> will forward the exit code of the invoked tool when
-<emphasis>--trust-exit-code</emphasis> is used.</simpara>
+<literal>--trust-exit-code</literal> is used.</simpara>
 </listitem>
 </varlistentry>
 </variablelist>

@@ -240,7 +240,7 @@ of it").</simpara>
 <refentrytitle>git-branch</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry> for details.
 </simpara>
-<simpara>If no <emphasis>-b</emphasis> option is given, the name of the new branch will be
+<simpara>If no <literal>-b</literal> option is given, the name of the new branch will be
 derived from the remote-tracking branch, by looking at the local part of
 the refspec configured for the corresponding remote, and then stripping
 the initial part up to the "*".
@@ -248,7 +248,7 @@ This would tell us to use "hack" as the local branch when branching
 off of "origin/hack" (or "remotes/origin/hack", or even
 "refs/remotes/origin/hack").  If the given name has no slash, or the above
 guessing results in an empty name, the guessing is aborted.  You can
-explicitly give a name with <emphasis>-b</emphasis> in such a case.</simpara>
+explicitly give a name with <literal>-b</literal> in such a case.</simpara>
 </listitem>
 </varlistentry>
 <varlistentry>

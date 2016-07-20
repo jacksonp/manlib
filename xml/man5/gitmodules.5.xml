@@ -25,7 +25,7 @@ of <citerefentry>
 </citerefentry>.</simpara>
 <simpara>The file contains one subsection per submodule, and the subsection value
 is the name of the submodule. The name is set to the path where the
-submodule has been added unless it was customized with the <emphasis>--name</emphasis>
+submodule has been added unless it was customized with the <literal>--name</literal>
 option of <emphasis>git submodule add</emphasis>. Each submodule section also contains the
 following required keys:</simpara>
 <variablelist>

@@ -77,7 +77,7 @@ updates it from the current repository, sending named refs.</simpara>
         option, then the refs from stdin are processed after those
         on the command line.
 </simpara>
-<simpara>If <emphasis>--stateless-rpc</emphasis> is specified together with this option then
+<simpara>If <literal>--stateless-rpc</literal> is specified together with this option then
 the list of refs must be in packet format (pkt-line). Each ref must
 be in a separate packet, and the list must end with a flush packet.</simpara>
 </listitem>
@@ -199,10 +199,10 @@ be in a separate packet, and the list must end with a flush packet.</simpara>
 <title>Specifying the Refs</title>
 <simpara>There are three ways to specify which refs to update on the
 remote end.</simpara>
-<simpara>With <emphasis>--all</emphasis> flag, all refs that exist locally are transferred to
+<simpara>With <literal>--all</literal> flag, all refs that exist locally are transferred to
 the remote side.  You cannot specify any <emphasis>&lt;ref&gt;</emphasis> if you use
 this flag.</simpara>
-<simpara>Without <emphasis>--all</emphasis> and without any <emphasis>&lt;ref&gt;</emphasis>, the heads that exist
+<simpara>Without <literal>--all</literal> and without any <emphasis>&lt;ref&gt;</emphasis>, the heads that exist
 both on the local side and on the remote side are updated.</simpara>
 <simpara>When one or more <emphasis>&lt;ref&gt;</emphasis> are specified explicitly (whether on the
 command line or via <literal>--stdin</literal>), it can be either a
@@ -251,12 +251,12 @@ it has to start with "refs/"; &lt;dst&gt; is used as the
 </itemizedlist>
 </listitem>
 </itemizedlist>
-<simpara>Without <emphasis>--force</emphasis>, the &lt;src&gt; ref is stored at the remote only if
+<simpara>Without &#8216;--force`, the &lt;src&gt; ref is stored at the remote only if
 &lt;dst&gt; does not exist, or &lt;dst&gt; is a proper subset (i.e. an
 ancestor) of &lt;src&gt;.  This check, known as "fast-forward check",
 is performed in order to avoid accidentally overwriting the
-remote ref and lose other peoples' commits from there.</simpara>
-<simpara>With <emphasis>--force</emphasis>, the fast-forward check is disabled for all refs.</simpara>
+remote ref and lose other peoples&#8217; commits from there.</simpara>
+<simpara>With <literal>--force</literal>, the fast-forward check is disabled for all refs.</simpara>
 <simpara>Optionally, a &lt;ref&gt; parameter can be prefixed with a plus <emphasis>+</emphasis> sign
 to disable the fast-forward check only on that ref.</simpara>
 </refsect1>

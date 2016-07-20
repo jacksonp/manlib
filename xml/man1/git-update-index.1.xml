@@ -192,7 +192,7 @@ you will need to handle the situation manually.</simpara>
 </term>
 <listitem>
 <simpara>
-        Like <emphasis>--refresh</emphasis>, but checks stat information unconditionally,
+        Like <literal>--refresh</literal>, but checks stat information unconditionally,
         without regard to the "assume unchanged" setting.
 </simpara>
 </listitem>
@@ -423,7 +423,7 @@ will remove the intended effect of the option.</simpara>
 </refsect1>
 <refsect1 id="_using_refresh">
 <title>Using --refresh</title>
-<simpara><emphasis>--refresh</emphasis> does not calculate a new sha1 file or bring the index
+<simpara><literal>--refresh</literal> does not calculate a new sha1 file or bring the index
 up-to-date for mode/content changes. But what it <emphasis role="strong">does</emphasis> do is to
 "re-match" the stat information of a file with the index, so that you
 can refresh the index for a file that hasn&#8217;t been changed but where
@@ -433,16 +433,16 @@ up the stat index details with the proper files.</simpara>
 </refsect1>
 <refsect1 id="_using_cacheinfo_or_info_only">
 <title>Using --cacheinfo or --info-only</title>
-<simpara><emphasis>--cacheinfo</emphasis> is used to register a file that is not in the
+<simpara><literal>--cacheinfo</literal> is used to register a file that is not in the
 current working directory.  This is useful for minimum-checkout
 merging.</simpara>
 <simpara>To pretend you have a file with mode and sha1 at path, say:</simpara>
 <literallayout class="monospaced">$ git update-index --cacheinfo &lt;mode&gt;,&lt;sha1&gt;,&lt;path&gt;</literallayout><simpara></simpara>
-<simpara><emphasis>--info-only</emphasis> is used to register files without placing them in the object
+<simpara><literal>--info-only</literal> is used to register files without placing them in the object
 database.  This is useful for status-only repositories.</simpara>
-<simpara>Both <emphasis>--cacheinfo</emphasis> and <emphasis>--info-only</emphasis> behave similarly: the index is updated
-but the object database isn&#8217;t.  <emphasis>--cacheinfo</emphasis> is useful when the object is
-in the database but the file isn&#8217;t available locally.  <emphasis>--info-only</emphasis> is
+<simpara>Both <literal>--cacheinfo</literal> and <literal>--info-only</literal> behave similarly: the index is updated
+but the object database isn&#8217;t.  <literal>--cacheinfo</literal> is useful when the object is
+in the database but the file isn&#8217;t available locally.  <literal>--info-only</literal> is
 useful when the file is available, but you do not wish to update the
 object database.</simpara>
 </refsect1>

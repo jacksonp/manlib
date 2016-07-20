@@ -1139,7 +1139,7 @@ information.</simpara>
 </term>
 <listitem>
 <simpara>
-        When <emphasis>--root</emphasis> is specified the initial commit will be shown as a big
+        When <literal>--root</literal> is specified the initial commit will be shown as a big
         creation event. This is equivalent to a diff against the NULL tree.
 </simpara>
 </listitem>
@@ -1150,7 +1150,7 @@ information.</simpara>
 </term>
 <listitem>
 <simpara>
-        When <emphasis>--stdin</emphasis> is specified, the command does not take
+        When <literal>--stdin</literal> is specified, the command does not take
         &lt;tree-ish&gt; arguments from the command line.  Instead, it
         reads lines containing either two &lt;tree&gt;, one &lt;commit&gt;, or a
         list of &lt;commit&gt; from its standard input.  (Use a single space
@@ -1177,7 +1177,7 @@ commits (but not trees).</simpara>
         By default, <emphasis>git diff-tree --stdin</emphasis> does not show
         differences for merge commits.  With this flag, it shows
         differences to that commit from all of its parents. See
-        also <emphasis>-c</emphasis>.
+        also <literal>-c</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -1188,9 +1188,9 @@ commits (but not trees).</simpara>
 <listitem>
 <simpara>
         By default, <emphasis>git diff-tree --stdin</emphasis> shows differences,
-        either in machine-readable form (without <emphasis>-p</emphasis>) or in patch
-        form (with <emphasis>-p</emphasis>).  This output can be suppressed.  It is
-        only useful with <emphasis>-v</emphasis> flag.
+        either in machine-readable form (without <literal>-p</literal>) or in patch
+        form (with <literal>-p</literal>).  This output can be suppressed.  It is
+        only useful with <literal>-v</literal> flag.
 </simpara>
 </listitem>
 </varlistentry>
@@ -1395,10 +1395,10 @@ being displayed. Examples: "--notes=foo" will show only notes from
 <simpara>
         This flag changes the way a merge commit is displayed
         (which means it is useful only when the command is given
-        one &lt;tree-ish&gt;, or <emphasis>--stdin</emphasis>).  It shows the differences
+        one &lt;tree-ish&gt;, or <literal>--stdin</literal>).  It shows the differences
         from each of the parents to the merge result simultaneously
         instead of showing pairwise diff between a parent and the
-        result one at a time (which is what the <emphasis>-m</emphasis> option does).
+        result one at a time (which is what the <literal>-m</literal> option does).
         Furthermore, it lists only files which were modified
         from all parents.
 </simpara>
@@ -1411,8 +1411,8 @@ being displayed. Examples: "--notes=foo" will show only notes from
 <listitem>
 <simpara>
         This flag changes the way a merge commit patch is displayed,
-        in a similar way to the <emphasis>-c</emphasis> option. It implies the <emphasis>-c</emphasis>
-        and <emphasis>-p</emphasis> options and further compresses the patch output
+        in a similar way to the <literal>-c</literal> option. It implies the <literal>-c</literal>
+        and <literal>-p</literal> options and further compresses the patch output
         by omitting uninteresting hunks whose the contents in the parents
         have only two variants and the merge result picks one of them
         without modification.  When all hunks are uninteresting, the commit
@@ -2078,7 +2078,7 @@ status, followed by optional "score" number.
 </listitem>
 <listitem>
 <simpara>
-a tab or a NUL when <emphasis>-z</emphasis> option is used.
+a tab or a NUL when <literal>-z</literal> option is used.
 </simpara>
 </listitem>
 <listitem>
@@ -2088,7 +2088,7 @@ path for "src"
 </listitem>
 <listitem>
 <simpara>
-a tab or a NUL when <emphasis>-z</emphasis> option is used; only exists for C or R.
+a tab or a NUL when <literal>-z</literal> option is used; only exists for C or R.
 </simpara>
 </listitem>
 <listitem>
@@ -2098,7 +2098,7 @@ path for "dst"; only exists for C or R.
 </listitem>
 <listitem>
 <simpara>
-an LF or a NUL when <emphasis>-z</emphasis> option is used, to terminate the record.
+an LF or a NUL when <literal>-z</literal> option is used, to terminate the record.
 </simpara>
 </listitem>
 </orderedlist>
@@ -2161,7 +2161,7 @@ respectively.</simpara>
 <refsect1 id="_diff_format_for_merges">
 <title>diff format for merges</title>
 <simpara>"git-diff-tree", "git-diff-files" and "git-diff --raw"
-can take <emphasis>-c</emphasis> or <emphasis>--cc</emphasis> option
+can take <literal>-c</literal> or <literal>--cc</literal> option
 to generate diff output also for merge commits.  The output differs
 from the format described above in the following way:</simpara>
 <orderedlist numeration="arabic">
@@ -2199,7 +2199,7 @@ all parents.</simpara>
 <refsect1 id="_generating_patches_with_p">
 <title>Generating patches with -p</title>
 <simpara>When "git-diff-index", "git-diff-tree", or "git-diff-files" are run
-with a <emphasis>-p</emphasis> option, "git diff" without the <emphasis>--raw</emphasis> option, or
+with a <literal>-p</literal> option, "git diff" without the <literal>--raw</literal> option, or
 "git log" with the "-p" option, they
 do not produce the output described above; instead they produce a
 patch file.  You can customize the creation of such patches via the
@@ -2315,10 +2315,10 @@ index fabadb8,cc95eb0..4866510
 <listitem>
 <simpara>
 It is preceded with a "git diff" header, that looks like
-     this (when <emphasis>-c</emphasis> option is used):
+     this (when <literal>-c</literal> option is used):
 </simpara>
 <literallayout class="monospaced">diff --combined file</literallayout>
-<simpara>or like this (when <emphasis>--cc</emphasis> option is used):</simpara>
+<simpara>or like this (when <literal>--cc</literal> option is used):</simpara>
 <literallayout class="monospaced">diff --cc file</literallayout>
 </listitem>
 <listitem>

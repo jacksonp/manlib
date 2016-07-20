@@ -54,7 +54,7 @@ committed.</simpara>
         Skip move or rename actions which would lead to an error
         condition. An error happens when a source is neither existing nor
         controlled by Git, or when it would overwrite an existing
-        file unless <emphasis>-f</emphasis> is given.
+        file unless <literal>-f</literal> is given.
 </simpara>
 </listitem>
 </varlistentry>

@@ -108,7 +108,7 @@ $ git init
 $ git p4 sync //path/in/your/perforce/depot</literallayout><simpara></simpara>
 <simpara>This imports the specified depot into
 <emphasis>refs/remotes/p4/master</emphasis> in an existing Git repository.  The
-<emphasis>--branch</emphasis> option can be used to specify a different branch to
+<literal>--branch</literal> option can be used to specify a different branch to
 be used for the p4 content.</simpara>
 <simpara>If a Git repository includes branches <emphasis>refs/remotes/origin/p4</emphasis>, these
 will be fetched and consulted first during a <emphasis>git p4 sync</emphasis>.  Since
@@ -116,7 +116,7 @@ importing directly from p4 is considerably slower than pulling changes
 from a Git remote, this can be useful in a multi-developer environment.</simpara>
 <simpara>If there are multiple branches, doing <emphasis>git p4 sync</emphasis> will automatically
 use the "BRANCH DETECTION" algorithm to try to partition new changes
-into the right branch.  This can be overridden with the <emphasis>--branch</emphasis>
+into the right branch.  This can be overridden with the <literal>--branch</literal>
 option to specify just a single branch to update.</simpara>
 </refsect2>
 <refsect2 id="_rebase">
@@ -141,9 +141,9 @@ the <emphasis>p4/master</emphasis> branch, use:</simpara>
 <simpara>To specify a branch other than the current one, use:</simpara>
 <literallayout class="monospaced">$ git p4 submit topicbranch</literallayout><simpara></simpara>
 <simpara>The upstream reference is generally <emphasis>refs/remotes/p4/master</emphasis>, but can
-be overridden using the <emphasis>--origin=</emphasis> command-line option.</simpara>
+be overridden using the <literal>--origin=</literal> command-line option.</simpara>
 <simpara>The p4 changes will be created as the user invoking <emphasis>git p4 submit</emphasis>. The
-<emphasis>--preserve-user</emphasis> option will cause ownership to be modified
+<literal>--preserve-user</literal> option will cause ownership to be modified
 according to the author of the Git commit.  This option requires admin
 privileges in p4, which can be granted using <emphasis>p4 protect</emphasis>.</simpara>
 </refsect2>
@@ -273,7 +273,7 @@ Git repository:</simpara>
 <refentrytitle>git-branch</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry> and other commands.  This option instead
         puts p4 branches in <emphasis>refs/heads/p4/</emphasis>.  Note that future
-        sync operations must specify <emphasis>--import-local</emphasis> as well so that
+        sync operations must specify <literal>--import-local</literal> as well so that
         they can find the p4 branches in refs/heads.
 </simpara>
 </listitem>
@@ -318,7 +318,7 @@ Git repository:</simpara>
         default, involves removing the entire depot path.  With this
         option, the full p4 depot path is retained in Git.  For example,
         path <emphasis>//depot/main/foo/bar.c</emphasis>, when imported from
-        <emphasis>//depot/main/</emphasis>, becomes <emphasis>foo/bar.c</emphasis>.  With <emphasis>--keep-path</emphasis>, the
+        <emphasis>//depot/main/</emphasis>, becomes <emphasis>foo/bar.c</emphasis>.  With <literal>--keep-path</literal>, the
         Git path is instead <emphasis>depot/main/foo/bar.c</emphasis>.
 </simpara>
 </listitem>
@@ -389,7 +389,7 @@ options described above.</simpara>
 <simpara>
         Upstream location from which commits are identified to submit to
         p4.  By default, this is the most recent p4 commit reachable
-        from <emphasis>HEAD</emphasis>.
+        from <literal>HEAD</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -548,7 +548,7 @@ p4 revision specifier on the end:</simpara>
     Import all changes from both named depot paths into a single
     repository.  Only files below these directories are included.
     There is not a subdirectory in Git for each "proj1" and "proj2".
-    You must use the <emphasis>--destination</emphasis> option when specifying more
+    You must use the <literal>--destination</literal> option when specifying more
     than one depot path.  The revision specifier must be specified
     identically on each depot path.  If there are files in the
     depot paths with the same name, the path with the most recently
@@ -564,7 +564,7 @@ p4 revision specifier on the end:</simpara>
 <simpara>The p4 client specification is maintained with the <emphasis>p4 client</emphasis> command
 and contains among other fields, a View that specifies how the depot
 is mapped into the client repository.  The <emphasis>clone</emphasis> and <emphasis>sync</emphasis> commands
-can consult the client spec when given the <emphasis>--use-client-spec</emphasis> option or
+can consult the client spec when given the <literal>--use-client-spec</literal> option or
 when the useClientSpec variable is true.  After <emphasis>git p4 clone</emphasis>, the
 useClientSpec variable is automatically set in the repository
 configuration file.  This allows future <emphasis>git p4 submit</emphasis> commands to
@@ -594,7 +594,7 @@ The <emphasis>p4 branch</emphasis> command is used to maintain mappings between
 different areas in the tree, and indicate related content.  <emphasis>git p4</emphasis>
 can use these mappings to determine branch relationships.</simpara>
 <simpara>If you have a repository where all the branches of interest exist as
-subdirectories of a single depot path, you can use <emphasis>--detect-branches</emphasis>
+subdirectories of a single depot path, you can use <literal>--detect-branches</literal>
 when cloning or syncing to have <emphasis>git p4</emphasis> automatically find
 subdirectories in p4, and to generate these as branches in Git.</simpara>
 <simpara>For example, if the P4 repository structure is:</simpara>
@@ -781,7 +781,7 @@ git-p4.useClientSpec
 <simpara>
         Specify that the p4 client spec should be used to identify p4
         depot paths of interest.  This is equivalent to specifying the
-        option <emphasis>--use-client-spec</emphasis>.  See the "CLIENT SPEC" section above.
+        option <literal>--use-client-spec</literal>.  See the "CLIENT SPEC" section above.
         This variable is a boolean, not the name of a p4 client.
 </simpara>
 </listitem>

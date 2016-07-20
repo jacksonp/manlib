@@ -31,7 +31,7 @@ effect of some earlier commits (often only a faulty one).  If you want to
 throw away all uncommitted changes in your working directory, you
 should see <citerefentry>
 <refentrytitle>git-reset</refentrytitle><manvolnum>1</manvolnum>
-</citerefentry>, particularly the <emphasis>--hard</emphasis> option.  If
+</citerefentry>, particularly the <literal>--hard</literal> option.  If
 you want to extract specific files as they were in another commit, you
 should see <citerefentry>
 <refentrytitle>git-checkout</refentrytitle><manvolnum>1</manvolnum>
@@ -56,7 +56,7 @@ both will discard uncommitted changes in your working directory.</simpara>
         Sets of commits can also be given but no traversal is done by
         default, see <citerefentry>
 <refentrytitle>git-rev-list</refentrytitle><manvolnum>1</manvolnum>
-</citerefentry> and its <emphasis>--no-walk</emphasis>
+</citerefentry> and its <literal>--no-walk</literal>
         option.
 </simpara>
 </listitem>

@@ -504,7 +504,7 @@ explicitly.</simpara>
 <listitem>
 <simpara>
         In addition to the <emphasis>&lt;commit&gt;</emphasis> listed on the command
-        line, read them from the standard input. If a <emphasis>--</emphasis> separator is
+        line, read them from the standard input. If a <literal>--</literal> separator is
         seen, stop reading commits and start reading paths to limit the
         result.
 </simpara>

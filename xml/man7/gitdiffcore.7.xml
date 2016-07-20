@@ -34,8 +34,8 @@ files:</simpara>
 <listitem>
 <simpara>
 <emphasis>git diff-index</emphasis> compares contents of a "tree" object and the
-   working directory (when <emphasis>--cached</emphasis> flag is not used) or a
-   "tree" object and the index file (when <emphasis>--cached</emphasis> flag is
+   working directory (when <literal>--cached</literal> flag is not used) or a
+   "tree" object and the index file (when <literal>--cached</literal> flag is
    used);
 </simpara>
 </listitem>

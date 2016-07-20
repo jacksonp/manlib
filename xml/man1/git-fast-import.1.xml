@@ -1257,7 +1257,7 @@ force
 <listitem>
 <simpara>
         Act as though the corresponding command-line option with
-        a leading <emphasis>--</emphasis> was passed on the command line
+        a leading <literal>--</literal> was passed on the command line
         (see OPTIONS, above).
 </simpara>
 </listitem>
@@ -1342,7 +1342,7 @@ options the user may specify to git fast-import itself.</simpara>
 <literallayout class="monospaced">    'option' SP &lt;option&gt; LF</literallayout>
 <simpara>The <literal>&lt;option&gt;</literal> part of the command may contain any of the options
 listed in the OPTIONS section that do not change import semantics,
-without the leading <emphasis>--</emphasis> and is treated in the same way.</simpara>
+without the leading <literal>--</literal> and is treated in the same way.</simpara>
 <simpara>Option commands must be the first commands on the input (not counting
 feature commands), to give an option command after any non-option
 command is an error.</simpara>

@@ -1235,7 +1235,7 @@ status, followed by optional "score" number.
 </listitem>
 <listitem>
 <simpara>
-a tab or a NUL when <emphasis>-z</emphasis> option is used.
+a tab or a NUL when <literal>-z</literal> option is used.
 </simpara>
 </listitem>
 <listitem>
@@ -1245,7 +1245,7 @@ path for "src"
 </listitem>
 <listitem>
 <simpara>
-a tab or a NUL when <emphasis>-z</emphasis> option is used; only exists for C or R.
+a tab or a NUL when <literal>-z</literal> option is used; only exists for C or R.
 </simpara>
 </listitem>
 <listitem>
@@ -1255,7 +1255,7 @@ path for "dst"; only exists for C or R.
 </listitem>
 <listitem>
 <simpara>
-an LF or a NUL when <emphasis>-z</emphasis> option is used, to terminate the record.
+an LF or a NUL when <literal>-z</literal> option is used, to terminate the record.
 </simpara>
 </listitem>
 </orderedlist>
@@ -1318,7 +1318,7 @@ respectively.</simpara>
 <refsect1 id="_diff_format_for_merges">
 <title>diff format for merges</title>
 <simpara>"git-diff-tree", "git-diff-files" and "git-diff --raw"
-can take <emphasis>-c</emphasis> or <emphasis>--cc</emphasis> option
+can take <literal>-c</literal> or <literal>--cc</literal> option
 to generate diff output also for merge commits.  The output differs
 from the format described above in the following way:</simpara>
 <orderedlist numeration="arabic">
@@ -1356,7 +1356,7 @@ all parents.</simpara>
 <refsect1 id="_generating_patches_with_p">
 <title>Generating patches with -p</title>
 <simpara>When "git-diff-index", "git-diff-tree", or "git-diff-files" are run
-with a <emphasis>-p</emphasis> option, "git diff" without the <emphasis>--raw</emphasis> option, or
+with a <literal>-p</literal> option, "git diff" without the <literal>--raw</literal> option, or
 "git log" with the "-p" option, they
 do not produce the output described above; instead they produce a
 patch file.  You can customize the creation of such patches via the
@@ -1472,10 +1472,10 @@ index fabadb8,cc95eb0..4866510
 <listitem>
 <simpara>
 It is preceded with a "git diff" header, that looks like
-     this (when <emphasis>-c</emphasis> option is used):
+     this (when <literal>-c</literal> option is used):
 </simpara>
 <literallayout class="monospaced">diff --combined file</literallayout>
-<simpara>or like this (when <emphasis>--cc</emphasis> option is used):</simpara>
+<simpara>or like this (when <literal>--cc</literal> option is used):</simpara>
 <literallayout class="monospaced">diff --cc file</literallayout>
 </listitem>
 <listitem>
@@ -1649,13 +1649,13 @@ the pathname, but if that is <literal>NUL</literal>, the record will show two pa
 <refsect1 id="_operating_modes">
 <title>Operating Modes</title>
 <simpara>You can choose whether you want to trust the index file entirely
-(using the <emphasis>--cached</emphasis> flag) or ask the diff logic to show any files
+(using the <literal>--cached</literal> flag) or ask the diff logic to show any files
 that don&#8217;t match the stat state as being "tentatively changed".  Both
 of these operations are very useful indeed.</simpara>
 </refsect1>
 <refsect1 id="_cached_mode">
 <title>Cached Mode</title>
-<simpara>If <emphasis>--cached</emphasis> is specified, it allows you to ask:</simpara>
+<simpara>If <literal>--cached</literal> is specified, it allows you to ask:</simpara>
 <literallayout class="monospaced">show me the differences between HEAD and the current index
 contents (the ones I'd write using 'git write-tree')</literallayout>
 <simpara>For example, let&#8217;s say that you have worked on your working directory, updated

@@ -36,26 +36,26 @@
 <simpara>You can query/set/replace/unset options with this command. The name is
 actually the section and the key separated by a dot, and the value will be
 escaped.</simpara>
-<simpara>Multiple lines can be added to an option by using the <emphasis>--add</emphasis> option.
+<simpara>Multiple lines can be added to an option by using the <literal>--add</literal> option.
 If you want to update or unset an option which can occur on multiple
 lines, a POSIX regexp <literal>value_regex</literal> needs to be given.  Only the
 existing values that match the regexp are updated or unset.  If
 you want to handle the lines that do <emphasis role="strong">not</emphasis> match the regex, just
 prepend a single exclamation mark in front (see also <xref linkend="EXAMPLES"/>).</simpara>
-<simpara>The type specifier can be either <emphasis>--int</emphasis> or <emphasis>--bool</emphasis>, to make
+<simpara>The type specifier can be either <literal>--int</literal> or <literal>--bool</literal>, to make
 <emphasis>git config</emphasis> ensure that the variable(s) are of the given type and
 convert the value to the canonical form (simple decimal number for int,
-a "true" or "false" string for bool), or <emphasis>--path</emphasis>, which does some
-path expansion (see <emphasis>--path</emphasis> below).  If no type specifier is passed, no
+a "true" or "false" string for bool), or <literal>--path</literal>, which does some
+path expansion (see <literal>--path</literal> below).  If no type specifier is passed, no
 checks or transformations are performed on the value.</simpara>
 <simpara>When reading, the values are read from the system, global and
 repository local configuration files by default, and options
-<emphasis>--system</emphasis>, <emphasis>--global</emphasis>, <emphasis>--local</emphasis> and <emphasis>--file &lt;filename&gt;</emphasis> can be
+<literal>--system</literal>, <literal>--global</literal>, <literal>--local</literal> and <literal>--file &lt;filename&gt;</literal> can be
 used to tell the command to read from only that location (see <xref linkend="FILES"/>).</simpara>
 <simpara>When writing, the new value is written to the repository local
-configuration file by default, and options <emphasis>--system</emphasis>, <emphasis>--global</emphasis>,
-<emphasis>--file &lt;filename&gt;</emphasis> can be used to tell the command to write to
-that location (you can say <emphasis>--local</emphasis> but that is the default).</simpara>
+configuration file by default, and options <literal>--system</literal>, <literal>--global</literal>,
+<literal>--file &lt;filename&gt;</literal> can be used to tell the command to write to
+that location (you can say <literal>--local</literal> but that is the default).</simpara>
 <simpara>This command will fail with non-zero status upon error.  Some exit
 codes are:</simpara>
 <itemizedlist>
@@ -238,7 +238,7 @@ from all available files.</simpara>
 </term>
 <listitem>
 <simpara>
-        Similar to <emphasis>--file</emphasis> but use the given blob instead of a file. E.g.
+        Similar to <literal>--file</literal> but use the given blob instead of a file. E.g.
         you can use <emphasis>master:.gitmodules</emphasis> to read values from the file
         <emphasis>.gitmodules</emphasis> in the master branch. See "SPECIFYING REVISIONS"
         section in <citerefentry>
@@ -431,7 +431,7 @@ from all available files.</simpara>
 <listitem>
 <simpara>
         Opens an editor to modify the specified config file; either
-        <emphasis>--system</emphasis>, <emphasis>--global</emphasis>, or repository (default).
+        <literal>--system</literal>, <literal>--global</literal>, or repository (default).
 </simpara>
 </listitem>
 </varlistentry>
@@ -452,7 +452,7 @@ from all available files.</simpara>
 </refsect1>
 <refsect1 id="FILES">
 <title>FILES</title>
-<simpara>If not set explicitly with <emphasis>--file</emphasis>, there are four files where
+<simpara>If not set explicitly with <literal>--file</literal>, there are four files where
 <emphasis>git config</emphasis> will search for configuration options:</simpara>
 <variablelist>
 <varlistentry>
@@ -511,10 +511,10 @@ error code. However, in neither case will an error message be issued.</simpara>
 precedence over values read earlier.  When multiple values are taken then all
 values of a key from all files will be used.</simpara>
 <simpara>All writing options will per default write to the repository specific
-configuration file. Note that this also affects options like <emphasis>--replace-all</emphasis>
-and <emphasis>--unset</emphasis>. <emphasis role="strong"><emphasis>git config</emphasis> will only ever change one file at a time</emphasis>.</simpara>
+configuration file. Note that this also affects options like <literal>--replace-all</literal>
+and <literal>--unset</literal>. <emphasis role="strong"><emphasis>git config</emphasis> will only ever change one file at a time</emphasis>.</simpara>
 <simpara>You can override these rules either by command-line options or by environment
-variables. The <emphasis>--global</emphasis> and the <emphasis>--system</emphasis> options will limit the file used
+variables. The <literal>--global</literal> and the <literal>--system</literal> options will limit the file used
 to the global or system-wide file respectively. The <literal>GIT_CONFIG</literal> environment
 variable has a similar effect, but you can specify any filename you want.</simpara>
 </refsect1>
@@ -754,7 +754,7 @@ false
 Boolean false can be spelled as <literal>no</literal>, <literal>off</literal>,
                 <literal>false</literal>, or <literal>0</literal>.
 </simpara>
-<simpara>When converting value to the canonical form using <emphasis>--bool</emphasis> type
+<simpara>When converting value to the canonical form using <literal>--bool</literal> type
 specifier; <emphasis>git config</emphasis> will ensure that the output is "true" or
 "false" (spelled in lowercase).</simpara>
 </listitem>
@@ -1347,6 +1347,20 @@ proxy use, while defaulting to a common proxy for external domains.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
+core.sshCommand
+</term>
+<listitem>
+<simpara>
+        If this variable is set, <literal>git fetch</literal> and <literal>git push</literal> will
+        use the specified command instead of <literal>ssh</literal> when they need to
+        connect to a remote system. The command is in the same form as
+        the <literal>GIT_SSH_COMMAND</literal> environment variable and is overridden
+        when the environment variable is set.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 core.ignoreStat
 </term>
 <listitem>
@@ -1415,7 +1429,7 @@ core.worktree
         If <literal>GIT_COMMON_DIR</literal> environment variable is set, core.worktree
         is ignored and not used for determining the root of working tree.
         This can be overridden by the <literal>GIT_WORK_TREE</literal> environment
-        variable and the <emphasis>--work-tree</emphasis> command-line option.
+        variable and the <literal>--work-tree</literal> command-line option.
         The value can be an absolute path or relative to the path to
         the .git directory, which is either specified by --git-dir
         or GIT_DIR, or automatically discovered.
@@ -1931,7 +1945,7 @@ add.ignore-errors (deprecated)
 <listitem>
 <simpara>
         Tells <emphasis>git add</emphasis> to continue adding files when some files cannot be
-        added due to indexing errors. Equivalent to the <emphasis>--ignore-errors</emphasis>
+        added due to indexing errors. Equivalent to the <literal>--ignore-errors</literal>
         option of <citerefentry>
 <refentrytitle>git-add</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.  <literal>add.ignore-errors</literal> is deprecated,
@@ -1976,9 +1990,9 @@ am.keepcr
 <listitem>
 <simpara>
         If true, git-am will call git-mailsplit for patches in mbox format
-        with parameter <emphasis>--keep-cr</emphasis>. In this case git-mailsplit will
+        with parameter <literal>--keep-cr</literal>. In this case git-mailsplit will
         not remove <literal>\r</literal> from lines ending with <literal>\r\n</literal>. Can be overridden
-        by giving <emphasis>--no-keep-cr</emphasis> from the command line.
+        by giving <literal>--no-keep-cr</literal> from the command line.
         See <citerefentry>
 <refentrytitle>git-am</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>, <citerefentry>
@@ -2011,7 +2025,7 @@ apply.ignoreWhitespace
 <listitem>
 <simpara>
         When set to <emphasis>change</emphasis>, tells <emphasis>git apply</emphasis> to ignore changes in
-        whitespace, in the same way as the <emphasis>--ignore-space-change</emphasis>
+        whitespace, in the same way as the <literal>--ignore-space-change</literal>
         option.
         When set to one of: no, none, never, false tells <emphasis>git apply</emphasis> to
         respect all whitespace differences.
@@ -2028,7 +2042,7 @@ apply.whitespace
 <listitem>
 <simpara>
         Tells <emphasis>git apply</emphasis> how to handle whitespaces, in the same way
-        as the <emphasis>--whitespace</emphasis> option. See <citerefentry>
+        as the <literal>--whitespace</literal> option. See <citerefentry>
 <refentrytitle>git-apply</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>.
 </simpara>
@@ -2206,7 +2220,7 @@ browser.&lt;tool&gt;.path
 <listitem>
 <simpara>
         Override the path for the given tool that may be used to
-        browse HTML help (see <emphasis>-w</emphasis> option in <citerefentry>
+        browse HTML help (see <literal>-w</literal> option in <citerefentry>
 <refentrytitle>git-help</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>) or a
         working repository in gitweb (see <citerefentry>
@@ -3080,7 +3094,7 @@ diff.renameLimit
 <listitem>
 <simpara>
         The number of files to consider when performing the copy/rename
-        detection; equivalent to the <emphasis>git diff</emphasis> option <emphasis>-l</emphasis>.
+        detection; equivalent to the <emphasis>git diff</emphasis> option <literal>-l</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -3420,6 +3434,20 @@ fetch.prune
 <simpara>
         If true, fetch will automatically behave as if the <literal>--prune</literal>
         option was given on the command line.  See also <literal>remote.&lt;name&gt;.prune</literal>.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+fetch.output
+</term>
+<listitem>
+<simpara>
+        Control how ref update status is printed. Valid values are
+        <literal>full</literal> and <literal>compact</literal>. Default value is <literal>full</literal>. See section
+        OUTPUT in <citerefentry>
+<refentrytitle>git-fetch</refentrytitle><manvolnum>1</manvolnum>
+</citerefentry> for detail.
 </simpara>
 </listitem>
 </varlistentry>
@@ -3889,9 +3917,9 @@ gitcvs.usecrlfattr
 <listitem>
 <simpara>
         If true, the server will look up the end-of-line conversion
-        attributes for files to determine the <emphasis>-k</emphasis> modes to use. If
+        attributes for files to determine the <literal>-k</literal> modes to use. If
         the attributes force Git to treat a file as text,
-        the <emphasis>-k</emphasis> mode will be left blank so CVS clients will
+        the <literal>-k</literal> mode will be left blank so CVS clients will
         treat it as text. If they suppress text conversion, the file
         will be set with <emphasis>-kb</emphasis> mode, which suppresses any newline munging
         the client might otherwise do. If the attributes do not allow
@@ -4054,7 +4082,7 @@ grep.lineNumber
 </term>
 <listitem>
 <simpara>
-        If set to true, enable <emphasis>-n</emphasis> option by default.
+        If set to true, enable <literal>-n</literal> option by default.
 </simpara>
 </listitem>
 </varlistentry>
@@ -4065,8 +4093,8 @@ grep.patternType
 <listitem>
 <simpara>
         Set the default matching behavior. Using a value of <emphasis>basic</emphasis>, <emphasis>extended</emphasis>,
-        <emphasis>fixed</emphasis>, or <emphasis>perl</emphasis> will enable the <emphasis>--basic-regexp</emphasis>, <emphasis>--extended-regexp</emphasis>,
-        <emphasis>--fixed-strings</emphasis>, or <emphasis>--perl-regexp</emphasis> option accordingly, while the
+        <emphasis>fixed</emphasis>, or <emphasis>perl</emphasis> will enable the <literal>--basic-regexp</literal>, <literal>--extended-regexp</literal>,
+        <literal>--fixed-strings</literal>, or <literal>--perl-regexp</literal> option accordingly, while the
         value <emphasis>default</emphasis> will return to the default matching behavior.
 </simpara>
 </listitem>
@@ -4077,7 +4105,7 @@ grep.extendedRegexp
 </term>
 <listitem>
 <simpara>
-        If set to true, enable <emphasis>--extended-regexp</emphasis> option by default. This
+        If set to true, enable <literal>--extended-regexp</literal> option by default. This
         option is ignored when the <literal>grep.patternType</literal> option is set to a value
         other than <emphasis>default</emphasis>.
 </simpara>
@@ -5127,7 +5155,7 @@ log.decorate
         specified, the full ref name (including prefix) will be printed.
         If <emphasis>auto</emphasis> is specified, then if the output is going to a terminal,
         the ref names are shown as if <emphasis>short</emphasis> were given, otherwise no ref
-        names are shown. This is the same as the <emphasis>--decorate</emphasis> option
+        names are shown. This is the same as the <literal>--decorate</literal> option
         of the <literal>git log</literal>.
 </simpara>
 </listitem>
@@ -6044,9 +6072,9 @@ push.followTags
 </term>
 <listitem>
 <simpara>
-        If set to true enable <emphasis>--follow-tags</emphasis> option by default.  You
+        If set to true enable <literal>--follow-tags</literal> option by default.  You
         may override this configuration at time of push by specifying
-        <emphasis>--no-follow-tags</emphasis>.
+        <literal>--no-follow-tags</literal>.
 </simpara>
 </listitem>
 </varlistentry>
@@ -6057,12 +6085,12 @@ push.gpgSign
 <listitem>
 <simpara>
         May be set to a boolean value, or the string <emphasis>if-asked</emphasis>. A true
-        value causes all pushes to be GPG signed, as if <emphasis>--signed</emphasis> is
+        value causes all pushes to be GPG signed, as if <literal>--signed</literal> is
         passed to <citerefentry>
 <refentrytitle>git-push</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>. The string <emphasis>if-asked</emphasis> causes
         pushes to be signed if the server supports it, as if
-        <emphasis>--signed=if-asked</emphasis> is passed to <emphasis>git push</emphasis>. A false value may
+        <literal>--signed=if-asked</literal> is passed to <emphasis>git push</emphasis>. A false value may
         override a value from a lower-priority config file. An explicit
         command-line flag always overrides this config option.
 </simpara>
@@ -6106,7 +6134,7 @@ rebase.autoSquash
 </term>
 <listitem>
 <simpara>
-        If set to true enable <emphasis>--autosquash</emphasis> option by default.
+        If set to true enable <literal>--autosquash</literal> option by default.
 </simpara>
 </listitem>
 </varlistentry>

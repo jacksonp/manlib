@@ -28,7 +28,7 @@ in the current working directory.  Note that:</simpara>
 <simpara>
 the behaviour is slightly different from that of "/bin/ls" in that the
    <emphasis>&lt;path&gt;</emphasis> denotes just a list of patterns to match, e.g. so specifying
-   directory name (without <emphasis>-r</emphasis>) will behave differently, and order of the
+   directory name (without <literal>-r</literal>) will behave differently, and order of the
    arguments does not matter.
 </simpara>
 </listitem>
@@ -38,9 +38,9 @@ the behaviour is similar to that of "/bin/ls" in that the <emphasis>&lt;path&gt;
    taken as relative to the current working directory.  E.g. when you are
    in a directory <emphasis>sub</emphasis> that has a directory <emphasis>dir</emphasis>, you can run <emphasis>git
    ls-tree -r HEAD dir</emphasis> to list the contents of the tree (that is
-   <emphasis>sub/dir</emphasis> in <emphasis>HEAD</emphasis>).  You don&#8217;t want to give a tree that is not at the
+   <emphasis>sub/dir</emphasis> in <literal>HEAD</literal>).  You don&#8217;t want to give a tree that is not at the
    root level (e.g. <literal>git ls-tree -r HEAD:sub dir</literal>) in this case, as that
-   would result in asking for <emphasis>sub/sub/dir</emphasis> in the <emphasis>HEAD</emphasis> commit.
+   would result in asking for <emphasis>sub/sub/dir</emphasis> in the <literal>HEAD</literal> commit.
    However, the current working directory can be ignored by passing
    --full-tree option.
 </simpara>
@@ -87,7 +87,7 @@ the behaviour is similar to that of "/bin/ls" in that the <emphasis>&lt;path&gt;
 <listitem>
 <simpara>
         Show tree entries even when going to recurse them. Has no effect
-        if <emphasis>-r</emphasis> was not passed. <emphasis>-d</emphasis> implies <emphasis>-t</emphasis>.
+        if <literal>-r</literal> was not passed. <literal>-d</literal> implies <literal>-t</literal>.
 </simpara>
 </listitem>
 </varlistentry>

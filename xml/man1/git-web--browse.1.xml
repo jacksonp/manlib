@@ -202,7 +202,7 @@ the following:</simpara>
 <refsect2 id="_note_about_git_config_global">
 <title>Note about git-config --global</title>
 <simpara>Note that these configuration variables should probably be set using
-the <emphasis>--global</emphasis> flag, for example like this:</simpara>
+the <literal>--global</literal> flag, for example like this:</simpara>
 <literallayout class="monospaced">$ git config --global web.browser firefox</literallayout><simpara></simpara>
 <simpara>as they are probably more user specific than repository specific.
 See <citerefentry>

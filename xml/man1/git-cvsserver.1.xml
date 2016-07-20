@@ -102,7 +102,7 @@ Print usage information and exit
 You can specify a list of allowed directories. If no directories
 are given, all are allowed. This is an additional restriction, gitcvs
 access still needs to be enabled by the <literal>gitcvs.enabled</literal> config option
-unless <emphasis>--export-all</emphasis> was given, too.
+unless <literal>--export-all</literal> was given, too.
 </simpara>
 </listitem>
 </varlistentry>
@@ -430,7 +430,7 @@ Browse the <emphasis>modules</emphasis> available. It will give you a list of th
 </listitem>
 <listitem>
 <simpara>
-Pick <emphasis>HEAD</emphasis> when it asks what branch/tag to check out. Untick the
+Pick <literal>HEAD</literal> when it asks what branch/tag to check out. Untick the
    "launch commit wizard" to avoid committing the .project file.
 </simpara>
 </listitem>
@@ -511,11 +511,11 @@ of a UTF-8 encoded character).</simpara>
 Exports and tagging (tags and branches) are not supported at this stage.</simpara>
 <refsect2 id="_crlf_line_ending_conversions">
 <title>CRLF Line Ending Conversions</title>
-<simpara>By default the server leaves the <emphasis>-k</emphasis> mode blank for all files,
+<simpara>By default the server leaves the <literal>-k</literal> mode blank for all files,
 which causes the CVS client to treat them as a text files, subject
 to end-of-line conversion on some platforms.</simpara>
 <simpara>You can make the server use the end-of-line conversion attributes to
-set the <emphasis>-k</emphasis> modes for files by setting the <literal>gitcvs.usecrlfattr</literal>
+set the <literal>-k</literal> modes for files by setting the <literal>gitcvs.usecrlfattr</literal>
 config variable.  See <citerefentry>
 <refentrytitle>gitattributes</refentrytitle><manvolnum>5</manvolnum>
 </citerefentry> for more information
@@ -524,9 +524,9 @@ about end-of-line conversion.</simpara>
 or the attributes do not allow automatic detection for a filename, then
 the server uses the <literal>gitcvs.allBinary</literal> config for the default setting.
 If <literal>gitcvs.allBinary</literal> is set, then file not otherwise
-specified will default to <emphasis>-kb</emphasis> mode. Otherwise the <emphasis>-k</emphasis> mode
+specified will default to <emphasis>-kb</emphasis> mode. Otherwise the <literal>-k</literal> mode
 is left blank. But if <literal>gitcvs.allBinary</literal> is set to "guess", then
-the correct <emphasis>-k</emphasis> mode will be guessed based on the contents of
+the correct <literal>-k</literal> mode will be guessed based on the contents of
 the file.</simpara>
 <simpara>For best consistency with <emphasis>cvs</emphasis>, it is probably best to override the
 defaults by setting <literal>gitcvs.usecrlfattr</literal> to true,

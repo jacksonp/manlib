@@ -245,7 +245,7 @@ determine the eventual outcome of the bisect session.</simpara>
 </term>
 <listitem>
 <simpara>Do not checkout the new working tree at each iteration of the bisection
-process. Instead just update a special reference named <emphasis>BISECT_HEAD</emphasis> to make
+process. Instead just update a special reference named <literal>BISECT_HEAD</literal> to make
 it point to the commit that should be tested.</simpara>
 <simpara>This option may be useful when the test you would perform in each step
 does not require a checked out tree.</simpara>

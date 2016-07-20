@@ -118,10 +118,10 @@ See <citerefentry>
 </term>
 <listitem>
 <simpara>
-        When no remote is specified (via -r) the <emphasis>HEAD</emphasis> branch
+        When no remote is specified (via -r) the <literal>HEAD</literal> branch
         from CVS is imported to the <emphasis>origin</emphasis> branch within the Git
-        repository, as <emphasis>HEAD</emphasis> already has a special meaning for Git.
-        When a remote is specified the <emphasis>HEAD</emphasis> branch is named
+        repository, as <literal>HEAD</literal> already has a special meaning for Git.
+        When a remote is specified the <literal>HEAD</literal> branch is named
         remotes/&lt;remote&gt;/master mirroring <emphasis>git clone</emphasis> behaviour.
         Use this option if you want to import into a different
         branch.
@@ -181,7 +181,7 @@ the old cvs2git tool.</simpara>
 <listitem>
 <simpara>
         Additional options for cvsps.
-        The options <emphasis>-u</emphasis> and <emphasis>-A</emphasis> are implicit and should not be used here.
+        The options <literal>-u</literal> and <emphasis>-A</emphasis> are implicit and should not be used here.
 </simpara>
 <simpara>If you need to pass multiple options, separate them with a comma.</simpara>
 </listitem>
@@ -227,7 +227,7 @@ the old cvs2git tool.</simpara>
 <listitem>
 <simpara>
         Attempt to detect merges based on the commit message with a custom
-        regex. It can be used with <emphasis>-m</emphasis> to enable the default regexes
+        regex. It can be used with <literal>-m</literal> to enable the default regexes
         as well. You must escape forward slashes.
 </simpara>
 <simpara>The regex must capture the source branch name in $1.</simpara>
@@ -323,7 +323,7 @@ messages, bug-tracking systems, email archives, and the like.</simpara>
 </refsect1>
 <refsect1 id="_output">
 <title>OUTPUT</title>
-<simpara>If <emphasis>-v</emphasis> is specified, the script reports what it is doing.</simpara>
+<simpara>If <literal>-v</literal> is specified, the script reports what it is doing.</simpara>
 <simpara>Otherwise, success is indicated the Unix way, i.e. by simply exiting with
 a zero exit status.</simpara>
 </refsect1>

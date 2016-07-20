@@ -44,9 +44,9 @@ named commit).  With <literal>--merged</literal>, only branches merged into the 
 commit (i.e. the branches whose tip commits are reachable from the named
 commit) will be listed.  With <literal>--no-merged</literal> only branches not merged into
 the named commit will be listed.  If the &lt;commit&gt; argument is missing it
-defaults to <emphasis>HEAD</emphasis> (i.e. the tip of the current branch).</simpara>
+defaults to <literal>HEAD</literal> (i.e. the tip of the current branch).</simpara>
 <simpara>The command&#8217;s second form creates a new branch head named &lt;branchname&gt;
-which points to the current <emphasis>HEAD</emphasis>, or &lt;start-point&gt; if given.</simpara>
+which points to the current <literal>HEAD</literal>, or &lt;start-point&gt; if given.</simpara>
 <simpara>Note that this will create the new branch, but it will not switch the
 working tree to it; use "git checkout &lt;newbranch&gt;" to switch to the
 new branch.</simpara>
@@ -311,7 +311,7 @@ way to clean up all obsolete remote-tracking branches.</simpara>
 </simpara>
 <simpara>This behavior is the default when the start point is a remote-tracking branch.
 Set the branch.autoSetupMerge configuration variable to <literal>false</literal> if you
-want <literal>git checkout</literal> and <literal>git branch</literal> to always behave as if <emphasis>--no-track</emphasis>
+want <literal>git checkout</literal> and <literal>git branch</literal> to always behave as if <literal>--no-track</literal>
 were given. Set it to <literal>always</literal> if you want this behavior when the
 start-point is either a local or remote-tracking branch.</simpara>
 </listitem>

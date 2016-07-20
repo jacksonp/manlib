@@ -84,7 +84,7 @@ conflicts.</simpara>
 <refentrytitle>gitrevisions</refentrytitle><manvolnum>7</manvolnum>
 </citerefentry>.
         Sets of commits can be passed but no traversal is done by
-        default, as if the <emphasis>--no-walk</emphasis> option was specified, see
+        default, as if the <literal>--no-walk</literal> option was specified, see
         <citerefentry>
 <refentrytitle>git-rev-list</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>. Note that specifying a range will

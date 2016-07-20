@@ -286,7 +286,7 @@ Signed-off-by: Bob &lt;bob@example.com&gt;</literallayout><simpara></simpara>
 </listitem>
 <listitem>
 <simpara>
-Use the <emphasis>--in-place</emphasis> option to edit a message file in place:
+Use the <literal>--in-place</literal> option to edit a message file in place:
 </simpara>
 <literallayout class="monospaced">$ cat msg.txt
 subject
