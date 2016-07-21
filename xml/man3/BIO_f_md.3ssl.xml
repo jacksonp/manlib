@@ -121,7 +121,7 @@ bio = BIO_push(mdtmp, bio);
 do {
        rdlen = BIO_read(bio, buf, sizeof(buf));
        /* Might want to do something with the data here */
-} while(rdlen &gt; 0);</screen>
+} while (rdlen &gt; 0);</screen>
     <para>
       This next example retrieves the message digests from a BIO chain and
       outputs them. This could be used with the examples above.
@@ -134,14 +134,14 @@ mdtmp = bio;   /* Assume bio has previously been set up */
 do {
        EVP_MD *md;
        mdtmp = BIO_find_type(mdtmp, BIO_TYPE_MD);
-       if(!mdtmp) break;
+       if (!mdtmp) break;
        BIO_get_md(mdtmp, &amp;md);
        printf("%s digest", OBJ_nid2sn(EVP_MD_type(md)));
        mdlen = BIO_gets(mdtmp, mdbuf, EVP_MAX_MD_SIZE);
-       for(i = 0; i &lt; mdlen; i++) printf(":%02X", mdbuf[i]);
+       for (i = 0; i &lt; mdlen; i++) printf(":%02X", mdbuf[i]);
        printf("\n");
        mdtmp = BIO_next(mdtmp);
-} while(mdtmp);
+} while (mdtmp);
 
 BIO_free_all(bio);</screen>
   </refsection>

@@ -9,7 +9,7 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bio.h&gt;</synopsis>
-<synopsis>BIO *BIO_push(BIO *b,BIO *append);
+<synopsis>BIO *BIO_push(BIO *b, BIO *append);
 BIO *BIO_pop(BIO *b);
 void BIO_set_next(BIO *b, BIO *next);</synopsis>
   </refsynopsisdiv>

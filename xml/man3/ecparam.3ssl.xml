@@ -163,7 +163,7 @@
 	      Possible value are: <emphasis role="bold">named_curve</emphasis>, i.e. the ec parameters
 	      are specified by an OID, or <emphasis role="bold">explicit</emphasis> where the ec parameters are
 	      explicitly given (see RFC 3279 for the definition of the EC
-	      parameters structures). The default value is <emphasis role="bold">named_curve</emphasis>. <emphasis role="bold">Note</emphasis> the <emphasis role="bold">implicitlyCA</emphasis> alternative ,as specified
+	      parameters structures). The default value is <emphasis role="bold">named_curve</emphasis>. <emphasis role="bold">Note</emphasis> the <emphasis role="bold">implicitlyCA</emphasis> alternative, as specified
 	      in RFC 3279, is currently not implemented in OpenSSL.
             </para>
           </listitem>

@@ -9,7 +9,7 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
-<synopsis>void SSL_CTX_set_cert_verify_callback(SSL_CTX *ctx, int (*callback)(X509_STORE_CTX *,void *), void *arg);</synopsis>
+<synopsis>void SSL_CTX_set_cert_verify_callback(SSL_CTX *ctx, int (*callback)(X509_STORE_CTX *, void *), void *arg);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-26f8f851d116990e380da044c6a12c1f"><title>DESCRIPTION</title>
     <para>

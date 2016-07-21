@@ -44,7 +44,8 @@ arbitrary error strings</refpurpose>
   <refsection xml:id="ID-ac4789fefd5ed04873bbcf7b36cda713"><title>RETURN VALUE</title>
     <para>
       ERR_load_strings() returns no value. ERR_PACK() return the error
-      code. ERR_get_next_error_library() returns a new library number.
+      code. ERR_get_next_error_library() returns zero on failure, otherwise
+      a new library number.
     </para>
   </refsection>
   <refsection xml:id="ID-98379e4c637037ce75945c806d3e2533"><title>SEE ALSO</title>

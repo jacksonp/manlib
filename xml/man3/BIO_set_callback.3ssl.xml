@@ -41,27 +41,53 @@ char *BIO_get_callback_arg(const BIO *b);</synopsis>
       BIO_callback_fn() is the type of the callback function. The meaning
       of each argument is described below:
     </para>
-    <blockquote>
-      <para>
-	<emphasis role="bold">oper</emphasis> is set to the operation being
-	performed. For some operations the callback is called twice, once
-	before and once after the actual operation, the latter case has
-	<emphasis role="bold">oper</emphasis> or'ed with BIO_CB_RETURN.
-      </para>
-      <para>
-	The meaning of the arguments <emphasis role="bold">argp</emphasis>,
-	<emphasis role="bold">argi</emphasis> and <emphasis role="bold">argl</emphasis> depends on the value of <emphasis role="bold">oper</emphasis>, that is the operation being performed.
-      </para>
-      <para>
-	<emphasis role="bold">ret</emphasis> is the return value that would
-	be returned to the application if no callback were present. The
-	actual value returned is the return value of the callback itself.
-	In the case of callbacks called before the actual BIO operation 1
-	is placed in <emphasis role="bold">ret</emphasis>, if the return
-	value is not positive it will be immediately returned to the
-	application and the BIO operation will not be performed.
-      </para>
-    </blockquote>
+    <para>
+      <variablelist>
+        <varlistentry>
+          <term><emphasis role="bold">b</emphasis></term>
+          <listitem>
+            <para>
+	      The BIO the callback is attached to is passed in <emphasis role="bold">b</emphasis>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">oper</emphasis></term>
+          <listitem>
+            <para>
+	      <emphasis role="bold">oper</emphasis> is set to the operation
+	      being performed. For some operations the callback is called
+	      twice, once before and once after the actual operation, the
+	      latter case has <emphasis role="bold">oper</emphasis> or'ed
+	      with BIO_CB_RETURN.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">argp</emphasis> <emphasis role="bold">argi</emphasis> <emphasis role="bold">argl</emphasis></term>
+          <listitem>
+            <para>
+	      The meaning of the arguments <emphasis role="bold">argp</emphasis>, <emphasis role="bold">argi</emphasis> and <emphasis role="bold">argl</emphasis> depends on the value of <emphasis role="bold">oper</emphasis>, that is the operation being
+	      performed.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">ret</emphasis></term>
+          <listitem>
+            <para>
+	      <emphasis role="bold">ret</emphasis> is the return value that
+	      would be returned to the application if no callback were
+	      present. The actual value returned is the return value of the
+	      callback itself. In the case of callbacks called before the
+	      actual BIO operation 1 is placed in <emphasis role="bold">ret</emphasis>, if the return value is not
+	      positive it will be immediately returned to the application
+	      and the BIO operation will not be performed.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </para>
     <para>
       The callback should normally simply return <emphasis role="bold">ret</emphasis> when it has finished processing, unless it
       specifically wishes to modify the value returned to the application.
@@ -127,9 +153,9 @@ char *BIO_get_callback_arg(const BIO *b);</synopsis>
           <term><emphasis role="bold">BIO_ctrl(BIO *b, int cmd, long larg, void *parg)</emphasis></term>
           <listitem>
             <para>
-	      callback(b,BIO_CB_CTRL,parg,cmd,larg,1L) is called before the
-	      call and callback(b,BIO_CB_CTRL|BIO_CB_RETURN,parg,cmd,
-	      larg,ret) after.
+	      callback(b, BIO_CB_CTRL, parg, cmd, larg, 1L) is called
+	      before the call and callback(b, BIO_CB_CTRL|BIO_CB_RETURN,
+	      parg, cmd, larg, ret) after.
             </para>
           </listitem>
         </varlistentry>

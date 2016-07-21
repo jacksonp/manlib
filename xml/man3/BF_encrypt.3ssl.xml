@@ -21,8 +21,8 @@ void BF_cfb64_encrypt(const unsigned char *in, unsigned char *out,
 void BF_ofb64_encrypt(const unsigned char *in, unsigned char *out,
         long length, BF_KEY *schedule, unsigned char *ivec, int *num);
 const char *BF_options(void);</synopsis>
-<synopsis>void BF_encrypt(BF_LONG *data,const BF_KEY *key);
-void BF_decrypt(BF_LONG *data,const BF_KEY *key);</synopsis>
+<synopsis>void BF_encrypt(BF_LONG *data, const BF_KEY *key);
+void BF_decrypt(BF_LONG *data, const BF_KEY *key);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-a2451f2879c3ebe59e7389d305711d01"><title>DESCRIPTION</title>
     <para>

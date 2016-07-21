@@ -48,8 +48,10 @@ void SSL_get0_alpn_selected(const SSL *ssl, const unsigned char **data,
       format. The value of the <emphasis role="bold">out</emphasis>,
       <emphasis role="bold">outlen</emphasis> vector should be set to the
       value of a single protocol selected from the <emphasis role="bold">in</emphasis>, <emphasis role="bold">inlen</emphasis>
-      vector. The <emphasis role="bold">arg</emphasis> parameter is the
-      pointer set via SSL_CTX_set_alpn_select_cb().
+      vector. The <emphasis role="bold">out</emphasis> buffer may point
+      directly into <emphasis role="bold">in</emphasis>, or to a buffer
+      that outlives the handshake. The <emphasis role="bold">arg</emphasis>
+      parameter is the pointer set via SSL_CTX_set_alpn_select_cb().
     </para>
     <para>
       SSL_select_next_proto() is a helper function used to select

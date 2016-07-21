@@ -622,7 +622,7 @@
             </listitem>
           </varlistentry>
           <varlistentry>
-            <term>void <emphasis role="bold">SSL_CTX_sess_set_cache_size</emphasis>(SSL_CTX *ctx,t);</term>
+            <term>void <emphasis role="bold">SSL_CTX_sess_set_cache_size</emphasis>(SSL_CTX *ctx, t);</term>
             <listitem>
               <para/>
             </listitem>
@@ -1345,7 +1345,7 @@
             </listitem>
           </varlistentry>
           <varlistentry>
-            <term>int (*<emphasis role="bold">SSL_get_verify_callback</emphasis>(const SSL *ssl))(int,X509_STORE_CTX *)</term>
+            <term>int (*<emphasis role="bold">SSL_get_verify_callback</emphasis>(const SSL *ssl))(int, X509_STORE_CTX *)</term>
             <listitem>
               <para/>
             </listitem>

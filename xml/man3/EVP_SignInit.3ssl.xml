@@ -13,7 +13,7 @@ functions</refpurpose>
 <synopsis>#include &lt;openssl/evp.h&gt;</synopsis>
 <synopsis>int EVP_SignInit_ex(EVP_MD_CTX *ctx, const EVP_MD *type, ENGINE *impl);
 int EVP_SignUpdate(EVP_MD_CTX *ctx, const void *d, unsigned int cnt);
-int EVP_SignFinal(EVP_MD_CTX *ctx,unsigned char *sig,unsigned int *s, EVP_PKEY *pkey);</synopsis>
+int EVP_SignFinal(EVP_MD_CTX *ctx, unsigned char *sig, unsigned int *s, EVP_PKEY *pkey);</synopsis>
 <synopsis>void EVP_SignInit(EVP_MD_CTX *ctx, const EVP_MD *type);</synopsis>
 <synopsis>int EVP_PKEY_size(EVP_PKEY *pkey);</synopsis>
   </refsynopsisdiv>

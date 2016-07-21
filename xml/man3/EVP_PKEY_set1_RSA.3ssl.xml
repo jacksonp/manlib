@@ -14,10 +14,10 @@ EVP_PKEY_type, EVP_PKEY_id, EVP_PKEY_base_id</refname>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/evp.h&gt;</synopsis>
-<synopsis>int EVP_PKEY_set1_RSA(EVP_PKEY *pkey,RSA *key);
-int EVP_PKEY_set1_DSA(EVP_PKEY *pkey,DSA *key);
-int EVP_PKEY_set1_DH(EVP_PKEY *pkey,DH *key);
-int EVP_PKEY_set1_EC_KEY(EVP_PKEY *pkey,EC_KEY *key);</synopsis>
+<synopsis>int EVP_PKEY_set1_RSA(EVP_PKEY *pkey, RSA *key);
+int EVP_PKEY_set1_DSA(EVP_PKEY *pkey, DSA *key);
+int EVP_PKEY_set1_DH(EVP_PKEY *pkey, DH *key);
+int EVP_PKEY_set1_EC_KEY(EVP_PKEY *pkey, EC_KEY *key);</synopsis>
 <synopsis>RSA *EVP_PKEY_get1_RSA(EVP_PKEY *pkey);
 DSA *EVP_PKEY_get1_DSA(EVP_PKEY *pkey);
 DH *EVP_PKEY_get1_DH(EVP_PKEY *pkey);
@@ -27,10 +27,10 @@ RSA *EVP_PKEY_get0_RSA(EVP_PKEY *pkey);
 DSA *EVP_PKEY_get0_DSA(EVP_PKEY *pkey);
 DH *EVP_PKEY_get0_DH(EVP_PKEY *pkey);
 EC_KEY *EVP_PKEY_get0_EC_KEY(EVP_PKEY *pkey);</synopsis>
-<synopsis>int EVP_PKEY_assign_RSA(EVP_PKEY *pkey,RSA *key);
-int EVP_PKEY_assign_DSA(EVP_PKEY *pkey,DSA *key);
-int EVP_PKEY_assign_DH(EVP_PKEY *pkey,DH *key);
-int EVP_PKEY_assign_EC_KEY(EVP_PKEY *pkey,EC_KEY *key);</synopsis>
+<synopsis>int EVP_PKEY_assign_RSA(EVP_PKEY *pkey, RSA *key);
+int EVP_PKEY_assign_DSA(EVP_PKEY *pkey, DSA *key);
+int EVP_PKEY_assign_DH(EVP_PKEY *pkey, DH *key);
+int EVP_PKEY_assign_EC_KEY(EVP_PKEY *pkey, EC_KEY *key);</synopsis>
 <synopsis>int EVP_PKEY_id(const EVP_PKEY *pkey);
 int EVP_PKEY_base_id(const EVP_PKEY *pkey);
 int EVP_PKEY_type(int type);</synopsis>

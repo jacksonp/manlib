@@ -766,7 +766,7 @@ EVP_CipherInit_ex(ctx, NULL, NULL, key, iv, do_encrypt);
 for(;;)
         {
         inlen = fread(inbuf, 1, 1024, in);
-        if(inlen &lt;= 0) break;
+        if (inlen &lt;= 0) break;
         if(!EVP_CipherUpdate(ctx, outbuf, &amp;outlen, inbuf, inlen))
                 {
                 /* Error */

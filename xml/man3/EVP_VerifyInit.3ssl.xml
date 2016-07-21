@@ -12,7 +12,7 @@ EVP_VerifyInit, EVP_VerifyUpdate, EVP_VerifyFinal</refname>
 <synopsis>#include &lt;openssl/evp.h&gt;</synopsis>
 <synopsis>int EVP_VerifyInit_ex(EVP_MD_CTX *ctx, const EVP_MD *type, ENGINE *impl);
 int EVP_VerifyUpdate(EVP_MD_CTX *ctx, const void *d, unsigned int cnt);
-int EVP_VerifyFinal(EVP_MD_CTX *ctx,unsigned char *sigbuf, unsigned int siglen,EVP_PKEY *pkey);</synopsis>
+int EVP_VerifyFinal(EVP_MD_CTX *ctx, unsigned char *sigbuf, unsigned int siglen, EVP_PKEY *pkey);</synopsis>
 <synopsis>int EVP_VerifyInit(EVP_MD_CTX *ctx, const EVP_MD *type);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-44289fb6600e5dd52f86d26d546a3954"><title>DESCRIPTION</title>

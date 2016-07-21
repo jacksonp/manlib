@@ -4,7 +4,7 @@
     <refentrytitle>SSL_get_current_cipher.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_get_current_cipher, SSL_get_cipher_name,
+    <refname>SSL_get_current_cipher, SSL_get_cipher_name, *SSL_get_cipher,
 SSL_get_cipher_bits, SSL_get_cipher_version</refname>
 <refpurpose>get SSL_CIPHER of a connection</refpurpose>
   </refnamediv>

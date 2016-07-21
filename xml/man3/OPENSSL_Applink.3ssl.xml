@@ -18,7 +18,9 @@
       private interface. For this reason application developers are not
       expected to implement it, but to compile provided module with
       compiler of their choice and link it into the target application. The
-      referred module is available as &lt;openssl&gt;/ms/applink.c.
+      referred module is available as <filename>applink.c</filename>,
+      located alongside the public header files (only on the platforms
+      where applicable).
     </para>
   </refsection>
   <refsection xml:id="ID-d2bbcf9c509867ea1c12a8c4b89479a9"><title>COPYRIGHT</title>

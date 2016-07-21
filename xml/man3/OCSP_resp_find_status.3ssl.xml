@@ -24,6 +24,10 @@ int OCSP_single_get0_status(OCSP_SINGLERESP *single, int *reason,
                             ASN1_GENERALIZEDTIME **thisupd,
                             ASN1_GENERALIZEDTIME **nextupd);</synopsis>
 <synopsis>ASN1_GENERALIZEDTIME *OCSP_resp_get0_produced_at(OCSP_BASICRESP* single);</synopsis>
+<synopsis>const STACK_OF(X509) *OCSP_resp_get0_certs(const OCSP_BASICRESP *bs);</synopsis>
+<synopsis>int OCSP_resp_get0_id(const OCSP_BASICRESP *bs,
+                      const ASN1_OCTET_STRING **pid,
+                      const X509_NAME **pname);</synopsis>
 <synopsis>int OCSP_check_validity(ASN1_GENERALIZEDTIME *thisupd,
                         ASN1_GENERALIZEDTIME *nextupd,
                         long sec, long maxsec);</synopsis>
@@ -60,6 +64,17 @@ int OCSP_single_get0_status(OCSP_SINGLERESP *single, int *reason,
     <para>
       OCSP_resp_get0_produced_at() extracts the <emphasis role="bold">producedAt</emphasis> field from the single response
       <emphasis role="bold">bs</emphasis>.
+    </para>
+    <para>
+      OCSP_resp_get0_certs() returns any certificates included in <emphasis role="bold">bs</emphasis>.
+    </para>
+    <para>
+      OCSP_resp_get0_id() gets the responder id of &lt;bs&gt;. If the
+      responder ID is a name then &lt;*pname&gt; is set to the name and
+      <emphasis role="bold">*pid</emphasis> is set to NULL. If the
+      responder ID is by key ID then <emphasis role="bold">*pid</emphasis>
+      is set to the key ID and <emphasis role="bold">*pname</emphasis> is
+      set to NULL.
     </para>
     <para>
       OCSP_check_validity() checks the validity of <emphasis role="bold">thisupd</emphasis> and <emphasis role="bold">nextupd</emphasis> values which will be typically

@@ -9,10 +9,10 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/evp.h&gt;</synopsis>
-<synopsis>int EVP_BytesToKey(const EVP_CIPHER *type,const EVP_MD *md,
-                      const unsigned char *salt,
-                      const unsigned char *data, int datal, int count,
-                      unsigned char *key,unsigned char *iv);</synopsis>
+<synopsis>int EVP_BytesToKey(const EVP_CIPHER *type, const EVP_MD *md,
+                   const unsigned char *salt,
+                   const unsigned char *data, int datal, int count,
+                   unsigned char *key, unsigned char *iv);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-02b5656a1a463b33a102516504b8b853"><title>DESCRIPTION</title>
     <para>

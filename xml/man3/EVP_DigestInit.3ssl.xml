@@ -23,11 +23,11 @@ void EVP_MD_CTX_free(EVP_MD_CTX *ctx);</synopsis>
 int EVP_DigestUpdate(EVP_MD_CTX *ctx, const void *d, size_t cnt);
 int EVP_DigestFinal_ex(EVP_MD_CTX *ctx, unsigned char *md,
        unsigned int *s);</synopsis>
-<synopsis>int EVP_MD_CTX_copy_ex(EVP_MD_CTX *out,const EVP_MD_CTX *in);</synopsis>
+<synopsis>int EVP_MD_CTX_copy_ex(EVP_MD_CTX *out, const EVP_MD_CTX *in);</synopsis>
 <synopsis>int EVP_DigestInit(EVP_MD_CTX *ctx, const EVP_MD *type);
 int EVP_DigestFinal(EVP_MD_CTX *ctx, unsigned char *md,
        unsigned int *s);</synopsis>
-<synopsis>int EVP_MD_CTX_copy(EVP_MD_CTX *out,EVP_MD_CTX *in);</synopsis>
+<synopsis>int EVP_MD_CTX_copy(EVP_MD_CTX *out, EVP_MD_CTX *in);</synopsis>
 <synopsis>int EVP_MD_type(const EVP_MD *md);
 int EVP_MD_pkey_type(const EVP_MD *md);
 int EVP_MD_size(const EVP_MD *md);
@@ -254,7 +254,7 @@ EVP_DigestFinal_ex(mdctx, md_value, &amp;md_len);
 EVP_MD_CTX_free(mdctx);
 
 printf("Digest is: ");
-for(i = 0; i &lt; md_len; i++)
+for (i = 0; i &lt; md_len; i++)
        printf("%02x", md_value[i]);
 printf("\n");
 

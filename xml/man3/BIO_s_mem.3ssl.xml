@@ -13,10 +13,10 @@ BIO_get_mem_ptr, BIO_new_mem_buf</refname>
 <synopsis>#include &lt;openssl/bio.h&gt;</synopsis>
 <synopsis>const BIO_METHOD *     BIO_s_mem(void);
 const BIO_METHOD *     BIO_s_secmem(void);</synopsis>
-<synopsis>BIO_set_mem_eof_return(BIO *b,int v)
+<synopsis>BIO_set_mem_eof_return(BIO *b, int v)
 long BIO_get_mem_data(BIO *b, char **pp)
-BIO_set_mem_buf(BIO *b,BUF_MEM *bm,int c)
-BIO_get_mem_ptr(BIO *b,BUF_MEM **pp)</synopsis>
+BIO_set_mem_buf(BIO *b, BUF_MEM *bm, int c)
+BIO_get_mem_ptr(BIO *b, BUF_MEM **pp)</synopsis>
 <synopsis>BIO *BIO_new_mem_buf(const void *buf, int len);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-8981ea0d32c47b0b0b0363d3d7b7ea97"><title>DESCRIPTION</title>

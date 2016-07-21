@@ -208,7 +208,7 @@ if (BIO_do_connect(cbio) &lt;= 0) {
 BIO_puts(cbio, "GET / HTTP/1.0\n\n");
 for ( ; ; ) {
     len = BIO_read(cbio, tmpbuf, 1024);
-    if(len &lt;= 0)
+    if (len &lt;= 0)
         break;
     BIO_write(out, tmpbuf, len);
 }

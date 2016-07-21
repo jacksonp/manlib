@@ -173,8 +173,8 @@
   </refsection>
   <refsection xml:id="ID-1423aa6749d6ac37b534cb91e50eebcb"><title>EXAMPLES</title>
     <para>
-      Reference Implementation:
-      SSL_CTX_set_tlsext_ticket_key_cb(SSL,ssl_tlsext_ticket_key_cb); ....
+      Reference Implementation: SSL_CTX_set_tlsext_ticket_key_cb(SSL,
+      ssl_tlsext_ticket_key_cb); ....
     </para>
     <screen>static int ssl_tlsext_ticket_key_cb(SSL *s, unsigned char key_name[16], unsigned char *iv, EVP_CIPHER_CTX *ctx, HMAC_CTX *hctx, int enc)
 {
