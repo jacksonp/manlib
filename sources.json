@@ -541,12 +541,13 @@ rsync --checksum sources/quota/*.8 man/man8/"
   },
 
   /* Handle .texi file? */
+/*
   "sed": {
     "type": "git",
     "url": "git://git.savannah.gnu.org/sed.git",
     "sparse": "doc/",
     "cmd": "rsync --checksum sources/sed/doc/sed.x man/man1/sed.1"
-  },
+  },*/
 
   "selinux": {
     "type": "git",
@@ -592,7 +593,7 @@ find sources/sendmail/ -name '*[a-z].8' -exec rsync --checksum {} man/man8/ \\;"
     "type": "git",
     "url": "git://git.code.sf.net/p/sox/code",
     "sparse": "*.[1-8]",
-    "cmd": "find sources/sox/ -name '*.1' -exec rsync --checksum {} man/man1/ \\;;
+    "cmd": "find sources/sox/ -not -path '*/\\.*' -name '*.1' -exec rsync --checksum {} man/man1/ \\;;
 find sources/sox/ -name '*.3' -exec rsync --checksum {} man/man3/ \\;;
 find sources/sox/ -name '*.7' -exec rsync --checksum {} man/man7/ \\;"
   },
