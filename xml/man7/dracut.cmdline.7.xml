@@ -218,6 +218,16 @@ by copying the original kernel cmdline parameters.</simpara>
 <variablelist>
 <varlistentry>
 <term>
+<emphasis role="strong">rd.emergency=</emphasis><emphasis>[reboot|poweroff|halt]</emphasis>
+</term>
+<listitem>
+<simpara>
+    specify, what action to execute in case of a critical failure.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 <emphasis role="strong">rd.driver.blacklist=</emphasis><emphasis>&lt;drivername&gt;</emphasis>[,<emphasis>&lt;drivername&gt;</emphasis>,&#8230;]
 </term>
 <listitem>

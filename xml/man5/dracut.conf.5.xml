@@ -224,16 +224,6 @@ line are not interpreted.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis role="strong">i18n_install_all=</emphasis>"<emphasis>{yes|no}</emphasis>"
-</term>
-<listitem>
-<simpara>
-    If set to yes, install all available fonts and keyboard files.
-</simpara>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>
 <emphasis role="strong">persistent_policy=</emphasis>"<emphasis>&lt;policy&gt;</emphasis>"
 </term>
 <listitem>
