@@ -17,7 +17,7 @@
 .\"     address that can appear in the sockaddr_un structure: pathname,
 .\"     unnamed, and abstract.
 .\"
-.TH UNIX  7 2016-03-15 "Linux" "Linux Programmer's Manual"
+.TH UNIX  7 2016-07-17 "Linux" "Linux Programmer's Manual"
 .SH NAME
 unix \- sockets for local interprocess communication
 .SH SYNOPSIS
@@ -518,9 +518,9 @@ is sent as well.
 This can be avoided by passing the
 .B MSG_NOSIGNAL
 flag to
-.BR sendmsg (2)
+.BR send (2)
 or
-.BR recvmsg (2).
+.BR sendmsg (2).
 .TP
 .B EPROTONOSUPPORT
 Passed protocol is not

@@ -10,7 +10,7 @@
 .\" 2005-04-06 mtk, Matthias Lang <matthias@corelatus.se>
 .\" 	Noted MAX_SEC_IN_JIFFIES ceiling
 .\"
-.TH GETITIMER 2 2014-07-08 "Linux" "Linux Programmer's Manual"
+.TH GETITIMER 2 2016-07-17 "Linux" "Linux Programmer's Manual"
 .SH NAME
 getitimer, setitimer \- get or set value of an interval timer
 .SH SYNOPSIS
@@ -84,7 +84,7 @@ struct timeval {
 .SS getitimer()
 The function
 .BR getitimer ()
-places the curent value of the timer specified by
+places the current value of the timer specified by
 .IR which
 in the buffer pointed to by
 .IR curr_value .
@@ -106,7 +106,7 @@ substructure is populated with the timer interval.
 If both fields of
 .IR it_interval
 are zero, then this is a single-shot timer (i.e., it expires just once).
-.SS getitimer()
+.SS setitimer()
 The function
 .BR setitimer ()
 arms or disarms the timer specified by

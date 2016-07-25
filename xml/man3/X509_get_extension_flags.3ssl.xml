@@ -6,7 +6,8 @@
   <refnamediv>
     <refname>X509_get0_subject_key_id,
 X509_get_pathlen,
-X509_get_extension_flags, X509_get_key_usage, X509_get_extended_key_usage</refname>
+X509_get_extension_flags, X509_get_key_usage, X509_get_extended_key_usage,
+X509_set_proxy_flag</refname>
 <refpurpose>retrieve certificate extension data</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
@@ -15,7 +16,8 @@ X509_get_extension_flags, X509_get_key_usage, X509_get_extended_key_usage</refna
 uint32_t X509_get_extension_flags(X509 *x);
 uint32_t X509_get_key_usage(X509 *x);
 uint32_t X509_get_extended_key_usage(X509 *x);
-const ASN1_OCTET_STRING *X509_get0_subject_key_id(X509 *x);</synopsis>
+const ASN1_OCTET_STRING *X509_get0_subject_key_id(X509 *x);
+void X509_set_proxy_flag(X509 *x);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-f0159d8fb27554ecaed5be0f48779d66"><title>DESCRIPTION</title>
     <para>
@@ -150,6 +152,11 @@ const ASN1_OCTET_STRING *X509_get0_subject_key_id(X509 *x);</synopsis>
       <emphasis role="bold">ASN1_OCTET_STRING</emphasis> or <emphasis role="bold">NULL</emphasis> if the extension is not present or cannot
       be parsed.
     </para>
+    <para>
+      X509_set_proxy_flag() marks the certificate with the <emphasis role="bold">EXFLAG_PROXY</emphasis> flag. This is for the users who
+      need to mark non-RFC3820 proxy certificates as such, as OpenSSL only
+      detects RFC3820 compliant ones.
+    </para>
   </refsection>
   <refsection xml:id="ID-4b30171ab838fde5aca68fb188a4b643"><title>NOTES</title>
     <para>
@@ -198,7 +205,8 @@ const ASN1_OCTET_STRING *X509_get0_subject_key_id(X509 *x);</synopsis>
   </refsection>
   <refsection xml:id="ID-112301aa5b38900c62ab1262e07ee776"><title>HISTORY</title>
     <para>
-      X509_get_pathlen() was added in OpenSSL 1.1.0.
+      X509_get_pathlen() and X509_set_proxy_flag() were added in OpenSSL
+      1.1.0.
     </para>
   </refsection>
   <refsection xml:id="ID-b09517ebf2df4075bc728225959fe5b7"><title>COPYRIGHT</title>
