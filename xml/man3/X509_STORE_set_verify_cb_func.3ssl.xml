@@ -9,28 +9,184 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509_vfy.h&gt;</synopsis>
-<synopsis>void X509_STORE_set_verify_cb(X509_STORE *st,
-                               int (*verify_cb)(int ok, X509_STORE_CTX *ctx));</synopsis>
-<synopsis>void X509_STORE_set_verify_cb_func(X509_STORE *st,
-                               int (*verify_cb)(int ok, X509_STORE_CTX *ctx));</synopsis>
+<synopsis>typedef int (*X509_STORE_CTX_verify_cb)(int ok, X509_STORE_CTX *ctx);
+typedef int (*X509_STORE_CTX_verify_fn)(X509_STORE_CTX *ctx);
+typedef int (*X509_STORE_CTX_get_issuer_fn)(X509 **issuer,
+                                            X509_STORE_CTX *ctx, X509 *x);
+typedef int (*X509_STORE_CTX_check_issued_fn)(X509_STORE_CTX *ctx,
+                                              X509 *x, X509 *issuer);
+typedef int (*X509_STORE_CTX_check_revocation_fn)(X509_STORE_CTX *ctx);
+typedef int (*X509_STORE_CTX_get_crl_fn)(X509_STORE_CTX *ctx,
+                                         X509_CRL **crl, X509 *x);
+typedef int (*X509_STORE_CTX_check_crl_fn)(X509_STORE_CTX *ctx, X509_CRL *crl);
+typedef int (*X509_STORE_CTX_cert_crl_fn)(X509_STORE_CTX *ctx,
+                                          X509_CRL *crl, X509 *x);
+typedef int (*X509_STORE_CTX_check_policy_fn)(X509_STORE_CTX *ctx);
+typedef STACK_OF(X509) *(*X509_STORE_CTX_lookup_certs_fn)(X509_STORE_CTX *ctx,
+                                                          X509_NAME *nm);
+typedef STACK_OF(X509_CRL) *(*X509_STORE_CTX_lookup_crls_fn)(X509_STORE_CTX *ctx,
+                                                             X509_NAME *nm);
+typedef int (*X509_STORE_CTX_cleanup_fn)(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_verify_cb(X509_STORE *ctx,
+                              X509_STORE_CTX_verify_cb verify_cb);
+X509_STORE_CTX_verify_cb X509_STORE_get_verify_cb(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_verify(X509_STORE *ctx, X509_STORE_CTX_verify_fn verify);
+X509_STORE_CTX_verify_fn X509_STORE_CTX_get_verify(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_get_issuer(X509_STORE *ctx,
+                               X509_STORE_CTX_get_issuer_fn get_issuer);
+X509_STORE_CTX_get_issuer_fn X509_STORE_get_get_issuer(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_check_issued(X509_STORE *ctx,
+                                 X509_STORE_CTX_check_issued_fn check_issued);
+X509_STORE_CTX_check_issued_fn X509_STORE_get_check_issued(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_check_revocation(X509_STORE *ctx,
+                                     X509_STORE_CTX_check_revocation_fn check_revocation);
+X509_STORE_CTX_check_revocation_fn X509_STORE_get_check_revocation(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_get_crl(X509_STORE *ctx,
+                            X509_STORE_CTX_get_crl_fn get_crl);
+X509_STORE_CTX_get_crl_fn X509_STORE_get_get_crl(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_check_crl(X509_STORE *ctx,
+                              X509_STORE_CTX_check_crl_fn check_crl);
+X509_STORE_CTX_check_crl_fn X509_STORE_get_check_crl(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_cert_crl(X509_STORE *ctx,
+                             X509_STORE_CTX_cert_crl_fn cert_crl);
+X509_STORE_CTX_cert_crl_fn X509_STORE_get_cert_crl(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_check_policy(X509_STORE *ctx,
+                                 X509_STORE_CTX_check_policy_fn check_policy);
+X509_STORE_CTX_check_policy_fn X509_STORE_get_check_policy(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_lookup_certs(X509_STORE *ctx,
+                                 X509_STORE_CTX_lookup_certs_fn lookup_certs);
+X509_STORE_CTX_lookup_certs_fn X509_STORE_get_lookup_certs(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_lookup_crls(X509_STORE *ctx,
+                                X509_STORE_CTX_lookup_crls_fn lookup_crls);
+X509_STORE_CTX_lookup_crls_fn X509_STORE_get_lookup_crls(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>void X509_STORE_set_cleanup(X509_STORE *ctx,
+                            X509_STORE_CTX_cleanup_fn cleanup);
+X509_STORE_CTX_cleanup_fn X509_STORE_get_cleanup(X509_STORE_CTX *ctx);</synopsis>
+<synopsis>/* Aliases */
+void X509_STORE_set_verify_cb_func(X509_STORE *st,
+                                   X509_STORE_CTX_verify_cb verify_cb);
+void X509_STORE_set_verify_func(X509_STORE *ctx,
+                                X509_STORE_CTX_verify_fn verify);
+void X509_STORE_set_lookup_crls_cb(X509_STORE *ctx,
+                                   X509_STORE_CTX_lookup_crls_fn lookup_crls);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-4b5c5122b867ace72eb326fc891a23b5"><title>DESCRIPTION</title>
     <para>
       X509_STORE_set_verify_cb() sets the verification callback of
-      <emphasis role="bold">ctx</emphasis> to <emphasis role="bold">verify_cb</emphasis> overwriting any existing callback.
+      <emphasis role="bold">ctx</emphasis> to <emphasis role="bold">verify_cb</emphasis> overwriting the previous callback.
+      The callback assigned with this function becomes a default for the
+      one that can be assigned directly to the corresponding <emphasis role="bold">X509_STORE_CTX</emphasis>, please see <citerefentry>
+      <refentrytitle>X509_STORE_CTX_set_verify_cb</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> for further information.
     </para>
     <para>
-      X509_STORE_set_verify_cb_func() also sets the verification callback
-      but it is implemented as a macro.
+      X509_STORE_set_verify() sets the final chain verification function
+      for <emphasis role="bold">ctx</emphasis> to <emphasis role="bold">verify</emphasis>. Its purpose is to go through the chain
+      of certificates and check that all signatures are valid and that the
+      current time is within the limits of each certificate's first and
+      last validity time. The final chain verification functions must
+      return 0 on failure and 1 on success. <emphasis role="italic">If no
+      chain verification function is provided, the internal default
+      function will be used instead.</emphasis>
+    </para>
+    <para>
+      X509_STORE_set_get_issuer() sets the function to get the issuer
+      certificate that verifies the given certificate <emphasis role="bold">x</emphasis>. When found, the issuer certificate must be
+      assigned to <emphasis role="bold">*issuer</emphasis>. This function
+      must return 0 on failure and 1 on success. <emphasis role="italic">If
+      no function to get the issuer is provided, the internal default
+      function will be used instead.</emphasis>
+    </para>
+    <para>
+      X509_STORE_set_check_issued() sets the function to check that a given
+      certificate <emphasis role="bold">x</emphasis> is issued with the
+      issuer certificate <emphasis role="bold">issuer</emphasis>. This
+      function must return 0 on failure (among others if <emphasis role="bold">x</emphasis> hasn't been issued with <emphasis role="bold">issuer</emphasis>) and 1 on success. <emphasis role="italic">If no function to get the issuer is provided, the
+      internal default function will be used instead.</emphasis>
+    </para>
+    <para>
+      X509_STORE_set_check_revocation() sets the revocation checking
+      function. Its purpose is to look through the final chain and check
+      the revocation status for each certificate. It must return 0 on
+      failure and 1 on success. <emphasis role="italic">If no function to
+      get the issuer is provided, the internal default function will be
+      used instead.</emphasis>
+    </para>
+    <para>
+      X509_STORE_set_get_crl() sets the function to get the crl for a given
+      certificate <emphasis role="bold">x</emphasis>. When found, the crl
+      must be assigned to <emphasis role="bold">*crl</emphasis>. This
+      function must return 0 on failure and 1 on success. <emphasis role="italic">If no function to get the issuer is provided, the
+      internal default function will be used instead.</emphasis>
+    </para>
+    <para>
+      X509_STORE_set_check_crl() sets the function to check the validity of
+      the given <emphasis role="bold">crl</emphasis>. This function must
+      return 0 on failure and 1 on success. <emphasis role="italic">If no
+      function to get the issuer is provided, the internal default function
+      will be used instead.</emphasis>
+    </para>
+    <para>
+      X509_STORE_set_cert_crl() sets the function to check the revocation
+      status of the given certificate <emphasis role="bold">x</emphasis>
+      against the given <emphasis role="bold">crl</emphasis>. This function
+      must return 0 on failure and 1 on success. <emphasis role="italic">If
+      no function to get the issuer is provided, the internal default
+      function will be used instead.</emphasis>
+    </para>
+    <para>
+      X509_STORE_set_check_policy() sets the function to check the policies
+      of all the certificates in the final chain.. This function must
+      return 0 on failure and 1 on success. <emphasis role="italic">If no
+      function to get the issuer is provided, the internal default function
+      will be used instead.</emphasis>
+    </para>
+    <para>
+      X509_STORE_set_lookup_certs() and X509_STORE_set_lookup_crls() set
+      the functions to look up all the certs or all the CRLs that match the
+      given name <emphasis role="bold">nm</emphasis>. These functions
+      return NULL on failure and a pointer to a stack of certificates
+      (<emphasis role="bold">X509</emphasis>) or to a stack of CRLs
+      (<emphasis role="bold">X509_CRL</emphasis>) on success. <emphasis role="italic">If no function to get the issuer is provided, the
+      internal default function will be used instead.</emphasis>
+    </para>
+    <para>
+      X509_STORE_set_cleanup() sets the final cleanup function, which is
+      called when the context (<emphasis role="bold">X509_STORE_CTX</emphasis>) is being torn down. This
+      function doesn't return any value. <emphasis role="italic">If no
+      function to get the issuer is provided, the internal default function
+      will be used instead.</emphasis>
+    </para>
+    <para>
+      X509_STORE_get_verify_cb(), X509_STORE_CTX_get_verify(),
+      X509_STORE_get_get_issuer(), X509_STORE_get_check_issued(),
+      X509_STORE_get_check_revocation(), X509_STORE_get_get_crl(),
+      X509_STORE_get_check_crl(), X509_STORE_set_verify(),
+      X509_STORE_set_get_issuer(), X509_STORE_get_cert_crl(),
+      X509_STORE_get_check_policy(), X509_STORE_get_lookup_certs(),
+      X509_STORE_get_lookup_crls() and X509_STORE_get_cleanup() all return
+      the function pointer assigned with X509_STORE_set_check_issued(),
+      X509_STORE_set_check_revocation(), X509_STORE_set_get_crl(),
+      X509_STORE_set_check_crl(), X509_STORE_set_cert_crl(),
+      X509_STORE_set_check_policy(), X509_STORE_set_lookup_certs(),
+      X509_STORE_set_lookup_crls() and X509_STORE_set_cleanup(), or NULL if
+      no assignment has been made.
+    </para>
+    <para>
+      X509_STORE_set_verify_cb_func(), X509_STORE_set_verify_func() and
+      X509_STORE_set_lookup_crls_cb() are aliases for
+      X509_STORE_set_verify_cb(), X509_STORE_set_verify() and
+      X509_STORE_set_lookup_crls, available as macros for backward
+      compatibility.
     </para>
   </refsection>
   <refsection xml:id="ID-7ceb7fed52bba283965d0db5aa2411ef"><title>NOTES</title>
     <para>
-      The verification callback from an <emphasis role="bold">X509_STORE</emphasis> is inherited by the corresponding
-      <emphasis role="bold">X509_STORE_CTX</emphasis> structure when it is
-      initialized. This can be used to set the verification callback when
-      the <emphasis role="bold">X509_STORE_CTX</emphasis> is otherwise
-      inaccessible (for example during S/MIME verification).
+      All the callbacks from a <emphasis role="bold">X509_STORE</emphasis>
+      are inherited by the corresponding <emphasis role="bold">X509_STORE_CTX</emphasis> structure when it is
+      initialized. See <citerefentry>
+      <refentrytitle>X509_STORE_CTX_set_verify_cb</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> for further details.
     </para>
   </refsection>
   <refsection xml:id="ID-bac360a489a54f9dd3333647b3b10f81"><title>BUGS</title>
@@ -41,15 +197,20 @@
   </refsection>
   <refsection xml:id="ID-f1312fb00fb23b0a831ffa9e08da7ec3"><title>RETURN VALUES</title>
     <para>
-      X509_STORE_set_verify_cb() and X509_STORE_set_verify_cb_func() do not
-      return a value.
+      The X509_STORE_set_*() functions do not return a value.
+    </para>
+    <para>
+      The X509_STORE_get_*() functions return a pointer of the appropriate
+      function type.
     </para>
   </refsection>
   <refsection xml:id="ID-36eb91ab45436f11acad61badbc18e87"><title>SEE ALSO</title>
     <para>
       <citerefentry>
       <refentrytitle>X509_STORE_CTX_set_verify_cb</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_STORE_CTX_get0_chain</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>CMS_verify</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>
@@ -57,6 +218,21 @@
   <refsection xml:id="ID-a8c4baeca0308d0c4b5c73932b967714"><title>HISTORY</title>
     <para>
       X509_STORE_set_verify_cb() was added to OpenSSL 1.0.0.
+    </para>
+    <para>
+      X509_STORE_set_verify_cb(), X509_STORE_get_verify_cb(),
+      X509_STORE_set_verify(), X509_STORE_CTX_get_verify(),
+      X509_STORE_set_get_issuer(), X509_STORE_get_get_issuer(),
+      X509_STORE_set_check_issued(), X509_STORE_get_check_issued(),
+      X509_STORE_set_check_revocation(), X509_STORE_get_check_revocation(),
+      X509_STORE_set_get_crl(), X509_STORE_get_get_crl(),
+      X509_STORE_set_check_crl(), X509_STORE_get_check_crl(),
+      X509_STORE_set_cert_crl(), X509_STORE_get_cert_crl(),
+      X509_STORE_set_check_policy(), X509_STORE_get_check_policy(),
+      X509_STORE_set_lookup_certs(), X509_STORE_get_lookup_certs(),
+      X509_STORE_set_lookup_crls(), X509_STORE_get_lookup_crls(),
+      X509_STORE_set_cleanup() and X509_STORE_get_cleanup() were addded in
+      OpenSSL 1.1.0.
     </para>
   </refsection>
   <refsection xml:id="ID-0985a25710666ebf11c09e0e251fdec6"><title>COPYRIGHT</title>

@@ -4,13 +4,16 @@
     <refentrytitle>X509_STORE_new.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>X509_STORE_new, X509_STORE_up_ref, X509_STORE_free</refname>
-<refpurpose>X509_STORE allocation and freeing functions</refpurpose>
+    <refname>X509_STORE_new, X509_STORE_up_ref, X509_STORE_free, X509_STORE_lock,
+X509_STORE_unlock</refname>
+<refpurpose>X509_STORE allocation, freeing and locking functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509_vfy.h&gt;</synopsis>
 <synopsis>X509_STORE *X509_STORE_new(void);
 void X509_STORE_free(X509_STORE *v);
+int X509_STORE_lock(X509_STORE *v);
+int X509_STORE_unlock(X509_STORE *v);
 int X509_STORE_up_ref(X509_STORE *v);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-1ea8f377a24046d44459a4caaf99b0f1"><title>DESCRIPTION</title>
@@ -22,6 +25,10 @@ int X509_STORE_up_ref(X509_STORE *v);</synopsis>
       the X509_STORE object.
     </para>
     <para>
+      X509_STORE_lock() locks the store from modification by other threads,
+      X509_STORE_unlock() locks it.
+    </para>
+    <para>
       X509_STORE_free() frees up a single X509_STORE object.
     </para>
   </refsection>
@@ -31,7 +38,8 @@ int X509_STORE_up_ref(X509_STORE *v);</synopsis>
       call fails.
     </para>
     <para>
-      X509_STORE_up_ref() returns 1 for success and 0 for failure.
+      X509_STORE_up_ref(), X509_STORE_lock() and X509_STORE_unlock() return
+      1 for success and 0 for failure.
     </para>
     <para>
       X509_STORE_free() does not return values.
@@ -48,8 +56,8 @@ int X509_STORE_up_ref(X509_STORE *v);</synopsis>
   </refsection>
   <refsection xml:id="ID-be0506ad063bd902e55f7cbbc9f10d94"><title>HISTORY</title>
     <para>
-      The <emphasis role="bold">X509_STORE_up_ref</emphasis> function was
-      added in OpenSSL 1.1.0
+      The X509_STORE_up_ref(), X509_STORE_lock() and X509_STORE_unlock()
+      functions were added in OpenSSL 1.1.0
     </para>
   </refsection>
   <refsection xml:id="ID-de2078c8e44a73f9a5df0dcc3ca01ee8"><title>COPYRIGHT</title>

@@ -4,7 +4,8 @@
     <refentrytitle>BIO_new.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BIO_new, BIO_set, BIO_up_ref, BIO_free, BIO_vfree, BIO_free_all</refname>
+    <refname>BIO_new, BIO_up_ref, BIO_free, BIO_vfree, BIO_free_all,
+BIO_set</refname>
 <refpurpose>BIO allocation and freeing functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
@@ -19,9 +20,6 @@ void   BIO_free_all(BIO *a);</synopsis>
   <refsection xml:id="ID-4f5ae06473b26ca6f9f31300456af84c"><title>DESCRIPTION</title>
     <para>
       The BIO_new() function returns a new BIO using method <emphasis role="bold">type</emphasis>.
-    </para>
-    <para>
-      BIO_set() sets the method of an already existing BIO.
     </para>
     <para>
       BIO_up_ref() increments the reference count associated with the BIO
@@ -60,6 +58,11 @@ void   BIO_free_all(BIO *a);</synopsis>
     <para>
       Calling BIO_free_all() on a single BIO has the same effect as calling
       BIO_free() on it other than the discarded return value.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-d1780aee330c521e7a19b978dafe717e"><title>HISTORY</title>
+    <para>
+      BIO_set() was removed in OpenSSL 1.1.0 as BIO type is now opaque.
     </para>
   </refsection>
   <refsection xml:id="ID-ee65f8445b06fadda6b85e42325521b6"><title>EXAMPLE</title>

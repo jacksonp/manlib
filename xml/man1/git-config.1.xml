@@ -1286,13 +1286,11 @@ core.autocrlf
 </term>
 <listitem>
 <simpara>
-        Setting this variable to "true" is almost the same as setting
-        the <literal>text</literal> attribute to "auto" on all files except that text
-        files are not guaranteed to be normalized: files that contain
-        <literal>CRLF</literal> in the repository will not be touched.  Use this
-        setting if you want to have <literal>CRLF</literal> line endings in your
-        working directory even though the repository does not have
-        normalized line endings.  This variable can be set to <emphasis>input</emphasis>,
+        Setting this variable to "true" is the same as setting
+        the <literal>text</literal> attribute to "auto" on all files and core.eol to "crlf".
+        Set to true if you want to have <literal>CRLF</literal> line endings in your
+        working directory and the repository has LF line endings.
+        This variable can be set to <emphasis>input</emphasis>,
         in which case no output conversion is performed.
 </simpara>
 </listitem>

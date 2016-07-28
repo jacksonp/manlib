@@ -22,7 +22,7 @@ X509_EXTENSION *X509_EXTENSION_create_by_OBJ(X509_EXTENSION **ex,
                                              ASN1_OBJECT *obj, int crit,
                                              ASN1_OCTET_STRING *data);</synopsis>
 <synopsis>ASN1_OBJECT *X509_EXTENSION_get_object(X509_EXTENSION *ex);
-int X509_EXTENSION_get_critical(X509_EXTENSION *ex);
+int X509_EXTENSION_get_critical(const X509_EXTENSION *ex);
 ASN1_OCTET_STRING *X509_EXTENSION_get_data(X509_EXTENSION *ne);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-5cc4597b50ed750e0d58caa664efe026"><title>DESCRIPTION</title>

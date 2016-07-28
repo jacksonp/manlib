@@ -48,7 +48,7 @@ int EC_KEY_set_method(EC_KEY *key, const EC_KEY_METHOD *meth);</synopsis>
                    BN_CTX *ctx);
 size_t EC_KEY_key2buf(const EC_KEY *eckey, point_conversion_form_t form,
                       unsigned char **pbuf, BN_CTX *ctx);</synopsis>
-<synopsis>int EC_KEY_oct2priv(EC_KEY *eckey, unsigned char *buf, size_t len);
+<synopsis>int EC_KEY_oct2priv(EC_KEY *eckey, const unsigned char *buf, size_t len);
 size_t EC_KEY_priv2oct(const EC_KEY *eckey, unsigned char *buf, size_t len);</synopsis>
 <synopsis>size_t EC_KEY_priv2buf(const EC_KEY *eckey, unsigned char **pbuf);</synopsis>
   </refsynopsisdiv>

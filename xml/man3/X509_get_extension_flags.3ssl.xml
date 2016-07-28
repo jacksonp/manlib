@@ -6,8 +6,12 @@
   <refnamediv>
     <refname>X509_get0_subject_key_id,
 X509_get_pathlen,
-X509_get_extension_flags, X509_get_key_usage, X509_get_extended_key_usage,
-X509_set_proxy_flag</refname>
+X509_get_extension_flags,
+X509_get_key_usage,
+X509_get_extended_key_usage,
+X509_set_proxy_flag,
+X509_set_proxy_pathlen,
+X509_get_proxy_pathlen</refname>
 <refpurpose>retrieve certificate extension data</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
@@ -17,7 +21,9 @@ uint32_t X509_get_extension_flags(X509 *x);
 uint32_t X509_get_key_usage(X509 *x);
 uint32_t X509_get_extended_key_usage(X509 *x);
 const ASN1_OCTET_STRING *X509_get0_subject_key_id(X509 *x);
-void X509_set_proxy_flag(X509 *x);</synopsis>
+void X509_set_proxy_flag(X509 *x);
+void X509_set_proxy_path_length(int l);
+long X509_get_proxy_pathlen(X509 *x);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-f0159d8fb27554ecaed5be0f48779d66"><title>DESCRIPTION</title>
     <para>
@@ -157,6 +163,17 @@ void X509_set_proxy_flag(X509 *x);</synopsis>
       need to mark non-RFC3820 proxy certificates as such, as OpenSSL only
       detects RFC3820 compliant ones.
     </para>
+    <para>
+      X509_set_proxy_pathlen() sets the proxy certificate path length for
+      the given certificate <emphasis role="bold">x</emphasis>.  This is
+      for the users who need to mark non-RFC3820 proxy certificates as
+      such, as OpenSSL only detects RFC3820 compliant ones.
+    </para>
+    <para>
+      X509_get_proxy_pathlen() returns the proxy certificate path length
+      for the given certificate <emphasis role="bold">x</emphasis> if it is
+      a proxy certicate.
+    </para>
   </refsection>
   <refsection xml:id="ID-4b30171ab838fde5aca68fb188a4b643"><title>NOTES</title>
     <para>
@@ -196,6 +213,11 @@ void X509_set_proxy_flag(X509 *x);</synopsis>
       structure or <emphasis role="bold">NULL</emphasis> if the extension
       is absent or an error occurred during parsing.
     </para>
+    <para>
+      X509_get_proxy_pathlen() returns the path length value if the given
+      certificate is a proxy one and has a path length set, and -1
+      otherwise.
+    </para>
   </refsection>
   <refsection xml:id="ID-1aa95e65afe0a4d8d22d038087e86506"><title>SEE ALSO</title>
     <para>
@@ -205,8 +227,8 @@ void X509_set_proxy_flag(X509 *x);</synopsis>
   </refsection>
   <refsection xml:id="ID-112301aa5b38900c62ab1262e07ee776"><title>HISTORY</title>
     <para>
-      X509_get_pathlen() and X509_set_proxy_flag() were added in OpenSSL
-      1.1.0.
+      X509_get_pathlen(), X509_set_proxy_flag(), X509_set_proxy_pathlen()
+      and X509_get_proxy_pathlen() were added in OpenSSL 1.1.0.
     </para>
   </refsection>
   <refsection xml:id="ID-b09517ebf2df4075bc728225959fe5b7"><title>COPYRIGHT</title>

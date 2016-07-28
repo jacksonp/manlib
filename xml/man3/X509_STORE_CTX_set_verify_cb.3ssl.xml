@@ -14,6 +14,17 @@ X509_STORE_CTX_set_verify_cb</refname>
 <synopsis>X509_STORE_CTX_verify_cb X509_STORE_CTX_get_verify_cb(X509_STORE_CTX *ctx);</synopsis>
 <synopsis>void X509_STORE_CTX_set_verify_cb(X509_STORE_CTX *ctx,
                                   X509_STORE_CTX_verify_cb verify_cb);</synopsis>
+<synopsis>X509_STORE_CTX_verify_fn X509_STORE_CTX_get_verify(X509_STORE_CTX *ctx);
+X509_STORE_CTX_get_issuer_fn X509_STORE_CTX_get_get_issuer(X509_STORE_CTX *ctx);
+X509_STORE_CTX_check_issued_fn X509_STORE_CTX_get_check_issued(X509_STORE_CTX *ctx);
+X509_STORE_CTX_check_revocation_fn X509_STORE_CTX_get_check_revocation(X509_STORE_CTX *ctx);
+X509_STORE_CTX_get_crl_fn X509_STORE_CTX_get_get_crl(X509_STORE_CTX *ctx);
+X509_STORE_CTX_check_crl_fn X509_STORE_CTX_get_check_crl(X509_STORE_CTX *ctx);
+X509_STORE_CTX_cert_crl_fn X509_STORE_CTX_get_cert_crl(X509_STORE_CTX *ctx);
+X509_STORE_CTX_check_policy_fn X509_STORE_CTX_get_check_policy(X509_STORE_CTX *ctx);
+X509_STORE_CTX_lookup_certs_fn X509_STORE_CTX_get_lookup_certs(X509_STORE_CTX *ctx);
+X509_STORE_CTX_lookup_crls_fn X509_STORE_CTX_get_lookup_crls(X509_STORE_CTX *ctx);
+X509_STORE_CTX_cleanup_fn X509_STORE_CTX_get_cleanup(X509_STORE_CTX *ctx);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-4a417828ec593b9c47567245e94eb924"><title>DESCRIPTION</title>
     <para>
@@ -32,7 +43,7 @@ X509_STORE_CTX_set_verify_cb</refname>
     <para>
       The <emphasis role="bold">ok</emphasis> parameter to the callback
       indicates the value the callback should return to retain the default
-      behaviour. If it is zero then and error condition is indicated. If it
+      behaviour. If it is zero then an error condition is indicated. If it
       is 1 then no error occurred. If the flag <emphasis role="bold">X509_V_FLAG_NOTIFY_POLICY</emphasis> is set then
       <emphasis role="bold">ok</emphasis> is set to 2 to indicate the
       policy checking is complete.
@@ -49,6 +60,18 @@ X509_STORE_CTX_set_verify_cb</refname>
       X509_STORE_CTX_get_verify_cb() returns the value of the current
       callback for the specific <emphasis role="bold">ctx</emphasis>.
     </para>
+    <para>
+      X509_STORE_CTX_get_verify(), X509_STORE_CTX_get_get_issuer(),
+      X509_STORE_CTX_get_check_issued(),
+      X509_STORE_CTX_get_check_revocation(), X509_STORE_CTX_get_get_crl(),
+      X509_STORE_CTX_get_check_crl(), X509_STORE_CTX_get_cert_crl(),
+      X509_STORE_CTX_get_check_policy(), X509_STORE_CTX_get_lookup_certs(),
+      X509_STORE_CTX_get_lookup_crls() and X509_STORE_CTX_get_cleanup()
+      return the function pointers cached from the corresponding <emphasis role="bold">X509_STORE</emphasis>, please see <citerefentry>
+      <refentrytitle>X509_STORE_set_verify</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> for more information.
+    </para>
+    <screen></screen>
   </refsection>
   <refsection xml:id="ID-87c94f400bd64c61ba7d6ac3743f3882"><title>WARNING</title>
     <para>
@@ -175,6 +198,17 @@ return(ok);
       <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
       <refentrytitle>X509_STORE_CTX_get_ex_new_index</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-cebbaa37925f0432f2d3490fddfa4a6f"><title>HISTORY</title>
+    <para>
+      X509_STORE_CTX_get_verify(), X509_STORE_CTX_get_get_issuer(),
+      X509_STORE_CTX_get_check_issued(),
+      X509_STORE_CTX_get_check_revocation(), X509_STORE_CTX_get_get_crl(),
+      X509_STORE_CTX_get_check_crl(), X509_STORE_CTX_get_cert_crl(),
+      X509_STORE_CTX_get_check_policy(), X509_STORE_CTX_get_lookup_certs(),
+      X509_STORE_CTX_get_lookup_crls() and X509_STORE_CTX_get_cleanup()
+      were addded in OpenSSL 1.1.0.
     </para>
   </refsection>
   <refsection xml:id="ID-54c74f4ae3ae1f343bef5d4f3a0f0455"><title>COPYRIGHT</title>

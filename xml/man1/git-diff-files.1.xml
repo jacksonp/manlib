@@ -756,6 +756,8 @@ of a delete/create pair.</simpara>
         other criteria in the comparison; if there is no file
         that matches other criteria, nothing is selected.
 </simpara>
+<simpara>Also, these upper-case letters can be downcased to exclude.  E.g.
+<literal>--diff-filter=ad</literal> excludes added and deleted paths.</simpara>
 </listitem>
 </varlistentry>
 <varlistentry>
