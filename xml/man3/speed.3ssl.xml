@@ -14,36 +14,14 @@
 [<emphasis role="bold">-elapsed</emphasis>]
 [<emphasis role="bold">-evp algo</emphasis>]
 [<emphasis role="bold">-decrypt</emphasis>]
-[<emphasis role="bold">md2</emphasis>]
-[<emphasis role="bold">mdc2</emphasis>]
-[<emphasis role="bold">md5</emphasis>]
-[<emphasis role="bold">hmac</emphasis>]
-[<emphasis role="bold">sha1</emphasis>]
-[<emphasis role="bold">rmd160</emphasis>]
-[<emphasis role="bold">idea-cbc</emphasis>]
-[<emphasis role="bold">rc2-cbc</emphasis>]
-[<emphasis role="bold">rc5-cbc</emphasis>]
-[<emphasis role="bold">bf-cbc</emphasis>]
-[<emphasis role="bold">des-cbc</emphasis>]
-[<emphasis role="bold">des-ede3</emphasis>]
-[<emphasis role="bold">rc4</emphasis>]
-[<emphasis role="bold">rsa512</emphasis>]
-[<emphasis role="bold">rsa1024</emphasis>]
-[<emphasis role="bold">rsa2048</emphasis>]
-[<emphasis role="bold">rsa4096</emphasis>]
-[<emphasis role="bold">dsa512</emphasis>]
-[<emphasis role="bold">dsa1024</emphasis>]
-[<emphasis role="bold">dsa2048</emphasis>]
-[<emphasis role="bold">idea</emphasis>]
-[<emphasis role="bold">rc2</emphasis>]
-[<emphasis role="bold">des</emphasis>]
-[<emphasis role="bold">rsa</emphasis>]
-[<emphasis role="bold">blowfish</emphasis>]</synopsis>
+[<emphasis role="bold">algorithm...</emphasis>]</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-9c5cb7762bf5d95f1dab29ea4f4b3f10"><title>DESCRIPTION</title>
     <para>
       This command is used to test the performance of cryptographic
-      algorithms.
+      algorithms. To see the list of supported algorithms, use the
+      <emphasis role="italic">list --digest-commands</emphasis> or
+      <emphasis role="italic">list --cipher-commands</emphasis> command.
     </para>
   </refsection>
   <refsection xml:id="ID-2b5c02ce63bacb6f8461fd4c0588503c"><title>OPTIONS</title>

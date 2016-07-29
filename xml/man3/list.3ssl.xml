@@ -1,0 +1,123 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>list.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>list</refname>
+<refpurpose>list algorithms and features</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis><emphasis role="bold">openssl list</emphasis>
+[<emphasis role="bold">-help</emphasis>]
+[<emphasis role="bold">-commands</emphasis>]
+[<emphasis role="bold">-digest-commands</emphasis>]
+[<emphasis role="bold">-digest-algorithms</emphasis>]
+[<emphasis role="bold">-cipher-commands</emphasis>]
+[<emphasis role="bold">-cipher-algorithms</emphasis>]
+[<emphasis role="bold">-public-key-algorithms</emphasis>]
+[<emphasis role="bold">-disabled</emphasis>]</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-26129c161384d5c7d8b08c3d64d8f6f7"><title>DESCRIPTION</title>
+    <para>
+      This command is used to generate list of algorithms or disabled
+      features.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-fb2f22c5f9e431a93ac3d234641b2b9b"><title>OPTIONS</title>
+    <para>
+      <variablelist>
+        <varlistentry>
+          <term><emphasis role="bold">-help</emphasis></term>
+          <listitem>
+            <para>
+	      Display out a usage message.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-commands</emphasis></term>
+          <listitem>
+            <para>
+	      Display a list of standard commands.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-digest-commands</emphasis></term>
+          <listitem>
+            <para>
+	      Display a list of message digest commands, which are
+	      typically used as input to the <citerefentry>
+	      <refentrytitle>dgst</refentrytitle> <manvolnum>1</manvolnum>
+	      </citerefentry> or <citerefentry>
+	      <refentrytitle>speed</refentrytitle> <manvolnum>1</manvolnum>
+	      </citerefentry> commands.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-digest-algorithms</emphasis></term>
+          <listitem>
+            <para>
+	      Display a list of message digest algorithms. If a line is of
+	      the form foo =&gt; bar then <emphasis role="bold">foo</emphasis> is an alias for the official
+	      algorithm name, <emphasis role="bold">bar</emphasis>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-cipher-commands</emphasis></term>
+          <listitem>
+            <para>
+	      Display a list of cipher commands, which are typically used
+	      as input to the <citerefentry>
+	      <refentrytitle>dgst</refentrytitle> <manvolnum>1</manvolnum>
+	      </citerefentry> or <citerefentry>
+	      <refentrytitle>speed</refentrytitle> <manvolnum>1</manvolnum>
+	      </citerefentry> commands.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-cipher-algorithms</emphasis></term>
+          <listitem>
+            <para>
+	      Display a list of cipher algorithms. If a line is of the form
+	      foo =&gt; bar then <emphasis role="bold">foo</emphasis> is an
+	      alias for the official algorithm name, <emphasis role="bold">bar</emphasis>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-public-key-algorithms</emphasis></term>
+          <listitem>
+            <para>
+	      Display a list of public key algorithms, with each algorithm
+	      as a block of multiple lines, all but the first are indented.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-disabled</emphasis></term>
+          <listitem>
+            <para>
+	      Display a list of disabled features, those that were compiled
+	      out of the installation.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-5aa9294e8f953ebe87d428267a1016cb"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

@@ -4,7 +4,9 @@
     <refentrytitle>OCSP_resp_find_status.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>OCSP_resp_get0_produced_at,
+    <refname>OCSP_resp_get0_certs,
+OCSP_resp_get0_id,
+OCSP_resp_get0_produced_at,
 OCSP_resp_find_status, OCSP_resp_count, OCSP_resp_get0, OCSP_resp_find,
 OCSP_single_get0_status, OCSP_check_validity</refname>
 <refpurpose>OCSP response utility functions</refpurpose>

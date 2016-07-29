@@ -16,7 +16,9 @@
 <refsynopsisdiv id="_synopsis">
 <literallayout><emphasis>git worktree add</emphasis> [-f] [--detach] [--checkout] [-b &lt;new-branch&gt;] &lt;path&gt; [&lt;branch&gt;]
 <emphasis>git worktree list</emphasis> [--porcelain]
-<emphasis>git worktree prune</emphasis> [-n] [-v] [--expire &lt;expire&gt;]</literallayout>
+<emphasis>git worktree lock</emphasis> [--reason &lt;string&gt;] &lt;worktree&gt;
+<emphasis>git worktree prune</emphasis> [-n] [-v] [--expire &lt;expire&gt;]
+<emphasis>git worktree unlock</emphasis> &lt;worktree&gt;</literallayout>
 <simpara></simpara>
 </refsynopsisdiv>
 <refsect1 id="_description">
@@ -41,9 +43,8 @@ administrative files so that they do not get pruned automatically. See
 section "DETAILS" for more information.</simpara>
 <simpara>If a linked working tree is stored on a portable device or network share
 which is not always mounted, you can prevent its administrative files from
-being pruned by creating a file named <emphasis>locked</emphasis> alongside the other
-administrative files, optionally containing a plain text reason that
-pruning should be suppressed. See section "DETAILS" for more information.</simpara>
+being pruned by issuing the <literal>git worktree lock</literal> command, optionally
+specifying <literal>--reason</literal> to explain why the working tree is locked.</simpara>
 </refsect1>
 <refsect1 id="_commands">
 <title>COMMANDS</title>
@@ -79,11 +80,35 @@ bare, the revision currently checked out, and the branch currently checked out
 </varlistentry>
 <varlistentry>
 <term>
+lock
+</term>
+<listitem>
+<simpara>
+If a working tree is on a portable device or network share which
+is not always mounted, lock it to prevent its administrative
+files from being pruned automatically. This also prevents it from
+being moved or deleted. Optionally, specify a reason for the lock
+with <literal>--reason</literal>.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 prune
 </term>
 <listitem>
 <simpara>
 Prune working tree information in $GIT_DIR/worktrees.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+unlock
+</term>
+<listitem>
+<simpara>
+Unlock a working tree, allowing it to be pruned, moved or deleted.
 </simpara>
 </listitem>
 </varlistentry>
@@ -202,6 +227,31 @@ Prune working tree information in $GIT_DIR/worktrees.
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+--reason &lt;string&gt;
+</term>
+<listitem>
+<simpara>
+        With <literal>lock</literal>, an explanation why the working tree is locked.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+&lt;worktree&gt;
+</term>
+<listitem>
+<simpara>
+        Working trees can be identified by path, either relative or
+        absolute.
+</simpara>
+<simpara>If the last path components in the working tree&#8217;s path is unique among
+working trees, it can be used to identify worktrees. For example if
+you only have to working trees at "/abc/def/ghi" and "/abc/def/ggg",
+then "ghi" or "def/ghi" is enough to point to the former working tree.</simpara>
+</listitem>
+</varlistentry>
 </variablelist>
 </refsect1>
 <refsect1 id="_details">
@@ -241,7 +291,8 @@ to <literal>/newpath/test-next</literal> and its <literal>.git</literal> file po
 instead.</simpara>
 <simpara>To prevent a $GIT_DIR/worktrees entry from being pruned (which
 can be useful in some situations, such as when the
-entry&#8217;s working tree is stored on a portable device), add a file named
+entry&#8217;s working tree is stored on a portable device), use the
+<literal>git worktree lock</literal> command, which adds a file named
 <emphasis>locked</emphasis> to the entry&#8217;s directory. The file contains the reason in
 plain text. For example, if a linked working tree&#8217;s <literal>.git</literal> file points
 to <literal>/path/main/.git/worktrees/test-next</literal> then a file named
@@ -316,12 +367,6 @@ performed manually, such as:</simpara>
 <listitem>
 <simpara>
 <literal>mv</literal> to move or rename a working tree and update its administrative files
-</simpara>
-</listitem>
-<listitem>
-<simpara>
-<literal>lock</literal> to prevent automatic pruning of administrative files (for instance,
-  for a working tree on a portable device)
 </simpara>
 </listitem>
 </itemizedlist>

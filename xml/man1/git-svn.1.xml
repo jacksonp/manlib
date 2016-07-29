@@ -1153,6 +1153,8 @@ after the authors-file is modified should continue operation.</simpara>
         expected to return a single line of the form "Name &lt;email&gt;",
         which will be treated as if included in the authors file.
 </simpara>
+<literallayout>config key: svn.authorsProg</literallayout>
+<simpara></simpara>
 </listitem>
 </varlistentry>
 <varlistentry>

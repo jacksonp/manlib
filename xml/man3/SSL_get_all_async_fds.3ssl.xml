@@ -4,9 +4,10 @@
     <refentrytitle>SSL_get_all_async_fds.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_waiting_for_async, SSL_get_all_async_fds, SSL_get_changed_async_fds</refname>
-<refpurpose>manage
-asynchronous operations</refpurpose>
+    <refname>SSL_waiting_for_async,
+SSL_get_all_async_fds,
+SSL_get_changed_async_fds</refname>
+<refpurpose>manage asynchronous operations</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/async.h&gt;
