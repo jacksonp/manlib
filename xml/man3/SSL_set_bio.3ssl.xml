@@ -4,35 +4,106 @@
     <refentrytitle>SSL_set_bio.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_set_bio, SSL_set_rbio, SSL_set_wbio</refname>
+    <refname>SSL_set_bio, SSL_set0_rbio, SSL_set0_wbio</refname>
 <refpurpose>connect the SSL object with a BIO</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
 <synopsis>void SSL_set_bio(SSL *ssl, BIO *rbio, BIO *wbio);
-void SSL_set_rbio(SSL *s, BIO *rbio);
-void SSL_set_wbio(SSL *s, BIO *wbio);</synopsis>
+void SSL_set0_rbio(SSL *s, BIO *rbio);
+void SSL_set0_wbio(SSL *s, BIO *wbio);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-c4682e10eb606f68e1a89dccaa2e47db"><title>DESCRIPTION</title>
     <para>
-      SSL_set_bio() connects the BIOs <emphasis role="bold">rbio</emphasis>
-      and <emphasis role="bold">wbio</emphasis> for the read and write
-      operations of the TLS/SSL (encrypted) side of <emphasis role="bold">ssl</emphasis>.
+      SSL_set0_rbio() connects the BIO <emphasis role="bold">rbio</emphasis> for the read operations of the <emphasis role="bold">ssl</emphasis> object. The SSL engine inherits the
+      behaviour of <emphasis role="bold">rbio</emphasis>. If the BIO is
+      non-blocking then the <emphasis role="bold">ssl</emphasis> object
+      will also have non-blocking behaviour. This function transfers
+      ownership of <emphasis role="bold">rbio</emphasis> to <emphasis role="bold">ssl</emphasis>. It will be automatically freed using
+      <citerefentry> <refentrytitle>BIO_free_all</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> when the <emphasis role="bold">ssl</emphasis> is freed. On calling this function, any
+      existing <emphasis role="bold">rbio</emphasis> that was previously
+      set will also be freed via a call to <citerefentry>
+      <refentrytitle>BIO_free_all</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> (this includes the case where the <emphasis role="bold">rbio</emphasis> is set to the same value as previously).
     </para>
     <para>
-      The SSL engine inherits the behaviour of <emphasis role="bold">rbio</emphasis> and <emphasis role="bold">wbio</emphasis>, respectively. If a BIO is non-blocking,
-      the <emphasis role="bold">ssl</emphasis> will also have non-blocking
-      behaviour.
+      SSL_set0_wbio() works in the same as SSL_set0_rbio() except that it
+      connects the BIO <emphasis role="bold">wbio</emphasis> for the write
+      operations of the <emphasis role="bold">ssl</emphasis> object. Note
+      that if the rbio and wbio are the same then SSL_set0_rbio() and
+      SSL_set0_wbio() each take ownership of one reference. Therefore it
+      may be necessary to increment the number of references available
+      using <citerefentry> <refentrytitle>BIO_up_ref</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> before calling the set0
+      functions.
     </para>
     <para>
-      If there was already a BIO connected to <emphasis role="bold">ssl</emphasis>, BIO_free() will be called (for both the
-      reading and writing side, if different).
+      SSL_set_bio() does a similar job as SSL_set0_rbio() and
+      SSL_set0_wbio() except that it connects both the <emphasis role="bold">rbio</emphasis> and the <emphasis role="bold">wbio</emphasis> at the same time. This function transfers
+      the ownership of <emphasis role="bold">rbio</emphasis> and <emphasis role="bold">wbio</emphasis> to <emphasis role="bold">ssl</emphasis>
+      except that the rules for this are much more complex. For this reason
+      this function is considered a legacy function and SSL_set0_rbio() and
+      SSL_set0_wbio() should be used in preference. The ownership rules are
+      as follows:
     </para>
     <para>
-      SSL_set_rbio() does the same job as SSL_set_bio() except that it
-      enables you to only connect the read bio, without touching the write
-      bio. Similarly SSL_set_wbio() enables you to connect the write bio
-      without touching the read bio.
+      <itemizedlist>
+        <listitem>
+          <para>
+	    If neither the rbio or wbio have changed from their previous
+	    values then nothing is done.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+	    If the rbio and wbio parameters are different and both are
+	    different to their previously set values then one reference is
+	    consumed for the rbio and one reference is consumed for the
+	    wbio.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+	    If the rbio and wbio parameters are the same and the rbio is
+	    not the same as the previously set value then one reference is
+	    consumed.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+	    If the rbio and wbio parameters are the same and the rbio is
+	    the same as the previously set value, then no additional
+	    references are consumed.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+	    If the rbio and wbio parameters are different and the rbio is
+	    the same as the previously set value then one reference is
+	    consumbed for the wbio and no references are consumed for the
+	    rbio.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+	    If the rbio and wbio parameters are different and the wbio is
+	    the same as the previously set value and the old rbio and wbio
+	    values were the same as each other then one reference is
+	    consumed for the rbio and no references are consumed for the
+	    wbio.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+	    If the rbio and wbio parameters are different and the wbio is
+	    the same as the previously set value and the old rbio and wbio
+	    values were different to each other then one reference is
+	    consumed for the rbio and one reference is consumed for the
+	    wbio.
+          </para>
+        </listitem>
+      </itemizedlist>
     </para>
   </refsection>
   <refsection xml:id="ID-15f5ed361ae59e4fc3097409504d79fc"><title>RETURN VALUES</title>
@@ -57,7 +128,7 @@ void SSL_set_wbio(SSL *s, BIO *wbio);</synopsis>
   </refsection>
   <refsection xml:id="ID-8966f3a8d007868fe5d2253eb94c993b"><title>HISTORY</title>
     <para>
-      SSL_set_rbio() and SSL_set_wbio() were added in OpenSSL 1.1.0.
+      SSL_set0_rbio() and SSL_set0_wbio() were added in OpenSSL 1.1.0.
     </para>
   </refsection>
   <refsection xml:id="ID-440c3a58a9dc81b9cb8b0b66d83d0a79"><title>COPYRIGHT</title>

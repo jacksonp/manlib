@@ -5,10 +5,6 @@
 <refentry lang="en">
 <refentryinfo>
     <title>ansible(1)</title>
-    <author>
-        <firstname>:doctype:manpage</firstname>
-    </author>
-    <authorinitials>:</authorinitials>
 </refentryinfo>
 <refmeta>
 <refentrytitle>ansible</refentrytitle>
