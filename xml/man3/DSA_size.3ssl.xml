@@ -4,26 +4,34 @@
     <refentrytitle>DSA_size.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>DSA_size</refname>
-<refpurpose>get DSA signature size</refpurpose>
+    <refname>DSA_size, DSA_bits</refname>
+<refpurpose>get DSA signature size or key bits</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/dsa.h&gt;</synopsis>
-<synopsis>int DSA_size(const DSA *dsa);</synopsis>
+<synopsis>int DSA_size(const DSA *dsa);
+int DSA_bits(const DSA *dsa);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-d75e898653840d3b9d6d9e215c3a4ae2"><title>DESCRIPTION</title>
     <para>
-      This function returns the size of an ASN.1 encoded DSA signature in
-      bytes. It can be used to determine how much memory must be allocated
-      for a DSA signature.
+      DSA_size() returns the maximum size of an ASN.1 encoded DSA signature
+      for key <emphasis role="bold">dsa</emphasis> in bytes. It can be used
+      to determine how much memory must be allocated for a DSA signature.
     </para>
     <para>
       <emphasis role="bold">dsa-&gt;q</emphasis> must not be <emphasis role="bold">NULL</emphasis>.
     </para>
+    <para>
+      DSA_bits() returns the number of bits in key <emphasis role="bold">dsa</emphasis>: this is the number of bits in the
+      <emphasis role="bold">p</emphasis> parameter.
+    </para>
   </refsection>
   <refsection xml:id="ID-7a60fcf7e107ce7edfcce195aab5b747"><title>RETURN VALUE</title>
     <para>
-      The size in bytes.
+      DSA_size() returns the size in bytes.
+    </para>
+    <para>
+      DSA_bits() returns the number of bits in the key.
     </para>
   </refsection>
   <refsection xml:id="ID-f388e902527604c7730619c623528b8a"><title>SEE ALSO</title>

@@ -13,9 +13,9 @@ certificate request or CRL version</refpurpose>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
 <synopsis>long X509_get_version(const X509 *x);
 int X509_set_version(X509 *x, long version);</synopsis>
-<synopsis>long X509_REQ_get_version(X509_REQ *req);
+<synopsis>long X509_REQ_get_version(const X509_REQ *req);
 int X509_REQ_set_version(X509_REQ *x, long version);</synopsis>
-<synopsis>long X509_CRL_get_version(X509_CRL *crl);
+<synopsis>long X509_CRL_get_version(const X509_CRL *crl);
 int X509_CRL_set_version(X509_CRL *x, long version);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-c748aac62c783e227d46b4c1295c7091"><title>DESCRIPTION</title>
