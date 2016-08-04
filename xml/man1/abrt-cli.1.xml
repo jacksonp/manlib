@@ -17,10 +17,10 @@
 <simpara><emphasis>abrt-cli</emphasis> [--authenticate] COMMAND [COMMAND OPTIONS]</simpara>
 <simpara><emphasis>abrt-cli</emphasis> list    [-vn] [--detailed] [--since NUM] [--until NUM] [DIR]…</simpara>
 <simpara><emphasis>abrt-cli</emphasis> remove  [-v]  DIR…</simpara>
-<simpara><emphasis>abrt-cli</emphasis> report  [-v]  [--delete]  DIR…</simpara>
+<simpara><emphasis>abrt-cli</emphasis> report  [-v]  [--delete] [--unsafe] DIR…</simpara>
 <simpara><emphasis>abrt-cli</emphasis> info    [-v]  [--detailed] [-s SIZE] DIR…</simpara>
 <simpara><emphasis>abrt-cli</emphasis> status  [-vb] [--since NUM]</simpara>
-<simpara><emphasis>abrt-cli</emphasis> process [-v]  [--since NUM] DIR…</simpara>
+<simpara><emphasis>abrt-cli</emphasis> process [-v]  [--since NUM] [--unsafe] DIR…</simpara>
 </refsynopsisdiv>
 <refsect1 xml:id="_global_options">
 <title>GLOBAL OPTIONS</title>
@@ -107,6 +107,16 @@
 <listitem>
 <simpara>
     Selects only problems detected after timestamp
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+-u, --unsafe
+</term>
+<listitem>
+<simpara>
+   Ignore security checks to be able to report all problems
 </simpara>
 </listitem>
 </varlistentry>

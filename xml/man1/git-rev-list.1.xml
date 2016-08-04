@@ -650,6 +650,17 @@ See also <citerefentry>
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+--progress=&lt;header&gt;
+</term>
+<listitem>
+<simpara>
+        Show progress reports on stderr as objects are considered. The
+        <literal>&lt;header&gt;</literal> text will be printed with each progress update.
+</simpara>
+</listitem>
+</varlistentry>
 </variablelist>
 </refsect2>
 <refsect2 id="_history_simplification">

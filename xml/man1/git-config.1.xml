@@ -6184,8 +6184,20 @@ receive.advertiseAtomic
 <listitem>
 <simpara>
         By default, git-receive-pack will advertise the atomic push
-        capability to its clients. If you don&#8217;t want to this capability
-        to be advertised, set this variable to false.
+        capability to its clients. If you don&#8217;t want to advertise this
+        capability, set this variable to false.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+receive.advertisePushOptions
+</term>
+<listitem>
+<simpara>
+        By default, git-receive-pack will advertise the push options
+        capability to its clients. If you don&#8217;t want to advertise this
+        capability, set this variable to false.
 </simpara>
 </listitem>
 </varlistentry>
@@ -6280,6 +6292,22 @@ receive.fsck.skipList
         should be accepted despite early commits containing errors that
         can be safely ignored such as invalid committer email addresses.
         Note: corrupt objects cannot be skipped with this setting.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+receive.keepAlive
+</term>
+<listitem>
+<simpara>
+        After receiving the pack from the client, <literal>receive-pack</literal> may
+        produce no output (if <literal>--quiet</literal> was specified) while processing
+        the pack, causing some networks to drop the TCP connection.
+        With this option set, if <literal>receive-pack</literal> does not transmit
+        any data in this phase for <literal>receive.keepAlive</literal> seconds, it will
+        send a short keepalive packet.  The default is 5 seconds; set
+        to 0 to disable keepalives entirely.
 </simpara>
 </listitem>
 </varlistentry>

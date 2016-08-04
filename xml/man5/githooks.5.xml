@@ -207,6 +207,14 @@ still be prevented by the <link linkend="update"><emphasis>update</emphasis></li
 <simpara>Both standard output and standard error output are forwarded to
 <emphasis>git send-pack</emphasis> on the other end, so you can simply <literal>echo</literal> messages
 for the user.</simpara>
+<simpara>The number of push options given on the command line of
+<literal>git push --push-option=...</literal> can be read from the environment
+variable <literal>GIT_PUSH_OPTION_COUNT</literal>, and the options themselves are
+found in <literal>GIT_PUSH_OPTION_0</literal>, <literal>GIT_PUSH_OPTION_1</literal>,&#8230;
+If it is negotiated to not use the push options phase, the
+environment variables will not be set. If the client selects
+to use push options, but doesn&#8217;t transmit any, the count variable
+will be set to zero, <literal>GIT_PUSH_OPTION_COUNT=0</literal>.</simpara>
 </refsect2>
 <refsect2 id="update">
 <title>update</title>
@@ -281,6 +289,14 @@ for the user.</simpara>
 a sample script <literal>post-receive-email</literal> provided in the <literal>contrib/hooks</literal>
 directory in Git distribution, which implements sending commit
 emails.</simpara>
+<simpara>The number of push options given on the command line of
+<literal>git push --push-option=...</literal> can be read from the environment
+variable <literal>GIT_PUSH_OPTION_COUNT</literal>, and the options themselves are
+found in <literal>GIT_PUSH_OPTION_0</literal>, <literal>GIT_PUSH_OPTION_1</literal>,&#8230;
+If it is negotiated to not use the push options phase, the
+environment variables will not be set. If the client selects
+to use push options, but doesn&#8217;t transmit any, the count variable
+will be set to zero, <literal>GIT_PUSH_OPTION_COUNT=0</literal>.</simpara>
 </refsect2>
 <refsect2 id="post-update">
 <title>post-update</title>
