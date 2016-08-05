@@ -36,7 +36,7 @@
       numbers <emphasis role="bold">0</emphasis> and <emphasis role="bold">1</emphasis>. For example the functions:
     </para>
     <screen>int X509_CRL_add0_revoked(X509_CRL *crl, X509_REVOKED *rev);
-int X509_add1_trust_object(X509 *x, ASN1_OBJECT *obj);</screen>
+int X509_add1_trust_object(X509 *x, const ASN1_OBJECT *obj);</screen>
     <para>
       The <emphasis role="bold">0</emphasis> version uses the supplied
       structure pointer directly in the parent and it will be freed up when

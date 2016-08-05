@@ -17,7 +17,7 @@ ASN1_STRING * X509_NAME_ENTRY_get_data(X509_NAME_ENTRY *ne);</synopsis>
 <synopsis>int X509_NAME_ENTRY_set_object(X509_NAME_ENTRY *ne, const ASN1_OBJECT *obj);
 int X509_NAME_ENTRY_set_data(X509_NAME_ENTRY *ne, int type, const unsigned char *bytes, int len);</synopsis>
 <synopsis>X509_NAME_ENTRY *X509_NAME_ENTRY_create_by_txt(X509_NAME_ENTRY **ne, const char *field, int type, const unsigned char *bytes, int len);
-X509_NAME_ENTRY *X509_NAME_ENTRY_create_by_NID(X509_NAME_ENTRY **ne, int nid, int type, unsigned char *bytes, int len);
+X509_NAME_ENTRY *X509_NAME_ENTRY_create_by_NID(X509_NAME_ENTRY **ne, int nid, int type, const unsigned char *bytes, int len);
 X509_NAME_ENTRY *X509_NAME_ENTRY_create_by_OBJ(X509_NAME_ENTRY **ne, const ASN1_OBJECT *obj, int type, const unsigned char *bytes, int len);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-f0d0bf3b88e261f013838eaa9d179f42"><title>DESCRIPTION</title>

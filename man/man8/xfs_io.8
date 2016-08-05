@@ -556,6 +556,39 @@ Print timing statistics in a condensed format.
 .TP
 .B \-q
 Do not print timing statistics at all.
+.RE
+.PD
+.TP
+.TP
+.BI "copy_range [ -s " src_offset " ] [ -d " dst_offset " ] [ -l " length " ] src_file"
+On filesystems that support the
+.BR copy_file_range (2)
+system call, copies data from the
+.I src_file
+into the open file.  If
+.IR src_offset ,
+.IR dst_offset ,
+and
+.I length
+are omitted the contents of src_file will be copied to the beginning of the
+open file, overwriting any data already there.
+.RS 1.0i
+.PD 0
+.TP 0.4i
+.B \-s
+Copy data from
+.I src_file
+beginning from
+.IR src_offset .
+.TP
+.B \-d
+Copy data into the open file beginning at
+.IR dst_offset .
+.TP
+.B \-l
+Copy up to
+.I length
+bytes of data.
 
 .SH MEMORY MAPPED I/O COMMANDS
 .TP
