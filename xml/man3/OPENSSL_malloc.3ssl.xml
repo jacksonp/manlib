@@ -190,7 +190,7 @@ void CRYPTO_mem_leaks_fp(FILE *fp);</synopsis>
       already happened).
     </para>
     <para>
-      CRYPTO_mem_ctrl() returns -1 if an error occured, otherwise the
+      CRYPTO_mem_ctrl() returns -1 if an error occurred, otherwise the
       previous value of the mode.
     </para>
     <para>

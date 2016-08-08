@@ -499,7 +499,7 @@ DANE TLSA 2 1 1 ...ee12d2cc90180517616e8a18 matched TA certificate at depth 1
             <para>
 	      These options make <emphasis role="bold">s_client</emphasis>
 	      use DTLS protocols instead of TLS. With <emphasis role="bold">-dtls</emphasis>, <emphasis role="bold">s_client</emphasis> will negotiate any supported
-	      DTLS protcol version, whilst <emphasis role="bold">-dtls1</emphasis> and <emphasis role="bold">-dtls1_2</emphasis> will only support DTLS1.0 and
+	      DTLS protocol version, whilst <emphasis role="bold">-dtls1</emphasis> and <emphasis role="bold">-dtls1_2</emphasis> will only support DTLS1.0 and
 	      DTLS1.2 respectively.
             </para>
           </listitem>

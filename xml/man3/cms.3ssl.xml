@@ -808,7 +808,7 @@
     </para>
     <para>
       The supplied message to be signed or encrypted must include the
-      necessary MIME headers or many S/MIME clients wont display it
+      necessary MIME headers or many S/MIME clients won't display it
       properly (if at all). You can use the <emphasis role="bold">-text</emphasis> option to automatically add plain text
       headers.
     </para>

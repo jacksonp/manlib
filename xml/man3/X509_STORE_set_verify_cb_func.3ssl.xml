@@ -256,7 +256,7 @@ void X509_STORE_set_lookup_crls_cb(X509_STORE *ctx,
       X509_STORE_set_check_policy(), X509_STORE_get_check_policy(),
       X509_STORE_set_lookup_certs(), X509_STORE_get_lookup_certs(),
       X509_STORE_set_lookup_crls(), X509_STORE_get_lookup_crls(),
-      X509_STORE_set_cleanup() and X509_STORE_get_cleanup() were addded in
+      X509_STORE_set_cleanup() and X509_STORE_get_cleanup() were added in
       OpenSSL 1.1.0.
     </para>
   </refsection>

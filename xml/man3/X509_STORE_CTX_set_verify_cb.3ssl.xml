@@ -219,7 +219,7 @@ return(ok);
       X509_STORE_CTX_get_check_crl(), X509_STORE_CTX_get_cert_crl(),
       X509_STORE_CTX_get_check_policy(), X509_STORE_CTX_get_lookup_certs(),
       X509_STORE_CTX_get_lookup_crls() and X509_STORE_CTX_get_cleanup()
-      were addded in OpenSSL 1.1.0.
+      were added in OpenSSL 1.1.0.
     </para>
   </refsection>
   <refsection xml:id="ID-54c74f4ae3ae1f343bef5d4f3a0f0455"><title>COPYRIGHT</title>

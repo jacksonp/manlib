@@ -115,7 +115,7 @@
             <para>
 	      this option can set the session id so the output session
 	      information uses the supplied ID. The ID can be any string of
-	      characters. This option wont normally be used.
+	      characters. This option won't normally be used.
             </para>
           </listitem>
         </varlistentry>

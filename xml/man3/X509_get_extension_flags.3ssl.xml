@@ -172,7 +172,7 @@ long X509_get_proxy_pathlen(X509 *x);</synopsis>
     <para>
       X509_get_proxy_pathlen() returns the proxy certificate path length
       for the given certificate <emphasis role="bold">x</emphasis> if it is
-      a proxy certicate.
+      a proxy certificate.
     </para>
   </refsection>
   <refsection xml:id="ID-4b30171ab838fde5aca68fb188a4b643"><title>NOTES</title>
