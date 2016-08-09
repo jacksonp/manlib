@@ -385,6 +385,11 @@ substitution.  For example:</simpara>
 <literallayout class="monospaced">[filter "p4"]
         clean = git-p4-filter --clean %f
         smudge = git-p4-filter --smudge %f</literallayout><simpara></simpara>
+<simpara>Note that "%f" is the name of the path that is being worked on. Depending
+on the version that is being filtered, the corresponding file on disk may
+not exist, or may have different contents. So, smudge and clean commands
+should not try to access the file on disk, but only act as filters on the
+content provided to them on standard input.</simpara>
 </refsect3>
 <refsect3 id="_interaction_between_checkin_checkout_attributes">
 <title>Interaction between checkin/checkout attributes</title>

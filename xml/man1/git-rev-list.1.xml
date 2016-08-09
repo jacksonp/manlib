@@ -605,10 +605,36 @@ list.</simpara>
 </simpara>
 <simpara>With <literal>--pretty</literal> format other than <literal>oneline</literal> (for obvious reasons),
 this causes the output to have two extra lines of information
-taken from the reflog.  By default, <emphasis>commit@{Nth}</emphasis> notation is
-used in the output.  When the starting commit is specified as
-<emphasis>commit@{now}</emphasis>, output also uses <emphasis>commit@{timestamp}</emphasis> notation
-instead.  Under <literal>--pretty=oneline</literal>, the commit message is
+taken from the reflog.  The reflog designator in the output may be shown
+as <literal>ref@{Nth}</literal> (where <literal>Nth</literal> is the reverse-chronological index in the
+reflog) or as <literal>ref@{timestamp}</literal> (with the timestamp for that entry),
+depending on a few rules:</simpara>
+<orderedlist numeration="arabic">
+<listitem>
+<simpara>
+If the starting point is specified as <literal>ref@{Nth}</literal>, show the index
+format.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+If the starting point was specified as <literal>ref@{now}</literal>, show the
+timestamp format.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+If neither was used, but <literal>--date</literal> was given on the command line, show
+the timestamp in the format requested by <literal>--date</literal>.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Otherwise, show the index format.
+</simpara>
+</listitem>
+</orderedlist>
+<simpara>Under <literal>--pretty=oneline</literal>, the commit message is
 prefixed with this information on the same line.
 This option cannot be combined with <literal>--reverse</literal>.
 See also <citerefentry>
@@ -1416,8 +1442,8 @@ and <emphasis>fuller</emphasis>).</simpara>
         <literal>iso-local</literal>), the user&#8217;s local time zone is used instead.
 </simpara>
 <simpara><literal>--date=relative</literal> shows dates relative to the current time,
-e.g. &#8220;2 hours ago&#8221;. The <literal>-local</literal> option cannot be used with
-<literal>--raw</literal> or <literal>--relative</literal>.</simpara>
+e.g. &#8220;2 hours ago&#8221;. The <literal>-local</literal> option has no effect for
+<literal>--date=relative</literal>.</simpara>
 <simpara><literal>--date=local</literal> is an alias for <literal>--date=default-local</literal>.</simpara>
 <simpara><literal>--date=iso</literal> (or <literal>--date=iso8601</literal>) shows timestamps in a ISO 8601-like format.
 The differences to the strict ISO 8601 format are:</simpara>
@@ -1443,7 +1469,17 @@ ISO 8601 format.</simpara>
 <simpara><literal>--date=rfc</literal> (or <literal>--date=rfc2822</literal>) shows timestamps in RFC 2822
 format, often found in email messages.</simpara>
 <simpara><literal>--date=short</literal> shows only the date, but not the time, in <literal>YYYY-MM-DD</literal> format.</simpara>
-<simpara><literal>--date=raw</literal> shows the date in the internal raw Git format <literal>%s %z</literal> format.</simpara>
+<simpara><literal>--date=raw</literal> shows the date as seconds since the epoch (1970-01-01
+00:00:00 UTC), followed by a space, and then the timezone as an offset
+from UTC (a <literal>+</literal> or <literal>-</literal> with four digits; the first two are hours, and
+the second two are minutes). I.e., as if the timestamp were formatted
+with <literal>strftime("%s %z")</literal>).
+Note that the <literal>-local</literal> option does not affect the seconds-since-epoch
+value (which is always measured in UTC), but does switch the accompanying
+timezone value.</simpara>
+<simpara><literal>--date=unix</literal> shows the date as a Unix epoch timestamp (seconds since
+1970).  As with <literal>--raw</literal>, this is always in UTC and therefore <literal>-local</literal>
+has no effect.</simpara>
 <simpara><literal>--date=format:...</literal> feeds the format <literal>...</literal> to your system <literal>strftime</literal>.
 Use <literal>--date=format:%c</literal> to show the date in your system locale&#8217;s
 preferred format.  See the <literal>strftime</literal> manual for a complete list of
@@ -1901,12 +1937,18 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 </listitem>
 <listitem>
 <simpara>
-<emphasis>%gD</emphasis>: reflog selector, e.g., <literal>refs/stash@{1}</literal>
+<emphasis>%gD</emphasis>: reflog selector, e.g., <literal>refs/stash@{1}</literal> or
+  <literal>refs/stash@{2 minutes ago</literal>}; the format follows the rules described
+  for the <literal>-g</literal> option. The portion before the <literal>@</literal> is the refname as
+  given on the command line (so <literal>git log -g refs/heads/master</literal> would
+  yield <literal>refs/heads/master@{0}</literal>).
 </simpara>
 </listitem>
 <listitem>
 <simpara>
-<emphasis>%gd</emphasis>: shortened reflog selector, e.g., <literal>stash@{1}</literal>
+<emphasis>%gd</emphasis>: shortened reflog selector; same as <literal>%gD</literal>, but the refname
+  portion is shortened for human readability (so <literal>refs/heads/master</literal>
+  becomes just <literal>master</literal>).
 </simpara>
 </listitem>
 <listitem>

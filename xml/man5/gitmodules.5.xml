@@ -134,6 +134,18 @@ submodule.&lt;name&gt;.ignore
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+submodule.&lt;name&gt;.shallow
+</term>
+<listitem>
+<simpara>
+        When set to true, a clone of this submodule will be performed as a
+        shallow clone unless the user explicitely asks for a non-shallow
+        clone.
+</simpara>
+</listitem>
+</varlistentry>
 </variablelist>
 </refsect1>
 <refsect1 id="_examples">

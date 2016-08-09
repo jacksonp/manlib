@@ -1756,12 +1756,18 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 </listitem>
 <listitem>
 <simpara>
-<emphasis>%gD</emphasis>: reflog selector, e.g., <literal>refs/stash@{1}</literal>
+<emphasis>%gD</emphasis>: reflog selector, e.g., <literal>refs/stash@{1}</literal> or
+  <literal>refs/stash@{2 minutes ago</literal>}; the format follows the rules described
+  for the <literal>-g</literal> option. The portion before the <literal>@</literal> is the refname as
+  given on the command line (so <literal>git log -g refs/heads/master</literal> would
+  yield <literal>refs/heads/master@{0}</literal>).
 </simpara>
 </listitem>
 <listitem>
 <simpara>
-<emphasis>%gd</emphasis>: shortened reflog selector, e.g., <literal>stash@{1}</literal>
+<emphasis>%gd</emphasis>: shortened reflog selector; same as <literal>%gD</literal>, but the refname
+  portion is shortened for human readability (so <literal>refs/heads/master</literal>
+  becomes just <literal>master</literal>).
 </simpara>
 </listitem>
 <listitem>
