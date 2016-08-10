@@ -1,4 +1,4 @@
-.TH LVM 8 "LVM TOOLS 2.02.163(2)-git (2016-07-28)" "Sistina Software UK" \" -*- nroff -*-
+.TH LVM 8 "LVM TOOLS 2.02.164(2)-git (2016-08-10)" "Sistina Software UK" \" -*- nroff -*-
 .
 .SH NAME
 .
@@ -64,6 +64,10 @@ The same as \fBlvmconfig\fP(8) below.
 .TP
 .B formats
 Display recognised metadata formats.
+.TP
+.B fullreport
+Report information about PVs, PV segments, VGs, LVs and LV segments,
+all at once.
 .TP
 .B help
 Display the help text.
@@ -747,6 +751,15 @@ All tools return a status code of zero on success or non-zero on failure.
 .B HOME
 Directory containing \fI.lvm_history\fP if the internal readline
 shell is invoked.
+.TP
+.B LVM_OUT_FD
+File descriptor to use for common output from LVM commands.
+.TP
+.B LVM_ERR_FD
+File descriptor to use for error output from LVM commands.
+.TP
+.B LVM_REPORT_FD
+File descriptor to use for report output from LVM commands.
 .TP
 .B LVM_COMMAND_PROFILE
 Name of default command profile to use for LVM commands. This profile

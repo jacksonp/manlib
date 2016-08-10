@@ -1,13 +1,37 @@
-.TH MULTIPATH.CONF 5 2016-07-08 "Linux"
+.\" ----------------------------------------------------------------------------
+.\" Update the date below if you make any significant change.
+.\" Make sure there are no errors with:
+.\" groff -z -wall -b -e -t multipath/multipath.conf.5
+.\"
+.\" TODO: Look for XXX
+.\"
+.\" ----------------------------------------------------------------------------
+.
+.TH MULTIPATH.CONF 5 2016-08-07 "Linux"
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH NAME
+.\" ----------------------------------------------------------------------------
+.
 multipath.conf \- multipath daemon configuration file.
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH DESCRIPTION
+.\" ----------------------------------------------------------------------------
+.
 .B "/etc/multipath.conf"
 is the configuration file for the multipath daemon. It is used to
 overwrite the built-in configuration table of \fBmultipathd\fP.
 Any line whose first non-white-space character is a '#' is considered
 a comment line. Empty lines are ignored.
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH SYNTAX
+.\" ----------------------------------------------------------------------------
+.
 The configuration file contains entries of the form:
 .RS
 .nf
@@ -38,6 +62,8 @@ Each \fIsection\fP contains one or more attributes or subsections. The
 recognized keywords for attributes or subsections depend on the
 section in which they occur.
 .LP
+.
+.
 The following \fIsection\fP keywords are recognized:
 .TP 17
 .B defaults
@@ -52,8 +78,7 @@ multipath topology discovery.
 .B blacklist_exceptions
 This section defines which devices should be included in the
 multipath topology discovery, despite being listed in the
-.I blacklist
-section.
+\fIblacklist\fR section.
 .TP
 .B multipaths
 This section defines the multipath topologies. They are indexed by a
@@ -68,10 +93,15 @@ This section defines values for attributes that should override the
 device-specific settings for all devices.
 .RE
 .LP
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH "defaults section"
-The
-.I defaults
-section recognizes the following keywords:
+.\" ----------------------------------------------------------------------------
+.
+The \fIdefaults\fR section recognizes the following keywords:
+.
+.
 .TP 17
 .B verbosity
 Default verbosity. Higher values increase the verbosity level. Valid
@@ -80,18 +110,20 @@ levels are between 0 and 6.
 .TP
 Default value is: \fB2\fR
 .RE
+.
+.
 .TP
 .B polling_interval
 Interval between two path checks in seconds. For properly functioning paths,
-the interval between checks will gradually increase to
-.I max_polling_interval.
-This value will be overridden by the
-.I WatchdogSec
+the interval between checks will gradually increase to \fImax_polling_interval\fR.
+This value will be overridden by the \fIWatchdogSec\fR
 setting in the multipathd.service definition if systemd is used.
 .RS
 .TP
 Default value is: \fB5\fR
 .RE
+.
+.
 .TP
 .B max_polling_interval
 Maximal interval between two path checks in seconds.
@@ -99,6 +131,8 @@ Maximal interval between two path checks in seconds.
 .TP
 Default value is: \fB4 * polling_interval\fR
 .RE
+.
+.
 .TP
 .B reassign_maps
 Enable reassigning of device-mapper maps. With this option multipathd
@@ -109,13 +143,17 @@ device, not the underlying block devices. Possible values are
 .TP
 Default value is: \fBno\fR
 .RE
+.
+.
 .TP
 .B multipath_dir
-Directory where the dynamic shared objects are stored.
+Directory where the dynamic shared objects are stored. Defined at compile time.
 .RS
 .TP
 Default value is: \fB<system dependent>\fR, commonly \fI/lib64/multipath/\fR
 .RE
+.
+.
 .TP
 .B path_selector
 The default path selector algorithm to use; they are offered by the
@@ -135,6 +173,8 @@ to the path and its relative throughput.
 .TP
 Default value is: \fBservice-time 0\fR
 .RE
+.
+.
 .TP
 .B path_grouping_policy
 The default path grouping policy to apply to unspecified
@@ -161,26 +201,31 @@ in \fI/sys/class/fc_transport/target*/node_name\fR.
 .TP
 Default value is: \fBfailover\fR
 .RE
+.
+.
 .TP
 .B uid_attribute
 The udev attribute providing a unique path identifier.
 .RS
 .TP
-Default value is: \fBID_SERIAL\fR for SCSI devices
+Default value is: for SCSI devices \fBID_SERIAL\fR
 .TP
-Default value is: \fBID_UID\fR for DASD devices
+Default value is: for DASD devices \fBID_UID\fR
 .RE
+.
+.
 .TP
 .B getuid_callout
-(Deprecated) The default program and args to callout to obtain a unique path
-identifier. Should be specified with an absolute path.
+(Superseded by \fIuid_attribute\fR) The default program and args to callout
+to obtain a unique path identifier. Should be specified with an absolute path.
 .TP
+.
+.
 .B prio
 The name of the path priority routine. The specified routine
 should return a numeric value specifying the relative priority
 of this path. Higher number have a higher priority.
-.I "none"
-is a valid value. Currently the following path priority routines
+\fI"none"\fR is a valid value. Currently the following path priority routines
 are implemented:
 .RS
 .TP 12
@@ -190,7 +235,7 @@ Return a constant priority of \fI1\fR.
 .I sysfs
 Use the sysfs attributes \fIaccess_state\fR and \fIpreferred_path\fR to
 generate the path priority. This prioritizer accepts the optional prio_arg
-.I exclusive_pref_bit
+\fIexclusive_pref_bit\fR
 .TP
 .I emc
 (Hardware-dependent)
@@ -208,8 +253,8 @@ Generate the path priority for NetApp ONTAP class and OEM arrays as IBM NSeries.
 .TP
 .I rdac
 (Hardware-dependent)
-Generate the path priority for LSI/Engenio/NetApp RDAC class as NetApp E/EF
-Series, and OEM arrays from IBM DELL SGI STK and SUN.
+Generate the path priority for LSI/Engenio/NetApp RDAC class as NetApp SANtricity
+E/EF Series, and OEM arrays from IBM DELL SGI STK and SUN.
 .TP
 .I hp_sw
 (Hardware-dependent)
@@ -218,23 +263,27 @@ Active/Standby mode exclusively.
 .TP
 .I hds
 (Hardware-dependent)
-Generate the path priority for Hitachi HDS Modular storage arrays.
+Generate the path priority for Hitachi AMS 2000 and HUS 100 families of arrays.
 .TP
 .I random
 Generate a random priority between 1 and 10.
-.TP 12
+.TP
 .I weightedpath
 Generate the path priority based on the regular expression and the
 priority provided as argument. Requires prio_args keyword.
 .TP
 .I datacore
+.\" XXX
 ???. Requires prio_args keyword.
 .TP
 .I iet
+.\" XXX
 ???. Requires prio_args keyword.
 .TP
 Default value is: \fBconst\fR
 .RE
+.
+.
 .TP
 .B prio_args
 Arguments to pass to to the prio function. This only applies to certain
@@ -243,56 +292,51 @@ prioritizers:
 .TP 12
 .I weighted
 Needs a value of the form
-.I "<hbtl|devname|serial|wwn> <regex1> <prio1> <regex2> <prio2> ..."
+\fI"<hbtl|devname|serial|wwn> <regex1> <prio1> <regex2> <prio2> ..."\fR
 .RS
 .TP 8
 .I hbtl
-regex can be of SCSI H:B:T:L format  Ex: 1:0:.:. , *:0:0:.
+regex can be of SCSI H:B:T:L format. For example: 1:0:.:. , *:0:0:.
 .TP
 .I devname
-regex can be of device name format  Ex: sda , sd.e
+regex can be of device name format. For example: sda , sd.e
 .TP
 .I serial
-regex can be of serial number format  Ex: .*J1FR.*324  The serial can be looked up through sysfs or by running multipathd show paths format "%z" Ex: 0395J1FR904324
+regex can be of serial number format. For example: .*J1FR.*324 . The serial can be looked
+up through sysfs or by running multipathd show paths format "%z". For example: 0395J1FR904324
 .TP
 .I wwn
-regex can be of the form
-.I "host_wwnn:host_wwpn:target_wwnn:target_wwpn"
-these values can be looked up through sysfs or by running
-.I multipathd show paths format "%N:%R:%n:%r" Ex: 0x200100e08ba0aea0:0x210100e08ba0aea0:.*:.* , .*:.*:iqn.2009-10.com.redhat.msp.lab.ask-06:.*
+regex can be of the form \fI"host_wwnn:host_wwpn:target_wwnn:target_wwpn"\fR
+these values can be looked up through sysfs or by running \fImultipathd show paths format
+"%N:%R:%n:%r"\fR. For example: 0x200100e08ba0aea0:0x210100e08ba0aea0:.*:.* , .*:.*:iqn.2009-10.com.redhat.msp.lab.ask-06:.*
 .RE
 .TP 12
 .I alua
-If
-.I exclusive_pref_bit
-is set, paths with the \fIpreferred path\fR bit set will always
-be in their own path group.
+If \fIexclusive_pref_bit\fR is set, paths with the \fIpreferred path\fR bit
+set will always be in their own path group.
 .TP
 .I datacore
-.I preferredsds
-???.
+.\" XXX
+\fIpreferredsds\fR ???.
 .TP
 .I iet
-.I preferredip
-???.
+.\" XXX
+\fIpreferredip\fR ???.
 .TP
 Default value is: \fB<unset>\fR
 .RE
+.
+.
 .TP
 .B features
-Specify any device-mapper features to be used. Syntax is
-.I num list
-where
-.I num
-is the number, between 0 and 6, of features in
-.I list.
+Specify any device-mapper features to be used. Syntax is \fInum list\fR
+where \fInum\fR is the number, between 0 and 6, of features in \fIlist\fR.
 Possible values for the feature list are:
 .RS
 .TP 12
 .I queue_if_no_path
-Queue IO if no path is active; identical to the
-.I no_path_retry
-keyword.
+Queue IO if no path is active; identical to the \fIno_path_retry\fR keyword.
+See KNOWN ISSUES.
 .TP
 .I no_partitions
 Disable automatic partitions generation via kpartx.
@@ -305,6 +349,8 @@ Number of msecs before pg_init retry, it must be between 0 and 60000.
 .TP
 Default value is: \fB0\fR
 .RE
+.
+.
 .TP
 .B path_checker
 The default method used to determine the paths state. Possible values
@@ -316,9 +362,7 @@ are:
 deprecated, please use \fItur\fR instead.
 .TP
 .I tur
-Issue a
-.I TEST UNIT READY
-command to the device.
+Issue a \fITEST UNIT READY\fR command to the device.
 .TP
 .I emc_clariion
 (Hardware-dependent)
@@ -332,7 +376,7 @@ Active/Standby mode exclusively.
 .TP
 .I rdac
 (Hardware-dependent)
-Check the path state for LSI/Engenio/NetApp RDAC class as NetApp E/EF
+Check the path state for LSI/Engenio/NetApp RDAC class as NetApp SANtricity E/EF
 Series, and OEM arrays from IBM DELL SGI STK and SUN.
 .TP
 .I directio
@@ -344,8 +388,13 @@ Please use \fItur\fR instead.
 (Hardware-dependent)
 Check the path state for HP/COMPAQ Smart Array(CCISS) controllers.
 .TP
+.I rbd
+Check if the path is in the Ceph blacklist and remap the path if it is.
+.TP
 Default value is: \fBtur\fR
 .RE
+.
+.
 .TP
 .B alias_prefix
 The \fIuser_friendly_names\fR prefix.
@@ -353,6 +402,8 @@ The \fIuser_friendly_names\fR prefix.
 .TP
 Default value is: \fBmpath\fR
 .RE
+.
+.
 .TP
 .B failback
 Tell multipathd how to manage path group failback.
@@ -366,8 +417,9 @@ active paths.
 Do not perform automatic failback.
 .TP
 .I followover
-Only perform automatic failback when the first path of a pathgroup
-becomes active. This keeps a node from automatically failing back when
+Used to deal with multiple computers accessing the same Active/Passive storage
+devices. Only perform automatic failback when the first path of a pathgroup
+becomes active. This keeps a cluster node from automatically failing back when
 another node requested the failover.
 .TP
 .I values > 0
@@ -375,6 +427,8 @@ Deferred failback (time to defer in seconds).
 .TP
 Default value is: \fBmanual\fR
 .RE
+.
+.
 .TP
 .B  rr_min_io
 The number of IO to route to a path before switching to the next in
@@ -383,6 +437,8 @@ the same path group. This is only for BIO based multipath.
 .TP
 Default value is: \fB1000\fR
 .RE
+.
+.
 .TP
 .B rr_min_io_rq
 The number of IO requests to route to a path before switching to the
@@ -391,10 +447,12 @@ next in the same path group. This is only for request based multipath.
 .TP
 Default value is: \fB1\fR
 .RE
+.
+.
 .TP
 .B max_fds
 Specify the maximum number of file descriptors that can be opened by multipath
-and multipathd.  This is equivalent to ulimit \-n. A value of \fImax\fR will set
+and multipathd. This is equivalent to ulimit \-n. A value of \fImax\fR will set
 this to the system limit from \fI/proc/sys/fs/nr_open\fR. If this is not set, the
 maximum number of open fds is taken from the calling process. It is usually
 1024. To be safe, this should be set to the maximum number of paths plus 32,
@@ -403,34 +461,40 @@ if that number is greated than 1024.
 .TP
 Default value is: \fBmax\fR
 .RE
+.
+.
 .TP
 .B rr_weight
 If set to \fIpriorities\fR the multipath configurator will assign
 path weights as "path prio * rr_min_io". Possible values are
 .I priorities
 or
-.IR uniform .
+.I uniform .
 .RS
 .TP
 Default value is: \fBuniform\fR
 .RE
+.
+.
 .TP
 .B no_path_retry
 Specify the number of retries until disable queueing, or
 .I fail
 for immediate failure (no queueing),
 .I queue
-for never stop queueing. If unset no queueing is attempted.
+for never stop queueing. If unset no queueing is attempted. See KNOWN ISSUES.
 .RS
 .TP
 Default value is: \fB<unset>\fR
 .RE
+.
+.
 .TP
 .B queue_without_daemon
 If set to
 .I no
 , when multipathd stops, queueing will be turned off for all devices.
-This is useful for devices that set no_path_retry.  If a machine is
+This is useful for devices that set no_path_retry. If a machine is
 shut down while all paths to a device are down, it is possible to hang waiting
 for IO to return from the device after multipathd has been stopped. Without
 multipathd running, access to the paths cannot be restored, and the kernel
@@ -441,6 +505,8 @@ cannot be told to stop queueing IO. Setting queue_without_daemon to
 .TP
 Default value is: \fBno\fR
 .RE
+.
+.
 .TP
 .B checker_timeout
 Specify the timeout to use for path checkers and prioritizers that issue SCSI
@@ -449,6 +515,8 @@ commands with an explicit timeout, in seconds.
 .TP
 Default value is: in \fB/sys/block/sd<x>/device/timeout\fR
 .RE
+.
+.
 .TP
 .B flush_on_last_del
 If set to
@@ -459,14 +527,14 @@ deleted.
 .TP
 Default value is: \fBno\fR
 .RE
+.
+.
 .TP
 .B user_friendly_names
 If set to
 .I yes
-, using the bindings file
-.I /etc/multipath/bindings
-to assign a persistent and unique alias to the multipath, in the form of mpath<n>.
-If set to
+, using the bindings file \fI/etc/multipath/bindings\fR to assign a persistent
+and unique alias to the multipath, in the form of mpath<n>. If set to
 .I no
 use the WWID as the alias. In either case this be will
 be overridden by any specific aliases in the \fImultipaths\fR section.
@@ -474,6 +542,8 @@ be overridden by any specific aliases in the \fImultipaths\fR section.
 .TP
 Default value is: \fBno\fR
 .RE
+.
+.
 .TP
 .B fast_io_fail_tmo
 Specify the number of seconds the SCSI layer will wait after a problem has been
@@ -485,22 +555,25 @@ will disable the timeout.
 .TP
 Default value is: in \fB5\fR
 .RE
+.
+.
 .TP
 .B dev_loss_tmo
 Specify the number of seconds the SCSI layer will wait after a problem has
 been detected on a FC remote port before removing it from the system. This
 can be set to "infinity" which sets it to the max value of 2147483647
 seconds, or 68 years. It will be automatically adjusted to the overall
-retry interval
-\fIno_path_retry\fR * \fIpolling_interval\fR
+retry interval \fIno_path_retry\fR * \fIpolling_interval\fR
 if a number of retries is given with \fIno_path_retry\fR and the
 overall retry interval is longer than the specified \fIdev_loss_tmo\fR value.
 The Linux kernel will cap this value to \fI300\fR if \fIfast_io_fail_tmo\fR
-is not set.
+is not set. See KNOWN ISSUES.
 .RS
 .TP
 Default value is: \fB600\fR
 .RE
+.
+.
 .TP
 .B bindings_file
 The full pathname of the binding file to be used when the user_friendly_names option is set.
@@ -508,6 +581,8 @@ The full pathname of the binding file to be used when the user_friendly_names op
 .TP
 Default value is: \fB/etc/multipath/bindings\fR
 .RE
+.
+.
 .TP
 .B wwids_file
 The full pathname of the WWIDs file, which is used by multipath to keep track
@@ -516,6 +591,8 @@ of the WWIDs for LUNs it has created multipath devices on in the past.
 .TP
 Default value is: \fB/etc/multipath/wwids\fR
 .RE
+.
+.
 .TP
 .B log_checker_err
 If set to
@@ -528,9 +605,11 @@ errors are logged at level 3 until the device is restored. If set to
 .TP
 Default value is: \fBalways\fR
 .RE
+.
+.
 .TP
 .B reservation_key
-This is the service action reservation key used by mpathpersist.  It must be
+This is the service action reservation key used by mpathpersist. It must be
 set for all multipath devices using persistent reservations, and it must be
 the same as the RESERVATION KEY field of the PERSISTENT RESERVE OUT parameter
 list which contains an 8-byte value provided by the application client to the
@@ -539,6 +618,8 @@ device server to identify the I_T nexus.
 .TP
 Default value is: \fB<unset>\fR
 .RE
+.
+.
 .TP
 .B retain_attached_hw_handler
 If set to
@@ -551,26 +632,24 @@ multipath will continue to use its configured hardware handler.
 .TP
 Default value is: \fByes\fR
 .RE
+.
+.
 .TP
 .B detect_prio
 If set to
 .I yes
 , multipath will try to detect if the device supports SCSI-3 ALUA. If so, the
-device will automatically use the
-.I sysfs
-prioritizer if the required sysfs attributes
-.I access_state
-and
-.I preferred_path
-are supported, or the
-.I alua
-prioritizer if not. If set to
+device will automatically use the \fIsysfs\fR prioritizer if the required sysf
+attributes \fIaccess_state\fR and \fIpreferred_path\fR are supported, or the
+\fIalua\fR prioritizer if not. If set to
 .I no
 , the prioritizer will be selected as usual.
 .RS
 .TP
 Default value is: \fByes\fR
 .RE
+.
+.
 .TP
 .B force_sync
 If set to
@@ -582,22 +661,24 @@ multipathd checkers running in parallel causes significant CPU pressure.
 .TP
 Default value is: \fBno\fR
 .RE
+.
+.
 .TP
 .B strict_timinig
 If set to
 .I yes
 , multipathd will start a new path checker loop after exactly one second,
-so that each path check will occur at exactly
-.I polling_interval
+so that each path check will occur at exactly \fIpolling_interval\fR
 seconds. On busy systems path checks might take longer than one second;
 here the missing ticks will be accounted for on the next round.
-A warning will be printed if path checks take longer than
-.I polling_interval
+A warning will be printed if path checks take longer than \fIpolling_interval\fR
 seconds.
 .RS
 .TP
 Default value is: \fBno\fR
 .RE
+.
+.
 .TP
 .B deferred_remove
 If set to
@@ -611,6 +692,8 @@ will be canceled.
 .TP
 Default value is: \fBno\fR
 .RE
+.
+.
 .TP
 .B partition_delimiter
 If this value is not set, when multipath renames a device, it will act just
@@ -621,6 +704,8 @@ the \fI-p\fR option is used, and always add delimiter.
 .TP
 Default value is: \fB<unset>\fR
 .RE
+.
+.
 .TP
 .B config_dir
 If set to anything other than "", multipath will search this directory
@@ -631,31 +716,32 @@ config_dir must either be "" or a fully qualified directory name.
 .TP
 Default value is: \fB/etc/multipath/conf.d/\fR
 .RE
+.
+.
 .TP
 .B delay_watch_checks
 If set to a value greater than 0, multipathd will watch paths that have
-recently become valid for this many checks.  If they fail again while they are
+recently become valid for this many checks. If they fail again while they are
 being watched, when they next become valid, they will not be used until they
-have stayed up for
-.I delay_wait_checks
-checks.
+have stayed up for \fIdelay_wait_checks\fR checks.
 .RS
 .TP
 Default value is: \fBno\fR
 .RE
+.
+.
 .TP
 .B delay_wait_checks
 If set to a value greater than 0, when a device that has recently come back
-online fails again within
-.I delay_watch_checks
-checks, the next time it comes back online, it will marked and delayed, and not
-used until it has passed
-.I delay_wait_checks
-checks.
+online fails again within \fIdelay_watch_checks\fR checks, the next time it
+comes back online, it will marked and delayed, and not used until it has passed
+\fIdelay_wait_checks\fR checks.
 .RS
 .TP
 Default value is: \fBno\fR
 .RE
+.
+.
 .TP
 .B find_multipaths
 If set to
@@ -681,6 +767,8 @@ multipath devices, without having to edit the blacklist.
 .TP
 Default value is: \fBno\fR
 .RE
+.
+.
 .TP
 .B uxsock_timeout
 CLI receive timeout in milliseconds. For larger systems CLI commands
@@ -693,6 +781,8 @@ those issues.
 .TP
 Default value is: \fB1000\fR
 .RE
+.
+.
 .TP
 .B retrigger_tries
 Sets the number of times multipathd will try to retrigger a uevent to get the
@@ -701,6 +791,8 @@ WWID.
 .TP
 Default value is: \fB3\fR
 .RE
+.
+.
 .TP
 .B retrigger_delay
 Sets the amount of time, in seconds, to wait between retriggers.
@@ -708,6 +800,8 @@ Sets the amount of time, in seconds, to wait between retriggers.
 .TP
 Default value is: \fB10\fR
 .RE
+.
+.
 .TP
 .B missing_uev_wait_timeout
 Controls how many seconds multipathd will wait, after a new multipath device
@@ -719,13 +813,18 @@ on a device until it receives a change uevent from the initial table load.
 Default value is: \fB30\fR
 .RE
 .
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH "blacklist section"
-The
-.I blacklist
-section is used to exclude specific device from inclusion in the
-multipath topology. It is most commonly used to exclude local disks or
-LUNs for the array controller.
+.\" ----------------------------------------------------------------------------
+.
+The \fIblacklist\fR section is used to exclude specific device from inclusion in
+the multipath topology. It is most commonly used to exclude local disks or LUNs
+for the array controller.
 .LP
+.
+.
 The following keywords are recognized:
 .TP 17
 .B devnode
@@ -743,19 +842,20 @@ Subsection for the device description. This subsection recognizes the
 and
 .B product
 keywords. For a full description of these keywords please see the
-.I devices
-section description.
+\fIdevices\fR section description.
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH "blacklist_exceptions section"
-The
-.I blacklist_exceptions
-section is used to revert the actions of the
-.I blacklist
-section, for example to include specific device in the
+.\" ----------------------------------------------------------------------------
+.
+The \fIblacklist_exceptions\fR section is used to revert the actions of the
+\fIblacklist\fR section. For example to include specific device in the
 multipath topology. This allows one to selectively include devices which
-would normally be excluded via the
-.I blacklist
-section.
+would normally be excluded via the \fIblacklist\fR section.
 .LP
+.
+.
 The following keywords are recognized:
 .TP 17
 .B devnode
@@ -776,42 +876,36 @@ Subsection for the device description. This subsection recognizes the
 .B vendor
 and
 .B product
-keywords. For a full description of these keywords please see the
-.I devices
+keywords. For a full description of these keywords please see the \fIdevices\fR
 section description.
 .LP
-The
-.I property
-blacklist and whitelist handling is different from the usual handling
-in the sense that the whitelist
-.I has
-to be set, otherwise the device will be blacklisted.
-In these cases the message
-.I blacklisted, udev property missing
-will be displayed.
+The \fIproperty\fR blacklist and whitelist handling is different from the usual
+handling in the sense that the whitelist \fIhas\fR to be set, otherwise the
+device will be blacklisted. In these cases the message \fIblacklisted, udev
+property missing\fR will be displayed.
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH "multipaths section"
-The only recognized attribute for the
-.I multipaths
-section is the
-.I multipath
-subsection.
+.\" ----------------------------------------------------------------------------
+.
+The only recognized attribute for the \fImultipaths\fR section is the
+\fImultipath\fR subsection.
 .LP
-The
-.I multipath
-subsection recognizes the following attributes:
+.
+.
+The \fImultipath\fR subsection recognizes the following attributes:
 .TP 17
 .B wwid
 (Mandatory) Index of the container.
 .TP
 .B alias
-(Optional) Symbolic name for the multipath map.
+Symbolic name for the multipath map.
 .LP
+.
+.
 The following attributes are optional; if not set the default values
-are taken from the
-.I defaults
-or
-.I devices
-section:
+are taken from the \fIdefaults\fR or \fIdevices\fR section:
 .sp 1
 .PD .1v
 .RS
@@ -850,16 +944,18 @@ section:
 .RE
 .PD
 .LP
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH "devices section"
-The only recognized attribute for the
-.I devices
-section is the
-.I device
+.\" ----------------------------------------------------------------------------
+.
+The only recognized attribute for the \fIdevices\fR section is the \fIdevice\fR
 subsection.
 .LP
-The
-.I device
-subsection recognizes the following attributes:
+.
+.
+The \fIdevice\fR subsection recognizes the following attributes:
 .TP 17
 .B vendor
 (Mandatory) Vendor identifier.
@@ -868,17 +964,17 @@ subsection recognizes the following attributes:
 (Mandatory) Product identifier.
 .TP
 .B revision
-(Optional) Revision identfier.
+Revision identfier.
 .TP
 .B product_blacklist
-(Optional) Product strings to blacklist for this vendor.
+Product strings to blacklist for this vendor.
 .TP
 .B alias_prefix
-(Optional) The user_friendly_names prefix to use for this
+The user_friendly_names prefix to use for this
 device type, instead of the default "mpath".
 .TP
 .B hardware_handler
-(Optional) The hardware handler to use for this device type.
+The hardware handler to use for this device type.
 The following hardware handler are implemented:
 .RS
 .TP 12
@@ -888,7 +984,7 @@ Hardware handler for DGC class arrays as CLARiiON CX/AX and EMC VNX families.
 .TP
 .I 1 rdac
 (Hardware-dependent)
-Hardware handler for LSI/Engenio/NetApp RDAC class as NetApp E/EF
+Hardware handler for LSI/Engenio/NetApp RDAC class as NetApp SANtricity E/EF
 Series, and OEM arrays from IBM DELL SGI STK and SUN.
 .TP
 .I 1 hp_sw
@@ -902,10 +998,11 @@ Hardware handler for SCSI-3 ALUA compatible arrays.
 .TP
 Default value is: \fB<unset>\fR
 .RE
+.
+.
 .LP
 The following attributes are optional; if not set the default values
-are taken from the
-.I defaults
+are taken from the \fIdefaults\fR
 section:
 .sp 1
 .PD .1v
@@ -953,13 +1050,14 @@ section:
 .RE
 .PD
 .LP
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH "overrides section"
+.\" ----------------------------------------------------------------------------
+.
 The overrides section recognizes the following optional attributes; if not set
-the values are taken from the
-.I devices
-or
-.I defaults
-sections:
+the values are taken from the \fIdevices\fR or \fIdefaults\fR sections:
 .sp 1
 .PD .1v
 .RS
@@ -1012,7 +1110,12 @@ sections:
 .RE
 .PD
 .LP
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH "WWID generation"
+.\" ----------------------------------------------------------------------------
+.
 Multipath uses a \fIWorld Wide Identification\fR (WWID) to determine
 which paths belong to the same device. Each path presenting the same
 WWID is assumed to point to the same device.
@@ -1036,35 +1139,37 @@ variable.
 If none of the \fIgetuid_callout\fR or \fIuid_attribute\fR parameters
 are present multipath will try to use the sysfs attribute
 \fIvpd_pg83\fR to generate the WWID.
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH "KNOWN ISSUES"
-The usage of
-.I queue_if_no_path
-option can lead to
-.I D state
-processes being hung and not killable in situations where all the paths to the LUN go offline.
-It is advisable to use the
-.I no_path_retry
-option instead.
+.\" ----------------------------------------------------------------------------
+.
+The usage of \fIqueue_if_no_path\fR option can lead to \fID state\fR
+processes being hung and not killable in situations where all the paths to the
+LUN go offline. It is advisable to use the \fIno_path_retry\fR option instead.
 .P
-The use of
-.I queue_if_no_path
-or
-.I no_path_retry
-might lead to a deadlock if the
-.I dev_loss_tmo
-setting results in a device being removed while I/O is still queued.
-The multipath daemon will update the
-.I dev_loss_tmo
+The use of \fIqueue_if_no_path\fR or \fIno_path_retry\fR might lead to a
+deadlock if the \fIdev_loss_tmo\fR setting results in a device being removed
+while I/O is still queued. The multipath daemon will update the \fIdev_loss_tmo\fR
 setting accordingly to avoid this deadlock. Hence if both values are
-specified the order of precedence is
-.I no_path_retry, queue_if_no_path, dev_loss_tmo.
-
+specified the order of precedence is \fIno_path_retry, queue_if_no_path, dev_loss_tmo\fR.
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH "SEE ALSO"
+.\" ----------------------------------------------------------------------------
+.
 .BR udev (8),
 .BR dmsetup (8),
 .BR multipath (8),
 .BR multipathd (8).
-
+.
+.
+.\" ----------------------------------------------------------------------------
 .SH AUTHORS
-.I multipath-tools
-was developed by Christophe Varoqui, <christophe.varoqui@opensvc.com> and others.
+.\" ----------------------------------------------------------------------------
+.
+\fImultipath-tools\fR was developed by Christophe Varoqui, <christophe.varoqui@opensvc.com>
+and others.
+.\" EOF
