@@ -15,6 +15,7 @@
 [<emphasis role="bold">-name section</emphasis>]
 [<emphasis role="bold">-gencrl</emphasis>]
 [<emphasis role="bold">-revoke file</emphasis>]
+[<emphasis role="bold">-valid file</emphasis>]
 [<emphasis role="bold">-status serial</emphasis>]
 [<emphasis role="bold">-updatedb</emphasis>]
 [<emphasis role="bold">-crl_reason reason</emphasis>]
@@ -462,6 +463,15 @@
           <listitem>
             <para>
 	      a filename containing a certificate to revoke.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-valid filename</emphasis></term>
+          <listitem>
+            <para>
+	      a filename containing a certificate to add a Valid
+	      certificate entry.
             </para>
           </listitem>
         </varlistentry>

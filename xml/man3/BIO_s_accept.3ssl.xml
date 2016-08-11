@@ -4,15 +4,17 @@
     <refentrytitle>BIO_s_accept.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BIO_s_accept, BIO_set_accept_port, BIO_get_accept_port, BIO_new_accept,
-BIO_set_nbio_accept, BIO_set_accept_bios, BIO_set_bind_mode,
-BIO_get_bind_mode, BIO_do_accept</refname>
+    <refname>BIO_s_accept, BIO_set_accept_name, BIO_get_name, BIO_set_accept_port,
+BIO_get_accept_port, BIO_new_accept, BIO_set_nbio_accept, BIO_set_accept_bios,
+BIO_set_bind_mode, BIO_get_bind_mode, BIO_do_accept</refname>
 <refpurpose>accept BIO</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bio.h&gt;</synopsis>
 <synopsis>const BIO_METHOD *BIO_s_accept(void);</synopsis>
-<synopsis>long BIO_set_accept_port(BIO *b, char *name);
+<synopsis>long BIO_set_accept_name(BIO *b, char *name);
+char *BIO_get_accept_name(BIO *b);</synopsis>
+<synopsis>long BIO_set_accept_port(BIO *b, char *port);
 char *BIO_get_accept_port(BIO *b);</synopsis>
 <synopsis>BIO *BIO_new_accept(char *host_port);</synopsis>
 <synopsis>long BIO_set_nbio_accept(BIO *b, int n);
@@ -57,7 +59,7 @@ long BIO_get_bind_mode(BIO *b);</synopsis>
       </citerefentry>
     </para>
     <para>
-      BIO_set_accept_port() uses the string <emphasis role="bold">name</emphasis> to set the accept port. The port is
+      BIO_set_accept_name() uses the string <emphasis role="bold">name</emphasis> to set the accept name. The name is
       represented as a string of the form "host:port", where "host" is the
       interface to use and "port" is the port. The host can be "*" or empty
       which is interpreted as meaning any interface.  If the host is an
@@ -68,7 +70,13 @@ long BIO_get_bind_mode(BIO *b);</synopsis>
       table.
     </para>
     <para>
-      BIO_new_accept() combines BIO_new() and BIO_set_accept_port() into a
+      BIO_set_accept_port() uses the string <emphasis role="bold">port</emphasis> to set the accept port.  "port" has the
+      same syntax as the port specified in BIO_set_conn_port() for connect
+      BIOs, that is it can be a numerical port string or a string to lookup
+      using getservbyname() and a string table.
+    </para>
+    <para>
+      BIO_new_accept() combines BIO_new() and BIO_set_accept_name() into a
       single call: that is it creates a new accept BIO with port <emphasis role="bold">host_port</emphasis>.
     </para>
     <para>
@@ -147,19 +155,23 @@ long BIO_get_bind_mode(BIO *b);</synopsis>
       underlying socket has accepted a connection and retry the call.
     </para>
     <para>
-      BIO_set_accept_port(), BIO_get_accept_port(), BIO_set_nbio_accept(),
-      BIO_set_accept_bios(), BIO_set_bind_mode(), BIO_get_bind_mode() and
-      BIO_do_accept() are macros.
+      BIO_set_accept_name(), BIO_get_accept_name(), BIO_set_accept_port(),
+      BIO_get_accept_port(), BIO_set_nbio_accept(), BIO_set_accept_bios(),
+      BIO_set_bind_mode(), BIO_get_bind_mode() and BIO_do_accept() are
+      macros.
     </para>
   </refsection>
   <refsection xml:id="ID-02787a3f0f0c837bc654ed16c0ea1bcb"><title>RETURN VALUES</title>
     <para>
-      BIO_do_accept(), BIO_set_accept_port(), BIO_set_nbio_accept(),
-      BIO_set_accept_bios(), and BIO_set_bind_mode(), return 1 for success
-      and 0 or -1 for failure.
+      BIO_do_accept(), BIO_set_accept_name(), BIO_set_accept_port(),
+      BIO_set_nbio_accept(), BIO_set_accept_bios(), and
+      BIO_set_bind_mode(), return 1 for success and 0 or -1 for failure.
     </para>
     <para>
-      BIO_get_accept_port() returns the port name or NULL on error.
+      BIO_get_accept_name() returns the accept name or NULL on error.
+    </para>
+    <para>
+      BIO_get_accept_port() returns the port as a string or NULL on error.
     </para>
     <para>
       BIO_get_bind_mode() returns the set of <emphasis role="bold">BIO_BIND</emphasis> flags, or -1 on failure.

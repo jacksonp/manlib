@@ -11,21 +11,21 @@ SSL_ct_is_enabled, SSL_CTX_ct_is_enabled</refname>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
-<synopsis>int SSL_ct_enable(SSL *s, int validation_mode);
-int SSL_CTX_ct_enable(SSL_CTX *ctx, int validation_mode);
+<synopsis>int SSL_enable_ct(SSL *s, int validation_mode);
+int SSL_CTX_enable_ct(SSL_CTX *ctx, int validation_mode);
 int SSL_set_ct_validation_callback(SSL *s, ssl_ct_validation_cb callback,
                                    void *arg);
 int SSL_CTX_set_ct_validation_callback(SSL_CTX *ctx,
                                        ssl_ct_validation_cb callback,
                                        void *arg);
-void SSL_ct_disable(SSL *s);
-void SSL_CTX_ct_disable(SSL_CTX *ctx);
+void SSL_disable_ct(SSL *s);
+void SSL_CTX_disable_ct(SSL_CTX *ctx);
 int SSL_ct_is_enabled(const SSL *s);
 int SSL_CTX_ct_is_enabled(const SSL_CTX *ctx);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-82fda6a3b73afd28f2b6f56d11329a08"><title>DESCRIPTION</title>
     <para>
-      SSL_ct_enable() and SSL_CTX_ct_enable() enable the processing of
+      SSL_enable_ct() and SSL_CTX_enable_ct() enable the processing of
       signed certificate timestamps (SCTs) either for a given SSL
       connection or for all connections that share the given SSL context,
       respectively. This is accomplished by setting a built-in CT
@@ -94,13 +94,13 @@ int SSL_CTX_ct_is_enabled(const SSL_CTX *ctx);</synopsis>
       DANE-EE(3) TLSA records.
     </para>
     <para>
-      SSL_ct_disable() and SSL_CTX_ct_disable() turn off CT processing,
+      SSL_disable_ct() and SSL_CTX_disable_ct() turn off CT processing,
       whether enabled via the built-in or the custom callbacks, by setting
       a NULL callback. These may be implemented as macros.
     </para>
     <para>
       SSL_ct_is_enabled() and SSL_CTX_ct_is_enabled() return 1 if CT
-      processing is enabled via either SSL_ct_enable() or a non-null custom
+      processing is enabled via either SSL_enable_ct() or a non-null custom
       callback, and 0 otherwise.
     </para>
   </refsection>
@@ -120,14 +120,14 @@ int SSL_CTX_ct_is_enabled(const SSL_CTX *ctx);</synopsis>
   </refsection>
   <refsection xml:id="ID-bad6f8fc2f0bd1f798981eb682868275"><title>RETURN VALUES</title>
     <para>
-      SSL_ct_enable(), SSL_CTX_ct_enable(),
+      SSL_enable_ct(), SSL_CTX_enable_ct(),
       SSL_CTX_set_ct_validation_callback() and
       SSL_set_ct_validation_callback() return 1 if the <emphasis role="bold">callback</emphasis> is successfully set. They return 0 if
       an error occurs, e.g. a custom client extension handler has been
       setup to handle SCTs.
     </para>
     <para>
-      SSL_ct_disable() and SSL_CTX_ct_disable() do not return a result.
+      SSL_disable_ct() and SSL_CTX_disable_ct() do not return a result.
     </para>
     <para>
       SSL_CTX_ct_is_enabled() and SSL_ct_is_enabled() return a 1 if a

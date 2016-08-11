@@ -319,10 +319,11 @@ requiring its current value to be the same as the remote-tracking
 branch we have for it.</simpara>
 <simpara><literal>--force-with-lease=&lt;refname&gt;:&lt;expect&gt;</literal> will protect the named ref (alone),
 if it is going to be updated, by requiring its current value to be
-the same as the specified value &lt;expect&gt; (which is allowed to be
+the same as the specified value <literal>&lt;expect&gt;</literal> (which is allowed to be
 different from the remote-tracking branch we have for the refname,
 or we do not even have to have such a remote-tracking branch when
-this form is used).</simpara>
+this form is used).  If <literal>&lt;expect&gt;</literal> is the empty string, then the named ref
+must not already exist.</simpara>
 <simpara>Note that all forms other than <literal>--force-with-lease=&lt;refname&gt;:&lt;expect&gt;</literal>
 that specifies the expected current value of the ref explicitly are
 still experimental and their semantics may change as we gain experience
