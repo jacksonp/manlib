@@ -1943,6 +1943,22 @@ Large repositories using the \fIgeneraldelta\fP storage format should
 consider setting this option because converting \fIgeneraldelta\fP
 repositories to the exchange format required by the bundle1 data
 format can consume a lot of CPU.
+.TP
+.B \fBzliblevel\fP
+.sp
+Integer between \fB\-1\fP and \fB9\fP that controls the zlib compression level
+for wire protocol commands that send zlib compressed output (notably the
+commands that send repository history data).
+.sp
+The default (\fB\-1\fP) uses the default zlib compression level, which is
+likely equivalent to \fB6\fP. \fB0\fP means no compression. \fB9\fP means
+maximum compression.
+.sp
+Setting this option allows server operators to make trade\-offs between
+bandwidth and CPU used. Lowering the compression lowers CPU utilization
+but sends more bytes to clients.
+.sp
+This option only impacts the HTTP server.
 .UNINDENT
 .SS \fBsmtp\fP
 .sp

@@ -855,7 +855,7 @@ by denying any pathway for an unprivileged process to drop groups with
 There are various places where an unmapped user ID (group ID)
 may be exposed to user space.
 For example, the first process in a new user namespace may call
-.BR getuid ()
+.BR getuid (2)
 before a user ID mapping has been defined for the namespace.
 In most such cases, an unmapped user ID is converted
 .\" from_kuid_munged(), from_kgid_munged()
@@ -1363,10 +1363,10 @@ main(int argc, char *argv[])
 .BR proc (5),
 .BR subgid (5),         \" From the shadow package
 .BR subuid (5),         \" From the shadow package
-.BR credentials (7),
 .BR capabilities (7),
-.BR namespaces (7),
 .BR cgroup_namespaces (7)
+.BR credentials (7),
+.BR namespaces (7),
 .BR pid_namespaces (7)
 .sp
 The kernel source file
