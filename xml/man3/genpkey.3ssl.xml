@@ -291,9 +291,13 @@ test       1.2.643.2.2.35.0  Test purposes</screen>
         </varlistentry>
       </variablelist>
     </para>
-    <screen>
-
-</screen>
+  </refsection>
+  <refsection xml:id="ID-28569131767b9976093f764db8cc37e4"><title>X25519 KEY GENERATION OPTIONS</title>
+    <para>
+      The X25519 algorithm does not currently support any key generation
+      options.
+    </para>
+    <screen></screen>
   </refsection>
   <refsection xml:id="ID-a580121ffd2e789c5c08e8e1c48848e4"><title>NOTES</title>
     <para>
@@ -355,6 +359,10 @@ test       1.2.643.2.2.35.0  Test purposes</screen>
     <screen>openssl genpkey -algorithm EC -out eckey.pem \
        -pkeyopt ec_paramgen_curve:P-384 \
        -pkeyopt ec_param_enc:named_curve</screen>
+    <para>
+      Generate an X25519 private key:
+    </para>
+    <screen>openssl genpkey -algorithm X25519 -out xkey.pem</screen>
   </refsection>
   <refsection xml:id="ID-2735e02e221d234cc91e5bcb650bfdad"><title>HISTORY</title>
     <para>

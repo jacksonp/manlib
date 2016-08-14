@@ -379,6 +379,12 @@
       this digest is assumed by default.
     </para>
   </refsection>
+  <refsection xml:id="ID-8a910eae44c723c1d6e0d8c5f5bb7d2b"><title>X25519 ALGORITHM</title>
+    <para>
+      The X25519 algorithm supports key derivation only. Currently there
+      are no additional options.
+    </para>
+  </refsection>
   <refsection xml:id="ID-87da6eb0dca2baf17ab1451937080767"><title>EXAMPLES</title>
     <para>
       Sign some data using a private key:
