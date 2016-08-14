@@ -184,8 +184,12 @@ other objects in that pack they already have locally.</simpara>
         out of memory with a large window, but still be able to take
         advantage of the large window for the smaller objects.  The
         size can be suffixed with "k", "m", or "g".
-        <literal>--window-memory=0</literal> makes memory usage unlimited, which is the
-        default.
+        <literal>--window-memory=0</literal> makes memory usage unlimited.  The default
+        is taken from the <literal>pack.windowMemory</literal> configuration variable.
+        Note that the actual memory usage will be the limit multiplied
+        by the number of threads used by <citerefentry>
+<refentrytitle>git-pack-objects</refentrytitle><manvolnum>1</manvolnum>
+</citerefentry>.
 </simpara>
 </listitem>
 </varlistentry>

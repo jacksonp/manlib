@@ -52,8 +52,8 @@ int ECDSA_sign_ex(int type, const unsigned char *dgst, int dgstlen,
       (see X9.62 or FIPS 186-2).
     </para>
     <para>
-      ECDSA_SIG_new() allocates a new <emphasis role="bold">ECDSA_SIG</emphasis> structure (note: this function also
-      allocates the BIGNUMs) and initializes it.
+      ECDSA_SIG_new() allocates an empty <emphasis role="bold">ECDSA_SIG</emphasis> structure. Note: before OpenSSL
+      1.1.0 the: the <emphasis role="bold">r</emphasis> and <emphasis role="bold">s</emphasis> components were initialised.
     </para>
     <para>
       ECDSA_SIG_free() frees the <emphasis role="bold">ECDSA_SIG</emphasis>

@@ -17,7 +17,7 @@ int DSA_SIG_set0(DSA_SIG *sig, BIGNUM *r, BIGNUM *s);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-3debf3663f99c67af064ff3b794a4fae"><title>DESCRIPTION</title>
     <para>
-      DSA_SIG_new() allocates and initializes a <emphasis role="bold">DSA_SIG</emphasis> structure.
+      DSA_SIG_new() allocates an empty <emphasis role="bold">DSA_SIG</emphasis> structure.
     </para>
     <para>
       DSA_SIG_free() frees the <emphasis role="bold">DSA_SIG</emphasis>

@@ -161,8 +161,8 @@ base-name
         out of memory with a large window, but still be able to take
         advantage of the large window for the smaller objects.  The
         size can be suffixed with "k", "m", or "g".
-        <literal>--window-memory=0</literal> makes memory usage unlimited, which is the
-        default.
+        <literal>--window-memory=0</literal> makes memory usage unlimited.  The default
+        is taken from the <literal>pack.windowMemory</literal> configuration variable.
 </simpara>
 </listitem>
 </varlistentry>

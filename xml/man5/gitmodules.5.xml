@@ -141,7 +141,7 @@ submodule.&lt;name&gt;.shallow
 <listitem>
 <simpara>
         When set to true, a clone of this submodule will be performed as a
-        shallow clone unless the user explicitely asks for a non-shallow
+        shallow clone unless the user explicitly asks for a non-shallow
         clone.
 </simpara>
 </listitem>
