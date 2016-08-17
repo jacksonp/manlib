@@ -1,0 +1,50 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>SSL_SESSION_get0_id_context.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>SSL_SESSION_get0_id_context</refname>
+<refpurpose>get the SSL ID context associated with a session</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
+<synopsis>const unsigned char *SSL_SESSION_get0_id_context(const SSL_SESSION *s,
+                                                 unsigned int *len)</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-4738078661c85dd4d80ecb8201d227c2"><title>DESCRIPTION</title>
+    <para>
+      SSL_SESSION_get0_id_context() returns the ID context associated with
+      the SSL/TLS session <emphasis role="bold">s</emphasis>. The length of
+      the ID context is written to <emphasis role="bold">*len</emphasis> if
+      <emphasis role="bold">len</emphasis> is not NULL.
+    </para>
+    <para>
+      The value returned is a pointer to an object maintained within
+      <emphasis role="bold">s</emphasis> and should not be released.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-598aa4751b5fdb81da1cf06074bd3244"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ssl</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_set_session_id_context</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-c16cba97b3af07b1e825b1aebb1a8971"><title>HISTORY</title>
+    <para>
+      SSL_SESSION_get0_id_context() was first added to OpenSSL 1.1.0
+    </para>
+  </refsection>
+  <refsection xml:id="ID-5af2fbfa0709cb2f4df32aa368855d05"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

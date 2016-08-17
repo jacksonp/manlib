@@ -1,0 +1,47 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>SSL_SESSION_set1_id.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>SSL_SESSION_set1_id</refname>
+<refpurpose>set the SSL session ID</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
+<synopsis>int SSL_SESSION_set1_id(SSL_SESSION *s, const unsigned char *sid,
+                        unsigned int sid_len);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-df2a3fcd217007195e8a036bda74f4a0"><title>DESCRIPTION</title>
+    <para>
+      SSL_SESSION_set1_id() sets the the session ID for the <emphasis role="bold">ssl</emphasis> SSL/TLS session to <emphasis role="bold">sid</emphasis> of length <emphasis role="bold">sid_len</emphasis>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-98142216491d6905f78e3610538e17e4"><title>RETURN VALUES</title>
+    <para>
+      SSL_SESSION_set1_id() returns 1 for success and 0 for failure, for
+      example if the supplied session ID length exceeds <emphasis role="bold">SSL_MAX_SSL_SESSION_ID_LENGTH</emphasis>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-67533dca8bb4952783b1a4ef62d9f51c"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ssl</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-5e66fc2f1668a2eaf63e34a58d1bd75e"><title>HISTORY</title>
+    <para>
+      SSL_SESSION_set1_id() was first added to OpenSSL 1.1.0
+    </para>
+  </refsection>
+  <refsection xml:id="ID-1b7fb8b7f6a1523d3422908740e060a2"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2015-2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

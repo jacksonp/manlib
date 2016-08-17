@@ -368,9 +368,9 @@ rsync --checksum sources/mono/man/*.5 man/man5/;"
   "multipath-tools": {
     "type": "git",
     "url": "http://git.opensvc.com/multipath-tools/.git",
-    "cmd": "find sources/multipath-tools/ -name \\*.3 -exec rsync --checksum {} man/man3/ \\;;
-find sources/multipath-tools/ -name '*.5' -exec rsync --checksum {} man/man5/ \\;;
-find sources/multipath-tools/ -name '*.8' -exec rsync --checksum {} man/man8/ \\;"
+    "cmd": "find sources/multipath-tools/ -name '*.3' -not -iwholename '*/.git/*' -exec rsync --checksum {} man/man3/ \\;;
+find sources/multipath-tools/ -name '*.5' -not -iwholename '*/.git/*' -exec rsync --checksum {} man/man5/ \\;;
+find sources/multipath-tools/ -name '*.8' -not -iwholename '*/.git/*' -exec rsync --checksum {} man/man8/ \\;"
   },
 
   "net-tools": {

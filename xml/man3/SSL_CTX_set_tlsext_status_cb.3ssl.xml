@@ -5,7 +5,9 @@
   </refmeta>
   <refnamediv>
     <refname>SSL_CTX_set_tlsext_status_cb,
+SSL_CTX_get_tlsext_status_cb,
 SSL_CTX_set_tlsext_status_arg,
+SSL_CTX_get_tlsext_status_arg,
 SSL_CTX_set_tlsext_status_type,
 SSL_CTX_get_tlsext_status_type,
 SSL_set_tlsext_status_type,
@@ -18,7 +20,10 @@ SSL_set_tlsext_status_ocsp_resp</refname>
 <synopsis>#include &lt;openssl/tls1.h&gt;</synopsis>
 <synopsis>long SSL_CTX_set_tlsext_status_cb(SSL_CTX *ctx,
                                   int (*callback)(SSL *, void *));
-long SSL_CTX_set_tlsext_status_arg(SSL_CTX *ctx, void *arg);</synopsis>
+long SSL_CTX_get_tlsext_status_cb(SSL_CTX *ctx,
+                                  int (**callback)(SSL *, void *));</synopsis>
+<synopsis>long SSL_CTX_set_tlsext_status_arg(SSL_CTX *ctx, void *arg);
+long SSL_CTX_get_tlsext_status_arg(SSL_CTX *ctx, void **arg);</synopsis>
 <synopsis>long SSL_CTX_set_tlsext_status_type(SSL_CTX *ctx, int type);
 long SSL_CTX_get_tlsext_status_type(SSL_CTX *ctx);</synopsis>
 <synopsis>long SSL_set_tlsext_status_type(SSL *s, int type);
@@ -48,7 +53,10 @@ long SSL_set_tlsext_status_ocsp_resp(ssl, unsigned char *resp, int len);</synops
       via a call to SSL_CTX_set_tlsext_status_arg(). Note that the callback
       will not be called in the event of a handshake where session
       resumption occurs (because there are no Certificates exchanged in
-      such a handshake).
+      such a handshake). The callback previously set via
+      SSL_CTX_set_tlsext_status_cb() can be retrieved by calling
+      SSL_CTX_get_tlsext_status_cb(), and the argument by calling
+      SSL_CTX_get_tlsext_status_arg().
     </para>
     <para>
       On the client side SSL_get_tlsext_status_type() can be used to
