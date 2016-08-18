@@ -28,9 +28,9 @@ int X509_CRL_add1_ext_i2d(X509_CRL *crl, int nid, void *value, int crit,
 <synopsis>void *X509_REVOKED_get_ext_d2i(const X509_REVOKED *r, int nid, int *crit, int *idx);
 int X509_REVOKED_add1_ext_i2d(X509_REVOKED *r, int nid, void *value, int crit,
                               unsigned long flags);</synopsis>
-<synopsis>STACK_OF(X509_EXTENSION) *X509_get0_extensions(const X509 *x);
-STACK_OF(X509_EXTENSION) *X509_CRL_get0_extensions(X509_CRL *crl);
-STACK_OF(X509_EXTENSION) *X509_REVOKED_get0_extensions(const X509_REVOKED *r);</synopsis>
+<synopsis>const STACK_OF(X509_EXTENSION) *X509_get0_extensions(const X509 *x);
+const STACK_OF(X509_EXTENSION) *X509_CRL_get0_extensions(const X509_CRL *crl);
+const STACK_OF(X509_EXTENSION) *X509_REVOKED_get0_extensions(const X509_REVOKED *r);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-4c03a434ad33aee18c969e46da575633"><title>DESCRIPTION</title>
     <para>

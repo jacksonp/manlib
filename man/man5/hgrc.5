@@ -1746,6 +1746,13 @@ statistical text report generated from the profiling data. The
 profiling is done using lsprof.
 .INDENT 0.0
 .TP
+.B \fBenabled\fP
+.sp
+Enable the profiler.
+(default: false)
+.sp
+This is equivalent to passing \fB\-\-profile\fP on the command line.
+.TP
 .B \fBtype\fP
 .sp
 The type of profiler to use.
@@ -2027,6 +2034,10 @@ relative path alone. The rules are applied in definition order.
 .SS \fBtemplatealias\fP
 .sp
 Alias definitions for templates. See \%\fBhg help templates\fP\: for details.
+.SS \fBtemplates\fP
+.sp
+Use the \fB[templates]\fP section to define template strings.
+See \%\fBhg help templates\fP\: for details.
 .SS \fBtrusted\fP
 .sp
 Mercurial will not use the settings in the

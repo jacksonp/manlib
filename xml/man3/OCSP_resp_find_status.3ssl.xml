@@ -25,7 +25,8 @@ int OCSP_single_get0_status(OCSP_SINGLERESP *single, int *reason,
                             ASN1_GENERALIZEDTIME **revtime,
                             ASN1_GENERALIZEDTIME **thisupd,
                             ASN1_GENERALIZEDTIME **nextupd);</synopsis>
-<synopsis>ASN1_GENERALIZEDTIME *OCSP_resp_get0_produced_at(OCSP_BASICRESP* single);</synopsis>
+<synopsis>const ASN1_GENERALIZEDTIME *OCSP_resp_get0_produced_at(
+                            const OCSP_BASICRESP* single);</synopsis>
 <synopsis>const STACK_OF(X509) *OCSP_resp_get0_certs(const OCSP_BASICRESP *bs);</synopsis>
 <synopsis>int OCSP_resp_get0_id(const OCSP_BASICRESP *bs,
                       const ASN1_OCTET_STRING **pid,

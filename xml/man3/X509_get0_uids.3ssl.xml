@@ -9,7 +9,8 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
-<synopsis>void X509_get0_uids(ASN1_BIT_STRING **piuid, ASN1_BIT_STRING **psuid, X509 *x);</synopsis>
+<synopsis>void X509_get0_uids(const X509 *x, const ASN1_BIT_STRING **piuid,
+                    const ASN1_BIT_STRING **psuid);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-31763ad1ffb23f8dccc75d3bc769a042"><title>DESCRIPTION</title>
     <para>

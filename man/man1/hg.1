@@ -7469,7 +7469,7 @@ output, such as JSON. For more, see \%\fBhg help hgweb\fP\:.
 \%\fBhg serve\fP\: can also start a "command server." Clients can connect
 to this server and issue Mercurial commands over a special protocol.
 For more details on the command server, including links to client
-libraries, see \%https://mercurial.selenic.com/wiki/CommandServer\:.
+libraries, see \%https://www.mercurial\-scm.org/wiki/CommandServer\:.
 .sp
 \%\fBhg serve\fP\: based interfaces (the hgweb and command servers) have the
 advantage over simple \fBhg\fP process invocations in that they are
@@ -8326,6 +8326,26 @@ leftpad(s, w) = pad(s, w, \(aq \(aq, True)
 .sp
 defines two symbol aliases, \fBr\fP and \fBrn\fP, and a function alias
 \fBleftpad()\fP.
+.sp
+It\(aqs also possible to specify complete template strings, using the
+\fBtemplates\fP section. The syntax used is the general template string syntax.
+.sp
+For example,
+.sp
+.nf
+.ft C
+[templates]
+nodedate = "{node|short}: {date(date, "%Y\-%m\-%d")}\en"
+.ft P
+.fi
+.sp
+defines a template, \fBnodedate\fP, which can be called like:
+.sp
+.nf
+.ft C
+$ hg log \-r . \-Tnodedate
+.ft P
+.fi
 .sp
 Some sample command line templates:
 .INDENT 0.0

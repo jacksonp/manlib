@@ -9,8 +9,8 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
-<synopsis>int X509_NAME_get0_der(const unsigned char **pder, size_t *pderlen,
-                       X509_NAME *nm)</synopsis>
+<synopsis>int X509_NAME_get0_der(X509_NAME *nm, const unsigned char **pder,
+                       size_t *pderlen)</synopsis>
 <synopsis/>
   </refsynopsisdiv>
   <refsection xml:id="ID-41ab436c86e60a749452f525e270d27a"><title>DESCRIPTION</title>

@@ -4,7 +4,7 @@
     <refentrytitle>SSL_CTX_set_ct_validation_callback.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_ct_enable, SSL_CTX_ct_enable, SSL_ct_disable, SSL_CTX_ct_disable,
+    <refname>SSL_enable_ct, SSL_CTX_enable_ct, SSL_disable_ct, SSL_CTX_disable_ct,
 SSL_set_ct_validation_callback, SSL_CTX_set_ct_validation_callback,
 SSL_ct_is_enabled, SSL_CTX_ct_is_enabled</refname>
 <refpurpose>control Certificate Transparency policy</refpurpose>
