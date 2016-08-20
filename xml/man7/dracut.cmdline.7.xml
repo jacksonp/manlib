@@ -222,7 +222,8 @@ by copying the original kernel cmdline parameters.</simpara>
 </term>
 <listitem>
 <simpara>
-    specify, what action to execute in case of a critical failure.
+    specify, what action to execute in case of a critical failure. rd.shell=0 also
+    be specified.
 </simpara>
 </listitem>
 </varlistentry>

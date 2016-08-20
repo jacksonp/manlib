@@ -4,42 +4,49 @@
     <refentrytitle>X509_get_notBefore.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>X509_get_notBefore, X509_get_notAfter, X509_set_notBefore,
-X509_set_notAfter, X509_CRL_get_lastUpdate, X509_CRL_get_nextUpdate,
-X509_CRL_set_lastUpdate, X509_CRL_set_nextUpdate</refname>
-<refpurpose>get or set certificate
-or CRL dates</refpurpose>
+    <refname>X509_get0_notBefore, X509_get_notBefore, X509_get0_notAfter, X509_get_notAfter,
+X509_set1_notBefore, X509_set1_notAfter, X509_CRL_get0_lastUpdate,
+X509_CRL_get0_nextUpdate, X509_CRL_set1_lastUpdate,
+X509_CRL_set1_nextUpdate</refname>
+<refpurpose>get or set certificate or CRL dates</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
+<synopsis>const ASN1_TIME *X509_get0_notBefore(const X509 *x);
+const ASN1_TIME *X509_get0_notAfter(const X509 *x);</synopsis>
 <synopsis>ASN1_TIME *X509_get_notBefore(const X509 *x);
 ASN1_TIME *X509_get_notAfter(const X509 *x);</synopsis>
-<synopsis>int X509_set_notBefore(X509 *x, const ASN1_TIME *tm);
-int X509_set_notAfter(X509 *x, const ASN1_TIME *tm);</synopsis>
-<synopsis>ASN1_TIME *X509_CRL_get_lastUpdate(const X509_CRL *crl);
-ASN1_TIME *X509_CRL_get_nextUpdate(const X509_CRL *crl);</synopsis>
-<synopsis>int X509_CRL_set_lastUpdate(X509_CRL *x, const ASN1_TIME *tm);
-int X509_CRL_set_nextUpdate(X509_CRL *x, const ASN1_TIME *tm);</synopsis>
+<synopsis>int X509_set1_notBefore(X509 *x, const ASN1_TIME *tm);
+int X509_set1_notAfter(X509 *x, const ASN1_TIME *tm);</synopsis>
+<synopsis>const ASN1_TIME *X509_CRL_get0_lastUpdate(const X509_CRL *crl);
+const ASN1_TIME *X509_CRL_get0_nextUpdate(const X509_CRL *crl);</synopsis>
+<synopsis>int X509_CRL_set1_lastUpdate(X509_CRL *x, const ASN1_TIME *tm);
+int X509_CRL_set1_nextUpdate(X509_CRL *x, const ASN1_TIME *tm);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-5e20ff84825a8373752edb059fc0fc8e"><title>DESCRIPTION</title>
     <para>
-      X509_get_notBefore() and X509_get_notAfter() return the <emphasis role="bold">notBefore</emphasis> and <emphasis role="bold">notAfter</emphasis> fields of certificate <emphasis role="bold">x</emphasis> respectively. The value returned is an
+      X509_get0_notBefore() and X509_get0_notAfter() return the <emphasis role="bold">notBefore</emphasis> and <emphasis role="bold">notAfter</emphasis> fields of certificate <emphasis role="bold">x</emphasis> respectively. The value returned is an
       internal pointer which must not be freed up after the call.
     </para>
     <para>
-      X509_set_notBefore() and X509_set_notAfter() set the <emphasis role="bold">notBefore</emphasis> and <emphasis role="bold">notAfter</emphasis> fields of <emphasis role="bold">x</emphasis> to <emphasis role="bold">tm</emphasis>.
+      X509_get_notBefore() and X509_get_notAfter() are similar to
+      X509_get0_notBefore() and X509_get0_notAfter() except they do not
+      return constant values. They are deprecated in OpenSSL 1.1.0
+    </para>
+    <para>
+      X509_set1_notBefore() and X509_set1_notAfter() set the <emphasis role="bold">notBefore</emphasis> and <emphasis role="bold">notAfter</emphasis> fields of <emphasis role="bold">x</emphasis> to <emphasis role="bold">tm</emphasis>.
       Ownership of the passed parameter <emphasis role="bold">tm</emphasis>
       is not transferred by these functions so it must be freed up after
       the call.
     </para>
     <para>
-      X509_CRL_get_lastUpdate() and X509_CRL_get_nextUpdate() return the
+      X509_CRL_get0_lastUpdate() and X509_CRL_get0_nextUpdate() return the
       <emphasis role="bold">lastUpdate</emphasis> and <emphasis role="bold">nextUpdate</emphasis> fields of <emphasis role="bold">crl</emphasis>. The value returned is an internal pointer
       which must not be freed up after the call. If the <emphasis role="bold">nextUpdate</emphasis> field is absent from <emphasis role="bold">crl</emphasis> then <emphasis role="bold">NULL</emphasis>
       is returned.
     </para>
     <para>
-      X509_CRL_set_lastUpdate() and X509_CRL_set_nextUpdate() set the
+      X509_CRL_set1_lastUpdate() and X509_CRL_set1_nextUpdate() set the
       <emphasis role="bold">lastUpdate</emphasis> and <emphasis role="bold">nextUpdate</emphasis> fields of <emphasis role="bold">crl</emphasis> to <emphasis role="bold">tm</emphasis>.
       Ownership of the passed parameter <emphasis role="bold">tm</emphasis>
       is not transferred by these functions so it must be freed up after
@@ -48,15 +55,16 @@ int X509_CRL_set_nextUpdate(X509_CRL *x, const ASN1_TIME *tm);</synopsis>
   </refsection>
   <refsection xml:id="ID-45d6a6bcafa3c226f2b14f3e67fdc7c2"><title>RETURN VALUES</title>
     <para>
-      X509_get_notBefore(), X509_get_notAfter() and
-      X509_CRL_get_lastUpdate() return a pointer to an <emphasis role="bold">ASN1_TIME</emphasis> structure.
+      X509_get0_notBefore(), X509_get0_notAfter() and
+      X509_CRL_get0_lastUpdate() return a pointer to an <emphasis role="bold">ASN1_TIME</emphasis> structure.
     </para>
     <para>
-      X509_CRL_get_lastUpdate() return a pointer to an <emphasis role="bold">ASN1_TIME</emphasis> structure or NULL if the <emphasis role="bold">lastUpdate</emphasis> field is absent.
+      X509_CRL_get0_lastUpdate() return a pointer to an <emphasis role="bold">ASN1_TIME</emphasis> structure or NULL if the <emphasis role="bold">lastUpdate</emphasis> field is absent.
     </para>
     <para>
-      X509_set_notBefore(), X509_set_notAfter(), X509_CRL_set_lastUpdate()
-      and X509_CRL_set_nextUpdate() return 1 for success or 0 for failure.
+      X509_set1_notBefore(), X509_set1_notAfter(),
+      X509_CRL_set1_lastUpdate() and X509_CRL_set1_nextUpdate() return 1
+      for success or 0 for failure.
     </para>
   </refsection>
   <refsection xml:id="ID-fee4e8880645bbde7e07309ab30481b3"><title>SEE ALSO</title>
@@ -98,6 +106,10 @@ int X509_CRL_set_nextUpdate(X509_CRL *x, const ASN1_TIME *tm);</synopsis>
   <refsection xml:id="ID-aff1b6211788f5b490f36b55aa668871"><title>HISTORY</title>
     <para>
       These functions are available in all versions of OpenSSL.
+    </para>
+    <para>
+      X509_get_notBefore() and X509_get_notAfter() were deprecated in
+      OpenSSL 1.1.0
     </para>
   </refsection>
   <refsection xml:id="ID-f47084e27e5f67c3da20e08f450a6a34"><title>COPYRIGHT</title>

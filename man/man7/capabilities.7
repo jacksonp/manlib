@@ -804,6 +804,15 @@ if we specify the effective flag as being enabled for any capability,
 then the effective flag must also be specified as enabled
 for all other capabilities for which the corresponding permitted or
 inheritable flags is enabled.
+.RE
+
+File capability sets are ignored if the executable file
+resides on a filesystem mounted with the
+.B nosuid
+option (see
+.BR mount (2)
+and
+.BR mount (8)).
 .\"
 .SS Transformation of capabilities during execve()
 .PP

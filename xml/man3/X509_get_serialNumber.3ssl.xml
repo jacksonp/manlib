@@ -4,13 +4,15 @@
     <refentrytitle>X509_get_serialNumber.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>X509_get_serialNumber, X509_set_serialNumber</refname>
-<refpurpose>get or set certificate serial
-number</refpurpose>
+    <refname>X509_get_serialNumber,
+X509_get0_serialNumber,
+X509_set_serialNumber</refname>
+<refpurpose>get or set certificate serial number</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
 <synopsis>ASN1_INTEGER *X509_get_serialNumber(X509 *x);
+const ASN1_INTEGER *X509_get0_serialNumber(const X509 *x);
 int X509_set_serialNumber(X509 *x, ASN1_INTEGER *serial);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-53c8cda65e46fed96744e12c8542132d"><title>DESCRIPTION</title>
@@ -21,6 +23,10 @@ int X509_set_serialNumber(X509 *x, ASN1_INTEGER *serial);</synopsis>
       <emphasis role="bold">MUST NOT</emphasis> be freed up after the call.
     </para>
     <para>
+      X509_get0_serialNumber() is the same as X509_get_serialNumber()
+      except it accepts a const parameter and returns a const result.
+    </para>
+    <para>
       X509_set_serialNumber() sets the serial number of certificate
       <emphasis role="bold">x</emphasis> to <emphasis role="bold">serial</emphasis>. A copy of the serial number is used
       internally so <emphasis role="bold">serial</emphasis> should be freed
@@ -29,7 +35,8 @@ int X509_set_serialNumber(X509 *x, ASN1_INTEGER *serial);</synopsis>
   </refsection>
   <refsection xml:id="ID-d5db5bc37c3d74736422992f00bba855"><title>RETURN VALUES</title>
     <para>
-      X509_get_serialNumber() returns an <emphasis role="bold">ASN1_INTEGER</emphasis> structure.
+      X509_get_serialNumber() and X509_get0_serialNumber() return an
+      <emphasis role="bold">ASN1_INTEGER</emphasis> structure.
     </para>
     <para>
       X509_set_serialNumber() returns 1 for success and 0 for failure.
@@ -74,7 +81,8 @@ int X509_set_serialNumber(X509 *x, ASN1_INTEGER *serial);</synopsis>
   <refsection xml:id="ID-7782e3bf912c3861c8dd0d16388103e9"><title>HISTORY</title>
     <para>
       X509_get_serialNumber() and X509_set_serialNumber() are available in
-      all versions of OpenSSL.
+      all versions of OpenSSL. X509_get0_serialNumber() was added in
+      OpenSSL 1.1.0.
     </para>
   </refsection>
   <refsection xml:id="ID-1867546f1bffe653a46e7ebcdf9dc9fa"><title>COPYRIGHT</title>

@@ -101,6 +101,11 @@
 	      is the message to be encrypted. The output file is the
 	      encrypted mail in MIME format.
             </para>
+            <para>
+	      Note that no revocation check is done for the recipient cert,
+	      so if that key has been compromised, others may be able to
+	      decrypt the text.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>

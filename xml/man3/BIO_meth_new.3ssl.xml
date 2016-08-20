@@ -4,7 +4,8 @@
     <refentrytitle>BIO_meth_new.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>BIO_meth_new, BIO_meth_free, BIO_meth_get_write, BIO_meth_set_write,
+    <refname>BIO_get_new_index,
+BIO_meth_new, BIO_meth_free, BIO_meth_get_write, BIO_meth_set_write,
 BIO_meth_get_read, BIO_meth_set_read, BIO_meth_get_puts, BIO_meth_set_puts,
 BIO_meth_get_gets, BIO_meth_set_gets, BIO_meth_get_ctrl, BIO_meth_set_ctrl,
 BIO_meth_get_create, BIO_meth_set_create, BIO_meth_get_destroy,
@@ -14,7 +15,8 @@ BIO_meth_set_callback_ctrl</refname>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bio.h&gt;</synopsis>
-<synopsis>BIO_METHOD *BIO_meth_new(int type, const char *name);
+<synopsis>int BIO_get_new_index(void);
+BIO_METHOD *BIO_meth_new(int type, const char *name);
 void BIO_meth_free(BIO_METHOD *biom);
 int (*BIO_meth_get_write(BIO_METHOD *biom)) (BIO *, const char *, int);
 int BIO_meth_set_write(BIO_METHOD *biom,
@@ -53,8 +55,13 @@ int BIO_meth_set_callback_ctrl(BIO_METHOD *biom,
     <para>
       BIO_meth_new() creates a new <emphasis role="bold">BIO_METHOD</emphasis> structure. It should be given a
       unique integer <emphasis role="bold">type</emphasis> and a string
-      that represents its <emphasis role="bold">name</emphasis>. The set of
-      standard OpenSSL provided BIO types is provided in <emphasis role="bold">bio.h</emphasis>. Some examples include <emphasis role="bold">BIO_TYPE_BUFFER</emphasis> and <emphasis role="bold">BIO_TYPE_CIPHER</emphasis>. Filter BIOs should have a
+      that represents its <emphasis role="bold">name</emphasis>. Use
+      BIO_get_new_index() to get the value for <emphasis role="bold">type</emphasis>.
+    </para>
+    <para>
+      The set of standard OpenSSL provided BIO types is provided in
+      <emphasis role="bold">bio.h</emphasis>. Some examples include
+      <emphasis role="bold">BIO_TYPE_BUFFER</emphasis> and <emphasis role="bold">BIO_TYPE_CIPHER</emphasis>. Filter BIOs should have a
       type which have the "filter" bit set (<emphasis role="bold">BIO_TYPE_FILTER</emphasis>). Source/sink BIOs should have
       the "source/sink" bit set (<emphasis role="bold">BIO_TYPE_SOURCE_SINK</emphasis>). File descriptor based
       BIOs (e.g. socket, fd, connect, accept etc) should additionally have
