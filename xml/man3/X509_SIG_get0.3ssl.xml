@@ -4,23 +4,22 @@
     <refentrytitle>X509_SIG_get0.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>X509_SIG_get0, X509_SIG_get0_mutable</refname>
+    <refname>X509_SIG_get0, X509_SIG_getm</refname>
 <refpurpose>DigestInfo functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
 <synopsis>void X509_SIG_get0(const X509_SIG *sig, const X509_ALGOR **palg,
                    const ASN1_OCTET_STRING **pdigest);
-void X509_SIG_get0_mutable(X509_SIG *sig, X509_ALGOR **palg,
-                           ASN1_OCTET_STRING **pdigest,</synopsis>
+void X509_SIG_getm(X509_SIG *sig, X509_ALGOR **palg,
+                   ASN1_OCTET_STRING **pdigest,</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-7a40b46d43cf08e52b9595048c8fe404"><title>DESCRIPTION</title>
     <para>
       X509_SIG_get0() returns pointers to the algorithm identifier and
-      digest value in <emphasis role="bold">sig</emphasis>.
-      X509_SIG_get0_mutable() is identical to X509_SIG_get0() except the
-      pointers returned are not constant and can be modified: for example
-      to initialise them.
+      digest value in <emphasis role="bold">sig</emphasis>. X509_SIG_getm()
+      is identical to X509_SIG_get0() except the pointers returned are not
+      constant and can be modified: for example to initialise them.
     </para>
   </refsection>
   <refsection xml:id="ID-e9205e2e2a72c92fdbcd6a2a3e3cb103"><title>SEE ALSO</title>

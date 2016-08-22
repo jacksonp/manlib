@@ -4,9 +4,9 @@
     <refentrytitle>X509_get_notBefore.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>X509_get0_notBefore, X509_get_notBefore, X509_get0_notAfter, X509_get_notAfter,
-X509_set1_notBefore, X509_set1_notAfter, X509_CRL_get0_lastUpdate,
-X509_CRL_get0_nextUpdate, X509_CRL_set1_lastUpdate,
+    <refname>X509_get0_notBefore, X509_getm_notBefore, X509_get0_notAfter,
+X509_getm_notAfter, X509_set1_notBefore, X509_set1_notAfter,
+X509_CRL_get0_lastUpdate, X509_CRL_get0_nextUpdate, X509_CRL_set1_lastUpdate,
 X509_CRL_set1_nextUpdate</refname>
 <refpurpose>get or set certificate or CRL dates</refpurpose>
   </refnamediv>
@@ -14,8 +14,8 @@ X509_CRL_set1_nextUpdate</refname>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
 <synopsis>const ASN1_TIME *X509_get0_notBefore(const X509 *x);
 const ASN1_TIME *X509_get0_notAfter(const X509 *x);</synopsis>
-<synopsis>ASN1_TIME *X509_get_notBefore(const X509 *x);
-ASN1_TIME *X509_get_notAfter(const X509 *x);</synopsis>
+<synopsis>ASN1_TIME *X509_getm_notBefore(const X509 *x);
+ASN1_TIME *X509_getm_notAfter(const X509 *x);</synopsis>
 <synopsis>int X509_set1_notBefore(X509 *x, const ASN1_TIME *tm);
 int X509_set1_notAfter(X509 *x, const ASN1_TIME *tm);</synopsis>
 <synopsis>const ASN1_TIME *X509_CRL_get0_lastUpdate(const X509_CRL *crl);
@@ -29,9 +29,10 @@ int X509_CRL_set1_nextUpdate(X509_CRL *x, const ASN1_TIME *tm);</synopsis>
       internal pointer which must not be freed up after the call.
     </para>
     <para>
-      X509_get_notBefore() and X509_get_notAfter() are similar to
-      X509_get0_notBefore() and X509_get0_notAfter() except they do not
-      return constant values. They are deprecated in OpenSSL 1.1.0
+      X509_getm_notBefore() and X509_getm_notAfter() are similar to
+      X509_get0_notBefore() and X509_get0_notAfter() except they return
+      non-constant mutable references to the associated date field of the
+      certficate.
     </para>
     <para>
       X509_set1_notBefore() and X509_set1_notAfter() set the <emphasis role="bold">notBefore</emphasis> and <emphasis role="bold">notAfter</emphasis> fields of <emphasis role="bold">x</emphasis> to <emphasis role="bold">tm</emphasis>.
