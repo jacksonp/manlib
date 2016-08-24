@@ -226,7 +226,7 @@ interfaces exist since Linux 2.2.
 .SH NOTES
 Be very careful with the
 .B SO_BROADCAST
-option \- it is not privileged in Linux.
+option; it is not privileged in Linux.
 It is easy to overload the network
 with careless sending to broadcast addresses.
 .SS Compatibility
@@ -245,7 +245,7 @@ package and AppleTalk monitoring tools more easily.
 There are too many inconsistent error values.
 .PP
 The ioctls used to configure routing tables, devices,
-AARP tables and other devices are not yet described.
+AARP tables, and other devices are not yet described.
 .SH SEE ALSO
 .BR recvmsg (2),
 .BR sendmsg (2),

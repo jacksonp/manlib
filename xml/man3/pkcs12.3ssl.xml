@@ -538,6 +538,17 @@
       to reduce the private key encryption to 40 bit RC2. A complete
       description of all algorithms is contained in the <emphasis role="bold">pkcs8</emphasis> manual page.
     </para>
+    <para>
+      Prior 1.1 release passwords containing non-ASCII characters were
+      encoded in non-compliant manner, which limited interoperability, in
+      first hand with Windows. But switching to standard-compliant password
+      encoding poses problem accessing old data protected with broken
+      encoding. For this reason even legacy encodings is attempted when
+      reading the data. If you use PKCS#12 files in production application
+      you are advised to convert the data, because implemented heuristic
+      approach is not MT-safe, its sole goal is to facilitate the data
+      upgrade with this utility.
+    </para>
   </refsection>
   <refsection xml:id="ID-f000107d0299c3cffaba1a505b88d379"><title>EXAMPLES</title>
     <para>

@@ -12,8 +12,8 @@ X509_NAME_ENTRY_create_by_OBJ</refname>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
-<synopsis>ASN1_OBJECT * X509_NAME_ENTRY_get_object(X509_NAME_ENTRY *ne);
-ASN1_STRING * X509_NAME_ENTRY_get_data(X509_NAME_ENTRY *ne);</synopsis>
+<synopsis>ASN1_OBJECT * X509_NAME_ENTRY_get_object(const X509_NAME_ENTRY *ne);
+ASN1_STRING * X509_NAME_ENTRY_get_data(const X509_NAME_ENTRY *ne);</synopsis>
 <synopsis>int X509_NAME_ENTRY_set_object(X509_NAME_ENTRY *ne, const ASN1_OBJECT *obj);
 int X509_NAME_ENTRY_set_data(X509_NAME_ENTRY *ne, int type, const unsigned char *bytes, int len);</synopsis>
 <synopsis>X509_NAME_ENTRY *X509_NAME_ENTRY_create_by_txt(X509_NAME_ENTRY **ne, const char *field, int type, const unsigned char *bytes, int len);
