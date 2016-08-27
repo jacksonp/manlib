@@ -184,8 +184,8 @@ rsync -a --checksum --exclude=uuidgen.1 --exclude=blkid.8 --exclude=findfs.8 --e
     "type": "git",
     "url": "git://git.savannah.gnu.org/findutils.git",
     "sparse": "*.[1-8]",
-    "cmd": "find sources/findutils/ -name '*.1' -exec cp {} man/man1/ \\;;
-find sources/findutils/ -name '*.5' -exec rsync --checksum {} man/man5/ \\;"
+    "cmd": "find sources/findutils/ -name '*.1' -not -iwholename '*/.git/*' -exec cp {} man/man1/ \\;;
+find sources/findutils/ -name '*.5' -not -iwholename '*/.git/*' -exec rsync --checksum {} man/man5/ \\;"
   },
 
   "gawk": {
@@ -661,10 +661,10 @@ find sources/systemd/man -name '*.xml' -print0 | while read -d $'\\0' -r file ; 
     "type": "git",
     "url": "git://git.kernel.org/pub/scm/utils/util-linux/util-linux.git",
     "sparse": "*.[1-8]",
-    "cmd": "find sources/util-linux/*utils/ -name '*.1' ! -name kill.1 -exec rsync --checksum {} man/man1/ \\;;
-find sources/util-linux/ -name '*.3' -exec rsync --checksum {} man/man3/ \\;;
-find sources/util-linux/ -name '*.5' -exec rsync --checksum {} man/man5/ \\;;
-find sources/util-linux/ -name '*.8' -exec rsync --checksum {} man/man8/ \\;"
+    "cmd": "find sources/util-linux/*utils/ -name '*.1' ! -name kill.1 -not -iwholename '*/.git/*' -exec rsync --checksum {} man/man1/ \\;;
+find sources/util-linux/ -name '*.3' -not -iwholename '*/.git/*' -exec rsync --checksum {} man/man3/ \\;;
+find sources/util-linux/ -name '*.5' -not -iwholename '*/.git/*' -exec rsync --checksum {} man/man5/ \\;;
+find sources/util-linux/ -name '*.8' -not -iwholename '*/.git/*' -exec rsync --checksum {} man/man8/ \\;"
   },
 
   "varnish": {
