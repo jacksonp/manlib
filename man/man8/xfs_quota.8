@@ -6,6 +6,8 @@ xfs_quota \- manage use of quota on XFS filesystems
 [
 .B \-x
 ] [
+.B \-f
+] [
 .B \-p
 .I prog
 ] [
@@ -50,6 +52,11 @@ Enable expert mode.
 All of the administrative commands (see the ADMINISTRATOR COMMANDS
 section below) which allow modifications to the quota system are
 available only in expert mode.
+.TP
+.B \-f
+Enable foreign filesystem mode.
+A limited number of user and administrative commands are available for
+use on some foreign (non-XFS) filesystems.
 .TP
 .BI \-d " project"
 Project names or numeric identifiers may be specified with this option,

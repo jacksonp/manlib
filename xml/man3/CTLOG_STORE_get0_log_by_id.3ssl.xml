@@ -1,0 +1,58 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CTLOG_STORE_get0_log_by_id.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CTLOG_STORE_get0_log_by_id</refname>
+<refpurpose>Get a Certificate Transparency log from a CTLOG_STORE</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ct.h&gt;</synopsis>
+<synopsis>const CTLOG *CTLOG_STORE_get0_log_by_id(const CTLOG_STORE *store,
+                                        const uint8_t *log_id,
+                                        size_t log_id_len);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-cdb5e2b3fb01168308a9c2550b080b5f"><title>DESCRIPTION</title>
+    <para>
+      A Signed Certificate Timestamp (SCT) identifies the Certificate
+      Transparency (CT) log that issued it using the log's LogID (see RFC
+      6962, Section 3.2). Therefore, it is useful to be able to look up
+      more information about a log (e.g. its public key) using this LogID.
+    </para>
+    <para>
+      CTLOG_STORE_get0_log_by_id() provides a way to do this. It will find
+      a CTLOG in a CTLOG_STORE that has a given LogID.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-ad70551640ae60e33bf5beec45af4088"><title>RETURN VALUES</title>
+    <para>
+      <emphasis role="bold">CTLOG_STORE_get0_log_by_id</emphasis> returns a
+      CTLOG with the given LogID, if it exists in the given CTLOG_STORE,
+      otherwise it returns NULL.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-117393c7698dda84102eb1bcbcf838c4"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ct</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CTLOG_STORE_new</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-3b05cd7c998c26b2b7d52a17db87a5f4"><title>HISTORY</title>
+    <para>
+      This function was added in OpenSSL 1.1.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-8803881c06076e31d81ca94a8c14941a"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

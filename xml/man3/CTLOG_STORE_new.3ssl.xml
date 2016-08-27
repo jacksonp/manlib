@@ -1,0 +1,95 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CTLOG_STORE_new.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CTLOG_STORE_new, CTLOG_STORE_free,
+CTLOG_STORE_load_default_file, CTLOG_STORE_load_file</refname>
+<refpurpose>Create and populate a Certificate Transparency log list</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ct.h&gt;</synopsis>
+<synopsis>CTLOG_STORE *CTLOG_STORE_new(void);
+void CTLOG_STORE_free(CTLOG_STORE *store);</synopsis>
+<synopsis>int CTLOG_STORE_load_default_file(CTLOG_STORE *store);
+int CTLOG_STORE_load_file(CTLOG_STORE *store, const char *file);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-b7d1e11b2e712158d6926ef4672bfc26"><title>DESCRIPTION</title>
+    <para>
+      A CTLOG_STORE is a container for a list of CTLOGs (Certificate
+      Transparency logs). The list can be loaded from one or more files and
+      then searched by LogID (see RFC 6962, Section 3.2, for the definition
+      of a LogID).
+    </para>
+    <para>
+      CTLOG_STORE_new() creates an empty list of CT logs. This is then
+      populated by CTLOG_STORE_load_default_file() or
+      CTLOG_STORE_load_file(). CTLOG_STORE_load_default_file() loads from
+      the default file, which is named "ct_log_list.cnf" in OPENSSLDIR (see
+      the output of <citerefentry> <refentrytitle>version</refentrytitle>
+      </citerefentry>). This can be overridden using an environment
+      variable named "CTLOG_FILE". CTLOG_STORE_load_file() loads from a
+      caller-specified file path instead. Both of these functions append
+      any loaded CT logs to the CTLOG_STORE.
+    </para>
+    <para>
+      The expected format of the file is:
+    </para>
+    <screen>enabled_logs=foo,bar
+
+[foo]
+description = Log 1
+key = &lt;base64-encoded DER SubjectPublicKeyInfo here&gt;
+
+[bar]
+description = Log 2
+key = &lt;base64-encoded DER SubjectPublicKeyInfo here&gt;</screen>
+    <para>
+      Once a CTLOG_STORE is no longer required, it should be passed to
+      CTLOG_STORE_free(). This will delete all of the CTLOGs stored within,
+      along with the CTLOG_STORE itself.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-31ce3a064a3109a10713754567adcc71"><title>NOTES</title>
+    <para>
+      If there are any invalid CT logs in a file, they are skipped and the
+      remaining valid logs will still be added to the CTLOG_STORE. A CT log
+      will be considered invalid if it is missing a "key" or "description"
+      field.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-b53689fdeb94b2d6b245dac369ef4b86"><title>RETURN VALUES</title>
+    <para>
+      Both <emphasis role="bold">CTLOG_STORE_load_default_file</emphasis>
+      and <emphasis role="bold">CTLOG_STORE_load_file</emphasis> return 1
+      if all CT logs in the file are successfully parsed and loaded, 0
+      otherwise.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-ca3d06d85c610e9a746df8d465e0d604"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ct</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CTLOG_STORE_get0_log_by_id</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_CTX_set_ctlog_list_file</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-f1c92aaac9a8cda879b94d15b06b8326"><title>HISTORY</title>
+    <para>
+      These functions were added in OpenSSL 1.1.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-7d23935e407fbc2bf391bb1c75cb9932"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

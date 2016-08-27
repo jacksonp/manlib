@@ -193,6 +193,26 @@ is used, the free inode btree feature is not supported and is disabled.
 .BI uuid= value
 Use the given value as the filesystem UUID for the newly created filesystem.
 The default is to generate a random UUID.
+.TP
+.BI rmapbt= value
+This option enables the creation of a reverse-mapping btree index in each
+allocation group.  The value is either 0 to disable the feature, or 1 to
+create the btree.
+.IP
+The reverse mapping btree maps filesystem blocks to the owner of the
+filesystem block.  Most of the mappings will be to an inode number and an
+offset, though there will also be mappings to filesystem metadata.  This
+secondary metadata can be used to validate the primary metadata or to
+pinpoint exactly which data has been lost when a disk error occurs.
+.IP
+By default,
+.B mkfs.xfs
+will not create reverse mapping btrees.  This feature is only available
+for filesystems created with the (default)
+.B \-m crc=1
+option set. When the option
+.B \-m crc=0
+is used, the reverse mapping btree feature is not supported and is disabled.
 .RE
 .TP
 .BI \-d " data_section_options"

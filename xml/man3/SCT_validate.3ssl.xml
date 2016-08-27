@@ -1,0 +1,125 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>SCT_validate.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>SCT_validate, SCT_LIST_validate, SCT_get_validation_status</refname>
+<refpurpose>checks Signed Certificate Timestamps (SCTs) are valid</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ct.h&gt;</synopsis>
+<synopsis>typedef enum {
+ SCT_VALIDATION_STATUS_NOT_SET,
+ SCT_VALIDATION_STATUS_UNKNOWN_LOG,
+ SCT_VALIDATION_STATUS_VALID,
+ SCT_VALIDATION_STATUS_INVALID,
+ SCT_VALIDATION_STATUS_UNVERIFIED,
+ SCT_VALIDATION_STATUS_UNKNOWN_VERSION
+} sct_validation_status_t;</synopsis>
+<synopsis>int SCT_validate(SCT *sct, const CT_POLICY_EVAL_CTX *ctx);
+int SCT_LIST_validate(const STACK_OF(SCT) *scts, CT_POLICY_EVAL_CTX *ctx);
+sct_validation_status_t SCT_get_validation_status(const SCT *sct);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-c4dc012622befc916892bac70b3b2c54"><title>DESCRIPTION</title>
+    <para>
+      SCT_validate() will check that an SCT is valid and verify its
+      signature. SCT_LIST_validate() performs the same checks on an entire
+      stack of SCTs. The result of the validation checks can be obtained by
+      passing the SCT to SCT_get_validation_status().
+    </para>
+    <para>
+      A CT_POLICY_EVAL_CTX must be provided that specifies:
+    </para>
+    <para>
+      <variablelist>
+        <varlistentry>
+          <term>* The certificate the SCT was issued for.</term>
+          <listitem>
+            <para>
+	      Failure to provide the certificate will result in the
+	      validation status being SCT_VALIDATION_STATUS_UNVERIFIED.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>* The issuer of that certificate.</term>
+          <listitem>
+            <para>
+	      This is only required if the SCT was issued for a
+	      pre-certificate (see RFC 6962). If it is required but not
+	      provided, the validation status will be
+	      SCT_VALIDATION_STATUS_UNVERIFIED.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>* A CTLOG_STORE that contains the CT log that issued this SCT.</term>
+          <listitem>
+            <para>
+	      If the SCT was issued by a log that is not in this
+	      CTLOG_STORE, the validation status will be
+	      SCT_VALIDATION_STATUS_UNKNOWN_LOG.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </para>
+    <para>
+      If the SCT is of an unsupported version (only v1 is currently
+      supported), the validation status will be
+      SCT_VALIDATION_STATUS_UNKNOWN_VERSION.
+    </para>
+    <para>
+      If the SCT's signature is incorrect, the validation status will be
+      SCT_VALIDATION_STATUS_INVALID. Otherwise, if all checks have passed,
+      the validation status will be SCT_VALIDATION_STATUS_VALID.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-374e4e5c957f9408a84c8e63b267a2de"><title>NOTES</title>
+    <para>
+      A return value of 0 from SCT_LIST_validate() should not be
+      interpreted as a failure. At a minimum, only one valid SCT may
+      provide sufficient confidence that a certificate has been publicly
+      logged.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-b0a19de3275ce3654b36d16a1dfd9169"><title>RETURN VALUES</title>
+    <para>
+      SCT_validate() returns a negative integer if an internal error
+      occurs, 0 if the SCT fails validation, or 1 if the SCT passes
+      validation.
+    </para>
+    <para>
+      SCT_LIST_validate() returns a negative integer if an internal error
+      occurs, 0 if any of SCTs fails validation, or 1 if they all pass
+      validation.
+    </para>
+    <para>
+      SCT_get_validation_status() returns the validation status of the SCT.
+      If SCT_validate() or SCT_LIST_validate() have not been passed that
+      SCT, the returned value will be SCT_VALIDATION_STATUS_NOT_SET.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-da49de53b2cff0a6bc0530f57c0567f8"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ct</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-cd611e0515d3271104ac0c3bbb6e1570"><title>HISTORY</title>
+    <para>
+      These functions were added in OpenSSL 1.1.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-33beb138e39cb935b93d551f179caff7"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

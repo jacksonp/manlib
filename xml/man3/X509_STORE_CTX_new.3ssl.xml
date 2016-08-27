@@ -35,9 +35,9 @@ int X509_STORE_CTX_set_default(X509_STORE_CTX *ctx, const char *name);</synopsis
 <synopsis>STACK_OF(X509)* X509_STORE_CTX_get0_untrusted(X509_STORE_CTX *ctx);
 void X509_STORE_CTX_set0_untrusted(X509_STORE_CTX *ctx, STACK_OF(X509) *sk);</synopsis>
 <synopsis>int X509_STORE_CTX_get_num_untrusted(X509_STORE_CTX *ctx);</synopsis>
-<synopsis>typedef int (*X509_STORE_CTX_verify)(X509_STORE_CTX *);
-X509_STORE_CTX_verify X509_STORE_CTX_get_verify(X509_STORE_CTX *ctx);
-void X509_STORE_CTX_set_verify(X509_STORE_CTX *ctx, X509_STORE_CTX_verify verify);</synopsis>
+<synopsis>typedef int (*X509_STORE_CTX_verify_fn)(X509_STORE_CTX *);
+X509_STORE_CTX_verify_fn X509_STORE_CTX_get_verify(X509_STORE_CTX *ctx);
+void X509_STORE_CTX_set_verify(X509_STORE_CTX *ctx, X509_STORE_CTX_verify_fn verify);</synopsis>
 <synopsis>void X509_STORE_set_verify(X509_STORE *ctx, X509_STORE_CTX_verify verify);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-b42a72170bb54a9deb4c47b582954998"><title>DESCRIPTION</title>

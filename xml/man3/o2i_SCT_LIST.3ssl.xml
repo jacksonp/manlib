@@ -1,0 +1,60 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>o2i_SCT_LIST.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>o2i_SCT_LIST, i2o_SCT_LIST, o2i_SCT, i2o_SCT</refname>
+<refpurpose>decode and encode Signed Certificate Timestamp lists in TLS wire format</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ct.h&gt;</synopsis>
+<synopsis>STACK_OF(SCT) *o2i_SCT_LIST(STACK_OF(SCT) **a, const unsigned char **pp, size_t len);
+int i2o_SCT_LIST(const STACK_OF(SCT) *a, unsigned char **pp);
+SCT *o2i_SCT(SCT **psct, const unsigned char **in, size_t len);
+int i2o_SCT(const SCT *sct, unsigned char **out);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-554b96c3188c7beaca87b7adfd664f92"><title>DESCRIPTION</title>
+    <para>
+      The SCT_LIST and SCT functions are very similar to the i2d and d2i
+      family of functions, except that they convert to and from TLS wire
+      format, as described in RFC 6962. See <citerefentry>
+      <refentrytitle>d2i_SCT_LIST</refentrytitle> </citerefentry> for more
+      information about how the parameters are treated and the return
+      values.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-c95a0bf50255f3ca77608d3d53cbfaa6"><title>RETURN VALUES</title>
+    <para>
+      All of the functions have return values consistent with those stated
+      for <citerefentry> <refentrytitle>d2i_SCT_LIST</refentrytitle>
+      </citerefentry> and <citerefentry>
+      <refentrytitle>i2d_SCT_LIST</refentrytitle> </citerefentry>.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-3fe0bf7addf63fd1e46d2464b756e394"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ct</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>d2i_SCT_LIST</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>i2d_SCT_LIST</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-81b491d286e8ce07d507ffd53869feb9"><title>HISTORY</title>
+    <para>
+      These functions were added in OpenSSL 1.1.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-690ab803e5778f74a2d582a90a62252c"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

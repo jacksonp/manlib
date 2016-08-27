@@ -1,0 +1,85 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CTLOG_new.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CTLOG_new, CTLOG_new_from_base64, CTLOG_free,
+CTLOG_get0_name, CTLOG_get0_log_id, CTLOG_get0_public_key</refname>
+<refpurpose>encapsulates information about a Certificate Transparency log</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ct.h&gt;</synopsis>
+<synopsis>CTLOG *CTLOG_new(EVP_PKEY *public_key, const char *name);
+int CTLOG_new_from_base64(CTLOG ** ct_log,
+                          const char *pkey_base64, const char *name);
+void CTLOG_free(CTLOG *log);
+const char *CTLOG_get0_name(const CTLOG *log);
+void CTLOG_get0_log_id(const CTLOG *log, const uint8_t **log_id,
+                       size_t *log_id_len);
+EVP_PKEY *CTLOG_get0_public_key(const CTLOG *log);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-a03a7cf1cfc6b8da93f79ae96ecf2dea"><title>DESCRIPTION</title>
+    <para>
+      CTLOG_new() returns a new CTLOG that represents the Certificate
+      Transparency (CT) log with the given public key. A name must also be
+      provided that can be used to help users identify this log. Ownership
+      of the public key is transferred.
+    </para>
+    <para>
+      CTLOG_new_from_base64() also creates a new CTLOG, but takes the
+      public key in base64-encoded DER form and sets the ct_log pointer to
+      point to the new CTLOG. The base64 will be decoded and the public key
+      parsed.
+    </para>
+    <para>
+      Regardless of whether CTLOG_new() or CTLOG_new_from_base64() is used,
+      it is the caller's responsibility to pass the CTLOG to CTLOG_free()
+      once it is no longer needed. This will delete it and, if created by
+      CTLOG_new(), the EVP_PKEY that was passed to it.
+    </para>
+    <para>
+      CTLOG_get0_name() returns the name of the log, as provided when the
+      CTLOG was created. Ownership of the string remains with the CTLOG.
+    </para>
+    <para>
+      CTLOG_get0_log_id() sets *log_id to point to a string containing that
+      log's LogID (see RFC 6962). It sets *log_id_len to the length of that
+      LogID. For a v1 CT log, the LogID will be a SHA-256 hash (i.e. 32
+      bytes long). Ownership of the string remains with the CTLOG.
+    </para>
+    <para>
+      CTLOG_get0_public_key() returns the public key of the CT log.
+      Ownership of the EVP_PKEY remains with the CTLOG.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-9db9dba0dfa7f39c0fe317173c2fe881"><title>RETURN VALUES</title>
+    <para>
+      CTLOG_new() will return NULL if an error occurs.
+    </para>
+    <para>
+      CTLOG_new_from_base64() will return 1 on success, 0 otherwise.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-3ba85c6cfbbf1f68f6d1d6b687e1951c"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ct</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-c7101728baaa8579d341716816ed58c4"><title>HISTORY</title>
+    <para>
+      These functions were added in OpenSSL 1.1.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-ab2875bc9510906cd2e1e27c729ff2e3"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

@@ -694,6 +694,12 @@
             </listitem>
           </varlistentry>
           <varlistentry>
+            <term>int <emphasis role="bold">SSL_CTX_set_ct_validation_callback</emphasis>(SSL_CTX *ctx, ssl_ct_validation_cb callback, void *arg);</term>
+            <listitem>
+              <para/>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
             <term>void <emphasis role="bold">SSL_CTX_set_default_passwd_cb</emphasis>(SSL_CTX *ctx, int (*cb);(void))</term>
             <listitem>
               <para/>
@@ -1279,6 +1285,12 @@
             </listitem>
           </varlistentry>
           <varlistentry>
+            <term>const STACK_OF(SCT) *<emphasis role="bold">SSL_get0_peer_scts</emphasis>(SSL *s);</term>
+            <listitem>
+              <para/>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
             <term>EVP_PKEY *<emphasis role="bold">SSL_get_privatekey</emphasis>(const SSL *ssl);</term>
             <listitem>
               <para/>
@@ -1502,6 +1514,12 @@
           </varlistentry>
           <varlistentry>
             <term>void <emphasis role="bold">SSL_set_connect_state</emphasis>(SSL *ssl);</term>
+            <listitem>
+              <para/>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>int <emphasis role="bold">SSL_set_ct_validation_callback</emphasis>(SSL *ssl, ssl_ct_validation_cb callback, void *arg);</term>
             <listitem>
               <para/>
             </listitem>
@@ -1873,6 +1891,8 @@
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_do_handshake</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_enable_ct</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_SSL_CTX</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_ciphers</refentrytitle>

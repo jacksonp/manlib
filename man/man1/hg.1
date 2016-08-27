@@ -4793,6 +4793,14 @@ hg version
 .fi
 .sp
 output version and copyright information
+.sp
+Options:
+.INDENT 0.0
+.TP
+.BI \-T,  \-\-template \ <TEMPLATE>
+.
+display with template (EXPERIMENTAL)
+.UNINDENT
 .SH DATE FORMATS
 .sp
 Some commands allow the user to specify a date, e.g.:
@@ -7090,11 +7098,11 @@ work around it to return a non\-filtered value.
 .sp
 An alias for limit().
 .TP
-.B \fBfollow([pattern])\fP
+.B \fBfollow([pattern[, startrev]])\fP
 .sp
 An alias for \fB::.\fP (ancestors of the working directory\(aqs first parent).
 If pattern is specified, the histories of files matching given
-pattern is followed, including copies.
+pattern in the revision given by startrev are followed, including copies.
 .TP
 .B \fBgrep(regex)\fP
 .sp
@@ -8246,7 +8254,7 @@ most recent globally tagged ancestor of this changeset.
 Converts a date to the specified timezone.
 The default is local date.
 .TP
-.B pad(text, width[, fillchar=\(aq \(aq[, right=False]])
+.B pad(text, width[, fillchar=\(aq \(aq[, left=False]])
 .
 Pad text with a
 fill character.

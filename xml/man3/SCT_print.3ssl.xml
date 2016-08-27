@@ -1,0 +1,66 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>SCT_print.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>SCT_print, SCT_LIST_print, SCT_validation_status_string</refname>
+<refpurpose>Prints Signed Certificate Timestamps in a human-readable way</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ct.h&gt;</synopsis>
+<synopsis>void SCT_print(const SCT *sct, BIO *out, int indent, const CTLOG_STORE *logs);
+void SCT_LIST_print(const STACK_OF(SCT) *sct_list, BIO *out, int indent,
+                    const char *separator, const CTLOG_STORE *logs);
+const char *SCT_validation_status_string(const SCT *sct);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-b348bd4f57f0965f39ccf12818e9ecfc"><title>DESCRIPTION</title>
+    <para>
+      SCT_print() prints a single Signed Certificate Timestamp (SCT) to a
+      <citerefentry> <refentrytitle>bio</refentrytitle> </citerefentry> in
+      a human-readable format. SCT_LIST_print() prints an entire list of
+      SCTs in a similar way. A separator can be specified to delimit each
+      SCT in the output.
+    </para>
+    <para>
+      The output can be indented by a specified number of spaces. If a
+      <emphasis role="bold">CTLOG_STORE</emphasis> is provided, it will be
+      used to print the description of the CT log that issued each SCT (if
+      that log is in the CTLOG_STORE). Alternatively, NULL can be passed as
+      the CTLOG_STORE parameter to disable this feature.
+    </para>
+    <para>
+      SCT_validation_status_string() will return the validation status of
+      an SCT as a human-readable string. Call SCT_validate() or
+      SCT_LIST_validate() beforehand in order to set the validation status
+      of an SCT first.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-1e6a3b01d1a998c80a1400b555ed850b"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ct</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>bio</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CTLOG_STORE_new</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SCT_validate</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-c297e2aad271ef1f5a7a31ad6cfdd6b3"><title>HISTORY</title>
+    <para>
+      These functions were added in OpenSSL 1.1.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-e79592ac5a783fcc95bb58221a3f9189"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

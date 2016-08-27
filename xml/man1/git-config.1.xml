@@ -510,6 +510,10 @@ error code. However, in neither case will an error message be issued.</simpara>
 <simpara>The files are read in the order given above, with last value found taking
 precedence over values read earlier.  When multiple values are taken then all
 values of a key from all files will be used.</simpara>
+<simpara>You may override individual configuration parameters when running any git
+command by using the <literal>-c</literal> option. See <citerefentry>
+<refentrytitle>git</refentrytitle><manvolnum>1</manvolnum>
+</citerefentry> for details.</simpara>
 <simpara>All writing options will per default write to the repository specific
 configuration file. Note that this also affects options like <literal>--replace-all</literal>
 and <literal>--unset</literal>. <emphasis role="strong"><emphasis>git config</emphasis> will only ever change one file at a time</emphasis>.</simpara>

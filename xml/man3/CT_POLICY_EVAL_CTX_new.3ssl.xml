@@ -1,0 +1,133 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>CT_POLICY_EVAL_CTX_new.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>CT_POLICY_EVAL_CTX_new, CT_POLICY_EVAL_CTX_free,
+CT_POLICY_EVAL_CTX_get0_cert, CT_POLICY_EVAL_CTX_set1_cert,
+CT_POLICY_EVAL_CTX_get0_issuer, CT_POLICY_EVAL_CTX_set1_issuer,
+CT_POLICY_EVAL_CTX_get0_log_store, CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE</refname>
+<refpurpose>Encapsulates the data required to evaluate whether SCTs meet a Certificate Transparency policy</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ct.h&gt;</synopsis>
+<synopsis>CT_POLICY_EVAL_CTX *CT_POLICY_EVAL_CTX_new(void);
+void CT_POLICY_EVAL_CTX_free(CT_POLICY_EVAL_CTX *ctx);
+X509* CT_POLICY_EVAL_CTX_get0_cert(const CT_POLICY_EVAL_CTX *ctx);
+int CT_POLICY_EVAL_CTX_set1_cert(CT_POLICY_EVAL_CTX *ctx, X509 *cert);
+X509* CT_POLICY_EVAL_CTX_get0_issuer(const CT_POLICY_EVAL_CTX *ctx);
+int CT_POLICY_EVAL_CTX_set1_issuer(CT_POLICY_EVAL_CTX *ctx, X509 *issuer);
+const CTLOG_STORE *CT_POLICY_EVAL_CTX_get0_log_store(const CT_POLICY_EVAL_CTX *ctx);
+void CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE(CT_POLICY_EVAL_CTX *ctx, CTLOG_STORE *log_store);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-b0fc5f1219bab49bc123a49caba33d38"><title>DESCRIPTION</title>
+    <para>
+      A <emphasis role="bold">CT_POLICY_EVAL_CTX</emphasis> is used by
+      functions that evaluate whether Signed Certificate Timestamps (SCTs)
+      fulfil a Certificate Transparency (CT) policy. This policy may be,
+      for example, that at least one valid SCT is available. To determine
+      this, an SCT's signature must be verified. This requires:
+    </para>
+    <para>
+      <variablelist>
+        <varlistentry>
+          <term>* the public key of the log that issued the SCT</term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>* the certificate that the SCT was issued for</term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>* the issuer certificate (if the SCT was issued for a pre-certificate)</term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </para>
+    <para>
+      The above requirements are met using the setters described below.
+    </para>
+    <para>
+      CT_POLICY_EVAL_CTX_new() creates an empty policy evaluation context.
+      This should then be populated using:
+    </para>
+    <para>
+      <variablelist>
+        <varlistentry>
+          <term>* CT_POLICY_EVAL_CTX_set1_cert() to provide the certificate the SCTs were issued for</term>
+          <listitem>
+            <para>
+	      Increments the reference count of the certificate.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>* CT_POLICY_EVAL_CTX_set1_issuer() to provide the issuer certificate</term>
+          <listitem>
+            <para>
+	      Increments the reference count of the certificate.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>* CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE() to provide a list of logs that are trusted as sources of SCTs</term>
+          <listitem>
+            <para>
+	      Holds a pointer to the CTLOG_STORE, so the CTLOG_STORE must
+	      outlive the CT_POLICY_EVAL_CTX.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </para>
+    <para>
+      Each setter has a matching getter for accessing the current value.
+    </para>
+    <para>
+      When no longer required, the <emphasis role="bold">CT_POLICY_EVAL_CTX</emphasis> should be passed to
+      CT_POLICY_EVAL_CTX_free() to delete it.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-d4807a7a1adfc534c15859ea55929ca3"><title>NOTES</title>
+    <para>
+      The issuer certificate only needs to be provided if at least one of
+      the SCTs was issued for a pre-certificate. This will be the case for
+      SCTs embedded in a certificate (i.e. those in an X.509 extension),
+      but may not be the case for SCTs found in the TLS SCT extension or
+      OCSP response.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-7ebeec20b087ba3812dd8b48ef4826f6"><title>RETURN VALUES</title>
+    <para>
+      CT_POLICY_EVAL_CTX_new() will return NULL if malloc fails.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-0517d3ac288a6033b33e54acc7557e9c"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ct</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-1b7d412dd46037738f9dfbee75c7cc92"><title>HISTORY</title>
+    <para>
+      These functions were added in OpenSSL 1.1.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-12d6dbb5a03971c4a7d25ff50679dd1f"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

@@ -1,0 +1,69 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>ct.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>ct</refname>
+<refpurpose>Certificate Transparency</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ct.h&gt;</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-1a247e5eb89b60335d834383d772a2fb"><title>DESCRIPTION</title>
+    <para>
+      This library implements Certificate Transparency (CT) verification
+      for TLS clients, as defined in RFC 6962. This verification can
+      provide some confidence that a certificate has been publicly logged
+      in a set of CT logs.
+    </para>
+    <para>
+      By default, these checks are disabled. They can be enabled using
+      SSL_CTX_ct_enable() or SSL_ct_enable().
+    </para>
+    <para>
+      This library can also be used to parse and examine CT data
+      structures, such as Signed Certificate Timestamps (SCTs), or to read
+      a list of CT logs. There are functions for: - decoding and encoding
+      SCTs in DER and TLS wire format. - printing SCTs. - verifying the
+      authenticity of SCTs. - loading a CT log list from a CONF file.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-5208f437c3aa42099a07096e2e8f993b"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>d2i_SCT_LIST</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CTLOG_STORE_new</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>CTLOG_STORE_get0_log_by_id</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SCT_new</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>SCT_print</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>SCT_verify</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>SCT_validate</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>CT_POLICY_EVAL_CTX</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_CTX_set_ct_validation_callback</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-61b04ad0cdd968a4d86eeab5008a3dd8"><title>HISTORY</title>
+    <para>
+      This library was added in OpenSSL 1.1.0.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-0fbd6a75deadad45f472badf17243809"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>
