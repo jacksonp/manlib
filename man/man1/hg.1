@@ -1936,16 +1936,16 @@ list tracked files:
 .sp
 .nf
 .ft C
-hg files [OPTION]... [PATTERN]...
+hg files [OPTION]... [FILE]...
 .ft P
 .fi
 .sp
 Print files under Mercurial control in the working directory or
-specified revision whose names match the given patterns (excluding
-removed files).
+specified revision for given files (excluding removed files).
+Files can be specified as filenames or filesets.
 .sp
-If no patterns are given to match, this command prints the names
-of all files under Mercurial control in the working directory.
+If no files are given to match, this command prints the names
+of all files under Mercurial control.
 .sp
 Examples:
 .INDENT 0.0

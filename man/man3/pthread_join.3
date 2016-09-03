@@ -55,11 +55,11 @@ copies the exit status of the target thread
 (i.e., the value that the target thread supplied to
 .BR pthread_exit (3))
 into the location pointed to by
-.IR *retval .
+.IR retval .
 If the target thread was canceled, then
 .B PTHREAD_CANCELED
-is placed in
-.IR *retval .
+is placed in the location pointed to by
+.IR retval .
 
 If multiple threads simultaneously try to join with the same thread,
 the results are undefined.
@@ -114,6 +114,9 @@ POSIX.1-2001, POSIX.1-2008.
 After a successful call to
 .BR pthread_join (),
 the caller is guaranteed that the target thread has terminated.
+The caller may then choose to do any clean-up that is required
+after termination of the thread (e.g., freeing memory or other
+resources that were allocated to the target thread).
 
 Joining with a thread that has previously been joined results in
 undefined behavior.
