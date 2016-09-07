@@ -18,12 +18,15 @@
     <para>
       BN_rand() generates a cryptographically strong pseudo-random number
       of <emphasis role="bold">bits</emphasis> in length and stores it in
-      <emphasis role="bold">rnd</emphasis>. The value of <emphasis role="bold">bits</emphasis> must be zero or greater. The <emphasis role="bold">top</emphasis> parameters specifies requirements on the
-      most significant bit of the generated number. If it is <emphasis role="bold">BN_RAND_TOP_ANY</emphasis>, there is no constraint. If it
-      is <emphasis role="bold">BN_RAND_TOP_ONE</emphasis>, the top bit must
-      be one. If it is <emphasis role="bold">BN_RAND_TOP_TWO</emphasis>,
-      the two most significant bits of the number will be set to 1, so that
-      the product of two such random numbers will always have 2*<emphasis role="bold">bits</emphasis> length. If <emphasis role="bold">bottom</emphasis> is <emphasis role="bold">BN_RAND_BOTTOM_ODD</emphasis>, the number will be odd; if
+      <emphasis role="bold">rnd</emphasis>. If <emphasis role="bold">bits</emphasis> is less than zero, or too small to
+      accomodate the requirements specified by the <emphasis role="bold">top</emphasis> and <emphasis role="bold">bottom</emphasis> parameters, an error is returned. The
+      <emphasis role="bold">top</emphasis> parameters specifies
+      requirements on the most significant bit of the generated number. If
+      it is <emphasis role="bold">BN_RAND_TOP_ANY</emphasis>, there is no
+      constraint. If it is <emphasis role="bold">BN_RAND_TOP_ONE</emphasis>, the top bit must be one. If
+      it is <emphasis role="bold">BN_RAND_TOP_TWO</emphasis>, the two most
+      significant bits of the number will be set to 1, so that the product
+      of two such random numbers will always have 2*<emphasis role="bold">bits</emphasis> length. If <emphasis role="bold">bottom</emphasis> is <emphasis role="bold">BN_RAND_BOTTOM_ODD</emphasis>, the number will be odd; if
       it is <emphasis role="bold">BN_RAND_BOTTOM_ANY</emphasis> it can be
       odd or even. If <emphasis role="bold">bits</emphasis> is 1 then
       <emphasis role="bold">top</emphasis> cannot also be <emphasis role="bold">BN_RAND_FLG_TOPTWO</emphasis>.

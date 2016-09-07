@@ -61,8 +61,8 @@ BIGNUM *BN_mpi2bn(unsigned char *s, int len, BIGNUM *ret);</synopsis>
       representation and converts them to a <emphasis role="bold">BIGNUM</emphasis> and stores it in **<emphasis role="bold">bn</emphasis>. If *<emphasis role="bold">bn</emphasis> is
       NULL, a new <emphasis role="bold">BIGNUM</emphasis> is created. If
       <emphasis role="bold">bn</emphasis> is NULL, it only computes the
-      length of valid representation. BN_dec2bn() is the same using the
-      decimal system.
+      length of valid representation. A "negative zero" is converted to
+      zero. BN_dec2bn() is the same using the decimal system.
     </para>
     <para>
       BN_print() and BN_print_fp() write the hexadecimal encoding of
