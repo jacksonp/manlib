@@ -2003,13 +2003,14 @@ size       (1) total program size
            (same as VmSize in \fI/proc/[pid]/status\fP)
 resident   (2) resident set size
            (same as VmRSS in \fI/proc/[pid]/status\fP)
-share      (3) shared pages (i.e., backed by a file)
+shared     (3) number of resident shared pages (i.e., backed by a file)
+           (same as RssFile+RssShmem in \fI/proc/[pid]/status\fP)
 text       (4) text (code)
 .\" (not including libs; broken, includes data segment)
-lib        (5) library (unused in Linux 2.6)
+lib        (5) library (unused since Linux 2.6; always 0)
 data       (6) data + stack
 .\" (including libs; broken, includes library text)
-dt         (7) dirty pages (unused in Linux 2.6)
+dt         (7) dirty pages (unused since Linux 2.6; always 0)
 .fi
 .in
 .TP
@@ -2040,19 +2041,23 @@ NStgid: 17248
 NSpid:  17248
 NSpgid: 17248
 NSsid:  17200
-VmPeak:     9136 kB
-VmSize:     7896 kB
-VmLck:         0 kB
-VmPin:         0 kB
-VmHWM:      7572 kB
-VmRSS:      6316 kB
-VmData:     5224 kB
-VmStk:        88 kB
-VmExe:       572 kB
-VmLib:      1708 kB
-VmPMD:         4 kB
-VmPTE:        20 kB
-VmSwap:        0 kB
+VmPeak:	  131168 kB
+VmSize:	  131168 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	   13484 kB
+VmRSS:	   13484 kB
+RssAnon:	   10264 kB
+RssFile:	    3220 kB
+RssShmem:	       0 kB
+VmData:	   10332 kB
+VmStk:	     136 kB
+VmExe:	     992 kB
+VmLib:	    2104 kB
+VmPTE:	      76 kB
+VmPMD:	      12 kB
+VmSwap:	       0 kB
+HugetlbPages:          0 kB		# 4.4
 Threads:        1
 SigQ:   0/3067
 SigPnd: 0000000000000000
@@ -2180,6 +2185,27 @@ Peak resident set size ("high water mark").
 .IP *
 .IR VmRSS :
 Resident set size.
+Note that the value here is the sum of
+.IR RssAnon ,
+.IR RssFile ,
+and
+.IR RssShmem .
+.IP *
+.IR RssAnon :
+Size of resident anonymous memory.
+.\" commit bf9683d6990589390b5178dafe8fd06808869293
+(since Linux 4.5).
+.IP *
+.IR RssFile :
+Size of resident file mappings.
+.\" commit bf9683d6990589390b5178dafe8fd06808869293
+(since Linux 4.5).
+.IP *
+.IR RssShmem :
+Size of resident shared memory (inludes System V shared memory,
+mappings from tmpfs, and shared anonymous mappings).
+.\" commit bf9683d6990589390b5178dafe8fd06808869293
+(since Linux 4.5).
 .IP *
 .IR VmData ", " VmStk ", " VmExe :
 Size of data, stack, and text segments.
@@ -2198,6 +2224,11 @@ Size of second-level page tables (since Linux 4.0).
 .\" commit b084d4353ff99d824d3bc5a5c2c22c70b1fba722
 Swapped-out virtual memory size by anonymous private pages;
 shmem swap usage is not included (since Linux 2.6.34).
+.IP *
+.IR HugetlbPages :
+Size of hugetlb memory portions.
+.\" commit 5d317b2b6536592a9b51fe65faed43d65ca9158e
+(since Linux 4.4).
 .IP *
 .IR Threads :
 Number of threads in process containing this thread.

@@ -118,7 +118,7 @@ objects from the source repository into a pack in the cloned repository.</simpar
 </varlistentry>
 <varlistentry>
 <term>
---reference &lt;repository&gt;
+--reference[-if-able] &lt;repository&gt;
 </term>
 <listitem>
 <simpara>
@@ -128,6 +128,9 @@ objects from the source repository into a pack in the cloned repository.</simpar
         an already existing repository as an alternate will
         require fewer objects to be copied from the repository
         being cloned, reducing network and local storage costs.
+        When using the <literal>--reference-if-able</literal>, a non existing
+        directory is skipped with a warning instead of aborting
+        the clone.
 </simpara>
 <simpara><emphasis role="strong">NOTE</emphasis>: see the NOTE for the <literal>--shared</literal> option, and also the
 <literal>--dissociate</literal> option.</simpara>

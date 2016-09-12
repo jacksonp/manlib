@@ -121,7 +121,7 @@ command-line parser.</simpara>
 </term>
 <listitem>
 <simpara>
-        Mark which side of a symmetric diff a commit is reachable
+        Mark which side of a symmetric difference a commit is reachable
         from.  Commits from the left side are prefixed with a <literal>&lt;</literal>
         symbol and those from the right with a <literal>&gt;</literal> symbol.
 </simpara>

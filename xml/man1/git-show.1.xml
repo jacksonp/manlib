@@ -622,7 +622,7 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 </listitem>
 <listitem>
 <simpara>
-<emphasis>%m</emphasis>: left, right or boundary mark
+<emphasis>%m</emphasis>: left (<literal>&lt;</literal>), right (<literal>&gt;</literal>) or boundary (<literal>-</literal>) mark
 </simpara>
 </listitem>
 <listitem>

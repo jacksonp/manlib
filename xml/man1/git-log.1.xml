@@ -649,7 +649,7 @@ excluded from the output.</simpara>
 </term>
 <listitem>
 <simpara>
-        List only commits on the respective side of a symmetric range,
+        List only commits on the respective side of a symmetric difference,
         i.e. only those which would be marked <literal>&lt;</literal> resp. <literal>&gt;</literal> by
         <literal>--left-right</literal>.
 </simpara>
@@ -1507,7 +1507,7 @@ the time zone is omitted when the local time zone is used
 </term>
 <listitem>
 <simpara>
-        Mark which side of a symmetric diff a commit is reachable from.
+        Mark which side of a symmetric difference a commit is reachable from.
         Commits from the left side are prefixed with <literal>&lt;</literal> and those from
         the right with <literal>&gt;</literal>.  If combined with <literal>--boundary</literal>, those
         commits are prefixed with <literal>-</literal>.
@@ -2038,7 +2038,7 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 </listitem>
 <listitem>
 <simpara>
-<emphasis>%m</emphasis>: left, right or boundary mark
+<emphasis>%m</emphasis>: left (<literal>&lt;</literal>), right (<literal>&gt;</literal>) or boundary (<literal>-</literal>) mark
 </simpara>
 </listitem>
 <listitem>

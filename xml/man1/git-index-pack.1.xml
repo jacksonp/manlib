@@ -164,6 +164,16 @@ objects/pack/ directory of a Git repository.</simpara>
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+--max-input-size=&lt;size&gt;
+</term>
+<listitem>
+<simpara>
+        Die, if the pack is larger than &lt;size&gt;.
+</simpara>
+</listitem>
+</varlistentry>
 </variablelist>
 </refsect1>
 <refsect1 id="_note">

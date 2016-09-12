@@ -36,6 +36,10 @@ post-update hooks found in the Documentation/howto directory.</simpara>
 <simpara><emphasis>git-receive-pack</emphasis> honours the receive.denyNonFastForwards config
 option, which tells it if updates to a ref should be denied if they
 are not fast-forwards.</simpara>
+<simpara>A number of other receive.* config options are available to tweak
+its behavior, see <citerefentry>
+<refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
+</citerefentry>.</simpara>
 </refsect1>
 <refsect1 id="_options">
 <title>OPTIONS</title>

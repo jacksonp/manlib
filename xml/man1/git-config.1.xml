@@ -6351,6 +6351,19 @@ receive.unpackLimit
 </varlistentry>
 <varlistentry>
 <term>
+receive.maxInputSize
+</term>
+<listitem>
+<simpara>
+        If the size of the incoming pack stream is larger than this
+        limit, then git-receive-pack will error out, instead of
+        accepting the pack file. If not set or set to 0, then the size
+        is unlimited.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 receive.denyDeletes
 </term>
 <listitem>
@@ -7173,6 +7186,26 @@ submodule.fetchJobs
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+submodule.alternateLocation
+</term>
+<listitem>
+<simpara>
+        Specifies how the submodules obtain alternates when submodules are
+        cloned. Possible values are <literal>no</literal>, <literal>superproject</literal>.
+        By default <literal>no</literal> is assumed, which doesn&#8217;t add references. When the
+        value is set to <literal>superproject</literal> the submodule to be cloned computes
+        its alternates location relative to the superprojects alternate.
+</simpara>
+</listitem>
+</varlistentry>
+</variablelist>
+<simpara>submodule.alternateErrorStrategy
+        Specifies how to treat errors with the alternates for a submodule
+        as computed via <literal>submodule.alternateLocation</literal>. Possible values are
+        <literal>ignore</literal>, <literal>info</literal>, <literal>die</literal>. Default is <literal>die</literal>.</simpara>
+<variablelist>
 <varlistentry>
 <term>
 tag.forceSignAnnotated
