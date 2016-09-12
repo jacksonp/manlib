@@ -118,7 +118,7 @@ rsync --checksum sources/cronie/man/*.8 man/man8/"
 
   "cups": {
     "type": "git",
-    "url": "http://www.cups.org/cups.git",
+    "url": "https://github.com/apple/cups.git",
     "cmd": "(cd sources/cups; autoconf; ./configure; make);
 find sources/cups/man -name '*.gz' -exec bash -c '(base=$(basename -s .gz {}); manNum=${base##*.}; zcat {} > man/man$manNum/$base)' \\;"
   },
