@@ -340,7 +340,7 @@ process during the measured interval.
 If one is interested only in inspecting the selected mapping types,
 then the value 2 or 3 can be used instead of 1.
 
-A further value can be written to affect a different bit:
+Further values can be written to affect different properties:
 .RS
 .TP
 4 (since Linux 3.11)
@@ -352,6 +352,11 @@ by the check-point restore system to discover which pages of a process
 have been dirtied since the file
 .IR /proc/[pid]/clear_refs
 was written to.
+.TP
+5 (since Linux 4.0)
+.\" Internally: CLEAR_REFS_MM_HIWATER_RSS
+Reset the peak resident set size ("high water mark") to the process's
+current resident set size value.
 .RE
 .IP
 Writing any value to
@@ -1574,7 +1579,7 @@ for the mapping in
 .IR /proc/[pid]/maps .
 The remaining lines show the size of the mapping,
 the amount of the mapping that is currently resident in RAM ("Rss"),
-the process' proportional share of this mapping ("Pss"),
+the process's proportional share of this mapping ("Pss"),
 the number of clean and dirty shared pages in the mapping,
 and the number of clean and dirty private pages in the mapping.
 "Referenced" indicates the amount of memory currently marked as
@@ -3940,9 +3945,10 @@ a hard link can be created to a target file
 only if one of the following conditions is true:
 .RS
 .IP * 3
-The caller has the
+The calling process has the
 .BR CAP_FOWNER
-capability.
+capability in its user namespace
+and the file UID has a mapping in the namespace.
 .IP *
 The filesystem UID of the process creating the link matches
 the owner (UID) of the target file

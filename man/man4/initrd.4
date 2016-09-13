@@ -36,7 +36,6 @@
 .SH NAME
 initrd \- boot loader initialized RAM disk
 .SH CONFIGURATION
-The
 .I /dev/initrd
 is a read-only block device assigned
 major number 1 and minor number 250.
@@ -48,6 +47,7 @@ with mode 0400 (read access by root only).
 If the Linux system does not have
 .I /dev/initrd
 already created, it can be created with the following commands:
+
 .nf
 \fB
         mknod \-m 400 /dev/initrd b 1 250

@@ -58,11 +58,14 @@ starting with a line of the form:
 For details of the latter case, see "Interpreter scripts" below.
 
 \fIargv\fP is an array of argument strings passed to the new program.
-By convention, the first of these strings should contain the filename
-associated with the file being executed.
+By convention, the first of these strings (i.e.,
+.IR argv[0] )
+should contain the filename associated with the file being executed.
 \fIenvp\fP is an array of strings, conventionally of the form
 \fBkey=value\fP, which are passed as environment to the new program.
-Both \fIargv\fP and \fIenvp\fP must be terminated by a null pointer.
+The \fIargv\fP and \fIenvp\fP arrays must each include a null pointer
+at the end of the array.
+
 The argument vector and environment can be accessed by the
 called program's main function, when it is defined as:
 
@@ -72,12 +75,18 @@ int main(int argc, char *argv[], char *envp[])
 .fi
 .in
 
-.BR execve ()
-does not return on success, and the text, data, bss, and
-stack of the calling process are overwritten by that of the program
-loaded.
+Note, however, that the use of a third argument to the main function
+is not specified in POSIX.1;
+according to POSIX.1,
+the environment should be accessed via the external variable
+.BR environ (7).
 
-If the current program is being ptraced, a \fBSIGTRAP\fP is sent to it
+.BR execve ()
+does not return on success, and the text, inititialized data,
+uninitialized data (bss), and stack of the calling process are overwritten
+according to the contents of the newly loaded program.
+
+If the current program is being ptraced, a \fBSIGTRAP\fP signal is sent to it
 after a successful
 .BR execve ().
 

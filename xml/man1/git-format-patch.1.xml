@@ -749,6 +749,16 @@ of a delete/create pair.</simpara>
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+--line-prefix=&lt;prefix&gt;
+</term>
+<listitem>
+<simpara>
+        Prepend an additional prefix to every line of output.
+</simpara>
+</listitem>
+</varlistentry>
 </variablelist>
 <simpara>For more detailed explanation on these common options, see also
 <citerefentry>

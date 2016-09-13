@@ -3140,12 +3140,13 @@ diff.submodule
 <listitem>
 <simpara>
         Specify the format in which differences in submodules are
-        shown.  The "log" format lists the commits in the range like
-        <citerefentry>
+        shown.  The "short" format just shows the names of the commits
+        at the beginning and end of the range. The "log" format lists
+        the commits in the range like <citerefentry>
 <refentrytitle>git-submodule</refentrytitle><manvolnum>1</manvolnum>
-</citerefentry> <literal>summary</literal> does.  The "short" format
-        format just shows the names of the commits at the beginning
-        and end of the range.  Defaults to short.
+</citerefentry> <literal>summary</literal>
+        does. The "diff" format shows an inline diff of the changed
+        contents of the submodule. Defaults to "short".
 </simpara>
 </listitem>
 </varlistentry>

@@ -40,14 +40,13 @@ setresuid, setresgid \- set real, effective and saved user or group ID
 sets the real user ID, the effective user ID, and the
 saved set-user-ID of the calling process.
 
-Unprivileged user processes
-may change the real UID,
+An unprivileged process may change its real UID,
 effective UID, and saved set-user-ID, each to one of:
 the current real UID, the current effective UID or the
 current saved set-user-ID.
 
-Privileged processes (on Linux, those having the \fBCAP_SETUID\fP capability)
-may set the real UID, effective UID, and
+A privileged process (on Linux, one having the \fBCAP_SETUID\fP capability)
+may set its real UID, effective UID, and
 saved set-user-ID to arbitrary values.
 
 If one of the arguments equals \-1, the corresponding value is not changed.
@@ -103,8 +102,17 @@ One or more of the target user or group IDs
 is not valid in this user namespace.
 .TP
 .B EPERM
-The calling process is not privileged (did not have the \fBCAP_SETUID\fP
-capability) and tried to change the IDs to values that are not permitted.
+The calling process is not privileged (did not have the necessary
+capability in its user namespace)
+and tried to change the IDs to values that are not permitted.
+For
+.BR setresuid (),
+the necessary capability is
+.BR CAP_SETUID ;
+for
+.BR setresgid (),
+it is
+.BR CAP_SETGID .
 .SH VERSIONS
 These calls are available under Linux since Linux 2.1.44.
 .SH CONFORMING TO

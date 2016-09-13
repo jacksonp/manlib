@@ -2528,15 +2528,18 @@ any of those replacements occurred.</simpara>
 </term>
 <listitem>
 <simpara>
-        Specify how differences in submodules are shown.  When <literal>--submodule</literal>
-        or <literal>--submodule=log</literal> is given, the <emphasis>log</emphasis> format is used.  This format lists
-        the commits in the range like <citerefentry>
+        Specify how differences in submodules are shown.  When specifying
+        <literal>--submodule=short</literal> the <emphasis>short</emphasis> format is used.  This format just
+        shows the names of the commits at the beginning and end of the range.
+        When <literal>--submodule</literal> or <literal>--submodule=log</literal> is specified, the <emphasis>log</emphasis>
+        format is used.  This format lists the commits in the range like
+        <citerefentry>
 <refentrytitle>git-submodule</refentrytitle><manvolnum>1</manvolnum>
-</citerefentry> <literal>summary</literal> does.
-        Omitting the <literal>--submodule</literal> option or specifying <literal>--submodule=short</literal>,
-        uses the <emphasis>short</emphasis> format. This format just shows the names of the commits
-        at the beginning and end of the range.  Can be tweaked via the
-        <literal>diff.submodule</literal> configuration variable.
+</citerefentry> <literal>summary</literal> does.  When <literal>--submodule=diff</literal>
+        is specified, the <emphasis>diff</emphasis> format is used.  This format shows an
+        inline diff of the changes in the submodule contents between the
+        commit range.  Defaults to <literal>diff.submodule</literal> or the <emphasis>short</emphasis> format
+        if the config option is unset.
 </simpara>
 </listitem>
 </varlistentry>
@@ -3187,6 +3190,16 @@ information.</simpara>
 <listitem>
 <simpara>
         Do not show any source or destination prefix.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--line-prefix=&lt;prefix&gt;
+</term>
+<listitem>
+<simpara>
+        Prepend an additional prefix to every line of output.
 </simpara>
 </listitem>
 </varlistentry>

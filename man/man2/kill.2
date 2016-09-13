@@ -86,14 +86,14 @@ but existence and permission checks are still performed;
 this can be used to check for the existence of a process ID or
 process group ID that the caller is permitted to signal.
 
-For a process to have permission to send a signal
+For a process to have permission to send a signal,
 it must either be privileged (under Linux: have the
 .B CAP_KILL
-capability), or the real or effective
-user ID of the sending process must equal the real or
-saved set-user-ID of the target process.
+capability in the user namespace of the target process),
+or the real or effective user ID of the sending process must equal
+the real or saved set-user-ID of the target process.
 In the case of
-.B SIGCONT
+.BR SIGCONT ,
 it suffices when the sending and receiving
 processes belong to the same session.
 (Historically, the rules were different; see NOTES.)
@@ -112,9 +112,9 @@ The process does not have permission to send the signal
 to any of the target processes.
 .TP
 .B ESRCH
-The pid or process group does not exist.
+The process or process group does not exist.
 Note that an existing process might be a zombie,
-a process which already committed termination, but
+a process that has terminated execution, but
 has not yet been
 .BR wait (2)ed
 for.
