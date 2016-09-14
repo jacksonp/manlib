@@ -133,7 +133,7 @@ Run commands in the background, killing the task after <emphasis>NUM</emphasis> 
 <listitem>
 <simpara>
 Privilege escalation method to use (default=sudo),
-valid choices: [ sudo | su | pbrun | pfexec | runas | doas | dzdo ]
+valid choices: [ sudo | su | pbrun | pfexec | doas | dzdo | ksu ]
 </simpara>
 </listitem>
 </varlistentry>
