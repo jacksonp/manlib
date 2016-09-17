@@ -13,6 +13,8 @@
 [<emphasis role="bold">-crypt</emphasis>]
 [<emphasis role="bold">-1</emphasis>]
 [<emphasis role="bold">-apr1</emphasis>]
+[<emphasis role="bold">-5</emphasis>]
+[<emphasis role="bold">-6</emphasis>]
 [<emphasis role="bold">-salt</emphasis> <emphasis role="italic">string</emphasis>]
 [<emphasis role="bold">-in</emphasis> <emphasis role="italic">file</emphasis>]
 [<emphasis role="bold">-stdin</emphasis>]
@@ -66,6 +68,21 @@
             <para>
 	      Use the <emphasis role="bold">apr1</emphasis> algorithm
 	      (Apache variant of the BSD algorithm).
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-5</emphasis></term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-6</emphasis></term>
+          <listitem>
+            <para>
+	      Use the <emphasis role="bold">SHA256</emphasis> / <emphasis role="bold">SHA512</emphasis> based algorithms defined by
+	      Ulrich Drepper. See <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.akkadia.org/drepper/SHA-crypt.txt">https://www.akkadia.org/drepper/SHA-crypt.txt</link>.
             </para>
           </listitem>
         </varlistentry>

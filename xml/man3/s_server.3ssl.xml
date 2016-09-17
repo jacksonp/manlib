@@ -114,7 +114,10 @@
   <refsection xml:id="ID-0a147eb4ebc7e0be5fae9d8d3cdfb88a"><title>OPTIONS</title>
     <para>
       In addition to the options below the <emphasis role="bold">s_server</emphasis> utility also supports the common and
-      server only options documented in the SSL_CONF_cmd(3) manual page.
+      server only options documented in the in the "Supported Command Line
+      Commands" section of the <citerefentry>
+      <refentrytitle>SSL_CONF_cmd</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> manual page.
     </para>
     <para>
       <variablelist>
@@ -888,8 +891,10 @@
   </refsection>
   <refsection xml:id="ID-92ffe3b320e5586ece8072c3dc2299e3"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>sess_id</refentrytitle>
-      <manvolnum>1</manvolnum> </citerefentry>, <citerefentry>
+      <citerefentry> <refentrytitle>SSL_CONF_cmd</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>sess_id</refentrytitle> <manvolnum>1</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>s_client</refentrytitle> <manvolnum>1</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>ciphers</refentrytitle> <manvolnum>1</manvolnum>

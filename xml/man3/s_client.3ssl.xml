@@ -112,8 +112,10 @@
   <refsection xml:id="ID-148db1b8dd10f62f8ab7f28037da43bd"><title>OPTIONS</title>
     <para>
       In addition to the options below the <emphasis role="bold">s_client</emphasis> utility also supports the common and
-      client only options documented in the in the SSL_CONF_cmd(3) manual
-      page.
+      client only options documented in the in the "Supported Command Line
+      Commands" section of the <citerefentry>
+      <refentrytitle>SSL_CONF_cmd</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> manual page.
     </para>
     <para>
       <variablelist>
@@ -866,8 +868,10 @@ DANE TLSA 2 1 1 ...ee12d2cc90180517616e8a18 matched TA certificate at depth 1
   </refsection>
   <refsection xml:id="ID-67f0db5d752f22ed25be79bc9c525fe2"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>sess_id</refentrytitle>
-      <manvolnum>1</manvolnum> </citerefentry>, <citerefentry>
+      <citerefentry> <refentrytitle>SSL_CONF_cmd</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>sess_id</refentrytitle> <manvolnum>1</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>s_server</refentrytitle> <manvolnum>1</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>ciphers</refentrytitle> <manvolnum>1</manvolnum>

@@ -10,6 +10,7 @@
   <refsynopsisdiv>
 <synopsis><emphasis role="bold">openssl</emphasis>
 <emphasis role="bold">rehash</emphasis>
+<emphasis role="bold">[-h]</emphasis>
 <emphasis role="bold">[-help]</emphasis>
 <emphasis role="bold">[-old]</emphasis>
 <emphasis role="bold">[-n]</emphasis>
@@ -87,7 +88,7 @@ $OPENSSL crl -hash -fingerprint -noout -in FILENAME</screen>
     <para>
       <variablelist>
         <varlistentry>
-          <term><emphasis role="bold">-help</emphasis></term>
+          <term><emphasis role="bold">-help</emphasis> <emphasis role="bold">-h</emphasis></term>
           <listitem>
             <para>
 	      Display a brief usage message.
