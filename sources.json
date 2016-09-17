@@ -65,7 +65,7 @@ rsync --checksum sources/atop/man/*.8 man/man8/;"
   "bash": {
     "type": "git",
     "url": "git://git.savannah.gnu.org/bash.git",
-    "tag": "bash-4.3",
+    "tag": "bash-4.4",
     "cmd": "(cd sources/bash/; ./configure -q; cd doc; make text);
 rsync --checksum sources/bash/doc/*.1 man/man1/"
   },
