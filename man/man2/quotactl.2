@@ -30,22 +30,22 @@ quotactl \- manipulate disk quotas
 .SH SYNOPSIS
 .nf
 .B #include <sys/quota.h>
-.B #include <xfs/xqm.h>
+.B #include <xfs/xqm.h> /* for XFS quotas */
 .LP
 .BI "int quotactl(int " cmd ", const char *" special ", int " id \
 ", caddr_t " addr );
 .fi
 .SH DESCRIPTION
 .LP
-The quota system can be used to set per-user and per-group limits on the
-amount of disk space used on a filesystem.
+The quota system can be used to set per-user, per-group, and per-project limits
+on the amount of disk space used on a filesystem.
 For each user and/or group,
 a soft limit and a hard limit can be set for each filesystem.
 The hard limit can't be exceeded.
 The soft limit can be exceeded, but warnings will ensue.
-Moreover, the user can't exceed the soft limit for more than one week
-(by default) at a time;
-after this time, the soft limit counts as a hard limit.
+Moreover, the user can't exceed the soft limit for more than grace period
+duration (one week by default) at a time;
+after this, the soft limit counts as a hard limit.
 
 The
 .BR quotactl ()
@@ -65,9 +65,11 @@ The
 value is either
 .BR USRQUOTA ,
 for user quotas,
-or
 .BR GRPQUOTA ,
-for group quotas.
+for group quotas, or (since Linux 4.1)
+.\" 847aac644e92e5624f2c153bab409bf713d5ff9a
+.BR PRJQUOTA ,
+for project quotas.
 The
 .I subcmd
 value is described below.
@@ -283,16 +285,21 @@ struct dqinfo {         /* Defined since kernel 2.4.22 */
 
 /* Quota format QFMT_VFS_OLD */
 
-#define V1_DQF_RSQUASH	1   /* Root squash enabled */
+#define DQF_ROOT_SQUASH (1 << 0)    /* Root squash enabled */
+                /* Before Linux v4.0, this had been defined
+                   privately as V1_DQF_RSQUASH */
 
-/* Other quota formats have no dqi_flags bits defined */
+/* Quota format QFMT_VFS_V0 / QFMT_VFS_V1 */
+
+#define DQF_SYS_FILE    (1 << 16)   /* Quota stored in
+                                       a system file */
 
 /* Flags in dqi_valid that indicate which fields in
    dqinfo structure are valid. */
 
-# define IIF_BGRACE	1
-# define IIF_IGRACE	2
-# define IIF_FLAGS	4
+# define IIF_BGRACE     1
+# define IIF_IGRACE     2
+# define IIF_FLAGS      4
 # define IIF_ALL        (IIF_BGRACE | IIF_IGRACE | IIF_FLAGS)
 
 .fi
@@ -384,18 +391,29 @@ Therefore, XFS expects
 .I addr
 to be a pointer to an
 .I "unsigned int"
-that contains either the flags
-.B XFS_QUOTA_UDQ_ACCT
-and/or
-.B XFS_QUOTA_UDQ_ENFD
-(for user quota), or
-.B XFS_QUOTA_GDQ_ACCT
-and/or
-.B XFS_QUOTA_GDQ_ENFD
-(for group quota), as defined in
-.IR <xfs/xqm.h> .
+that contains a combination of the following flags (defined in
+.IR <xfs/xqm.h> ):
+
+.nf
+.in +4n
+#define XFS_QUOTA_UDQ_ACCT (1<<0) /* User quota accounting */
+#define XFS_QUOTA_UDQ_ENFD (1<<1) /* User quota limits
+                                     enforcement */
+#define XFS_QUOTA_GDQ_ACCT (1<<2) /* Group quota accounting */
+#define XFS_QUOTA_GDQ_ENFD (1<<3) /* Group quota limits
+                                     enforcement */
+#define XFS_QUOTA_PDQ_ACCT (1<<4) /* Project quota
+                                     accounting */
+#define XFS_QUOTA_PDQ_ENFD (1<<5) /* Project quota limits
+                                     enforcement */
+.in
+.fi
+
 This operation requires privilege
 .RB ( CAP_SYS_ADMIN ).
+The
+.I id
+argument is ignored.
 .TP
 .B Q_XQUOTAOFF
 Turn off quotas for an XFS filesystem.
@@ -404,9 +422,14 @@ As with
 XFS filesystems expect a pointer to an
 .I "unsigned int"
 that specifies whether quota accounting and/or limit enforcement need
-to be turned off.
+to be turned off (using the same flags as for
+.B Q_XQUOTAON
+subcommand).
 This operation requires privilege
 .RB ( CAP_SYS_ADMIN ).
+The
+.I id
+argument is ignored.
 .TP
 .B Q_XGETQUOTA
 Get disk quota limits and current usage for user
@@ -415,8 +438,60 @@ The
 .I addr
 argument is a pointer to an
 .I fs_disk_quota
-structure (defined in
-.IR <xfs/xqm.h> ).
+structure, which is defined in
+.I <xfs/xqm.h>
+as follows:
+
+.nf
+.in +4n
+/* All the blk units are in BBs (Basic Blocks) of
+   512 bytes. */
+
+#define FS_DQUOT_VERSION   1  /* fs_disk_quota.d_version */
+
+#define XFS_USER_QUOTA     (1<<0)  /* User quota type */
+#define XFS_PROJ_QUOTA     (1<<1)  /* Project quota type */
+#define XFS_GROUP_QUOTA    (1<<2)  /* Group quota type */
+
+struct fs_disk_quota {
+    int8_t   d_version;    /* Version of this structure */
+    int8_t   d_flags;      /* XFS_{USER,PROJ,GROUP}_QUOTA */
+    uint16_t d_fieldmask;  /* Field specifier */
+    uint32_t d_id;         /* User, project, or group ID */
+    uint64_t d_blk_hardlimit; /* Absolute limit on
+                                 disk blocks */
+    uint64_t d_blk_softlimit; /* Preferred limit on
+                                 disk blocks */
+    uint64_t d_ino_hardlimit; /* Maximum # allocated
+                                 inodes */
+    uint64_t d_ino_softlimit; /* Preferred inode limit */
+    uint64_t d_bcount;     /* # disk blocks owned by
+                              the user */
+    uint64_t d_icount;     /* # inodes owned by the user */
+    int32_t  d_itimer;     /* Zero if within inode limits */
+                           /* If not, we refuse service */
+    int32_t  d_btimer;     /* Similar to above; for
+                              disk blocks */
+    uint16_t d_iwarns;     /* # warnings issued with
+                              respect to # of inodes */
+    uint16_t d_bwarns;     /* # warnings issued with
+                              respect to disk blocks */
+    int32_t  d_padding2;   /* Padding - for future use */
+    uint64_t d_rtb_hardlimit; /* Absolute limit on realtime
+                                 (RT) disk blocks */
+    uint64_t d_rtb_softlimit; /* Preferred limit on RT
+                                 disk blocks */
+    uint64_t d_rtbcount;   /* # realtime blocks owned */
+    int32_t  d_rtbtimer;   /* Similar to above; for RT
+                              disk blocks */
+    uint16_t d_rtbwarns;   /* # warnings issued with
+                              respect to RT disk blocks */
+    int16_t  d_padding3;   /* Padding - for future use */
+    char     d_padding4[8];/* Yet more padding */
+};
+.in
+.fi
+
 Unprivileged users may retrieve only their own quotas;
 a privileged user
 .RB ( CAP_SYS_ADMIN )
@@ -426,9 +501,22 @@ may retrieve the quotas of any user.
 .\" commit 8b37524962b9c54423374717786198f5c0820a28
 This operation is the same as
 .BR Q_XGETQUOTA ,
-but it returns quota information for the next ID greater than or equal to
+but it returns (in the
+.I fs_disk_quota
+structure pointed by
+.IR addr )
+quota information for the next ID greater than or equal to
 .IR id
 that has a quota set.
+Note that since
+.I fs_disk_quota
+already has
+.I q_id
+field, no separate structure type is needed (in contrast with
+.B Q_GETQUOTA
+and
+.B Q_GETNEXTQUOTA
+commands)
 .TP
 .B Q_XSETQLIM
 Set disk quota limits for user
@@ -437,22 +525,137 @@ The
 .I addr
 argument is a pointer to an
 .I fs_disk_quota
-structure (defined in
-.IR <xfs/xqm.h> ).
+structure.
 This operation requires privilege
 .RB ( CAP_SYS_ADMIN ).
 .TP
 .B Q_XGETQSTAT
-Returns an
+Returns (in a buffer pointed by
+.IR addr )
+an
 .I fs_quota_stat
 structure containing XFS filesystem-specific quota information.
 This is useful for finding out how much space is used to store quota
-information, and also to get quotaon/off status of a given local XFS
+information, and also to get the quota on/off status of a given local XFS
 filesystem.
+The
+.I fs_quota_stat
+structure itself is defined as follows:
+
+.nf
+.in +4n
+#define FS_QSTAT_VERSION 1  /* fs_quota_stat.qs_version */
+
+struct fs_qfilestat {
+    uint64_t qfs_ino;       /* Inode number */
+    uint64_t qfs_nblks;     /* Number of BBs
+                               512-byte-blocks */
+    uint32_t qfs_nextents;  /* Number of extents */
+};
+
+struct fs_quota_stat {
+    int8_t   qs_version;    /* Version number for
+                               future changes */
+    uint16_t qs_flags;      /* XFS_QUOTA_{U,P,G}DQ_{ACCT,ENFD} */
+    int8_t   qs_pad;        /* Unused */
+    struct fs_qfilestat  qs_uquota;   /* User quota storage
+                                         information */
+    struct fs_qfilestat  qs_gquota;   /* Group quota storage
+                                         information */
+    uint32_t qs_incoredqs;    /* Number of dquots in core */
+    int32_t  qs_btimelimit;   /* Limit for blocks timer */
+    int32_t  qs_itimelimit;   /* Limit for inodes timer */
+    int32_t  qs_rtbtimelimit; /* Limit for RT blocks timer */
+    uint16_t qs_bwarnlimit;   /* Limit for # of warnings */
+    uint16_t qs_iwarnlimit;   /* Limit for # of warnings */
+};
+.in
+.fi
+
+The
+.I id
+argument is ignored.
+.TP
+.B Q_XGETQSTATV
+Returns (in a buffer pointed by
+.IR addr )
+an
+.I fs_quota_statv
+structure containing XFS filesystem-specific quota information.
+This version of the command uses a structure with proper versioning support,
+along with appropriate layout (all fields are naturally aligned) and
+padding to avoiding special compat handling;
+it also provides the ability to get statistics regarding
+the project quota file.
+The
+.I fs_quota_statv
+structure itself is defined as follows:
+
+.nf
+.in +4n
+#define FS_QSTATV_VERSION1 1 /* fs_quota_statv.qs_version */
+
+struct fs_qfilestatv {
+    uint64_t qfs_ino;         /* Inode number */
+    uint64_t qfs_nblks;       /* Number of BBs
+                                 512-byte-blocks */
+    uint32_t qfs_nextents;    /* Number of extents */
+    uint32_t qfs_pad;         /* Pad for 8-byte alignment */
+};
+
+struct fs_quota_statv {
+    int8_t   qs_version;      /* Version for future
+                                 changes */
+    uint8_t  qs_pad1;         /* Pad for 16-bit alignment */
+    uint16_t qs_flags;        /* XFS_QUOTA_.* flags */
+    uint32_t qs_incoredqs;    /* Number of dquots incore */
+    struct fs_qfilestatv  qs_uquota;  /* User quota
+                                         information */
+    struct fs_qfilestatv  qs_gquota;  /* Group quota
+                                         information */
+    struct fs_qfilestatv  qs_pquota;  /* Project quota
+                                         information */
+    int32_t  qs_btimelimit;   /* Limit for blocks timer */
+    int32_t  qs_itimelimit;   /* Limit for inodes timer */
+    int32_t  qs_rtbtimelimit; /* Limit for RT blocks timer */
+    uint16_t qs_bwarnlimit;   /* Limit for # of warnings */
+    uint16_t qs_iwarnlimit;   /* Limit for # of warnings */
+    uint64_t qs_pad2[8];      /* For future proofing */
+};
+.in
+.fi
+
+The
+.I qs_version
+field of the structure should be filled with the version of the structure
+supported by the callee (for now, only
+.I FS_QSTAT_VERSION1
+is supported).
+The kernel will fill the structure in accordance with
+version provided.
+The
+.I id
+argument is ignored.
 .TP
 .B Q_XQUOTARM
-Free the disk space taken by disk quotas.
+Free the disk space taken by disk quotas. The
+.I addr
+argument should be a pointer to an
+.I "unsigned int"
+value containing flags (the same as in
+.I d_flags
+field of
+.I fs_disk_quota
+structure) which identify what types of quota should be removed
+(note that the quota type passed in the
+.I cmd
+argument is ignored, but should remain valid in order to pass preliminary
+quotactl syscall handler checks).
+
 Quotas must have already been turned off.
+The
+.I id
+argument is ignored.
 .PP
 There is no command equivalent to
 .B Q_SYNC
@@ -552,6 +755,34 @@ or
 but there is no ID greater than or equal to
 .IR id
 that has an active quota.
+.SH NOTES
+Instead of
+.I <xfs/xqm.h>
+one can use
+.IR <linux/dqblk_xfs.h> ,
+taking into account that there are several naming discrepancies:
+.IP \(bu 3
+Quota enabling flags (of format
+.BR XFS_QUOTA_[UGP]DQ_{ACCT,ENFD} )
+are defined without a leading "X", as
+.BR FS_QUOTA_[UGP]DQ_{ACCT,ENFD} .
+.IP \(bu
+The same is true for
+.B XFS_{USER,GROUP,PROJ}_QUOTA
+quota type flags, which are defined as
+.BR FS_{USER,GROUP,PROJ}_QUOTA .
+.IP \(bu
+The
+.I dqblk_xfs.h
+header file defines its own
+.BR XQM_USRQUOTA ,
+.BR XQM_GRPQUOTA ,
+and
+.B XQM_PRJQUOTA
+constants for the available quota types, but their values are the same as for
+constants without the
+.B XQM_
+prefix.
 .SH SEE ALSO
 .BR quota (1),
 .BR getrlimit (2),

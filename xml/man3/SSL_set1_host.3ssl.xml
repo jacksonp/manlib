@@ -12,7 +12,7 @@
 <synopsis>int SSL_set1_host(SSL *s, const char *hostname);
 int SSL_add1_host(SSL *s, const char *hostname);
 void SSL_set_hostflags(SSL *s, unsigned int flags);
-const char *SSL_get0_peername(const SSL *s);</synopsis>
+const char *SSL_get0_peername(SSL *s);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-fe0b25f1a25e6b9f46d80e94e7d4e9c6"><title>DESCRIPTION</title>
     <para>

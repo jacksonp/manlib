@@ -422,24 +422,6 @@ int SSL_CONF_finish(SSL_CONF_CTX *cctx);</synopsis>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><emphasis role="bold">ECDHParameters</emphasis></term>
-          <listitem>
-            <para>
-	      This sets the temporary curve used for ephemeral ECDH modes.
-	      Only used by servers
-            </para>
-            <para>
-	      The <emphasis role="bold">value</emphasis> argument is a
-	      curve name or the special value <emphasis role="bold">Automatic</emphasis> which picks an appropriate
-	      curve based on client and server preferences. The curve can
-	      be either the <emphasis role="bold">NIST</emphasis> name
-	      (e.g. <emphasis role="bold">P-256</emphasis>) or an OpenSSL
-	      OID name (e.g <emphasis role="bold">prime256v1</emphasis>).
-	      Curve names are case sensitive.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
           <term><emphasis role="bold">MinProtocol</emphasis></term>
           <listitem>
             <para>

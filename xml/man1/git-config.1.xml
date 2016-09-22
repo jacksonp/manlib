@@ -3730,7 +3730,7 @@ gc.aggressiveDepth
 <simpara>
         The depth parameter used in the delta compression
         algorithm used by <emphasis>git gc --aggressive</emphasis>.  This defaults
-        to 250.
+        to 50.
 </simpara>
 </listitem>
 </varlistentry>

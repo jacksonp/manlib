@@ -102,6 +102,7 @@
 [<emphasis role="bold">-status_verbose</emphasis>]
 [<emphasis role="bold">-status_timeout nsec</emphasis>]
 [<emphasis role="bold">-status_url url</emphasis>]
+[<emphasis role="bold">-alpn protocols</emphasis>]
 [<emphasis role="bold">-nextprotoneg protocols</emphasis>]</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-08d9926cb4e7e2da691fd7a869cb86af"><title>DESCRIPTION</title>
@@ -767,10 +768,13 @@
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><emphasis role="bold">-nextprotoneg protocols</emphasis></term>
+          <term><emphasis role="bold">-alpn protocols</emphasis>, <emphasis role="bold">-nextprotoneg protocols</emphasis></term>
           <listitem>
             <para>
-	      Enable Next Protocol Negotiation TLS extension and provide a
+	      these flags enable the Enable the Application-Layer Protocol
+	      Negotiation or Next Protocol Negotiation extension,
+	      respectively. ALPN is the IETF standard and replaces NPN. The
+	      <emphasis role="bold">protocols</emphasis> list is a
 	      comma-separated list of supported protocol names. The list
 	      should contain most wanted protocols first. Protocol names
 	      are printable ASCII strings, for example "http/1.1" or

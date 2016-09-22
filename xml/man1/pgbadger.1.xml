@@ -15,9 +15,9 @@
 returning a list of files. If you want to pass log content from stdin
 use - as filename. Note that input from stdin will not work with csvlog.</synopsis>
 <synopsis>Options:</synopsis>
-<synopsis>-a | --average minutes : number of minutes to build the average graphs of
-                         queries and connections. Default 5 minutes.
--A | --histo-avg minutes: number of minutes to build the histogram graphs
+<synopsis>-a | --average N       : number of minutes to build the average graphs
+                         of queries and connections. Default 5 minutes.
+-A | --histo-average N : number of minutes to build the histogram graphs
                          of queries. Default 60 minutes.
 -b | --begin datetime  : start date/time for the data to be parsed in log.
 -B | --bar-graph       : use bar graph instead of line by default.
@@ -140,7 +140,9 @@ use - as filename. Note that input from stdin will not work with csvlog.</synops
                          the same time.
 --rebuild              : used to rebuild all html reports in incremental
                          output directories where there is binary data files.
---pgbouncer-only       : only show pgbouncer related menu in the header.</synopsis>
+--pgbouncer-only       : only show pgbouncer related menu in the header.
+--start-monday         : in incremental mode, calendar's weeks start on
+                         sunday. Use this otpion to start on monday.</synopsis>
 <synopsis>pgBadger is able to parse a remote log file using a passwordless ssh connection.
 Use the -r or --remote-host to set the host ip address or hostname. There's also
 some additional options to fully control the ssh connection.</synopsis>

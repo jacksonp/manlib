@@ -150,8 +150,33 @@ hierarchy.
 .I /proc/[pid]
 There is a numerical subdirectory for each running process; the
 subdirectory is named by the process ID.
-Each such subdirectory contains the following
-pseudo-files and directories.
+
+Each
+.I /proc/[pid]
+subdirectory contains the
+pseudo-files and directories described below.
+These files are normally owned by the effective user and
+effective group ID of the process.
+However, as a security measure, the ownership is made
+.IR root:root
+if the process's "dumpable" attribute is set to a value other than 1.
+This attribute may change for the following reasons:
+.RS
+.IP * 3
+The attribute was explicitly set via the
+.BR prctl (2)
+.B PR_SET_DUMPABLE
+operation.
+.IP *
+The attribute was reset to the value in the file
+.IR /proc/sys/fs/suid_dumpable
+(described below), for the reasons described in
+.BR prctl (2).
+.RE
+.IP
+Resetting the "dumpable" attribute to 1 reverts the ownership of the
+.IR /proc/[pid]/*
+files to the process's real UID and real GID.
 .TP
 .I /proc/[pid]/attr
 .\" https://lwn.net/Articles/28222/
@@ -2207,7 +2232,7 @@ Size of resident file mappings.
 (since Linux 4.5).
 .IP *
 .IR RssShmem :
-Size of resident shared memory (inludes System V shared memory,
+Size of resident shared memory (includes System V shared memory,
 mappings from tmpfs, and shared anonymous mappings).
 .\" commit bf9683d6990589390b5178dafe8fd06808869293
 (since Linux 4.5).
@@ -3074,7 +3099,7 @@ with huge pages
 .TP
 .IR ShmemPmdMapped " %lu (since Linux 4.8)"
 (\fBCONFIG_TRANSPARENT_HUGEPAGE\fP is required.)
-Shared memory mapped into userspace with huge pages.
+Shared memory mapped into user space with huge pages.
 .TP
 .IR CmaTotal " %lu (since Linux 3.1)"
 Total CMA (Contiguous Memory Allocator) pages.
@@ -3387,10 +3412,10 @@ that commences with the character '@'.
 .RE
 .TP
 .I /proc/net/netfilter/nfnetlink_queue
-This file contains information about netfilter userspace queueing, if used.
+This file contains information about netfilter user-space queueing, if used.
 Each line represents a queue.
 Queues that have not been subscribed to
-by userspace are not shown.
+by user space are not shown.
 .nf
 
    1   4207     0  2 65535     0     0        0  1
@@ -3423,16 +3448,16 @@ the application.
 (4)
 The copy mode of the queue.
 It is either 1 (metadata only) or 2
-(also copy payload data to userspace).
+(also copy payload data to user space).
 .TP
 (5)
 Copy range; that is, how many bytes of packet payload should be copied to
-userspace at most.
+user space at most.
 .TP
 (6)
 queue dropped.
 Number of packets that had to be dropped by the kernel because
-too many packets are already waiting for userspace to send back the mandatory
+too many packets are already waiting for user space to send back the mandatory
 accept/drop verdicts.
 .TP
 (7)
@@ -3440,7 +3465,7 @@ queue user dropped.
 Number of packets that were dropped within the netlink
 subsystem.
 Such drops usually happen when the corresponding socket buffer is
-full; that is, userspace is not able to read messages fast enough.
+full; that is, user space is not able to read messages fast enough.
 .TP
 (8)
 sequence number.
@@ -4024,10 +4049,15 @@ in the circumstances described in
 In effect,
 the value in this file determines whether core dump files are
 produced for set-user-ID or otherwise protected/tainted binaries.
+The "dumpable" setting also affects the ownership of files in a process's
+.IR /proc/[pid]
+directory, as described above.
+
 Three different integer values can be specified:
 .RS
 .TP
 \fI0\ (default)\fP
+.\" In kernel source: SUID_DUMP_DISABLE
 This provides the traditional (pre-Linux 2.6.13) behavior.
 A core dump will not be produced for a process which has
 changed credentials (by calling
@@ -4037,13 +4067,18 @@ or similar, or by executing a set-user-ID or set-group-ID program)
 or whose binary does not have read permission enabled.
 .TP
 \fI1\ ("debug")\fP
+.\" In kernel source: SUID_DUMP_USER
 All processes dump core when possible.
+(Reasons why a process might nevertheless not dump core are described in
+.BR core (5).)
 The core dump is owned by the filesystem user ID of the dumping process
 and no security is applied.
-This is intended for system debugging situations only.
-Ptrace is unchecked.
+This is intended for system debugging situations only:
+this mode is insecure because it allows unprivileged users to
+examine the memory contents of privileged processes.
 .TP
 \fI2\ ("suidsafe")\fP
+.\" In kernel source: SUID_DUMP_ROOT
 Any binary which normally would not be dumped (see "0" above)
 is dumped readable by root only.
 This allows the user to remove the core dump file but not to read it.
@@ -4063,6 +4098,10 @@ Warnings will be written to the kernel log if
 does not follow these rules, and no core dump will be produced.
 .\" 54b501992dd2a839e94e76aa392c392b55080ce8
 .RE
+.IP
+For details of the effect of a process's "dumpable" setting
+on ptrace access mode checking, see
+.BR ptrace (2).
 .TP
 .I /proc/sys/fs/super-max
 This file

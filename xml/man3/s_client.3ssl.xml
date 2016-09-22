@@ -97,6 +97,7 @@
 [<emphasis role="bold">-rand file(s)</emphasis>]
 [<emphasis role="bold">-serverinfo types</emphasis>]
 [<emphasis role="bold">-status</emphasis>]
+[<emphasis role="bold">-alpn protocols</emphasis>]
 [<emphasis role="bold">-nextprotoneg protocols</emphasis>]
 [<emphasis role="bold">-ct|noct</emphasis>]
 [<emphasis role="bold">-ctlogfile</emphasis>]</synopsis>
@@ -746,11 +747,14 @@ DANE TLSA 2 1 1 ...ee12d2cc90180517616e8a18 matched TA certificate at depth 1
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><emphasis role="bold">-nextprotoneg protocols</emphasis></term>
+          <term><emphasis role="bold">-alpn protocols</emphasis>, <emphasis role="bold">-nextprotoneg protocols</emphasis></term>
           <listitem>
             <para>
-	      enable Next Protocol Negotiation TLS extension and provide a
-	      list of comma-separated protocol names that the client should
+	      these flags enable the Enable the Application-Layer Protocol
+	      Negotiation or Next Protocol Negotiation extension,
+	      respectively. ALPN is the IETF standard and replaces NPN. The
+	      <emphasis role="bold">protocols</emphasis> list is a
+	      comma-separated protocol names that the client should
 	      advertise support for. The list should contain most wanted
 	      protocols first. Protocol names are printable ASCII strings,
 	      for example "http/1.1" or "spdy/3". Empty list of protocols

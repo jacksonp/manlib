@@ -14,18 +14,22 @@
   <refpurpose>Provide content or type and size information for repository objects</refpurpose>
 </refnamediv>
 <refsynopsisdiv id="_synopsis">
-<literallayout><emphasis>git cat-file</emphasis> (-t [--allow-unknown-type]| -s [--allow-unknown-type]| -e | -p | &lt;type&gt; | --textconv ) &lt;object&gt;
-<emphasis>git cat-file</emphasis> (--batch | --batch-check) [--follow-symlinks]</literallayout>
+<literallayout><emphasis>git cat-file</emphasis> (-t [--allow-unknown-type]| -s [--allow-unknown-type]| -e | -p | &lt;type&gt; | --textconv | --filters ) [--path=&lt;path&gt;] &lt;object&gt;
+<emphasis>git cat-file</emphasis> (--batch | --batch-check) [ --textconv | --filters ] [--follow-symlinks]</literallayout>
 <simpara></simpara>
 </refsynopsisdiv>
 <refsect1 id="_description">
 <title>DESCRIPTION</title>
 <simpara>In its first form, the command provides the content or the type of an object in
 the repository. The type is required unless <literal>-t</literal> or <literal>-p</literal> is used to find the
-object type, or <literal>-s</literal> is used to find the object size, or <literal>--textconv</literal> is used
-(which implies type "blob").</simpara>
+object type, or <literal>-s</literal> is used to find the object size, or <literal>--textconv</literal> or
+<literal>--filters</literal> is used (which imply type "blob").</simpara>
 <simpara>In the second form, a list of objects (separated by linefeeds) is provided on
-stdin, and the SHA-1, type, and size of each object is printed on stdout.</simpara>
+stdin, and the SHA-1, type, and size of each object is printed on stdout. The
+output format can be overridden using the optional <literal>&lt;format&gt;</literal> argument. If
+either <literal>--textconv</literal> or <literal>--filters</literal> was specified, the input is expected to
+list the object names followed by the path name, separated by a single white
+space, so that the appropriate drivers can be determined.</simpara>
 </refsect1>
 <refsect1 id="_options">
 <title>OPTIONS</title>
@@ -109,8 +113,34 @@ stdin, and the SHA-1, type, and size of each object is printed on stdout.</simpa
 <listitem>
 <simpara>
         Show the content as transformed by a textconv filter. In this case,
-        &lt;object&gt; has be of the form &lt;tree-ish&gt;:&lt;path&gt;, or :&lt;path&gt; in order
-        to apply the filter to the content recorded in the index at &lt;path&gt;.
+        &lt;object&gt; has to be of the form &lt;tree-ish&gt;:&lt;path&gt;, or :&lt;path&gt; in
+        order to apply the filter to the content recorded in the index at
+        &lt;path&gt;.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--filters
+</term>
+<listitem>
+<simpara>
+        Show the content as converted by the filters configured in
+        the current working tree for the given &lt;path&gt; (i.e. smudge filters,
+        end-of-line conversion, etc). In this case, &lt;object&gt; has to be of
+        the form &lt;tree-ish&gt;:&lt;path&gt;, or :&lt;path&gt;.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--path=&lt;path&gt;
+</term>
+<listitem>
+<simpara>
+        For use with --textconv or --filters, to allow specifying an object
+        name and a path separately, e.g. when it is difficult to figure out
+        the revision from which the blob came.
 </simpara>
 </listitem>
 </varlistentry>
@@ -124,8 +154,10 @@ stdin, and the SHA-1, type, and size of each object is printed on stdout.</simpa
 <listitem>
 <simpara>
         Print object information and contents for each object provided
-        on stdin.  May not be combined with any other options or arguments.
-        See the section <literal>BATCH OUTPUT</literal> below for details.
+        on stdin.  May not be combined with any other options or arguments
+        except <literal>--textconv</literal> or <literal>--filters</literal>, in which case the input lines
+        also need to specify the path, separated by white space.  See the
+        section <literal>BATCH OUTPUT</literal> below for details.
 </simpara>
 </listitem>
 </varlistentry>
@@ -139,7 +171,9 @@ stdin, and the SHA-1, type, and size of each object is printed on stdout.</simpa
 <listitem>
 <simpara>
         Print object information for each object provided on stdin.  May
-        not be combined with any other options or arguments.  See the
+        not be combined with any other options or arguments except
+        <literal>--textconv</literal> or <literal>--filters</literal>, in which case the input lines also
+        need to specify the path, separated by white space.  See the
         section <literal>BATCH OUTPUT</literal> below for details.
 </simpara>
 </listitem>
