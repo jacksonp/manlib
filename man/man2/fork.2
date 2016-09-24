@@ -68,7 +68,8 @@ process except for the following points:
 .IP * 3
 The child has its own unique process ID,
 and this PID does not match the ID of any existing process group
-.RB ( setpgid (2)).
+.RB ( setpgid (2))
+or session.
 .IP *
 The child's parent process ID is the same as the parent's process ID.
 .IP *
@@ -209,7 +210,7 @@ is set appropriately.
 .SH ERRORS
 .TP
 .B EAGAIN
-\" NOTE! The following should match the description in pthread_create(3)
+.\" NOTE! The following should match the description in pthread_create(3)
 A system-imposed limit on the number of threads was encountered.
 There are a number of limits that may trigger this error: the
 .BR RLIMIT_NPROC

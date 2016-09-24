@@ -5,7 +5,8 @@
   </refmeta>
   <refnamediv>
     <refname>OCSP_response_status, OCSP_response_get1_basic, OCSP_response_create,
-OCSP_RESPONSE_free</refname>
+OCSP_RESPONSE_free, OCSP_RESPID_set_by_name,
+OCSP_RESPID_set_by_key, OCSP_RESPID_match</refname>
 <refpurpose>OCSP response functions</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
@@ -14,6 +15,9 @@ OCSP_RESPONSE_free</refname>
 OCSP_BASICRESP *OCSP_response_get1_basic(OCSP_RESPONSE *resp);
 OCSP_RESPONSE *OCSP_response_create(int status, OCSP_BASICRESP *bs);
 void OCSP_RESPONSE_free(OCSP_RESPONSE *resp);</synopsis>
+<synopsis>int OCSP_RESPID_set_by_name(OCSP_RESPID *respid, X509 *cert);
+int OCSP_RESPID_set_by_key(OCSP_RESPID *respid, X509 *cert);
+int OCSP_RESPID_match(OCSP_RESPID *respid, X509 *cert);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-51fffb405f58629099f0439e0b28412f"><title>DESCRIPTION</title>
     <para>
@@ -34,6 +38,24 @@ void OCSP_RESPONSE_free(OCSP_RESPONSE *resp);</synopsis>
     <para>
       OCSP_RESPONSE_free() frees up OCSP response <emphasis role="bold">resp</emphasis>.
     </para>
+    <para>
+      OCSP_RESPID_set_by_name() sets the name of the OCSP_RESPID to be the
+      same as the subject name in the supplied X509 certificate <emphasis role="bold">cert</emphasis> for the OCSP responder.
+    </para>
+    <para>
+      OCSP_RESPID_set_by_key() sets the key of the OCSP_RESPID to be the
+      same as the key in the supplied X509 certificate <emphasis role="bold">cert</emphasis> for the OCSP responder. The key is stored
+      as a SHA1 hash.
+    </para>
+    <para>
+      Note that an OCSP_RESPID can only have one of the name, or the key
+      set. Calling OCSP_RESPID_set_by_name() or OCSP_RESPID_set_by_key()
+      will clear any existing setting.
+    </para>
+    <para>
+      OCSP_RESPID_match() tests whether the OCSP_RESPID given in <emphasis role="bold">respid</emphasis> matches with the X509 certificate
+      <emphasis role="bold">cert</emphasis>.
+    </para>
   </refsection>
   <refsection xml:id="ID-0d133a5687bb926e1bc76318dad00bbf"><title>RETURN VALUES</title>
     <para>
@@ -47,6 +69,14 @@ void OCSP_RESPONSE_free(OCSP_RESPONSE *resp);</synopsis>
     </para>
     <para>
       OCSP_RESPONSE_free() does not return a value.
+    </para>
+    <para>
+      OCSP_RESPID_set_by_name() and OCSP_RESPID_set_by_key() return 1 on
+      success or 0 on failure.
+    </para>
+    <para>
+      OCSP_RESPID_match() returns 1 if the OCSP_RESPID and the X509
+      certificate match or 0 otherwise.
     </para>
   </refsection>
   <refsection xml:id="ID-7c6bd0ec149a09ca842e0c691b6b25b8"><title>NOTES</title>
@@ -68,7 +98,17 @@ void OCSP_RESPONSE_free(OCSP_RESPONSE *resp);</synopsis>
       <refentrytitle>OCSP_response_find_status</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
       <refentrytitle>OCSP_sendreq_new</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
+      <refentrytitle>OCSP_RESPID_new</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
+      <refentrytitle>OCSP_RESPID_free</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-687c22899e6a8bbdb1c77255b9c44b1b"><title>HISTORY</title>
+    <para>
+      The OCSP_RESPID_set_by_name(), OCSP_RESPID_set_by_key() and
+      OCSP_RESPID_match() functions were added in OpenSSL version 1.1.0a.
     </para>
   </refsection>
   <refsection xml:id="ID-17f4ad535d3acad3198e99959eca2ad2"><title>COPYRIGHT</title>

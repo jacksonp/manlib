@@ -5401,16 +5401,16 @@ File size matches the given expression. Examples:
 .INDENT 7.0
 .IP \(bu 2
 .
-1k (files from 1024 to 2047 bytes)
+size(\(aq1k\(aq) \- files from 1024 to 2047 bytes
 .IP \(bu 2
 .
-< 20k (files less than 20480 bytes)
+size(\(aq< 20k\(aq) \- files less than 20480 bytes
 .IP \(bu 2
 .
->= .5MB (files at least 524288 bytes)
+size(\(aq>= .5MB\(aq) \- files at least 524288 bytes
 .IP \(bu 2
 .
-4k \- 1MB (files from 4096 bytes to 1048576 bytes)
+size(\(aq4k \- 1MB\(aq) \- files from 4096 bytes to 1048576 bytes
 .UNINDENT
 .TP
 .B \fBsubrepo([pattern])\fP
@@ -6864,6 +6864,7 @@ one of the predefined predicates.
 Special characters can be used in quoted identifiers by escaping them,
 e.g., \fB\en\fP is interpreted as a newline. To prevent them from being
 interpreted, strings can be prefixed with \fBr\fP, e.g. \fBr\(aq...\(aq\fP.
+.SS Prefix
 .sp
 There is a single prefix operator:
 .INDENT 0.0
@@ -6872,6 +6873,7 @@ There is a single prefix operator:
 .sp
 Changesets not in x. Short form is \fB! x\fP.
 .UNINDENT
+.SS Infix
 .sp
 These are the supported infix operators:
 .INDENT 0.0
@@ -6919,7 +6921,29 @@ for n == 2, the second parent of changeset in x.
 .B \fBx~n\fP
 .sp
 The nth first ancestor of x; \fBx~0\fP is x; \fBx~3\fP is \fBx^^^\fP.
+.TP
+.B \fBx ## y\fP
+.sp
+Concatenate strings and identifiers into one string.
+.sp
+All other prefix, infix and postfix operators have lower priority than
+\fB##\fP. For example, \fBa1 ## a2~2\fP is equivalent to \fB(a1 ## a2)~2\fP.
+.sp
+For example:
+.sp
+.nf
+.ft C
+[revsetalias]
+issue(a1) = grep(r\(aq\ebissue[ :]?\(aq ## a1 ## r\(aq\eb|\ebbug\e(\(aq ## a1 ## r\(aq\e)\(aq)
+
+\(ga\(gaissue(1234)\(ga\(ga is equivalent to
+\(ga\(gagrep(r\(aq\ebissue[ :]?1234\eb|\ebbug\e(1234\e)\(aq)\(ga\(ga
+in this case. This matches against all of "issue 1234", "issue:1234",
+"issue1234" and "bug(1234)".
+.ft P
+.fi
 .UNINDENT
+.SS Postfix
 .sp
 There is a single postfix operator:
 .INDENT 0.0
@@ -6928,6 +6952,7 @@ There is a single postfix operator:
 .sp
 Equivalent to \fBx^1\fP, the first parent of each changeset in x.
 .UNINDENT
+.SS Predicates
 .sp
 The following predicates are supported:
 .INDENT 0.0
@@ -7339,6 +7364,7 @@ If \fIstring\fP starts with \fIre:\fP, the remainder of the string is treated as
 a regular expression. To match a user that actually contains \fIre:\fP, use
 the prefix \fIliteral:\fP.
 .UNINDENT
+.SS Aliases
 .sp
 New predicates (known as "aliases") can be defined, using any combination of
 existing predicates or other aliases. An alias definition looks like:
@@ -7366,23 +7392,7 @@ rs(s, k) = reverse(sort(s, k))
 .sp
 defines three aliases, \fBh\fP, \fBd\fP, and \fBrs\fP. \fBrs(0:tip, author)\fP is
 exactly equivalent to \fBreverse(sort(0:tip, author))\fP.
-.sp
-An infix operator \fB##\fP can concatenate strings and identifiers into
-one string. For example:
-.sp
-.nf
-.ft C
-[revsetalias]
-issue(a1) = grep(r\(aq\ebissue[ :]?\(aq ## a1 ## r\(aq\eb|\ebbug\e(\(aq ## a1 ## r\(aq\e)\(aq)
-.ft P
-.fi
-.sp
-\fBissue(1234)\fP is equivalent to \fBgrep(r\(aq\ebissue[ :]?1234\eb|\ebbug\e(1234\e)\(aq)\fP
-in this case. This matches against all of "issue 1234", "issue:1234",
-"issue1234" and "bug(1234)".
-.sp
-All other prefix, infix and postfix operators have lower priority than
-\fB##\fP. For example, \fBa1 ## a2~2\fP is equivalent to \fB(a1 ## a2)~2\fP.
+.SS Equivalents
 .sp
 Command line equivalents for \%\fBhg log\fP\::
 .sp
@@ -7398,6 +7408,7 @@ Command line equivalents for \%\fBhg log\fP\::
 \-l x  \->  limit(expr, x)
 .ft P
 .fi
+.SS Examples
 .sp
 Some sample queries:
 .INDENT 0.0

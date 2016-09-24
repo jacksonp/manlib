@@ -636,13 +636,11 @@ do not need to look up the inode to determine the inode type.
 
 The
 .I value
-is either 0 or 1, with 1 signifiying that filetype information
-will be stored in the directory structure. The default value is 0.
+is either 0 or 1, with 1 signifying that filetype information
+will be stored in the directory structure.  The default value is 1.
 
-When CRCs are enabled via
-.B \-m crc=1,
-the ftype functionality is always enabled. This feature can not be turned
-off for such filesystem configurations.
+When CRCs are enabled (the default), the ftype functionality is always
+enabled, and cannot be turned off.
 .IP
 .RE
 .TP
