@@ -8224,6 +8224,11 @@ strings. The default is a Unix date format, including the timezone:
 Show a diff, optionally
 specifying files to include or exclude.
 .TP
+.B files(pattern)
+.
+All files of the current changeset matching the pattern. See
+\%\fBhg help patterns\fP\:.
+.TP
 .B fill(text[, width[, initialident[, hangindent]]])
 .
 Fill many
@@ -8396,6 +8401,15 @@ Join the list of files with a ", ":
 .nf
 .ft C
 $ hg log \-r 0 \-\-template "files: {join(files, \(aq, \(aq)}\en"
+.ft P
+.fi
+.IP \(bu 2
+.
+Join the list of files ending with ".py" with a ", ":
+.sp
+.nf
+.ft C
+$ hg log \-r 0 \-\-template "pythonfiles: {join(files(\(aq**.py\(aq), \(aq, \(aq)}\en"
 .ft P
 .fi
 .IP \(bu 2
