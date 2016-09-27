@@ -667,19 +667,6 @@ find sources/util-linux/ -name '*.5' -not -iwholename '*/.git/*' -exec rsync --c
 find sources/util-linux/ -name '*.8' -not -iwholename '*/.git/*' -exec rsync --checksum {} man/man8/ \\;"
   },
 
-  "varnish": {
-    "type": "git",
-    "url": "git://git.varnish-cache.org/varnish-cache",
-    "tag": "varnish-4.0.3",
-    /* note pandoc doesn't process include statements in rst, may have to do that manually. */
-    "cmd": "(cd sources/varnish; ./autogen.sh; ./configure; make);
-find sources/varnish/doc/sphinx/reference/ -name '*.rst' ! -name shmem.rst ! -name vsl.rst ! -name index.rst ! -name params.rst ! -name vmod.rst -exec bash -c 'pandoc --normalize -f rst -t docbook {} | xsltproc utils/db4-upgrade.xsl - > xml/man1/$(basename -s .generated $(basename -s .rst {})).1.xml' \\;;
-mv xml/man1/varnish-cli.1.xml xml/man7/varnish-cli.7.xml;
-mv xml/man1/vmod_std.1.xml xml/man3/vmod_std.3.xml;
-mv xml/man1/vmod_directors.1.xml xml/man3/vmod_directors.3.xml;
-mv xml/man1/vcl.1.xml xml/man7/vcl.7.xml;"
-  },
-
   "wayland": {
     "type": "git",
     "url": "git://anongit.freedesktop.org/wayland/wayland",
