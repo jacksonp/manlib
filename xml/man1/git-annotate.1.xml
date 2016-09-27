@@ -310,6 +310,27 @@ take effect.</simpara>
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+--indent-heuristic
+</term>
+<term>
+--no-indent-heuristic
+</term>
+<term>
+--compaction-heuristic
+</term>
+<term>
+--no-compaction-heuristic
+</term>
+<listitem>
+<simpara>
+        These are to help debugging and tuning experimental heuristics
+        (which are off by default) that shift diff hunk boundaries to
+        make patches easier to read.
+</simpara>
+</listitem>
+</varlistentry>
 </variablelist>
 </refsect1>
 <refsect1 id="_see_also">

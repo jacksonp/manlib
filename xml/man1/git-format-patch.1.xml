@@ -24,7 +24,8 @@
                    [--start-number &lt;n&gt;] [--numbered-files]
                    [--in-reply-to=Message-Id] [--suffix=.&lt;sfx&gt;]
                    [--ignore-if-in-upstream]
-                   [--subject-prefix=Subject-Prefix] [(--reroll-count|-v) &lt;n&gt;]
+                   [--rfc] [--subject-prefix=Subject-Prefix]
+                   [(--reroll-count|-v) &lt;n&gt;]
                    [--to=&lt;email&gt;] [--cc=&lt;email&gt;]
                    [--[no-]cover-letter] [--quiet] [--notes[=&lt;ref&gt;]]
                    [&lt;common diff options&gt;]
@@ -118,6 +119,12 @@ reference.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
+--indent-heuristic
+</term>
+<term>
+--no-indent-heuristic
+</term>
+<term>
 --compaction-heuristic
 </term>
 <term>
@@ -125,10 +132,9 @@ reference.</simpara>
 </term>
 <listitem>
 <simpara>
-        These are to help debugging and tuning an experimental
-        heuristic (which is off by default) that shifts the hunk
-        boundary in an attempt to make the resulting patch easier
-        to read.
+        These are to help debugging and tuning experimental heuristics
+        (which are off by default) that shift diff hunk boundaries to
+        make patches easier to read.
 </simpara>
 </listitem>
 </varlistentry>
@@ -976,6 +982,18 @@ will want to ensure that threading is disabled for <literal>git send-email</lite
         line, instead use <emphasis>[&lt;Subject-Prefix&gt;]</emphasis>. This
         allows for useful naming of a patch series, and can be
         combined with the <literal>--numbered</literal> option.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--rfc
+</term>
+<listitem>
+<simpara>
+        Alias for <literal>--subject-prefix="RFC PATCH"</literal>. RFC means "Request For
+        Comments"; use this when sending an experimental patch for
+        discussion rather than application.
 </simpara>
 </listitem>
 </varlistentry>

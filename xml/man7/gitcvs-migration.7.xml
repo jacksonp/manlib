@@ -98,8 +98,13 @@ they create are writable and searchable by other group members.</simpara>
 </refsect1>
 <refsect1 id="_importing_a_cvs_archive">
 <title>Importing a CVS archive</title>
+<note><simpara>These instructions use the <literal>git-cvsimport</literal> script which ships with
+git, but other importers may provide better results. See the note in
+<citerefentry>
+<refentrytitle>git-cvsimport</refentrytitle><manvolnum>1</manvolnum>
+</citerefentry> for other options.</simpara></note>
 <simpara>First, install version 2.1 or higher of cvsps from
-<ulink url="http://www.cobite.com/cvsps/">http://www.cobite.com/cvsps/</ulink> and make
+<ulink url="https://github.com/andreyvit/cvsps">https://github.com/andreyvit/cvsps</ulink> and make
 sure it is in your path.  Then cd to a checked out CVS working directory
 of the project you are interested in and run <citerefentry>
 <refentrytitle>git-cvsimport</refentrytitle><manvolnum>1</manvolnum>

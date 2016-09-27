@@ -576,6 +576,17 @@ can use either of these commands:</simpara>
 <literallayout class="monospaced">$ git reflog -2 HEAD # or
 $ git log -g -2 HEAD</literallayout><simpara></simpara>
 </refsect1>
+<refsect1 id="_argument_disambiguation">
+<title>ARGUMENT DISAMBIGUATION</title>
+<simpara>When there is only one argument given and it is not <literal>--</literal> (e.g. "git
+checkout abc"), and when the argument is both a valid <literal>&lt;tree-ish&gt;</literal>
+(e.g. a branch "abc" exists) and a valid <literal>&lt;pathspec&gt;</literal> (e.g. a file
+or a directory whose name is "abc" exists), Git would usually ask
+you to disambiguate.  Because checking out a branch is so common an
+operation, however, "git checkout abc" takes "abc" as a <literal>&lt;tree-ish&gt;</literal>
+in such a situation.  Use <literal>git checkout -- &lt;pathspec&gt;</literal> if you want
+to checkout these paths out of the index.</simpara>
+</refsect1>
 <refsect1 id="_examples">
 <title>EXAMPLES</title>
 <orderedlist numeration="arabic">

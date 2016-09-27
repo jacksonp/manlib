@@ -2253,7 +2253,8 @@ color.branch
 <refentrytitle>git-branch</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>. May be set to <literal>always</literal>,
         <literal>false</literal> (or <literal>never</literal>) or <literal>auto</literal> (or <literal>true</literal>), in which case colors are used
-        only when the output is to a terminal. Defaults to false.
+        only when the output is to a terminal. If unset, then the
+        value of <literal>color.ui</literal> is used (<literal>auto</literal> by default).
 </simpara>
 </listitem>
 </varlistentry>
@@ -2288,7 +2289,8 @@ color.diff
 </citerefentry> will use color
         for all patches.  If it is set to <literal>true</literal> or <literal>auto</literal>, those
         commands will only use color when output is to the terminal.
-        Defaults to false.
+        If unset, then the value of <literal>color.ui</literal> is used (<literal>auto</literal> by
+        default).
 </simpara>
 <simpara>This does not affect <citerefentry>
 <refentrytitle>git-format-patch</refentrytitle><manvolnum>1</manvolnum>
@@ -2333,7 +2335,8 @@ color.grep
 <simpara>
         When set to <literal>always</literal>, always highlight matches.  When <literal>false</literal> (or
         <literal>never</literal>), never.  When set to <literal>true</literal> or <literal>auto</literal>, use color only
-        when the output is written to the terminal.  Defaults to <literal>false</literal>.
+        when the output is written to the terminal.  If unset, then the
+        value of <literal>color.ui</literal> is used (<literal>auto</literal> by default).
 </simpara>
 </listitem>
 </varlistentry>
@@ -2451,7 +2454,8 @@ color.interactive
         and displays (such as those used by "git-add --interactive" and
         "git-clean --interactive"). When false (or <literal>never</literal>), never.
         When set to <literal>true</literal> or <literal>auto</literal>, use colors only when the output is
-        to the terminal. Defaults to false.
+        to the terminal. If unset, then the value of <literal>color.ui</literal> is
+        used (<literal>auto</literal> by default).
 </simpara>
 </listitem>
 </varlistentry>
@@ -2490,7 +2494,8 @@ color.showBranch
 <refentrytitle>git-show-branch</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>. May be set to <literal>always</literal>,
         <literal>false</literal> (or <literal>never</literal>) or <literal>auto</literal> (or <literal>true</literal>), in which case colors are used
-        only when the output is to a terminal. Defaults to false.
+        only when the output is to a terminal. If unset, then the
+        value of <literal>color.ui</literal> is used (<literal>auto</literal> by default).
 </simpara>
 </listitem>
 </varlistentry>
@@ -2505,7 +2510,8 @@ color.status
 <refentrytitle>git-status</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>. May be set to <literal>always</literal>,
         <literal>false</literal> (or <literal>never</literal>) or <literal>auto</literal> (or <literal>true</literal>), in which case colors are used
-        only when the output is to a terminal. Defaults to false.
+        only when the output is to a terminal. If unset, then the
+        value of <literal>color.ui</literal> is used (<literal>auto</literal> by default).
 </simpara>
 </listitem>
 </varlistentry>
@@ -3263,13 +3269,16 @@ diff.tool
 </varlistentry>
 <varlistentry>
 <term>
+diff.indentHeuristic
+</term>
+<term>
 diff.compactionHeuristic
 </term>
 <listitem>
 <simpara>
-        Set this option to <literal>true</literal> to enable an experimental heuristic that
-        shifts the hunk boundary in an attempt to make the resulting
-        patch easier to read.
+        Set one of these options to <literal>true</literal> to enable one of two
+        experimental heuristics that shift diff hunk boundaries to
+        make patches easier to read.
 </simpara>
 </listitem>
 </varlistentry>

@@ -2221,6 +2221,12 @@ $ git log -2 --pretty=%h 4da45bef</literallayout><simpara></simpara>
 </varlistentry>
 <varlistentry>
 <term>
+--indent-heuristic
+</term>
+<term>
+--no-indent-heuristic
+</term>
+<term>
 --compaction-heuristic
 </term>
 <term>
@@ -2228,10 +2234,9 @@ $ git log -2 --pretty=%h 4da45bef</literallayout><simpara></simpara>
 </term>
 <listitem>
 <simpara>
-        These are to help debugging and tuning an experimental
-        heuristic (which is off by default) that shifts the hunk
-        boundary in an attempt to make the resulting patch easier
-        to read.
+        These are to help debugging and tuning experimental heuristics
+        (which are off by default) that shift diff hunk boundaries to
+        make patches easier to read.
 </simpara>
 </listitem>
 </varlistentry>

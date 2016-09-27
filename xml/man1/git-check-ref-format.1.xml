@@ -193,8 +193,8 @@ Print the name of the previous branch:
 <simpara>
 Determine the reference name to use for a new branch:
 </simpara>
-<literallayout class="monospaced">$ ref=$(git check-ref-format --normalize "refs/heads/$newbranch") ||
-die "we do not like '$newbranch' as a branch name."</literallayout><simpara></simpara>
+<literallayout class="monospaced">$ ref=$(git check-ref-format --normalize "refs/heads/$newbranch")||
+{ echo "we do not like '$newbranch' as a branch name." &gt;&amp;2 ; exit 1 ; }</literallayout><simpara></simpara>
 </listitem>
 </itemizedlist>
 </refsect1>
