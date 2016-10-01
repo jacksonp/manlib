@@ -23,7 +23,8 @@
 [<emphasis role="bold">-strparse offset</emphasis>]
 [<emphasis role="bold">-genstr string</emphasis>]
 [<emphasis role="bold">-genconf file</emphasis>]
-[<emphasis role="bold">-strictpem</emphasis>]</synopsis>
+[<emphasis role="bold">-strictpem</emphasis>]
+[<emphasis role="bold">-item name</emphasis>]</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-153aac1124f8bae9288eb931a3776ed2"><title>DESCRIPTION</title>
     <para>
@@ -164,6 +165,16 @@
 	      PEM BEGIN and END markers or not. This option will ignore any
 	      data prior to the start of the BEGIN marker, or after an END
 	      marker in a PEM file.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-item name</emphasis></term>
+          <listitem>
+            <para>
+	      attempt to decode and print the data as <emphasis role="bold">ASN1_ITEM name</emphasis>. This can be used to
+	      print out the fields of any supported ASN.1 structure if the
+	      type is known.
             </para>
           </listitem>
         </varlistentry>

@@ -1,0 +1,45 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>ASN1_ITEM_lookup.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>ASN1_ITEM_lookup, ASN1_ITEM_get</refname>
+<refpurpose>lookup ASN.1 structures</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/asn1.h&gt;</synopsis>
+<synopsis>const ASN1_ITEM *ASN1_ITEM_lookup(const char *name);
+const ASN1_ITEM *ASN1_ITEM_get(size_t i);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-020f5a40cf300351320ca0937242cb54"><title>DESCRIPTION</title>
+    <para>
+      ASN1_ITEM_lookup() returns the <emphasis role="bold">ASN1_ITEM
+      name</emphasis>.
+    </para>
+    <para>
+      ASN1_ITEM_get() returns the <emphasis role="bold">ASN1_ITEM</emphasis> with index <emphasis role="bold">i</emphasis>. This function returns <emphasis role="bold">NULL</emphasis> if the index <emphasis role="bold">i</emphasis> is out of range.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-9bd2e7b5479e20452bd4dba8021b0c89"><title>RETURN VALUES</title>
+    <para>
+      ASN1_ITEM_lookup() and ASN1_ITEM_get() return a valid <emphasis role="bold">ASN1_ITEM</emphasis> structure or <emphasis role="bold">NULL</emphasis> if an error occurred.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-8cd49f8a581c7dc4feccc98cc01b3414"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-303a67b67d7605afa5f7d130109b0185"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>
