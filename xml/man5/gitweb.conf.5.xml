@@ -279,13 +279,20 @@ $highlight_bin
         Note that <emphasis>highlight</emphasis> feature must be set for gitweb to actually
         use syntax highlighting.
 </simpara>
-<simpara><emphasis role="strong">NOTE</emphasis>: if you want to add support for new file type (supported by
-"highlight" but not used by gitweb), you need to modify <literal>%highlight_ext</literal>
-or <literal>%highlight_basename</literal>, depending on whether you detect type of file
-based on extension (for example "sh") or on its basename (for example
-"Makefile").  The keys of these hashes are extension and basename,
-respectively, and value for given key is name of syntax to be passed via
-<literal>--syntax &lt;syntax&gt;</literal> to highlighter.</simpara>
+<simpara><emphasis role="strong">NOTE</emphasis>: for a file to be highlighted, its syntax type must be detected
+and that syntax must be supported by "highlight".  The default syntax
+detection is minimal, and there are many supported syntax types with no
+detection by default.  There are three options for adding syntax
+detection.  The first and second priority are <literal>%highlight_basename</literal> and
+<literal>%highlight_ext</literal>, which detect based on basename (the full filename, for
+example "Makefile") and extension (for example "sh").  The keys of these
+hashes are the basename and extension, respectively, and the value for a
+given key is the name of the syntax to be passed via <literal>--syntax &lt;syntax&gt;</literal>
+to "highlight".  The last priority is the "highlight" configuration of
+<literal>Shebang</literal> regular expressions to detect the language based on the first
+line in the file, (for example, matching the line "#!/bin/bash").  See
+the highlight documentation and the default config at
+/etc/highlight/filetypes.conf for more details.</simpara>
 <simpara>For example if repositories you are hosting use "phtml" extension for
 PHP files, and you want to have correct syntax-highlighting for those
 files, you can add the following to gitweb configuration:</simpara>

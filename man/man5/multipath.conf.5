@@ -245,7 +245,7 @@ generate the path priority. This prioritizer accepts the optional prio_arg
 .I emc
 (Hardware-dependent)
 Generate the path priority for DGC class arrays as CLARiiON CX/AX and
-EMC VNX families.
+EMC VNX and Unity families.
 .TP
 .I alua
 (Hardware-dependent)
@@ -382,7 +382,7 @@ Issue a \fITEST UNIT READY\fR command to the device.
 .I emc_clariion
 (Hardware-dependent)
 Query the DGC/EMC specific EVPD page 0xC0 to determine the path state
-for CLARiiON CX/AX and EMC VNX arrays families.
+for CLARiiON CX/AX and EMC VNX and Unity arrays families.
 .TP
 .I hp_sw
 (Hardware-dependent)
@@ -422,6 +422,8 @@ Default value is: \fBmpath\fR
 .TP
 .B failback
 Tell multipathd how to manage path group failback.
+To select \fIimmediate\fR or a \fIvalue\fR, it's mandatory that the device
+has support for a working prioritizer.
 .RS
 .TP 12
 .I immediate
@@ -847,6 +849,10 @@ The following keywords are recognized:
 .TP 17
 .B devnode
 Regular expression of the device nodes to be excluded.
+.RS
+.TP
+Default value is: \fB^(ram|raw|loop|fd|md|dm-|sr|scd|st)[0-9]\fR, \fB^(td|hd|vd)[a-z]\fR, \fB^dcssblk[0-9]\fR and \fB^nvme\fR
+.RE
 .TP
 .B wwid
 The \fIWorld Wide Identification\fR of a device.
@@ -886,7 +892,7 @@ The \fIWorld Wide Identification\fR of a device.
 Regular expression of the udev property to be whitelisted.
 .RS
 .TP
-Default value is: \fB(ID_WWN|SCSI_IDENT_.*)\fR
+Default value is: \fB(SCSI_IDENT_|ID_WWN)\fR
 .RE
 .TP
 .B device
@@ -1000,7 +1006,8 @@ The following hardware handler are implemented:
 .TP 12
 .I 1 emc
 (Hardware-dependent)
-Hardware handler for DGC class arrays as CLARiiON CX/AX and EMC VNX families.
+Hardware handler for DGC class arrays as CLARiiON CX/AX and EMC VNX and Unity
+families.
 .TP
 .I 1 rdac
 (Hardware-dependent)

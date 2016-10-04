@@ -1183,8 +1183,9 @@ together.</simpara>
 </term>
 <listitem>
 <simpara>
-        Output the commits in reverse order.
-        Cannot be combined with <literal>--walk-reflogs</literal>.
+        Output the commits chosen to be shown (see Commit Limiting
+        section above) in reverse order. Cannot be combined with
+        <literal>--walk-reflogs</literal>.
 </simpara>
 </listitem>
 </varlistentry>
