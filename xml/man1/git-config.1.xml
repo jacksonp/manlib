@@ -4610,6 +4610,37 @@ http.emptyAuth
 </varlistentry>
 <varlistentry>
 <term>
+http.delegation
+</term>
+<listitem>
+<simpara>
+        Control GSSAPI credential delegation. The delegation is disabled
+        by default in libcurl since version 7.21.7. Set parameter to tell
+        the server what it is allowed to delegate when it comes to user
+        credentials. Used with GSS/kerberos. Possible values are:
+</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+<literal>none</literal> - Don&#8217;t allow any delegation.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>policy</literal> - Delegates if and only if the OK-AS-DELEGATE flag is set in the
+  Kerberos service ticket, which is a matter of realm policy.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>always</literal> - Unconditionally allow the server to delegate.
+</simpara>
+</listitem>
+</itemizedlist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 http.extraHeader
 </term>
 <listitem>

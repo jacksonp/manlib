@@ -8028,6 +8028,10 @@ List of strings. Updated subrepositories in the changeset.
 .B tags
 .
 List of strings. Any tags associated with the changeset.
+.TP
+.B termwidth
+.
+Integer. The width of the current terminal.
 .UNINDENT
 .sp
 The "date" keyword does not produce human\-readable output. If you
@@ -8248,10 +8252,10 @@ attribute on these types.
 Conditionally execute based on the result of
 an expression.
 .TP
-.B ifcontains(search, thing, then[, else])
+.B ifcontains(needle, haystack, then[, else])
 .
 Conditionally execute based
-on whether the item "search" is in "thing".
+on whether the item "needle" is in "haystack".
 .TP
 .B ifeq(expr1, expr2, then[, else])
 .
@@ -8285,10 +8289,19 @@ most recent globally tagged ancestor of this changeset.
 Converts a date to the specified timezone.
 The default is local date.
 .TP
+.B mod(a, b)
+.
+Calculate a mod b such that a / b + a mod b == a
+.TP
 .B pad(text, width[, fillchar=\(aq \(aq[, left=False]])
 .
 Pad text with a
 fill character.
+.TP
+.B relpath(path)
+.
+Convert a repository\-absolute path into a filesystem path relative to
+the current working directory.
 .TP
 .B revset(query[, formatargs...])
 .
@@ -8327,6 +8340,19 @@ using regular expressions.
 .
 Return the nth word from a string.
 .UNINDENT
+.sp
+We provide a limited set of infix arithmetic operations on integers:
+.sp
+.nf
+.ft C
++ for addition
+\- for subtraction
+* for multiplication
+/ for floor division (division rounded to integer nearest \-infinity)
+.ft P
+.fi
+.sp
+Division fulfils the law x = x / y + mod(x, y).
 .sp
 Also, for any expression that returns a list, there is a list operator:
 .sp

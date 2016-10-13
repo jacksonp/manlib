@@ -449,6 +449,41 @@ unless you have read <citerefentry>
 </varlistentry>
 <varlistentry>
 <term>
+--deepen=&lt;depth&gt;
+</term>
+<listitem>
+<simpara>
+        Similar to --depth, except it specifies the number of commits
+        from the current shallow boundary instead of from the tip of
+        each remote branch history.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--shallow-since=&lt;date&gt;
+</term>
+<listitem>
+<simpara>
+        Deepen or shorten the history of a shallow repository to
+        include all reachable commits after &lt;date&gt;.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--shallow-exclude=&lt;revision&gt;
+</term>
+<listitem>
+<simpara>
+        Deepen or shorten the history of a shallow repository to
+        exclude commits reachable from a specified remote branch or tag.
+        This option can be specified multiple times.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 --unshallow
 </term>
 <listitem>

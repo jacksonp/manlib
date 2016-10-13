@@ -467,13 +467,19 @@ empty range that is both reachable and unreachable from HEAD.</simpara>
 </refsect2>
 <refsect2 id="_other_lt_rev_gt_94_parent_shorthand_notations">
 <title>Other &lt;rev&gt;&#94; Parent Shorthand Notations</title>
-<simpara>Two other shorthands exist, particularly useful for merge commits,
+<simpara>Three other shorthands exist, particularly useful for merge commits,
 for naming a set that is formed by a commit and its parent commits.</simpara>
 <simpara>The <emphasis>r1&#94;@</emphasis> notation means all parents of <emphasis>r1</emphasis>.</simpara>
 <simpara>The <emphasis>r1&#94;!</emphasis> notation includes commit <emphasis>r1</emphasis> but excludes all of its parents.
 By itself, this notation denotes the single commit <emphasis>r1</emphasis>.</simpara>
+<simpara>The <emphasis>&lt;rev&gt;&#94;-{&lt;n&gt;}</emphasis> notation includes <emphasis>&lt;rev&gt;</emphasis> but excludes the &lt;n&gt;th
+parent (i.e. a shorthand for <emphasis>&lt;rev&gt;&#94;&lt;n&gt;..&lt;rev&gt;</emphasis>), with <emphasis>&lt;n&gt;</emphasis> = 1 if
+not given. This is typically useful for merge commits where you
+can just pass <emphasis>&lt;commit&gt;&#94;-</emphasis> to get all the commits in the branch
+that was merged in merge commit <emphasis>&lt;commit&gt;</emphasis> (including <emphasis>&lt;commit&gt;</emphasis>
+itself).</simpara>
 <simpara>While <emphasis>&lt;rev&gt;&#94;&lt;n&gt;</emphasis> was about specifying a single commit parent, these
-two notations consider all its parents. For example you can say
+three notations also consider its parents. For example you can say
 <emphasis>HEAD&#94;2&#94;@</emphasis>, however you cannot say <emphasis>HEAD&#94;@&#94;2</emphasis>.</simpara>
 </refsect2>
 </refsect1>
@@ -550,6 +556,17 @@ two notations consider all its parents. For example you can say
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+<emphasis>&lt;rev&gt;&#94;-{&lt;n&gt;}</emphasis>, e.g. <emphasis>HEAD&#94;-, HEAD&#94;-2</emphasis>
+</term>
+<listitem>
+<simpara>
+        Equivalent to <emphasis>&lt;rev&gt;&#94;&lt;n&gt;..&lt;rev&gt;</emphasis>, with <emphasis>&lt;n&gt;</emphasis> = 1 if not
+        given.
+</simpara>
+</listitem>
+</varlistentry>
 </variablelist>
 <simpara>Here are a handful of examples using the Loeliger illustration above,
 with each step in the notation&#8217;s expansion and selection carefully
@@ -563,6 +580,8 @@ D F                          G H I J D F
 C                            I J F C
 B..C   = ^B C                C
 B...C  = B ^F C              G H D E B C
+B^-    = B^..B
+       = ^B^1 B              E I J F B
 C^@    = C^1
        = F                   I J F
 B^@    = B^1 B^2 B^3

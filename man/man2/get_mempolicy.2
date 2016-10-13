@@ -54,16 +54,21 @@ is specified as 0,
 then information about the calling thread's default policy
 (as set by
 .BR set_mempolicy (2))
-is returned.
-The policy returned
-.RI [ mode
+is returned, in the buffers pointed to by
+.I mode
 and
-.IR nodemask ]
+.IR nodemask .
+The value returned in these arguments
 may be used to restore the thread's policy to its state at
 the time of the call to
 .BR get_mempolicy ()
 using
 .BR set_mempolicy (2).
+When
+.I flags
+is 0,
+.I addr
+must be specified as NULL.
 
 If
 .I flags
@@ -71,13 +76,13 @@ specifies
 .BR MPOL_F_MEMS_ALLOWED
 (available since Linux 2.6.24), the
 .I mode
-argument is ignored and the set of nodes [memories] that the
+argument is ignored and the set of nodes (memories) that the
 thread is allowed to specify in subsequent calls to
 .BR mbind (2)
 or
 .BR set_mempolicy (2)
-[in the absence of any
-.IR "mode flags" ]
+(in the absence of any
+.IR "mode flags" )
 is returned in
 .IR nodemask .
 It is not permitted to combine
@@ -136,7 +141,7 @@ is allocated into the location pointed to by
 If no page has yet been allocated for the specified address,
 .BR get_mempolicy ()
 will allocate a page as if the thread had performed a read
-[load] access to that address, and return the ID of the node
+(load) access to that address, and return the ID of the node
 where that page was allocated.
 
 If

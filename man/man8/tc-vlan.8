@@ -6,12 +6,22 @@ vlan - vlan manipulation module
 .in +8
 .ti -8
 .BR tc " ... " "action vlan" " { " pop " |"
-.IR PUSH " } [ " CONTROL " ]"
+.IR PUSH " | " MODIFY " } [ " CONTROL " ]"
 
 .ti -8
 .IR PUSH " := "
 .BR push " [ " protocol
 .IR VLANPROTO " ]"
+.BR " [ " priority
+.IR VLANPRIO " ] "
+.BI id " VLANID"
+
+.ti -8
+.IR MODIFY " := "
+.BR modify " [ " protocol
+.IR VLANPROTO " ]"
+.BR " [ " priority
+.IR VLANPRIO " ] "
 .BI id " VLANID"
 
 .ti -8
@@ -21,16 +31,16 @@ vlan - vlan manipulation module
 The
 .B vlan
 action allows to perform 802.1Q en- or decapsulation on a packet, reflected by
-the two operation modes
-.IR POP " and " PUSH .
+the operation modes
+.IR POP ", " PUSH " and " MODIFY .
 The
 .I POP
 mode is simple, as no further information is required to just drop the
 outer-most VLAN encapsulation. The
-.I PUSH
-mode on the other hand requires at least a
+.IR PUSH " and " MODIFY
+modes require at least a
 .I VLANID
-and allows to optionally choose the
+and allow to optionally choose the
 .I VLANPROTO
 to use.
 .SH OPTIONS
@@ -40,6 +50,11 @@ Decapsulation mode, no further arguments allowed.
 .TP
 .B push
 Encapsulation mode. Requires at least
+.B id
+option.
+.TP
+.B modify
+Replace mode. Existing 802.1Q tag is replaced. Requires at least
 .B id
 option.
 .TP
@@ -54,6 +69,9 @@ for hexadecimal interpretation, etc.).
 .BI protocol " VLANPROTO"
 Choose the VLAN protocol to use. At the time of writing, the kernel accepts only
 .BR 802.1Q " or " 802.1ad .
+.TP
+.BI priority " VLANPRIO"
+Choose the VLAN priority to use. Decimal number in range of 0-7.
 .TP
 .I CONTROL
 How to continue after executing this action.

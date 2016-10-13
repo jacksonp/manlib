@@ -580,6 +580,38 @@ set by Git if the remote helper has the <emphasis>option</emphasis> capability.<
 </varlistentry>
 <varlistentry>
 <term>
+'option deepen-since &lt;timestamp&gt;
+</term>
+<listitem>
+<simpara>
+        Deepens the history of a shallow repository based on time.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+'option deepen-not &lt;ref&gt;
+</term>
+<listitem>
+<simpara>
+        Deepens the history of a shallow repository excluding ref.
+        Multiple options add up.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis>option deepen-relative {'true</emphasis>|<emphasis>false</emphasis>}
+</term>
+<listitem>
+<simpara>
+        Deepens the history of a shallow repository relative to
+        current boundary. Only valid when used with "option depth".
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 <emphasis>option followtags</emphasis> {<emphasis>true</emphasis>|<emphasis>false</emphasis>}
 </term>
 <listitem>

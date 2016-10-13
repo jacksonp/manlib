@@ -340,6 +340,28 @@ objects from the source repository into a pack in the cloned repository.</simpar
 </varlistentry>
 <varlistentry>
 <term>
+--shallow-since=&lt;date&gt;
+</term>
+<listitem>
+<simpara>
+        Create a shallow clone with a history after the specified time.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--shallow-exclude=&lt;revision&gt;
+</term>
+<listitem>
+<simpara>
+        Create a shallow clone with a history, excluding commits
+        reachable from a specified remote branch or tag.  This option
+        can be specified multiple times.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 --[no-]single-branch
 </term>
 <listitem>

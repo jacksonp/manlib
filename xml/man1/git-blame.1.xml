@@ -16,7 +16,7 @@
 <refsynopsisdiv id="_synopsis">
 <literallayout><emphasis>git blame</emphasis> [-c] [-b] [-l] [--root] [-t] [-f] [-n] [-s] [-e] [-p] [-w] [--incremental]
             [-L &lt;range&gt;] [-S &lt;revs-file&gt;] [-M] [-C] [-C] [-C] [--since=&lt;date&gt;]
-            [--progress] [--abbrev=&lt;n&gt;] [&lt;rev&gt; | --contents &lt;file&gt; | --reverse &lt;rev&gt;]
+            [--progress] [--abbrev=&lt;n&gt;] [&lt;rev&gt; | --contents &lt;file&gt; | --reverse &lt;rev&gt;..&lt;rev&gt;]
             [--] &lt;file&gt;</literallayout>
 <simpara></simpara>
 </refsynopsisdiv>
@@ -163,7 +163,7 @@ file.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
---reverse
+--reverse &lt;rev&gt;..&lt;rev&gt;
 </term>
 <listitem>
 <simpara>
@@ -171,7 +171,8 @@ file.</simpara>
         the revision in which a line appeared, this shows the last
         revision in which a line has existed. This requires a range of
         revision like START..END where the path to blame exists in
-        START.
+        START.  <literal>git blame --reverse START</literal> is taken as <literal>git blame
+        --reverse START..HEAD</literal> for convenience.
 </simpara>
 </listitem>
 </varlistentry>

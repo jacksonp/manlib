@@ -18,7 +18,7 @@
 .\" <http://www.gnu.org/licenses/>.
 .\" %%%LICENSE_END
 .\"
-.TH MEMFD_CREATE 2 2016-03-15 Linux "Linux Programmer's Manual"
+.TH MEMFD_CREATE 2 2016-10-08 Linux "Linux Programmer's Manual"
 .SH NAME
 memfd_create \- create an anonymous file
 .SH SYNOPSIS
@@ -339,11 +339,11 @@ From another program, we can obtain a file descriptor for the
 file created by
 .BR memfd_create ()
 by opening the
-.IR /proc/PID/fd
+.IR /proc/[pid]/fd
 file that corresponds to the file descriptor opened by
 .BR memfd_create ().
 Using that pathname, we inspect the content of the
-.IR /proc/PID/fd
+.IR /proc/[pid]/fd
 symbolic link, and use our
 .I t_get_seals
 program to view the seals that have been placed on the file:

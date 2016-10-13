@@ -51,14 +51,10 @@ clone, __clone2 \- create a child process
 
 .BI "int clone(int (*" "fn" ")(void *), void *" child_stack ,
 .BI "          int " flags ", void *" "arg" ", ... "
-.BI "          /* pid_t *" ptid ", struct user_desc *" tls \
+.BI "          /* pid_t *" ptid ", void *" newtls \
 ", pid_t *" ctid " */ );"
 
-/* Prototype for the raw system call */
-
-.BI "long clone(unsigned long " flags ", void *" child_stack ,
-.BI "          void *" ptid ", void *" ctid ,
-.BI "          struct pt_regs *" regs );
+/* For the prototype of the raw system call, see NOTES */
 .fi
 .SH DESCRIPTION
 .BR clone ()
@@ -199,7 +195,7 @@ process or the child process do not affect the other process.
 Note, however,
 that the duplicated file descriptors in the child refer to the same open file
 descriptions as the corresponding file descriptors in the calling process,
-and thus share file offsets and files status flags (see
+and thus share file offsets and file status flags (see
 .BR open (2)).
 .TP
 .BR CLONE_FS " (since Linux 2.0)"
@@ -544,11 +540,25 @@ then trace the child also (see
 .BR ptrace (2)).
 .TP
 .BR CLONE_SETTLS " (since Linux 2.5.32)"
-The
+The TLS (Thread Local Storage) descriptor is set to
+.I newtls.
+
+The interpretation of
 .I newtls
-argument is the new TLS (Thread Local Storage) descriptor.
+and the resulting effect is architecture dependent.
+On x86,
+.I newtls
+is interpreted as a
+.IR "struct user_desc *"
 (See
-.BR set_thread_area (2).)
+.BR set_thread_area (2)).
+On x86_64 it is the new value to be set for the %fs base register
+(See the
+.I ARCH_SET_FS
+argument to
+.BR arch_prctl (2)).
+On architectures with a dedicated TLS register, it is the new value
+of that register.
 .TP
 .BR CLONE_SIGHAND " (since Linux 2.0)"
 If
@@ -807,16 +817,58 @@ arguments of the
 .BR clone ()
 wrapper function are omitted.
 Furthermore, the argument order changes.
-The raw system call interface on x86 and many other architectures is roughly:
+In addition, there are variations across architectures.
+
+The raw system call interface on x86-64 and some other architectures
+(including sh, tile, and alpha) is roughly:
+
 .in +4
 .nf
-
 .BI "long clone(unsigned long " flags ", void *" child_stack ,
-.BI "           void *" ptid ", void *" ctid ,
-.BI "           struct pt_regs *" regs );
-
+.BI "           int *" ptid ", int *" ctid ,
+.BI "           unsigned long " newtls );
 .fi
 .in
+
+On x86-32, and several other common architectures
+(including score, ARM, ARM 64, PA-RISC, arc, Power PC, xtensa,
+and MIPS),
+.\" CONFIG_CLONE_BACKWARDS
+the order of the last two arguments is reversed:
+
+.in +4
+.nf
+.BI "long clone(unsigned long " flags ", void *" child_stack ,
+.BI "          int *" ptid ", unsigned long " newtls ,
+.BI "          int *" ctid );
+.fi
+.in
+
+On the cris and s390 architectures,
+.\" CONFIG_CLONE_BACKWARDS2
+the order of the first two arguments is reversed:
+
+.in +4
+.nf
+.BI "long clone(void *" child_stack ", unsigned long " flags ,
+.BI "           int *" ptid ", int *" ctid ,
+.BI "           unsigned long " newtls );
+.fi
+.in
+
+On the microblaze architecture,
+.\" CONFIG_CLONE_BACKWARDS3
+an additional argument is supplied:
+
+.in +4
+.nf
+.BI "long clone(unsigned long " flags ", void *" child_stack ,
+.BI "           int " stack_size , "\fR         /* Size of stack */"
+.BI "           int *" ptid ", int *" ctid ,
+.BI "           unsigned long " newtls );
+.fi
+.in
+
 Another difference for the raw system call is that the
 .I child_stack
 argument may be zero, in which case copy-on-write semantics ensure that the
@@ -825,15 +877,11 @@ the stack.
 In this case, for correct operation, the
 .B CLONE_VM
 option should not be specified.
-
-For some architectures, the order of the arguments for the system call
-differs from that shown above.
-On the score, microblaze, ARM, ARM 64, PA-RISC, arc, Power PC, xtensa,
-and MIPS architectures,
-the order of the fourth and fifth arguments is reversed.
-On the cris and s390 architectures,
-the order of the first and second arguments is reversed.
+.\"
 .SS blackfin, m68k, and sparc
+.\" Mike Frysinger noted in a 2013 mail:
+.\"     these arches don't define __ARCH_WANT_SYS_CLONE:
+.\"     blackfin ia64 m68k sparc
 The argument-passing conventions on
 blackfin, m68k, and sparc are different from the descriptions above.
 For details, see the kernel (and glibc) source.

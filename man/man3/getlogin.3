@@ -25,7 +25,7 @@
 .\" Changed Tue Sep 19 01:49:29 1995, aeb: moved from man2 to man3
 .\"  added ref to /etc/utmp, added BUGS section, etc.
 .\" modified 2003 Walter Harms, aeb - added getlogin_r, note on stdin use
-.TH GETLOGIN 3 2015-12-28 "GNU" "Linux Programmer's Manual"
+.TH GETLOGIN 3 2016-10-08 "GNU" "Linux Programmer's Manual"
 .SH NAME
 getlogin, getlogin_r, cuserid \- get username
 .SH SYNOPSIS
@@ -46,9 +46,15 @@ Feature Test Macro Requirements for glibc (see
 .sp
 .BR getlogin_r ():
 _REENTRANT || _POSIX_C_SOURCE\ >=\ 199506L
-.br
+.sp
 .BR cuserid ():
-_XOPEN_SOURCE
+.nf
+    Since glibc 2.24:
+        (_XOPEN_SOURCE && ! (_POSIX_C_SOURCE >= 200112L)
+        || __GNU_SOURCE
+    Up to and including glibc 2.23:
+        _XOPEN_SOURCE
+.fi
 .SH DESCRIPTION
 .BR getlogin ()
 returns a pointer to a string containing the name of

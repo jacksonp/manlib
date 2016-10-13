@@ -30,7 +30,7 @@
 .\"
 .\" Modified 2003 Walter Harms (walter.harms@informatik.uni-oldenburg.de)
 .\"
-.TH FFS 3 2016-03-15 "GNU" "Linux Programmer's Manual"
+.TH FFS 3 2016-10-08 "GNU" "Linux Programmer's Manual"
 .SH NAME
 ffs, ffsl, ffsll \- find first bit set in a word
 .SH SYNOPSIS
@@ -57,7 +57,8 @@ Feature Test Macro Requirements for glibc (see
 .RS 4
 .TP 4
 Since glibc 2.12:
-_POSIX_C_SOURCE\ >=\ 200809L
+    _XOPEN_SOURCE >= 700
+    || ! (_POSIX_C_SOURCE\ >=\ 200809L)
     || /* Glibc since 2.19: */ _DEFAULT_SOURCE
     || /* Glibc versions <= 2.19: */ _BSD_SOURCE || _SVID_SOURCE
 .TP

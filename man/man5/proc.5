@@ -1513,9 +1513,48 @@ root directory, and behaves in the same way as
 and
 .IR fd/* .
 
+Note however that this file is not merely a symbolic link.
+It provides the same view of the filesystem (including namespaces and the
+set of per-process mounts) as the process itself.
+An example illustrates this point.
+In one terminal, we start a shell in new user and mount namespaces,
+and in that shell we create some new mount points:
+
+.nf
+.in +4n
+$ \fBPS1='sh1# ' unshare \-Urnm\fP
+sh1# \fBmount \-t tmpfs tmpfs /etc\fP  # Mount empty tmpfs at /etc
+sh1# \fBmount \-\-bind /usr /dev\fP     # Mount /usr at /dev
+sh1# \fBecho $$\fP
+27123
+.in
+.fi
+
+In a second terminal window, in the initial mount namespace,
+we look at the contents of the corresponding mounts in
+the initial and new namespaces:
+
+.nf
+.in +4n
+$ \fBPS1='sh2# ' sudo sh\fP
+sh2# \fBls /etc | wc \-l\fP                  # In initial NS
+309
+sh2# \fBls /proc/27123/root/etc | wc \-l\fP  # /etc in other NS
+0                                     # The empty tmpfs dir
+sh2# \fBls /dev | wc \-l\fP                  # In initial NS
+205
+sh2# \fBls /proc/27123/root/dev | wc \-l\fP  # /dev in other NS
+11                                    # Actually bind
+                                      # mounted to /usr
+sh2# \fBls /usr | wc \-l\fP                  # /usr in initial NS
+11
+.in
+.fi
+
 .\" The following was still true as at kernel 2.6.13
-In a multithreaded process, the contents of this symbolic link
-are not available if the main thread has already terminated
+In a multithreaded process, the contents of the
+.I /proc/[pid]/root
+symbolic link are not available if the main thread has already terminated
 (typically by calling
 .BR pthread_exit (3)).
 
@@ -1530,6 +1569,30 @@ check; see
 .\" FIXME Describe /proc/[pid]/seccomp
 .\"       Added in 2.6.12
 .\"
+.TP
+.IR /proc/[pid]/seccomp " (Linux 2.6.12 to 2.6.22)"
+This file can be used to read and change the process's
+secure computing (seccomp) mode setting.
+It contains the value 0 if the process is not in seccomp mode,
+and 1 if the process is in strict seccomp mode (see
+.BR seccomp (2)).
+Writing 1 to this file places the process irreversibly in strict seccomp mode.
+(Further attempts to write to the file fail with the
+.B EPERM
+error.)
+
+In Linux 2.6.23,
+this file went away, to be replaced by the
+.BR prctl (2)
+.BR PR_GET_SECCOMP
+and
+.BR PR_SET_SECCOMP
+operations (and later by
+.BR seccomp (2)
+and the
+.I Seccomp
+field in
+.IR /proc/[pid]/status ).
 .\" FIXME Describe /proc/[pid]/sessionid
 .\"       Added in 2.6.25; read-only; only readable by real UID
 .\"	  commit 1e0bd7550ea9cf474b1ad4c6ff5729a507f75fdc
@@ -1595,14 +1658,17 @@ ShmemPmdMapped:        0 kB
 Swap:                  0 kB
 KernelPageSize:        4 kB
 MMUPageSize:           4 kB
+KernelPageSize:        4 kB
+MMUPageSize:           4 kB
 Locked:                0 kB
+VmFlags: rd ex mr mw me dw
 
 .fi
 .in
 The first of these lines shows the same information as is displayed
 for the mapping in
 .IR /proc/[pid]/maps .
-The remaining lines show the size of the mapping,
+The following lines show the size of the mapping,
 the amount of the mapping that is currently resident in RAM ("Rss"),
 the process's proportional share of this mapping ("Pss"),
 the number of clean and dirty shared pages in the mapping,
@@ -1614,20 +1680,30 @@ that does not belong to any file.
 "Swap" shows how much
 would-be-anonymous memory is also used, but out on swap.
 
-The "KernelPageSize" entry is the page size used by the kernel to back a VMA.
+The "KernelPageSize" line (available since Linux 2.6.29)
+is the page size used by the kernel to back the virtual memory area.
 This matches the size used by the MMU in the majority of cases.
 However, one counter-example occurs on PPC64 kernels
-whereby a kernel using 64K as a base page size may still use 4K
+whereby a kernel using 64kB as a base page size may still use 4kB
 pages for the MMU on older processors.
-To distinguish, this
-patch reports "MMUPageSize" as the page size used by the MMU.
+To distinguish the two attributes, the "MMUPageSize" line
+(also available since Linux 2.6.29)
+reports the page size used by the MMU.
 
 The "Locked" indicates whether the mapping is locked in memory
 or not.
 
-"VmFlags" field represents the kernel flags associated with
-the particular virtual memory area in two letter encoded manner.
-The codes are the following:
+The "ProtectionKey" line (available since Linux 4.9, on x86 only)
+contains the memory protection key (see
+.BR pkeys (7))
+associated with the virtual memory area.
+This entry is present only if the kernel was built with the
+.B CONFIG_X86_INTEL_MEMORY_PROTECTION_KEYS
+configuration option.
+
+The "VmFlags" line (available since Linux 3.8)
+represents the kernel flags associated with the virtual memory area,
+encoded using the following two-letter codes:
 
     rd  - readable
     wr  - writable
@@ -4426,6 +4502,9 @@ on the system.
 .TP
 .I /proc/sys/kernel/pty/max
 This file defines the maximum number of pseudoterminals.
+.\" FIXME Document /proc/sys/kernel/pty/reserve
+.\" New in Linux 3.3
+.\" commit e9aba5158a80098447ff207a452a3418ae7ee386
 .TP
 .I /proc/sys/kernel/pty/nr
 This read-only file

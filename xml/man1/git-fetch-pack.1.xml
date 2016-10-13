@@ -159,6 +159,41 @@ be in a separate packet, and the list must end with a flush packet.</simpara>
 </varlistentry>
 <varlistentry>
 <term>
+--shallow-since=&lt;date&gt;
+</term>
+<listitem>
+<simpara>
+        Deepen or shorten the history of a shallow&#8217;repository to
+        include all reachable commits after &lt;date&gt;.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--shallow-exclude=&lt;revision&gt;
+</term>
+<listitem>
+<simpara>
+        Deepen or shorten the history of a shallow repository to
+        exclude commits reachable from a specified remote branch or tag.
+        This option can be specified multiple times.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--deepen-relative
+</term>
+<listitem>
+<simpara>
+        Argument --depth specifies the number of commits from the
+        current shallow boundary instead of from the tip of each
+        remote branch history.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 --no-progress
 </term>
 <listitem>

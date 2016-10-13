@@ -32,7 +32,7 @@
 .\" 2011-09-18, Doug Goldstein <cardoe@cardoe.com>
 .\"     Document MADV_HUGEPAGE and MADV_NOHUGEPAGE
 .\"
-.TH MADVISE 2 2016-03-15 "Linux" "Linux Programmer's Manual"
+.TH MADVISE 2 2016-10-08 "Linux" "Linux Programmer's Manual"
 .SH NAME
 madvise \- give advice about use of memory
 .SH SYNOPSIS
@@ -363,7 +363,7 @@ that are known not to be useful in a core dump.
 The effect of
 .BR MADV_DONTDUMP
 takes precedence over the bit mask that is set via the
-.I /proc/PID/coredump_filter
+.I /proc/[pid]/coredump_filter
 file (see
 .BR core (5)).
 .TP

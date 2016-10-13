@@ -185,15 +185,14 @@ interval elapses, independently of the new or old value of the clock.
 In order to support applications requiring much more precise pauses
 (e.g., in order to control some time-critical hardware),
 .BR nanosleep ()
-would handle pauses of up to 2\ ms by busy waiting with microsecond
+would handle pauses of up to 2 milliseconds by busy waiting with microsecond
 precision when called from a thread scheduled under a real-time policy
 like
 .B SCHED_FIFO
 or
 .BR SCHED_RR .
 This special extension was removed in kernel 2.5.39,
-hence is still present in
-current 2.4 kernels, but not in 2.6 kernels.
+and is thus not available in Linux 2.6.0 and later kernels.
 .SH BUGS
 In Linux 2.4, if
 .BR nanosleep ()
