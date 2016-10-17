@@ -153,7 +153,7 @@ in order to specify what is shared between the calling process
 and the child process:
 .TP
 .BR CLONE_CHILD_CLEARTID " (since Linux 2.5.49)"
-Erase the child thread ID at the location
+Clear (zero) the child thread ID at the location
 .I ctid
 in child memory when the child exits, and do a wakeup on the futex
 at that address.
@@ -166,6 +166,9 @@ This is used by threading libraries.
 Store the child thread ID at the location
 .I ctid
 in the child's memory.
+The store operation completes before
+.BR clone ()
+returns control to user space.
 .TP
 .BR CLONE_FILES " (since Linux 2.0)"
 If
@@ -519,6 +522,9 @@ in the parent's memory.
 (In Linux 2.5.32-2.5.48 there was a flag
 .B CLONE_SETTID
 that did this.)
+The store operation completes before
+.BR clone ()
+returns control to user space.
 .TP
 .BR CLONE_PID " (obsolete)"
 If
@@ -1116,7 +1122,7 @@ system call can be used to test whether two processes share various
 resources such as a file descriptor table,
 System V semaphore undo operations, or a virtual address space.
 
-In the kernel 2.4.x series,
+In the Linux 2.4.x series,
 .B CLONE_THREAD
 generally does not make the parent of the new thread the same
 as the parent of the calling process.
@@ -1124,7 +1130,7 @@ However, for kernel versions 2.4.7 to 2.4.18 the
 .B CLONE_THREAD
 flag implied the
 .B CLONE_PARENT
-flag (as in kernel 2.6).
+flag (as in Linux 2.6.0 and later).
 
 For a while there was
 .B CLONE_DETACHED

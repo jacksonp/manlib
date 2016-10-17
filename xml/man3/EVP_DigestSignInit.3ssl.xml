@@ -11,7 +11,7 @@
 <synopsis>#include &lt;openssl/evp.h&gt;</synopsis>
 <synopsis>int EVP_DigestSignInit(EVP_MD_CTX *ctx, EVP_PKEY_CTX **pctx,
                        const EVP_MD *type, ENGINE *e, EVP_PKEY *pkey);
-int EVP_DigestSignUpdate(EVP_MD_CTX *ctx, const void *d, unsigned int cnt);
+int EVP_DigestSignUpdate(EVP_MD_CTX *ctx, const void *d, size_t cnt);
 int EVP_DigestSignFinal(EVP_MD_CTX *ctx, unsigned char *sig, size_t *siglen);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-8ba04c9ccd2c0b302af165d3262347c7"><title>DESCRIPTION</title>

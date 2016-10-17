@@ -240,7 +240,8 @@ struct perf_event_attr {
           exclude_callchain_user   : 1,
                                 /* exclude user callchains */
           mmap2          :  1,  /* include mmap with inode data */
-          comm_exec      :  1,  /* flag comm events that are due to exec */
+          comm_exec      :  1,  /* flag comm events that are
+                                   due to exec */
           use_clockid    :  1,  /* use clockid for time fields */
 
           __reserved_1   : 38;
@@ -268,7 +269,8 @@ struct perf_event_attr {
     __s32 clockid;              /* clock to use for time fields */
     __u64 sample_regs_intr;     /* regs to dump on samples */
     __u32 aux_watermark;        /* aux bytes before wakeup */
-    __u32 __reserved_2;         /* align to u64 */
+    __u16 sample_max_stack;     /* max frames in callchain */
+    __u16 __reserved_2;         /* align to u64 */
 
 };
 .fi
@@ -574,7 +576,7 @@ for measuring local memory accesses
 .P
 and
 .I perf_hw_cache_op_id
-is one of
+is one of:
 .RS 4
 .TP
 .B PERF_COUNT_HW_CACHE_OP_READ
@@ -589,7 +591,7 @@ for prefetch accesses
 .P
 and
 .I perf_hw_cache_op_result_id
-is one of
+is one of:
 .RS 4
 .TP
 .B PERF_COUNT_HW_CACHE_RESULT_ACCESS
@@ -787,7 +789,7 @@ the register values will return kernel register
 state if the overflow happened while kernel
 code is running.
 If the CPU supports hardware sampling of
-register state (i.e. PEBS on Intel x86) and
+register state (i.e.,, PEBS on Intel x86) and
 .I precise_ip
 is set higher than zero then the register
 values returned are those captured by
@@ -855,8 +857,8 @@ the time the counter is created (nor to any new children of
 existing children).
 
 Inherit does not work for some combinations of
-.IR read_format s,
-such as
+.IR read_format
+values, such as
 .BR PERF_FORMAT_GROUP .
 .TP
 .IR "pinned"
@@ -892,7 +894,7 @@ measurement as well as any kernel use of the performance counters
 If this bit is set, the count excludes events that happen in user space.
 .TP
 .IR "exclude_kernel"
-If this bit is set, the count excludes events that happen in kernel-space.
+If this bit is set, the count excludes events that happen in kernel space.
 .TP
 .IR "exclude_hv"
 If this bit is set, the count excludes events that happen in the
@@ -980,31 +982,27 @@ better and allows more accurate reporting of which events
 correspond to which instructions, but hardware is often limited
 with how small this can be.
 
-The values of this are the following:
+The possible values of this field are the following:
 .RS
-.TP
-0 -
+.IP 0 3
 .B SAMPLE_IP
 can have arbitrary skid.
-.TP
-1 -
+.IP 1
 .B SAMPLE_IP
 must have constant skid.
-.TP
-2 -
+.IP 2
 .B SAMPLE_IP
 requested to have 0 skid.
-.TP
-3 -
+.IP 3
 .B SAMPLE_IP
 must have 0 skid.
-See also
+See also the description of
 .BR PERF_RECORD_MISC_EXACT_IP .
 .RE
 .TP
 .IR "mmap_data" " (since Linux 2.6.36)"
 .\" commit 3af9e859281bda7eb7c20b51879cf43aa788ac2e
-The counterpart of the
+Ths the counterpart of the
 .I mmap
 field.
 This enables generation of
@@ -1033,6 +1031,7 @@ This may lead to the
 value appearing twice.
 
 The layout is described by this pseudo-structure:
+
 .in +4n
 .nf
 struct sample_id {
@@ -1048,10 +1047,10 @@ struct sample_id {
 .IR "exclude_host" " (since Linux 3.2)"
 .\" commit a240f76165e6255384d4bdb8139895fac7988799
 When conducting measurements that include processes running
-VM instances (i.e. have executed a
-.I KVM_RUN
-.BR ioctl (2)
-) only measure events happening inside a guest instance.
+VM instances (i.e., have executed a
+.B KVM_RUN
+.BR ioctl (2)),
+only measure events happening inside a guest instance.
 This is only meaningful outside the guests; this setting does
 not change counts gathered inside of a guest.
 Currently, this functionality is x86 only.
@@ -1059,10 +1058,10 @@ Currently, this functionality is x86 only.
 .IR "exclude_guest" " (since Linux 3.2)"
 .\" commit a240f76165e6255384d4bdb8139895fac7988799
 When conducting measurements that include processes running
-VM instances (i.e. have executed a
-.I KVM_RUN
-.BR ioctl (2)
-) do not measure events happening inside guest instances.
+VM instances (i.e., have executed a
+.B KVM_RUN
+.BR ioctl (2)),
+do not measure events happening inside guest instances.
 This is only meaningful outside the guests; this setting does
 not change counts gathered inside of a guest.
 Currently, this functionality is x86 only.
@@ -1133,7 +1132,7 @@ types choose watermark and set
 .I wakeup_watermark
 to 1.
 
-Prior to Linux 3.0 setting
+Prior to Linux 3.0, setting
 .\" commit f506b3dc0ec454a16d40cab9ee5d75435b39dc50
 .I wakeup_events
 to 0 resulted in no overflow notifications;
@@ -1172,10 +1171,9 @@ is not allowed.
 .TP
 .IR "bp_addr" " (since Linux 2.6.33)"
 .\" commit 24f1e32c60c45c89a997c73395b69c8af6f0a84e
-.I bp_addr
-address of the breakpoint.
-For execution breakpoints this is the memory address of the instruction
-of interest; for read and write breakpoints it is the memory address
+This is the address of the breakpoint.
+For execution breakpoints, this is the memory address of the instruction
+of interest; for read and write breakpoints, it is the memory address
 of the memory location of interest.
 .TP
 .IR "config1" " (since Linux 2.6.39)"
@@ -1184,7 +1182,7 @@ of the memory location of interest.
 is used for setting events that need an extra register or otherwise
 do not fit in the regular config field.
 Raw OFFCORE_EVENTS on Nehalem/Westmere/SandyBridge use this field
-on 3.3 and later kernels.
+on Linux 3.3 and later kernels.
 .TP
 .IR "bp_len" " (since Linux 2.6.33)"
 .\" commit 24f1e32c60c45c89a997c73395b69c8af6f0a84e
@@ -1197,13 +1195,13 @@ Options are
 .BR HW_BREAKPOINT_LEN_1 ,
 .BR HW_BREAKPOINT_LEN_2 ,
 .BR HW_BREAKPOINT_LEN_4 ,
+and
 .BR HW_BREAKPOINT_LEN_8 .
 For an execution breakpoint, set this to
 .IR sizeof(long) .
 .TP
 .IR "config2" " (since Linux 2.6.39)"
 .\" commit a7e3ed1e470116c9d12c2f778431a481a6be8ab6
-
 .I config2
 is a further extension of the
 .I config1
@@ -1217,7 +1215,7 @@ is enabled, then this specifies what branches to include
 in the branch record.
 
 The first part of the value is the privilege level, which
-is a combination of one of the following values.
+is a combination of one of the values listed below.
 If the user does not set privilege level explicitly, the kernel
 will use the event's privilege level.
 Event and branch privilege levels do not have to match.
@@ -1250,6 +1248,10 @@ Any return branch.
 .B PERF_SAMPLE_BRANCH_IND_CALL
 Indirect calls.
 .TP
+.BR PERF_SAMPLE_BRANCH_IND_JUMP " (since Linux 4.2)"
+.\" commit c9fdfa14c3792c0160849c484e83aa57afd80ccc
+Indirect jumps.
+.TP
 .BR PERF_SAMPLE_BRANCH_COND " (since Linux 3.16)"
 .\" commit bac52139f0b7ab31330e98fd87fc5a2664951050
 Conditional branches.
@@ -1276,7 +1278,7 @@ on Intel x86 Haswell or newer.
 .\" commit 4018994f3d8785275ef0e7391b75c3462c029e56
 This bit mask defines the set of user CPU registers to dump on samples.
 The layout of the register mask is architecture-specific and
-described in the kernel header
+is described in the kernel header file
 .IR arch/ARCH/include/uapi/asm/perf_regs.h .
 .TP
 .IR "sample_stack_user" " (since Linux 3.7)"
@@ -1307,6 +1309,15 @@ currently supported.
 This specifies how much data is required to trigger a
 .B PERF_RECORD_AUX
 sample.
+.TP
+.IR "sample_max_stack" " (since Linux 4.8)"
+.\" commit 97c79a38cd454602645f0470ffb444b3b75ce574
+When
+.I sample_type
+includes
+.BR PERF_SAMPLE_CALLCHAIN ,
+this field specifies how many stack frames to report when
+generating the callchain.
 .SS Reading results
 Once a
 .BR perf_event_open ()
@@ -1319,9 +1330,9 @@ field in the
 structure at open time.
 
 If you attempt to read into a buffer that is not big enough to hold the
-data
+data, the error
 .B ENOSPC
-is returned
+results.
 
 Here is the layout of the data returned by a read:
 .IP * 2
@@ -1370,7 +1381,7 @@ was specified.
 .TP
 .IR time_enabled ", " time_running
 Total time the event was enabled and running.
-Normally these are the same.
+Normally these values are the same.
 If more events are started,
 then available counter slots on the PMU, then multiplexing
 happens and events run only part of the time.
@@ -1384,7 +1395,7 @@ values can be used to scale an estimated value for the count.
 An unsigned 64-bit value containing the counter result.
 .TP
 .I id
-A globally unique value for this particular event, only present if
+A globally unique value for this particular event; only present if
 .B PERF_FORMAT_ID
 was specified in
 .IR read_format .
@@ -1584,7 +1595,9 @@ count += pmc;
 If
 .IR cap_usr_time ,
 these fields can be used to compute the time
-delta since time_enabled (in nanoseconds) using rdtsc or similar.
+delta since
+.I time_enabled
+(in nanoseconds) using rdtsc or similar.
 .nf
 
     u64 quot, rem;
@@ -1721,8 +1734,8 @@ below, it will be stashed just after the
 .I perf_event_header
 and the fields already present for the existing
 fields, that is, at the end of the payload.
-That way a newer perf.data
-file will be supported by older perf tools, with these new optional
+This allows a newer perf.data
+file to be supported by older perf tools, with the new optional
 fields being ignored.
 
 The mmap values start with a header:
@@ -1865,8 +1878,8 @@ This record indicates when events are lost.
 .nf
 struct {
     struct perf_event_header header;
-    u64 id;
-    u64 lost;
+    u64    id;
+    u64    lost;
     struct sample_id sample_id;
 };
 .fi
@@ -1887,9 +1900,9 @@ This record indicates a change in the process name.
 .nf
 struct {
     struct perf_event_header header;
-    u32 pid;
-    u32 tid;
-    char comm[];
+    u32    pid;
+    u32    tid;
+    char   comm[];
     struct sample_id sample_id;
 };
 .fi
@@ -1913,9 +1926,9 @@ This record indicates a process exit event.
 .nf
 struct {
     struct perf_event_header header;
-    u32 pid, ppid;
-    u32 tid, ptid;
-    u64 time;
+    u32    pid, ppid;
+    u32    tid, ptid;
+    u64    time;
     struct sample_id sample_id;
 };
 .fi
@@ -1928,9 +1941,9 @@ This record indicates a throttle/unthrottle event.
 .nf
 struct {
     struct perf_event_header header;
-    u64 time;
-    u64 id;
-    u64 stream_id;
+    u64    time;
+    u64    id;
+    u64    stream_id;
     struct sample_id sample_id;
 };
 .fi
@@ -1943,9 +1956,9 @@ This record indicates a fork event.
 .nf
 struct {
     struct perf_event_header header;
-    u32 pid, ppid;
-    u32 tid, ptid;
-    u64 time;
+    u32    pid, ppid;
+    u32    tid, ptid;
+    u64    time;
     struct sample_id sample_id;
 };
 .fi
@@ -1958,7 +1971,7 @@ This record indicates a read event.
 .nf
 struct {
     struct perf_event_header header;
-    u32 pid, tid;
+    u32    pid, tid;
     struct read_format values;
     struct sample_id sample_id;
 };
@@ -1972,35 +1985,36 @@ This record indicates a sample.
 .nf
 struct {
     struct perf_event_header header;
-    u64   sample_id;  /* if PERF_SAMPLE_IDENTIFIER */
-    u64   ip;         /* if PERF_SAMPLE_IP */
-    u32   pid, tid;   /* if PERF_SAMPLE_TID */
-    u64   time;       /* if PERF_SAMPLE_TIME */
-    u64   addr;       /* if PERF_SAMPLE_ADDR */
-    u64   id;         /* if PERF_SAMPLE_ID */
-    u64   stream_id;  /* if PERF_SAMPLE_STREAM_ID */
-    u32   cpu, res;   /* if PERF_SAMPLE_CPU */
-    u64   period;     /* if PERF_SAMPLE_PERIOD */
+    u64    sample_id;  /* if PERF_SAMPLE_IDENTIFIER */
+    u64    ip;         /* if PERF_SAMPLE_IP */
+    u32    pid, tid;   /* if PERF_SAMPLE_TID */
+    u64    time;       /* if PERF_SAMPLE_TIME */
+    u64    addr;       /* if PERF_SAMPLE_ADDR */
+    u64    id;         /* if PERF_SAMPLE_ID */
+    u64    stream_id;  /* if PERF_SAMPLE_STREAM_ID */
+    u32    cpu, res;   /* if PERF_SAMPLE_CPU */
+    u64    period;     /* if PERF_SAMPLE_PERIOD */
     struct read_format v; /* if PERF_SAMPLE_READ */
-    u64   nr;         /* if PERF_SAMPLE_CALLCHAIN */
-    u64   ips[nr];    /* if PERF_SAMPLE_CALLCHAIN */
-    u32   size;       /* if PERF_SAMPLE_RAW */
-    char  data[size]; /* if PERF_SAMPLE_RAW */
-    u64   bnr;        /* if PERF_SAMPLE_BRANCH_STACK */
+    u64    nr;         /* if PERF_SAMPLE_CALLCHAIN */
+    u64    ips[nr];    /* if PERF_SAMPLE_CALLCHAIN */
+    u32    size;       /* if PERF_SAMPLE_RAW */
+    cha r  data[size]; /* if PERF_SAMPLE_RAW */
+    u64    bnr;        /* if PERF_SAMPLE_BRANCH_STACK */
     struct perf_branch_entry lbr[bnr];
-                      /* if PERF_SAMPLE_BRANCH_STACK */
-    u64   abi;        /* if PERF_SAMPLE_REGS_USER */
-    u64   regs[weight(mask)];
-                      /* if PERF_SAMPLE_REGS_USER */
-    u64   size;       /* if PERF_SAMPLE_STACK_USER */
-    char  data[size]; /* if PERF_SAMPLE_STACK_USER */
-    u64   dyn_size;   /* if PERF_SAMPLE_STACK_USER && size != 0 */
-    u64   weight;     /* if PERF_SAMPLE_WEIGHT */
-    u64   data_src;   /* if PERF_SAMPLE_DATA_SRC */
-    u64   transaction;/* if PERF_SAMPLE_TRANSACTION */
-    u64   abi;        /* if PERF_SAMPLE_REGS_INTR */
-    u64   regs[weight(mask)];
-                      /* if PERF_SAMPLE_REGS_INTR */
+                       /* if PERF_SAMPLE_BRANCH_STACK */
+    u64    abi;        /* if PERF_SAMPLE_REGS_USER */
+    u64    regs[weight(mask)];
+                       /* if PERF_SAMPLE_REGS_USER */
+    u64    size;       /* if PERF_SAMPLE_STACK_USER */
+    char   data[size]; /* if PERF_SAMPLE_STACK_USER */
+    u64    dyn_size;   /* if PERF_SAMPLE_STACK_USER &&
+                             size != 0 */
+    u64    weight;     /* if PERF_SAMPLE_WEIGHT */
+    u64    data_src;   /* if PERF_SAMPLE_DATA_SRC */
+    u64    transaction;/* if PERF_SAMPLE_TRANSACTION */
+    u64    abi;        /* if PERF_SAMPLE_REGS_INTR */
+    u64    regs[weight(mask)];
+                       /* if PERF_SAMPLE_REGS_INTR */
 };
 .fi
 .RS 4
@@ -2389,7 +2403,7 @@ Abort due to read capacity overflow.
 In addition, a user-specified abort code can be obtained from
 the high 32 bits of the field by shifting right by
 .B PERF_TXN_ABORT_SHIFT
-and masking with
+and masking with the value
 .BR PERF_TXN_ABORT_MASK .
 .TP
 .IR abi ", " regs[weight(mask)]
@@ -2400,7 +2414,9 @@ is enabled, then the user CPU registers are recorded.
 The
 .I abi
 field is one of
-.BR PERF_SAMPLE_REGS_ABI_NONE ", " PERF_SAMPLE_REGS_ABI_32 " or "
+.BR PERF_SAMPLE_REGS_ABI_NONE ,
+.BR PERF_SAMPLE_REGS_ABI_32 ,
+or
 .BR PERF_SAMPLE_REGS_ABI_64 .
 
 The
@@ -2427,18 +2443,18 @@ shared mappings.
 .nf
 struct {
     struct perf_event_header header;
-    u32 pid;
-    u32 tid;
-    u64 addr;
-    u64 len;
-    u64 pgoff;
-    u32 maj;
-    u32 min;
-    u64 ino;
-    u64 ino_generation;
-    u32 prot;
-    u32 flags;
-    char filename[];
+    u32    pid;
+    u32    tid;
+    u64    addr;
+    u64    len;
+    u64    pgoff;
+    u32    maj;
+    u32    min;
+    u64    ino;
+    u64    ino_generation;
+    u32    prot;
+    u32    flags;
+    char   filename[];
     struct sample_id sample_id;
 };
 .fi
@@ -2490,9 +2506,9 @@ AUX buffer region.
 .nf
 struct {
     struct perf_event_header header;
-    u64 aux_offset;
-    u64 aux_size;
-    u64 flags;
+    u64    aux_offset;
+    u64    aux_size;
+    u64    flags;
     struct sample_id sample_id;
 };
 .fi
@@ -2528,8 +2544,8 @@ addresses in the AUX buffer with the proper executable.
 .nf
 struct {
     struct perf_event_header header;
-    u32 pid;
-    u32 tid;
+    u32    pid;
+    u32    tid;
 };
 .fi
 .RS
@@ -2540,6 +2556,25 @@ process ID of the thread starting an instruction trace.
 .I tid
 thread ID of the thread starting an instruction trace.
 .RE
+.TP
+.BR PERF_RECORD_LOST_SAMPLES " (since Linux 4.2)"
+\" f38b0dbb491a6987e198aa6b428db8692a6480f8
+When using hardware sampling (such as Intel PEBS) this record
+indicates some number of samples that may have been lost.
+
+.in +4n
+.nf
+struct {
+    struct perf_event_header header;
+    u64    lost;
+    struct sample_id sample_id;
+};
+.fi
+.RS
+.TP
+.I lost
+the number of potentially lost samples.
+.RE
 .RE
 .SS Overflow handling
 Events can be set to notify when a threshold is crossed,
@@ -2549,11 +2584,14 @@ event file descriptor with
 .BR poll (2),
 .BR select (2),
 or
-.BR epoll (2).
-Alternately, a SIGIO signal handler can be created and
-the event configured with
-.BR fcntl (2)
-to generate SIGIO signals.
+.BR epoll (7).
+Alternatively, the overflow events can be captured via sa signal handler,
+by enabling I/O signaling on the file descriptor; see the discussion of the
+.BR F_SETOWN
+and
+.BR F_SETSIG
+operations in
+.BR fcntl (2).
 
 Overflows are generated only by sampling events
 .RI ( sample_period
@@ -2567,7 +2605,7 @@ or
 .I wakeup_watermark
 value that will trigger if a certain number of samples
 or bytes have been written to the mmap ring buffer.
-In this case
+In this case,
 .B POLL_IN
 is indicated.
 
@@ -2611,7 +2649,7 @@ to calculate event values can be found in that section.
 Originally, when rdpmc support was enabled, any process (not just ones
 with an active perf event) could use the rdpmc instruction to access
 the counters.
-Starting with Linux 4.0
+Starting with Linux 4.0,
 .\" 7911d3f7af14a614617e38245fedf98a724e46a9
 rdpmc support is only allowed if an event is currently enabled
 in a process's context.
@@ -2694,7 +2732,7 @@ after the next overflow.
 The argument is a pointer to a 64-bit value containing the
 desired new period.
 
-Prior to Linux 2.6.36
+Prior to Linux 2.6.36,
 .\" commit ad0cf3478de8677f720ee06393b3147819568d6a
 this ioctl always failed due to a bug
 in the kernel.
@@ -2732,7 +2770,7 @@ The argument is a BPF program file descriptor that was created by
 a previous
 .BR bpf (2)
 system call.
-.SS Using prctl
+.SS Using prctl(2)
 A process can enable or disable all the event groups that are
 attached to it using the
 .BR prctl (2)
@@ -2746,15 +2784,17 @@ process has created on other processes.
 It enables or disables only
 the group leaders, not any other members in the groups.
 .SS perf_event related configuration files
+
 Files in
 .I /proc/sys/kernel/
 .RS 4
 .TP
 .I /proc/sys/kernel/perf_event_paranoid
-
 The
 .I perf_event_paranoid
 file can be set to restrict access to the performance counters.
+
+.PD 0
 .RS
 .IP 2 4
 allow only user-space measurements (default since Linux 4.6).
@@ -2766,6 +2806,7 @@ allow access to CPU-specific data but not raw tracepoint samples.
 .IP \-1
 no restrictions.
 .RE
+.PD
 .IP
 The existence of the
 .I perf_event_paranoid
@@ -2773,7 +2814,6 @@ file is the official method for determining if a kernel supports
 .BR perf_event_open ().
 .TP
 .I /proc/sys/kernel/perf_event_max_sample_rate
-
 This sets the maximum sample rate.
 Setting this too high can allow
 users to sample at a rate that impacts overall machine performance
@@ -2781,15 +2821,20 @@ and potentially lock up the machine.
 The default value is
 100000 (samples per second).
 .TP
+.I /proc/sys/kernel/perf_event_max_stack
+.\" Introduced in c5dfd78eb79851e278b7973031b9ca363da87a7e
+This file sets the maximum depth of stack frame entries reported
+when generating a call trace.
+.TP
 .I /proc/sys/kernel/perf_event_mlock_kb
-
 Maximum number of pages an unprivileged user can
 .BR mlock (2).
 The default is 516 (kB).
-
 .RE
+
 Files in
 .I /sys/bus/event_source/devices/
+
 .RS 4
 Since Linux 2.6.34, the kernel supports having multiple PMUs
 available for monitoring.
@@ -3001,6 +3046,15 @@ This includes requesting low-skid events if not supported,
 branch tracing if it is not available, sampling if no PMU
 interrupt is available, and branch stacks for software events.
 .TP
+.BR EOVERFLOW " (since Linux 4.8)"
+.\" 97c79a38cd454602645f0470ffb444b3b75ce574
+Returned if
+.B PERF_SAMPLE_CALLCHAIN
+is requested and
+.I sample_max_stack
+is larger than the maximum specified in
+.IR /proc/sys/kernel/perf_event_max_stack .
+.TP
 .B EPERM
 Returned on many (but not all) architectures when an unsupported
 .IR exclude_hv ", " exclude_idle ", " exclude_user ", or " exclude_kernel
@@ -3027,7 +3081,7 @@ It was renamed in Linux 2.6.32.
 .SH CONFORMING TO
 This
 .BR perf_event_open ()
-system call Linux- specific
+system call Linux-specific
 and should not be used in programs intended to be portable.
 .SH NOTES
 Glibc does not provide a wrapper for this system call; call it using
