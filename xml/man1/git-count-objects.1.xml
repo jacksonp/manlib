@@ -46,6 +46,10 @@ the packs. These objects could be pruned using <literal>git prune-packed</litera
 objects nor valid packs</simpara>
 <simpara>size-garbage: disk space consumed by garbage files, in KiB (unless -H is
 specified)</simpara>
+<simpara>alternate: absolute path of alternate object databases; may appear
+multiple times, one line per path. Note that if the path contains
+non-printable characters, it may be surrounded by double-quotes and
+contain C-style backslashed escape sequences.</simpara>
 </listitem>
 </varlistentry>
 <varlistentry>

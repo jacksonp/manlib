@@ -7123,21 +7123,20 @@ stash.showStat
 </varlistentry>
 <varlistentry>
 <term>
-submodule.&lt;name&gt;.path
-</term>
-<term>
 submodule.&lt;name&gt;.url
 </term>
 <listitem>
 <simpara>
-        The path within this project and URL for a submodule. These
-        variables are initially populated by <emphasis>git submodule init</emphasis>. See
-        <citerefentry>
+        The URL for a submodule. This variable is copied from the .gitmodules
+        file to the git config via <emphasis>git submodule init</emphasis>. The user can change
+        the configured URL before obtaining the submodule via <emphasis>git submodule
+        update</emphasis>. After obtaining the submodule, the presence of this variable
+        is used as a sign whether the submodule is of interest to git commands.
+        See <citerefentry>
 <refentrytitle>git-submodule</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry> and <citerefentry>
 <refentrytitle>gitmodules</refentrytitle><manvolnum>5</manvolnum>
-</citerefentry> for
-        details.
+</citerefentry> for details.
 </simpara>
 </listitem>
 </varlistentry>

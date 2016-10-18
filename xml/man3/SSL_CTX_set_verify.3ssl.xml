@@ -285,7 +285,7 @@ else if (mydata-&gt;verbose_mode)
  */
 if (!preverify_ok &amp;&amp; (err == X509_V_ERR_UNABLE_TO_GET_ISSUER_CERT))
 {
-  X509_NAME_oneline(X509_get_issuer_name(ctx-&gt;current_cert), buf, 256);
+  X509_NAME_oneline(X509_get_issuer_name(err_cert), buf, 256);
   printf("issuer= %s\n", buf);
 }
 

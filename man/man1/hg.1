@@ -9760,6 +9760,19 @@ ECMA\-48 mode, the options are \(aqbold\(aq, \(aqinverse\(aq, \(aqitalic\(aq, an
 \(aqunderline\(aq.  How each is rendered depends on the terminal emulator.
 Some may not be available for a given terminal type, and will be
 silently ignored.
+.sp
+If the terminfo entry for your terminal is missing codes for an effect
+or has the wrong codes, you can add or override those codes in your
+configuration:
+.sp
+.nf
+.ft C
+[color]
+terminfo.dim = \eE[2m
+.ft P
+.fi
+.sp
+where \(aqE\(aq is substituted with an escape character.
 .SS Labels
 .sp
 Text receives color effects depending on the labels that it has. Many

@@ -651,7 +651,7 @@ DANE TLSA 2 1 1 ...ee12d2cc90180517616e8a18 matched TA certificate at depth 1
 	      communication. <emphasis role="bold">protocol</emphasis> is a
 	      keyword for the intended protocol.  Currently, the only
 	      supported keywords are "smtp", "pop3", "imap", "ftp", "xmpp",
-	      "xmpp-server", and "irc."
+	      "xmpp-server", "irc" and "postgres."
             </para>
           </listitem>
         </varlistentry>

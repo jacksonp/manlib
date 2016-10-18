@@ -38,12 +38,13 @@
 .\"
 .TH MPROTECT 2 2015-07-23 "Linux" "Linux Programmer's Manual"
 .SH NAME
-mprotect \- set protection on a region of memory
+mprotect, pkey_mprotect \- set protection on a region of memory
 .SH SYNOPSIS
 .nf
 .B #include <sys/mman.h>
 .sp
 .BI "int mprotect(void *" addr ", size_t " len ", int " prot );
+.BI "int pkey_mprotect(void *" addr ", size_t " len ", int " prot ", int " pkey ");
 .fi
 .SH DESCRIPTION
 .BR mprotect ()
@@ -74,11 +75,32 @@ The memory can be modified.
 .TP
 .B PROT_EXEC
 The memory can be executed.
+.PP
+Like
+.BR mprotect (),
+.BR pkey_mprotect ()
+changes the protection on the pages specified by
+.IR addr
+and
+.IR len .
+The
+.I pkey
+argument specifies the protection key (see
+.BR pkeys (7))
+to assign to the memory.
+The protection key must be allocated with
+.BR pkey_alloc (2)
+before it is passed to
+.BR pkey_mprotect ().
+For an example of the use of this system call, see
+.BR pkeys (7).
 .SH RETURN VALUE
 On success,
 .BR mprotect ()
-returns zero.
-On error, \-1 is returned, and
+and
+.BR pkey_mprotect ()
+return zero.
+On error, these system calls return \-1, and
 .I errno
 is set appropriately.
 .SH ERRORS
@@ -95,6 +117,11 @@ to mark it
 .B EINVAL
 \fIaddr\fP is not a valid pointer,
 or not a multiple of the system page size.
+.TP
+.BR EINVAL
+.RB ( pkey_mprotect ())
+\fIpkey\fP has not been allocated with
+.BR pkey_alloc (2)
 .\" Or: both PROT_GROWSUP and PROT_GROWSDOWN were specified in 'prot'.
 .TP
 .B ENOMEM
@@ -121,7 +148,12 @@ in the middle of a region currently protected as
 .BR PROT_READ|PROT_WRITE
 would result in three mappings:
 two read/write mappings at each end and a read-only mapping in the middle.)
+.SH VERSIONS
+.BR pkey_mprotect ()
+first appeared in Linux 4.9.
+Glibc support is not yet available.
 .SH CONFORMING TO
+.BR mprotect ():
 POSIX.1-2001, POSIX.1-2008, SVr4.
 .\" SVr4 defines an additional error
 .\" code EAGAIN. The SVr4 error conditions don't map neatly onto Linux's.
@@ -130,6 +162,9 @@ POSIX says that the behavior of
 is unspecified if it is applied to a region of memory that
 was not obtained via
 .BR mmap (2).
+
+.BR pkey_mprotect ()
+is a nonportable Linux extension.
 .SH NOTES
 On Linux, it is always permissible to call
 .BR mprotect ()
@@ -165,10 +200,35 @@ but at a minimum can allow write access only if
 has been set, and must not allow any access if
 .B PROT_NONE
 has been set.
+
+Applications should be careful when mixing use of
+.BR mprotect ()
+and
+.BR pkey_mprotect ().
+On x86, when
+.BR mprotect ()
+is used with
+.IR prot
+set to
+.B PROT_EXEC
+a pkey is may be allocated and set on the memory implicitly
+by the kernel, but only when the pkey was 0 previously.
+
+On systems that do not support protection keys in hardware,
+.BR pkey_mprotect ()
+may still be used, but
+.IR pkey
+must be set to 0.
+When called this way, the operation of
+.BR pkey_mprotect ()
+is equivalent to
+.BR mprotect ().
 .SH EXAMPLE
 .\" sigaction.2 refers to this example
 .PP
-The program below allocates four pages of memory, makes the third
+The program below demonstrates the use of
+.BR mprotect ()
+The program allocates four pages of memory, makes the third
 of these pages read-only, and then executes a loop that walks upward
 through the allocated region modifying bytes.
 
@@ -245,4 +305,5 @@ main(int argc, char *argv[])
 .fi
 .SH SEE ALSO
 .BR mmap (2),
-.BR sysconf (3)
+.BR sysconf (3),
+.BR pkeys (7)

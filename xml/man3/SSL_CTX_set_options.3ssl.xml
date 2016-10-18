@@ -294,6 +294,20 @@ SSL_OP_NO_TLSv1_2, SSL_OP_NO_DTLSv1, SSL_OP_NO_DTLSv1_2</term>
             </para>
           </listitem>
         </varlistentry>
+        <varlistentry>
+          <term>SSL_OP_NO_ENCRYPT_THEN_MAC</term>
+          <listitem>
+            <para>
+	      Normally clients and servers will transparently attempt to
+	      negotiate the RFC7366 Encrypt-then-MAC option on TLS and DTLS
+	      connection.
+            </para>
+            <para>
+	      If this option is set, Encrypt-then-MAC is disabled. Clients
+	      will not propose, and servers will not accept the extension.
+            </para>
+          </listitem>
+        </varlistentry>
       </variablelist>
     </para>
   </refsection>

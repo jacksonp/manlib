@@ -612,7 +612,10 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 </listitem>
 <listitem>
 <simpara>
-<emphasis>%C(&#8230;)</emphasis>: color specification, as described in color.branch.* config option;
+<emphasis>%C(&#8230;)</emphasis>: color specification, as described under Values in the
+  "CONFIGURATION FILE" section of <citerefentry>
+<refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
+</citerefentry>;
   adding <literal>auto,</literal> at the beginning will emit color only when colors are
   enabled for log output (by <literal>color.diff</literal>, <literal>color.ui</literal>, or <literal>--color</literal>, and
   respecting the <literal>auto</literal> settings of the former if we are going to a

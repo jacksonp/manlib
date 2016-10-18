@@ -112,6 +112,22 @@ success of the resolution after the custom tool has exited.</simpara>
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+-O&lt;orderfile&gt;
+</term>
+<listitem>
+<simpara>
+        Process files in the order specified in the
+        &lt;orderfile&gt;, which has one shell glob pattern per line.
+        This overrides the <literal>diff.orderFile</literal> configuration variable
+        (see <citerefentry>
+<refentrytitle>git-config</refentrytitle><manvolnum>1</manvolnum>
+</citerefentry>).  To cancel <literal>diff.orderFile</literal>,
+        use <literal>-O/dev/null</literal>.
+</simpara>
+</listitem>
+</varlistentry>
 </variablelist>
 </refsect1>
 <refsect1 id="_temporary_files">
