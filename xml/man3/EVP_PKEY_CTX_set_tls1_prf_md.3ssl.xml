@@ -1,0 +1,128 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>EVP_PKEY_CTX_set_tls1_prf_md.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>EVP_PKEY_CTX_set_tls1_prf_md,
+EVP_PKEY_CTX_set1_tls1_prf_secret, EVP_PKEY_CTX_add1_tls1_prf_seed</refname>
+<refpurpose>TLS PRF key derivation algorithm</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/kdf.h&gt;</synopsis>
+<synopsis>int EVP_PKEY_CTX_set_tls1_prf_md(EVP_PKEY_CTX *pctx, const EVP_MD *md);
+int EVP_PKEY_CTX_set1_tls1_prf_secret(EVP_PKEY_CTX *pctx,
+                                      unsigned char *sec, int seclen);
+int EVP_PKEY_CTX_add1_tls1_prf_seed(EVP_PKEY_CTX *pctx, seed, seedlen)
+                                    unsigned char *seed, int seedlen);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-8a5f0c4133bc7463f9d13dbb710a1ae1"><title>DESCRIPTION</title>
+    <para>
+      The <emphasis role="bold">EVP_PKEY_TLS1_PRF</emphasis> algorithm
+      implements the PRF key derivation function for TLS. It has no
+      associated private key and only implements key derivation using
+      EVP_PKEY_derive().
+    </para>
+    <para>
+      EVP_PKEY_set_tls1_prf_md() sets the message digest associated with
+      the TLS PRF. EVP_md5_sha1() is treated as a special case which uses
+      the PRF algorithm using both <emphasis role="bold">MD5</emphasis> and
+      <emphasis role="bold">SHA1</emphasis> as used in TLS 1.0 and 1.1.
+    </para>
+    <para>
+      EVP_PKEY_CTX_set_tls1_prf_secret() sets the secret value of the TLS
+      PRF to <emphasis role="bold">seclen</emphasis> bytes of the buffer
+      <emphasis role="bold">sec</emphasis>. Any existing secret value is
+      replaced and any seed is reset.
+    </para>
+    <para>
+      EVP_PKEY_CTX_add1_tls1_prf_seed() sets the seed to <emphasis role="bold">seedlen</emphasis> bytes of <emphasis role="bold">seed</emphasis>. If a seed is already set it is appended
+      to the existing value.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-56188300bcab02c147f7fd76cb09653b"><title>STRING CTRLS</title>
+    <para>
+      The TLS PRF also supports string based control operations using
+      <citerefentry> <refentrytitle>EVP_PKEY_CTX_ctrl_str</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>. The <emphasis role="bold">type</emphasis> parameter "md" uses the supplied
+      <emphasis role="bold">value</emphasis> as the name of the digest
+      algorithm to use. The <emphasis role="bold">type</emphasis>
+      parameters "secret" and "seed" use the supplied <emphasis role="bold">value</emphasis> parameter as a secret or seed value. The
+      names "hexsecret" and "hexseed" are similar except they take a hex
+      string which is converted to binary.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-76cb5340fbea6288149c4b0f1fb159ef"><title>NOTES</title>
+    <para>
+      All these functions are implemented as macros.
+    </para>
+    <para>
+      A context for the TLS PRF can be obtained by calling:
+    </para>
+    <screen>EVP_PKEY_CTX *pctx = EVP_PKEY_new_id(EVP_PKEY_TLS1_PRF, NULL);</screen>
+    <para>
+      The digest, secret value and seed must be set before a key is derived
+      or an error occurs.
+    </para>
+    <para>
+      The total length of all seeds cannot exceed 1024 bytes in length:
+      this should be more than enough for any normal use of the TLS PRF.
+    </para>
+    <para>
+      The output length of the PRF is specified by the length parameter in
+      the EVP_PKEY_derive() function. Since the output length is variable,
+      setting the buffer to <emphasis role="bold">NULL</emphasis> is not
+      meaningful for the TLS PRF.
+    </para>
+    <para>
+      Optimised versions of the TLS PRF can be implemented in an ENGINE.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-d11213a405a2183f4b5012d9b492c4a0"><title>RETURN VALUES</title>
+    <para>
+      All these functions return 1 for success and 0 or a negative value
+      for failure. In particular a return value of -2 indicates the
+      operation is not supported by the public key algorithm.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-770077ebf559476682f19d8c4383203c"><title>EXAMPLE</title>
+    <para>
+      This example derives 10 bytes using SHA-256 with the secret key
+      "secret" and seed value "seed":
+    </para>
+    <screen>EVP_PKEY_CTX *pctx;
+unsigned char out[10];
+size_t outlen = sizeof(out);
+pctx = EVP_PKEY_CTX_new_id(EVP_PKEY_TLS1_PRF, NULL);
+if (EVP_PKEY_derive_init(pctx) &lt;= 0)
+   /* Error */
+if (EVP_PKEY_CTX_set_tls1_prf_md(pctx, EVP_sha256()) &lt;= 0)
+   /* Error */
+if (EVP_PKEY_CTX_set1_tls1_prf_secret(pctx, "secret", 6) &lt;= 0)
+   /* Error */
+if (EVP_PKEY_CTX_add1_tls1_prf_seed(pctx, "seed", 4) &lt;= 0)
+   /* Error */
+if (EVP_PKEY_derive(pctx, out, &amp;outlen) &lt;= 0)
+   /* Error */</screen>
+  </refsection>
+  <refsection xml:id="ID-6019c436a20082f1bd658a379798d3bc"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>EVP_PKEY_CTX_new</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>EVP_PKEY_CTX_ctrl_str</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>EVP_PKEY_derive</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-310e9aa396fca4b3ea83c83fc9958355"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>
