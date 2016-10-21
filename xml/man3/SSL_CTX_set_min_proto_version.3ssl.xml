@@ -37,7 +37,7 @@ int SSL_set_max_proto_version(SSL *ssl, int version);</synopsis>
   </refsection>
   <refsection xml:id="ID-73f2bcdbde4330d1ee6b6f5340872614"><title>RETURN VALUES</title>
     <para>
-      Both functions return 1 on success and 0 on failure.
+      These functions return 1 on success and 0 on failure.
     </para>
   </refsection>
   <refsection xml:id="ID-67ff777afe991d08bd755352848b613a"><title>NOTES</title>
