@@ -14,7 +14,6 @@ X509_STORE_CTX_get_get_crl,
 X509_STORE_CTX_get_check_revocation,
 X509_STORE_CTX_get_check_issued,
 X509_STORE_CTX_get_get_issuer,
-X509_STORE_CTX_get_verify,
 X509_STORE_CTX_get_verify_cb,
 X509_STORE_CTX_set_verify_cb</refname>
 <refpurpose>get and set verification callback</refpurpose>
@@ -25,8 +24,7 @@ X509_STORE_CTX_set_verify_cb</refname>
 <synopsis>X509_STORE_CTX_verify_cb X509_STORE_CTX_get_verify_cb(X509_STORE_CTX *ctx);</synopsis>
 <synopsis>void X509_STORE_CTX_set_verify_cb(X509_STORE_CTX *ctx,
                                   X509_STORE_CTX_verify_cb verify_cb);</synopsis>
-<synopsis>X509_STORE_CTX_verify_fn X509_STORE_CTX_get_verify(X509_STORE_CTX *ctx);
-X509_STORE_CTX_get_issuer_fn X509_STORE_CTX_get_get_issuer(X509_STORE_CTX *ctx);
+<synopsis>X509_STORE_CTX_get_issuer_fn X509_STORE_CTX_get_get_issuer(X509_STORE_CTX *ctx);
 X509_STORE_CTX_check_issued_fn X509_STORE_CTX_get_check_issued(X509_STORE_CTX *ctx);
 X509_STORE_CTX_check_revocation_fn X509_STORE_CTX_get_check_revocation(X509_STORE_CTX *ctx);
 X509_STORE_CTX_get_crl_fn X509_STORE_CTX_get_get_crl(X509_STORE_CTX *ctx);
@@ -72,8 +70,7 @@ X509_STORE_CTX_cleanup_fn X509_STORE_CTX_get_cleanup(X509_STORE_CTX *ctx);</syno
       callback for the specific <emphasis role="bold">ctx</emphasis>.
     </para>
     <para>
-      X509_STORE_CTX_get_verify(), X509_STORE_CTX_get_get_issuer(),
-      X509_STORE_CTX_get_check_issued(),
+      X509_STORE_CTX_get_get_issuer(), X509_STORE_CTX_get_check_issued(),
       X509_STORE_CTX_get_check_revocation(), X509_STORE_CTX_get_get_crl(),
       X509_STORE_CTX_get_check_crl(), X509_STORE_CTX_get_cert_crl(),
       X509_STORE_CTX_get_check_policy(), X509_STORE_CTX_get_lookup_certs(),
@@ -213,8 +210,7 @@ return(ok);
   </refsection>
   <refsection xml:id="ID-cebbaa37925f0432f2d3490fddfa4a6f"><title>HISTORY</title>
     <para>
-      X509_STORE_CTX_get_verify(), X509_STORE_CTX_get_get_issuer(),
-      X509_STORE_CTX_get_check_issued(),
+      X509_STORE_CTX_get_get_issuer(), X509_STORE_CTX_get_check_issued(),
       X509_STORE_CTX_get_check_revocation(), X509_STORE_CTX_get_get_crl(),
       X509_STORE_CTX_get_check_crl(), X509_STORE_CTX_get_cert_crl(),
       X509_STORE_CTX_get_check_policy(), X509_STORE_CTX_get_lookup_certs(),

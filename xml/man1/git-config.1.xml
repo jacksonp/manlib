@@ -3338,6 +3338,19 @@ diff.algorithm
 </varlistentry>
 <varlistentry>
 <term>
+diff.wsErrorHighlight
+</term>
+<listitem>
+<simpara>
+        A comma separated list of <literal>old</literal>, <literal>new</literal>, <literal>context</literal>, that
+        specifies how whitespace errors on lines are highlighted
+        with <literal>color.diff.whitespace</literal>.  Can be overridden by the
+        command line option <literal>--ws-error-highlight=&lt;kind&gt;</literal>
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 difftool.&lt;tool&gt;.path
 </term>
 <listitem>

@@ -23,7 +23,8 @@
                 [--exclude-per-directory=&lt;file&gt;]
                 [--exclude-standard]
                 [--error-unmatch] [--with-tree=&lt;tree-ish&gt;]
-                [--full-name] [--abbrev] [--] [&lt;file&gt;&#8230;]</literallayout>
+                [--full-name] [--recurse-submodules]
+                [--abbrev] [--] [&lt;file&gt;&#8230;]</literallayout>
 <simpara></simpara>
 </refsynopsisdiv>
 <refsect1 id="_description">
@@ -371,6 +372,17 @@ other
         outputs paths relative to the current directory.  This
         option forces paths to be output relative to the project
         top directory.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--recurse-submodules
+</term>
+<listitem>
+<simpara>
+        Recursively calls ls-files on each submodule in the repository.
+        Currently there is only support for the --cached mode.
 </simpara>
 </listitem>
 </varlistentry>

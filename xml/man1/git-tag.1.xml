@@ -412,9 +412,8 @@ People need to know that their tags might have been changed.</simpara>
 <refsect2 id="_on_automatic_following">
 <title>On Automatic following</title>
 <simpara>If you are following somebody else&#8217;s tree, you are most likely
-using remote-tracking branches (<literal>refs/heads/origin</literal> in traditional
-layout, or <literal>refs/remotes/origin/master</literal> in the separate-remote
-layout).  You usually want the tags from the other end.</simpara>
+using remote-tracking branches (eg. <literal>refs/remotes/origin/master</literal>).
+You usually want the tags from the other end.</simpara>
 <simpara>On the other hand, if you are fetching because you would want a
 one-shot merge from somebody else, you typically do not want to
 get tags from there.  This happens more often for people near

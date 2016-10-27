@@ -18,6 +18,7 @@
     [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]
     [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
     [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]
+    [--super-prefix=&lt;path&gt;]
     &lt;command&gt; [&lt;args&gt;]</literallayout>
 <simpara></simpara>
 </refsynopsisdiv>
@@ -223,6 +224,18 @@ foo.bar= ...</literal>) sets <literal>foo.bar</literal> to the empty string.</si
 </citerefentry> for more
         details.  Equivalent to setting the <literal>GIT_NAMESPACE</literal> environment
         variable.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+--super-prefix=&lt;path&gt;
+</term>
+<listitem>
+<simpara>
+        Currently for internal use only.  Set a prefix which gives a path from
+        above a repository down to its root.  One use is to give submodules
+        context about the superproject that invoked it.
 </simpara>
 </listitem>
 </varlistentry>

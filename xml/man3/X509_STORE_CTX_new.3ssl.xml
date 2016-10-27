@@ -12,9 +12,7 @@ X509_STORE_CTX_get0_param, X509_STORE_CTX_set0_param,
 X509_STORE_CTX_get0_untrusted, X509_STORE_CTX_set0_untrusted,
 X509_STORE_CTX_get_num_untrusted,
 X509_STORE_CTX_set_default,
-X509_STORE_CTX_set_verify,
-X509_STORE_set_verify,
-X509_STORE_CTX_get_verify</refname>
+X509_STORE_CTX_set_verify</refname>
 <refpurpose>X509_STORE_CTX initialisation</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
@@ -36,9 +34,7 @@ int X509_STORE_CTX_set_default(X509_STORE_CTX *ctx, const char *name);</synopsis
 void X509_STORE_CTX_set0_untrusted(X509_STORE_CTX *ctx, STACK_OF(X509) *sk);</synopsis>
 <synopsis>int X509_STORE_CTX_get_num_untrusted(X509_STORE_CTX *ctx);</synopsis>
 <synopsis>typedef int (*X509_STORE_CTX_verify_fn)(X509_STORE_CTX *);
-X509_STORE_CTX_verify_fn X509_STORE_CTX_get_verify(X509_STORE_CTX *ctx);
 void X509_STORE_CTX_set_verify(X509_STORE_CTX *ctx, X509_STORE_CTX_verify_fn verify);</synopsis>
-<synopsis>void X509_STORE_set_verify(X509_STORE *ctx, X509_STORE_CTX_verify verify);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-b42a72170bb54a9deb4c47b582954998"><title>DESCRIPTION</title>
     <para>
@@ -127,13 +123,6 @@ void X509_STORE_CTX_set_verify(X509_STORE_CTX *ctx, X509_STORE_CTX_verify_fn ver
       X509_STORE_CTX_set_verify() provides the capability for overriding
       the default verify function. This function is responsible for
       verifying chain signatures and expiration times.
-      X509_STORE_CTX_get_verify() obtains the current verify function being
-      used.
-    </para>
-    <para>
-      X509_STORE_set_verify() works in the same way as for
-      X509_STORE_CTX_set_verify() but sets the default verify function to
-      be used by all X509_STORE_CTX objects created for this X509_STORE.
     </para>
     <para>
       A verify function is defined as an X509_STORE_CTX_verify type which
@@ -185,10 +174,6 @@ void X509_STORE_CTX_set_verify(X509_STORE_CTX *ctx, X509_STORE_CTX_verify_fn ver
       X509_STORE_CTX_get_num_untrusted() returns the number of untrusted
       certificates used.
     </para>
-    <para>
-      X509_STORE_CTX_get_verify() returns the current verify function in
-      use for this X509_STORE_CTX.
-    </para>
   </refsection>
   <refsection xml:id="ID-4f1ab990d2417fa0e1c7e6d03f08020f"><title>SEE ALSO</title>
     <para>
@@ -202,9 +187,6 @@ void X509_STORE_CTX_set_verify(X509_STORE_CTX *ctx, X509_STORE_CTX_verify_fn ver
     <para>
       X509_STORE_CTX_set0_crls() was first added to OpenSSL 1.0.0
       X509_STORE_CTX_get_num_untrusted() was first added to OpenSSL 1.1.0
-      X509_STORE_set_verify() was first added to OpenSSL 1.1.0. It was
-      previously available as a macro X509_STORE_set_verify_func(). This
-      macro still exists but simply calls this function.
     </para>
   </refsection>
   <refsection xml:id="ID-a1d9b07667f8e383757418a6d3107bdd"><title>COPYRIGHT</title>

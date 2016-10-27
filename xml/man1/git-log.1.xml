@@ -1942,8 +1942,14 @@ The title was &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional diff
 </listitem>
 <listitem>
 <simpara>
-<emphasis>%G?</emphasis>: show "G" for a good (valid) signature, "B" for a bad signature,
-  "U" for a good signature with unknown validity and "N" for no signature
+<emphasis>%G?</emphasis>: show "G" for a good (valid) signature,
+  "B" for a bad signature,
+  "U" for a good signature with unknown validity,
+  "X" for a good signature that has expired,
+  "Y" for a good signature made by an expired key,
+  "R" for a good signature made by a revoked key,
+  "E" if the signature cannot be checked (e.g. missing key)
+  and "N" for no signature
 </simpara>
 </listitem>
 <listitem>
@@ -2720,6 +2726,8 @@ override configuration settings.</simpara>
         lines are highlighted.  E.g. <literal>--ws-error-highlight=new,old</literal>
         highlights whitespace errors on both deleted and added lines.
         <literal>all</literal> can be used as a short-hand for <literal>old,new,context</literal>.
+        The <literal>diff.wsErrorHighlight</literal> configuration variable can be
+        used to specify the default behaviour.
 </simpara>
 </listitem>
 </varlistentry>
