@@ -91,7 +91,7 @@
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>BIO_push</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
-      <refentrytitle>BIO_read</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>BIO_read_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>BIO_s_accept</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

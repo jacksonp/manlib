@@ -21,8 +21,8 @@ int BIO_get_fd(BIO *b, int *c);</synopsis>
       write().
     </para>
     <para>
-      BIO_read() and BIO_write() read or write the underlying descriptor.
-      BIO_puts() is supported but BIO_gets() is not.
+      BIO_read_ex() and BIO_write_ex() read or write the underlying
+      descriptor. BIO_puts() is supported but BIO_gets() is not.
     </para>
     <para>
       If the close flag is set then close() is called on the underlying
@@ -54,11 +54,11 @@ int BIO_get_fd(BIO *b, int *c);</synopsis>
   </refsection>
   <refsection xml:id="ID-a7648b27e505545432b5041ef6bb1085"><title>NOTES</title>
     <para>
-      The behaviour of BIO_read() and BIO_write() depends on the behavior
-      of the platforms read() and write() calls on the descriptor. If the
-      underlying file descriptor is in a non blocking mode then the BIO
-      will behave in the manner described in the <citerefentry>
-      <refentrytitle>BIO_read</refentrytitle> <manvolnum>3</manvolnum>
+      The behaviour of BIO_read_ex() and BIO_write_ex() depends on the
+      behavior of the platforms read() and write() calls on the descriptor.
+      If the underlying file descriptor is in a non blocking mode then the
+      BIO will behave in the manner described in the <citerefentry>
+      <refentrytitle>BIO_read_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry> and <citerefentry>
       <refentrytitle>BIO_should_retry</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> manual pages.
@@ -105,9 +105,9 @@ BIO_free(out);</screen>
       </citerefentry>, <citerefentry>
       <refentrytitle>BIO_reset</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
-      <refentrytitle>BIO_read</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>BIO_read_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
-      <refentrytitle>BIO_write</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>BIO_write_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>BIO_puts</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

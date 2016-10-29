@@ -46,12 +46,12 @@ int BIO_ctrl_reset_read_request(BIO *b);</synopsis>
       routines are inappropriate.
     </para>
     <para>
-      Calls to BIO_read() will read data from the buffer or request a retry
-      if no data is available.
+      Calls to BIO_read_ex() will read data from the buffer or request a
+      retry if no data is available.
     </para>
     <para>
-      Calls to BIO_write() will place data in the buffer or request a retry
-      if the buffer is full.
+      Calls to BIO_write_ex() will place data in the buffer or request a
+      retry if the buffer is full.
     </para>
     <para>
       The standard calls BIO_ctrl_pending() and BIO_ctrl_wpending() can be
@@ -96,7 +96,7 @@ int BIO_ctrl_reset_read_request(BIO *b);</synopsis>
     <para>
       BIO_get_write_guarantee() and BIO_ctrl_get_write_guarantee() return
       the maximum length of data that can be currently written to the BIO.
-      Writes larger than this value will return a value from BIO_write()
+      Writes larger than this value will return a value from BIO_write_ex()
       less than the amount requested or if the buffer is full request a
       retry. BIO_ctrl_get_write_guarantee() is a function whereas
       BIO_get_write_guarantee() is a macro.
@@ -135,13 +135,13 @@ int BIO_ctrl_reset_read_request(BIO *b);</synopsis>
     </para>
     <para>
       To see why this is important consider a case where a request is sent
-      using BIO_write() and a response read with BIO_read(), this can occur
-      during an TLS/SSL handshake for example. BIO_write() will succeed and
-      place data in the write buffer. BIO_read() will initially fail and
-      BIO_should_read() will be true. If the application then waits for
-      data to be available on the underlying transport before flushing the
-      write buffer it will never succeed because the request was never
-      sent!
+      using BIO_write_ex() and a response read with BIO_read_ex(), this can
+      occur during an TLS/SSL handshake for example. BIO_write_ex() will
+      succeed and place data in the write buffer. BIO_read_ex() will
+      initially fail and BIO_should_read() will be true. If the application
+      then waits for data to be available on the underlying transport
+      before flushing the write buffer it will never succeed because the
+      request was never sent!
     </para>
     <para>
       BIO_eof() is true if no data is in the peer BIO and the peer BIO has
@@ -231,7 +231,7 @@ BIO_free(network_bio);
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>BIO_should_retry</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>BIO_read</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>BIO_read_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>
   </refsection>

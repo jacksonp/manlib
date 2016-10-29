@@ -27,7 +27,7 @@ int BIO_rw_filename(BIO *b, char *name)</synopsis>
       wrapper round the stdio FILE structure and it is a source/sink BIO.
     </para>
     <para>
-      Calls to BIO_read() and BIO_write() read and write data to the
+      Calls to BIO_read_ex() and BIO_write_ex() read and write data to the
       underlying stream. BIO_gets() and BIO_puts() are supported on file
       BIOs.
     </para>
@@ -170,9 +170,9 @@ BIO_free(out);</screen>
       </citerefentry>, <citerefentry>
       <refentrytitle>BIO_flush</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
-      <refentrytitle>BIO_read</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>BIO_read_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
-      <refentrytitle>BIO_write</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>BIO_write_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>BIO_puts</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

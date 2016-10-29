@@ -23,8 +23,8 @@ int BIO_get_md_ctx(BIO *b, EVP_MD_CTX **mdcp);</synopsis>
       EVP_DigestFinal().
     </para>
     <para>
-      Any data written or read through a digest BIO using BIO_read() and
-      BIO_write() is digested.
+      Any data written or read through a digest BIO using BIO_read_ex() and
+      BIO_write_ex() is digested.
     </para>
     <para>
       BIO_gets(), if its <emphasis role="bold">size</emphasis> parameter is

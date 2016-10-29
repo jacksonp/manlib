@@ -156,8 +156,9 @@ configured in your <emphasis role="strong">ansible.cfg</emphasis> file (/etc/ans
 </refsect1>
 <refsect1 id="_init">
 <title>INIT</title>
-<simpara>The <emphasis role="strong">init</emphasis> command is used to create an empty role suitable for uploading
-to <ulink url="https://galaxy.ansible.com">https://galaxy.ansible.com</ulink> (or for roles in general).</simpara>
+<simpara>The <emphasis role="strong">init</emphasis> command is used to create a new role suitable for uploading
+to <ulink url="https://galaxy.ansible.com">https://galaxy.ansible.com</ulink> (or for roles in general). Creates a skeleton
+directory structure and default files.</simpara>
 <refsect2 id="_usage_3">
 <title>USAGE</title>
 <simpara>$ ansible-galaxy init [options] role_name</simpara>
@@ -193,6 +194,16 @@ working directory.
 <listitem>
 <simpara>
 Don&#8217;t query the galaxy API when creating roles
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">--container-enabled</emphasis>
+</term>
+<listitem>
+<simpara>
+Initialize the new role with files appropriate for a Container Enabled role.
 </simpara>
 </listitem>
 </varlistentry>
@@ -430,6 +441,17 @@ Override the default server <ulink url="https://galaxy.ansible.com">https://gala
 Provide a specific branch to import. When a branch is not specified the
 branch found in meta/main.yml is used. If no branch is specified in
 meta/main.yml, the repo&#8217;s default branch (usually master) is used.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
+<emphasis role="strong">--role-name</emphasis>
+</term>
+<listitem>
+<simpara>
+Set the name of the role. Otherwise, the name is derived from the
+name of the GitHub repository.
 </simpara>
 </listitem>
 </varlistentry>

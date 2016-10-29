@@ -24,8 +24,8 @@ void BIO_set_retry_reason(BIO *bio, int reason);</synopsis>
   <refsection xml:id="ID-c6e254314075c70da908f102cef390c5"><title>DESCRIPTION</title>
     <para>
       These functions determine why a BIO is not able to read or write
-      data. They will typically be called after a failed BIO_read() or
-      BIO_write() call.
+      data. They will typically be called after a failed BIO_read_ex() or
+      BIO_write_ex() call.
     </para>
     <para>
       BIO_should_retry() is true if the call that produced this condition
@@ -78,12 +78,12 @@ void BIO_set_retry_reason(BIO *bio, int reason);</synopsis>
     <para>
       If BIO_should_retry() returns false then the precise "error
       condition" depends on the BIO type that caused it and the return code
-      of the BIO operation. For example if a call to BIO_read() on a socket
-      BIO returns 0 and BIO_should_retry() is false then the cause will be
-      that the connection closed. A similar condition on a file BIO will
-      mean that it has reached EOF. Some BIO types may place additional
-      information on the error queue. For more details see the individual
-      BIO type manual pages.
+      of the BIO operation. For example if a call to BIO_read_ex() on a
+      socket BIO returns 0 and BIO_should_retry() is false then the cause
+      will be that the connection closed. A similar condition on a file BIO
+      will mean that it has reached EOF. Some BIO types may place
+      additional information on the error queue. For more details see the
+      individual BIO type manual pages.
     </para>
     <para>
       If the underlying I/O structure is in a blocking mode almost all

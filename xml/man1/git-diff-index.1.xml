@@ -1104,6 +1104,21 @@ information.</simpara>
 </simpara>
 </listitem>
 </varlistentry>
+<varlistentry>
+<term>
+--ita-invisible-in-index
+</term>
+<listitem>
+<simpara>
+        By default entries added by "git add -N" appear as an existing
+        empty file in "git diff" and a new file in "git diff --cached".
+        This option makes the entry appear as a new file in "git diff"
+        and non-existent in "git diff --cached". This option could be
+        reverted with <literal>--ita-visible-in-index</literal>. Both options are
+        experimental and could be removed in future.
+</simpara>
+</listitem>
+</varlistentry>
 </variablelist>
 <simpara>For more detailed explanation on these common options, see also
 <citerefentry>
