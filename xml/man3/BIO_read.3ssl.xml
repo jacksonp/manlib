@@ -9,24 +9,23 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/bio.h&gt;</synopsis>
-<synopsis>int BIO_read_ex(BIO *b, void *out, size_t outl, size_t *read);
-int BIO_write_ex(BIO *b, const void *in, size_t inl, size_t *written);</synopsis>
-<synopsis>int BIO_read(BIO *b, void *buf, int len);
+<synopsis>int BIO_read_ex(BIO *b, void *data, size_t dlen, size_t *readbytes);
+int BIO_write_ex(BIO *b, const void *data, size_t dlen, size_t *written);</synopsis>
+<synopsis>int BIO_read(BIO *b, void *data, int dlen);
 int BIO_gets(BIO *b, char *buf, int size);
-int BIO_write(BIO *b, const void *buf, int len);
+int BIO_write(BIO *b, const void *data, int dlen);
 int BIO_puts(BIO *b, const char *buf);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-439d0ee9003b067e3f9d98e396b725c8"><title>DESCRIPTION</title>
     <para>
-      BIO_read_ex() attempts to read <emphasis role="bold">outl</emphasis>
+      BIO_read_ex() attempts to read <emphasis role="bold">dlen</emphasis>
       bytes from BIO <emphasis role="bold">b</emphasis> and places the data
-      in <emphasis role="bold">out</emphasis>. If any bytes were
+      in <emphasis role="bold">data</emphasis>. If any bytes were
       successfully read then the number of bytes read is stored in
-      <emphasis role="bold">*read</emphasis>.
+      <emphasis role="bold">*readbytes</emphasis>.
     </para>
     <para>
-      BIO_write_ex() attempts to write <emphasis role="bold">inl</emphasis>
-      bytes from <emphasis role="bold">in</emphasis> to BIO <emphasis role="bold">b</emphasis>. If successful then the number of bytes
+      BIO_write_ex() attempts to write <emphasis role="bold">dlen</emphasis> bytes from <emphasis role="bold">data</emphasis> to BIO <emphasis role="bold">b</emphasis>. If successful then the number of bytes
       written is stored in <emphasis role="bold">*written</emphasis>.
     </para>
     <para>
@@ -38,10 +37,10 @@ int BIO_puts(BIO *b, const char *buf);</synopsis>
       BIO_gets() performs the BIOs "gets" operation and places the data in
       <emphasis role="bold">buf</emphasis>. Usually this operation will
       attempt to read a line of data from the BIO of maximum length
-      <emphasis role="bold">len-1</emphasis>. There are exceptions to this,
-      however; for example, BIO_gets() on a digest BIO will calculate and
-      return the digest and other BIOs may not support BIO_gets() at all.
-      The returned string is always NUL-terminated.
+      <emphasis role="bold">size-1</emphasis>. There are exceptions to
+      this, however; for example, BIO_gets() on a digest BIO will calculate
+      and return the digest and other BIOs may not support BIO_gets() at
+      all. The returned string is always NUL-terminated.
     </para>
     <para>
       BIO_write() attempts to write <emphasis role="bold">len</emphasis>

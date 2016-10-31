@@ -13,11 +13,11 @@
 .\" Modified 2004-10-07 aeb, added FUTEX_REQUEUE, FUTEX_CMP_REQUEUE
 .\"
 .\" FIXME Still to integrate are some points from Torvald Riegel's mail of
-.\"       2015-01-23:
+.\" 2015-01-23:
 .\"       http://thread.gmane.org/gmane.linux.kernel/1703405/focus=7977
 .\"
 .\" FIXME Do we need to add some text regarding Torvald Riegel's 2015-01-24 mail
-.\"       at http://thread.gmane.org/gmane.linux.kernel/1703405/focus=1873242
+.\"       http://thread.gmane.org/gmane.linux.kernel/1703405/focus=1873242
 .\"
 .TH FUTEX 2 2016-07-17 "Linux" "Linux Programmer's Manual"
 .SH NAME
@@ -102,10 +102,10 @@ Analogously to an atomic
 compare-and-exchange operation that potentially changes shared memory,
 blocking via a futex is an atomic compare-and-block operation.
 .\" FIXME(Torvald Riegel):
-.\"      Eventually we want to have some text in NOTES to satisfy
-.\"      the reference in the following sentence
-.\" See NOTES for
-.\" a detailed specification of the synchronization semantics.
+.\" Eventually we want to have some text in NOTES to satisfy
+.\" the reference in the following sentence
+.\"     See NOTES for a detailed specification of
+.\"     the synchronization semantics.
 
 One use of futexes is for implementing locks.
 The state of the lock (i.e., acquired or not acquired)
@@ -278,7 +278,7 @@ architecture).
 This load, the comparison with the expected value, and
 starting to sleep are performed atomically
 .\" FIXME: Torvald, I think we may need to add some explanation of
-.\"        "totally ordered" here.
+.\" "totally ordered" here.
 and totally ordered
 with respect to other futex operations on the same futex word.
 If the thread starts to sleep,
@@ -341,16 +341,17 @@ The arguments
 and
 .I val3
 are ignored.
-.\" FIXME(Torvald) I think we should remove this.  Or maybe adapt to a
-.\"      different example.
-.\" For
-.\" .BR futex (7),
-.\" this call is executed if decrementing the count gave a negative value
-.\" (indicating contention),
-.\" and will sleep until another process or thread releases
-.\" the futex and executes the
-.\" .B FUTEX_WAKE
-.\" operation.
+.\" FIXME . (Torvald) I think we should remove this.  Or maybe adapt to a
+.\" different example.
+.\"
+.\"     For
+.\"     .BR futex (7),
+.\"     this call is executed if decrementing the count gave a negative value
+.\"     (indicating contention),
+.\"     and will sleep until another process or thread releases
+.\"     the futex and executes the
+.\"     .B FUTEX_WAKE
+.\"     operation.
 .\"
 .\""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 .\"
@@ -378,8 +379,9 @@ The arguments
 and
 .I val3
 are ignored.
-.\" FIXME(Torvald) I think we should remove this.  Or maybe adapt to
-.\"          a different example.
+.\" FIXME . (Torvald) I think we should remove this.  Or maybe adapt to
+.\" a different example.
+.\"
 .\"     For
 .\"     .BR futex (7),
 .\"     this is executed if incrementing the count showed that
@@ -387,7 +389,7 @@ are ignored.
 .\"     once the futex value has been set to 1
 .\"     (indicating that it is available).
 .\"
-.\" FIXME How does "incrementing the count show that there were waiters"?
+.\" How does "incrementing the count show that there were waiters"?
 .\"
 .\""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 .\"
@@ -552,14 +554,12 @@ and when the woken waiter unlocks A then the next waiter can proceed.
 .\"
 .\""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 .\"
-.\" FIXME I added a lengthy piece of text on FUTEX_WAKE_OP text,
-.\"       and I'd be happy if someone checked it.
 .TP
 .BR FUTEX_WAKE_OP " (since Linux 2.6.14)"
 .\" commit 4732efbeb997189d9f9b04708dc26bf8613ed721
 .\"	Author: Jakub Jelinek <jakub@redhat.com>
 .\"	Date:   Tue Sep 6 15:16:25 2005 -0700
-.\" FIXME(Torvald) The glibc condvar implementation is currently being
+.\" FIXME. (Torvald) The glibc condvar implementation is currently being
 .\"     revised (e.g., to not use an internal lock anymore).
 .\"     It is probably more future-proof to remove this paragraph.
 .\" [Torvald, do you have an update here?]
@@ -1712,9 +1712,6 @@ various POSIX threads synchronization mechanisms
 .\""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 .\"
 .SH EXAMPLE
-.\" FIXME Is it worth having an example program?
-.\" FIXME Anything obviously broken in the example program?
-.\"
 The program below demonstrates use of futexes in a program where a parent
 process and a child process use a pair of futexes located inside a
 shared anonymous mapping to synchronize access to a shared resource:
@@ -1935,9 +1932,7 @@ Futex example library, futex-*.tar.bz2 at
 .UR ftp://ftp.kernel.org\:/pub\:/linux\:/kernel\:/people\:/rusty/
 .UE
 .\"
-.\" FIXME Are there any other resources that should be listed
-.\"       in the SEE ALSO section?
 .\" FIXME(Torvald) We should probably refer to the glibc code here, in
-.\"       particular the glibc-internal futex wrapper functions that are
-.\"       WIP, and the generic pthread_mutex_t and perhaps condvar
-.\"       implementations.
+.\" particular the glibc-internal futex wrapper functions that are
+.\" WIP, and the generic pthread_mutex_t and perhaps condvar
+.\" implementations.
