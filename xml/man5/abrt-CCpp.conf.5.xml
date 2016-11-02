@@ -36,6 +36,18 @@ MakeCompatCore = <emphasis>yes</emphasis> / <emphasis>no</emphasis> …
 </varlistentry>
 <varlistentry>
 <term>
+MaxCoreFileSize = <emphasis>a number in MiB</emphasis> …
+</term>
+<listitem>
+<simpara>
+   This configuration option together with MaxCrashReportsSize set the limit on
+   the size of dumped core file. The lower value of the both options is used as
+   the effective limit. 0 is evaluated as unlimited for the both options.
+</simpara>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term>
 SaveBinaryImage = <emphasis>yes</emphasis> / <emphasis>no</emphasis> …
 </term>
 <listitem>

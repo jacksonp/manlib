@@ -43,7 +43,8 @@ you create one.</simpara>
 stashes are found in the reflog of this reference and can be named using
 the usual reflog syntax (e.g. <literal>stash@{0}</literal> is the most recently
 created stash, <literal>stash@{1}</literal> is the one before it, <literal>stash@{2.hours.ago}</literal>
-is also possible).</simpara>
+is also possible). Stashes may also be referenced by specifying just the
+stash index (e.g. the integer <literal>n</literal> is equivalent to <literal>stash@{n}</literal>).</simpara>
 </refsect1>
 <refsect1 id="_options">
 <title>OPTIONS</title>

@@ -138,8 +138,8 @@ merge.summary
 </refsect1>
 <refsect1 id="_example">
 <title>EXAMPLE</title>
-<simpara>$ git fetch origin master
-$ git fmt-merge-msg --log &lt;$GIT_DIR/FETCH_HEAD</simpara>
+<literallayout class="monospaced">$ git fetch origin master
+$ git fmt-merge-msg --log &lt;$GIT_DIR/FETCH_HEAD</literallayout><simpara></simpara>
 <simpara>Print a log message describing a merge of the "master" branch from
 the "origin" remote.</simpara>
 </refsect1>

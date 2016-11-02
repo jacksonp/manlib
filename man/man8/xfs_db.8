@@ -699,8 +699,8 @@ If no argument is given, show the current data type.
 The possible data types are:
 .BR agf ", " agfl ", " agi ", " attr ", " bmapbta ", " bmapbtd ,
 .BR bnobt ", " cntbt ", " data ", " dir ", " dir2 ", " dqblk ,
-.BR inobt ", " inode ", " log ", " rmapbt ", " rtbitmap ", " rtsummary ,
-.BR sb ", " symlink " and " text .
+.BR inobt ", " inode ", " log ", " refcntbt ", " rmapbt ", " rtbitmap ,
+.BR rtsummary ", " sb ", " symlink " and " text .
 See the TYPES section below for more information on these data types.
 .TP
 .BI "uuid [" uuid " | " generate " | " rewrite " | " restore ]
@@ -1683,6 +1683,49 @@ It's not useful to examine these with
 use
 .BR xfs_logprint (8)
 instead.
+.TP
+.B refcntbt
+There is one set of filesystem blocks forming the reference count Btree for
+each allocation group. The root block of this Btree is designated by the
+.B refcntroot
+field in the corresponding AGF block.  The blocks are linked to sibling left
+and right blocks at each level, as well as by pointers from parent to child
+blocks.  Each block has the following fields:
+.RS 1.4i
+.PD 0
+.TP 1.2i
+.B magic
+REFC block magic number, 0x52334643 ('R3FC').
+.TP
+.B level
+level number of this block, 0 is a leaf.
+.TP
+.B numrecs
+number of data entries in the block.
+.TP
+.B leftsib
+left (logically lower) sibling block, 0 if none.
+.TP
+.B rightsib
+right (logically higher) sibling block, 0 if none.
+.TP
+.B recs
+[leaf blocks only] array of reference count records. Each record contains
+.BR startblock ,
+.BR blockcount ,
+and
+.BR refcount .
+.TP
+.B keys
+[non-leaf blocks only] array of key records. These are the first value
+of each block in the level below this one. Each record contains
+.BR startblock .
+.TP
+.B ptrs
+[non-leaf blocks only] array of child block pointers. Each pointer is a
+block number within the allocation group to the next level in the Btree.
+.PD
+.RE
 .TP
 .B rmapbt
 There is one set of filesystem blocks forming the reverse mapping Btree for

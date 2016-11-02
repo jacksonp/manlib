@@ -6244,14 +6244,20 @@ rebase.missingCommitsCheck
 </simpara>
 </listitem>
 </varlistentry>
-</variablelist>
-<simpara>rebase.instructionFormat
+<varlistentry>
+<term>
+rebase.instructionFormat
+</term>
+<listitem>
+<simpara>
         A format string, as specified in <citerefentry>
 <refentrytitle>git-log</refentrytitle><manvolnum>1</manvolnum>
 </citerefentry>, to be used for
         the instruction list during an interactive rebase.  The format will automatically
-        have the long commit hash prepended to the format.</simpara>
-<variablelist>
+        have the long commit hash prepended to the format.
+</simpara>
+</listitem>
+</varlistentry>
 <varlistentry>
 <term>
 receive.advertiseAtomic

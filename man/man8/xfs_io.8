@@ -4,7 +4,7 @@ xfs_io \- debug the I/O path of an XFS filesystem
 .SH SYNOPSIS
 .B xfs_io
 [
-.B \-adfmrRstxT
+.B \-adfimrRstxT
 ] [
 .B \-c
 .I cmd
@@ -50,6 +50,12 @@ Open
 read-only, initially. This is required if
 .I file
 is immutable or append-only.
+.TP
+.B \-i
+Start an idle thread. The purpose of this idle thread is to test io
+from a multi threaded process. With single threaded process,
+the file table is not shared and file structs are not reference counted.
+Spawning an idle thread can help detecting file struct reference leaks.
 .TP
 .B \-x
 Expert mode. Dangerous commands are only available in this mode.
@@ -256,7 +262,7 @@ See the
 .B pwrite
 command.
 .TP
-.BI "bmap [ \-adlpv ] [ \-n " nx " ]"
+.BI "bmap [ \-acdelpv ] [ \-n " nx " ]"
 Prints the block mapping for the current open file. Refer to the
 .BR xfs_bmap (8)
 manual page for complete documentation.
@@ -278,6 +284,22 @@ can be used to restrict the output to directories only).
 If the target file is a directory, then the inherited extent size
 is set for that directory (new files created in that directory
 inherit that extent size).
+The
+.I value
+should be specified in bytes, or using one of the usual units suffixes
+(k, m, g, b, etc). The extent size is always reported in units of bytes.
+.TP
+.BI "cowextsize [ \-R | \-D ] [ " value " ]"
+Display and/or modify the preferred copy-on-write extent size used
+when allocating space for the currently open file. If the
+.B \-R
+option is specified, a recursive descent is performed
+for all directory entries below the currently open file
+.RB ( \-D
+can be used to restrict the output to directories only).
+If the target file is a directory, then the inherited CoW extent size
+is set for that directory (new files created in that directory
+inherit that CoW extent size).
 The
 .I value
 should be specified in bytes, or using one of the usual units suffixes
@@ -414,6 +436,11 @@ Punches (de-allocates) blocks in the file by calling fallocate with
 the FALLOC_FL_PUNCH_HOLE flag as described in the
 .BR fallocate (2)
 manual page.
+.TP
+.BI funshare " offset length"
+Call fallocate with FALLOC_FL_UNSHARE_RANGE flag as described in the
+.BR fallocate (2)
+manual page to unshare all shared blocks within the range.
 .TP
 .BI fzero " offset length"
 Call fallocate with FALLOC_FL_ZERO_RANGE flag as described in the

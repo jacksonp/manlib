@@ -670,6 +670,12 @@
             </listitem>
           </varlistentry>
           <varlistentry>
+            <term>void <emphasis role="bold">SSL_CTX_set1_cert_store</emphasis>(SSL_CTX *ctx, X509_STORE *cs);</term>
+            <listitem>
+              <para/>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
             <term>void <emphasis role="bold">SSL_CTX_set_cert_verify_cb</emphasis>(SSL_CTX *ctx, int (*cb)(), char *arg)</term>
             <listitem>
               <para/>
