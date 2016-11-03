@@ -1,0 +1,42 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>DTLS_get_data_mtu.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>DTLS_get_data_mtu</refname>
+<refpurpose>Get maximum data payload size</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
+<synopsis>size_t DTLS_get_data_mtu(const SSL *ssl);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-125f42b65bfff1b92ebb6c7224fdea7d"><title>DESCRIPTION</title>
+    <para>
+      This function obtains the maximum data payload size for the
+      established DTLS connection <emphasis role="bold">ssl</emphasis>,
+      based on the DTLS record MTU and the overhead of the DTLS record
+      header, encryption and authentication currently in use.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-718725907874211ca2bcece6217daf02"><title>RETURN VALUES</title>
+    <para>
+      Returns the maximum data payload size on success, or 0 on failure.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-0a521af046bd32e93d58e6a1eaf05f70"><title>HISTORY</title>
+    <para>
+      This function was added in OpenSSL 1.1.1
+    </para>
+  </refsection>
+  <refsection xml:id="ID-4417a78efa4d1879c706c23ab8fc8f0b"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

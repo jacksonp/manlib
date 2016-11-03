@@ -17,6 +17,7 @@
 [<emphasis role="bold">-tls1</emphasis>]
 [<emphasis role="bold">-tls1_1</emphasis>]
 [<emphasis role="bold">-tls1_2</emphasis>]
+[<emphasis role="bold">-tls1_3</emphasis>]
 [<emphasis role="bold">-s</emphasis>]
 [<emphasis role="bold">-psk</emphasis>]
 [<emphasis role="bold">-srp</emphasis>]
@@ -104,6 +105,16 @@
             <para>
 	      Like <emphasis role="bold">-v</emphasis>, but include the
 	      official cipher suite values in hex.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-tls1_3</emphasis></term>
+          <listitem>
+            <para>
+	      In combination with the <emphasis role="bold">-s</emphasis>
+	      option, list the ciphers which would be used if TLSv1.3 were
+	      negotiated.
             </para>
           </listitem>
         </varlistentry>

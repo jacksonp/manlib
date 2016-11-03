@@ -70,10 +70,12 @@
 [<emphasis role="bold">-tls1</emphasis>]
 [<emphasis role="bold">-tls1_1</emphasis>]
 [<emphasis role="bold">-tls1_2</emphasis>]
+[<emphasis role="bold">-tls1_3</emphasis>]
 [<emphasis role="bold">-no_ssl3</emphasis>]
 [<emphasis role="bold">-no_tls1</emphasis>]
 [<emphasis role="bold">-no_tls1_1</emphasis>]
 [<emphasis role="bold">-no_tls1_2</emphasis>]
+[<emphasis role="bold">-no_tls1_3</emphasis>]
 [<emphasis role="bold">-dtls</emphasis>]
 [<emphasis role="bold">-dtls1</emphasis>]
 [<emphasis role="bold">-dtls1_2</emphasis>]
@@ -508,7 +510,7 @@ DANE TLSA 2 1 1 ...ee12d2cc90180517616e8a18 matched TA certificate at depth 1
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><emphasis role="bold">-ssl3</emphasis>, <emphasis role="bold">-tls1</emphasis>, <emphasis role="bold">-tls1_1</emphasis>, <emphasis role="bold">-tls1_2</emphasis>, <emphasis role="bold">-no_ssl3</emphasis>, <emphasis role="bold">-no_tls1</emphasis>, <emphasis role="bold">-no_tls1_1</emphasis>, <emphasis role="bold">-no_tls1_2</emphasis></term>
+          <term><emphasis role="bold">-ssl3</emphasis>, <emphasis role="bold">-tls1</emphasis>, <emphasis role="bold">-tls1_1</emphasis>, <emphasis role="bold">-tls1_2</emphasis>, <emphasis role="bold">-tls1_3</emphasis>, <emphasis role="bold">-no_ssl3</emphasis>, <emphasis role="bold">-no_tls1</emphasis>, <emphasis role="bold">-no_tls1_1</emphasis>, <emphasis role="bold">-no_tls1_2</emphasis>, <emphasis role="bold">-no_tls1_3</emphasis></term>
           <listitem>
             <para>
 	      These options require or disable the use of the specified SSL

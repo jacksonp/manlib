@@ -32,7 +32,7 @@ int SSL_set_max_proto_version(SSL *ssl, int version);</synopsis>
       supported by the library, respectively.
     </para>
     <para>
-      Currently supported versions are <emphasis role="bold">SSL3_VERSION</emphasis>, <emphasis role="bold">TLS1_VERSION</emphasis>, <emphasis role="bold">TLS1_1_VERSION</emphasis>, <emphasis role="bold">TLS1_2_VERSION</emphasis> for TLS and <emphasis role="bold">DTLS1_VERSION</emphasis>, <emphasis role="bold">DTLS1_2_VERSION</emphasis> for DTLS.
+      Currently supported versions are <emphasis role="bold">SSL3_VERSION</emphasis>, <emphasis role="bold">TLS1_VERSION</emphasis>, <emphasis role="bold">TLS1_1_VERSION</emphasis>, <emphasis role="bold">TLS1_2_VERSION</emphasis>, <emphasis role="bold">TLS1_3_VERSION</emphasis> for TLS and <emphasis role="bold">DTLS1_VERSION</emphasis>, <emphasis role="bold">DTLS1_2_VERSION</emphasis> for DTLS.
     </para>
   </refsection>
   <refsection xml:id="ID-73f2bcdbde4330d1ee6b6f5340872614"><title>RETURN VALUES</title>

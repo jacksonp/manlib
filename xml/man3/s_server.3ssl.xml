@@ -71,6 +71,9 @@
 [<emphasis role="bold">-quiet</emphasis>]
 [<emphasis role="bold">-ssl3</emphasis>]
 [<emphasis role="bold">-tls1</emphasis>]
+[<emphasis role="bold">-tls1_1</emphasis>]
+[<emphasis role="bold">-tls1_2</emphasis>]
+[<emphasis role="bold">-tls1_3</emphasis>]
 [<emphasis role="bold">-dtls</emphasis>]
 [<emphasis role="bold">-dtls1</emphasis>]
 [<emphasis role="bold">-dtls1_2</emphasis>]
@@ -83,6 +86,7 @@
 [<emphasis role="bold">-no_tls1</emphasis>]
 [<emphasis role="bold">-no_tls1_1</emphasis>]
 [<emphasis role="bold">-no_tls1_2</emphasis>]
+[<emphasis role="bold">-no_tls1_3</emphasis>]
 [<emphasis role="bold">-no_dhe</emphasis>]
 [<emphasis role="bold">-bugs</emphasis>]
 [<emphasis role="bold">-comp</emphasis>]
@@ -457,7 +461,7 @@
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><emphasis role="bold">-ssl2</emphasis>, <emphasis role="bold">-ssl3</emphasis>, <emphasis role="bold">-tls1</emphasis>, <emphasis role="bold">-tls1_1</emphasis>, <emphasis role="bold">-tls1_2</emphasis>, <emphasis role="bold">-no_ssl2</emphasis>, <emphasis role="bold">-no_ssl3</emphasis>, <emphasis role="bold">-no_tls1</emphasis>, <emphasis role="bold">-no_tls1_1</emphasis>, <emphasis role="bold">-no_tls1_2</emphasis></term>
+          <term><emphasis role="bold">-ssl2</emphasis>, <emphasis role="bold">-ssl3</emphasis>, <emphasis role="bold">-tls1</emphasis>, <emphasis role="bold">-tls1_1</emphasis>, <emphasis role="bold">-tls1_2</emphasis>, <emphasis role="bold">-tls1_3</emphasis>, <emphasis role="bold">-no_ssl2</emphasis>, <emphasis role="bold">-no_ssl3</emphasis>, <emphasis role="bold">-no_tls1</emphasis>, <emphasis role="bold">-no_tls1_1</emphasis>, <emphasis role="bold">-no_tls1_2</emphasis>, <emphasis role="bold">-no_tls1_3</emphasis></term>
           <listitem>
             <para>
 	      These options require or disable the use of the specified SSL
