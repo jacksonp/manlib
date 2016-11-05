@@ -47,8 +47,12 @@
       <refentrytitle>SSL_accept</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry> routines, the correct handshake routines are
       automatically set. When performing a transparent negotiation using
-      <citerefentry> <refentrytitle>SSL_write</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry> or <citerefentry>
+      <citerefentry> <refentrytitle>SSL_write_ex</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_write</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_read_ex</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, or <citerefentry>
       <refentrytitle>SSL_read</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, the handshake routines must be explicitly set in
       advance using either SSL_set_connect_state() or
@@ -68,12 +72,16 @@
       <refentrytitle>SSL_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_new</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, L<citerefentry>
+      </citerefentry>, <citerefentry>
       <refentrytitle>SSL_connect</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_accept</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_write_ex</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>SSL_write</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_read_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_read</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

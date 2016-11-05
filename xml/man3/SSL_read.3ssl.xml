@@ -4,78 +4,87 @@
     <refentrytitle>SSL_read.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_read</refname>
+    <refname>SSL_read_ex, SSL_read</refname>
 <refpurpose>read bytes from a TLS/SSL connection</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
-<synopsis>int SSL_read(SSL *ssl, void *buf, int num);</synopsis>
+<synopsis>int SSL_read_ex(SSL *ssl, void *buf, size_t num, size_t *read);
+int SSL_read(SSL *ssl, void *buf, int num);</synopsis>
+<synopsis>int SSL_peek_ex(SSL *ssl, void *buf, size_t num, size_t *read);
+int SSL_peek(SSL *ssl, void *buf, int num);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-fc63dbb8c21108a89bc1323f292addd7"><title>DESCRIPTION</title>
     <para>
-      SSL_read() tries to read <emphasis role="bold">num</emphasis> bytes
-      from the specified <emphasis role="bold">ssl</emphasis> into the
-      buffer <emphasis role="bold">buf</emphasis>.
+      SSL_read_ex() and SSL_read() try to read <emphasis role="bold">num</emphasis> bytes from the specified <emphasis role="bold">ssl</emphasis> into the buffer <emphasis role="bold">buf</emphasis>. On success SSL_read_ex() will store the
+      number of bytes actually read in <emphasis role="bold">*read</emphasis>.
+    </para>
+    <para>
+      SSL_peek_ex() and SSL_peek() are identical to SSL_read_ex() and
+      SSL_read() respectively except no bytes are actually removed from the
+      underlying BIO during the read, so that a subsequent call to
+      SSL_read_ex() or SSL_read() will yield at least the same bytes.
     </para>
   </refsection>
   <refsection xml:id="ID-dec15e7d692845ea287f36e7b36390f4"><title>NOTES</title>
     <para>
-      If necessary, SSL_read() will negotiate a TLS/SSL session, if not
-      already explicitly performed by <citerefentry>
+      In the paragraphs below a "read function" is defined as one of
+      SSL_read_ex(), SSL_read(), SSL_peek_ex() or SSL_peek().
+    </para>
+    <para>
+      If necessary, a read function will negotiate a TLS/SSL session, if
+      not already explicitly performed by <citerefentry>
       <refentrytitle>SSL_connect</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry> or <citerefentry>
       <refentrytitle>SSL_accept</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>. If the peer requests a re-negotiation, it will be
-      performed transparently during the SSL_read() operation. The
-      behaviour of SSL_read() depends on the underlying BIO.
+      performed transparently during the read function operation. The
+      behaviour of the read functions depends on the underlying BIO.
     </para>
     <para>
       For the transparent negotiation to succeed, the <emphasis role="bold">ssl</emphasis> must have been initialized to client or
       server mode. This is being done by calling <citerefentry>
       <refentrytitle>SSL_set_connect_state</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> or SSL_set_accept_state()
-      before the first call to an SSL_read() or <citerefentry>
-      <refentrytitle>SSL_write</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry> function.
+      before the first invocation of a read function.
     </para>
     <para>
-      SSL_read() works based on the SSL/TLS records. The data are received
-      in records (with a maximum record size of 16kB for SSLv3/TLSv1). Only
-      when a record has been completely received, it can be processed
-      (decryption and check of integrity). Therefore data that was not
-      retrieved at the last call of SSL_read() can still be buffered inside
-      the SSL layer and will be retrieved on the next call to SSL_read().
-      If <emphasis role="bold">num</emphasis> is higher than the number of
-      bytes buffered, SSL_read() will return with the bytes buffered. If no
-      more bytes are in the buffer, SSL_read() will trigger the processing
-      of the next record. Only when the record has been received and
-      processed completely, SSL_read() will return reporting success. At
-      most the contents of the record will be returned. As the size of an
-      SSL/TLS record may exceed the maximum packet size of the underlying
-      transport (e.g. TCP), it may be necessary to read several packets
-      from the transport layer before the record is complete and SSL_read()
-      can succeed.
+      The read functions work based on the SSL/TLS records. The data are
+      received in records (with a maximum record size of 16kB). Only when a
+      record has been completely received, can it be processed (decryption
+      and check of integrity). Therefore data that was not retrieved at the
+      last read call can still be buffered inside the SSL layer and will be
+      retrieved on the next read call. If <emphasis role="bold">num</emphasis> is higher than the number of bytes
+      buffered then the read functions will return with the bytes buffered.
+      If no more bytes are in the buffer, the read functions will trigger
+      the processing of the next record. Only when the record has been
+      received and processed completely will the read functions return
+      reporting success. At most the contents of the record will be
+      returned. As the size of an SSL/TLS record may exceed the maximum
+      packet size of the underlying transport (e.g. TCP), it may be
+      necessary to read several packets from the transport layer before the
+      record is complete and the read call can succeed.
     </para>
     <para>
-      If the underlying BIO is <emphasis role="bold">blocking</emphasis>,
-      SSL_read() will only return, once the read operation has been
-      finished or an error occurred, except when a renegotiation take
+      If the underlying BIO is <emphasis role="bold">blocking</emphasis>, a
+      read function will only return once the read operation has been
+      finished or an error occurred, except when a renegotiation takes
       place, in which case a SSL_ERROR_WANT_READ may occur. This behaviour
       can be controlled with the SSL_MODE_AUTO_RETRY flag of the
       <citerefentry> <refentrytitle>SSL_CTX_set_mode</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> call.
     </para>
     <para>
-      If the underlying BIO is <emphasis role="bold">non-blocking</emphasis>, SSL_read() will also return when
-      the underlying BIO could not satisfy the needs of SSL_read() to
-      continue the operation. In this case a call to <citerefentry>
+      If the underlying BIO is <emphasis role="bold">non-blocking</emphasis>, a read function will also return
+      when the underlying BIO could not satisfy the needs of the function
+      to continue the operation. In this case a call to <citerefentry>
       <refentrytitle>SSL_get_error</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry> with the return value of SSL_read() will yield
+      </citerefentry> with the return value of the read function will yield
       <emphasis role="bold">SSL_ERROR_WANT_READ</emphasis> or <emphasis role="bold">SSL_ERROR_WANT_WRITE</emphasis>. As at any time a
-      re-negotiation is possible, a call to SSL_read() can also cause write
+      re-negotiation is possible, a a read function can also cause write
       operations! The calling process then must repeat the call after
-      taking appropriate action to satisfy the needs of SSL_read(). The
-      action depends on the underlying BIO. When using a non-blocking
+      taking appropriate action to satisfy the needs of the read function.
+      The action depends on the underlying BIO. When using a non-blocking
       socket, nothing is to be done, but select() can be used to check for
       the required condition. When using a buffering BIO, like a BIO pair,
       data must be written into or retrieved out of the BIO before being
@@ -85,19 +94,32 @@
       <citerefentry> <refentrytitle>SSL_pending</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> can be used to find out
       whether there are buffered bytes available for immediate retrieval.
-      In this case SSL_read() can be called without blocking or actually
-      receiving new data from the underlying socket.
+      In this case the read function can be called without blocking or
+      actually receiving new data from the underlying socket.
     </para>
   </refsection>
   <refsection xml:id="ID-b909031c0e2ef2310a2dece4757f8c7c"><title>WARNING</title>
     <para>
-      When an SSL_read() operation has to be repeated because of <emphasis role="bold">SSL_ERROR_WANT_READ</emphasis> or <emphasis role="bold">SSL_ERROR_WANT_WRITE</emphasis>, it must be repeated with
+      When a read function operation has to be repeated because
+      <citerefentry> <refentrytitle>SSL_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> returned <emphasis role="bold">SSL_ERROR_WANT_READ</emphasis> or <emphasis role="bold">SSL_ERROR_WANT_WRITE</emphasis>, it must be repeated with
       the same arguments.
     </para>
   </refsection>
   <refsection xml:id="ID-4afb2640cb86e238abed1c4de5e8c22f"><title>RETURN VALUES</title>
     <para>
-      The following return values can occur:
+      SSL_read_ex() and SSL_peek_ex() will return 1 for success or 0 for
+      failure. Success means that 1 or more application data bytes have
+      been read from the SSL connection. Failure means that no bytes could
+      be read from the SSL connection. Failures can be retryable (e.g. we
+      are waiting for more bytes to be delivered by the network) or
+      non-retryable (e.g. a fatal network error). In the event of a failure
+      call <citerefentry> <refentrytitle>SSL_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> to find out the reason which
+      indicates whether the call is retryable or not.
+    </para>
+    <para>
+      For SSL_read() and SSL_peek() the following return values can occur:
     </para>
     <para>
       <variablelist>
@@ -147,7 +169,7 @@
     <para>
       <citerefentry> <refentrytitle>SSL_get_error</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>SSL_write</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>SSL_write_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_mode</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

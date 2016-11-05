@@ -4,92 +4,111 @@
     <refentrytitle>SSL_write.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_write</refname>
+    <refname>SSL_write_ex, SSL_write</refname>
 <refpurpose>write bytes to a TLS/SSL connection</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/ssl.h&gt;</synopsis>
-<synopsis>int SSL_write(SSL *ssl, const void *buf, int num);</synopsis>
+<synopsis>int SSL_write_ex(SSL *s, const void *buf, size_t num, size_t *written);
+int SSL_write(SSL *ssl, const void *buf, int num);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-c093d8885c91cc32fd8f5ea7a337f232"><title>DESCRIPTION</title>
     <para>
-      SSL_write() writes <emphasis role="bold">num</emphasis> bytes from
-      the buffer <emphasis role="bold">buf</emphasis> into the specified
-      <emphasis role="bold">ssl</emphasis> connection.
+      SSL_write_ex() and SSL_write() write <emphasis role="bold">num</emphasis> bytes from the buffer <emphasis role="bold">buf</emphasis> into the specified <emphasis role="bold">ssl</emphasis> connection. On success SSL_write_ex() will
+      store the number of bytes written in <emphasis role="bold">*written</emphasis>.
     </para>
   </refsection>
   <refsection xml:id="ID-a2e4bc32481ba15c7511a48afe6538af"><title>NOTES</title>
     <para>
-      If necessary, SSL_write() will negotiate a TLS/SSL session, if not
-      already explicitly performed by <citerefentry>
+      In the paragraphs below a "write function" is defined as one of
+      either SSL_write_ex(), or SSL_write().
+    </para>
+    <para>
+      If necessary, a write function will negotiate a TLS/SSL session, if
+      not already explicitly performed by <citerefentry>
       <refentrytitle>SSL_connect</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry> or <citerefentry>
       <refentrytitle>SSL_accept</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>. If the peer requests a re-negotiation, it will be
-      performed transparently during the SSL_write() operation. The
-      behaviour of SSL_write() depends on the underlying BIO.
+      performed transparently during the write functio operation. The
+      behaviour of the write functions depends on the underlying BIO.
     </para>
     <para>
       For the transparent negotiation to succeed, the <emphasis role="bold">ssl</emphasis> must have been initialized to client or
       server mode. This is being done by calling <citerefentry>
       <refentrytitle>SSL_set_connect_state</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> or SSL_set_accept_state()
-      before the first call to an <citerefentry>
-      <refentrytitle>SSL_read</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry> or SSL_write() function.
+      before the first call to a write function.
     </para>
     <para>
       If the underlying BIO is <emphasis role="bold">blocking</emphasis>,
-      SSL_write() will only return, once the write operation has been
-      finished or an error occurred, except when a renegotiation take
+      the write functions will only return, once the write operation has
+      been finished or an error occurred, except when a renegotiation take
       place, in which case a SSL_ERROR_WANT_READ may occur. This behaviour
       can be controlled with the SSL_MODE_AUTO_RETRY flag of the
       <citerefentry> <refentrytitle>SSL_CTX_set_mode</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> call.
     </para>
     <para>
-      If the underlying BIO is <emphasis role="bold">non-blocking</emphasis>, SSL_write() will also return,
-      when the underlying BIO could not satisfy the needs of SSL_write() to
-      continue the operation. In this case a call to <citerefentry>
-      <refentrytitle>SSL_get_error</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry> with the return value of SSL_write() will yield
-      <emphasis role="bold">SSL_ERROR_WANT_READ</emphasis> or <emphasis role="bold">SSL_ERROR_WANT_WRITE</emphasis>. As at any time a
-      re-negotiation is possible, a call to SSL_write() can also cause read
-      operations! The calling process then must repeat the call after
-      taking appropriate action to satisfy the needs of SSL_write(). The
-      action depends on the underlying BIO. When using a non-blocking
+      If the underlying BIO is <emphasis role="bold">non-blocking</emphasis> the write functions will also
+      return when the underlying BIO could not satisfy the needs of the
+      function to continue the operation. In this case a call to
+      <citerefentry> <refentrytitle>SSL_get_error</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> with the return value of the
+      write function will yield <emphasis role="bold">SSL_ERROR_WANT_READ</emphasis> or <emphasis role="bold">SSL_ERROR_WANT_WRITE</emphasis>. As at any time a
+      re-negotiation is possible, a call to a write function can also cause
+      read operations! The calling process then must repeat the call after
+      taking appropriate action to satisfy the needs of the write function.
+      The action depends on the underlying BIO. When using a non-blocking
       socket, nothing is to be done, but select() can be used to check for
       the required condition. When using a buffering BIO, like a BIO pair,
       data must be written into or retrieved out of the BIO before being
       able to continue.
     </para>
     <para>
-      SSL_write() will only return with success, when the complete contents
-      of <emphasis role="bold">buf</emphasis> of length <emphasis role="bold">num</emphasis> has been written. This default behaviour
+      The write functions will only return with success when the complete
+      contents of <emphasis role="bold">buf</emphasis> of length <emphasis role="bold">num</emphasis> has been written. This default behaviour
       can be changed with the SSL_MODE_ENABLE_PARTIAL_WRITE option of
       <citerefentry> <refentrytitle>SSL_CTX_set_mode</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>. When this flag is set,
-      SSL_write() will also return with success, when a partial write has
-      been successfully completed. In this case the SSL_write() operation
-      is considered completed. The bytes are sent and a new SSL_write()
-      operation with a new buffer (with the already sent bytes removed)
-      must be started. A partial write is performed with the size of a
-      message block, which is 16kB for SSLv3/TLSv1.
+      <manvolnum>3</manvolnum> </citerefentry>. When this flag is set the
+      write functions will also return with success when a partial write
+      has been successfully completed. In this case the write function
+      operation is considered completed. The bytes are sent and a new write
+      call with a new buffer (with the already sent bytes removed) must be
+      started. A partial write is performed with the size of a message
+      block, which is 16kB.
     </para>
   </refsection>
   <refsection xml:id="ID-20152020d91a1df9d0a25a031995e15e"><title>WARNING</title>
     <para>
-      When an SSL_write() operation has to be repeated because of <emphasis role="bold">SSL_ERROR_WANT_READ</emphasis> or <emphasis role="bold">SSL_ERROR_WANT_WRITE</emphasis>, it must be repeated with
+      When a write function call has to be repeated because <citerefentry>
+      <refentrytitle>SSL_get_error</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> returned <emphasis role="bold">SSL_ERROR_WANT_READ</emphasis> or <emphasis role="bold">SSL_ERROR_WANT_WRITE</emphasis>, it must be repeated with
       the same arguments.
     </para>
     <para>
-      When calling SSL_write() with num=0 bytes to be sent the behaviour is
-      undefined.
+      When calling the write functions with num=0 bytes to be sent the
+      behaviour is undefined.
     </para>
   </refsection>
   <refsection xml:id="ID-efaf62f205ee4b8e237a31ced0a6250c"><title>RETURN VALUES</title>
     <para>
-      The following return values can occur:
+      SSL_write_ex() will return 1 for success or 0 for failure. Success
+      means that all requested application data bytes have been written to
+      the SSL connection or, if SSL_MODE_ENABLE_PARTIAL_WRITE is in use, at
+      least 1 application data byte has been written to the SSL connection.
+      Failure means that not all the requested bytes have been written yet
+      (if SSL_MODE_ENABLE_PARTIAL_WRITE is not in use) or no bytes could be
+      written to the SSL connection (if SSL_MODE_ENABLE_PARTIAL_WRITE is in
+      use). Failures can be retryable (e.g. the network write buffer has
+      temporarily filled up) or non-retryable (e.g. a fatal network error).
+      In the event of a failure call <citerefentry>
+      <refentrytitle>SSL_get_error</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> to find out the reason which indicates whether the
+      call is retryable or not.
+    </para>
+    <para>
+      For SSL_write() the following return values can occur:
     </para>
     <para>
       <variablelist>
@@ -131,8 +150,10 @@
     <para>
       <citerefentry> <refentrytitle>SSL_get_error</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>SSL_read</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>SSL_read_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_read</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry> <citerefentry>
       <refentrytitle>SSL_CTX_set_mode</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_new</refentrytitle> <manvolnum>3</manvolnum>

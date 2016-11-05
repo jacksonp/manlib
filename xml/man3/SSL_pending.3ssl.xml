@@ -18,8 +18,10 @@ int SSL_has_pending(const SSL *s);</synopsis>
       Data is received in whole blocks known as records from the peer. A
       whole record is processed (e.g. decrypted) in one go and is buffered
       by OpenSSL until it is read by the application via a call to
-      <citerefentry> <refentrytitle>SSL_read</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>.
+      <citerefentry> <refentrytitle>SSL_read_ex</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry> or <citerefentry>
+      <refentrytitle>SSL_read</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>.
     </para>
     <para>
       SSL_pending() returns the number of bytes which have been processed,
@@ -46,13 +48,13 @@ int SSL_has_pending(const SSL *s);</synopsis>
       SSL_has_pending() returns 1 if <emphasis role="bold">s</emphasis> has
       buffered data (whether processed or unprocessed) and 0 otherwise.
       Note that it is possible for SSL_has_pending() to return 1, and then
-      a subsequent call to SSL_read() to return no data because the
-      unprocessed buffered data when processed yielded no application data
-      (for example this can happen during renegotiation). It is also
-      possible in this scenario for SSL_has_pending() to continue to return
-      1 even after an SSL_read() call because the buffered and unprocessed
-      data is not yet processable (e.g. because OpenSSL has only received a
-      partial record so far).
+      a subsequent call to SSL_read_ex() or SSL_read() to return no data
+      because the unprocessed buffered data when processed yielded no
+      application data (for example this can happen during renegotiation).
+      It is also possible in this scenario for SSL_has_pending() to
+      continue to return 1 even after an SSL_read_ex() or SSL_read() call
+      because the buffered and unprocessed data is not yet processable
+      (e.g. because OpenSSL has only received a partial record so far).
     </para>
   </refsection>
   <refsection xml:id="ID-af2a4aedd3a33d66b085503c13f66b04"><title>RETURN VALUES</title>
@@ -65,8 +67,10 @@ int SSL_has_pending(const SSL *s);</synopsis>
   </refsection>
   <refsection xml:id="ID-f5564e9f3c3c9f5f66fd1ee54af045c0"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>SSL_read</refentrytitle>
+      <citerefentry> <refentrytitle>SSL_read_ex</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_read</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_read_ahead</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_split_send_fragment</refentrytitle>

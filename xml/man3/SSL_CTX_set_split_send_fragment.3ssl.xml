@@ -66,8 +66,8 @@ void SSL_set_default_read_buffer_len(SSL *s, size_t len);</synopsis>
       compared to writing encrypted data. SSL_CTX_set_split_send_fragment()
       and SSL_set_split_send_fragment() define how data is split up into
       pipelines when writing encrypted data. The number of pipelines used
-      will be determined by the amount of data provided to the SSL_write()
-      call divided by <emphasis role="bold">split_send_fragment</emphasis>.
+      will be determined by the amount of data provided to the
+      SSL_write_ex() or SSL_write() call divided by <emphasis role="bold">split_send_fragment</emphasis>.
     </para>
     <para>
       For example if <emphasis role="bold">split_send_fragment</emphasis>
@@ -75,16 +75,18 @@ void SSL_set_default_read_buffer_len(SSL *s, size_t len);</synopsis>
       4 then:
     </para>
     <para>
-      SSL_write called with 0-2000 bytes == 1 pipeline used
+      SSL_write/SSL_write_ex called with 0-2000 bytes == 1 pipeline used
     </para>
     <para>
-      SSL_write called with 2001-4000 bytes == 2 pipelines used
+      SSL_write/SSL_write_ex called with 2001-4000 bytes == 2 pipelines
+      used
     </para>
     <para>
-      SSL_write called with 4001-6000 bytes == 3 pipelines used
+      SSL_write/SSL_write_ex called with 4001-6000 bytes == 3 pipelines
+      used
     </para>
     <para>
-      SSL_write called with 6001+ bytes == 4 pipelines used
+      SSL_write/SSL_write_ex called with 6001+ bytes == 4 pipelines used
     </para>
     <para>
       <emphasis role="bold">split_send_fragment</emphasis> must always be

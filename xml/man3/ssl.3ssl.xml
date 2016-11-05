@@ -40,7 +40,11 @@
       </citerefentry> or <citerefentry>
       <refentrytitle>SSL_connect</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry> respectively. <citerefentry>
+      <refentrytitle>SSL_read_ex</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>SSL_read</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_write_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry> and <citerefentry>
       <refentrytitle>SSL_write</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry> are used to read and write data on the TLS/SSL
@@ -1929,6 +1933,8 @@
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_pending</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_read_ex</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>SSL_read</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_rstate_string</refentrytitle>
@@ -1950,6 +1956,8 @@
       <refentrytitle>SSL_state_string</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_want</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_write_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_write</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

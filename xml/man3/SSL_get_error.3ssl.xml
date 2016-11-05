@@ -15,10 +15,9 @@
     <para>
       SSL_get_error() returns a result code (suitable for the C "switch"
       statement) for a preceding call to SSL_connect(), SSL_accept(),
-      SSL_do_handshake(), SSL_read(), SSL_peek(), or SSL_write() on
-      <emphasis role="bold">ssl</emphasis>.  The value returned by that
-      TLS/SSL I/O function must be passed to SSL_get_error() in parameter
-      <emphasis role="bold">ret</emphasis>.
+      SSL_do_handshake(), SSL_read_ex(), SSL_read(), SSL_peek_ex(),
+      SSL_peek(), SSL_write_ex() or SSL_write() on <emphasis role="bold">ssl</emphasis>.  The value returned by that TLS/SSL I/O
+      function must be passed to SSL_get_error() in parameter <emphasis role="bold">ret</emphasis>.
     </para>
     <para>
       In addition to <emphasis role="bold">ssl</emphasis> and <emphasis role="bold">ret</emphasis>, SSL_get_error() inspects the current
@@ -85,12 +84,14 @@
 	      Caveat: Any TLS/SSL I/O function can lead to either of
 	      <emphasis role="bold">SSL_ERROR_WANT_READ</emphasis> and
 	      <emphasis role="bold">SSL_ERROR_WANT_WRITE</emphasis>.  In
-	      particular, SSL_read() or SSL_peek() may want to write data
-	      and SSL_write() may want to read data.  This is mainly
-	      because TLS/SSL handshakes may occur at any time during the
-	      protocol (initiated by either the client or the server);
-	      SSL_read(), SSL_peek(), and SSL_write() will handle any
-	      pending handshakes.
+	      particular, SSL_read_ex(), SSL_read(), SSL_peek_ex(), or
+	      SSL_peek() may want to write data and SSL_write() or
+	      SSL_write_ex() may want to read data.  This is mainly because
+	      TLS/SSL handshakes may occur at any time during the protocol
+	      (initiated by either the client or the server);
+	      SSL_read_ex(), SSL_read(), SSL_peek_ex(), SSL_peek(),
+	      SSL_write_ex(), and SSL_write() will handle any pending
+	      handshakes.
             </para>
           </listitem>
         </varlistentry>
