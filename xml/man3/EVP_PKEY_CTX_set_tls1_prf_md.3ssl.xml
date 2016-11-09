@@ -13,7 +13,7 @@ EVP_PKEY_CTX_set1_tls1_prf_secret, EVP_PKEY_CTX_add1_tls1_prf_seed</refname>
 <synopsis>int EVP_PKEY_CTX_set_tls1_prf_md(EVP_PKEY_CTX *pctx, const EVP_MD *md);
 int EVP_PKEY_CTX_set1_tls1_prf_secret(EVP_PKEY_CTX *pctx,
                                       unsigned char *sec, int seclen);
-int EVP_PKEY_CTX_add1_tls1_prf_seed(EVP_PKEY_CTX *pctx, seed, seedlen)
+int EVP_PKEY_CTX_add1_tls1_prf_seed(EVP_PKEY_CTX *pctx,
                                     unsigned char *seed, int seedlen);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-8a5f0c4133bc7463f9d13dbb710a1ae1"><title>DESCRIPTION</title>
@@ -21,7 +21,8 @@ int EVP_PKEY_CTX_add1_tls1_prf_seed(EVP_PKEY_CTX *pctx, seed, seedlen)
       The <emphasis role="bold">EVP_PKEY_TLS1_PRF</emphasis> algorithm
       implements the PRF key derivation function for TLS. It has no
       associated private key and only implements key derivation using
-      EVP_PKEY_derive().
+      <citerefentry> <refentrytitle>EVP_PKEY_derive</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>.
     </para>
     <para>
       EVP_PKEY_set_tls1_prf_md() sets the message digest associated with

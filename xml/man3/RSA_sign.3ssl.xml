@@ -16,9 +16,8 @@
   </refsynopsisdiv>
   <refsection xml:id="ID-74d778647ba784289b6adbc55d20c69d"><title>DESCRIPTION</title>
     <para>
-      RSA_sign() signs the message digest <emphasis role="bold">m</emphasis> of size <emphasis role="bold">m_len</emphasis> using the private key <emphasis role="bold">rsa</emphasis> as specified in PKCS #1 v2.0. It stores
-      the signature in <emphasis role="bold">sigret</emphasis> and the
-      signature size in <emphasis role="bold">siglen</emphasis>. <emphasis role="bold">sigret</emphasis> must point to RSA_size(<emphasis role="bold">rsa</emphasis>) bytes of memory. Note that PKCS #1 adds
+      RSA_sign() signs the message digest <emphasis role="bold">m</emphasis> of size <emphasis role="bold">m_len</emphasis> using the private key <emphasis role="bold">rsa</emphasis> using RSASSA-PKCS1-v1_5 as specified in
+      RFC 3447. It stores the signature in <emphasis role="bold">sigret</emphasis> and the signature size in <emphasis role="bold">siglen</emphasis>. <emphasis role="bold">sigret</emphasis> must point to RSA_size(<emphasis role="bold">rsa</emphasis>) bytes of memory. Note that PKCS #1 adds
       meta-data, placing limits on the size of the key that can be used.
       See <citerefentry> <refentrytitle>RSA_private_encrypt</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> for lower-level operations.

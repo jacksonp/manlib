@@ -201,6 +201,14 @@ void SSL_set_verify_depth(SSL *s, int depth);</synopsis>
       handshake with an alert message, if SSL_VERIFY_PEER is set.
     </para>
   </refsection>
+  <refsection xml:id="ID-b621738ec7c3871ecb4be56f76d27523"><title>BUGS</title>
+    <para>
+      In client mode, it is not checked whether the SSL_VERIFY_PEER flag is
+      set, but whether any flags are set. This can lead to unexpected
+      behaviour if SSL_VERIFY_PEER and other flags are not used as
+      required.
+    </para>
+  </refsection>
   <refsection xml:id="ID-228736fd995106ea5f3ee3fa4f4ab980"><title>RETURN VALUES</title>
     <para>
       The SSL*_set_verify*() functions do not provide diagnostic

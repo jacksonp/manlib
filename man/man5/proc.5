@@ -2317,7 +2317,9 @@ Size of resident file mappings.
 .IP *
 .IR RssShmem :
 Size of resident shared memory (includes System V shared memory,
-mappings from tmpfs, and shared anonymous mappings).
+mappings from
+.BR tmpfs (5),
+and shared anonymous mappings).
 .\" commit bf9683d6990589390b5178dafe8fd06808869293
 (since Linux 4.5).
 .IP *
@@ -3093,7 +3095,9 @@ Files which have been mapped into memory (with
 such as libraries.
 .TP
 .IR Shmem " %lu (since Linux 2.6.32)"
-[To be documented.]
+Amount of memory consumed in
+.BR tmpfs (5)
+filesystems.
 .TP
 .IR Slab " %lu"
 In-kernel data structures cache.
@@ -3178,8 +3182,9 @@ Non-file backed huge pages mapped into user-space page tables.
 .TP
 .IR ShmemHugePages " %lu (since Linux 4.8)"
 (\fBCONFIG_TRANSPARENT_HUGEPAGE\fP is required.)
-Memory used by shared memory (shmem) and tmpfs allocated
-with huge pages
+Memory used by shared memory (shmem) and
+.BR tmpfs (5)
+allocated with huge pages
 .TP
 .IR ShmemPmdMapped " %lu (since Linux 4.8)"
 (\fBCONFIG_TRANSPARENT_HUGEPAGE\fP is required.)
@@ -4028,18 +4033,16 @@ with writes enabled, any UID or GID that would exceed 65535 is translated
 to the overflow value before being written to disk.
 .TP
 .IR /proc/sys/fs/pipe-max-size " (since Linux 2.6.35)"
-The value in this file defines an upper limit for raising the capacity
-of a pipe using the
-.BR fcntl (2)
-.B F_SETPIPE_SZ
-operation.
-This limit applies only to unprivileged processes.
-The default value for this file is 1,048,576.
-The value assigned to this file may be rounded upward,
-to reflect the value actually employed for a convenient implementation.
-To determine the rounded-up value,
-display the contents of this file after assigning a value to it.
-The minimum value that can be assigned to this file is the system page size.
+See
+.BR pipe (7).
+.TP
+.IR /proc/sys/fs/pipe-user-pages-hard " (since Linux 4.5)"
+See
+.BR pipe (7).
+.TP
+.IR /proc/sys/fs/pipe-user-pages-soft " (since Linux 4.5)"
+See
+.BR pipe (7).
 .TP
 .IR /proc/sys/fs/protected_hardlinks " (since Linux 3.6)"
 .\" commit 800179c9b8a1e796e441674776d11cd4c05d61d7
@@ -5380,7 +5383,8 @@ Amount of memory allocated to kernel stacks.
 .TP
 .IR nr_shmem " (since Linux 2.6.32)"
 .\" commit 4b02108ac1b3354a22b0d83c684797692efdc395
-Pages used by shmem and tmpfs.
+Pages used by shmem and
+.BR tmpfs (5).
 .TP
 .IR nr_dirtied " (since Linux 2.6.37)"
 .\" commit ea941f0e2a8c02ae876cd73deb4e1557248f258c
