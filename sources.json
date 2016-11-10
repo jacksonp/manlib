@@ -148,15 +148,6 @@ find sources/cups/man -name '*.gz' -exec bash -c '(base=$(basename -s .gz {}); m
   },
 */
 
-  "dpkg": {
-    "type": "git",
-    "url": "git://git.debian.org/git/dpkg/dpkg.git",
-    "sparse": "man/",
-    "cmd": "rsync --checksum sources/dpkg/man/*.1 man/man1/;
-rsync --checksum sources/dpkg/man/*.5 man/man5/;
-rsync --checksum sources/dpkg/man/*.8 man/man8/"
-  },
-
   "dracut": {
     "type": "git",
     "url": "git://git.kernel.org/pub/scm/boot/dracut/dracut.git",
