@@ -5,11 +5,13 @@
   </refmeta>
   <refnamediv>
     <refname>EVP_PKEY_CTX_set_hkdf_md, EVP_PKEY_CTX_set1_hkdf_salt,
-EVP_PKEY_CTX_set1_hkdf_key, EVP_PKEY_CTX_add1_hkdf_info</refname>
+EVP_PKEY_CTX_set1_hkdf_key, EVP_PKEY_CTX_add1_hkdf_info,
+EVP_PKEY_CTX_hkdf_mode</refname>
 <refpurpose>HMAC-based Extract-and-Expand key derivation algorithm</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
 <synopsis>#include &lt;openssl/kdf.h&gt;</synopsis>
+<synopsis>int EVP_PKEY_CTX_hkdf_mode(EVP_PKEY_CTX *pctx, int mode);</synopsis>
 <synopsis>int EVP_PKEY_CTX_set_hkdf_md(EVP_PKEY_CTX *pctx, const EVP_MD *md);</synopsis>
 <synopsis>int EVP_PKEY_CTX_set1_hkdf_salt(EVP_PKEY_CTX *pctx, unsigned char *salt,
                                 int saltlen);</synopsis>
@@ -26,6 +28,65 @@ EVP_PKEY_CTX_set1_hkdf_key, EVP_PKEY_CTX_add1_hkdf_info</refname>
       input keying material and "extracts" from it a fixed-length
       pseudorandom key K. The second stage "expands" the key K into several
       additional pseudorandom keys (the output of the KDF).
+    </para>
+    <para>
+      EVP_PKEY_CTX_hkdf_mode() sets the mode for the HKDF operation. There
+      are three modes that are currently defined:
+    </para>
+    <para>
+      <variablelist>
+        <varlistentry>
+          <term>EVP_PKEY_HKDEF_MODE_EXTRACT_AND_EXPAND</term>
+          <listitem>
+            <para>
+	      This is the default mode. Calling <citerefentry>
+	      <refentrytitle>EVP_PKEY_derive</refentrytitle>
+	      <manvolnum>3</manvolnum> </citerefentry> on an EVP_PKEY_CTX
+	      set up for HKDF will perform an extract followed by an expand
+	      operation in one go. The derived key returned will be the
+	      result after the expand operation. The intermediate
+	      fixed-length pseudorandom key K is not returned.
+            </para>
+            <para>
+	      In this mode the digest, key, salt and info values must be
+	      set before a key is derived or an error occurs.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>EVP_PKEY_HKDEF_MODE_EXTRACT_ONLY</term>
+          <listitem>
+            <para>
+	      In this mode calling <citerefentry>
+	      <refentrytitle>EVP_PKEY_derive</refentrytitle>
+	      <manvolnum>3</manvolnum> </citerefentry> will just perform
+	      the extract operation. The value returned will be the
+	      intermediate fixed-length pseudorandom key K.
+            </para>
+            <para>
+	      The digest, key and salt values must be set before a key is
+	      derived or an error occurs.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>EVP_PKEY_HKDEF_MODE_EXPAND_ONLY</term>
+          <listitem>
+            <para>
+	      In this mode calling <citerefentry>
+	      <refentrytitle>EVP_PKEY_derive</refentrytitle>
+	      <manvolnum>3</manvolnum> </citerefentry> will just perform
+	      the expand operation. The input key should be set to the
+	      intermediate fixed-length pseudorandom key K returned from a
+	      previous extract operation.
+            </para>
+            <para>
+	      The digest, key and info values must be set before a key is
+	      derived or an error occurs.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </para>
     <para>
       EVP_PKEY_set_hkdf_md() sets the message digest associated with the
@@ -48,11 +109,13 @@ EVP_PKEY_CTX_set1_hkdf_key, EVP_PKEY_CTX_add1_hkdf_info</refname>
       <refentrytitle>EVP_PKEY_CTX_ctrl_str</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>. The <emphasis role="bold">type</emphasis> parameter "md" uses the supplied
       <emphasis role="bold">value</emphasis> as the name of the digest
-      algorithm to use. The <emphasis role="bold">type</emphasis>
-      parameters "salt", "key" and "info" use the supplied <emphasis role="bold">value</emphasis> parameter as a <emphasis role="bold">seed</emphasis>, <emphasis role="bold">key</emphasis> or
-      <emphasis role="bold">info</emphasis> value. The names "hexsalt",
-      "hexkey" and "hexinfo" are similar except they take a hex string
-      which is converted to binary.
+      algorithm to use. The <emphasis role="bold">type</emphasis> parameter
+      "mode" uses the values "EXTRACT_AND_EXPAND", "EXTRACT_ONLY" and
+      "EXPAND_ONLY" to determine the mode to use. The <emphasis role="bold">type</emphasis> parameters "salt", "key" and "info" use
+      the supplied <emphasis role="bold">value</emphasis> parameter as a
+      <emphasis role="bold">seed</emphasis>, <emphasis role="bold">key</emphasis> or <emphasis role="bold">info</emphasis>
+      value. The names "hexsalt", "hexkey" and "hexinfo" are similar except
+      they take a hex string which is converted to binary.
     </para>
   </refsection>
   <refsection xml:id="ID-5316a5252693d0683ba84ce3db710c9d"><title>NOTES</title>
@@ -64,23 +127,22 @@ EVP_PKEY_CTX_set1_hkdf_key, EVP_PKEY_CTX_add1_hkdf_info</refname>
     </para>
     <screen>EVP_PKEY_CTX *pctx = EVP_PKEY_new_id(EVP_PKEY_HKDF, NULL);</screen>
     <para>
-      The digest, key, salt and info values must be set before a key is
-      derived or an error occurs.
-    </para>
-    <para>
       The total length of the info buffer cannot exceed 1024 bytes in
       length: this should be more than enough for any normal use of HKDF.
     </para>
     <para>
-      The output length of the KDF is specified via the length parameter to
-      the <citerefentry> <refentrytitle>EVP_PKEY_derive</refentrytitle>
+      The output length of an HKDF expand operation is specified via the
+      length parameter to the <citerefentry>
+      <refentrytitle>EVP_PKEY_derive</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> function. Since the HKDF
       output length is variable, passing a <emphasis role="bold">NULL</emphasis> buffer as a means to obtain the requisite
-      length is not meaningful with HKDF. Instead, the caller must allocate
-      a buffer of the desired length, and pass that buffer to
-      <citerefentry> <refentrytitle>EVP_PKEY_derive</refentrytitle>
+      length is not meaningful with HKDF in any mode that performs an
+      expand operation. Instead, the caller must allocate a buffer of the
+      desired length, and pass that buffer to <citerefentry>
+      <refentrytitle>EVP_PKEY_derive</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> along with (a pointer
-      initialized to) the desired length.
+      initialized to) the desired length. Passing a <emphasis role="bold">NULL</emphasis> buffer to obtain the length is allowed
+      when using EVP_PKEY_HKDEF_MODE_EXTRACT_ONLY.
     </para>
     <para>
       Optimised versions of HKDF can be implemented in an ENGINE.
@@ -107,9 +169,9 @@ if (EVP_PKEY_derive_init(pctx) &lt;= 0)
    /* Error */
 if (EVP_PKEY_CTX_set_hkdf_md(pctx, EVP_sha256()) &lt;= 0)
    /* Error */
-if (EVP_PKEY_CTX_set1_salt(pctx, "salt", 4) &lt;= 0)
+if (EVP_PKEY_CTX_set1_hkdf_salt(pctx, "salt", 4) &lt;= 0)
    /* Error */
-if (EVP_PKEY_CTX_set1_key(pctx, "secret", 6) &lt;= 0)
+if (EVP_PKEY_CTX_set1_hkdf_key(pctx, "secret", 6) &lt;= 0)
    /* Error */
 if (EVP_PKEY_CTX_add1_hkdf_info(pctx, "label", 6) &lt;= 0)
    /* Error */

@@ -1756,7 +1756,7 @@ This is equivalent to passing \fB\-\-profile\fP on the command line.
 .B \fBtype\fP
 .sp
 The type of profiler to use.
-(default: ls)
+(default: stat)
 .INDENT 7.0
 .TP
 .B \fBls\fP
@@ -1768,9 +1768,9 @@ identify the expensive parts of a non\-trivial function.
 .TP
 .B \fBstat\fP
 .sp
-Use a third\-party statistical profiler, statprof. This profiler
-currently runs only on Unix systems, and is most useful for
-profiling commands that run for longer than about 0.1 seconds.
+Use a statistical profiler, statprof. This profiler is most
+most useful for profiling commands that run for longer than
+about 0.1 seconds.
 .UNINDENT
 .TP
 .B \fBformat\fP
@@ -1790,6 +1790,30 @@ not kept.
 Format profiling data for kcachegrind use: when saving to a
 file, the generated file can directly be loaded into
 kcachegrind.
+.UNINDENT
+.TP
+.B \fBstatformat\fP
+.sp
+Profiling format for the \fBstat\fP profiler.
+(default: hotpath)
+.INDENT 7.0
+.TP
+.B \fBhotpath\fP
+.sp
+Show a tree\-based display containing the hot path of execution (where
+most time was spent).
+.TP
+.B \fBbymethod\fP
+.sp
+Show a table of methods ordered by how frequently they are active.
+.TP
+.B \fBbyline\fP
+.sp
+Show a table of lines in files ordered by how frequently they are active.
+.TP
+.B \fBjson\fP
+.sp
+Render profiling data as JSON.
 .UNINDENT
 .TP
 .B \fBfrequency\fP

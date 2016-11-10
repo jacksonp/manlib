@@ -119,11 +119,25 @@ as for
 The permissions settings are masked against the process umask.
 
 The
+.I mq_maxmsg
+and
+.I mq_msgsize
+fields of the
+.IR "struct mq_attr"
+pointed to by the
 .I attr
-argument specifies attributes for the queue.
+argument specify attributes for the queue.
 See
 .BR mq_getattr (3)
 for details.
+(Note that the
+.I mq_flags
+field in that structure is ignored by
+.BR mq_open ();
+the
+.B O_NONBLOCK
+flag is instead set via
+.IR oflag .)
 If
 .I attr
 is NULL, then the queue is created with implementation-defined
