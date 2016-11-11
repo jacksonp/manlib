@@ -40,7 +40,7 @@ int i2d_SSL_SESSION(SSL_SESSION *in, unsigned char **pp);</synopsis>
   <refsection xml:id="ID-12d449e1c6fd080242e5236c3c82df7b"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_SESSION_free</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_sess_set_get_cb</refentrytitle>

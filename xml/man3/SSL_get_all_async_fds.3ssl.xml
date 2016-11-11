@@ -10,13 +10,15 @@ SSL_get_changed_async_fds</refname>
 <refpurpose>manage asynchronous operations</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/async.h&gt;
-#include &lt;openssl/ssl.h&gt;</synopsis>
-<synopsis>int SSL_waiting_for_async(SSL *s);
+    <synopsis/>
+  </refsynopsisdiv>
+  <screen>#include &amp;lt;openssl/async.h&amp;gt;
+#include &amp;lt;openssl/ssl.h&amp;gt;
+
+int SSL_waiting_for_async(SSL *s);
 int SSL_get_all_async_fds(SSL *s, OSSL_ASYNC_FD *fd, size_t *numfds);
 int SSL_get_changed_async_fds(SSL *s, OSSL_ASYNC_FD *addfd, size_t *numaddfds,
-                              OSSL_ASYNC_FD *delfd, size_t *numdelfds);</synopsis>
-  </refsynopsisdiv>
+                              OSSL_ASYNC_FD *delfd, size_t *numdelfds);</screen>
   <refsection xml:id="ID-c0402ffc46a5cd5b1388f423d2017f5b"><title>DESCRIPTION</title>
     <para>
       SSL_waiting_for_async() determines whether an SSL connection is

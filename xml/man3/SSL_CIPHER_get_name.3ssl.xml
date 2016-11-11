@@ -154,7 +154,7 @@ RSA-PSK-AES256-CBC-SHA384 TLSv1.0 Kx=RSAPSK   Au=RSA  Enc=AES(256)  Mac=SHA384</
   <refsection xml:id="ID-8be33cdb5d3ce4379ae3d41e8f4144ec"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_current_cipher</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_ciphers</refentrytitle>

@@ -76,7 +76,7 @@ int SSL_set_cipher_list(SSL *ssl, const char *str);</synopsis>
   <refsection xml:id="ID-bef068697c0c8c7ca450a00ef04bec90"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_ciphers</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_use_certificate</refentrytitle>

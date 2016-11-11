@@ -32,8 +32,8 @@ int ECPKParameters_print_fp(FILE *fp, const EC_GROUP *x, int off);</synopsis>
   <refsection xml:id="ID-a6e04c7c6543551b228ba9aaefb0690f"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>ec</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>ec</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>EC_GROUP_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

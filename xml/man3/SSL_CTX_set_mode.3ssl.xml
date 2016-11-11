@@ -145,7 +145,7 @@ long SSL_get_mode(SSL *ssl);</synopsis>
   <refsection xml:id="ID-000ef880aa6a732002b477e0c23b6335"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_read_ex</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_read</refentrytitle> <manvolnum>3</manvolnum>

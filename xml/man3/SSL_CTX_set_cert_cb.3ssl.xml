@@ -74,7 +74,7 @@ void SSL_set_cert_cb(SSL *s, int (*cert_cb)(SSL *ssl, void *arg), void *arg);</s
   <refsection xml:id="ID-e37cb31395656ced62839c0422d13f93"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_use_certificate</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_add1_chain_cert</refentrytitle>

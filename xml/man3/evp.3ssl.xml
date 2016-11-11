@@ -121,14 +121,12 @@ an encrypted message in a "digital envelope" using the <citerefentry>
     </para>
     <para>
       All the symmetric algorithms (ciphers), digests and asymmetric
-      algorithms (public key algorithms) can be replaced by <citerefentry>
-      <refentrytitle>engine</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry> modules providing alternative implementations. If
-      ENGINE implementations of ciphers or digests are registered as
-      defaults, then the various EVP functions will automatically use those
-      implementations automatically in preference to built in software
-      implementations. For more information, consult the engine(3) man
-      page.
+      algorithms (public key algorithms) can be replaced by ENGINE modules
+      providing alternative implementations. If ENGINE implementations of
+      ciphers or digests are registered as defaults, then the various EVP
+      functions will automatically use those implementations automatically
+      in preference to built in software implementations. For more
+      information, consult the engine(3) man page.
     </para>
     <para>
       Although low level algorithm specific functions exist for many
@@ -180,7 +178,7 @@ an encrypted message in a "digital envelope" using the <citerefentry>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>EVP_BytesToKey</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>engine</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>ENGINE_by_id</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>
   </refsection>

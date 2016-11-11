@@ -33,9 +33,9 @@
   </refsection>
   <refsection xml:id="ID-5137e5e37752db637c7f9ca478d8d918"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dh</refentrytitle>
+      <citerefentry> <refentrytitle>DH_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>dsa</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>DSA_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>

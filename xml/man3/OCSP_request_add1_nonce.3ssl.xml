@@ -83,12 +83,12 @@ int OCSP_check_nonce(OCSP_REQUEST *req, OCSP_BASICRESP *resp);</synopsis>
   <refsection xml:id="ID-a7ff5ff9c1042af95688ce08d00d185f"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_cert_to_id</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_REQUEST_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>OCSP_response_find_status</refentrytitle>
+      <refentrytitle>OCSP_resp_find_status</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_response_status</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

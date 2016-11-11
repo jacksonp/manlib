@@ -133,7 +133,7 @@ int OCSP_single_get0_status(OCSP_SINGLERESP *single, int *reason,
   <refsection xml:id="ID-2b1d803445eed91d054c0367d4848623"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_cert_to_id</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_request_add1_nonce</refentrytitle>

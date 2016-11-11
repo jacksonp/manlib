@@ -13,22 +13,27 @@ BIO_ssl_shutdown</refname>
 <refpurpose>SSL BIO</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/bio.h&gt;
-#include &lt;openssl/ssl.h&gt;</synopsis>
-<synopsis>const BIO_METHOD *BIO_f_ssl(void);</synopsis>
-<synopsis>long BIO_set_ssl(BIO *b, SSL *ssl, long c);
+    <synopsis/>
+  </refsynopsisdiv>
+  <screen>#include &amp;lt;openssl/bio.h&amp;gt;
+#include &amp;lt;openssl/ssl.h&amp;gt;
+
+const BIO_METHOD *BIO_f_ssl(void);
+
+long BIO_set_ssl(BIO *b, SSL *ssl, long c);
 long BIO_get_ssl(BIO *b, SSL **sslp);
 long BIO_set_ssl_mode(BIO *b, long client);
 long BIO_set_ssl_renegotiate_bytes(BIO *b, long num);
 long BIO_set_ssl_renegotiate_timeout(BIO *b, long seconds);
-long BIO_get_num_renegotiates(BIO *b);</synopsis>
-<synopsis>BIO *BIO_new_ssl(SSL_CTX *ctx, int client);
+long BIO_get_num_renegotiates(BIO *b);
+
+BIO *BIO_new_ssl(SSL_CTX *ctx, int client);
 BIO *BIO_new_ssl_connect(SSL_CTX *ctx);
 BIO *BIO_new_buffer_ssl_connect(SSL_CTX *ctx);
 int BIO_ssl_copy_session_id(BIO *to, BIO *from);
-void BIO_ssl_shutdown(BIO *bio);</synopsis>
-<synopsis>long BIO_do_handshake(BIO *b);</synopsis>
-  </refsynopsisdiv>
+void BIO_ssl_shutdown(BIO *bio);
+
+long BIO_do_handshake(BIO *b);</screen>
   <refsection xml:id="ID-1e7284fb80fb261d168e1b072b32a34e"><title>DESCRIPTION</title>
     <para>
       BIO_f_ssl() returns the SSL BIO method. This is a filter BIO which is

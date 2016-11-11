@@ -48,7 +48,7 @@ const char *SSL_state_string_long(const SSL *ssl);</synopsis>
   <refsection xml:id="ID-3f4810796adf7fbfca4d24aae24b22c8"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_info_callback</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

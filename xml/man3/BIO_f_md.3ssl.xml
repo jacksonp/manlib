@@ -8,13 +8,15 @@
 <refpurpose>message digest BIO filter</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/bio.h&gt;
-#include &lt;openssl/evp.h&gt;</synopsis>
-<synopsis>const BIO_METHOD *BIO_f_md(void);
+    <synopsis/>
+  </refsynopsisdiv>
+  <screen>#include &amp;lt;openssl/bio.h&amp;gt;
+#include &amp;lt;openssl/evp.h&amp;gt;
+
+const BIO_METHOD *BIO_f_md(void);
 int BIO_set_md(BIO *b, EVP_MD *md);
 int BIO_get_md(BIO *b, EVP_MD **mdp);
-int BIO_get_md_ctx(BIO *b, EVP_MD_CTX **mdcp);</synopsis>
-  </refsynopsisdiv>
+int BIO_get_md_ctx(BIO *b, EVP_MD_CTX **mdcp);</screen>
   <refsection xml:id="ID-8431a763e51cb17c89e1d3d62320acdb"><title>DESCRIPTION</title>
     <para>
       BIO_f_md() returns the message digest BIO method. This is a filter

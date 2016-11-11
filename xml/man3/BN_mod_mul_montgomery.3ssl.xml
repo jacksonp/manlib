@@ -85,7 +85,7 @@ BN_MONT_CTX *BN_MONT_CTX_copy(BN_MONT_CTX *to, BN_MONT_CTX *from);</synopsis>
   <refsection xml:id="ID-f9b834162fc048e07c853084d0fa96c5"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>bn</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>BN_add</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

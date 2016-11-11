@@ -20,12 +20,12 @@
   <refsection xml:id="ID-1233ca6ad55fcd357a2de22b6fa30f4e"><title>NOTES</title>
     <para>
       The sessions in the internal session cache are kept in an
-      <citerefentry> <refentrytitle>lhash</refentrytitle>
+      <citerefentry> <refentrytitle>LHASH</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> type database. It is
       possible to directly access this database e.g. for searching. In
       parallel, the sessions form a linked list which is maintained
       separately from the <citerefentry>
-      <refentrytitle>lhash</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>LHASH</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry> operations, so that the database must not be modified
       directly but by using the <citerefentry>
       <refentrytitle>SSL_CTX_add_session</refentrytitle>
@@ -35,8 +35,8 @@
   <refsection xml:id="ID-d4cb65e4aa62a325152aa1ecbd044b79"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>lhash</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>LHASH</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_add_session</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

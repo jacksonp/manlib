@@ -73,8 +73,8 @@ const EC_METHOD *EC_GFp_nistp521_method(void);</synopsis>
   <refsection xml:id="ID-e402775aeda8236614816e34c11097f7"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>ec</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>ec</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>EC_GROUP_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

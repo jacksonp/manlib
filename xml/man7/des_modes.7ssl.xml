@@ -308,12 +308,12 @@ Appendix A</screen>
   </refsection>
   <refsection xml:id="ID-5aa30c976db8cf7342797ec18ec4f4c7"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>blowfish</refentrytitle>
+      <citerefentry> <refentrytitle>BF_encrypt</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>des</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry> <refentrytitle>idea</refentrytitle>
+      <refentrytitle>DES_crypt</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry> <refentrytitle>IDEA</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>rc2</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>RC2</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>
   </refsection>

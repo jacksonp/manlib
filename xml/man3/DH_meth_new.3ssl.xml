@@ -166,7 +166,7 @@ int DH_meth_set_generate_params(DH_METHOD *dhm,
   </refsection>
   <refsection xml:id="ID-72669d6a3c5259a8b224700cf56adf0c"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dh</refentrytitle>
+      <citerefentry> <refentrytitle>DH_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>DH_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

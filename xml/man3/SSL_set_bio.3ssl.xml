@@ -114,15 +114,15 @@ void SSL_set0_wbio(SSL *s, BIO *wbio);</synopsis>
   <refsection xml:id="ID-690852f1998d1775e60ffb90e2de063a"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>SSL_get_rbio</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_connect</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_accept</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_shutdown</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>bio</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>bio</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>
     </para>
   </refsection>

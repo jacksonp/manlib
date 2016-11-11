@@ -75,9 +75,9 @@
   </refsection>
   <refsection xml:id="ID-d82d076a9c80bb027dc7af0fb981c18c"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>rand</refentrytitle>
+      <citerefentry> <refentrytitle>RAND_bytes</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>engine</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>ENGINE_by_id</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>
   </refsection>

@@ -96,8 +96,8 @@
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_accept</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>bio</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>bio</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_set_connect_state</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>

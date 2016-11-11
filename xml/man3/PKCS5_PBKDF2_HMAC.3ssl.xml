@@ -72,8 +72,8 @@
   <refsection xml:id="ID-e8f19cfacad2c394019c949eb8df8545"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>evp</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>rand</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>RAND_bytes</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>EVP_BytesToKey</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>

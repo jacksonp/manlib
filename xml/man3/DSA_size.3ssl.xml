@@ -36,7 +36,7 @@ int DSA_bits(const DSA *dsa);</synopsis>
   </refsection>
   <refsection xml:id="ID-f388e902527604c7730619c623528b8a"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dsa</refentrytitle>
+      <citerefentry> <refentrytitle>DSA_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>DSA_sign</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>

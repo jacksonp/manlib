@@ -208,7 +208,7 @@ int DSA_meth_set_keygen(DSA_METHOD *dsam, int (*keygen) (DSA *));</synopsis>
   </refsection>
   <refsection xml:id="ID-000531072ca030bf6a07ae37a90a1e39"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dsa</refentrytitle>
+      <citerefentry> <refentrytitle>DSA_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>DSA_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

@@ -209,10 +209,10 @@
 	      are at present <emphasis role="bold">TLS1-PRF</emphasis> and
 	      <emphasis role="bold">HKDF</emphasis>. Note: additional
 	      parameters and the KDF output length will normally have to be
-	      set for this to work.  See <citerefentry>
-	      <refentrytitle>EVP_PKEY_HKDF</refentrytitle>
+	      set for this to work. See <citerefentry>
+	      <refentrytitle>EVP_PKEY_CTX_set_hkdf_md</refentrytitle>
 	      <manvolnum>3</manvolnum> </citerefentry> and <citerefentry>
-	      <refentrytitle>EVP_PKEY_TLS1_PRF</refentrytitle>
+	      <refentrytitle>EVP_PKEY_CTX_set_tls1_prf_md</refentrytitle>
 	      <manvolnum>3</manvolnum> </citerefentry> for the supported
 	      string parameters of each algorithm.
             </para>
@@ -426,9 +426,9 @@
       <manvolnum>1</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>genrsa</refentrytitle> <manvolnum>1</manvolnum>
       </citerefentry>, <citerefentry>
-      <refentrytitle>EVP_PKEY_HKDF</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry>
-      <refentrytitle>EVP_PKEY_TLS1_PRF</refentrytitle>
+      <refentrytitle>EVP_PKEY_CTX_set_hkdf_md</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>EVP_PKEY_CTX_set_tls1_prf_md</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>
   </refsection>

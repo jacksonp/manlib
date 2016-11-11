@@ -49,8 +49,8 @@ void EC_KEY_set_enc_flags(EC_KEY *eckey, unsigned int flags);</synopsis>
   <refsection xml:id="ID-faaeb31d0aaea9ba5aae12adc4680aac"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>ec</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>ec</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>EC_GROUP_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

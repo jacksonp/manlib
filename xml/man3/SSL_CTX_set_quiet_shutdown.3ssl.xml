@@ -78,7 +78,7 @@ int SSL_get_quiet_shutdown(const SSL *ssl);</synopsis>
   <refsection xml:id="ID-e7fde1b04fc10513ddda0a802a8620de"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_shutdown</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_set_shutdown</refentrytitle>

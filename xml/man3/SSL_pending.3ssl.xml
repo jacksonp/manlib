@@ -75,7 +75,7 @@ int SSL_has_pending(const SSL *s);</synopsis>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_split_send_fragment</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>ssl</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>ssl</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>
     </para>
   </refsection>

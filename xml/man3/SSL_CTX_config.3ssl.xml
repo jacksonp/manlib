@@ -30,7 +30,7 @@ int SSL_config(SSL *s, const char *name);</synopsis>
     <para>
       A configuration file must have been previously loaded, for example
       using CONF_modules_load_file(). See <citerefentry>
-      <refentrytitle>config</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>config</refentrytitle> <manvolnum>5</manvolnum>
       </citerefentry> for details of the configuration file syntax.
     </para>
   </refsection>
@@ -82,7 +82,7 @@ if (SSL_CTX_config(ctx, "server") == 0) {
   <refsection xml:id="ID-a863b2a1ae67de47ecc6fec668413565"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>config</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>5</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CONF_cmd</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>CONF_modules_load_file</refentrytitle>

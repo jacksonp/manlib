@@ -142,8 +142,8 @@ ECPKPARAMETERS *EC_GROUP_get_ecpkparameters(const EC_GROUP *group, ECPKPARAMETER
   <refsection xml:id="ID-0282f2a44c845c50900fd80018d7a74a"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>ec</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>ec</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>EC_GROUP_copy</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

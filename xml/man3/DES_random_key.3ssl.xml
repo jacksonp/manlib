@@ -102,7 +102,7 @@ char *DES_crypt(const char *buf, const char *salt);</synopsis>
     <para>
       DES_random_key() generates a random key.	The PRNG must be seeded
       prior to using this function (see <citerefentry>
-      <refentrytitle>rand</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>RAND_bytes</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>).  If the PRNG could not generate a secure key, 0 is
       returned.
     </para>

@@ -39,8 +39,8 @@ const char *SCT_validation_status_string(const SCT *sct);</synopsis>
   <refsection xml:id="ID-1e6a3b01d1a998c80a1400b555ed850b"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ct</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>bio</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>bio</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>CTLOG_STORE_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

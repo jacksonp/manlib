@@ -78,7 +78,7 @@ const char *SSL_rstate_string_long(SSL *ssl);</synopsis>
   <refsection xml:id="ID-0ad8e23d6775c98256c9b938fa82a435"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-4c61e64db5b353fc664968c5a2cc9cf0"><title>COPYRIGHT</title>

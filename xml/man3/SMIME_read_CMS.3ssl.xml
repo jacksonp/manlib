@@ -76,7 +76,7 @@ cms = SMIME_read_CMS(in, &amp;cont);</screen>
       <citerefentry> <refentrytitle>ERR_get_error</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>CMS_type</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry> <citerefentry>
+      </citerefentry>, <citerefentry>
       <refentrytitle>SMIME_read_CMS</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>CMS_sign</refentrytitle> <manvolnum>3</manvolnum>
@@ -84,7 +84,7 @@ cms = SMIME_read_CMS(in, &amp;cont);</screen>
       <refentrytitle>CMS_verify</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>CMS_encrypt</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry> <citerefentry>
+      </citerefentry>, <citerefentry>
       <refentrytitle>CMS_decrypt</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>

@@ -71,7 +71,7 @@ EVP_PKEY *d2i_PrivateKey_fp(FILE *fp, EVP_PKEY **a)</synopsis>
   <refsection xml:id="ID-f58f8bd7bc04a20d0dafeb9cb95dbf13"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>d2i_PKCS8PrivateKey</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

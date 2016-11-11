@@ -58,7 +58,7 @@ int X509_add1_trust_object(X509 *x, const ASN1_OBJECT *obj);</screen>
     <para>
       <citerefentry> <refentrytitle>openssl</refentrytitle>
       <manvolnum>1</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>ssl</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>ssl</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>
     </para>
   </refsection>

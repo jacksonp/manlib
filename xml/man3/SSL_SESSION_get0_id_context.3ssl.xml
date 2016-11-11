@@ -27,7 +27,7 @@
   <refsection xml:id="ID-598aa4751b5fdb81da1cf06074bd3244"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_set_session_id_context</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

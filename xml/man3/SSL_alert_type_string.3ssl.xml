@@ -361,7 +361,7 @@ const char *SSL_alert_desc_string_long(int value);</synopsis>
   <refsection xml:id="ID-15cb8991a17875b0869a65096bf201c2"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_info_callback</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

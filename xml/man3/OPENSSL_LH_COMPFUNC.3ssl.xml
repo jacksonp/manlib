@@ -4,7 +4,7 @@
     <refentrytitle>OPENSSL_LH_COMPFUNC.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>DECLARE_LHASH_OF,
+    <refname>LHASH, DECLARE_LHASH_OF,
 OPENSSL_LH_COMPFUNC, OPENSSL_LH_HASHFUNC, OPENSSL_LH_DOALL_FUNC,
 LHASH_DOALL_ARG_FN_TYPE,
 IMPLEMENT_LHASH_HASH_FN, IMPLEMENT_LHASH_COMP_FN,
@@ -14,22 +14,29 @@ lh_TYPE_doall, lh_TYPE_doall_arg, lh_TYPE_error</refname>
 <refpurpose>dynamic hash table</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/lhash.h&gt;</synopsis>
-<synopsis>DECLARE_LHASH_OF(TYPE);</synopsis>
-<synopsis>LHASH *lh_TYPE_new();
-void lh_TYPE_free(LHASH_OF(TYPE *table);</synopsis>
-<synopsis>TYPE *lh_TYPE_insert(LHASH_OF(TYPE *table, TYPE *data);
+    <synopsis/>
+  </refsynopsisdiv>
+  <screen>#include &amp;lt;openssl/lhash.h&amp;gt;
+
+DECLARE_LHASH_OF(TYPE);
+
+LHASH *lh_TYPE_new();
+void lh_TYPE_free(LHASH_OF(TYPE *table);
+
+TYPE *lh_TYPE_insert(LHASH_OF(TYPE *table, TYPE *data);
 TYPE *lh_TYPE_delete(LHASH_OF(TYPE *table, TYPE *data);
-TYPE *lh_retrieve(LHASH_OFTYPE *table, TYPE *data);</synopsis>
-<synopsis>void lh_TYPE_doall(LHASH_OF(TYPE *table, OPENSSL_LH_DOALL_FUNC func);
+TYPE *lh_retrieve(LHASH_OFTYPE *table, TYPE *data);
+
+void lh_TYPE_doall(LHASH_OF(TYPE *table, OPENSSL_LH_DOALL_FUNC func);
 void lh_TYPE_doall_arg(LHASH_OF(TYPE) *table, OPENSSL_LH_DOALL_FUNCARG func,
-         TYPE, TYPE *arg);</synopsis>
-<synopsis>int lh_TYPE_error(LHASH_OF(TYPE) *table);</synopsis>
-<synopsis>typedef int (*OPENSSL_LH_COMPFUNC)(const void *, const void *);
+         TYPE, TYPE *arg);
+
+int lh_TYPE_error(LHASH_OF(TYPE) *table);
+
+typedef int (*OPENSSL_LH_COMPFUNC)(const void *, const void *);
 typedef unsigned long (*OPENSSL_LH_HASHFUNC)(const void *);
 typedef void (*OPENSSL_LH_DOALL_FUNC)(const void *);
-typedef void (*LHASH_DOALL_ARG_FN_TYPE)(const void *, const void *);</synopsis>
-  </refsynopsisdiv>
+typedef void (*LHASH_DOALL_ARG_FN_TYPE)(const void *, const void *);</screen>
   <refsection xml:id="ID-21cf589a1d4088202d190352469d820d"><title>DESCRIPTION</title>
     <para>
       This library implements type-checked dynamic hash tables. The hash
@@ -235,7 +242,7 @@ lh_TYPE_doall_arg(hashtable, LHASH_DOALL_ARG_FN(TYPE_print), BIO,
   </refsection>
   <refsection xml:id="ID-4e6dea06c4cbc19483ed0de98c32ae19"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>lh_stats</refentrytitle>
+      <citerefentry> <refentrytitle>OPENSSL_LH_stats</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>
   </refsection>

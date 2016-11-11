@@ -84,7 +84,7 @@ STACK_OF(X509) *SSL_get0_verified_chain(const SSL *ssl);</synopsis>
   <refsection xml:id="ID-22cfc6ae7ff4126cefc083561f4b02c6"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_peer_certificate</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>X509_up_ref</refentrytitle> <manvolnum>3</manvolnum>

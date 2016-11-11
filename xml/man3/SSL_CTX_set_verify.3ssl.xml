@@ -339,7 +339,7 @@ if (peer = SSL_get_peer_certificate(ssl))
   <refsection xml:id="ID-133690e13a5e2010dd06bfe706a883e6"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_get_verify_mode</refentrytitle>

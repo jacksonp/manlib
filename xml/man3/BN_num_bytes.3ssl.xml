@@ -53,7 +53,7 @@
   <refsection xml:id="ID-2121b55fca5c123afe8a12642945fbe9"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>bn</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>DH_size</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>DSA_size</refentrytitle> <manvolnum>3</manvolnum>

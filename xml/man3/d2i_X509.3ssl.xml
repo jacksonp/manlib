@@ -352,13 +352,15 @@ i2d_X509_VAL,</refname>
 <refpurpose>convert objects from/to ASN.1/DER representation</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>TYPE *d2i_TYPE(TYPE **a, unsigned char **pp, long length);
-TYPE *d2i_TYPE_bio(BIO *bp, TYPE **a);
-TYPE *d2i_TYPE_fp(FILE *fp, TYPE **a);</synopsis>
-<synopsis>int i2d_TYPE(TYPE *a, unsigned char **pp);
-int i2d_TYPE_fp(FILE *fp, TYPE *a);
-int i2d_TYPE_bio(BIO *bp, TYPE *a);</synopsis>
+    <synopsis/>
   </refsynopsisdiv>
+  <screen>TYPE *d2i_TYPE(TYPE **a, unsigned char **pp, long length);
+TYPE *d2i_TYPE_bio(BIO *bp, TYPE **a);
+TYPE *d2i_TYPE_fp(FILE *fp, TYPE **a);
+
+int i2d_TYPE(TYPE *a, unsigned char **pp);
+int i2d_TYPE_fp(FILE *fp, TYPE *a);
+int i2d_TYPE_bio(BIO *bp, TYPE *a);</screen>
   <refsection xml:id="ID-e68ecb0344ce15ec4b229f934c70f886"><title>DESCRIPTION</title>
     <para>
       In the description here, <emphasis role="italic">TYPE</emphasis> is

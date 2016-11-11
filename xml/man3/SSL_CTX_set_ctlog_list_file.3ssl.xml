@@ -48,7 +48,7 @@ int SSL_CTX_set_ctlog_list_file(SSL_CTX *ctx, const char *path);</synopsis>
   <refsection xml:id="ID-28412489768d2a2b4441f10ebef9e127"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_ct_validation_callback</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>CTLOG_STORE_new</refentrytitle>

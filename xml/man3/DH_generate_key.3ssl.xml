@@ -48,11 +48,12 @@
   </refsection>
   <refsection xml:id="ID-a40e9c8bcbd2a2a0f8958872e63cf17f"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dh</refentrytitle>
+      <citerefentry> <refentrytitle>DH_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry> <refentrytitle>rand</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>RAND_bytes</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>DH_size</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>

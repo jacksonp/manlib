@@ -141,13 +141,13 @@ if (fp == NULL) {
   </refsection>
   <refsection xml:id="ID-32072666111d9a085c2e0e9a20c78d8a"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>conf</refentrytitle>
+      <citerefentry> <refentrytitle>config</refentrytitle>
       <manvolnum>5</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OPENSSL_config</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>CONF_free</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>NCONF_free</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>err</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-f33d322a0ce408096106b7ea3e9fe432"><title>COPYRIGHT</title>

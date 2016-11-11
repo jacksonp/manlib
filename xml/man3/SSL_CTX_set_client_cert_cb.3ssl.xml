@@ -106,7 +106,7 @@ int (*client_cert_cb)(SSL *ssl, X509 **x509, EVP_PKEY **pkey);</synopsis>
   <refsection xml:id="ID-f68878d54c1967a4650f698ffe713cbd"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_use_certificate</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_add_extra_chain_cert</refentrytitle>

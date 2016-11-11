@@ -106,12 +106,12 @@ OCSP_REQUEST_free(req);</screen>
   <refsection xml:id="ID-3e3c1f5e460d47a97941724b5e7a9d03"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_cert_to_id</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_request_add1_nonce</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>OCSP_response_find_status</refentrytitle>
+      <refentrytitle>OCSP_resp_find_status</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_response_status</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

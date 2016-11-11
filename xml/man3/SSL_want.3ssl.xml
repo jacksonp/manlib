@@ -140,8 +140,8 @@ int SSL_want_async_job(const SSL *ssl);</synopsis>
   <refsection xml:id="ID-e743680f5cd5c4f852795571ca29930e"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>err</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>err</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_error</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>

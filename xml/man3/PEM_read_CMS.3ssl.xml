@@ -41,13 +41,16 @@ PEM_write_bio_SSL_SESSION</refname>
 <refpurpose>PEM object encoding routines</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/pem.h&gt;</synopsis>
-<synopsis>DECLARE_PEM_rw(name, TYPE)</synopsis>
-<synopsis>TYPE *PEM_read_TYPE(FILE *fp, TYPE **a, pem_password_cb *cb, void *u);
+    <synopsis/>
+  </refsynopsisdiv>
+  <screen>#include &amp;lt;openssl/pem.h&amp;gt;
+
+DECLARE_PEM_rw(name, TYPE)
+
+TYPE *PEM_read_TYPE(FILE *fp, TYPE **a, pem_password_cb *cb, void *u);
 TYPE *PEM_read_bio_TYPE(BIO *bp, TYPE **a, pem_password_cb *cb, void *u);
 int PEM_write_TYPE(FILE *fp, const TYPE *a);
-int PEM_write_bio_TYPE(BIO *bp, const TYPE *a);</synopsis>
-  </refsynopsisdiv>
+int PEM_write_bio_TYPE(BIO *bp, const TYPE *a);</screen>
   <refsection xml:id="ID-c86445335b4045fd92b2182db701d1b9"><title>DESCRIPTION</title>
     <para>
       In the description below, <emphasis role="italic">TYPE</emphasis> is

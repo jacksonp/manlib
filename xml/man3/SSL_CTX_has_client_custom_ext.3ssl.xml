@@ -27,7 +27,7 @@ client extension type</refpurpose>
   <refsection xml:id="ID-65f02c73e24fdc8819df103b4b48582b"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_add_client_custom_ext</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

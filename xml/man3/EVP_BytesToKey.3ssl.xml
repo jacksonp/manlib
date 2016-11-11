@@ -76,8 +76,8 @@
   <refsection xml:id="ID-0b3f650579deb734881363eb16bf4049"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>evp</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>rand</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>RAND_bytes</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>PKCS5_PBKDF2_HMAC</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

@@ -70,7 +70,7 @@ size_t BUF_MEM_grow_clean(BUF_MEM *str, size_t len);</synopsis>
   <refsection xml:id="ID-26bb11afb5971749bcbf41137ad014b6"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>bio</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>CRYPTO_secure_malloc</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>.
     </para>

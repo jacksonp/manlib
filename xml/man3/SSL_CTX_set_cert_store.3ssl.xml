@@ -92,7 +92,7 @@ X509_STORE *SSL_CTX_get_cert_store(const SSL_CTX *ctx);</synopsis>
   <refsection xml:id="ID-a6740d6be82d0b6a080d170c21a89476"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_load_verify_locations</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_verify</refentrytitle>

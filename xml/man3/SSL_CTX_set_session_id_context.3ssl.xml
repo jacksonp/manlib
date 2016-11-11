@@ -96,7 +96,7 @@ int SSL_set_session_id_context(SSL *ssl, const unsigned char *sid_ctx,
   <refsection xml:id="ID-941f4ab869958ed31b1567f344b2e1ff"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-7252f766c3370e5db0555c0695020e05"><title>COPYRIGHT</title>

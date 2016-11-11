@@ -86,7 +86,7 @@ DH_set_method, DH_new_method, DH_OpenSSL</refname>
   </refsection>
   <refsection xml:id="ID-4e834cd8ff1917e94458520ed3287c0d"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dh</refentrytitle>
+      <citerefentry> <refentrytitle>DH_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>DH_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

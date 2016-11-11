@@ -88,14 +88,14 @@ int OCSP_RESPID_match(OCSP_RESPID *respid, X509 *cert);</synopsis>
   <refsection xml:id="ID-7f243a59904a63b2b3cdb5d174ae6485"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry> <citerefentry>
       <refentrytitle>OCSP_cert_to_id</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
       <refentrytitle>OCSP_request_add1_nonce</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
       <refentrytitle>OCSP_REQUEST_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
-      <refentrytitle>OCSP_response_find_status</refentrytitle>
+      <refentrytitle>OCSP_resp_find_status</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> <citerefentry>
       <refentrytitle>OCSP_sendreq_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry> <citerefentry>

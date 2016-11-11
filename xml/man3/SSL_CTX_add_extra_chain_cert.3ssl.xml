@@ -66,7 +66,7 @@ long SSL_CTX_clear_extra_chain_certs(SSL_CTX *ctx);</synopsis>
   <refsection xml:id="ID-0607a1fac6c01e57169c462bdd1cf340"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_use_certificate</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_client_cert_cb</refentrytitle>

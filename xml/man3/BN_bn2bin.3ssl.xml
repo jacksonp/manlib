@@ -123,7 +123,7 @@ BIGNUM *BN_mpi2bn(unsigned char *s, int len, BIGNUM *ret);</synopsis>
   <refsection xml:id="ID-631806693987275623ebff3999b49bcb"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>bn</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>BN_zero</refentrytitle> <manvolnum>3</manvolnum>

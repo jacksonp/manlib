@@ -26,7 +26,7 @@
   <refsection xml:id="ID-67533dca8bb4952783b1a4ef62d9f51c"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-5e66fc2f1668a2eaf63e34a58d1bd75e"><title>HISTORY</title>

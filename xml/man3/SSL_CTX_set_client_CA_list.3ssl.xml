@@ -112,7 +112,7 @@ int SSL_add_client_CA(SSL *ssl, X509 *cacert);</synopsis>
   <refsection xml:id="ID-7daf700bd2148576083d24d9f8ccb327"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_client_CA_list</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_load_client_CA_file</refentrytitle>

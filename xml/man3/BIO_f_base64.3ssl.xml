@@ -8,10 +8,12 @@
 <refpurpose>base64 BIO filter</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/bio.h&gt;
-#include &lt;openssl/evp.h&gt;</synopsis>
-<synopsis>const BIO_METHOD *BIO_f_base64(void);</synopsis>
+    <synopsis/>
   </refsynopsisdiv>
+  <screen>#include &amp;lt;openssl/bio.h&amp;gt;
+#include &amp;lt;openssl/evp.h&amp;gt;
+
+const BIO_METHOD *BIO_f_base64(void);</screen>
   <refsection xml:id="ID-b321ee955b4a0ce81ec077ad0b3440f5"><title>DESCRIPTION</title>
     <para>
       BIO_f_base64() returns the base64 BIO method. This is a filter BIO

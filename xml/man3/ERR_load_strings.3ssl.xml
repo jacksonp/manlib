@@ -51,7 +51,7 @@ arbitrary error strings</refpurpose>
   <refsection xml:id="ID-98379e4c637037ce75945c806d3e2533"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>err</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_load_strings</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

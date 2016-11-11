@@ -25,7 +25,7 @@
   <refsection xml:id="ID-4d133db76c942310e3f004fcd6505ea5"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>d2i_SSL_SESSION</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_SESSION_get_time</refentrytitle>

@@ -72,7 +72,7 @@ long SSL_set_timeout(SSL_SESSION *s, long tm);</synopsis>
   <refsection xml:id="ID-9a6267a0290f73a4fa9f620142358968"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_timeout</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_default_timeout</refentrytitle>

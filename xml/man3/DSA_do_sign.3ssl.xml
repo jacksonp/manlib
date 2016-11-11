@@ -40,11 +40,12 @@
   </refsection>
   <refsection xml:id="ID-d0fcc601c49828b2a40f152185c979d8"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dsa</refentrytitle>
+      <citerefentry> <refentrytitle>DSA_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry> <refentrytitle>rand</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>RAND_bytes</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>DSA_SIG_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>DSA_sign</refentrytitle> <manvolnum>3</manvolnum>

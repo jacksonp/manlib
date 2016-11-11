@@ -226,9 +226,9 @@ BIO_free(network_bio);
     <para>
       <citerefentry> <refentrytitle>SSL_set_bio</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>ssl</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>ssl</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>bio</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>BIO_should_retry</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>BIO_read_ex</refentrytitle> <manvolnum>3</manvolnum>

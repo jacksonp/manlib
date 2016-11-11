@@ -48,9 +48,9 @@ BIO *SSL_get_wbio(SSL *ssl);</synopsis>
     <para>
       <citerefentry> <refentrytitle>SSL_set_bio</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>ssl</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>ssl</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry> , <citerefentry> <refentrytitle>bio</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-a475a005dd7c99d16382f16995eed1f6"><title>COPYRIGHT</title>

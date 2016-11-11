@@ -111,10 +111,8 @@ ENGINE *RSA_get0_engine(RSA *r);</synopsis>
   </refsection>
   <refsection xml:id="ID-6f467e895adb0dd2b756823206474c7a"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>rsa</refentrytitle>
+      <citerefentry> <refentrytitle>RSA_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>RSA_new</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry>
       <refentrytitle>RSA_size</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>

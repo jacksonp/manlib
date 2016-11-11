@@ -8,14 +8,16 @@
 <refpurpose>cipher BIO filter</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/bio.h&gt;
-#include &lt;openssl/evp.h&gt;</synopsis>
-<synopsis>const BIO_METHOD *BIO_f_cipher(void);
+    <synopsis/>
+  </refsynopsisdiv>
+  <screen>#include &amp;lt;openssl/bio.h&amp;gt;
+#include &amp;lt;openssl/evp.h&amp;gt;
+
+const BIO_METHOD *BIO_f_cipher(void);
 void BIO_set_cipher(BIO *b, const EVP_CIPHER *cipher,
                unsigned char *key, unsigned char *iv, int enc);
 int BIO_get_cipher_status(BIO *b)
-int BIO_get_cipher_ctx(BIO *b, EVP_CIPHER_CTX **pctx)</synopsis>
-  </refsynopsisdiv>
+int BIO_get_cipher_ctx(BIO *b, EVP_CIPHER_CTX **pctx)</screen>
   <refsection xml:id="ID-6c36d3c4cce36bf0e6dc159ac1d2ea63"><title>DESCRIPTION</title>
     <para>
       BIO_f_cipher() returns the cipher BIO method. This is a filter BIO

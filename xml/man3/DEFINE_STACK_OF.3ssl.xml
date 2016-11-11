@@ -20,16 +20,21 @@ sk_TYPE_is_sorted, sk_TYPE_dup, sk_TYPE_deep_copy, sk_TYPE_set_cmp_func</refname
 <refpurpose>stack container</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/safestack.h&gt;</synopsis>
-<synopsis>STACK_OF(TYPE)
+    <synopsis/>
+  </refsynopsisdiv>
+  <screen>#include &amp;lt;openssl/safestack.h&amp;gt;
+
+STACK_OF(TYPE)
 DEFINE_STACK_OF(TYPE)
 DEFINE_STACK_OF_CONST(TYPE)
 DEFINE_SPECIAL_STACK_OF(FUNCTYPE, TYPE)
-DEFINE_SPECIAL_STACK_OF_CONST(FUNCTYPE, TYPE)</synopsis>
-<synopsis>typedef int (*sk_TYPE_compfunc)(const TYPE *const *a, const TYPE *const *b);
+DEFINE_SPECIAL_STACK_OF_CONST(FUNCTYPE, TYPE)
+
+typedef int (*sk_TYPE_compfunc)(const TYPE *const *a, const TYPE *const *b);
 typedef TYPE * (*sk_TYPE_copyfunc)(const TYPE *a);
-typedef void (*sk_TYPE_freefunc)(TYPE *a);</synopsis>
-<synopsis>int sk_TYPE_num(const STACK_OF(TYPE) *sk);
+typedef void (*sk_TYPE_freefunc)(TYPE *a);
+
+int sk_TYPE_num(const STACK_OF(TYPE) *sk);
 TYPE *sk_TYPE_value(const STACK_OF(TYPE) *sk, int idx);
 STACK_OF(TYPE) *sk_TYPE_new(sk_TYPE_compfunc compare);
 STACK_OF(TYPE) *sk_TYPE_new_null(void);
@@ -52,8 +57,7 @@ STACK_OF(TYPE) *sk_TYPE_dup(const STACK_OF(TYPE) *sk);
 STACK_OF(TYPE) *sk_TYPE_deep_copy(const STACK_OF(TYPE) *sk,
                                   sk_TYPE_copyfunc copyfunc,
                                   sk_TYPE_freefunc freefunc);
-sk_TYPE_compfunc (*sk_TYPE_set_cmp_func(STACK_OF(TYPE) *sk, sk_TYPE_compfunc compare);</synopsis>
-  </refsynopsisdiv>
+sk_TYPE_compfunc (*sk_TYPE_set_cmp_func(STACK_OF(TYPE) *sk, sk_TYPE_compfunc compare);</screen>
   <refsection xml:id="ID-f9aeb07713fbcca56aa9d25194d4f688"><title>DESCRIPTION</title>
     <para>
       Applications can create and use their own stacks by placing any of

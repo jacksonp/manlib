@@ -84,7 +84,7 @@ long SSL_get_max_cert_list(SSL *ctx);</synopsis>
   <refsection xml:id="ID-45fb5a32f4932fb3f7d6163ac32e5997"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_verify</refentrytitle>

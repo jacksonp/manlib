@@ -55,7 +55,7 @@ int (*SSL_get_verify_callback(const SSL *ssl))(int, X509_STORE_CTX *);</synopsis
   <refsection xml:id="ID-63291ccc36eb49bc55b14984d6f915f3"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_verify</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

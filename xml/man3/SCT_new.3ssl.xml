@@ -238,7 +238,7 @@ int SCT_set_source(SCT *sct, sct_source_t source);</synopsis>
   <refsection xml:id="ID-ca901189b135162a7806ebd840125e90"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ct</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SCT_verify</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>OBJ_nid2obj</refentrytitle> <manvolnum>3</manvolnum>

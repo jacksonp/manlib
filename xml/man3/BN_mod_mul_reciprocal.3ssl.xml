@@ -70,7 +70,7 @@ void BN_RECP_CTX_free(BN_RECP_CTX *recp);</synopsis>
   <refsection xml:id="ID-fc69f4c2f4297c7ac1129d906bcd6706"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>bn</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>BN_add</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

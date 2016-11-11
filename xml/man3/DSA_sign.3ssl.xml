@@ -61,11 +61,12 @@
   </refsection>
   <refsection xml:id="ID-2c5b1ab9a357c5f9401c27a9ec0dd9b4"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dsa</refentrytitle>
+      <citerefentry> <refentrytitle>DSA_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry> <refentrytitle>rand</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>RAND_bytes</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>DSA_do_sign</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>

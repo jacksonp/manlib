@@ -220,7 +220,7 @@ else if (where &amp; SSL_CB_EXIT)
   <refsection xml:id="ID-fde5923d2d34531ea5becd8b7187738b"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_state_string</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_alert_type_string</refentrytitle>

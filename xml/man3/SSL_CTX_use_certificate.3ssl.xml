@@ -188,7 +188,7 @@ int SSL_check_private_key(const SSL *ssl);</synopsis>
   <refsection xml:id="ID-7bb660f7b39e6002941af5026a5cb1f7"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_clear</refentrytitle> <manvolnum>3</manvolnum>

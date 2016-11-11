@@ -87,7 +87,7 @@ int RAND_egd_bytes(const char *path, int bytes);</synopsis>
   </refsection>
   <refsection xml:id="ID-9f687e8f841799254d7e095336cffde0"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>rand</refentrytitle>
+      <citerefentry> <refentrytitle>RAND_bytes</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>RAND_add</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

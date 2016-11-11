@@ -44,7 +44,7 @@ int BN_is_odd(BIGNUM *a);</synopsis>
   <refsection xml:id="ID-4076632448da5cb95e2bfa2c8614a5ef"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>bn</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-bee97f899054086eef3b11077b7469b0"><title>COPYRIGHT</title>

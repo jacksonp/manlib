@@ -72,7 +72,7 @@ int BN_rshift1(BIGNUM *r, BIGNUM *a);</synopsis>
   <refsection xml:id="ID-63832892cf2c9f32eac5b8c57ed9436e"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>bn</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>BN_num_bytes</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>BN_add</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>

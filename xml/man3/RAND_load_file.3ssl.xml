@@ -85,7 +85,7 @@
   </refsection>
   <refsection xml:id="ID-25566ae5bc49cb3234148777cc044fbe"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>rand</refentrytitle>
+      <citerefentry> <refentrytitle>RAND_bytes</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>RAND_add</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

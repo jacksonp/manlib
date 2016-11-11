@@ -104,7 +104,7 @@ sct_validation_status_t SCT_get_validation_status(const SCT *sct);</synopsis>
   <refsection xml:id="ID-da49de53b2cff0a6bc0530f57c0567f8"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ct</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-cd611e0515d3271104ac0c3bbb6e1570"><title>HISTORY</title>

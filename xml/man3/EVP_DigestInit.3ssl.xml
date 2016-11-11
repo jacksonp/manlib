@@ -265,7 +265,7 @@ exit(0);
     <para>
       <citerefentry> <refentrytitle>dgst</refentrytitle>
       <manvolnum>1</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>evp</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>evp</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>
     </para>
   </refsection>

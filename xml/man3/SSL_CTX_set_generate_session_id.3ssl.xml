@@ -142,7 +142,7 @@ static int generate_session_id(const SSL *ssl, unsigned char *id,
   <refsection xml:id="ID-ada9403b5fa37fec41fdb44eb95633f2"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_version</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

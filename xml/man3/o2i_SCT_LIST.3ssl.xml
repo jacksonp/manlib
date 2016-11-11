@@ -35,7 +35,7 @@ int i2o_SCT(const SCT *sct, unsigned char **out);</synopsis>
   <refsection xml:id="ID-3fe0bf7addf63fd1e46d2464b756e394"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ct</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>d2i_SCT_LIST</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>i2d_SCT_LIST</refentrytitle> <manvolnum>3</manvolnum>

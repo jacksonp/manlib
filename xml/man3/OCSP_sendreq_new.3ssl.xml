@@ -115,14 +115,14 @@ OCSP_REQ_CTX_set1_req, OCSP_sendreq_bio</refname>
   <refsection xml:id="ID-12676fb39cd1a23361564f47bc13285e"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_cert_to_id</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_request_add1_nonce</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_REQUEST_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>OCSP_response_find_status</refentrytitle>
+      <refentrytitle>OCSP_resp_find_status</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_response_status</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>

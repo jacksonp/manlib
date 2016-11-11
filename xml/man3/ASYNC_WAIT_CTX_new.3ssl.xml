@@ -153,7 +153,7 @@ int ASYNC_WAIT_CTX_clear_fd(ASYNC_WAIT_CTX *ctx, const void *key);</synopsis>
   <refsection xml:id="ID-7d6120eff9dfae8895bf2085232f5a27"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ASYNC_start_job</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

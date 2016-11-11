@@ -121,9 +121,7 @@ int OPENSSL_secure_allocated(const void *ptr);</synopsis>
       <citerefentry> <refentrytitle>OPENSSL_malloc</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>BN_new</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry>
-      <refentrytitle>bn_internal</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>.
+      </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-cf20c84ac42551f2ce4403a8b83712e3"><title>COPYRIGHT</title>

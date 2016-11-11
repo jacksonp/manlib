@@ -72,7 +72,7 @@ else
   <refsection xml:id="ID-9661ed2e65e279e9ba62f8c4ce3e1f71"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_client_CA_list</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

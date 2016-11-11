@@ -116,7 +116,7 @@ void *SSL_get_default_passwd_cb_userdata(SSL *s);</synopsis>
   <refsection xml:id="ID-1e384cf6f1b2ecc8ccb68979fad48e5b"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_use_certificate</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

@@ -1005,7 +1005,7 @@ SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA    EDH-DSS-DES-CBC3-SHA (DHE-DSS-DES-CBC3-SHA)
       <manvolnum>1</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>s_server</refentrytitle> <manvolnum>1</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-7f8be33aaf6bf9000feb7eb8dfd2ed64"><title>HISTORY</title>

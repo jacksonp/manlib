@@ -56,7 +56,7 @@ long SSL_CTX_sess_get_cache_size(SSL_CTX *ctx);</synopsis>
   <refsection xml:id="ID-35191a9c1e7a911b719d41dff5ad6d72"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_session_cache_mode</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_sess_number</refentrytitle>

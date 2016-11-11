@@ -187,7 +187,7 @@ int serialized(void)
   <refsection xml:id="ID-b2967aa1ee2de0a6b0531f2bc8f1e01a"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-78fdb5c77791ef70ac9dbebf803b20f3"><title>COPYRIGHT</title>

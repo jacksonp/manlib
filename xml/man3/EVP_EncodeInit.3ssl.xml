@@ -183,7 +183,7 @@ int EVP_DecodeBlock(unsigned char *t, const unsigned char *f, int n);</synopsis>
   <refsection xml:id="ID-9c2d3ed2af5650f47b223c9dfdc34743"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>evp</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-7cd0094dd2d9f6f356ec5f573852d595"><title>COPYRIGHT</title>

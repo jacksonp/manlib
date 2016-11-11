@@ -154,7 +154,7 @@ unsigned int length = sizeof(vector);</screen>
   <refsection xml:id="ID-e3cd297720120798b5d1a430ba1e47bc"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_tlsext_servername_callback</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_tlsext_servername_arg</refentrytitle>

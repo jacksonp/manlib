@@ -70,7 +70,7 @@ void ERR_add_error_data(int num, va_list arg);</synopsis>
   <refsection xml:id="ID-96596210ee04d9c112e76436e7e8109a"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>err</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_load_strings</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

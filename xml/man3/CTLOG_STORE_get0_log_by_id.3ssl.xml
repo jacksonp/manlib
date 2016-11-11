@@ -35,7 +35,7 @@
   <refsection xml:id="ID-117393c7698dda84102eb1bcbcf838c4"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ct</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>CTLOG_STORE_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

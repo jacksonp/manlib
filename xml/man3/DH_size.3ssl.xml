@@ -32,7 +32,7 @@
   </refsection>
   <refsection xml:id="ID-a6d9cfeab2151fdf9cc83fc76743c5b6"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dh</refentrytitle>
+      <citerefentry> <refentrytitle>DH_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>DH_generate_key</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

@@ -127,7 +127,7 @@ const char *OpenSSL_version(int t);</synopsis>
   <refsection xml:id="ID-4689d528c61da50e02457779deebd3a8"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-915b78c2a8d28027bfbc712b0cfb7d9c"><title>COPYRIGHT</title>

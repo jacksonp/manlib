@@ -74,7 +74,7 @@ unsigned long ERR_peek_last_error_line_data(const char **file, int *line,
   <refsection xml:id="ID-6e4e9a3b8011dd06dece34eeddad0a28"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>err</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_error_string</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_GET_LIB</refentrytitle> <manvolnum>3</manvolnum>

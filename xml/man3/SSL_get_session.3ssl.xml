@@ -91,7 +91,7 @@ SSL_SESSION *SSL_get1_session(SSL *ssl);</synopsis>
   <refsection xml:id="ID-3fa09c4866cd1eb38dc443cb8624cbc2"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_free</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_clear</refentrytitle> <manvolnum>3</manvolnum>

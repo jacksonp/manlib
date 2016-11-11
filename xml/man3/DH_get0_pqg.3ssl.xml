@@ -118,7 +118,7 @@ int DH_set_length(DH *dh, long length);</synopsis>
   </refsection>
   <refsection xml:id="ID-f5741a13f47255c25c691059d1abe6e4"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dh</refentrytitle>
+      <citerefentry> <refentrytitle>DH_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>DH_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

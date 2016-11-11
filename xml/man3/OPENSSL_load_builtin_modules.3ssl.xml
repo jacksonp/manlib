@@ -49,8 +49,8 @@ ENGINE_add_conf_module();</synopsis>
   </refsection>
   <refsection xml:id="ID-11c5c3a15fb34e21b4eececb99e92f95"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>conf</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <citerefentry> <refentrytitle>config</refentrytitle>
+      <manvolnum>5</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OPENSSL_config</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

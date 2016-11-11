@@ -86,8 +86,8 @@ int EVP_SealFinal(EVP_CIPHER_CTX *ctx, unsigned char *out,
   <refsection xml:id="ID-845c00fc157870a69bd374431ffa73ed"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>evp</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>rand</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>RAND_bytes</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>EVP_EncryptInit</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

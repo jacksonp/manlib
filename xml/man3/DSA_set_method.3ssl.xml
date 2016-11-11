@@ -86,7 +86,7 @@ DSA_set_method, DSA_new_method, DSA_OpenSSL</refname>
   </refsection>
   <refsection xml:id="ID-74ecb9e45faa4e8b1653def766776751"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dsa</refentrytitle>
+      <citerefentry> <refentrytitle>DSA_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>DSA_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>

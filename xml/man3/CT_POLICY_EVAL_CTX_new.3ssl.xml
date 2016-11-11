@@ -112,7 +112,7 @@ void CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE(CT_POLICY_EVAL_CTX *ctx, CTLOG_ST
   <refsection xml:id="ID-0517d3ac288a6033b33e54acc7557e9c"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ct</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-1b7d412dd46037738f9dfbee75c7cc92"><title>HISTORY</title>

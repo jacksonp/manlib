@@ -196,8 +196,8 @@
   <refsection xml:id="ID-63eb8ac70e512fac6e335b98dc459dae"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>err</refentrytitle> <manvolnum>3</manvolnum>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>err</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>
     </para>
   </refsection>

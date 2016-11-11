@@ -1,0 +1,126 @@
+<!-- Converted by db4-upgrade version 1.1 -->
+<refentry xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <refmeta>
+    <refentrytitle>X509_get0_notBefore.pod</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>X509_get0_notBefore, X509_getm_notBefore, X509_get0_notAfter,
+X509_getm_notAfter, X509_set1_notBefore, X509_set1_notAfter,
+X509_CRL_get0_lastUpdate, X509_CRL_get0_nextUpdate, X509_CRL_set1_lastUpdate,
+X509_CRL_set1_nextUpdate</refname>
+<refpurpose>get or set certificate or CRL dates</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+<synopsis>#include &lt;openssl/x509.h&gt;</synopsis>
+<synopsis>const ASN1_TIME *X509_get0_notBefore(const X509 *x);
+const ASN1_TIME *X509_get0_notAfter(const X509 *x);</synopsis>
+<synopsis>ASN1_TIME *X509_getm_notBefore(const X509 *x);
+ASN1_TIME *X509_getm_notAfter(const X509 *x);</synopsis>
+<synopsis>int X509_set1_notBefore(X509 *x, const ASN1_TIME *tm);
+int X509_set1_notAfter(X509 *x, const ASN1_TIME *tm);</synopsis>
+<synopsis>const ASN1_TIME *X509_CRL_get0_lastUpdate(const X509_CRL *crl);
+const ASN1_TIME *X509_CRL_get0_nextUpdate(const X509_CRL *crl);</synopsis>
+<synopsis>int X509_CRL_set1_lastUpdate(X509_CRL *x, const ASN1_TIME *tm);
+int X509_CRL_set1_nextUpdate(X509_CRL *x, const ASN1_TIME *tm);</synopsis>
+  </refsynopsisdiv>
+  <refsection xml:id="ID-81ab03269a67f40fde6cd7f65b9af8e3"><title>DESCRIPTION</title>
+    <para>
+      X509_get0_notBefore() and X509_get0_notAfter() return the <emphasis role="bold">notBefore</emphasis> and <emphasis role="bold">notAfter</emphasis> fields of certificate <emphasis role="bold">x</emphasis> respectively. The value returned is an
+      internal pointer which must not be freed up after the call.
+    </para>
+    <para>
+      X509_getm_notBefore() and X509_getm_notAfter() are similar to
+      X509_get0_notBefore() and X509_get0_notAfter() except they return
+      non-constant mutable references to the associated date field of the
+      certficate.
+    </para>
+    <para>
+      X509_set1_notBefore() and X509_set1_notAfter() set the <emphasis role="bold">notBefore</emphasis> and <emphasis role="bold">notAfter</emphasis> fields of <emphasis role="bold">x</emphasis> to <emphasis role="bold">tm</emphasis>.
+      Ownership of the passed parameter <emphasis role="bold">tm</emphasis>
+      is not transferred by these functions so it must be freed up after
+      the call.
+    </para>
+    <para>
+      X509_CRL_get0_lastUpdate() and X509_CRL_get0_nextUpdate() return the
+      <emphasis role="bold">lastUpdate</emphasis> and <emphasis role="bold">nextUpdate</emphasis> fields of <emphasis role="bold">crl</emphasis>. The value returned is an internal pointer
+      which must not be freed up after the call. If the <emphasis role="bold">nextUpdate</emphasis> field is absent from <emphasis role="bold">crl</emphasis> then <emphasis role="bold">NULL</emphasis>
+      is returned.
+    </para>
+    <para>
+      X509_CRL_set1_lastUpdate() and X509_CRL_set1_nextUpdate() set the
+      <emphasis role="bold">lastUpdate</emphasis> and <emphasis role="bold">nextUpdate</emphasis> fields of <emphasis role="bold">crl</emphasis> to <emphasis role="bold">tm</emphasis>.
+      Ownership of the passed parameter <emphasis role="bold">tm</emphasis>
+      is not transferred by these functions so it must be freed up after
+      the call.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-251b04b3b03763276fbd1cce82166187"><title>RETURN VALUES</title>
+    <para>
+      X509_get0_notBefore(), X509_get0_notAfter() and
+      X509_CRL_get0_lastUpdate() return a pointer to an <emphasis role="bold">ASN1_TIME</emphasis> structure.
+    </para>
+    <para>
+      X509_CRL_get0_lastUpdate() return a pointer to an <emphasis role="bold">ASN1_TIME</emphasis> structure or NULL if the <emphasis role="bold">lastUpdate</emphasis> field is absent.
+    </para>
+    <para>
+      X509_set1_notBefore(), X509_set1_notAfter(),
+      X509_CRL_set1_lastUpdate() and X509_CRL_set1_nextUpdate() return 1
+      for success or 0 for failure.
+    </para>
+  </refsection>
+  <refsection xml:id="ID-eaa7c64c839b968b2ecd5e5a3c870c68"><title>SEE ALSO</title>
+    <para>
+      <citerefentry> <refentrytitle>d2i_X509</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>X509_CRL_get0_by_serial</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get0_signature</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get_ext_d2i</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get_extension_flags</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get_pubkey</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_get_subject_name</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_NAME_add_entry_by_txt</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_NAME_ENTRY_get_object</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_NAME_get_index_by_NID</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_NAME_print_ex</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_new</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>X509_sign</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>X509V3_get_d2i</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>X509_verify_cert</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>
+    </para>
+  </refsection>
+  <refsection xml:id="ID-c1d1b7ed438b040ddef4da0388152851"><title>HISTORY</title>
+    <para>
+      These functions are available in all versions of OpenSSL.
+    </para>
+    <para>
+      X509_get_notBefore() and X509_get_notAfter() were deprecated in
+      OpenSSL 1.1.0
+    </para>
+  </refsection>
+  <refsection xml:id="ID-82079a8d0fe5c788a7950c711c8ac2a7"><title>COPYRIGHT</title>
+    <para>
+      Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+    </para>
+    <para>
+      Licensed under the OpenSSL license (the "License").  You may not use
+      this file except in compliance with the License.	You can obtain a
+      copy in the file LICENSE in the source distribution or at <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.openssl.org/source/license.html">https://www.openssl.org/source/license.html</link>.
+    </para>
+  </refsection>
+</refentry>

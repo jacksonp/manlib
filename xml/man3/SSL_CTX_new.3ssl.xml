@@ -273,7 +273,7 @@ const SSL_METHOD *DTLSv1_2_client_method(void);
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_min_proto_version</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>ssl</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>ssl</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_set_connect_state</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>

@@ -170,7 +170,7 @@ c_rehash .</screen>
   <refsection xml:id="ID-e039614a9e24187c4b0c1031a6ee23ba"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_client_CA_list</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_client_CA_list</refentrytitle>

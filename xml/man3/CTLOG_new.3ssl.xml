@@ -64,7 +64,7 @@ EVP_PKEY *CTLOG_get0_public_key(const CTLOG *log);</synopsis>
   <refsection xml:id="ID-3ba85c6cfbbf1f68f6d1d6b687e1951c"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ct</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-c7101728baaa8579d341716816ed58c4"><title>HISTORY</title>

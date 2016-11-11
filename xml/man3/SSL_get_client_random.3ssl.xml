@@ -88,7 +88,7 @@ size_t SSL_SESSION_get_master_key(const SSL_SESSION *session, unsigned char *out
   <refsection xml:id="ID-4f0dc158dc308865f08f63a372e81822"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>RAND_bytes</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_export_keying_material</refentrytitle>

@@ -38,7 +38,7 @@
   <refsection xml:id="ID-3206158b621206bd54adfe3b754b2344"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_ct_validation_callback</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

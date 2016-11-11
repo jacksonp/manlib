@@ -70,7 +70,7 @@ key = &lt;base64-encoded DER SubjectPublicKeyInfo here&gt;</screen>
   <refsection xml:id="ID-ca3d06d85c610e9a746df8d465e0d604"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ct</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>CTLOG_STORE_get0_log_by_id</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_ctlog_list_file</refentrytitle>

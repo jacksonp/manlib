@@ -53,7 +53,7 @@ void ERR_print_errors_cb(int (*cb)(const char *str, size_t len, void *u),
   <refsection xml:id="ID-07ed8192fef614b7c5c6d2558fc39762"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>err</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_error_string</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>

@@ -70,7 +70,7 @@ const char *ERR_reason_error_string(unsigned long e);</synopsis>
   <refsection xml:id="ID-e423e53214de8ad52315179d9547ebf9"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>err</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>ERR_print_errors</refentrytitle>

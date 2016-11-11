@@ -56,7 +56,7 @@ long SSL_CTX_get_default_read_ahead(SSL_CTX *ctx);</synopsis>
   <refsection xml:id="ID-678f8f78253aecf71812d62041ee9308"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_pending</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>

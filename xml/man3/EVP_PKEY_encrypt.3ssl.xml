@@ -100,7 +100,7 @@ if (EVP_PKEY_encrypt(ctx, out, &amp;outlen, in, inlen) &lt;= 0)
     <para>
       <citerefentry> <refentrytitle>d2i_X509</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>engine</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>ENGINE_by_id</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry>
       <refentrytitle>EVP_PKEY_CTX_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>

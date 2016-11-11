@@ -32,7 +32,7 @@ long SSL_callback_ctrl(SSL *, int cmd, void (*fp)());</synopsis>
   <refsection xml:id="ID-8283e971b9524328fd37934a3c7b610f"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-fcfda3d3eb0f1326e02e8d3db727c920"><title>COPYRIGHT</title>

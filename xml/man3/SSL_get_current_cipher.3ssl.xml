@@ -47,7 +47,7 @@ const char *SSL_get_cipher_version(const SSL *s);</synopsis>
   <refsection xml:id="ID-74845037c0074347e7ce7604e8b7b848"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CIPHER_get_name</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

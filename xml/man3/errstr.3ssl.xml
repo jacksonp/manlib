@@ -37,12 +37,6 @@
     </para>
     <screen>error:2006D080:BIO routines:BIO_new_file:no such file</screen>
   </refsection>
-  <refsection xml:id="ID-63714b0669203d2a8de030b30ac27495"><title>SEE ALSO</title>
-    <para>
-      <citerefentry> <refentrytitle>err</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
-    </para>
-  </refsection>
   <refsection xml:id="ID-9bea6d969a3f165f8dc9a5dcd9c4c985"><title>COPYRIGHT</title>
     <para>
       Copyright 2004-2016 The OpenSSL Project Authors. All Rights Reserved.

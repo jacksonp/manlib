@@ -8,8 +8,9 @@
 <refpurpose>Basic I/O abstraction</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-<synopsis>#include &lt;openssl/bio.h&gt;</synopsis>
+    <synopsis/>
   </refsynopsisdiv>
+  <screen>#include &amp;lt;openssl/bio.h&amp;gt;</screen>
   <refsection xml:id="ID-bc9ea26dce3cdaa24c000ef330cdd152"><title>DESCRIPTION</title>
     <para>
       A BIO is an I/O abstraction, it hides many of the underlying I/O

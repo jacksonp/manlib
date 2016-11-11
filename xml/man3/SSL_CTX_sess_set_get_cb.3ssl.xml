@@ -95,7 +95,7 @@ SSL_SESSION *(*get_session_cb)(struct ssl_st *ssl, unsigned char *data,
   <refsection xml:id="ID-7b1afe31be56700cb87aec0d37472295"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>d2i_SSL_SESSION</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_session_cache_mode</refentrytitle>

@@ -31,11 +31,12 @@
   </refsection>
   <refsection xml:id="ID-518d511113773b31e2569e640cd4fbdb"><title>SEE ALSO</title>
     <para>
-      <citerefentry> <refentrytitle>dsa</refentrytitle>
+      <citerefentry> <refentrytitle>DSA_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ERR_get_error</refentrytitle> <manvolnum>3</manvolnum>
-      </citerefentry>, <citerefentry> <refentrytitle>rand</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      </citerefentry>, <citerefentry>
+      <refentrytitle>RAND_bytes</refentrytitle> <manvolnum>3</manvolnum>
+      </citerefentry>, <citerefentry>
       <refentrytitle>DSA_generate_parameters</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

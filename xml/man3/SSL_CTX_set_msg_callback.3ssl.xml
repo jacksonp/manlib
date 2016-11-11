@@ -121,7 +121,7 @@ void SSL_set_msg_callback_arg(SSL *ssl, void *arg);</synopsis>
   <refsection xml:id="ID-b3e359236a92f638a42a7dcb5ce73df3"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_new</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>
     </para>

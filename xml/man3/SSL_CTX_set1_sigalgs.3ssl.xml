@@ -116,7 +116,7 @@ SSL_CTX_set1_sigalgs(ctx, slist, 4);</screen>
   <refsection xml:id="ID-fe41e5949caed574132fee6e43536fb4"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_get_shared_sigalgs</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CONF_CTX_new</refentrytitle>

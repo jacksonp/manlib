@@ -80,7 +80,7 @@ const SSL_METHOD *SSL_get_ssl_method(SSL *ssl);</synopsis>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_clear</refentrytitle> <manvolnum>3</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>ssl</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_set_connect_state</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>

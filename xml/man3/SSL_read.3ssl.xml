@@ -187,9 +187,9 @@ int SSL_peek(SSL *ssl, void *buf, int num);</synopsis>
       </citerefentry>, <citerefentry>
       <refentrytitle>SSL_set_shutdown</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>ssl</refentrytitle> <manvolnum>3</manvolnum>
+      <refentrytitle>ssl</refentrytitle> <manvolnum>7</manvolnum>
       </citerefentry>, <citerefentry> <refentrytitle>bio</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>
     </para>
   </refsection>
   <refsection xml:id="ID-4b7b0fe5a9e80a359cbe46f88db7f3e0"><title>COPYRIGHT</title>

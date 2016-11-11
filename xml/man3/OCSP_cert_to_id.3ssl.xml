@@ -82,12 +82,12 @@ int OCSP_id_cmp(OCSP_CERTID *a, OCSP_CERTID *b);</synopsis>
   <refsection xml:id="ID-703f86ef5e4c86d6eba95a3c4416b4fb"><title>SEE ALSO</title>
     <para>
       <citerefentry> <refentrytitle>crypto</refentrytitle>
-      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <manvolnum>7</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_request_add1_nonce</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_REQUEST_new</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
-      <refentrytitle>OCSP_response_find_status</refentrytitle>
+      <refentrytitle>OCSP_resp_find_status</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>OCSP_response_status</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
