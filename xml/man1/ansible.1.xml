@@ -298,7 +298,7 @@ Run operations with su (deprecated, use become).
 </varlistentry>
 <varlistentry>
 <term>
-<emphasis role="strong">-R</emphasis> <emphasis>SU_USER</emphasis>, <emphasis role="strong">--se-user=</emphasis><emphasis>SUDO_USER</emphasis>
+<emphasis role="strong">-R</emphasis> <emphasis>SU_USER</emphasis>, <emphasis role="strong">--su-user=</emphasis><emphasis>SU_USER</emphasis>
 </term>
 <listitem>
 <simpara>
