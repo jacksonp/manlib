@@ -12,6 +12,9 @@
 [<emphasis role="bold">-help</emphasis>]
 [<emphasis role="bold">-connect host:port</emphasis>]
 [<emphasis role="bold">-proxy host:port</emphasis>]
+[<emphasis role="bold">-unix path</emphasis>]
+[<emphasis role="bold">-4</emphasis>]
+[<emphasis role="bold">-6</emphasis>]
 [<emphasis role="bold">-servername name</emphasis>]
 [<emphasis role="bold">-verify depth</emphasis>]
 [<emphasis role="bold">-verify_return_error</emphasis>]
@@ -148,6 +151,30 @@
 	      flag, the program uses the host and port specified with this
 	      flag and issues an HTTP CONNECT command to connect to the
 	      desired server.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-unix path</emphasis></term>
+          <listitem>
+            <para>
+	      Connect over the specified Unix-domain socket.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-4</emphasis></term>
+          <listitem>
+            <para>
+	      Use IPv4 only.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-6</emphasis></term>
+          <listitem>
+            <para>
+	      Use IPv6 only.
             </para>
           </listitem>
         </varlistentry>

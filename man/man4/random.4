@@ -38,38 +38,46 @@ The generator also keeps an estimate of the
 number of bits of noise in the entropy pool.
 From this entropy pool, random numbers are created.
 .LP
-Linux 3.17 and later provides the simpler and safer (see below)
+Linux 3.17 and later provides the simpler and safer
 .BR getrandom (2)
-interface which requires no special files.
-.LP
+interface which requires no special files;
+see the
+.BR getrandom (2)
+manual page for details.
+
 When read, the
 .I /dev/urandom
 device returns random bytes using a pseudorandom
 number generator seeded from the entropy pool.
-Reads from this device are nonblocking.
-When read during early boot time, this device may return
-data prior to the entropy pool being initialized.
+Reads from this device do not block (i.e., the CPU is not yielded),
+but can incur an appreciable delay when requesting large amounts of data.
+
+When read during early boot time,
+.IR /dev/random
+may return data prior to the entropy pool being initialized.
+.\" This is a real problem; see
+.\" commit 9b4d008787f864f17d008c9c15bbe8a0f7e2fc24
 If this is of concern in your application, use
 .BR getrandom (2)
 or \fI/dev/random\fP instead.
 
-.LP
 The \fI/dev/random\fP device is a legacy interface which dates back to
 a time where the cryptographic primitives used in the implementation
 of \fI/dev/urandom\fP were not widely trusted.
 It will return random bytes only within the estimated number of
 bits of fresh noise in the entropy pool, blocking if necessary.
-\fI/dev/random\fP is suitable for applications that need very
+\fI/dev/random\fP is suitable for applications that need
 high quality randomness, and can afford indeterminate delays.
+
 When the entropy pool is empty, reads from \fI/dev/random\fP will block
 until additional environmental noise is gathered.
 If
 .BR open (2)
 is called for
 .I /dev/random
-with the flag
-.BR O_NONBLOCK ,
-a subsequent
+with the
+.BR O_NONBLOCK
+flag, a subsequent
 .BR read (2)
 will not block if the requested number of bytes is not available.
 Instead, the available bytes are returned.
@@ -80,16 +88,20 @@ will return -1 and
 will be set to
 .BR EAGAIN .
 
-The flag
+The
 .B O_NONBLOCK
-has no effect when opening
+flag has no effect when opening
 .IR /dev/urandom .
 When calling
 .BR read (2)
 for the device
 .IR /dev/urandom ,
-signals will not be handled until after the requested random bytes
-have been generated.
+reads of up to 256 bytes will return as many bytes as are requested
+and will not be interrupted by a signal handler.
+Reads with a buffer over this limit may return less than the
+requested number of bytes or fail with the error
+.BR EINTR ,
+if interrupted by a signal handler.
 
 Since Linux 3.16,
 .\" commit 79a8468747c5f95ed3d5ce8376a3e82e0c5857fc
@@ -116,7 +128,7 @@ read from both files, but it will not make reads from
 The
 .IR /dev/random
 interface is considered a legacy interface, and
-.IR /dev/urandom ,
+.IR /dev/urandom
 is preferred and sufficient in all use cases, with the exception of
 applications which require randomness during early boot time; for
 these applications,
@@ -135,36 +147,7 @@ may block, users will usually want to open it in nonblocking mode
 (or perform a read with timeout),
 and provide some sort of user notification if the desired
 entropy is not immediately available.
-
-The kernel random-number generator is designed to produce a small
-amount of high-quality seed material to seed a
-cryptographic pseudo-random number generator (CPRNG).
-It is designed for security, not speed, and is poorly
-suited to generating large amounts of random data.
-Users should be very economical in the amount of seed
-material that they read from
-.IR /dev/urandom
-(and
-.IR /dev/random );
-unnecessarily reading large quantities of data from this device will have
-a negative impact on other users of the device.
-
-The amount of seed material required to generate a cryptographic key
-equals the effective key size of the key.
-For example, a 3072-bit RSA
-or Diffie-Hellman private key has an effective key size of 128 bits
-(it requires about 2^128 operations to break) so a key generator
-needs only 128 bits (16 bytes) of seed material from
-.IR /dev/random .
-
-While some safety margin above that minimum is reasonable, as a guard
-against flaws in the CPRNG algorithm, no cryptographic primitive
-available today can hope to promise more than 256 bits of security,
-so if any program reads more than 256 bits (32 bytes) from the kernel
-random pool per invocation, or per reasonable reseed interval (not less
-than one minute), that should be taken as a sign that its cryptography is
-.I not
-skillfully implemented.
+.\"
 .SS Configuration
 If your system does not have
 \fI/dev/random\fP and \fI/dev/urandom\fP created already, they
@@ -330,6 +313,10 @@ which gets added to the entropy pool.
 .BR RNDZAPENTCNT ", " RNDCLEARPOOL
 Zero the entropy count of all pools and add some system data (such as
 wall clock) to the pools.
+.SH NOTES
+For an overview and comparison of the various interfaces that
+can be used to obtain randomness, see
+.BR random (7).
 .SH BUGS
 During early boot time, reads from
 .I /dev/urandom
@@ -343,6 +330,7 @@ may return data prior to the entropy pool being initialized.
 .\" Theodore Ts'o (tytso@athena.mit.edu).
 .SH SEE ALSO
 .BR mknod (1),
-.BR getrandom (2)
+.BR getrandom (2),
+.BR random (7)
 
 RFC\ 1750, "Randomness Recommendations for Security"

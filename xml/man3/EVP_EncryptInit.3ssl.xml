@@ -31,7 +31,8 @@ EVP_aes_128_cbc, EVP_aes_128_ecb, EVP_aes_128_cfb, EVP_aes_128_ofb,
 EVP_aes_192_cbc, EVP_aes_192_ecb, EVP_aes_192_cfb, EVP_aes_192_ofb,
 EVP_aes_256_cbc, EVP_aes_256_ecb, EVP_aes_256_cfb, EVP_aes_256_ofb,
 EVP_aes_128_gcm, EVP_aes_192_gcm, EVP_aes_256_gcm,
-EVP_aes_128_ccm, EVP_aes_192_ccm, EVP_aes_256_ccm</refname>
+EVP_aes_128_ccm, EVP_aes_192_ccm, EVP_aes_256_ccm,
+EVP_chacha20, EVP_chacha20_poly1305</refname>
 <refpurpose>EVP cipher routines</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
@@ -535,6 +536,27 @@ int EVP_CIPHER_asn1_to_param(EVP_CIPHER_CTX *c, ASN1_TYPE *type);</screen>
 	      keys respectively. These ciphers require additional control
 	      operations to function correctly: see CCM mode section below
 	      for details.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>EVP_chacha20()</term>
+          <listitem>
+            <para>
+	      The ChaCha20 stream cipher. The key length is 256 bits, the
+	      IV is 96 bits long.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>EVP_chacha20_poly1305()</term>
+          <listitem>
+            <para>
+	      Authenticated encryption with ChaCha20-Poly1305. Like
+	      EVP_chacha20() the key is 256 bits and the IV is 96 bits.
+	      This supports additional authenticated data (AAD) and
+	      produces a 128 bit authentication tag. The <link linkend="ID-7f8dac027b9fe4b9d180090a63df2e3b"><quote>GCM and
+	      OCB modes</quote></link> section below applies.
             </para>
           </listitem>
         </varlistentry>

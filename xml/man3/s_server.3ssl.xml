@@ -10,8 +10,13 @@
   <refsynopsisdiv>
 <synopsis><emphasis role="bold">openssl</emphasis> <emphasis role="bold">s_server</emphasis>
 [<emphasis role="bold">-help</emphasis>]
-[<emphasis role="bold">-accept port</emphasis>]
+[<emphasis role="bold">-port port</emphasis>]
+[<emphasis role="bold">-accept val</emphasis>]
 [<emphasis role="bold">-naccept count</emphasis>]
+[<emphasis role="bold">-unix val</emphasis>]
+[<emphasis role="bold">-unlink</emphasis>]
+[<emphasis role="bold">-4</emphasis>]
+[<emphasis role="bold">-6</emphasis>]
 [<emphasis role="bold">-context id</emphasis>]
 [<emphasis role="bold">-verify depth</emphasis>]
 [<emphasis role="bold">-Verify depth</emphasis>]
@@ -135,7 +140,7 @@
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><emphasis role="bold">-accept port</emphasis></term>
+          <term><emphasis role="bold">-port port</emphasis></term>
           <listitem>
             <para>
 	      The TCP port to listen on for connections. If not specified
@@ -144,10 +149,51 @@
           </listitem>
         </varlistentry>
         <varlistentry>
+          <term><emphasis role="bold">-accept val</emphasis></term>
+          <listitem>
+            <para>
+	      The optional TCP host and port to listen on for connections.
+	      If not specified, *:4433 is used.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
           <term><emphasis role="bold">-naccept count</emphasis></term>
           <listitem>
             <para>
 	      The server will exit after receiving <emphasis role="bold">number</emphasis> connections, default unlimited.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-unix val</emphasis></term>
+          <listitem>
+            <para>
+	      Unix domain socket to accept on.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-unlink</emphasis></term>
+          <listitem>
+            <para>
+	      For -unix, unlink existing socket first.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-4</emphasis></term>
+          <listitem>
+            <para>
+	      Use IPv4 only.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><emphasis role="bold">-6</emphasis></term>
+          <listitem>
+            <para>
+	      Use IPv6 only.
             </para>
           </listitem>
         </varlistentry>

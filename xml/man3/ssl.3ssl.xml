@@ -1883,6 +1883,8 @@
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_read_ahead</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_CTX_set_security_level</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_session_cache_mode</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>SSL_CTX_set_session_id_context</refentrytitle>
