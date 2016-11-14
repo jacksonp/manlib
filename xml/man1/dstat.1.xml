@@ -381,7 +381,7 @@ information.</simpara></note>
 </varlistentry>
 <varlistentry>
 <term>
---plugin-name
+--&lt;plugin-name&gt;
 </term>
 <listitem>
 <simpara>
