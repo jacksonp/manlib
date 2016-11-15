@@ -9,26 +9,47 @@
   </refnamediv>
   <refsynopsisdiv>
 <synopsis><emphasis role="bold">CA.pl</emphasis>
-[<emphasis role="bold">-?</emphasis>]
-[<emphasis role="bold">-h</emphasis>]
-[<emphasis role="bold">-help</emphasis>]
-[<emphasis role="bold">-newcert</emphasis>]
-[<emphasis role="bold">-newreq</emphasis>]
-[<emphasis role="bold">-newreq-nodes</emphasis>]
-[<emphasis role="bold">-newca</emphasis>]
-[<emphasis role="bold">-xsign</emphasis>]
-[<emphasis role="bold">-sign</emphasis>]
-[<emphasis role="bold">-signreq</emphasis>]
-[<emphasis role="bold">-signcert</emphasis>]
-[<emphasis role="bold">-verify</emphasis>]
-[<emphasis role="bold">files</emphasis>]</synopsis>
+<emphasis role="bold">-?</emphasis> |
+<emphasis role="bold">-h</emphasis> |
+<emphasis role="bold">-help</emphasis></synopsis>
+<synopsis><emphasis role="bold">CA.pl</emphasis>
+<emphasis role="bold">-newcert</emphasis> |
+<emphasis role="bold">-newreq</emphasis> |
+<emphasis role="bold">-newreq-nodes</emphasis> |
+<emphasis role="bold">-xsign</emphasis> |
+<emphasis role="bold">-sign</emphasis> |
+<emphasis role="bold">-signCA</emphasis> |
+<emphasis role="bold">-signcert</emphasis> |
+<emphasis role="bold">-crl</emphasis> |
+<emphasis role="bold">-newca</emphasis>
+[<emphasis role="bold">-extra-cmd</emphasis> extra-params]</synopsis>
+<synopsis><emphasis role="bold">CA.pl</emphasis> <emphasis role="bold">-pkcs12</emphasis> [<emphasis role="bold">-extra-pkcs12</emphasis> extra-params] [<emphasis role="bold">certname</emphasis>]</synopsis>
+<synopsis><emphasis role="bold">CA.pl</emphasis> <emphasis role="bold">-verify</emphasis> [<emphasis role="bold">-extra-verify</emphasis> extra-params] <emphasis role="bold">certfile</emphasis>...</synopsis>
+<synopsis><emphasis role="bold">CA.pl</emphasis> <emphasis role="bold">-revoke</emphasis> [<emphasis role="bold">-extra-ca</emphasis> extra-params] <emphasis role="bold">certfile</emphasis> [<emphasis role="bold">reason</emphasis>]</synopsis>
+<synopsis>The <emphasis role="bold">CA.pl</emphasis> script is a perl script that supplies the relevant command line
+arguments to the <emphasis role="bold">openssl</emphasis> command for some common certificate operations.
+It is intended to simplify the process of certificate creation and management
+by the use of some simple options.</synopsis>
   </refsynopsisdiv>
-  <refsection xml:id="ID-ec77df865dba80a78c2782459a86cc73"><title>DESCRIPTION</title>
+  <refsection xml:id="ID-f3260c75f10989d9e78a87ad6cd94446"><title>COMMON OPTIONS</title>
     <para>
-      The <emphasis role="bold">CA.pl</emphasis> script is a perl script
-      that supplies the relevant command line arguments to the <emphasis role="bold">openssl</emphasis> command for some common certificate
-      operations. It is intended to simplify the process of certificate
-      creation and management by the use of some simple options.
+      <variablelist>
+        <varlistentry>
+          <term><emphasis role="bold">-extra-req</emphasis> | <emphasis role="bold">-extra-ca</emphasis> | <emphasis role="bold">-extra-pkcs12</emphasis> | <emphasis role="bold">-extra-x509</emphasis> | <emphasis role="bold">-extra-verify</emphasis> &lt;extra-params&gt;</term>
+          <listitem>
+            <para>
+	      The purpose of these parameters is to allow optional
+	      parameters to be supplied to <emphasis role="bold">openssl</emphasis> that this command executes.
+	      The <emphasis role="bold">-extra-cmd</emphasis> are specific
+	      to the option being used and the <emphasis role="bold">openssl</emphasis> command getting invoked. For
+	      example when this command invokes <emphasis role="bold">openssl req</emphasis> extra parameters can be
+	      passed on with the <emphasis role="bold">-extra-req</emphasis> parameter. The <emphasis role="bold">openssl</emphasis> commands being invoked per
+	      option are documented below. Users should consult <emphasis role="bold">openssl</emphasis> command documentation for more
+	      information.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </para>
   </refsection>
   <refsection xml:id="ID-062a2cb79b0baf67a84afcd4069b2f97"><title>COMMAND OPTIONS</title>
@@ -48,7 +69,7 @@
             <para>
 	      creates a new self signed certificate. The private key is
 	      written to the file "newkey.pem" and the request written to
-	      the file "newreq.pem".
+	      the file "newreq.pem". This argument invokes <emphasis role="bold">openssl req</emphasis> command.
             </para>
           </listitem>
         </varlistentry>
@@ -58,7 +79,8 @@
             <para>
 	      creates a new certificate request. The private key is written
 	      to the file "newkey.pem" and the request written to the file
-	      "newreq.pem".
+	      "newreq.pem". Executes <emphasis role="bold">openssl
+	      req</emphasis> command below the hood.
             </para>
           </listitem>
         </varlistentry>
@@ -67,7 +89,7 @@
           <listitem>
             <para>
 	      is like <emphasis role="bold">-newreq</emphasis> except that
-	      the private key will not be encrypted.
+	      the private key will not be encrypted. Uses <emphasis role="bold">openssl req</emphasis> command.
             </para>
           </listitem>
         </varlistentry>
@@ -80,7 +102,9 @@
 	      also contain the private key) or by hitting ENTER details of
 	      the CA will be prompted for. The relevant files and
 	      directories are created in a directory called "demoCA" in the
-	      current directory.
+	      current directory. <emphasis role="bold">openssl
+	      req</emphasis> and <emphasis role="bold">openssl
+	      ca</emphasis> commands are get invoked.
             </para>
           </listitem>
         </varlistentry>
@@ -98,21 +122,23 @@
 	      browser. If there is an additional argument on the command
 	      line it will be used as the "friendly name" for the
 	      certificate (which is typically displayed in the browser list
-	      box), otherwise the name "My Certificate" is used.
+	      box), otherwise the name "My Certificate" is used. Delegates
+	      work to <emphasis role="bold">openssl pkcs12</emphasis>
+	      command.
             </para>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><emphasis role="bold">-sign</emphasis>, <emphasis role="bold">-signreq</emphasis>, <emphasis role="bold">-xsign</emphasis></term>
+          <term><emphasis role="bold">-sign</emphasis>, <emphasis role="bold">-signcert</emphasis>, <emphasis role="bold">-xsign</emphasis></term>
           <listitem>
             <para>
 	      calls the <emphasis role="bold">ca</emphasis> program to sign
 	      a certificate request. It expects the request to be in the
 	      file "newreq.pem". The new certificate is written to the file
 	      "newcert.pem" except in the case of the <emphasis role="bold">-xsign</emphasis> option when it is written to
-	      standard output.
+	      standard output. Leverages <emphasis role="bold">openssl
+	      ca</emphasis> command.
             </para>
-            <screen></screen>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -122,7 +148,8 @@
 	      this option is the same as the <emphasis role="bold">-signreq</emphasis> option except it uses the
 	      configuration file section <emphasis role="bold">v3_ca</emphasis> and so makes the signed request
 	      a valid CA certificate. This is useful when creating
-	      intermediate CA from a root CA.
+	      intermediate CA from a root CA. Extra params are passed on to
+	      <emphasis role="bold">openssl ca</emphasis> command.
             </para>
           </listitem>
         </varlistentry>
@@ -131,7 +158,10 @@
           <listitem>
             <para>
 	      this option is the same as <emphasis role="bold">-sign</emphasis> except it expects a self signed
-	      certificate to be present in the file "newreq.pem".
+	      certificate to be present in the file "newreq.pem". Extra
+	      params are passed on to <emphasis role="bold">openssl
+	      x509</emphasis> and <emphasis role="bold">openssl
+	      ca</emphasis> commands.
             </para>
           </listitem>
         </varlistentry>
@@ -139,7 +169,8 @@
           <term><emphasis role="bold">-crl</emphasis></term>
           <listitem>
             <para>
-	      generate a CRL
+	      generate a CRL. Executes <emphasis role="bold">openssl
+	      ca</emphasis> command.
             </para>
           </listitem>
         </varlistentry>
@@ -148,7 +179,7 @@
           <listitem>
             <para>
 	      revoke the certificate contained in the specified <emphasis role="bold">certfile</emphasis>. An optional reason may be
-	      specified, and must be one of: <emphasis role="bold">unspecified</emphasis>, <emphasis role="bold">keyCompromise</emphasis>, <emphasis role="bold">CACompromise</emphasis>, <emphasis role="bold">affiliationChanged</emphasis>, <emphasis role="bold">superseded</emphasis>, <emphasis role="bold">cessationOfOperation</emphasis>, <emphasis role="bold">certificateHold</emphasis>, or <emphasis role="bold">removeFromCRL</emphasis>.
+	      specified, and must be one of: <emphasis role="bold">unspecified</emphasis>, <emphasis role="bold">keyCompromise</emphasis>, <emphasis role="bold">CACompromise</emphasis>, <emphasis role="bold">affiliationChanged</emphasis>, <emphasis role="bold">superseded</emphasis>, <emphasis role="bold">cessationOfOperation</emphasis>, <emphasis role="bold">certificateHold</emphasis>, or <emphasis role="bold">removeFromCRL</emphasis>. Leverages <emphasis role="bold">openssl ca</emphasis> command.
             </para>
           </listitem>
         </varlistentry>
@@ -158,16 +189,8 @@
             <para>
 	      verifies certificates against the CA certificate for
 	      "demoCA". If no certificates are specified on the command
-	      line it tries to verify the file "newcert.pem".
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><emphasis role="bold">files</emphasis></term>
-          <listitem>
-            <para>
-	      one or more optional certificate file names for use with the
-	      <emphasis role="bold">-verify</emphasis> command.
+	      line it tries to verify the file "newcert.pem". Invokes
+	      <emphasis role="bold">openssl verify</emphasis> command.
             </para>
           </listitem>
         </varlistentry>
