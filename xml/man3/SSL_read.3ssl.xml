@@ -4,7 +4,7 @@
     <refentrytitle>SSL_read.pod</refentrytitle>
   </refmeta>
   <refnamediv>
-    <refname>SSL_read_ex, SSL_read</refname>
+    <refname>SSL_read_ex, SSL_read, SSL_peek_ex, SSL_peek</refname>
 <refpurpose>read bytes from a TLS/SSL connection</refpurpose>
   </refnamediv>
   <refsynopsisdiv>

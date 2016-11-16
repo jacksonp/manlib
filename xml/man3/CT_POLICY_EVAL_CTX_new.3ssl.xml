@@ -7,7 +7,8 @@
     <refname>CT_POLICY_EVAL_CTX_new, CT_POLICY_EVAL_CTX_free,
 CT_POLICY_EVAL_CTX_get0_cert, CT_POLICY_EVAL_CTX_set1_cert,
 CT_POLICY_EVAL_CTX_get0_issuer, CT_POLICY_EVAL_CTX_set1_issuer,
-CT_POLICY_EVAL_CTX_get0_log_store, CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE</refname>
+CT_POLICY_EVAL_CTX_get0_log_store, CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE,
+CT_POLICY_EVAL_CTX_get_time, CT_POLICY_EVAL_CTX_set_time</refname>
 <refpurpose>Encapsulates the data required to evaluate whether SCTs meet a Certificate Transparency policy</refpurpose>
   </refnamediv>
   <refsynopsisdiv>
@@ -19,7 +20,9 @@ int CT_POLICY_EVAL_CTX_set1_cert(CT_POLICY_EVAL_CTX *ctx, X509 *cert);
 X509* CT_POLICY_EVAL_CTX_get0_issuer(const CT_POLICY_EVAL_CTX *ctx);
 int CT_POLICY_EVAL_CTX_set1_issuer(CT_POLICY_EVAL_CTX *ctx, X509 *issuer);
 const CTLOG_STORE *CT_POLICY_EVAL_CTX_get0_log_store(const CT_POLICY_EVAL_CTX *ctx);
-void CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE(CT_POLICY_EVAL_CTX *ctx, CTLOG_STORE *log_store);</synopsis>
+void CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE(CT_POLICY_EVAL_CTX *ctx, CTLOG_STORE *log_store);
+uint64_t CT_POLICY_EVAL_CTX_get_time(const CT_POLICY_EVAL_CTX *ctx);
+void CT_POLICY_EVAL_CTX_set_time(CT_POLICY_EVAL_CTX *ctx, uint64_t time_in_ms);</synopsis>
   </refsynopsisdiv>
   <refsection xml:id="ID-b0fc5f1219bab49bc123a49caba33d38"><title>DESCRIPTION</title>
     <para>
@@ -27,7 +30,8 @@ void CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE(CT_POLICY_EVAL_CTX *ctx, CTLOG_ST
       functions that evaluate whether Signed Certificate Timestamps (SCTs)
       fulfil a Certificate Transparency (CT) policy. This policy may be,
       for example, that at least one valid SCT is available. To determine
-      this, an SCT's signature must be verified. This requires:
+      this, an SCT's timestamp and signature must be verified. This
+      requires:
     </para>
     <para>
       <variablelist>
@@ -45,6 +49,12 @@ void CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE(CT_POLICY_EVAL_CTX *ctx, CTLOG_ST
         </varlistentry>
         <varlistentry>
           <term>* the issuer certificate (if the SCT was issued for a pre-certificate)</term>
+          <listitem>
+            <para/>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>* the current time</term>
           <listitem>
             <para/>
           </listitem>
@@ -82,6 +92,22 @@ void CT_POLICY_EVAL_CTX_set_shared_CTLOG_STORE(CT_POLICY_EVAL_CTX *ctx, CTLOG_ST
             <para>
 	      Holds a pointer to the CTLOG_STORE, so the CTLOG_STORE must
 	      outlive the CT_POLICY_EVAL_CTX.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>* CT_POLICY_EVAL_CTX_set_time() to set the time SCTs should be compared with to determine if they are valid</term>
+          <listitem>
+            <para>
+	      The SCT timestamp will be compared to this time to check
+	      whether the SCT was issued in the future. RFC6962 states that
+	      "TLS clients MUST reject SCTs whose timestamp is in the
+	      future". By default, this will be set to 5 minutes in the
+	      future (e.g. (time() + 300) * 1000), to allow for clock
+	      drift.
+            </para>
+            <para>
+	      The time should be in milliseconds since the Unix epoch.
             </para>
           </listitem>
         </varlistentry>

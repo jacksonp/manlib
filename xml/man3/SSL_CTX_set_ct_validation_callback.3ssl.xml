@@ -110,6 +110,11 @@ int SSL_CTX_ct_is_enabled(const SSL_CTX *ctx);</synopsis>
       is because one possible source of SCTs is the OCSP response from a
       server.
     </para>
+    <para>
+      The time returned by SSL_SESSION_get_time() will be used to evaluate
+      whether any presented SCTs have timestamps that are in the future
+      (and therefore invalid).
+    </para>
   </refsection>
   <refsection xml:id="ID-394631a6719ba0c141681aed18a1142a"><title>RESTRICTIONS</title>
     <para>
@@ -147,6 +152,8 @@ int SSL_CTX_ct_is_enabled(const SSL_CTX *ctx);</synopsis>
       <refentrytitle>SSL_CTX_set_verify</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
       <refentrytitle>ssl_ct_validation_cb</refentrytitle>
+      <manvolnum>3</manvolnum> </citerefentry>, <citerefentry>
+      <refentrytitle>SSL_SESSION_get_time</refentrytitle>
       <manvolnum>3</manvolnum> </citerefentry>
     </para>
   </refsection>

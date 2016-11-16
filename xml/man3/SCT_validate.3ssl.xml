@@ -71,9 +71,13 @@ sct_validation_status_t SCT_get_validation_status(const SCT *sct);</synopsis>
       SCT_VALIDATION_STATUS_UNKNOWN_VERSION.
     </para>
     <para>
-      If the SCT's signature is incorrect, the validation status will be
-      SCT_VALIDATION_STATUS_INVALID. Otherwise, if all checks have passed,
-      the validation status will be SCT_VALIDATION_STATUS_VALID.
+      If the SCT's signature is incorrect, its timestamp is in the future
+      (relative to the time in CT_POLICY_EVAL_CTX), or if it is otherwise
+      invalid, the validation status will be SCT_VALIDATION_STATUS_INVALID.
+    </para>
+    <para>
+      If all checks pass, the validation status will be
+      SCT_VALIDATION_STATUS_VALID.
     </para>
   </refsection>
   <refsection xml:id="ID-374e4e5c957f9408a84c8e63b267a2de"><title>NOTES</title>
