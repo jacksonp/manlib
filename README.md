@@ -1,7 +1,7 @@
 manlib
 ======
 
-This script helps create a library of Linux/BSD man pages, and keep it up-to-date. This library can be used for any project, it's currently used on [mankier.com](http://www.mankier.com/).
+This script helps create a library of Linux/BSD man pages, and keep it up-to-date.
 
 Install npm dependencies:
 
@@ -39,10 +39,10 @@ nroff files go in ./man docbook files go in ./xml
 Notes
 -----
 
-Commands on **all sources** (if a particular source is not specified) are run in **parallel**, this could use a lot of resources.
+Commands on **all sources** (if a particular source is not specified) are run in **parallel**, this can eat a lot of resources.
 
 The **setup** command relies on git, hg, svn... being available depending on the sources used.
 
 The **extract** command needs to "make" some of the sources (see sources.json). This can require any number of programs to be available: gcc, libtool, autoconf...
 
-Contributions are welcome.
+This was originally created for [mankier.com](https://www.mankier.com/), but is no longer in use.
